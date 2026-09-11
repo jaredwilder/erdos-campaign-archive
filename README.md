@@ -1,5 +1,10 @@
 # erdos-campaign-archive
 
+**Eleven of these campaigns carry kernel-checked, sorry-free Lean, including two that refute a
+stated conjecture and one that moves a ladder. They are named in
+[WHAT-IS-ACTUALLY-IN-HERE.md](WHAT-IS-ACTUALLY-IN-HERE.md) -- a random sample of twenty will
+miss all of them.**
+
 **266 campaign directories across 241 distinct Erdos problems.** The complete working record of an
 automated attack program, published whole, including the large majority that produced nothing.
 
