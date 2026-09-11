@@ -1,0 +1,77 @@
+{
+ "label": "E1135-FINITE",
+ "tool": "stamp_receipt.py",
+ "rules": [
+  "R1 exit!=0 -> KERNEL_FAILED",
+  "R2 sorry -> KERNEL_FAILED",
+  "R3 dirty axioms -> KERNEL_CHECKED_DIRTY_AXIOMS",
+  "R4 binder over an infinite type -> KERNEL_CHECKED_UNIVERSAL",
+  "R5 closed equation -> KERNEL_CHECKED_FINITE_COMPUTATION",
+  "R6 declared finite-derived -> KERNEL_CHECKED_FINITE_COMPUTATION"
+ ],
+ "finite_derived_declared": [
+  "residual_drops_below_1024",
+  "scan_1024"
+ ],
+ "source_file": "lean/Erdos1135Finite.lean",
+ "source_sha256": "0af8e79ca6ddf90692252b51d4c6ff26a41772f00cefa00799be9e45309213fd",
+ "lean_output_file": "receipts/lean-Erdos1135Finite.out",
+ "lean_output_sha256": "94000d04e4457992f93199f7f4985506d6394d15fa4ff9f22ba38bd4434ea343",
+ "exit_code": 0,
+ "error_lines": [],
+ "sorry_free": true,
+ "declaration_count": 5,
+ "declarations": [
+  {
+   "declaration": "Erdos1135Finite.cstep_eq",
+   "statement": "(n : \u2115) : cstep n = collatzStep n",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "dirty_axioms": [],
+   "formal_status": "KERNEL_CHECKED_UNIVERSAL"
+  },
+  {
+   "declaration": "Erdos1135Finite.drops_sound",
+   "statement": ": \u2200 f n0 x, drops f n0 x = true \u2192 \u2203 t, collatzStep^[t] x < n0",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "dirty_axioms": [],
+   "formal_status": "KERNEL_CHECKED_UNIVERSAL"
+  },
+  {
+   "declaration": "Erdos1135Finite.residual_drops_below_1024",
+   "statement": ": \u2200 n, 0 < n \u2192 n \u2264 1024 \u2192 isResidual n = true \u2192 \u2203 k, 0 < k \u2227 collatzStep^[k] n < n",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "dirty_axioms": [],
+   "formal_status": "KERNEL_CHECKED_FINITE_COMPUTATION"
+  },
+  {
+   "declaration": "Erdos1135Finite.scan_1024",
+   "statement": ": scan 1024 = true",
+   "axioms": [],
+   "dirty_axioms": [],
+   "formal_status": "KERNEL_CHECKED_FINITE_COMPUTATION"
+  },
+  {
+   "declaration": "Erdos1135Finite.scan_sound",
+   "statement": ": \u2200 N, scan N = true \u2192 \u2200 n, 0 < n \u2192 n \u2264 N \u2192 isResidual n = true \u2192 \u2203 k, 0 < k \u2227 collatzStep^[k] n < n",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "dirty_axioms": [],
+   "formal_status": "KERNEL_CHECKED_UNIVERSAL"
+  }
+ ]
+}

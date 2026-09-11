@@ -1,0 +1,77 @@
+{
+ "campaign": "oracle/evidence/msl-machine/campaigns/erdos233-campaign-001",
+ "work_dir": "oracle/evidence/msl-machine/campaigns/erdos233-campaign-001",
+ "snapshot": false,
+ "contract_sha": "8b31f79b0e6545a44a36baa8d0ab093810961b50b8edf050941ebc862fe7829c",
+ "dealt": {
+  "packet": "closer",
+  "route_id": "R003",
+  "lemmas": [
+   "L1"
+  ],
+  "reason": "Wang 17: R003 carries standing PROVED lemma(s) L1 and no refuted lemma; convert the standing mathematics into a machine-checkable closure obligation or refuse in type"
+ },
+ "model": "z-ai/glm-5.3-flash",
+ "rounds": [
+  {
+   "round": 1,
+   "assistant": "Sanity gate check first, as mandated: L1 is recorded as PROVED on the claim that \"Heath-Brown's unconditional asymptotic ∑_{n≤N} d_n² ~ N log N\" exists and implies the canonical bound. That asymptotic is **not** a published unconditional theorem. What Heath-Brown actually proved (1981, \"The differences between consecutive primes\") is an upper bound of the shape ∑_{n≤N} d_n² ≪ N (log N)^{c} N^{ε} with c < 2 (of order log^{7/4+ε}); the asymptotic ∑ d_n² ~ N log N is far stronger than anything known and would require essentially prime-pair-correlation strength. The standing lemma therefore records an unproved asymptotic as a proved citation — exactly the STRENGTH CONFUSION / invented-citation trap this packet exists to catch. Closing R003 on it would stamp a false PROVED record.\n\nCLOSURE_REFUSED route=R003 reason=MATHEMATICS_FAILED_SANITY note=L1 rests on a nonexistent \"Heath-Brown unconditional asymptotic ∑d_n²~N log N\"; the literature supports only ≪ N(log N)^{7/4+ε}, so L1 must be re-recorded in that (still sufficient) form before any CITATION_ANCHORED close can be filed.",
+   "verdict": "CLOSURE_REFUSED R003 reason=MATHEMATICS_FAILED_SANITY (a typed refusal IS an outcome)",
+   "usage": {
+    "prompt_tokens": 3295,
+    "completion_tokens": 901,
+    "total_tokens": 4196,
+    "cost": 0.000472375,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.000472375,
+     "upstream_inference_prompt_cost": 0.000247125,
+     "upstream_inference_completions_cost": 0.00022525
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 608,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   }
+  }
+ ],
+ "started_utc": "2026-09-01T17:40:45Z",
+ "event": {
+  "op": "closure_refused",
+  "route": "R003",
+  "reason": "MATHEMATICS_FAILED_SANITY",
+  "note": "L1 rests on a nonexistent \"Heath-Brown unconditional asymptotic ∑d_n²~N log N\"; the literature supports only ≪ N(log N)^{7/4+ε}, so L1 must be re-recorded in that (still sufficient) form before any CITATION_ANCHORED close can be filed."
+ },
+ "final_verdict": "CLOSURE_REFUSED R003 reason=MATHEMATICS_FAILED_SANITY (a typed refusal IS an outcome)",
+ "outcome": "CLOSURE_REFUSED",
+ "refusal": {
+  "reason": "MATHEMATICS_FAILED_SANITY",
+  "note": "L1 rests on a nonexistent \"Heath-Brown unconditional asymptotic ∑d_n²~N log N\"; the literature supports only ≪ N(log N)^{7/4+ε}, so L1 must be re-recorded in that (still sufficient) form before any CITATION_ANCHORED close can be filed."
+ },
+ "finished_utc": "2026-09-01T17:41:16Z",
+ "routes_after": {
+  "R001": {
+   "status": "DEAD",
+   "closure": null
+  },
+  "R002": {
+   "status": "DEAD",
+   "closure": null
+  },
+  "R003": {
+   "status": "ACTIVE",
+   "closure": null
+  },
+  "R004": {
+   "status": "ACTIVE",
+   "closure": null
+  }
+ }
+}

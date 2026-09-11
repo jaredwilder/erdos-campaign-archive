@@ -1,0 +1,2342 @@
+{
+ "log": [
+  {
+   "iter": 1,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'exact_reformulations'",
+   "event": {
+    "op": "open_route",
+    "route": "R001",
+    "family": "exact_reformulations"
+   },
+   "verdict": "ROUTE R001 OPENED family=exact_reformulations branch=A",
+   "utc": "2026-09-01T22:15:48Z"
+  },
+  {
+   "iter": 2,
+   "packet": "route_search",
+   "reason": "Wang 3.1: routes concentrate in 'exact_reformulations' (1 of 1 live); open an independent route in the unused family 'local_to_global'",
+   "event": {
+    "op": "open_route",
+    "route": "R002",
+    "family": "analytic_probabilistic"
+   },
+   "verdict": "ROUTE R002 OPENED family=analytic_probabilistic branch=A",
+   "utc": "2026-09-01T22:31:56Z"
+  },
+  {
+   "iter": 3,
+   "packet": "computational",
+   "reason": "Wang 12.3: R001 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "event": {
+    "op": "lemma",
+    "route": "R001",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R001/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T22:33:00Z"
+  },
+  {
+   "iter": 4,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R001 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R001",
+    "lemma": "L1",
+    "status": "PROVED"
+   },
+   "verdict": "LEMMA R001/L1 RECORDED status=PROVED",
+   "utc": "2026-09-01T22:33:44Z"
+  },
+  {
+   "iter": 5,
+   "packet": "closer",
+   "reason": "Wang 17: R001 carries standing PROVED lemma(s) L1 and no refuted lemma; convert the standing mathematics into a machine-checkable closure obligation or refuse in type",
+   "event": {
+    "op": "closure_refused",
+    "route": "R001",
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "L1 is a fail-closed finite-range verifier (n=2..200) of the partial-sum identity 1/(n!−1)=S_N+1/((n!)^N(n!−1)); it verifies no part of the irrationality claim. The route's actual decisive step — the residual-integrality lemma (for S=p/q with q|n!, the fractional part of n!·Σ is nonzero) plus the cop"
+   },
+   "verdict": "CLOSURE_REFUSED R001 reason=LEMMA_DOES_NOT_COVER_CLOSE_BRANCH (a typed refusal IS an outcome)",
+   "utc": "2026-09-01T22:33:55Z",
+   "closure_refused": {
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "L1 is a fail-closed finite-range verifier (n=2..200) of the partial-sum identity 1/(n!−1)=S_N+1/((n!)^N(n!−1)); it verifies no part of the irrationality claim. The route's actual decisive step — the residual-integrality lemma (for S=p/q with q|n!, the fractional part of n!·Σ is nonzero) plus the cop"
+   },
+   "reclose_downgraded": [],
+   "closer_sig": [
+    [
+     "L1",
+     "043cf61788ca4826"
+    ]
+   ]
+  },
+  {
+   "iter": 6,
+   "packet": "computational",
+   "reason": "Wang 12.3: R002 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "event": {
+    "op": "lemma",
+    "route": "R002",
+    "lemma": "T1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R002/T1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T22:36:13Z"
+  },
+  {
+   "iter": 7,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R002 lemma(s) T1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R002",
+    "lemma": "T1",
+    "status": "PROVED"
+   },
+   "verdict": "LEMMA R002/T1 RECORDED status=PROVED",
+   "utc": "2026-09-01T22:36:37Z"
+  },
+  {
+   "iter": 8,
+   "packet": "closer",
+   "reason": "Wang 17: R002 carries standing PROVED lemma(s) T1 and no refuted lemma; convert the standing mathematics into a machine-checkable closure obligation or refuse in type",
+   "event": {
+    "op": "closure_refused",
+    "route": "R002",
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "Standing lemma T1 only establishes the exact geometric expansion 1/(n!−1)=Σ_{j≥1}(n!)^{−j} (an identity certificate, correct as stated); it carries no tail-versus-denominator inequality. The load-bearing lemma for Branch A — q_N = o((N+1)!) along a subsequence in the Erdős–Straus criterion — is not "
+   },
+   "verdict": "CLOSURE_REFUSED R002 reason=LEMMA_DOES_NOT_COVER_CLOSE_BRANCH (a typed refusal IS an outcome)",
+   "utc": "2026-09-01T22:36:49Z",
+   "closure_refused": {
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "Standing lemma T1 only establishes the exact geometric expansion 1/(n!−1)=Σ_{j≥1}(n!)^{−j} (an identity certificate, correct as stated); it carries no tail-versus-denominator inequality. The load-bearing lemma for Branch A — q_N = o((N+1)!) along a subsequence in the Erdős–Straus criterion — is not "
+   },
+   "reclose_downgraded": [],
+   "closer_sig": [
+    [
+     "T1",
+     "c84a9966ffe932c5"
+    ]
+   ]
+  },
+  {
+   "iter": 9,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'local_to_global'",
+   "event": {
+    "op": "open_route",
+    "route": "R003",
+    "family": "algebraic_combinatorial"
+   },
+   "verdict": "ROUTE R003 OPENED family=algebraic_combinatorial branch=A",
+   "utc": "2026-09-01T22:39:17Z"
+  },
+  {
+   "iter": 10,
+   "packet": "computational",
+   "reason": "Wang 12.3: R003 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "event": {
+    "op": "lemma",
+    "route": "R003",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R003/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T22:43:56Z"
+  },
+  {
+   "iter": 11,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R003 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R003",
+    "lemma": "L1",
+    "status": "PROVED"
+   },
+   "verdict": "LEMMA R003/L1 RECORDED status=PROVED",
+   "utc": "2026-09-01T22:44:47Z"
+  },
+  {
+   "iter": 12,
+   "packet": "closer",
+   "reason": "Wang 17: R003 carries standing PROVED lemma(s) L1 and no refuted lemma; convert the standing mathematics into a machine-checkable closure obligation or refuse in type",
+   "event": {
+    "op": "closure_refused",
+    "route": "R003",
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "The only PROVED lemma L1 certifies the geometric expansion and tail bounds but explicitly places the irrationality question itself outside certificate scope; the route's entire affirmative close of branch A hangs on the unproved carry-boundedness lemma L3, so no standing PROVED mathematics covers th"
+   },
+   "verdict": "CLOSURE_REFUSED R003 reason=LEMMA_DOES_NOT_COVER_CLOSE_BRANCH (a typed refusal IS an outcome)",
+   "utc": "2026-09-01T22:44:53Z",
+   "closure_refused": {
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "The only PROVED lemma L1 certifies the geometric expansion and tail bounds but explicitly places the irrationality question itself outside certificate scope; the route's entire affirmative close of branch A hangs on the unproved carry-boundedness lemma L3, so no standing PROVED mathematics covers th"
+   },
+   "reclose_downgraded": [],
+   "closer_sig": [
+    [
+     "L1",
+     "5f5f32205bd47680"
+    ]
+   ]
+  },
+  {
+   "iter": 13,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'local_to_global'",
+   "event": {
+    "op": "open_route",
+    "route": "R004",
+    "family": "extremal_reduction"
+   },
+   "verdict": "ROUTE R004 OPENED family=extremal_reduction branch=A",
+   "utc": "2026-09-01T22:46:23Z"
+  },
+  {
+   "iter": 14,
+   "packet": "computational",
+   "reason": "Wang 12.3: R004 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "event": {
+    "op": "lemma",
+    "route": "R004",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R004/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T22:50:25Z"
+  },
+  {
+   "iter": 15,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R004 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R004",
+    "lemma": "L1",
+    "status": "PROVED"
+   },
+   "verdict": "LEMMA R004/L1 RECORDED status=PROVED",
+   "utc": "2026-09-01T22:50:52Z"
+  },
+  {
+   "iter": 16,
+   "packet": "closer",
+   "reason": "Wang 17: R004 carries standing PROVED lemma(s) L1 and no refuted lemma; convert the standing mathematics into a machine-checkable closure obligation or refuse in type",
+   "event": {
+    "op": "closure_refused",
+    "route": "R004",
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "The sole PROVED lemma L1 certifies only the unconditional identity 1/(n!−1)=Σ_{j≥1}(n!)^{−j}; its own certificate text explicitly limits scope to that identity and marks the irrationality claim as involving an undefined S, so it cannot anchor an affirmative close of \"S is irrational\" — the irrationa"
+   },
+   "verdict": "CLOSURE_REFUSED R004 reason=LEMMA_DOES_NOT_COVER_CLOSE_BRANCH (a typed refusal IS an outcome)",
+   "utc": "2026-09-01T22:50:57Z",
+   "closure_refused": {
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "The sole PROVED lemma L1 certifies only the unconditional identity 1/(n!−1)=Σ_{j≥1}(n!)^{−j}; its own certificate text explicitly limits scope to that identity and marks the irrationality claim as involving an undefined S, so it cannot anchor an affirmative close of \"S is irrational\" — the irrationa"
+   },
+   "reclose_downgraded": [],
+   "closer_sig": [
+    [
+     "L1",
+     "1303224a3dea24d0"
+    ]
+   ]
+  },
+  {
+   "iter": 17,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'local_to_global'",
+   "event": {
+    "op": "open_route",
+    "route": "R005",
+    "family": "analytic_probabilistic"
+   },
+   "verdict": "ROUTE R005 OPENED family=analytic_probabilistic branch=A",
+   "utc": "2026-09-01T23:00:20Z"
+  },
+  {
+   "iter": 18,
+   "packet": "computational",
+   "reason": "Wang 12.3: R005 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "event": {
+    "op": "lemma",
+    "route": "R005",
+    "lemma": "L2",
+    "status": "FALSE"
+   },
+   "verdict": "LEMMA R005/L2 RECORDED status=FALSE",
+   "utc": "2026-09-01T23:01:01Z"
+  },
+  {
+   "iter": 19,
+   "packet": "auditor",
+   "reason": "Wang 4.1 K8: R005 carries a refuted central lemma L2 (concrete counterexample); adjudicate the kill/block citing the rule",
+   "event": {
+    "op": "kill",
+    "route": "R005",
+    "rule": "K8"
+   },
+   "verdict": "ROUTE R005 ADJUDICATED under K8 (kill/block per rule)",
+   "utc": "2026-09-01T23:01:10Z"
+  },
+  {
+   "iter": 20,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'local_to_global'",
+   "event": {
+    "op": "open_route",
+    "route": "R006",
+    "family": "local_to_global"
+   },
+   "verdict": "ROUTE R006 OPENED family=local_to_global branch=A",
+   "utc": "2026-09-01T23:05:44Z"
+  },
+  {
+   "iter": 21,
+   "packet": "computational",
+   "reason": "Wang 12.3: R006 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "event": {
+    "op": "lemma",
+    "route": "R006",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R006/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T23:06:50Z"
+  },
+  {
+   "iter": 22,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R006 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R006",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R006/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T23:07:04Z"
+  },
+  {
+   "iter": 23,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R006 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R006",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R006/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T23:07:20Z"
+  },
+  {
+   "iter": 24,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R006 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R006",
+    "lemma": "L1",
+    "status": "PROVED"
+   },
+   "verdict": "LEMMA R006/L1 RECORDED status=PROVED",
+   "utc": "2026-09-01T23:11:27Z"
+  },
+  {
+   "iter": 25,
+   "packet": "closer",
+   "reason": "Wang 17: R006 carries standing PROVED lemma(s) L1 and no refuted lemma; convert the standing mathematics into a machine-checkable closure obligation or refuse in type",
+   "event": {
+    "op": "closure_refused",
+    "route": "R006",
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "The sole PROVED lemma L1 is a contract-audit meta-certificate (a Bool-valued audit reporting no instantiable certificate exists), which establishes no mathematical property of S = Σ_{n≥2} 1/(n!−1); Branch A requires an infinite-quantifier irrationality proof whose decisive residue — the Erdős-style "
+   },
+   "verdict": "CLOSURE_REFUSED R006 reason=LEMMA_DOES_NOT_COVER_CLOSE_BRANCH (a typed refusal IS an outcome)",
+   "utc": "2026-09-01T23:11:35Z",
+   "closure_refused": {
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "The sole PROVED lemma L1 is a contract-audit meta-certificate (a Bool-valued audit reporting no instantiable certificate exists), which establishes no mathematical property of S = Σ_{n≥2} 1/(n!−1); Branch A requires an infinite-quantifier irrationality proof whose decisive residue — the Erdős-style "
+   },
+   "reclose_downgraded": [],
+   "closer_sig": [
+    [
+     "L1",
+     "efe000748ada170d"
+    ]
+   ]
+  },
+  {
+   "iter": 26,
+   "packet": "transference",
+   "reason": "Wang 11.5: R001 holds certified finite core(s) L1 and no transference lemma; the scaling step is owed before more finite work",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:11:57Z"
+  },
+  {
+   "iter": 27,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'discrete_optimization'",
+   "event": {
+    "op": "open_route",
+    "route": "R007",
+    "family": "certified_numerics"
+   },
+   "verdict": "ROUTE R007 OPENED family=certified_numerics branch=A",
+   "utc": "2026-09-01T23:17:20Z"
+  },
+  {
+   "iter": 28,
+   "packet": "computational",
+   "reason": "Wang 12.3: R007 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "event": {
+    "op": "lemma",
+    "route": "R007",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R007/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T23:18:27Z"
+  },
+  {
+   "iter": 29,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R007 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R007",
+    "lemma": "L1",
+    "status": "PROVED"
+   },
+   "verdict": "LEMMA R007/L1 RECORDED status=PROVED",
+   "utc": "2026-09-01T23:19:13Z"
+  },
+  {
+   "iter": 30,
+   "packet": "closer",
+   "reason": "Wang 17: R007 carries standing PROVED lemma(s) L1 and no refuted lemma; convert the standing mathematics into a machine-checkable closure obligation or refuse in type",
+   "event": {
+    "op": "closure_refused",
+    "route": "R007",
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "L1 proves only the finite N≤12 rational-enclosure certificate (S ∈ (125349875606,125349875607)/10^11); the close branch A requires proving irrationality of the full infinite series, and the route's remaining load-bearing ingredients — infinitely many m with m!·S mod 1 off the rational-digit lattice,"
+   },
+   "verdict": "CLOSURE_REFUSED R007 reason=LEMMA_DOES_NOT_COVER_CLOSE_BRANCH (a typed refusal IS an outcome)",
+   "utc": "2026-09-01T23:19:20Z",
+   "closure_refused": {
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "L1 proves only the finite N≤12 rational-enclosure certificate (S ∈ (125349875606,125349875607)/10^11); the close branch A requires proving irrationality of the full infinite series, and the route's remaining load-bearing ingredients — infinitely many m with m!·S mod 1 off the rational-digit lattice,"
+   },
+   "reclose_downgraded": [],
+   "closer_sig": [
+    [
+     "L1",
+     "0d054d12aa2dc3cb"
+    ]
+   ]
+  },
+  {
+   "iter": 31,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'discrete_optimization'",
+   "event": {
+    "op": "open_route",
+    "route": "R008",
+    "family": "discrete_optimization"
+   },
+   "verdict": "ROUTE R008 OPENED family=discrete_optimization branch=A",
+   "utc": "2026-09-01T23:21:30Z"
+  },
+  {
+   "iter": 32,
+   "packet": "computational",
+   "reason": "Wang 12.3: R008 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "event": {
+    "op": "lemma",
+    "route": "R008",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R008/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T23:22:16Z"
+  },
+  {
+   "iter": 33,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R008 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R008",
+    "lemma": "L1",
+    "status": "PROVED"
+   },
+   "verdict": "LEMMA R008/L1 RECORDED status=PROVED",
+   "utc": "2026-09-01T23:22:51Z"
+  },
+  {
+   "iter": 34,
+   "packet": "closer",
+   "reason": "Wang 17: R008 carries standing PROVED lemma(s) L1 and no refuted lemma; convert the standing mathematics into a machine-checkable closure obligation or refuse in type",
+   "event": {
+    "op": "closure_refused",
+    "route": "R008",
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "L1 is a finite (n=2..12, J=20) rational-certificate of the geometric-series identity only, with no certified reduction to the irrationality dichotomy; branch A requires a full-scope irrationality proof of the infinite sum, which no standing lemma or computational artifact provides — and by the contr"
+   },
+   "verdict": "CLOSURE_REFUSED R008 reason=LEMMA_DOES_NOT_COVER_CLOSE_BRANCH (a typed refusal IS an outcome)",
+   "utc": "2026-09-01T23:22:57Z",
+   "closure_refused": {
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "L1 is a finite (n=2..12, J=20) rational-certificate of the geometric-series identity only, with no certified reduction to the irrationality dichotomy; branch A requires a full-scope irrationality proof of the infinite sum, which no standing lemma or computational artifact provides — and by the contr"
+   },
+   "reclose_downgraded": [],
+   "closer_sig": [
+    [
+     "L1",
+     "2f25d602cb7afce2"
+    ]
+   ]
+  },
+  {
+   "iter": 35,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'exact_reformulations'",
+   "event": {
+    "op": "open_route",
+    "route": "R009",
+    "family": "exact_reformulations"
+   },
+   "verdict": "ROUTE R009 OPENED family=exact_reformulations branch=A",
+   "utc": "2026-09-01T23:24:01Z"
+  },
+  {
+   "iter": 36,
+   "packet": "computational",
+   "reason": "Wang 12.3: R009 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "event": {
+    "op": "lemma",
+    "route": "R009",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R009/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T23:25:24Z"
+  },
+  {
+   "iter": 37,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R009 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R009",
+    "lemma": "L1",
+    "status": "FALSE"
+   },
+   "verdict": "LEMMA R009/L1 RECORDED status=FALSE",
+   "utc": "2026-09-01T23:27:51Z"
+  },
+  {
+   "iter": 38,
+   "packet": "auditor",
+   "reason": "Wang 4.1 K8: R009 carries a refuted central lemma L1 (concrete counterexample); adjudicate the kill/block citing the rule",
+   "event": {
+    "op": "kill",
+    "route": "R009",
+    "rule": "K8"
+   },
+   "verdict": "ROUTE R009 ADJUDICATED under K8 (kill/block per rule)",
+   "utc": "2026-09-01T23:28:07Z"
+  },
+  {
+   "iter": 39,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'local_to_global'",
+   "event": {
+    "op": "open_route",
+    "route": "R010",
+    "family": "exact_reformulations"
+   },
+   "verdict": "ROUTE R010 OPENED family=exact_reformulations branch=A",
+   "utc": "2026-09-01T23:29:05Z"
+  },
+  {
+   "iter": 40,
+   "packet": "transference",
+   "reason": "Wang 11.5: R003 holds certified finite core(s) L1 and no transference lemma; the scaling step is owed before more finite work",
+   "model": "openai/gpt-5.6-luna-pro",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:01:45Z",
+   "route_id": "R003"
+  },
+  {
+   "iter": 41,
+   "packet": "transference",
+   "reason": "Wang 11.5: R004 holds certified finite core(s) L1 and no transference lemma; the scaling step is owed before more finite work",
+   "model": "openai/gpt-5.6-luna-pro",
+   "event": {
+    "op": "lemma",
+    "route": "R004",
+    "lemma": "T1",
+    "status": "UNTESTED"
+   },
+   "verdict": "LEMMA R004/T1 RECORDED status=UNTESTED",
+   "utc": "2026-09-02T01:01:57Z",
+   "route_id": "R004"
+  },
+  {
+   "iter": 42,
+   "packet": "transference",
+   "reason": "Wang 11.5: R006 holds certified finite core(s) L1 and no transference lemma; the scaling step is owed before more finite work",
+   "model": "openai/gpt-5.6-luna-pro",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:02:05Z",
+   "route_id": "R006"
+  },
+  {
+   "iter": 43,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R004 carries UNTESTED key lemma(s) T1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R004",
+    "lemma": "L1",
+    "status": "PROVED"
+   },
+   "verdict": "LEMMA R004/L1 RECORDED status=PROVED",
+   "utc": "2026-09-02T01:02:47Z",
+   "route_id": "R004"
+  },
+  {
+   "iter": 44,
+   "packet": "closer",
+   "reason": "Wang 17: R004 carries standing PROVED lemma(s) L1 and no refuted lemma; convert the standing mathematics into a machine-checkable closure obligation or refuse in type",
+   "model": "openai/gpt-5.6-luna-pro",
+   "event": {
+    "op": "closure_refused",
+    "route": "R004",
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "L1 is a valid representation identity but supplies no contradiction to rationality and T1 is unproved.",
+    "covered": "the exact geometric expansion \\(1/(n!-1)=\\sum_{j\\ge1}(n!)^{-j}\\) for every \\(n\\ge2\\), including the correct endpoint and exponent start",
+    "missing": "a proof that this expansion implies irrationality of the full series, specifically the required all-\\(n\\) tail-versus-denominator/gcd transference estimate"
+   },
+   "verdict": "CLOSURE_REFUSED R004 reason=LEMMA_DOES_NOT_COVER_CLOSE_BRANCH with the split NAMED (covered / missing) — file PIECE_DECLARE for the covered half to make it attackable",
+   "utc": "2026-09-02T01:02:56Z",
+   "route_id": "R004",
+   "closure_refused": {
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "L1 is a valid representation identity but supplies no contradiction to rationality and T1 is unproved."
+   },
+   "reclose_downgraded": [],
+   "closer_sig": [
+    [
+     "L1",
+     "bc45224e04222e07"
+    ]
+   ]
+  },
+  {
+   "iter": 45,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R004 carries UNTESTED key lemma(s) T1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R004",
+    "lemma": "L1",
+    "status": "FALSE"
+   },
+   "verdict": "LEMMA R004/L1 RECORDED status=FALSE",
+   "utc": "2026-09-02T01:03:22Z",
+   "route_id": "R004"
+  },
+  {
+   "iter": 46,
+   "packet": "auditor",
+   "reason": "Wang 4.1 K8: R004 carries a refuted central lemma L1 (concrete counterexample); adjudicate the kill/block citing the rule",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "kill",
+    "route": "R004",
+    "rule": "K8"
+   },
+   "verdict": "ROUTE R004 ADJUDICATED under K8 (kill/block per rule)",
+   "utc": "2026-09-02T01:06:34Z",
+   "route_id": "R004"
+  },
+  {
+   "iter": 47,
+   "packet": "computational",
+   "reason": "Wang 12.3: R010 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R010",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R010/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-02T01:08:18Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 48,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R010 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R010",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R010/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-02T01:09:00Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 49,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R010 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R010",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R010/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-02T01:09:35Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 50,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R010 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R010",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R010/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-02T01:09:42Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 51,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R010 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R010",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R010/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-02T01:09:59Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 52,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R010 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:10:22Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 53,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R010 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R010",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R010/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-02T01:10:46Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 54,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R010 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R010",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R010/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-02T01:11:30Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 55,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R010 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R010",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R010/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-02T01:11:52Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 56,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R010 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R010",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R010/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-02T01:12:09Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 57,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R010 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R010",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R010/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-02T01:12:19Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 58,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R010 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R010",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R010/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-02T01:12:42Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 59,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R010 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R010",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R010/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-02T01:13:01Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 60,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R010 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R010",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R010/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-02T01:13:24Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 61,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R010 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R010",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R010/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-02T01:13:46Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 62,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R010 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R010",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R010/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-02T01:14:09Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 63,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R010 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R010",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R010/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-02T01:16:34Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 64,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R010 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R010",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R010/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-02T01:16:52Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 65,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R010 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R010",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R010/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-02T01:17:13Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 66,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R010 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R010",
+    "lemma": "L1",
+    "status": "UNTESTED"
+   },
+   "verdict": "LEMMA R010/L1 RECORDED status=UNTESTED",
+   "utc": "2026-09-02T01:17:29Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 67,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:17:41Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 68,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:17:51Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 69,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:18:13Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 70,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:18:24Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 71,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:18:39Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 72,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:18:58Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 73,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:19:15Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 74,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:19:29Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 75,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:19:42Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 76,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:19:48Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 77,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:20:20Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 78,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:20:30Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 79,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:20:49Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 80,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:21:06Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 81,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:21:37Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 82,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:21:48Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 83,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:22:02Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 84,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:22:17Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 85,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:22:24Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 86,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:22:32Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 87,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:22:40Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 88,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:22:52Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 89,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:23:02Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 90,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:23:10Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 91,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:23:22Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 92,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:23:38Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 93,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:24:02Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 94,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:24:13Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 95,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:24:27Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 96,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:24:43Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 97,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:25:20Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 98,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:25:33Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 99,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:25:43Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 100,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:26:04Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 101,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:26:15Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 102,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:26:23Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 103,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:26:34Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 104,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:26:53Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 105,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:27:10Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 106,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:27:23Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 107,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:27:40Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 108,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:27:50Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 109,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:28:01Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 110,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:28:19Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 111,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:28:25Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 112,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:28:45Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 113,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:28:52Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 114,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:29:01Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 115,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:29:17Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 116,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:29:39Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 117,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:29:52Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 118,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:30:02Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 119,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:30:10Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 120,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R010",
+    "lemma": "L1",
+    "status": "UNTESTED"
+   },
+   "verdict": "LEMMA R010/L1 RECORDED status=UNTESTED",
+   "utc": "2026-09-02T01:31:03Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 121,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:31:16Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 122,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:31:24Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 123,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:31:38Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 124,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:31:56Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 125,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:32:10Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 126,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:32:28Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 127,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:32:39Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 128,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:32:51Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 129,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:33:08Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 130,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:33:26Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 131,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:33:46Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 132,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:34:12Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 133,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:34:25Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 134,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:34:40Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 135,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:34:52Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 136,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:35:03Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 137,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:35:23Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 138,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:35:40Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 139,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:35:56Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 140,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:36:16Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 141,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:36:33Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 142,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:36:57Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 143,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:37:17Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 144,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:37:51Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 145,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:38:05Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 146,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:38:20Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 147,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:38:30Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 148,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:38:40Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 149,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:38:53Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 150,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:39:06Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 151,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:39:23Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 152,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:39:34Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 153,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:39:52Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 154,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:40:11Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 155,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:40:22Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 156,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:40:31Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 157,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:40:44Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 158,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:40:53Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 159,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:41:01Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 160,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:41:18Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 161,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:41:29Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 162,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:41:43Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 163,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:41:59Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 164,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:42:14Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 165,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:42:27Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 166,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:42:37Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 167,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:42:52Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 168,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:43:00Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 169,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T01:43:20Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 170,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R010 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R010",
+    "lemma": "L1",
+    "status": "FALSE"
+   },
+   "verdict": "LEMMA R010/L1 RECORDED status=FALSE",
+   "utc": "2026-09-02T01:44:21Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 171,
+   "packet": "auditor",
+   "reason": "Wang 4.1 K8: R010 carries a refuted central lemma L1 (concrete counterexample); adjudicate the kill/block citing the rule",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "kill",
+    "route": "R010",
+    "rule": "K8"
+   },
+   "verdict": "ROUTE R010 ADJUDICATED under K8 (kill/block per rule)",
+   "utc": "2026-09-02T01:44:36Z",
+   "route_id": "R010"
+  },
+  {
+   "iter": 172,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'local_to_global'",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "open_route",
+    "route": "R011",
+    "family": "exact_reformulations"
+   },
+   "verdict": "ROUTE R011 OPENED family=exact_reformulations branch=A",
+   "utc": "2026-09-02T01:48:35Z",
+   "forbidden_families": [
+    "analytic_probabilistic",
+    "exact_reformulations"
+   ]
+  },
+  {
+   "iter": 173,
+   "packet": "computational",
+   "reason": "Wang 12.3: R011 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R011",
+    "lemma": "LCM_TAIL_TEMPLATE",
+    "status": "FALSE"
+   },
+   "verdict": "LEMMA R011/LCM_TAIL_TEMPLATE RECORDED status=FALSE",
+   "utc": "2026-09-02T01:49:39Z",
+   "route_id": "R011"
+  },
+  {
+   "iter": 174,
+   "packet": "auditor",
+   "reason": "Wang 4.1 K8: R011 carries a refuted central lemma LCM_TAIL_TEMPLATE (concrete counterexample); adjudicate the kill/block citing the rule",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "kill",
+    "route": "R011",
+    "rule": "K8"
+   },
+   "verdict": "ROUTE R011 ADJUDICATED under K8 (kill/block per rule)",
+   "utc": "2026-09-02T01:49:56Z",
+   "route_id": "R011"
+  },
+  {
+   "iter": 175,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'local_to_global'",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "open_route",
+    "route": "R012",
+    "family": "exact_reformulations"
+   },
+   "verdict": "ROUTE R012 OPENED family=exact_reformulations branch=A",
+   "utc": "2026-09-02T01:50:58Z",
+   "forbidden_families": [
+    "analytic_probabilistic",
+    "exact_reformulations"
+   ]
+  },
+  {
+   "iter": 176,
+   "packet": "computational",
+   "reason": "Wang 12.3: R012 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R012",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R012/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-02T01:52:29Z",
+   "route_id": "R012"
+  },
+  {
+   "iter": 177,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R012 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R012",
+    "lemma": "L1",
+    "status": "PROVED"
+   },
+   "verdict": "LEMMA R012/L1 RECORDED status=PROVED",
+   "utc": "2026-09-02T01:53:27Z",
+   "route_id": "R012"
+  }
+ ]
+}

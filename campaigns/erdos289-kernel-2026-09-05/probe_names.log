@@ -1,0 +1,56 @@
+/root/peer/sub-289k/probe_names.lean:3:8: error(lean.unknownIdentifier): Unknown constant `Nat.Prime.prime_int`
+/root/peer/sub-289k/probe_names.lean:4:8: error(lean.unknownIdentifier): Unknown constant `Int.natCast_prime`
+/root/peer/sub-289k/probe_names.lean:5:8: error(lean.unknownIdentifier): Unknown constant `Int.coe_nat_prime`
+@Finset.sum_induction : ∀ {ι : Type u_1} {s : Finset ι} {M : Type u_2} [inst : AddCommMonoid M] (f : ι → M)
+  (p : M → Prop), (∀ (a b : M), p a → p b → p (a + b)) → p 0 → (∀ x ∈ s, p (f x)) → p (∑ x ∈ s, f x)
+@Finset.sum_image : ∀ {ι : Type u_1} {κ : Type u_2} {M : Type u_3} [inst : AddCommMonoid M] {f : ι → M}
+  [inst_1 : DecidableEq ι] {s : Finset κ} {g : κ → ι}, Set.InjOn g ↑s → ∑ x ∈ Finset.image g s, f x = ∑ x ∈ s, f (g x)
+@Finset.sum_filter_add_sum_filter_not : ∀ {ι : Type u_1} {M : Type u_2} [inst : AddCommMonoid M] (s : Finset ι)
+  (p : ι → Prop) [inst_1 : DecidablePred p] [inst_2 : (x : ι) → Decidable ¬p x] (f : ι → M),
+  ∑ x ∈ s with p x, f x + ∑ x ∈ s with ¬p x, f x = ∑ x ∈ s, f x
+@Nat.cast_div : ∀ {K : Type u_1} [inst : DivisionSemiring K] {m n : ℕ}, n ∣ m → ↑n ≠ 0 → ↑(m / n) = ↑m / ↑n
+@inv_div : ∀ {α : Type u_1} [inst : DivisionMonoid α] (a b : α), (a / b)⁻¹ = b / a
+Rat.num_div_den : ∀ (r : ℚ), ↑r.num / ↑r.den = r
+Rat.den_nz : ∀ (self : ℚ), self.den ≠ 0
+Rat.den_ne_zero : ∀ (q : ℚ), q.den ≠ 0
+Rat.reduced : ∀ (self : ℚ), self.num.natAbs.Coprime self.den
+@Rat.num_ne_zero : ∀ {q : ℚ}, q.num ≠ 0 ↔ q ≠ 0
+padicValRat : ℕ → ℚ → ℤ
+padicValInt : ℕ → ℤ → ℕ
+@padicValNat.eq_zero_of_not_dvd : ∀ {p n : ℕ}, ¬p ∣ n → padicValNat p n = 0
+@one_le_padicValNat_of_dvd : ∀ {p n : ℕ} [hp : Fact (Nat.Prime p)], n ≠ 0 → p ∣ n → 1 ≤ padicValNat p n
+/root/peer/sub-289k/probe_names.lean:20:8: error(lean.unknownIdentifier): Unknown constant `padicValNat.one_le_iff`
+@Int.natAbs_dvd_natAbs : ∀ {a b : ℤ}, a.natAbs ∣ b.natAbs ↔ a ∣ b
+@Int.natAbs_pos : ∀ {a : ℤ}, 0 < a.natAbs ↔ a ≠ 0
+Int.natAbs_natCast : ∀ (n : ℕ), (↑n).natAbs = n
+@Nat.div_pos : ∀ {b a : ℕ}, b ≤ a → 0 < b → 0 < a / b
+@Nat.one_le_div_iff : ∀ {a b : ℕ}, 0 < b → (1 ≤ a / b ↔ b ≤ a)
+@Nat.div_mul_cancel : ∀ {n m : ℕ}, n ∣ m → m / n * n = m
+@Nat.dvd_gcd : ∀ {k m n : ℕ}, k ∣ m → k ∣ n → k ∣ m.gcd n
+@Nat.dvd_one : ∀ {n : ℕ}, n ∣ 1 ↔ n = 1
+@Nat.Prime.ne_one : ∀ {p : ℕ}, Nat.Prime p → p ≠ 1
+@Nat.Prime.dvd_mul : ∀ {p m n : ℕ}, Nat.Prime p → (p ∣ m * n ↔ p ∣ m ∨ p ∣ n)
+@Nat.Prime.pos : ∀ {p : ℕ}, Nat.Prime p → 0 < p
+@Nat.mul_ne_zero : ∀ {n m : ℕ}, n ≠ 0 → m ≠ 0 → n * m ≠ 0
+@Nat.cast_ne_zero : ∀ {R : Type u_1} [inst : AddMonoidWithOne R] [CharZero R] {n : ℕ}, ↑n ≠ 0 ↔ n ≠ 0
+@div_add_div : ∀ {K : Type u_1} [inst : Semifield K] {b d : K} (a c : K),
+  b ≠ 0 → d ≠ 0 → a / b + c / d = (a * d + b * c) / (b * d)
+@div_eq_iff : ∀ {G₀ : Type u_1} [inst : GroupWithZero G₀] {a b c : G₀}, b ≠ 0 → (a / b = c ↔ a = c * b)
+@Finset.sum_pos : ∀ {ι : Type u_1} {M : Type u_2} [inst : AddCommMonoid M] [inst_1 : Preorder M]
+  [IsOrderedCancelAddMonoid M] {f : ι → M} {s : Finset ι} [AddLeftStrictMono M],
+  (∀ i ∈ s, 0 < f i) → s.Nonempty → 0 < ∑ i ∈ s, f i
+@Finset.mem_image : ∀ {α : Type u_1} {β : Type u_2} [inst : DecidableEq β] {f : α → β} {s : Finset α} {b : β},
+  b ∈ Finset.image f s ↔ ∃ a ∈ s, f a = b
+@Finset.mem_filter : ∀ {α : Type u_1} {p : α → Prop} [inst : DecidablePred p] {s : Finset α} {a : α},
+  a ∈ Finset.filter p s ↔ a ∈ s ∧ p a
+@Prime.dvd_mul : ∀ {M : Type u_1} [inst : CommMonoidWithZero M] {p : M},
+  Prime p → ∀ {a b : M}, p ∣ a * b ↔ p ∣ a ∨ p ∣ b
+Nat.prime_two : Nat.Prime 2
+@Finset.mul_sum : ∀ {ι : Type u_1} {R : Type u_2} [inst : NonUnitalNonAssocSemiring R] (s : Finset ι) (f : ι → R)
+  (a : R), a * ∑ i ∈ s, f i = ∑ i ∈ s, a * f i
+@Finset.sum_congr : ∀ {ι : Type u_1} {M : Type u_2} {s₁ s₂ : Finset ι} [inst : AddCommMonoid M] {f g : ι → M},
+  s₁ = s₂ → (∀ x ∈ s₂, f x = g x) → s₁.sum f = s₂.sum g
+/root/peer/sub-289k/probe_names.lean:44:108: error: unsolved goals
+p : ℕ
+q : ℚ
+⊢ ↑(padicValNat p q.num.natAbs) - ↑(padicValNat p q.den) = ↑(padicValNat p q.num.natAbs) - ↑(padicValNat p q.den)

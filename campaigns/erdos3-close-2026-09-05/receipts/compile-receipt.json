@@ -1,0 +1,97 @@
+{
+  "campaign": "erdos3-close-2026-09-05",
+  "target": "erdos:3",
+  "target_name": "Erdos-Turan conjecture on arithmetic progressions",
+  "prize_usd": 5000,
+  "problem_status": "OPEN (k >= 4). k = 3 is Bloom-Sisask 2020, not formalized in Mathlib.",
+  "closed": false,
+  "built_utc": "2026-09-05T17:24:49Z",
+  "host": "root@51.158.234.15",
+  "toolchain": "leanprover/lean4:v4.31.0-rc1",
+  "mathlib_rev": "919544d4309104b3f19724b0e6e48c701d27948f",
+  "build_mode": "clean_room (build dir deleted, all files recompiled in order)",
+  "compile_command": "LEAN_PATH=$(cd /root/formalizer/proofs && lake env printenv LEAN_PATH):$BUILD  nice -n 19 taskset -c 0,1 lean -o $BUILD/$f.olean $SRC/$f.lean",
+  "files": [
+    {
+      "name": "Erdos3.lean",
+      "sha256": "254e6889091bc354efbfaaabfbedad905390e270dee397dbc4503ff8569cbab7",
+      "exit_code": 0,
+      "seconds": 5,
+      "warnings": 2,
+      "errors": 0
+    },
+    {
+      "name": "Erdos3Sharp.lean",
+      "sha256": "9d9beaeb9039000817011d533bb1530994cc97cd45428001696028ea0ee6d82a",
+      "exit_code": 0,
+      "seconds": 5,
+      "warnings": 0,
+      "errors": 0
+    },
+    {
+      "name": "Erdos3Count.lean",
+      "sha256": "ba58a5782d7f33263523f24d4960cc57d288fa71f94aa7a07feaa066b3966214",
+      "exit_code": 0,
+      "seconds": 5,
+      "warnings": 0,
+      "errors": 0
+    }
+  ],
+  "sorry_free": true,
+  "sorry_scan": "no `sorry`, `admit` or `native_decide` token in any proof; the only string matches are in doc comments",
+  "axiom_audit": "receipts/axioms.txt — every result depends on exactly [propext, Classical.choice, Quot.sound]; no sorryAx",
+  "banked_results": [
+    {
+      "name": "Erdos3.summable_recip_iff",
+      "kind": "characterization",
+      "statement": "Summable (recip A) <-> Summable (fun j => blockCount A j / 2^j). The reciprocal sum of A converges iff the series of dyadic densities |A cap [2^j,2^(j+1))|/2^j converges.",
+      "novelty": "known folklore; not previously kernel-checked, not in Mathlib or formal-conjectures"
+    },
+    {
+      "name": "Erdos3.summable_of_log_power_bound",
+      "kind": "density transfer",
+      "statement": "If count A N <= C*N/(log N)^(1+eps) for some eps>0 and all N >= N0, then sum_{n in A} 1/n converges.",
+      "novelty": "known reduction; first kernel-checked statement"
+    },
+    {
+      "name": "Erdos3.divergent_forces_density",
+      "kind": "contrapositive",
+      "statement": "If sum_{n in A} 1/n diverges then for every eps>0, C>=0 and every N0 there is N >= N0 with count A N > C*N/(log N)^(1+eps)."
+    },
+    {
+      "name": "Erdos3.erdos3_of_quantSzemeredi",
+      "kind": "reduction",
+      "statement": "QuantSzemeredi k -> for every A with divergent reciprocal sum, A contains a k-term AP. QuantSzemeredi k is r_k(N) << N/(log N)^(1+eps); it is Bloom-Sisask for k=3 and open for k>=4."
+    },
+    {
+      "name": "Erdos3.frequently_hasAP_iff_forall",
+      "kind": "formalization fidelity",
+      "statement": "(exists-frequently k in atTop, HasAPOfLength A k) <-> (forall k, HasAPOfLength A k). Validates the shape used by the FormalConjectures statement of Erdos 3."
+    },
+    {
+      "name": "Erdos3.log_power_threshold_sharp",
+      "kind": "sharpness (dyadic form)",
+      "statement": "There is A with divergent reciprocal sum whose dyadic densities satisfy blockCount A j / 2^j <= 1/(j+1)."
+    },
+    {
+      "name": "Erdos3.count_critical_le",
+      "kind": "explicit bound",
+      "statement": "count critical N <= 1 + 4*log 2*N/log N for all N >= 4, where `critical` keeps the first floor(2^j/(j+1)) integers of each dyadic block."
+    },
+    {
+      "name": "Erdos3.log_threshold_sharp_counting",
+      "kind": "sharpness (counting-function form)",
+      "statement": "There is A and C >= 0 with count A N <= 1 + C*N/log N for all N >= 4 and yet sum_{n in A} 1/n diverges. Hence the exponent 1+eps in summable_of_log_power_bound cannot be lowered to 1."
+    }
+  ],
+  "not_proved": [
+    "Erdos Problem 3 itself, for any k >= 3.",
+    "QuantSzemeredi k for any k >= 3 (k=3 is Bloom-Sisask 2020, unformalized; k>=4 is open).",
+    "The converse direction: that Erdos 3 for length k implies a quantitative Szemeredi bound."
+  ],
+  "prior_estate_work_checked": [
+    "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001 (LLM debate transcript; no Lean artifact, no kernel receipt; contains at least one false claim, that the squares of primes have a divergent reciprocal sum)",
+    "oracle/evidence/encirclement-nuclear/v4-enriched/erdos_3.jsonl (same debate corpus)",
+    "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/3.lean (statement only, `sorry`)"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+ "status": "OPERATOR_STOPPED",
+ "utc": "2026-09-02T15:27:00Z",
+ "where": "remote box 51.15.107.148, /root/peer/search289, tag box-resume (28 workers, B=600, p1ban, budget 30000000/shard, deadline 10800 s)",
+ "reason": "cores yielded to the Erdos 273 ceiling instance N=360360 (the one live close shot of the night); 289's root is forall-eventually-k, so this search builds bounds and the deepest partial, never a close; the remaining sizes would not have finished before the deadline",
+ "completed_jobs": [
+  "k=30 B=600: verdict PARTIAL - 157 shards, 12 EXHAUSTED, 145 BUDGET_STOPPED at 30,000,000 nodes each, 4,366,567,765 nodes, 2,579.7 s wall on 28 workers (shards-k30-B0600-box-resume.json) - NOT an exhaustion of k=30 at B=600; the B=600 board is far harder than the local B<=260 exhaustions"
+ ],
+ "in_flight_lost": "k=29 B=600 partial shards (rows held in memory by the pool at kill time, not written) - no result of any kind is claimed for k=29 or below on this run",
+ "honesty_law": "a stopped run is OPERATOR_STOPPED at the exact point reached, never EXHAUSTED and never a bound",
+ "resume_command": "cd /root/peer/search289 && PYTHONUNBUFFERED=1 python3 drive289.py --jobs 29:600,28:600,27:600,26:600,25:600,24:600,23:600,22:600,21:600,20:600,19:600,18:600,17:600,16:600,15:600,14:600,13:600,12:600,11:600,10:600,9:600,8:600,7:600,6:600,5:600,4:600 --workers 28 --budget 30000000 --deadline 10800 --p1ban --question-lock oracle/ledger/question-locks/erdos289-block-exhaustion.json --tag box-resume2 --outdir /root/peer/search289",
+ "question_lock": "oracle/ledger/question-locks/erdos289-block-exhaustion.json"
+}

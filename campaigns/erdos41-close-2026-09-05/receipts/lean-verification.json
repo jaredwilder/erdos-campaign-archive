@@ -1,0 +1,70 @@
+{
+ "receipt_kind": "lean_kernel_verification",
+ "campaign": "erdos41-close-2026-09-05",
+ "target": "Erdos Problem 41 (erdosproblems.com/41, $500, OPEN)",
+ "utc": "2026-09-05T18:05:00Z",
+ "artifact": "lean/Erdos41Partials.lean",
+ "artifact_sha256": "9aad37a0f3cc04bb18374a9e28e44fff1461ffde2d2f73ba3fafa8ab735f9ec4",
+ "environment": {
+  "host": "root@51.158.234.15 (rented box)",
+  "repo": "/root/formalizer/proofs",
+  "mathlib_rev": "919544d4309104b3f19724b0e6e48c701d27948f",
+  "lean_toolchain": "leanprover/lean4:v4.31.0-rc1",
+  "command": "nice -n 19 lake env lean Erdos41Partials.lean"
+ },
+ "compile": {
+  "exit_code": 0,
+  "errors": 0,
+  "warnings": 0,
+  "literal_sorry_occurrences_in_file": 0
+ },
+ "axiom_audit": {
+  "method": "#print axioms on every theorem in the file",
+  "expected_standard_set": ["propext", "Classical.choice", "Quot.sound"],
+  "results": {
+   "Erdos41Campaign.isB3_imp_ntupleCondition": ["propext", "Classical.choice", "Quot.sound"],
+   "Erdos41Campaign.ntupleCondition_not_isB3": ["propext", "Classical.choice", "Quot.sound"],
+   "Erdos41Campaign.ntuple3_card_choose_le": ["propext", "Classical.choice", "Quot.sound"],
+   "Erdos41Campaign.ntuple3_cube_bound": ["propext", "Classical.choice", "Quot.sound"],
+   "Erdos41Campaign.ntuple3_imp_ntuple2": ["propext", "Classical.choice", "Quot.sound"]
+  },
+  "verdict": "ALL SORRY-FREE. No sorryAx, no custom axioms."
+ },
+ "theorems_banked": [
+  {
+   "name": "ntuple3_card_choose_le",
+   "statement": "NtupleCondition A 3 -> Nat.choose (A INTER Icc 1 N).ncard 3 <= 3*N + 1",
+   "significance": "Load-bearing counting bound. Establishes that N^(1/3) is the correct normalisation in Erdos 41: the ratio in the conjecture is BOUNDED, so the liminf is a finite number and the only open question is whether it is zero.",
+   "status": "PROVED (kernel-checked)"
+  },
+  {
+   "name": "ntuple3_cube_bound",
+   "statement": "NtupleCondition A 3 -> ((A INTER Icc 1 N).ncard - 2)^3 <= 18*N + 6",
+   "significance": "Explicit cube form of the counting bound; gives |A cap [1,N]| <= (18N)^(1/3) + 2.",
+   "status": "PROVED (kernel-checked)"
+  },
+  {
+   "name": "isB3_imp_ntupleCondition",
+   "statement": "IsB3 A -> NtupleCondition A 3",
+   "significance": "Faithfulness direction 1: every genuine B_3 set satisfies the corpus condition, so the corpus hypothesis class CONTAINS the true one and the corpus theorem is at least as strong as Erdos 41.",
+   "status": "PROVED (kernel-checked)"
+  },
+  {
+   "name": "ntupleCondition_not_isB3",
+   "statement": "NtupleCondition {1,2,3} 3 AND NOT IsB3 {1,2,3}",
+   "significance": "Faithfulness direction 2: the containment is STRICT. 1+1+3 = 1+2+2 = 5 with multisets {1,1,3} != {1,2,2}. The corpus encoding is therefore not a faithful transcription of the prose statement.",
+   "status": "PROVED (kernel-checked)"
+  },
+  {
+   "name": "ntuple3_imp_ntuple2",
+   "statement": "A.Infinite -> NtupleCondition A 3 -> NtupleCondition A 2",
+   "significance": "Structural collapse. The hypothesis of the corpus theorem erdos_41 implies the hypothesis of erdos_41.variants.pairwise, which is Erdos's SOLVED theorem. Hence every A admissible for Erdos 41 already satisfies liminf |A cap [1,N]|/N^(1/2) = 0 for free. The open content of Erdos 41 is exactly the exponent gap 1/2 -> 1/3, and no argument that only re-derives the pairwise statement can close it.",
+   "status": "PROVED (kernel-checked)"
+  }
+ ],
+ "not_claimed": [
+  "Erdos 41 is NOT closed by this campaign.",
+  "No counterexample to either the prose statement or the corpus statement was found.",
+  "The analytic corollary 'liminf <= 18^(1/3)' (i.e. transporting ntuple3_cube_bound through Filter.liminf in the reals) was NOT formalised; it is routine but unproved here and is marked UNPROVED."
+ ]
+}

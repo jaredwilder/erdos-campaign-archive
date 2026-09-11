@@ -1,0 +1,23 @@
+{
+  "problem": 687,
+  "prize": "$1000",
+  "title": "Jacobsthal-type covering of an initial interval; Y(x)=o(x^2)?",
+  "status": "PARTIAL: sealed partials + typed obstruction. No target closed (all four targets are the open problem; none weakened).",
+  "mathlib_pin": "919544d4",
+  "box": "root@51.158.234.15:/root/peer/sub-openA/Attack01.lean",
+  "compile": {"exit": 0, "errors": 0, "sorryAx": 0},
+  "sealed": [
+    {"name": "Erdos687.questionSharp_imp_question", "axioms": "[propext, Classical.choice, Quot.sound]", "target": false, "note": "STATED sorry in frozen spec -> now sealed. QuestionSharp -> Question (x^{1+o(1)} implies o(x^2)), pure asymptotics via tendsto_rpow_atTop."},
+    {"name": "Erdos687.maierPomerance_imp_question", "axioms": "[propext, Classical.choice, Quot.sound]", "target": false, "note": "STATED sorry in frozen spec -> now sealed. MaierPomeranceConjecture -> Question, via isLittleO_log_rpow_rpow_atTop ((log x)^3 = o(x))."},
+    {"name": "Erdos687.bigO_sq_not_imp_littleO_sq", "axioms": "[propext, Classical.choice, Quot.sound]", "target": false, "note": "FINDING / typed obstruction (kernel-refuted stub): the shape of the best-known bound (Iwaniec, exists C, eventually f<=C*x^2) does NOT imply Question (forall eps, eventually f<=eps*x^2). Witness f=x^2. So the known bound alone cannot close #687."},
+    {"name": "Erdos687.covers_zero", "axioms": "[propext, Classical.choice, Quot.sound]", "target": false, "note": "spec control, reproduced verbatim (compile sanity)."},
+    {"name": "Erdos687.coverSet_nonempty", "axioms": "[propext, Classical.choice, Quot.sound]", "target": false, "note": "spec control, reproduced verbatim (compile sanity)."}
+  ],
+  "open": [
+    {"target": "Question", "type": "def Prop (Y(x)=o(x^2))", "verdict": "OPEN, not attacked as a CLOSE. Genuinely open $1000 problem; best known is only <<x^2 (Iwaniec), strictly weaker per bigO_sq_not_imp_littleO_sq. Statement NOT weakened."},
+    {"target": "QuestionSharp", "type": "def Prop (Y(x)<<x^{1+o(1)})", "verdict": "OPEN. Now proved to imply Question (questionSharp_imp_question)."},
+    {"target": "MaierPomeranceConjecture", "type": "def Prop (Y(x)<<x(log x)^{2+o(1)})", "verdict": "OPEN conjecture. Now proved to imply Question (maierPomerance_imp_question)."},
+    {"target": "QuestionWeakVariant", "type": "def Prop (weak covering vs Y)", "verdict": "OPEN, not attacked. No downward-closure/boundedness known; no tractable handle."}
+  ],
+  "next_command": "ssh root@51.158.234.15 -- attack Erdos687.Y_lt_primorial then coverSet_bddAbove (CRT: covered residues periodic mod primorial, prod (p-1)>0 residues escape). These are the only remaining spec sorries that are NOT deep published results; they are well-definedness (junk-value) facts, not the open problem."
+}

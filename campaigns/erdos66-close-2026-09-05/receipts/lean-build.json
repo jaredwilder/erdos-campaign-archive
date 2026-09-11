@@ -1,0 +1,62 @@
+{
+  "campaign": "erdos66-close-2026-09-05",
+  "target": "erdos:66",
+  "target_source": "https://www.erdosproblems.com/66",
+  "target_status_on_source_at_read_time": "OPEN, $500, page last edited 2026-04-06, read 2026-09-05",
+  "resolved": false,
+  "tool": "lean",
+  "toolchain": "leanprover/lean4:v4.31.0-rc1",
+  "mathlib_rev": "919544d4309104b3f19724b0e6e48c701d27948f",
+  "host": "scw-gracious-galois (root@51.158.234.15)",
+  "lean_path_root": "/root/formalizer/proofs (lake env printenv LEAN_PATH)",
+  "workdir_on_host": "/root/erdos66-close",
+  "run_policy": "nice -n 19, taskset -c 0,1 (2 cores); no existing jobs touched",
+  "sources": [
+    {
+      "file": "lean/Erdos66Core.lean",
+      "sha256": "8d390cdb62965d4e963f01442a8a892cb2dde69c6cbff54745f3b62b97125f58",
+      "lean_exit": 0,
+      "wall_seconds": 4.92,
+      "maxrss_kb": 6913068,
+      "diagnostics": "no errors, no warnings"
+    },
+    {
+      "file": "lean/Erdos66Asymptotic.lean",
+      "sha256": "67e949acd0a6303592d56123bd6fa2056e1332e6e83acdebda7d4f8d986ccbc6",
+      "lean_exit": 0,
+      "wall_seconds": 6.42,
+      "maxrss_kb": 6941784,
+      "diagnostics": "no errors; 1 warning (push_neg deprecation, cosmetic)"
+    }
+  ],
+  "axiom_audit": {
+    "method": "#print axioms on every banked theorem (lean/Erdos66Check.lean), lean_exit 0",
+    "expected_clean_set": ["propext", "Classical.choice", "Quot.sound"],
+    "sorryAx_present": false,
+    "native_decide_used": false,
+    "theorems": {
+      "Erdos66.rep_eq_sumConv": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos66.pairsLe_eq_biUnion": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos66.sum_rep_eq": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos66.sum_rep_le": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos66.le_sum_rep": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos66.counting_sandwich": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos66.rep_le_of_finite": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos66.pos_of_tendsto": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos66.infinite_of_tendsto": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos66.nonneg_of_tendsto": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos66.exists_uniform_rep_bound": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos66.sum_rep_le_of_tendsto": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos66.cnt_sq_le_of_tendsto": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos66.le_cnt_sq_of_tendsto": ["propext", "Classical.choice", "Quot.sound"]
+    },
+    "theorem_count": 14
+  },
+  "reproduce": [
+    "scp lean/Erdos66Core.lean lean/Erdos66Asymptotic.lean lean/Erdos66Check.lean root@51.158.234.15:/root/erdos66-close/src/",
+    "ssh root@51.158.234.15 '/root/erdos66-close/build.sh Erdos66Core'",
+    "ssh root@51.158.234.15 '/root/erdos66-close/build.sh Erdos66Asymptotic'",
+    "ssh root@51.158.234.15 '/root/erdos66-close/build.sh Erdos66Check'   # prints the axiom audit"
+  ],
+  "claim_ceiling": "These 14 theorems are kernel-checked necessary conditions on a hypothetical witness for Erdos 66, plus a semantic binding to the upstream formalisation. They do NOT prove or refute Erdos 66. The mathematics is elementary and classical in character; the banked artifact is the machine-checked formalisation, not a novel theorem."
+}

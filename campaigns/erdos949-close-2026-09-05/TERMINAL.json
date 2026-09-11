@@ -1,0 +1,39 @@
+{
+  "campaign": "erdos949-close-2026-09-05",
+  "target": "Erdos problem 949 (erdosproblems.com/949) — sum-free S ⊆ ℝ, must ℝ\\S contain A with #A = 𝔠 and A+A ⊆ ℝ\\S?",
+  "goal": "CLOSE (proof or disproof)",
+  "status": "NOT_CLOSED — encirclement sharpened, 23 sorry-free declarations banked",
+  "closed": false,
+  "counterexample_found": false,
+  "toolchain": "leanprover/lean4:v4.31.0-rc1",
+  "mathlib_rev": "919544d4309104b3f19724b0e6e48c701d27948f",
+  "box": "root@51.158.234.15:/root/peer/sub-949-close (nice -n 19, ~5 s per file)",
+  "kernel_checked": {
+    "files": ["Attack01.lean", "Attack02.lean", "Attack03.lean"],
+    "declarations": 23,
+    "sorry_free": true,
+    "axioms": "[propext, Classical.choice, Quot.sound] on every declaration; zero sorryAx",
+    "receipts": ["Attack01.log", "Attack02.log", "Attack03.log", "Attack01.axioms.txt", "Attack02.axioms.txt", "Attack03.axioms.txt", "SHA256SUMS.txt", "verify.json"]
+  },
+  "new_results_kernel_checked": [
+    {"name": "witness_of_no_small_cover", "claim": "if ℝ is not the union of <𝔠 translates of S ∪ S/2 then Erdos 949 holds for S", "note": "strictly generalises the recorded #S < 𝔠 case, which is re-derived from it (witness_of_mk_lt_continuum')"},
+    {"name": "witness_of_measurable_subset_pos", "claim": "sum-free S with positive INNER Lebesgue measure satisfies the conclusion", "note": "measure-side analogue of the reported Baire-property result; S itself need not be measurable"},
+    {"name": "uncountable_witness_of_volume_zero", "claim": "any null S admits an UNCOUNTABLE A ⊆ Sᶜ with A+A ⊆ Sᶜ (ZFC)", "note": "bound improvement over the estate's previous countable (Hindman) guarantee; superseded on paper by the Mycielski argument P1, which is NOT kernel-checked"},
+    {"name": "witness_of_fourfold", "claim": "sum-freeness makes S+t ⊆ Sᶜ free for t ∈ S, so the whole problem is about 4-fold sums: (S+S+2t) ∩ S = ∅ for one t ∈ S already closes it"},
+    {"name": "witness_of_preimage", "claim": "transfer principle — the conclusion pulls back along injective additive maps, so one may WLOG restrict S to any 𝔠-dimensional ℚ-subspace"},
+    {"name": "inner_measure_zero_of_no_witness / accumulates_at_zero_of_no_witness", "claim": "kernel-checked contrapositives constraining any counterexample"}
+  ],
+  "re_derived_known": [
+    {"name": "witness_of_mk_lt_continuum", "claim": "#S < 𝔠 ⇒ conclusion", "prior_art": "Dillies' Zorn argument, first branch of FormalConjectures ErdosProblems/949.lean"}
+  ],
+  "paper_only_UNPROVED": [
+    {"id": "P1", "claim": "S null ⇒ conclusion (ZFC)", "route": "shear-invariance + Mycielski's theorem (measure version)", "blocker": "Mycielski/Kuratowski perfect-set theorem is NOT in Mathlib"},
+    {"id": "P2", "claim": "S meager ⇒ conclusion (ZFC)", "route": "Mycielski (category version)", "blocker": "same"},
+    {"id": "P3", "claim": "S measurable ⇒ conclusion (ZFC)", "route": "positive measure branch is kernel-checked; null branch is P1", "blocker": "P1"},
+    {"id": "P4", "claim": "S with Baire property ⇒ conclusion (ZFC)", "route": "Pettis difference theorem + the lever, meager branch is P2", "blocker": "Pettis not in Mathlib; ALSO this result is reported already solved on the problem's forum thread"}
+  ],
+  "residual_open_case": "A counterexample must be: size 𝔠, accumulating at 0, inner Lebesgue measure 0 yet non-null and non-meager (Vitali-like saturated non-measurable), translation-large (ℝ = union of <𝔠 translates of S ∪ S/2), with (S+S+2t) ∩ S ≠ ∅ for every t ∈ S, with no continuum-sized additively closed set in its complement, and all of this stable under restriction to every 𝔠-dimensional ℚ-subspace.",
+  "source_caveat": "erdosproblems.com returned HTTP 403 to every fetch from this session. The 'Baire property case is solved' line is from a web-search summary of forum thread 949 (last edited 2026-01-11), NOT read first-hand.",
+  "novelty_honest": "noveltyforge was NOT run. Novelty labels are relative only to what the campaign could read (the formal-conjectures file and a search summary of the forum thread). witness_of_no_small_cover, the inner-measure sharpening, the four-fold reduction and the transfer principle appear to be new relative to that record but are all short arguments an expert could reproduce; nothing here is claimed as deep.",
+  "next_command": "formalize Mycielski's theorem (measure + category) in Lean — it converts P1..P4 into kernel-checked results; then attack the residual Vitali-like case"
+}

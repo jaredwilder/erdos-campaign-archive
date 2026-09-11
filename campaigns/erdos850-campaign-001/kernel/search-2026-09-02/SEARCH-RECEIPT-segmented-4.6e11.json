@@ -1,0 +1,24 @@
+{
+ "problem": "erdos:850",
+ "campaign": "erdos850-campaign-001",
+ "receipt_kind": "BOUNDED_SEARCH",
+ "produced_by": "this session's exact segmented C sieve on the remote box (campaigns/erdos850-search-2026-09-02/, receipts/MASTER-RECEIPT.json sha256 3649c085...)",
+ "question_lock": "oracle/ledger/question-locks/erdos850-rad-triple-witness.json",
+ "method": "PROVED prune (Difference Lemma: rad(x+i)=rad(y+i) for i=0,1,2 and x<y implies L(n)=rad(n(n+1)(n+2)) satisfies L(x)=L(y) and L divides y-x, so both endpoints have L(n) <= N-1); sieve L exactly over [0,N], keep survivors, collide ALL survivors from every segment of every shard in ONE global sorted structure; no structural prune of any kind",
+ "control": "known-answer control below 3,000,000 on the two-term relaxation: EXACT_MATCH 10/10 (9 family + the off-family (75,1215)) by three independent implementations (pruned C sieve, naive no-prune Python, no-prune C sort); every pair re-verified by trial factorisation",
+ "honesty_law": "exhaustion to N is COMPUTATION evidence of a bound on any witness, never closure of the negative branch; the canonical question is existential and remains OPEN",
+ "run_status": "COMPLETED",
+ "jobs": [
+  {
+   "k": 3,
+   "bound_B": 464637500000,
+   "verdict": "EXHAUSTED",
+   "statement": "no pair x != y in N with max(x,y) <= 464,637,500,000 has primeFactors(x)=primeFactors(y), primeFactors(x+1)=primeFactors(y+1), primeFactors(x+2)=primeFactors(y+2): COMPUTED_BOUNDED (global collision semantics, contiguous, gapless, EXHAUSTIVE_AND_COMPLETE true); agrees exactly with the peer net on the overlap to 1e9",
+   "prune_tier": "PROVED_DIFFERENCE_LEMMA",
+   "n_shards": 270,
+   "shards_exhausted": 270,
+   "finding": "all 32,751 three-term survivors (n with rad(n(n+1)(n+2)) <= 1e12) lie below 47,045,880; none between there and 4.6e11 - the obstruction is scarcity of small-radical consecutive triples, not distance"
+  }
+ ],
+ "kernel_arm": "kernel/Erdos850Witness.lean VERIFIED on the box: two_term_witness (2,8), two_term_witness_6_48, two_term_witness_75_1215_outside_family, family_never_extends; axioms [propext, Classical.choice, Quot.sound]; decide cannot reduce Nat.primeFactors, structural route used"
+}

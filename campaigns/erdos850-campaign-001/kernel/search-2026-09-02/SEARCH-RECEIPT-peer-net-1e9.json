@@ -1,0 +1,34 @@
+{
+ "problem": "erdos:850",
+ "campaign": "erdos850-campaign-001",
+ "receipt_kind": "BOUNDED_SEARCH",
+ "produced_by": "peer session woocommerce-enterprise-ea, remote box 51.15.107.148, /root/fire/search850-1B.log (copied to campaigns/erdos850-search-2026-09-02/peer-net/)",
+ "question_lock": "oracle/ledger/question-locks/erdos850-rad-triple-witness.json",
+ "method": "radical sieve over [0, N] (rad n = product of distinct primes, rad 0 = rad 1 = 1, equal to Nat.primeFactors equality), triple signature (rad x, rad x+1, rad x+2) per x, global collision detection by argsort over ALL signatures 0..N in one structure (pairs straddling any sub-range are visible), every hash collision re-verified by exact rad-triple equality before it could count",
+ "control": "known-answer control below 3,000,000 on the two-term relaxation: all 10 known solutions recovered (9 on y = x(x+2), x = 2^k - 2, plus the off-family exceptional (75, 1215)), missing [], unexpected extra [] -> CONTROL_TRUSTED true",
+ "honesty_law": "exhaustion to N is COMPUTATION evidence of a bound on any witness, never closure of the negative branch; the canonical question is existential and remains OPEN",
+ "run_status": "COMPLETED",
+ "jobs": [
+  {
+   "k": 3,
+   "bound_B": 1000000000,
+   "verdict": "EXHAUSTED",
+   "statement": "no pair x != y in N with max(x,y) <= 1,000,000,000 has primeFactors(x)=primeFactors(y), primeFactors(x+1)=primeFactors(y+1), primeFactors(x+2)=primeFactors(y+2) (three-term radical coincidence): COMPUTED_BOUNDED",
+   "prune_tier": "NONE_FULLY_EXHAUSTIVE",
+   "n_shards": 1,
+   "shards_exhausted": 1,
+   "wall_seconds": 533.5,
+   "witnesses": []
+  },
+  {
+   "k": 2,
+   "bound_B": 3000000,
+   "verdict": "EXHAUSTED",
+   "statement": "two-term relaxation (primeFactors agree at x,x+1 only), x != y, max(x,y) <= 3,000,000: exactly 10 solutions, 9 on the family y = x(x+2) with x = 2^k - 2 and the exceptional (75, 1215); none extends to the third term (used as the known-answer control)",
+   "prune_tier": "NONE_FULLY_EXHAUSTIVE",
+   "n_shards": 1,
+   "shards_exhausted": 1,
+   "solutions_count": 10
+  }
+ ]
+}

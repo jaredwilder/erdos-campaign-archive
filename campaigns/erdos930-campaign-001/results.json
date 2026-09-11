@@ -1,0 +1,1276 @@
+{
+ "campaign": "erdos930-campaign-001",
+ "id": "erdos930-campaign-001",
+ "contract_sha": "1a52e8eb7578939036b5b9c112adec376a7c53c961909f7f17e012a929f6bd7b",
+ "iters": 86,
+ "log": [
+  {
+   "iter": 1,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'exact_reformulations'",
+   "event": {
+    "op": "open_route",
+    "route": "R001",
+    "family": "extremal_reduction"
+   },
+   "verdict": "ROUTE R001 OPENED family=extremal_reduction branch=A",
+   "utc": "2026-09-01T22:21:17Z"
+  },
+  {
+   "iter": 2,
+   "packet": "route_search",
+   "reason": "Wang 3.1: routes concentrate in 'extremal_reduction' (1 of 1 live); open an independent route in the unused family 'exact_reformulations'",
+   "event": {
+    "op": "open_route",
+    "route": "R002",
+    "family": "exact_reformulations"
+   },
+   "verdict": "ROUTE R002 OPENED family=exact_reformulations branch=B",
+   "utc": "2026-09-01T22:22:05Z"
+  },
+  {
+   "iter": 3,
+   "packet": "computational",
+   "reason": "Wang 12.3: R001 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "event": {
+    "op": "lemma",
+    "route": "R001",
+    "lemma": "L1",
+    "status": "UNTESTED"
+   },
+   "verdict": "LEMMA R001/L1 RECORDED status=UNTESTED",
+   "utc": "2026-09-01T22:22:44Z"
+  },
+  {
+   "iter": 4,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R001 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:22:47Z"
+  },
+  {
+   "iter": 5,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R001 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "lemma",
+    "route": "R001",
+    "lemma": "L1",
+    "status": "FALSE"
+   },
+   "verdict": "LEMMA R001/L1 RECORDED status=FALSE",
+   "utc": "2026-09-01T22:23:41Z"
+  },
+  {
+   "iter": 6,
+   "packet": "auditor",
+   "reason": "Wang 4.1 K8: R001 carries a refuted central lemma L1 (concrete counterexample); adjudicate the kill/block citing the rule",
+   "event": {
+    "op": "kill",
+    "route": "R001",
+    "rule": "K8"
+   },
+   "verdict": "ROUTE R001 ADJUDICATED under K8 (kill/block per rule)",
+   "utc": "2026-09-01T22:23:47Z"
+  },
+  {
+   "iter": 7,
+   "packet": "route_search",
+   "reason": "Wang 3.1: routes concentrate in 'exact_reformulations' (1 of 1 live); open an independent route in the unused family 'local_to_global'",
+   "event": {
+    "op": "open_route",
+    "route": "R003",
+    "family": "algebraic_combinatorial"
+   },
+   "verdict": "ROUTE R003 OPENED family=algebraic_combinatorial branch=A",
+   "utc": "2026-09-01T22:24:32Z"
+  },
+  {
+   "iter": 8,
+   "packet": "computational",
+   "reason": "Wang 12.3: R002 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "event": {
+    "op": "lemma",
+    "route": "R002",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R002/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T22:28:13Z"
+  },
+  {
+   "iter": 9,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R002 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R002",
+    "lemma": "L1",
+    "status": "PROVED"
+   },
+   "verdict": "LEMMA R002/L1 RECORDED status=PROVED",
+   "utc": "2026-09-01T22:28:33Z"
+  },
+  {
+   "iter": 10,
+   "packet": "closer",
+   "reason": "Wang 17: R002 carries standing PROVED lemma(s) L1 and no refuted lemma; convert the standing mathematics into a machine-checkable closure obligation or refuse in type",
+   "event": {
+    "op": "closure_refused",
+    "route": "R002",
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "Standing lemma L1 verifies only k∈{2,3} and explicitly refuses k≥4 (fail-closed, equivalent to the open square-binomial problem), so it covers neither the ∀k≥2 quantifier of branch B nor the r=2 positive-interval family its thesis claims — additionally, the thesis's symmetric negative-interval const"
+   },
+   "verdict": "CLOSURE_REFUSED R002 reason=LEMMA_DOES_NOT_COVER_CLOSE_BRANCH (a typed refusal IS an outcome)",
+   "utc": "2026-09-01T22:28:40Z",
+   "closure_refused": {
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "Standing lemma L1 verifies only k∈{2,3} and explicitly refuses k≥4 (fail-closed, equivalent to the open square-binomial problem), so it covers neither the ∀k≥2 quantifier of branch B nor the r=2 positive-interval family its thesis claims — additionally, the thesis's symmetric negative-interval const"
+   },
+   "reclose_downgraded": [],
+   "closer_sig": [
+    [
+     "L1",
+     "ab23b29485e4dc99"
+    ]
+   ]
+  },
+  {
+   "iter": 11,
+   "packet": "computational",
+   "reason": "Wang 12.3: R003 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "event": {
+    "op": "lemma",
+    "route": "R003",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R003/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T22:30:41Z"
+  },
+  {
+   "iter": 12,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R003 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R003",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R003/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T22:31:45Z"
+  },
+  {
+   "iter": 13,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R003 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R003",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R003/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T22:32:11Z"
+  },
+  {
+   "iter": 14,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R003 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R003",
+    "lemma": "L1",
+    "status": "PROVED"
+   },
+   "verdict": "LEMMA R003/L1 RECORDED status=PROVED",
+   "utc": "2026-09-01T22:32:33Z"
+  },
+  {
+   "iter": 15,
+   "packet": "closer",
+   "reason": "Wang 17: R003 carries standing PROVED lemma(s) L1 and no refuted lemma; convert the standing mathematics into a machine-checkable closure obligation or refuse in type",
+   "event": {
+    "op": "closure_refused",
+    "route": "R003",
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "Standing lemma L1 only certifies k=4 nonexistence for t≤10⁶ plus fixed small instances (144, 705600); branch A requires the universal ∀r∃necessarily-k statement over all parameters — a finite search is exactly the SAMPLED-TO-UNIVERSAL non_result the contract forbids, and no PROVED lemma on file brid"
+   },
+   "verdict": "CLOSURE_REFUSED R003 reason=LEMMA_DOES_NOT_COVER_CLOSE_BRANCH (a typed refusal IS an outcome)",
+   "utc": "2026-09-01T22:32:38Z",
+   "closure_refused": {
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "Standing lemma L1 only certifies k=4 nonexistence for t≤10⁶ plus fixed small instances (144, 705600); branch A requires the universal ∀r∃necessarily-k statement over all parameters — a finite search is exactly the SAMPLED-TO-UNIVERSAL non_result the contract forbids, and no PROVED lemma on file brid"
+   },
+   "reclose_downgraded": [],
+   "closer_sig": [
+    [
+     "L1",
+     "c00fef94e8e3805d"
+    ]
+   ]
+  },
+  {
+   "iter": 16,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'local_to_global'",
+   "event": {
+    "op": "open_route",
+    "route": "R004",
+    "family": "discrete_optimization"
+   },
+   "verdict": "ROUTE R004 OPENED family=discrete_optimization branch=B",
+   "utc": "2026-09-01T22:37:16Z"
+  },
+  {
+   "iter": 17,
+   "packet": "computational",
+   "reason": "Wang 12.3: R004 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "event": {
+    "op": "lemma",
+    "route": "R004",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R004/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T22:38:47Z"
+  },
+  {
+   "iter": 18,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R004 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R004",
+    "lemma": "L1",
+    "status": "PROVED"
+   },
+   "verdict": "LEMMA R004/L1 RECORDED status=PROVED",
+   "utc": "2026-09-01T22:39:10Z"
+  },
+  {
+   "iter": 19,
+   "packet": "closer",
+   "reason": "Wang 17: R004 carries standing PROVED lemma(s) L1 and no refuted lemma; convert the standing mathematics into a machine-checkable closure obligation or refuse in type",
+   "event": {
+    "op": "closure_refused",
+    "route": "R004",
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "The sole PROVED lemma L1 establishes only that a product of distinct singleton squares is a perfect square (and its own record text admits the \"canonical k≥2 discharge\" clause is undefined/excluded); branch B requires, for a fixed r, an adversarial construction for EVERY k≥2 with intervals of length"
+   },
+   "verdict": "CLOSURE_REFUSED R004 reason=LEMMA_DOES_NOT_COVER_CLOSE_BRANCH (a typed refusal IS an outcome)",
+   "utc": "2026-09-01T22:39:23Z",
+   "closure_refused": {
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "The sole PROVED lemma L1 establishes only that a product of distinct singleton squares is a perfect square (and its own record text admits the \"canonical k≥2 discharge\" clause is undefined/excluded); branch B requires, for a fixed r, an adversarial construction for EVERY k≥2 with intervals of length"
+   },
+   "reclose_downgraded": [],
+   "closer_sig": [
+    [
+     "L1",
+     "9f809b6b7e138a4f"
+    ]
+   ]
+  },
+  {
+   "iter": 20,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'local_to_global'",
+   "event": {
+    "op": "open_route",
+    "route": "R005",
+    "family": "local_to_global"
+   },
+   "verdict": "ROUTE R005 OPENED family=local_to_global branch=B",
+   "utc": "2026-09-01T22:40:27Z"
+  },
+  {
+   "iter": 21,
+   "packet": "computational",
+   "reason": "Wang 12.3: R005 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "event": {
+    "op": "lemma",
+    "route": "R005",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R005/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T22:43:42Z"
+  },
+  {
+   "iter": 22,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R005 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R005",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R005/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T22:44:00Z"
+  },
+  {
+   "iter": 23,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R005 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R005",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R005/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T22:44:31Z"
+  },
+  {
+   "iter": 24,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R005 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R005",
+    "lemma": "L1",
+    "status": "PROVED"
+   },
+   "verdict": "LEMMA R005/L1 RECORDED status=PROVED",
+   "utc": "2026-09-01T22:44:54Z"
+  },
+  {
+   "iter": 25,
+   "packet": "closer",
+   "reason": "Wang 17: R005 carries standing PROVED lemma(s) L1 and no refuted lemma; convert the standing mathematics into a machine-checkable closure obligation or refuse in type",
+   "event": {
+    "op": "closure_refused",
+    "route": "R005",
+    "reason": "MATHEMATICS_FAILED_SANITY",
+    "note": "Route thesis's construction I₂=4·I₁ is not a consecutive-integer interval (fails canonical domain for any length ≥2), and standing lemma L1 is finite-window-only with an explicit no-∀r disclaimer, so no machine-checkable branch-B close exists on this route."
+   },
+   "verdict": "CLOSURE_REFUSED R005 reason=MATHEMATICS_FAILED_SANITY (a typed refusal IS an outcome)",
+   "utc": "2026-09-01T22:48:08Z",
+   "closure_refused": {
+    "reason": "MATHEMATICS_FAILED_SANITY",
+    "note": "Route thesis's construction I₂=4·I₁ is not a consecutive-integer interval (fails canonical domain for any length ≥2), and standing lemma L1 is finite-window-only with an explicit no-∀r disclaimer, so no machine-checkable branch-B close exists on this route."
+   },
+   "reclose_downgraded": [
+    "L1"
+   ],
+   "closer_sig": []
+  },
+  {
+   "iter": 26,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R005 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "lemma",
+    "route": "R005",
+    "lemma": "L1",
+    "status": "UNTESTED"
+   },
+   "verdict": "LEMMA R005/L1 RECORDED status=UNTESTED",
+   "utc": "2026-09-01T22:48:38Z"
+  },
+  {
+   "iter": 27,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R005 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": null,
+   "verdict": "UNTYPED_ENDING_REFUSED: end with one mandatory closing move",
+   "utc": "2026-09-01T22:49:50Z"
+  },
+  {
+   "iter": 28,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R005 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:50:00Z"
+  },
+  {
+   "iter": 29,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R005 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "lemma",
+    "route": "R005",
+    "lemma": "L1",
+    "status": "UNTESTED"
+   },
+   "verdict": "LEMMA R005/L1 RECORDED status=UNTESTED",
+   "utc": "2026-09-01T22:50:31Z"
+  },
+  {
+   "iter": 30,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R005 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:50:44Z"
+  },
+  {
+   "iter": 31,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R005 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "lemma",
+    "route": "R005",
+    "lemma": "L1",
+    "status": "FALSE"
+   },
+   "verdict": "LEMMA R005/L1 RECORDED status=FALSE",
+   "utc": "2026-09-01T22:51:16Z"
+  },
+  {
+   "iter": 32,
+   "packet": "auditor",
+   "reason": "Wang 4.1 K8: R005 carries a refuted central lemma L1 (concrete counterexample); adjudicate the kill/block citing the rule",
+   "event": {
+    "op": "kill",
+    "route": "R005",
+    "rule": "K8"
+   },
+   "verdict": "ROUTE R005 ADJUDICATED under K8 (kill/block per rule)",
+   "utc": "2026-09-01T22:51:24Z"
+  },
+  {
+   "iter": 33,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'analytic_probabilistic'",
+   "event": {
+    "op": "open_route",
+    "route": "R006",
+    "family": "analytic_probabilistic"
+   },
+   "verdict": "ROUTE R006 OPENED family=analytic_probabilistic branch=B",
+   "utc": "2026-09-01T22:52:36Z"
+  },
+  {
+   "iter": 34,
+   "packet": "computational",
+   "reason": "Wang 12.3: R006 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "event": {
+    "op": "lemma",
+    "route": "R006",
+    "lemma": "L1",
+    "status": "FALSE"
+   },
+   "verdict": "LEMMA R006/L1 RECORDED status=FALSE",
+   "utc": "2026-09-01T22:55:15Z"
+  },
+  {
+   "iter": 35,
+   "packet": "auditor",
+   "reason": "Wang 4.1 K8: R006 carries a refuted central lemma L1 (concrete counterexample); adjudicate the kill/block citing the rule",
+   "event": {
+    "op": "kill",
+    "route": "R006",
+    "rule": "K8"
+   },
+   "verdict": "ROUTE R006 ADJUDICATED under K8 (kill/block per rule)",
+   "utc": "2026-09-01T22:55:42Z"
+  },
+  {
+   "iter": 36,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'certified_numerics'",
+   "event": {
+    "op": "open_route",
+    "route": "R007",
+    "family": "certified_numerics"
+   },
+   "verdict": "ROUTE R007 OPENED family=certified_numerics branch=B",
+   "utc": "2026-09-01T22:57:54Z"
+  },
+  {
+   "iter": 37,
+   "packet": "computational",
+   "reason": "Wang 12.3: R007 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "event": {
+    "op": "lemma",
+    "route": "R007",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R007/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T22:59:10Z"
+  },
+  {
+   "iter": 38,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R007 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R007",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R007/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T22:59:27Z"
+  },
+  {
+   "iter": 39,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R007 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R007",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R007/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T23:00:13Z"
+  },
+  {
+   "iter": 40,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R007 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R007",
+    "lemma": "L1",
+    "status": "FALSE"
+   },
+   "verdict": "LEMMA R007/L1 RECORDED status=FALSE",
+   "utc": "2026-09-01T23:17:47Z"
+  },
+  {
+   "iter": 41,
+   "packet": "auditor",
+   "reason": "Wang 4.1 K8: R007 carries a refuted central lemma L1 (concrete counterexample); adjudicate the kill/block citing the rule",
+   "event": {
+    "op": "kill",
+    "route": "R007",
+    "rule": "K8"
+   },
+   "verdict": "ROUTE R007 ADJUDICATED under K8 (kill/block per rule)",
+   "utc": "2026-09-01T23:18:09Z"
+  },
+  {
+   "iter": 42,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'exact_reformulations'",
+   "event": {
+    "op": "open_route",
+    "route": "R008",
+    "family": "exact_reformulations"
+   },
+   "verdict": "ROUTE R008 OPENED family=exact_reformulations branch=B",
+   "utc": "2026-09-01T23:25:55Z"
+  },
+  {
+   "iter": 43,
+   "packet": "computational",
+   "reason": "Wang 12.3: R008 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "event": {
+    "op": "lemma",
+    "route": "R008",
+    "lemma": "L1",
+    "status": "FALSE"
+   },
+   "verdict": "LEMMA R008/L1 RECORDED status=FALSE",
+   "utc": "2026-09-01T23:28:13Z"
+  },
+  {
+   "iter": 44,
+   "packet": "auditor",
+   "reason": "Wang 4.1 K8: R008 carries a refuted central lemma L1 (concrete counterexample); adjudicate the kill/block citing the rule",
+   "event": {
+    "op": "kill",
+    "route": "R008",
+    "rule": "K8"
+   },
+   "verdict": "ROUTE R008 ADJUDICATED under K8 (kill/block per rule)",
+   "utc": "2026-09-01T23:28:26Z"
+  },
+  {
+   "iter": 45,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'local_to_global'",
+   "event": {
+    "op": "open_route",
+    "route": "R009",
+    "family": "discrete_optimization"
+   },
+   "verdict": "ROUTE R009 OPENED family=discrete_optimization branch=B",
+   "utc": "2026-09-01T23:30:42Z"
+  },
+  {
+   "iter": 46,
+   "packet": "computational",
+   "reason": "Wang 12.3: R009 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "event": {
+    "op": "lemma",
+    "route": "R009",
+    "lemma": "L1",
+    "status": "FALSE"
+   },
+   "verdict": "LEMMA R009/L1 RECORDED status=FALSE",
+   "utc": "2026-09-01T23:32:40Z"
+  },
+  {
+   "iter": 47,
+   "packet": "auditor",
+   "reason": "Wang 4.1 K8: R009 carries a refuted central lemma L1 (concrete counterexample); adjudicate the kill/block citing the rule",
+   "event": {
+    "op": "kill",
+    "route": "R009",
+    "rule": "K8"
+   },
+   "verdict": "ROUTE R009 ADJUDICATED under K8 (kill/block per rule)",
+   "utc": "2026-09-01T23:32:53Z"
+  },
+  {
+   "iter": 48,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'local_to_global'",
+   "event": {
+    "op": "open_route",
+    "route": "R010",
+    "family": "discrete_optimization"
+   },
+   "verdict": "ROUTE R010 OPENED family=discrete_optimization branch=B",
+   "utc": "2026-09-01T23:33:46Z"
+  },
+  {
+   "iter": 49,
+   "packet": "computational",
+   "reason": "Wang 12.3: R010 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "event": {
+    "op": "lemma",
+    "route": "R010",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R010/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T23:38:36Z"
+  },
+  {
+   "iter": 50,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R010 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R010",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R010/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T23:39:20Z"
+  },
+  {
+   "iter": 51,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R010 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R010",
+    "lemma": "L1",
+    "status": "PROVED"
+   },
+   "verdict": "LEMMA R010/L1 RECORDED status=PROVED",
+   "utc": "2026-09-01T23:39:46Z"
+  },
+  {
+   "iter": 52,
+   "packet": "closer",
+   "reason": "Wang 17: R010 carries standing PROVED lemma(s) L1 and no refuted lemma; convert the standing mathematics into a machine-checkable closure obligation or refuse in type",
+   "event": {
+    "op": "closure_refused",
+    "route": "R010",
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "L1 is a finite witness set at five fixed (n,k) pairs; branch B demands a construction valid for every k≥2 with no reduction or schema linking the witnesses to it."
+   },
+   "verdict": "CLOSURE_REFUSED R010 reason=LEMMA_DOES_NOT_COVER_CLOSE_BRANCH (a typed refusal IS an outcome)",
+   "utc": "2026-09-01T23:39:57Z",
+   "closure_refused": {
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "L1 is a finite witness set at five fixed (n,k) pairs; branch B demands a construction valid for every k≥2 with no reduction or schema linking the witnesses to it."
+   },
+   "reclose_downgraded": [],
+   "closer_sig": [
+    [
+     "L1",
+     "4e2c837db354d6bf"
+    ]
+   ]
+  },
+  {
+   "iter": 53,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'local_to_global'",
+   "event": {
+    "op": "open_route",
+    "route": "R011",
+    "family": "discrete_optimization"
+   },
+   "verdict": "ROUTE R011 OPENED family=discrete_optimization branch=B",
+   "utc": "2026-09-01T23:41:20Z"
+  },
+  {
+   "iter": 54,
+   "packet": "computational",
+   "reason": "Wang 12.3: R011 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "event": {
+    "op": "lemma",
+    "route": "R011",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R011/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T23:43:17Z"
+  },
+  {
+   "iter": 55,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R011 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R011",
+    "lemma": "L1",
+    "status": "PROVED"
+   },
+   "verdict": "LEMMA R011/L1 RECORDED status=PROVED",
+   "utc": "2026-09-01T23:43:39Z"
+  },
+  {
+   "iter": 56,
+   "packet": "closer",
+   "reason": "Wang 17: R011 carries standing PROVED lemma(s) L1 and no refuted lemma; convert the standing mathematics into a machine-checkable closure obligation or refuse in type",
+   "event": {
+    "op": "closure_refused",
+    "route": "R011",
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "L1's Pell witnesses have fixed interval length 2 and no scaling/transference lemma exists, so ∀k≥2 in branch B is unreduced; the honest next move is a route seeking a length-pads-to-k construction (e.g. block products raising ∏[a,b]/c to fixed powers or adjoining [1,2] copies with exponent bookkeepi"
+   },
+   "verdict": "CLOSURE_REFUSED R011 reason=LEMMA_DOES_NOT_COVER_CLOSE_BRANCH (a typed refusal IS an outcome)",
+   "utc": "2026-09-01T23:44:07Z",
+   "closure_refused": {
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "L1's Pell witnesses have fixed interval length 2 and no scaling/transference lemma exists, so ∀k≥2 in branch B is unreduced; the honest next move is a route seeking a length-pads-to-k construction (e.g. block products raising ∏[a,b]/c to fixed powers or adjoining [1,2] copies with exponent bookkeepi"
+   },
+   "reclose_downgraded": [],
+   "closer_sig": [
+    [
+     "L1",
+     "64021162b5c6b3d9"
+    ]
+   ]
+  },
+  {
+   "iter": 57,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'local_to_global'",
+   "event": {
+    "op": "open_route",
+    "route": "R012",
+    "family": "exact_reformulations"
+   },
+   "verdict": "ROUTE R012 OPENED family=exact_reformulations branch=B",
+   "utc": "2026-09-01T23:45:26Z"
+  },
+  {
+   "iter": 58,
+   "packet": "computational",
+   "reason": "Wang 12.3: R012 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "event": {
+    "op": "lemma",
+    "route": "R012",
+    "lemma": "L1",
+    "status": "FALSE"
+   },
+   "verdict": "LEMMA R012/L1 RECORDED status=FALSE",
+   "utc": "2026-09-01T23:47:16Z"
+  },
+  {
+   "iter": 59,
+   "packet": "auditor",
+   "reason": "Wang 4.1 K8: R012 carries a refuted central lemma L1 (concrete counterexample); adjudicate the kill/block citing the rule",
+   "event": {
+    "op": "kill",
+    "route": "R012",
+    "rule": "K8"
+   },
+   "verdict": "ROUTE R012 ADJUDICATED under K8 (kill/block per rule)",
+   "utc": "2026-09-01T23:47:32Z"
+  },
+  {
+   "iter": 60,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'local_to_global'",
+   "event": {
+    "op": "open_route",
+    "route": "R013",
+    "family": "certified_numerics"
+   },
+   "verdict": "ROUTE R013 OPENED family=certified_numerics branch=B",
+   "utc": "2026-09-01T23:53:40Z"
+  },
+  {
+   "iter": 61,
+   "packet": "computational",
+   "reason": "Wang 12.3: R013 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "event": {
+    "op": "lemma",
+    "route": "R013",
+    "lemma": "L1",
+    "status": "FALSE"
+   },
+   "verdict": "LEMMA R013/L1 RECORDED status=FALSE",
+   "utc": "2026-09-01T23:55:15Z"
+  },
+  {
+   "iter": 62,
+   "packet": "auditor",
+   "reason": "Wang 4.1 K8: R013 carries a refuted central lemma L1 (concrete counterexample); adjudicate the kill/block citing the rule",
+   "event": {
+    "op": "kill",
+    "route": "R013",
+    "rule": "K8"
+   },
+   "verdict": "ROUTE R013 ADJUDICATED under K8 (kill/block per rule)",
+   "utc": "2026-09-01T23:55:39Z"
+  },
+  {
+   "iter": 63,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'local_to_global'",
+   "event": {
+    "op": "open_route",
+    "route": "R014",
+    "family": "certified_numerics"
+   },
+   "verdict": "ROUTE R014 OPENED family=certified_numerics branch=B",
+   "utc": "2026-09-01T23:57:24Z"
+  },
+  {
+   "iter": 64,
+   "packet": "computational",
+   "reason": "Wang 12.3: R014 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "event": {
+    "op": "lemma",
+    "route": "R014",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R014/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T23:59:55Z"
+  },
+  {
+   "iter": 65,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R014 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R014",
+    "lemma": "L1",
+    "status": "PROVED"
+   },
+   "verdict": "LEMMA R014/L1 RECORDED status=PROVED",
+   "utc": "2026-09-02T00:00:55Z"
+  },
+  {
+   "iter": 66,
+   "packet": "closer",
+   "reason": "Wang 17: R014 carries standing PROVED lemma(s) L1 and no refuted lemma; convert the standing mathematics into a machine-checkable closure obligation or refuse in type",
+   "model": "openai/gpt-5.6-luna-pro",
+   "event": {
+    "op": "closure_refused",
+    "route": "R014",
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "L1 certifies only the single k=2 witness and provides no all-k construction or transference argument.",
+    "covered": "existence of one r=2 family of disjoint positive-integer intervals of length 2 whose total product is a perfect square",
+    "missing": "construction of a suitable fixed r family for every k≥2 (and hence failure of every universal threshold)"
+   },
+   "verdict": "CLOSURE_REFUSED R014 reason=LEMMA_DOES_NOT_COVER_CLOSE_BRANCH with the split NAMED (covered / missing) — file PIECE_DECLARE for the covered half to make it attackable",
+   "utc": "2026-09-02T01:05:57Z",
+   "route_id": "R014",
+   "closure_refused": {
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "L1 certifies only the single k=2 witness and provides no all-k construction or transference argument."
+   },
+   "reclose_downgraded": [],
+   "closer_sig": [
+    [
+     "L1",
+     "c04bf13b0e304233"
+    ]
+   ]
+  },
+  {
+   "iter": 67,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'local_to_global'",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "open_route",
+    "route": "R015",
+    "family": "algebraic_combinatorial"
+   },
+   "verdict": "ROUTE R015 OPENED family=algebraic_combinatorial branch=A",
+   "utc": "2026-09-02T01:07:07Z",
+   "forbidden_families": [
+    "certified_numerics",
+    "discrete_optimization",
+    "exact_reformulations"
+   ]
+  },
+  {
+   "iter": 68,
+   "packet": "computational",
+   "reason": "Wang 12.3: R015 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R015",
+    "lemma": "L1_k2_universal_for_r2",
+    "status": "FALSE"
+   },
+   "verdict": "LEMMA R015/L1_k2_universal_for_r2 RECORDED status=FALSE",
+   "utc": "2026-09-02T01:08:38Z",
+   "route_id": "R015"
+  },
+  {
+   "iter": 69,
+   "packet": "auditor",
+   "reason": "Wang 4.1 K8: R015 carries a refuted central lemma L1_k2_universal_for_r2 (concrete counterexample); adjudicate the kill/block citing the rule",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "kill",
+    "route": "R015",
+    "rule": "K8"
+   },
+   "verdict": "ROUTE R015 ADJUDICATED under K8 (kill/block per rule)",
+   "utc": "2026-09-02T01:08:53Z",
+   "route_id": "R015"
+  },
+  {
+   "iter": 70,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'local_to_global'",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "open_route",
+    "route": "R016",
+    "family": "certified_numerics"
+   },
+   "verdict": "ROUTE R016 OPENED family=certified_numerics branch=B",
+   "utc": "2026-09-02T01:10:03Z",
+   "forbidden_families": [
+    "algebraic_combinatorial",
+    "certified_numerics",
+    "discrete_optimization",
+    "exact_reformulations"
+   ]
+  },
+  {
+   "iter": 71,
+   "packet": "computational",
+   "reason": "Wang 12.3: R016 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R016",
+    "lemma": "L1_r2_k2_universal",
+    "status": "FALSE"
+   },
+   "verdict": "LEMMA R016/L1_r2_k2_universal RECORDED status=FALSE",
+   "utc": "2026-09-02T01:12:39Z",
+   "route_id": "R016"
+  },
+  {
+   "iter": 72,
+   "packet": "auditor",
+   "reason": "Wang 4.1 K8: R016 carries a refuted central lemma L1_r2_k2_universal (concrete counterexample); adjudicate the kill/block citing the rule",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "kill",
+    "route": "R016",
+    "rule": "K8"
+   },
+   "verdict": "ROUTE R016 ADJUDICATED under K8 (kill/block per rule)",
+   "utc": "2026-09-02T01:12:59Z",
+   "route_id": "R016"
+  },
+  {
+   "iter": 73,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'local_to_global'",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "open_route",
+    "route": "R017",
+    "family": "exact_reformulations"
+   },
+   "verdict": "ROUTE R017 OPENED family=exact_reformulations branch=B",
+   "utc": "2026-09-02T01:14:28Z",
+   "forbidden_families": [
+    "algebraic_combinatorial",
+    "certified_numerics",
+    "discrete_optimization",
+    "exact_reformulations"
+   ]
+  },
+  {
+   "iter": 74,
+   "packet": "computational",
+   "reason": "Wang 12.3: R017 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R017",
+    "lemma": "L1",
+    "status": "FALSE"
+   },
+   "verdict": "LEMMA R017/L1 RECORDED status=FALSE",
+   "utc": "2026-09-02T01:16:00Z",
+   "route_id": "R017"
+  },
+  {
+   "iter": 75,
+   "packet": "auditor",
+   "reason": "Wang 4.1 K8: R017 carries a refuted central lemma L1 (concrete counterexample); adjudicate the kill/block citing the rule",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "kill",
+    "route": "R017",
+    "rule": "K8"
+   },
+   "verdict": "ROUTE R017 ADJUDICATED under K8 (kill/block per rule)",
+   "utc": "2026-09-02T01:16:16Z",
+   "route_id": "R017"
+  },
+  {
+   "iter": 76,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'local_to_global'",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "open_route",
+    "route": "R018",
+    "family": "certified_numerics"
+   },
+   "verdict": "ROUTE R018 OPENED family=certified_numerics branch=B",
+   "utc": "2026-09-02T01:18:00Z",
+   "forbidden_families": [
+    "algebraic_combinatorial",
+    "certified_numerics",
+    "discrete_optimization",
+    "exact_reformulations"
+   ]
+  },
+  {
+   "iter": 77,
+   "packet": "computational",
+   "reason": "Wang 12.3: R018 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R018",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R018/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-02T01:20:52Z",
+   "route_id": "R018"
+  },
+  {
+   "iter": 78,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R018 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R018",
+    "lemma": "L1",
+    "status": "PROVED"
+   },
+   "verdict": "LEMMA R018/L1 RECORDED status=PROVED",
+   "utc": "2026-09-02T01:21:32Z",
+   "route_id": "R018"
+  },
+  {
+   "iter": 79,
+   "packet": "closer",
+   "reason": "Wang 17: R018 carries standing PROVED lemma(s) L1 and no refuted lemma; convert the standing mathematics into a machine-checkable closure obligation or refuse in type",
+   "model": "openai/gpt-5.6-luna-pro",
+   "event": {
+    "op": "closure_refused",
+    "route": "R018",
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "L1 establishes only finitely many k=2 witnesses and provides no uniform-in-k construction, so it cannot close branch B.",
+    "covered": "explicit perfect-power witnesses for r=2 and k=2 (four verified disjoint interval families)",
+    "missing": "an adversarial construction for one fixed r valid for every k≥2, together with the k=0,1 cases required by the canonical negative branch"
+   },
+   "verdict": "CLOSURE_REFUSED R018 reason=LEMMA_DOES_NOT_COVER_CLOSE_BRANCH with the split NAMED (covered / missing) — file PIECE_DECLARE for the covered half to make it attackable",
+   "utc": "2026-09-02T01:21:40Z",
+   "route_id": "R018",
+   "closure_refused": {
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "L1 establishes only finitely many k=2 witnesses and provides no uniform-in-k construction, so it cannot close branch B."
+   },
+   "reclose_downgraded": [],
+   "closer_sig": [
+    [
+     "L1",
+     "830f936954e2e634"
+    ]
+   ]
+  },
+  {
+   "iter": 80,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'local_to_global'",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "open_route",
+    "route": "R019",
+    "family": "exact_reformulations"
+   },
+   "verdict": "ROUTE R019 OPENED family=exact_reformulations branch=B",
+   "utc": "2026-09-02T01:22:40Z",
+   "forbidden_families": [
+    "algebraic_combinatorial",
+    "certified_numerics",
+    "discrete_optimization",
+    "exact_reformulations"
+   ]
+  },
+  {
+   "iter": 81,
+   "packet": "computational",
+   "reason": "Wang 12.3: R019 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R019",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R019/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-02T01:24:37Z",
+   "route_id": "R019"
+  },
+  {
+   "iter": 82,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R019 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R019",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R019/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-02T01:34:10Z",
+   "route_id": "R019"
+  },
+  {
+   "iter": 83,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R019 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R019",
+    "lemma": "L1",
+    "status": "PROVED"
+   },
+   "verdict": "LEMMA R019/L1 RECORDED status=PROVED",
+   "utc": "2026-09-02T01:49:39Z",
+   "route_id": "R019"
+  },
+  {
+   "iter": 84,
+   "packet": "closer",
+   "reason": "Wang 17: R019 carries standing PROVED lemma(s) L1 and no refuted lemma; convert the standing mathematics into a machine-checkable closure obligation or refuse in type",
+   "model": "openai/gpt-5.6-luna-pro",
+   "event": {
+    "op": "closure_refused",
+    "route": "R019",
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "L1 supplies only isolated finite instances and no uniform all-k construction or transfer theorem.",
+    "covered": "finite exact perfect-power product witnesses for selected fixed collections (including S2 and S3)",
+    "missing": "an explicit fixed r and a sorted pairwise-disjoint interval family of lengths at least k for every k≥2, with the k=0,1 cases discharged"
+   },
+   "verdict": "CLOSURE_REFUSED R019 reason=LEMMA_DOES_NOT_COVER_CLOSE_BRANCH with the split NAMED (covered / missing) — file PIECE_DECLARE for the covered half to make it attackable",
+   "utc": "2026-09-02T01:49:50Z",
+   "route_id": "R019",
+   "closure_refused": {
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "L1 supplies only isolated finite instances and no uniform all-k construction or transfer theorem."
+   },
+   "reclose_downgraded": [],
+   "closer_sig": [
+    [
+     "L1",
+     "9f31eded80eed3c0"
+    ]
+   ]
+  },
+  {
+   "iter": 85,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'local_to_global'",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "open_route",
+    "route": "R020",
+    "family": "certified_numerics"
+   },
+   "verdict": "ROUTE R020 OPENED family=certified_numerics branch=B",
+   "utc": "2026-09-02T01:50:38Z",
+   "forbidden_families": [
+    "algebraic_combinatorial",
+    "certified_numerics",
+    "discrete_optimization",
+    "exact_reformulations"
+   ]
+  },
+  {
+   "iter": 86,
+   "packet": "computational",
+   "reason": "Wang 12.3: R020 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R020",
+    "lemma": "L1",
+    "status": "FALSE"
+   },
+   "verdict": "LEMMA R020/L1 RECORDED status=FALSE",
+   "utc": "2026-09-02T01:53:15Z",
+   "route_id": "R020"
+  }
+ ],
+ "routes": {
+  "R001": "DEAD",
+  "R002": "ACTIVE",
+  "R003": "ACTIVE",
+  "R004": "ACTIVE",
+  "R005": "DEAD",
+  "R006": "DEAD",
+  "R007": "DEAD",
+  "R008": "DEAD",
+  "R009": "DEAD",
+  "R010": "ACTIVE",
+  "R011": "ACTIVE",
+  "R012": "DEAD",
+  "R013": "DEAD",
+  "R014": "ACTIVE",
+  "R015": "DEAD",
+  "R016": "DEAD",
+  "R017": "DEAD",
+  "R018": "ACTIVE",
+  "R019": "ACTIVE",
+  "R020": "ACTIVE"
+ }
+}

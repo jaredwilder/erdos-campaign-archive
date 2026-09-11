@@ -1,0 +1,98 @@
+{
+  "campaign": "erdos66-close-2026-09-05",
+  "target": "erdos:66",
+  "target_source": "https://www.erdosproblems.com/66",
+  "prize": "$500",
+  "source_status_at_read_time": "OPEN (page last edited 2026-04-06, read 2026-09-05)",
+  "upstream_lean": "google-deepmind/formal-conjectures FormalConjectures/ErdosProblems/66.lean, @[category research open], body sorry",
+
+  "VERDICT": "UNRESOLVED",
+  "closed_affirmative": false,
+  "closed_negative": false,
+  "note_on_verdict": "The problem was not closed in either direction. Nothing in this campaign narrows the gap described in gap_to_close.",
+
+  "gap_to_close": {
+    "published_impossibility_scale": "sqrt(log n)",
+    "erdos_sarkozy": "|r_A(n) - log n| / sqrt(log n) -> 0 is impossible",
+    "horvath_Ho07": "|r_A(n) - log n| <= (1-eps) sqrt(log n) cannot hold for all large n",
+    "scale_the_problem_requires": "o(log n)",
+    "distance": "a full sqrt(log n) factor; not narrowed by this campaign",
+    "affirmative_side": "no construction known; the source records that a random set works only if an exceptional set of density zero is permitted, which the problem forbids"
+  },
+
+  "banked_lean": {
+    "sorry_free": true,
+    "theorem_count": 14,
+    "toolchain": "leanprover/lean4:v4.31.0-rc1",
+    "mathlib_rev": "919544d4309104b3f19724b0e6e48c701d27948f",
+    "receipt": "receipts/lean-build.json",
+    "semantic_binding": {
+      "rep_eq_sumConv": "rep A n = sum over antidiagonal n of 1_A p.1 * 1_A p.2 -- proves the object studied is the upstream sumRep; ordered pairs, diagonal included"
+    },
+    "exact_finite_structure": {
+      "pairsLe_eq_biUnion": "antidiagonals below N partition the pairs of sum <= N",
+      "sum_rep_eq": "sum_{n<=N} r_A(n) = #{(a,b) in A^2 : a+b <= N}",
+      "sum_rep_le": "sum_{n<=N} r_A(n) <= cnt(A,N)^2",
+      "le_sum_rep": "cnt(A,N/2)^2 <= sum_{n<=N} r_A(n)",
+      "counting_sandwich": "both sides together",
+      "rep_le_of_finite": "finite A implies r_A bounded by |A|^2"
+    },
+    "necessary_conditions_on_any_witness": {
+      "nonneg_of_tendsto": "the limit c is >= 0",
+      "pos_of_tendsto": "c != 0 forces c > 0",
+      "infinite_of_tendsto": "any witness A is infinite",
+      "exists_uniform_rep_bound": "exists M >= 0 with r_A(n) <= M + (c+1) log n for EVERY n",
+      "sum_rep_le_of_tendsto": "sum_{n<=N} r_A(n) <= (N+1)M + (c+1)(N+1) log N",
+      "cnt_sq_le_of_tendsto": "UPPER: cnt(A,N/2)^2 <= (N+1)M + (c+1)(N+1) log N, i.e. cnt(A,N) = O(sqrt(N log N))",
+      "le_cnt_sq_of_tendsto": "LOWER: eventually (N/2)(c/2) log(N/2) <= cnt(A,N)^2, i.e. cnt(A,N) >> sqrt(N log N)"
+    },
+    "net_structural_statement": "any A witnessing Erdos 66 with limit c has counting function pinned to cnt(A,N) asymptotically of order sqrt(N log N), both directions kernel-checked"
+  },
+
+  "numeric_verification": {
+    "receipt": "receipts/receipt-finite-identity.json",
+    "script": "verify_finite_identity.py",
+    "script_sha256": "f110d84f3e252f9246bbeec2af7a87b94a476080b3d7beed3c9d002df1cb6f05",
+    "cases_tested": 414,
+    "violations": 0,
+    "verdict": "ALL PASS",
+    "method": "brute-force enumeration of ordered pairs, independent of the Lean proof",
+    "families": {"random": 360, "structured": 54},
+    "wall_seconds": 2.61,
+    "transfer_caveat": "Per the source page and CONTRACT.md, NO finite computation can resolve Erdos 66. This run tests the finite lemmas the Lean rests on; it is not evidence about the problem itself."
+  },
+
+  "observed_but_NOT_proved": {
+    "parity_law": {
+      "statement": "r_A(n) is odd iff n = a+a for some a in A; equivalently r_A(n) is even for every odd n",
+      "status": "UNPROVED",
+      "evidence": "verified exactly on all 414 finite cases; NOT formalised in Lean"
+    }
+  },
+
+  "paper_level_UNPROVED_in_lean": {
+    "sharp_constant_chain": "sqrt(c) <= liminf g <= 2*sqrt(c/pi) <= limsup g <= sqrt(2c), where g(N) = cnt(A,N)/sqrt(N log N)",
+    "kernel_checked_part": "the two OUTER inequalities (they are cnt_sq_le_of_tendsto and le_cnt_sq_of_tendsto)",
+    "unproved_part": "the two INNER inequalities, from Stieltjes integration by parts / Karamata; hand proof only, NOT kernel-checked",
+    "numeric_consistency_evidence_only": {
+      "caveat": "one random model set; proves nothing",
+      "c_hat": 2.7463718098763126,
+      "g_measured": 1.8181885519954668,
+      "elementary_bracket": [1.6572180936365355, 2.343660303830874],
+      "karamata_prediction": 1.869970372193207,
+      "g_inside_bracket": true,
+      "relative_gap_to_prediction": 0.028
+    }
+  },
+
+  "prior_estate_work_superseded": {
+    "campaign": "oracle/evidence/msl-machine/campaigns/erdos66-campaign-001",
+    "iters": 265,
+    "ops": {"no_finding": 236, "lemma": 18, "open_route": 6, "kill": 5},
+    "routes": {"R001": "DEAD", "R002": "DEAD", "R003": "DEAD", "R004": "DEAD", "R005": "DEAD", "R006": "ACTIVE"},
+    "banked": "no Lean, no receipts, no theorem",
+    "this_campaign": "first to leave kernel-checked artifacts on erdos:66"
+  },
+
+  "claim_ceiling": "The mathematics banked here is elementary and classical in character. The artifact of value is the machine-checked formalisation and the receipts, NOT a novel theorem. Erdos 66 remains open; openness is the source's marking, not ours."
+}

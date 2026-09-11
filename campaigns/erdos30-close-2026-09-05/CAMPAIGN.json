@@ -1,0 +1,134 @@
+{
+  "campaign": "erdos30-close-2026-09-05",
+  "target": {
+    "id": "erdos:30",
+    "url": "https://www.erdosproblems.com/30",
+    "prize": "$1000",
+    "declared_state": "OPEN",
+    "source_of_openness": "erdosproblems.com community database (teorth/erdosproblems data/problems.yaml), via oracle/evidence/targets/open-frontier.jsonl",
+    "statement": "Let h(N) be the maximum size of a Sidon set in {1,...,N}. Is it true that for every eps > 0, h(N) = sqrt(N) + O_eps(N^eps)?",
+    "lean_statement_upstream": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/30.lean",
+    "upstream_todo_addressed": "TODO(firsching): add the various known bounds as variants."
+  },
+
+  "outcome": {
+    "problem_closed": false,
+    "conjecture_proved": false,
+    "conjecture_disproved": false,
+    "what_was_banked": "The classical UPPER bound side, kernel-checked sorry-free in Lean 4 / Mathlib: the Erdos-Turan (1941) window inequality, and Lindstrom's (1969) sqrt(N) + N^(1/4) + O(1) corollary with the sharp coefficient 1 on N^(1/4).",
+    "claim_ceiling": "An upper bound on h(N) is not progress on the Erdos 30 error-term conjecture, which asks for O(N^eps). The gap between the proved O(N^(1/4)) and the conjectured O(N^eps) is UNTOUCHED by this campaign."
+  },
+
+  "proved_sorry_free": [
+    {
+      "name": "E30.sidon_diff_injOn",
+      "statement": "For a Sidon set A, the map (a,b) |-> b - a is injective on {(a,b) in A x A : a < b}.",
+      "role": "the Sidon property in difference form"
+    },
+    {
+      "name": "E30.card_sq_le",
+      "statement": "A subset of Icc 1 N, Sidon => A.card^2 <= 2*N + A.card",
+      "role": "the trivial bound k <~ sqrt(2N)"
+    },
+    {
+      "name": "E30.sidon_key",
+      "statement": "A subset of Icc 1 N, Sidon, 0 < l  =>  A.card^2 * l <= (N + l) * (A.card + l)",
+      "role": "MAIN RESULT. The Erdos-Turan (1941) window / double-counting inequality, in a subtraction-free natural-number form valid for every window length l >= 1. Everything below is a corollary of this."
+    },
+    {
+      "name": "E30.sidon_sq_le_sqrt",
+      "statement": "A subset of Icc 1 N, Sidon => A.card^2 <= N + A.card + 2*Nat.sqrt (N * A.card) + 1",
+      "role": "sidon_key at the balancing window length l = floor(sqrt(N*k)) + 1"
+    },
+    {
+      "name": "E30.h_le",
+      "statement": "h N <= Nat.sqrt N + 3 * (Nat.sqrt (Nat.sqrt N) + 1)",
+      "role": "first-pass corollary, window l = m^3 with m = floor(N^(1/4)) + 1"
+    },
+    {
+      "name": "E30.h_le_sharp",
+      "statement": "h N <= Nat.sqrt N + Nat.sqrt (Nat.sqrt N) + 4",
+      "role": "SHARP COROLLARY. Coefficient 1 on the N^(1/4) term, matching Lindstrom (1969) h(N) < sqrt(N) + N^(1/4) + 1; only the additive constant is looser (4 vs 1)."
+    },
+    {
+      "name": "E30.h_le_real_sharp",
+      "statement": "(h N : R) <= Real.sqrt N + (N:R)^(1/4) + 4",
+      "role": "real-valued form of h_le_sharp"
+    },
+    {
+      "name": "E30.erdos30_error_term_upper",
+      "statement": "(h N : R) - Real.sqrt N <= (N:R)^(1/4) + 4",
+      "role": "the Erdos 30 error term, bounded above; the shape the problem asks about"
+    }
+  ],
+
+  "explicitly_UNPROVED": [
+    "The Erdos 30 conjecture itself (h(N) - sqrt(N) = O_eps(N^eps)). Neither proved nor disproved nor approached.",
+    "Any LOWER bound on h(N). The Singer-difference-set construction h(N) >= sqrt(N) - O(N^theta) is NOT formalized here. Consequently the two-sided BigO statement in FormalConjectures/ErdosProblems/30.lean cannot be derived from this file.",
+    "Lindstrom's exact additive constant (h(N) < sqrt(N) + N^(1/4) + 1). This campaign proves the same N^(1/4) coefficient with additive constant 4.",
+    "Balogh-Furedi-Roy (2021) and later improvements to the 1/4-exponent constant."
+  ],
+
+  "artifacts": {
+    "lean_proof": "lean/E30.lean",
+    "lean_proof_sha256": "645fcc4cbbd80ecf9cda8bd928c1f3dd5e6cb3e3dc5264e2b57a5c3ddedd857b",
+    "lean_compile_receipt": "receipts/lean_compile_receipt.txt",
+    "definition_fidelity_receipt": "receipts/definition_fidelity.json",
+    "definition_fidelity_script": "compute/definition_fidelity.py",
+    "numerical_verification_receipt": "receipts/verify_bounds_receipt.json",
+    "numerical_verification_script": "compute/verify_bounds.py"
+  },
+
+  "verification": {
+    "toolchain": "leanprover/lean4:v4.31.0-rc1",
+    "mathlib_rev": "919544d4309104b3f19724b0e6e48c701d27948f",
+    "host": "scw-gracious-galois (rented box 51.158.234.15), /root/formalizer/proofs",
+    "compile": "lake env lean E30.lean -> exit 0, no errors, no warnings",
+    "wall_seconds": 49.70,
+    "max_rss_kb": 6813956,
+    "axiom_audit": "#print axioms on all 15 declarations: every one depends only on [propext, Classical.choice, Quot.sound]. NO sorryAx. The single grep hit for 'sorry' in E30.lean is inside the header docstring, which quotes the upstream formal-conjectures statement verbatim.",
+    "definition_fidelity": {
+      "IsSidon_identical_to_formal_conjectures": true,
+      "maxSidonSubsetCard_identical_to_formal_conjectures": true,
+      "Decidable_instance_identical_to_formal_conjectures": true,
+      "h_same_modulo_namespace": true,
+      "note": "IsSidon and maxSidonSubsetCard are copied CHARACTER-IDENTICAL from FormalConjecturesForMathlib/Combinatorics/Basic.lean, so E30.h is the same object as Erdos30.h upstream."
+    },
+    "numerical_cross_check": {
+      "exact_h_range": "N = 0 .. 586 (h(N) exact because optimal Golomb ruler lengths G(k) are known for k <= 28, G(28) = 585)",
+      "G_k_recomputed_exhaustively_by_this_campaign": "k = 1..10, matches OEIS A003022",
+      "h_brute_forced_independently": "N = 1..26, matches the G-derived table",
+      "violations_of_sidon_key": 0,
+      "violations_of_card_sq_le": 0,
+      "violations_of_h_le": 0,
+      "violations_of_h_le_sharp": 0,
+      "violations_of_sidon_sq_le_sqrt": 0,
+      "min_C_the_true_h_actually_needs_in_h_le_sharp": 1
+    }
+  },
+
+  "observed_not_proved": {
+    "max_h_minus_sqrtN_on_exact_range": {"N": 493, "h": 26, "value": 3.796397},
+    "max_ratio_h_minus_sqrtN_over_N_pow_quarter": {"N": 56, "h": 10, "value": 0.919987},
+    "caveat": "These are OBSERVATIONS on N <= 586 only. They are not evidence for or against the conjecture; the conjecture is asymptotic."
+  },
+
+  "estate_machinery_checked_first": {
+    "repo_index_query": "python oracle/tools/repo_index.py --find \"sidon\"",
+    "kbk_sota_sidon": "oracle/kbk/sota/kbk_sota/sidon.py -- exact Sidon/Golomb-ruler optimisation and verify_sidon",
+    "sidon_decide": "oracle/kbk/engine/sidon_decide.py -- A309370 f(d), Sidon sets in {0,1}^d",
+    "f7_ge_24_witness": "NOT APPLICABLE to Erdos 30. The estate's verified 24-element witness proves f(7) >= 24 for OEIS A309370 (Sidon sets of 0/1 vectors in the hypercube), a DIFFERENT problem from h(N), the maximum Sidon subset of an integer interval.",
+    "prior_rapid_fire_run": "oracle/evidence/rapid-fire/corpus-erdos-30-operator-20260730T090537Z-routed.json -- named 'corpus-erdos-30' but it is a Sidon-lane batch (N=30,35,38,...), NOT an attack on Erdos problem 30; all 31 results self-reported novel:false."
+  },
+
+  "computational_front_not_attempted": {
+    "reason": "Extending exact h(N) beyond N = 586 requires the optimal Golomb ruler of order 29. OGR-28 took distributed.net roughly 6 years of volunteer compute; OGR-29 is an open distributed search. This is not reachable under the campaign's no-heavy-local-compute rule, and no partial search would beat the published record.",
+    "conclusion": "The attackable front for this problem is formalization of the analytic bounds, which is what was done."
+  },
+
+  "next_moves": [
+    "Tighten the additive constant in h_le_sharp from 4 to 1 to match Lindstrom exactly (needs a sharper endgame than the two-pass bootstrap used here).",
+    "Formalize the Singer difference set lower bound h(N) >= q+1 for N = q^2+q+1, q a prime power. That plus a prime-gap input gives the other half of the FC statement.",
+    "Upstream: offer E30.sidon_key and E30.h_le_sharp to google-deepmind/formal-conjectures as the 'known bounds as variants' the file's TODO asks for."
+  ]
+}

@@ -1,0 +1,53 @@
+@offDiag_card : ∀ {α : Type u_1} (s : Finset α), #s.offDiag = #s * #s - #s
+@card_le_card_of_injOn : ∀ {α : Type u_1} {β : Type u_2} {s : Finset α} {t : Finset β} (f : α → β),
+  Set.MapsTo f ↑s ↑t → Set.InjOn f ↑s → #s ≤ #t
+@mem_offDiag : ∀ {α : Type u_1} {s : Finset α} {x : α × α}, x ∈ s.offDiag ↔ x.1 ∈ s ∧ x.2 ∈ s ∧ x.1 ≠ x.2
+@card_erase_of_mem : ∀ {α : Type u_1} {s : Finset α} {a : α} [inst : DecidableEq α], a ∈ s → #(s.erase a) = #s - 1
+Int.card_Icc : ∀ (a b : ℤ), #(Icc a b) = (b + 1 - a).toNat
+@mem_Icc : ∀ {α : Type u_1} [inst : Preorder α] [inst_1 : LocallyFiniteOrder α] {a b x : α}, x ∈ Icc a b ↔ a ≤ x ∧ x ≤ b
+@mem_erase : ∀ {α : Type u_1} [inst : DecidableEq α] {a b : α} {s : Finset α}, a ∈ s.erase b ↔ a ≠ b ∧ a ∈ s
+@Set.ncard_eq_toFinset_card' : ∀ {α : Type u_1} (s : Set α) [inst : Fintype ↑s], s.ncard = #s.toFinset
+@Set.Finite.mem_toFinset : ∀ {α : Type u_1} {s : Set α} {a : α} (hs : s.Finite), a ∈ hs.toFinset ↔ a ∈ s
+@Set.Finite.toFinset : {α : Type u_1} → {s : Set α} → s.Finite → Finset α
+@liminf_eq : ∀ {α : Type u_1} {β : Type u_2} [inst : ConditionallyCompleteLattice α] {f : Filter β} {u : β → α},
+  liminf u f = sSup {a | ∀ᶠ (n : β) in f, a ≤ u n}
+@tendsto_atTop : ∀ {α : Type u_1} {β : Type u_2} [inst : Preorder β] {m : α → β} {f : Filter α},
+  Tendsto m f atTop ↔ ∀ (b : β), ∀ᶠ (a : α) in f, b ≤ m a
+@eventually_ge_atTop : ∀ {α : Type u_1} [inst : Preorder α] (a : α), ∀ᶠ (x : α) in atTop, a ≤ x
+@le_csSup : ∀ {α : Type u_1} [inst : ConditionallyCompleteLattice α] {s : Set α} {a : α},
+  BddAbove s → a ∈ s → a ≤ sSup s
+@csSup_le : ∀ {α : Type u_1} [inst : ConditionallyCompleteLattice α] {s : Set α} {a : α},
+  s.Nonempty → (∀ b ∈ s, b ≤ a) → sSup s ≤ a
+Real.rpow_zero : ∀ (x : ℝ), x ^ 0 = 1
+@Real.rpow_nonneg : ∀ {x : ℝ}, 0 ≤ x → ∀ (y : ℝ), 0 ≤ x ^ y
+@Real.rpow_le_rpow_of_exponent_le : ∀ {x y z : ℝ}, 1 ≤ x → y ≤ z → x ^ y ≤ x ^ z
+@Real.le_sqrt : ∀ {x y : ℝ}, 0 ≤ x → 0 ≤ y → (x ≤ √y ↔ x ^ 2 ≤ y)
+@Real.le_sqrt' : ∀ {x y : ℝ}, 0 < x → (x ≤ √y ↔ x ^ 2 ≤ y)
+@Real.sqrt_le_sqrt : ∀ {x y : ℝ}, x ≤ y → √x ≤ √y
+@Real.sq_sqrt : ∀ {x : ℝ}, 0 ≤ x → √x ^ 2 = x
+Real.sqrt_nonneg : ∀ (x : ℝ), 0 ≤ √x
+@Real.sqrt_mul : ∀ {x : ℝ}, 0 ≤ x → ∀ (y : ℝ), √(x * y) = √x * √y
+@Real.sqrt_pos : ∀ {x : ℝ}, 0 < √x ↔ 0 < x
+@Real.one_le_sqrt : ∀ {x : ℝ}, 1 ≤ √x ↔ 1 ≤ x
+@Real.lt_sqrt : ∀ {x y : ℝ}, 0 ≤ x → (x < √y ↔ x ^ 2 < y)
+@Nat.floor_le : ∀ {R : Type u_1} [inst : Semiring R] [inst_1 : LinearOrder R] [inst_2 : FloorSemiring R] {a : R},
+  0 ≤ a → ↑⌊a⌋₊ ≤ a
+@Nat.le_floor : ∀ {α : Type u_1} [inst : Semiring α] [inst_1 : PartialOrder α] [inst_2 : FloorSemiring α] {a : α}
+  {n : ℕ} [IsOrderedRing α], ↑n ≤ a → n ≤ ⌊a⌋₊
+Real.add_one_le_exp : ∀ (x : ℝ), x + 1 ≤ Real.exp x
+@Real.le_log_iff_exp_le : ∀ {x y : ℝ}, 0 < y → (x ≤ Real.log y ↔ Real.exp x ≤ y)
+/root/peer/sub-1191/Probe.lean:48:8: error(lean.unknownIdentifier): Unknown constant `Real.one_le_exp_iff_le`
+Real.exp_one_lt_d9 : Real.exp 1 < 2.7182818286
+@Real.log_le_log : ∀ {x y : ℝ}, 0 < x → x ≤ y → Real.log x ≤ Real.log y
+@Real.le_log_iff_exp_le : ∀ {x y : ℝ}, 0 < y → (x ≤ Real.log y ↔ Real.exp x ≤ y)
+@div_le_div_of_nonneg_left : ∀ {G₀ : Type u_1} [inst : GroupWithZero G₀] [inst_1 : PartialOrder G₀] [PosMulReflectLT G₀]
+  [MulPosReflectLT G₀] {a b c : G₀}, 0 ≤ a → 0 < c → c ≤ b → a / b ≤ a / c
+@div_le_iff₀ : ∀ {G₀ : Type u_1} [inst : GroupWithZero G₀] [inst_1 : PartialOrder G₀] [MulPosReflectLT G₀] {a b c : G₀},
+  0 < c → (b / c ≤ a ↔ b ≤ a * c)
+@mul_le_mul_of_nonneg_right : ∀ {α : Type u_1} [inst : Mul α] [inst_1 : Zero α] [inst_2 : Preorder α] {a b c : α}
+  [MulPosMono α], b ≤ c → 0 ≤ a → b * a ≤ c * a
+/root/peer/sub-1191/Probe.lean:76:17: error: failed to synthesize
+  Fintype ↑(countSet A x)
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+/root/peer/sub-1191/Probe.lean:81:33: error: failed to prove positivity/nonnegativity/nonzeroness

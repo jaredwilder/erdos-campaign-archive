@@ -1,0 +1,88 @@
+{
+  "target": "Erdos Problem 20 - the Sunflower Conjecture ($1000)",
+  "statement_url": "https://www.erdosproblems.com/20",
+  "corpus_file": "oracle/evidence/targets/lean-sources/FormalConjectures__ErdosProblems__20.lean",
+  "date": "2026-09-05",
+  "status": "NOT CLOSED. The open conjecture (f n k < c_k^n) is UNTOUCHED and remains open. What is banked is the full classical sandwich around it, kernel-checked and sorry-free, plus two exact values, a reusable lower-bound engine, a multiplier theorem, and an improved lower-bound base at k=3.",
+
+  "toolchain": {
+    "lean": "leanprover/lean4:v4.31.0-rc1",
+    "mathlib": "/root/formalizer/proofs/.lake/packages/mathlib",
+    "box": "root@51.158.234.15 (rented; nice -n 19, 1 core)",
+    "workdir_remote": "/root/peer/sub-e20",
+    "build": "LEAN_PATH=$(lake env printenv LEAN_PATH):/root/peer/sub-e20 ; lean -o AttackNN.olean AttackNN.lean",
+    "total_wall": "under 60 s for the whole chain; Attack06 is the slowest at ~17 s (kernel decide over the 64-subset powerset)"
+  },
+
+  "prior_art_check": {
+    "mathlib": "NO sunflower material at all. `grep -ril sunflower Mathlib/` returns EMPTY on v4.31.0-rc1. IsSunflower lives only in the formal-conjectures side-library FormalConjecturesForMathlib/Combinatorics/SetFamily/Sunflower.lean.",
+    "corpus": "FormalConjectures/ErdosProblems/20.lean carries TWO sorries: `erdos_20` (the genuine open conjecture, an answer(sorry) hole) and `erdos_20.variants.erdos_rado_bound` (the 1960 upper bound, stated but unproved). The second is now DISCHARGED here.",
+    "estate": "No prior erdos20 campaign existed under oracle/evidence/msl-machine/campaigns/."
+  },
+
+  "fidelity": "f, IsSunflower and IsSunflowerWithKernel are reproduced VERBATIM from the corpus in Attack02 (the sInf-over-all-Type definition, Set.ncard, Set.Pairwise). erdos_rado_bound is character-for-character the corpus statement. The objects proved about are the corpus objects, not a convenient restatement. FormalConjecturesUtil does not build on this toolchain (it uses the new `module`/`public import` syntax), so the definitions are reproduced rather than imported; the reproduction is verbatim and is the documented correspondence.",
+
+  "sealed": [
+    "Erdos20Attack.sunflower_lemma : (k-1)^n * n! < #F -> F n-uniform -> exists a k-sunflower in F  [THE ERDOS-RADO SUNFLOWER LEMMA, Finset form; not in Mathlib] | axioms [propext, Classical.choice, Quot.sound]",
+    "Erdos20Corpus.erdos_rado_mem : the Set-level membership witness ((k-1)^n*n!+1 is in the defining set of f) | [propext, Classical.choice, Quot.sound]",
+    "Erdos20Corpus.erdos_rado_bound : forall n k, n>0 -> 2<=k -> f n k <= (k-1)^n * n! + 1  [THE CORPUS SORRY, DISCHARGED] | [propext, Classical.choice, Quot.sound]",
+    "Erdos20Lower.Fam_no_sunflower : the (k-1)^n transversal family is k-sunflower-free | [propext, Classical.choice, Quot.sound]",
+    "Erdos20Lower.erdos_rado_lower : (k-1)^n < f n k | [propext, Classical.choice, Quot.sound]",
+    "Erdos20Lower.erdos_rado_sandwich : (k-1)^n < f n k <= (k-1)^n * n! + 1 | [propext, Classical.choice, Quot.sound]",
+    "Erdos20Lower.f_one : f 1 k = k  [EXACT] | [propext, Classical.choice, Quot.sound]",
+    "Erdos20Lower.lower_of_witness : any explicit k-sunflower-free n-uniform family of size >= m forces m < f n k  [REUSABLE ENGINE] | [propext, Classical.choice, Quot.sound]",
+    "Erdos20Lower.f_two_le : f n 2 <= 2 | [propext, Classical.choice, Quot.sound]",
+    "Erdos20Lower.f_two : f n 2 = 2 for n>0  [EXACT; Erdos-Rado only gives n!+1] | [propext, Classical.choice, Quot.sound]",
+    "Erdos20Lower.const_lower : any c with f n k < c^n for all n>0 satisfies k <= c  [a constraint on the ANSWER to the open question] | [propext, Classical.choice, Quot.sound]",
+    "Erdos20Prod.prodFam_free : the disjoint-union product of two k-sunflower-free families is k-sunflower-free (the all-distinct / all-equal projection dichotomy) | [propext, Classical.choice, Quot.sound]",
+    "Erdos20Prod.prod_lower : M1*M2 < f (n1+n2) k  [THE MULTIPLIER] | [propext, Classical.choice, Quot.sound]",
+    "Erdos20Prod.hasWitness_of_finset : bridge from a DECIDABLE explicit Finset family to a Set-level witness | [propext, Classical.choice, Quot.sound]",
+    "Erdos20Prod.seed_free : the two-disjoint-triangles 6-edge family on Fin 6 has no 3-sunflower  [kernel decide over the full 64-subset powerset; NOT native_decide] | [propext, Classical.choice, Quot.sound]",
+    "Erdos20Prod.seed_witness : HasWitness 2 3 6 | [propext, Classical.choice, Quot.sound]",
+    "Erdos20Prod.lower_k3 : 6^t < f (2t) 3  [lower-bound base for k=3 improved from 2 to sqrt 6 ~ 2.449] | [propext, Classical.choice, Quot.sound]",
+    "Erdos20Prod.beats_erdos_rado_product : (3-1)^(2t) = 4^t < 6^t  [the improvement is strict] | [propext, Classical.choice, Quot.sound]",
+    "Erdos20Prod.f_two_three : 6 < f 2 3 <= 9  [the first genuinely unknown case; the Erdos-Rado sandwich alone gives only 4 < f 2 3 <= 9] | [propext, Classical.choice, Quot.sound]"
+  ],
+
+  "axiom_audit": "All 19 theorems print exactly [propext, Classical.choice, Quot.sound]. NO sorryAx. NO Lean.ofReduceBool (no native_decide anywhere - the seed check is kernel decide). Verified by grep over the clean-rebuild logs: 0 hits for sorryAx|ofReduceBool|native_decide across all six logs.",
+
+  "files": {
+    "Attack01.lean": "Erdos-Rado sunflower lemma, Finset form, induction on n (maximal disjoint subfamily -> bounded cover Y -> pigeonhole -> erase the pivot). exit 0.",
+    "Attack02.lean": "verbatim corpus definitions + Set/ncard <-> Finset transfer + erdos_rado_bound. exit 0.",
+    "Attack03.lean": "transversal product construction, sunflower-freeness by the pigeonhole-on-a-coordinate argument, erdos_rado_lower, the sandwich, f_one. exit 0.",
+    "Attack04.lean": "lower_of_witness engine, f_two exact, const_lower. exit 0.",
+    "Attack05.lean": "disjoint-union product of families, the projection dichotomy, prod_lower multiplier. exit 0.",
+    "Attack06.lean": "decidable Finset bridge, the two-triangles seed (decide), iteration, lower_k3. exit 0, ~17 s, maxRecDepth 40000."
+  },
+
+  "sha256": {
+    "Attack01.lean": "741bdb7a01e9924b71b66cdf651c7da2244b7a3d74c2634a4c0cfcaf64c5f971",
+    "Attack02.lean": "9773e8fd97dad92eb93dd7fa2845916a6ffba23c855d47190bc36b2b7dddef1b",
+    "Attack03.lean": "e7f9ff17c1fe160f20afe61701f49ce0fe85fdb9fb6b26b08dbe10bf777aef32",
+    "Attack04.lean": "c544b40b16fc6d22578c455023272714823acaf5ac722717996484b0815aaa68",
+    "Attack05.lean": "a315edab97a4b7c98cf82565683181ce158f5dd5c98d054da7889ed3c90de8b6",
+    "Attack06.lean": "02d2b65112bfd78bd61441725eaf2840da1cfdaa5649c826d854e6efea0e6b3b"
+  },
+  "receipts": [
+    "SHA256SUMS.txt - hashes of the six .lean files, identical local and on the box",
+    "AXIOMS.txt - the 19 `#print axioms` lines from the clean rebuild",
+    "Attack01.log .. Attack06.log - raw compiler output of the clean rebuild"
+  ],
+
+  "honesty": [
+    "THE PRIZE PROBLEM IS NOT CLOSED. `erdos_20` asks whether f(n,k) < c_k^n. Nothing here bears on the upper-bound side beyond the 1960 Erdos-Rado n! bound. The modern record (Alweiss-Lovett-Wu-Zhang 2019, sharpened by Rao and by Bell-Chueluecha-Warnke) is f(n,k) <= (O(k log n))^n; it is NOT formalized here and was not attempted.",
+    "lower_k3 (base sqrt 6 ~ 2.449 at k=3) beats the Erdos-Rado product construction (base 2) and beats the estate's own formalized baseline. It is NOT a literature record: better k=3 lower-bound constructions are known (Abbott-Hanson-Sauer 1972 and successors, base around 3.16). The claim banked is exactly `6^t < f (2t) 3`, no more.",
+    "f_one and f_two are exact values of f, but they are small/easy cases; f(n,k) is not known exactly for any n >= 2, k >= 3.",
+    "erdos_rado_bound is the classical 1960 theorem. The contribution is that it is now MACHINE-CHECKED and that Mathlib had no sunflower lemma at all - not that the mathematics is new."
+  ],
+
+  "open": [
+    "erdos_20 : answer(sorry) <-> exists c, forall n k, n>0 -> f n k < (c k)^n  -- THE $1000 QUESTION, untouched.",
+    "The ALWZ/Rao (O(k log n))^n upper bound - the real modern frontier - is unformalized. This is the single highest-value next Lean target on this problem and is a genuine multi-week formalization (it needs the spread-approximation / sunflower-free encoding machinery).",
+    "Exact f(2,3): f_two_three banks 6 < f(2,3) <= 9. The true value is 7; the matching upper bound f(2,3) <= 7 (a 3-sunflower-free 2-uniform family has max degree <= 2 and no 3-matching, hence <= 6 edges) is NOT formalized. Cheap next win.",
+    "A better seed for the multiplier: any explicit k-sunflower-free n-uniform family of size M > 6^(n/2) at k=3 plugs straight into hasWitness_of_finset + HasWitness.mul and raises the base with zero further proof work. This is the cheapest path to matching the literature lower bound.",
+    "Kostochka-type improvements of the n! factor in the upper bound: unformalized."
+  ],
+
+  "next_command": "ssh root@51.158.234.15 'export PATH=/root/.elan/bin:$PATH; cd /root/formalizer/proofs && LP=$(lake env printenv LEAN_PATH) && export LEAN_PATH=\"$LP:/root/peer/sub-e20\" && cd /root/peer/sub-e20 && for f in Attack01 Attack02 Attack03 Attack04 Attack05; do lean -o $f.olean $f.lean; done && lean Attack06.lean'"
+}

@@ -1,0 +1,68 @@
+{
+  "target": "erdos:1191",
+  "campaign": "erdos1191-attack-2026-09-05",
+  "date": "2026-09-05",
+  "status": "PARTIAL",
+  "closed": false,
+  "acceptance_note": "NO CLOSE. Neither Question1 nor Question2 (nor either negation) is proved. Every theorem below is either an unconditional lemma or a CONDITIONAL whose extra hypothesis is visible in its own statement. Nothing here asserts an answer to Erdos 1191.",
+  "artifact": "oracle/evidence/msl-machine/campaigns/erdos1191-attack-2026-09-05/Attack01.lean",
+  "spec_source": "oracle/evidence/formalizer-sources/erdos/erdos-1191.lean",
+  "spec_modified": false,
+  "defs_copied_verbatim": [
+    "IsSidon", "countSet", "countUpTo", "sidonWeight",
+    "Question1", "Question2", "Question2'", "finite_countSet"
+  ],
+  "verbatim_check": "8/8 byte-identical (line-block diff against the frozen spec)",
+  "toolchain": {
+    "box": "51.158.234.15",
+    "workdir": "/root/formalizer/proofs",
+    "mathlib_pin": "919544d4",
+    "compile_exit": 0,
+    "errors": 0,
+    "sorries": 0
+  },
+  "kernel_iterations_used": 4,
+  "kernel_iterations_budget": 8,
+  "sealed": [
+    {"name": "Erdos1191.sidon_intSub_inj", "axioms": "'Erdos1191.sidon_intSub_inj' depends on axioms: [propext, Quot.sound]", "what": "Sidon (sum form, as the spec fixes it) => all differences distinct, stated over Z so no Nat-subtraction truncation can hide a case."},
+    {"name": "Erdos1191.sidon_offDiag_bound", "axioms": "'Erdos1191.sidon_offDiag_bound' depends on axioms: [propext, Classical.choice, Quot.sound]", "what": "k*k - k <= 2*floor(x): the k(k-1) ordered pairs of distinct elements of A cap [1,x] inject into the 2*floor(x) nonzero integers of absolute value <= floor(x)."},
+    {"name": "Erdos1191.sidon_card_sq_le", "axioms": "'Erdos1191.sidon_card_sq_le' depends on axioms: [propext, Classical.choice, Quot.sound]", "what": "Subtraction-free form: k^2 <= k + 2*floor(x)."},
+    {"name": "Erdos1191.countUpTo_le_sqrt", "axioms": "'Erdos1191.countUpTo_le_sqrt' depends on axioms: [propext, Classical.choice, Quot.sound]", "what": "The classical counting bound in real form: |A cap [1,x]| <= sqrt(2x) + 1 for every Sidon A."},
+    {"name": "Erdos1191.sidonWeight_le", "axioms": "'Erdos1191.sidonWeight_le' depends on axioms: [propext, Classical.choice, Quot.sound]", "what": "sidonWeight A c x <= (sqrt 2 + 1) * (log x)^c for x >= 1, uniformly over ALL Sidon sets."},
+    {"name": "Erdos1191.sidonWeight_mono_exponent", "axioms": "'Erdos1191.sidonWeight_mono_exponent' depends on axioms: [propext, Classical.choice, Quot.sound]", "what": "For x >= e the weight is monotone increasing in the exponent c."},
+    {"name": "Erdos1191.eventually_le_half_of_eventually_le", "axioms": "'Erdos1191.eventually_le_half_of_eventually_le' depends on axioms: [propext, Classical.choice, Quot.sound]", "what": "THE UPGRADE. An eventual positive lower bound at ANY exponent c <= 1/2 is automatically one at c = 1/2. Junk-free: a statement about the weight, not about liminf."},
+    {"name": "Erdos1191.bddAbove_liminfSet_iff", "axioms": "'Erdos1191.bddAbove_liminfSet_iff' depends on axioms: [propext, Classical.choice, Quot.sound]", "what": "THE JUNK GATE, characterised: BddAbove of the eventual-lower-bound set <-> NOT Tendsto f atTop atTop. The spec header names this trap; this makes it a theorem."},
+    {"name": "Erdos1191.le_liminf_of_eventually_le_of_not_tendsto", "axioms": "'Erdos1191.le_liminf_of_eventually_le_of_not_tendsto' depends on axioms: [propext, Classical.choice, Quot.sound]", "what": "With the gate discharged, an eventual lower bound really is a liminf lower bound."},
+    {"name": "Erdos1191.not_question1_of_witness", "axioms": "'Erdos1191.not_question1_of_witness' depends on axioms: [propext, Classical.choice, Quot.sound]", "what": "CONDITIONAL. A Question2'-style witness at any exponent c <= 1/2, PLUS the gate at 1/2, refutes Question1. The gate hypothesis is displayed, not hidden."},
+    {"name": "Erdos1191.question2_of_witness", "axioms": "'Erdos1191.question2_of_witness' depends on axioms: [propext, Classical.choice, Quot.sound]", "what": "CONDITIONAL. The junk-free Question2' witness upgrades to the liminf form Question2, given the gate at its own exponent."},
+    {"name": "Erdos1191.sidonWeight_zero_le", "axioms": "'Erdos1191.sidonWeight_zero_le' depends on axioms: [propext, Classical.choice, Quot.sound]", "what": "sidonWeight A 0 x <= sqrt 2 + 1 for x >= 1: at exponent 0 the weight is BOUNDED."},
+    {"name": "Erdos1191.not_tendsto_sidonWeight_zero", "axioms": "'Erdos1191.not_tendsto_sidonWeight_zero' depends on axioms: [propext, Classical.choice, Quot.sound]", "what": "THE GATE, DISCHARGED UNCONDITIONALLY AT EXPONENT 0, for every Sidon set."},
+    {"name": "Erdos1191.liminf_sidonWeight_zero_le_const", "axioms": "'Erdos1191.liminf_sidonWeight_zero_le_const' depends on axioms: [propext, Classical.choice, Quot.sound]", "what": "THE EXPONENT-0 CASE OF THE ERDOS BOUND, PROVED. Same shape as the spec's sorried erdos_liminf_sqrt_log_le_const with 1/2 replaced by 0, no sorry. Localises the whole difficulty of that theorem in the (log x)^(1/2) factor."},
+    {"name": "Erdos1191.liminf_eq_zero_of_tendsto_atTop", "axioms": "'Erdos1191.liminf_eq_zero_of_tendsto_atTop' depends on axioms: [propext, Classical.choice, Quot.sound]", "what": "If the weight blows up, Mathlib's liminf returns Real.sSup's junk value 0."},
+    {"name": "Erdos1191.question1_clause_holds_vacuously", "axioms": "'Erdos1191.question1_clause_holds_vacuously' depends on axioms: [propext, Classical.choice, Quot.sound]", "what": "FIDELITY FINDING 1. On any set whose weight tends to +infinity - where the mathematician's liminf is +infinity, maximally FAR from 0 - the formalised Question1 clause holds anyway, for the junk reason."},
+    {"name": "Erdos1191.erdos_bound_vacuous_on_blowup", "axioms": "'Erdos1191.erdos_bound_vacuous_on_blowup' depends on axioms: [propext, Classical.choice, Quot.sound]", "what": "FIDELITY FINDING 2. The same junk makes the spec's sorried Erdos bound hold trivially for EVERY nonnegative constant on exactly those sets."},
+    {"name": "Erdos1191.question1_iff_restricted", "axioms": "'Erdos1191.question1_iff_restricted' depends on axioms: [propext, Classical.choice, Quot.sound]", "what": "THE REDUCTION. Question1 <-> its own restriction to the non-blowup case. Any attack may assume the gate for free, and gains nothing from blowup sets."},
+    {"name": "Erdos1191.not_liminf_pos_of_blowup", "axioms": "'Erdos1191.not_liminf_pos_of_blowup' depends on axioms: [propext, Classical.choice, Quot.sound]", "what": "THE ASYMMETRY, made precise. A blowup set can never witness Question2 (its formalised liminf is 0) yet can satisfy every Question2' clause. The two readings are NOT interchangeable."},
+    {"name": "Erdos1191.finite_countSet", "axioms": "re-proved verbatim from the spec as a control; not printed separately", "what": "Spec control, copied so the file is self-contained."}
+  ],
+  "open": [
+    {
+      "item": "Question1 (a named target) - UNTOUCHED as a whole",
+      "obstruction": "Reduced by question1_iff_restricted to the non-blowup case. In that case the statement is the genuine open problem: liminf A(x)(log x)^(1/2)/sqrt(x) = 0 for every infinite Sidon A."
+    },
+    {
+      "item": "Question2 / Question2' (a named target) - UNTOUCHED as a whole",
+      "obstruction": "No infinite Sidon set is CONSTRUCTED anywhere in this artifact, and none exists in the spec either (the spec's only Sidon witness is a singleton). Both question2_of_witness and not_question1_of_witness are therefore currently un-instantiable: they consume a witness nobody has built. Building a Lean infinite Sidon set (e.g. the Mian-Chowla greedy set, or Ruzsa/Erdos-Turan style constructions) is the prerequisite, and is itself a substantial independent formalization."
+    },
+    {
+      "item": "The gate at exponent 1/2: NOT Tendsto (sidonWeight A (1/2)) atTop atTop",
+      "obstruction": "THE ONE LOAD-BEARING GAP. Discharged unconditionally at exponent 0 (not_tendsto_sidonWeight_zero) via the trivial counting bound k <= sqrt(2x)+1. That bound gives sidonWeight A c x <= (sqrt 2 + 1)(log x)^c, which is BOUNDED only for c <= 0 and unbounded for every c > 0. So the elementary counting argument cannot reach c = 1/2 at all. The gate at c = 1/2 is exactly the qualitative content of the published Erdos bound (liminf finite), whose proof is the dyadic-scale / convexity-over-blocks argument: split [1,x] into blocks of length y, apply convexity to the block counts, sum the resulting distinct-difference budget over dyadic scales x, x/2, x/4, ... The single-scale version of that argument reproves only the trivial sqrt(2x) bound - the log factor is produced by the sum over scales. Formalizing it needs a Finset convexity/Cauchy-Schwarz step plus a dyadic sum with uniform error control; well beyond an 8-iteration budget."
+    },
+    {
+      "item": "The c > 1/2 direction of the exponent comparison",
+      "obstruction": "sidonWeight_mono_exponent runs the wrong way for c > 1/2: weight(1/2) = weight(c) * (log x)^(1/2 - c) -> 0. So a Question2 witness at c > 1/2 is CONSISTENT with Question1 and yields no contradiction. Only c <= 1/2 witnesses bear on Question1, which is what not_question1_of_witness records."
+    }
+  ],
+  "fidelity_flag_for_the_semantic_court": "Three of the sealed theorems (question1_clause_holds_vacuously, erdos_bound_vacuous_on_blowup, not_liminf_pos_of_blowup) are machine-checked evidence bearing on the row's own claimCeiling sentence 'It does NOT assert the formalization is faithful.' They show the Mathlib-liminf rendering of Question1 is satisfied, for junk reasons, on exactly the sets where the intended mathematical statement would be most false, and that Question2 and Question2' come apart there. This is a report about the FORMALIZATION, not about Erdos 1191.",
+  "next_command": "python oracle/run.py explain \"erdos:1191\"   # then, the real next move: formalize an infinite Sidon set (Mian-Chowla) to make question2_of_witness / not_question1_of_witness instantiable; separately, attack the exponent-1/2 gate via the dyadic-scale convexity argument. Recompile this artifact with: ssh root@51.158.234.15 'cd /root/formalizer/proofs && export PATH=/root/.elan/bin:$PATH && lake env lean /root/peer/sub-1191/Attack01.lean'"
+}

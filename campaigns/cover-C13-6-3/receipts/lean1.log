@@ -1,0 +1,20 @@
+DerivedDesign.lean:42:63: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (fun b => b.erase x) a
+in the target expression
+  insert x (a.erase x) = insert x (b.erase x)
+
+B : Finset (Finset (Fin 13))
+x : Fin 13
+a : Finset (Fin 13)
+ha : a ∈ ↑(through B x)
+b : Finset (Fin 13)
+hb : b ∈ ↑(through B x)
+hab : (fun b => b.erase x) a = (fun b => b.erase x) b
+ha' : x ∈ a
+hb' : x ∈ b
+⊢ insert x (a.erase x) = insert x (b.erase x)
+'derived_card' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'derived_block_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'derived_avoids' depends on axioms: [propext, Classical.choice, Quot.sound]
+'derived_covers_pairs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'degree_ge_of_cover_number' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

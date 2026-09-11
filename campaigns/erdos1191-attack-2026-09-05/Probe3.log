@@ -1,0 +1,8 @@
+@Set.ncard_eq_toFinset_card : ∀ {α : Type u_1} (s : Set α) (hs : autoParam s.Finite Set.ncard_eq_toFinset_card._auto_1),
+  s.ncard = #hs.toFinset
+@Set.Finite.card_toFinset : ∀ {α : Type u_1} {s : Set α} [inst : Fintype ↑s] (h : s.Finite),
+  #h.toFinset = Fintype.card ↑s
+@Set.toFinset_card : ∀ {α : Type u_1} (s : Set α) [inst : Fintype ↑s], #s.toFinset = Fintype.card ↑s
+@Set.ncard_eq_toFinset_card' : ∀ {α : Type u_1} (s : Set α) [inst : Fintype ↑s], s.ncard = #s.toFinset
+Try this:
+  [apply] exact Set.ncard_eq_toFinset_card (countSet A x) hfin

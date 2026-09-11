@@ -1,0 +1,91 @@
+{
+ "schema": "oracle.msl.closer.run.v1",
+ "campaign": "erdos881-campaign-001",
+ "contract_sha": "f9999f710e3da90688720d8e3199897071dddf1d30ad93b3aa5055a9855d19ec",
+ "dealt": {
+  "packet": "closer",
+  "route_id": "R001",
+  "lemmas": [
+   "L1"
+  ],
+  "reason": "Wang 17: R001 carries standing PROVED lemma(s) L1 and no refuted lemma; convert the standing mathematics into a machine-checkable closure obligation or refuse in type"
+ },
+ "outcome": "CLOSURE_REFUSED",
+ "refusal": {
+  "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+  "note": "Route R001 targets AFFIRMATIVE close (branch A), but standing lemma L1 is a purported counterexample proving the negation (branch B) — and even for branch B it commits the contract's own QUANTIFIER_SLIP trap: exhibiting ONE infinite B (ℕ∖squares) with A∖B not an order-2 basis does not establish the "
+ },
+ "model": "z-ai/glm-5.3-flash",
+ "speaker_calls": 1,
+ "registry_written": false,
+ "why_registry_not_written": "erdos881-campaign-001 was IN FLIGHT under the running fleet at the time of this run (fleet/heartbeat.json listed it among campaigns_in_flight at 53 iterations). The closer was driven against a SNAPSHOT of routes/registry.jsonl so nothing raced the fleet's own append stream. The outcome was a refusal, which mutates no registry in any case.",
+ "independent_sanity_check": {
+  "script": "erdos881_sanity.py (exact integer arithmetic, no floats, no sampling)",
+  "verdict": {
+   "standing_lemma_R001_L1": "MATHEMATICALLY WRONG",
+   "defect": "QUANTIFIER SLIP: the canonical statement asserts THERE EXISTS an infinite B with A\\B a basis of order k+1. The lemma exhibits ONE B (N\\squares) that fails and calls the statement refuted. Refuting one witness of an existential refutes nothing. This is verbatim the first entry in the frozen contract's own known_traps: 'QUANTIFIER SLIP: exchanging forall and exists'.",
+   "decisive_fact": "for the SAME A = N, B* = {odd n >= 3} is infinite and A\\B* is a basis of order 2 - exhaustively verified over [0, 400] with zero exceptions, and proved in general in two lines. So the canonical statement HOLDS at A = N; it is not a counterexample.",
+   "consequence": "no CLOSURE OBLIGATION can be built on R001/L1. The correct machine action is a typed refusal, not a close."
+  },
+  "arms": {
+   "arm1_squares_not_order2_basis": {
+    "claim": "A\\B = squares is NOT a basis of order 2",
+    "first_10_naturals_not_a_sum_of_two_squares": [
+     3,
+     6,
+     7,
+     11,
+     12,
+     14,
+     15,
+     19,
+     21,
+     22
+    ],
+    "count_not_representable_below_N": 255,
+    "N": 400,
+    "verdict": "SUB-CLAIM TRUE (this part of the standing lemma is correct)"
+   },
+   "arm2_A_is_minimal_order1_basis": {
+    "claim": "A = N is a basis of order 1 and is minimal",
+    "why": "order-1 basis means every n is itself in A, true for A = N; and for any infinite B, N\\B omits every element of B, hence omits infinitely many naturals, hence is not an order-1 basis. So A = N is minimal.",
+    "verdict": "TRUE"
+   },
+   "arm3_counter_to_the_counterexample": {
+    "B_star": "the odd integers >= 3 (infinite, subset of A = N)",
+    "A_minus_B_star": "{0, 1} u {even naturals}",
+    "exhaustively_checked_range": [
+     0,
+     400
+    ],
+    "naturals_in_range_NOT_a_sum_of_two_elements": [],
+    "general_proof": "n even  -> n = 0 + n, both in S;  n odd   -> n = 1 + (n-1), 1 in S and n-1 even in S. So EVERY natural is a sum of two elements of S: S is a basis of order 2, with no exceptional set at all.",
+    "verdict": "A\\B* IS a basis of order 2 => an infinite B with the required property EXISTS for A = N"
+   },
+   "arm4_zero_free_variant": {
+    "domain": "positive integers, 0 excluded",
+    "A_minus_B_star": "{1} u {even n >= 2}",
+    "naturals_>=2_in_range_NOT_a_sum_of_two_elements": [],
+    "general_proof": "n even >= 4 -> n = 2 + (n-2), both even;  n = 2 -> 1 + 1;  n odd >= 3  -> n = 1 + (n-1), n-1 even >= 2.",
+    "verdict": "same conclusion in the 0-free domain"
+   }
+  }
+ },
+ "kernel_receipt": {
+  "formal_status": "KERNEL_CHECKED",
+  "axioms": [],
+  "lean_file": "oracle/frontier_formalizer/cable/theorems/msl_erdos881-counter-to-the-counterexample.lean",
+  "receipt": "oracle/frontier_formalizer/cable/receipts/erdos881-counter-to-the-counterexample.cable.json",
+  "what_it_shows": "For A = N and B* = {odd n >= 3} (infinite), every n < 200 is a sum of two elements of A \\ B* = {1} u evens, kernel-checked with an EMPTY axiom footprint. The general two-line proof is n even -> n = 0 + n; n odd -> n = 1 + (n-1). So an infinite B with A \\ B a basis of order 2 EXISTS for A = N, and the standing lemma R001/L1 does not refute the canonical statement.",
+  "what_it_does_NOT_show": "It closes NOTHING about erdos881. It is finite evidence against ONE standing lemma, not a verdict on the canonical statement, which remains open."
+ },
+ "standing_lemma_under_test": {
+  "route": "R001",
+  "lemma": "L1",
+  "registry_status": "PROVED",
+  "statement": "Explicit k=1 counterexample (A=N, B=N\\squares) verified: minimal order-1 basis whose square-set complement is not an order-2 basis; canonical affirmative statement is false over the stated scope.",
+  "verdict": "MATHEMATICALLY WRONG (quantifier slip)",
+  "recommended_registry_action": "re-file R001/L1 as FALSE with this note, which under Wang 4.1 K8 summons the auditor and kills R001. NOT done by this run: the campaign is in flight and a lemma write would race the fleet's own registry stream."
+ },
+ "run_record": "../../AppData/Local/Temp/claude/C--Users-jared-Local-Sites-woocommerce-enterprise/52c23e42-519e-40e0-8ab3-9741a49a124a/scratchpad/erdos881_closer_run.json"
+}

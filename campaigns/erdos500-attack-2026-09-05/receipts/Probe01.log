@@ -1,0 +1,52 @@
+@Finset.card_mul_le_card_mul : ∀ {α : Type u_1} {β : Type u_2} (r : α → β → Prop) {s : Finset α} {t : Finset β}
+  {m n : ℕ} [inst : (a : α) → (b : β) → Decidable (r a b)],
+  (∀ a ∈ s, m ≤ (Finset.bipartiteAbove r t a).card) →
+    (∀ b ∈ t, (Finset.bipartiteBelow r s b).card ≤ n) → s.card * m ≤ t.card * n
+@Finset.bipartiteAbove : {α : Type u_1} →
+  {β : Type u_2} → (r : α → β → Prop) → Finset β → (a : α) → [DecidablePred (r a)] → Finset β
+@Finset.bipartiteBelow : {α : Type u_1} →
+  {β : Type u_2} → (r : α → β → Prop) → Finset α → (b : β) → [(a : α) → Decidable (r a b)] → Finset α
+@Finset.card_le_card_of_injOn : ∀ {α : Type u_1} {β : Type u_2} {s : Finset α} {t : Finset β} (f : α → β),
+  Set.MapsTo f ↑s ↑t → Set.InjOn f ↑s → s.card ≤ t.card
+@Finset.card_compl : ∀ {α : Type u_1} [inst : DecidableEq α] [inst_1 : Fintype α] (s : Finset α),
+  sᶜ.card = Fintype.card α - s.card
+@Finset.card_insert_of_notMem : ∀ {α : Type u_1} {s : Finset α} {a : α} [inst : DecidableEq α],
+  a ∉ s → (insert a s).card = s.card + 1
+@Finset.exists_subset_card_eq : ∀ {α : Type u_1} {s : Finset α} {n : ℕ}, n ≤ s.card → ∃ t ⊆ s, t.card = n
+@Finset.ssubset_iff_of_subset : ∀ {α : Type u_1} {s₁ s₂ : Finset α}, s₁ ⊆ s₂ → (s₁ ⊂ s₂ ↔ ∃ x ∈ s₂, x ∉ s₁)
+@Finset.card_lt_card : ∀ {α : Type u_1} {s t : Finset α}, s ⊂ t → s.card < t.card
+@Finset.card_powersetCard : ∀ {α : Type u_1} (n : ℕ) (s : Finset α), (Finset.powersetCard n s).card = s.card.choose n
+@Finset.card_union_of_disjoint : ∀ {α : Type u_1} {s t : Finset α} [inst : DecidableEq α],
+  Disjoint s t → (s ∪ t).card = s.card + t.card
+@Finset.card_erase_of_mem : ∀ {α : Type u_1} {s : Finset α} {a : α} [inst : DecidableEq α],
+  a ∈ s → (s.erase a).card = s.card - 1
+@Finset.eq_univ_of_card : ∀ {α : Type u_1} [inst : Fintype α] (s : Finset α), s.card = Fintype.card α → s = Finset.univ
+@Finset.notMem_erase : ∀ {α : Type u_1} [inst : DecidableEq α] (a : α) (s : Finset α), a ∉ s.erase a
+@Finset.mem_of_mem_erase : ∀ {α : Type u_1} [inst : DecidableEq α] {s : Finset α} {a b : α}, b ∈ s.erase a → b ∈ s
+@Finset.filter_true_of_mem : ∀ {α : Type u_1} {p : α → Prop} [inst : DecidablePred p] {s : Finset α},
+  (∀ x ∈ s, p x) → Finset.filter p s = s
+@Finset.filter_eq_empty_iff : ∀ {α : Type u_1} {p : α → Prop} [inst : DecidablePred p] {s : Finset α},
+  Finset.filter p s = ∅ ↔ ∀ ⦃x : α⦄, x ∈ s → ¬p x
+@Finset.filter_union : ∀ {α : Type u_1} (p : α → Prop) [inst : DecidablePred p] [inst_1 : DecidableEq α]
+  (s₁ s₂ : Finset α), Finset.filter p (s₁ ∪ s₂) = Finset.filter p s₁ ∪ Finset.filter p s₂
+@Finset.card_eq_sum_card_fiberwise : ∀ {ι : Type u_1} {M : Type u_2} [inst : DecidableEq M] {f : ι → M} {s : Finset ι}
+  {t : Finset M}, Set.MapsTo f ↑s ↑t → s.card = ∑ b ∈ t, {a ∈ s | f a = b}.card
+@Finset.disjoint_left : ∀ {α : Type u_1} {s t : Finset α}, Disjoint s t ↔ ∀ ⦃a : α⦄, a ∈ s → a ∉ t
+@Finset.mem_compl : ∀ {α : Type u_1} {s : Finset α} [inst : Fintype α] [inst_1 : DecidableEq α] {a : α}, a ∈ sᶜ ↔ a ∉ s
+@Finset.mem_coe : ∀ {α : Type u_1} {a : α} {s : Finset α}, a ∈ ↑s ↔ a ∈ s
+@Fin.sum_univ_three : ∀ {M : Type u_1} [inst : AddCommMonoid M] (f : Fin 3 → M), ∑ i, f i = f 0 + f 1 + f 2
+@Nat.sSup_mem : ∀ {s : Set ℕ}, s.Nonempty → BddAbove s → sSup s ∈ s
+Nat.choose_succ_right_eq : ∀ (n k : ℕ), n.choose (k + 1) * (k + 1) = n.choose k * (n - k)
+@Nat.choose_pos : ∀ {n k : ℕ}, k ≤ n → 0 < n.choose k
+@Nat.le_of_mul_le_mul_right : ∀ {a b c : ℕ}, a * c ≤ b * c → 0 < c → a ≤ b
+@div_le_iff₀ : ∀ {G₀ : Type u_1} [inst : GroupWithZero G₀] [inst_1 : PartialOrder G₀] [MulPosReflectLT G₀] {a b c : G₀},
+  0 < c → (b / c ≤ a ↔ b ≤ a * c)
+@le_div_iff₀ : ∀ {G₀ : Type u_1} [inst : GroupWithZero G₀] [inst_1 : PartialOrder G₀] [MulPosReflectLT G₀] {a b c : G₀},
+  0 < c → (a ≤ b / c ↔ a * c ≤ b)
+@le_of_tendsto : ∀ {α : Type u_1} {β : Type u_2} [inst : TopologicalSpace α] [inst_1 : Preorder α] [ClosedIicTopology α]
+  {f : β → α} {a b : α} {x : Filter β} [x.NeBot], Filter.Tendsto f x (nhds a) → (∀ᶠ (c : β) in x, f c ≤ b) → a ≤ b
+@ge_of_tendsto : ∀ {α : Type u_1} {β : Type u_2} [inst : TopologicalSpace α] [inst_1 : Preorder α] [ClosedIciTopology α]
+  {f : β → α} {a b : α} {x : Filter β} [x.NeBot], Filter.Tendsto f x (nhds a) → (∀ᶠ (c : β) in x, b ≤ f c) → b ≤ a
+@le_of_forall_pos_le_add : ∀ {α : Type u_1} [inst : LinearOrder α] [DenselyOrdered α] [inst_2 : AddMonoid α]
+  [ExistsAddOfLE α] [AddLeftReflectLT α] {a b : α}, (∀ (ε : α), 0 < ε → a ≤ b + ε) → a ≤ b
+@Filter.eventually_ge_atTop : ∀ {α : Type u_1} [inst : Preorder α] (a : α), ∀ᶠ (x : α) in Filter.atTop, a ≤ x

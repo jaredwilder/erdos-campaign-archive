@@ -1,0 +1,115 @@
+{
+ "checks": {
+  "C1_golomb_recomputed": {
+   "k_max_exhaustive": 10,
+   "matches_published_A003022": true,
+   "recomputed": {
+    "1": 0,
+    "2": 1,
+    "3": 3,
+    "4": 6,
+    "5": 11,
+    "6": 17,
+    "7": 25,
+    "8": 34,
+    "9": 44,
+    "10": 55
+   }
+  },
+  "C2_h_table": {
+   "N_max_exact": 586,
+   "brute_forced_up_to": 34,
+   "brute_matches_table": true,
+   "h_sample": {
+    "1": 1,
+    "107": 13,
+    "12": 5,
+    "128": 14,
+    "152": 15,
+    "178": 16,
+    "18": 6,
+    "2": 2,
+    "200": 17,
+    "217": 18,
+    "247": 19,
+    "26": 7,
+    "284": 20,
+    "334": 21,
+    "35": 8,
+    "357": 22,
+    "373": 23,
+    "4": 3,
+    "426": 24,
+    "45": 9,
+    "481": 25,
+    "493": 26,
+    "554": 27,
+    "56": 10,
+    "586": 28,
+    "7": 4,
+    "73": 11,
+    "86": 12
+   }
+  },
+  "C3_key_inequality": {
+   "N_range": [
+    1,
+    586
+   ],
+   "l_range": "1 .. 4N+3",
+   "near_tight_count": 0,
+   "near_tight_instances_slack_le_2": [],
+   "statement": "A.card^2 * l <= (N+l)*(A.card+l)   [E30.sidon_key, Lean-proved]",
+   "violation_count": 0,
+   "violations": []
+  },
+  "C4_trivial_bound": {
+   "statement": "A.card^2 <= 2N + A.card   [E30.card_sq_le, Lean-proved]",
+   "violation_count": 0,
+   "violations": []
+  },
+  "C5_corollary": {
+   "N_range": [
+    0,
+    586
+   ],
+   "argmin_slack_N": 0,
+   "min_slack": 3,
+   "statement": "h N <= Nat.sqrt N + 3*(Nat.sqrt (Nat.sqrt N) + 1)   [E30.h_le, Lean-proved]",
+   "violation_count": 0,
+   "violations": []
+  },
+  "C5b_sharp_corollary": {
+   "N_range": [
+    0,
+    586
+   ],
+   "argmin_slack_N": 7,
+   "intermediate_statement": "A.card^2 <= N + A.card + 2*Nat.sqrt (N*A.card) + 1   [E30.sidon_sq_le_sqrt, Lean-proved]",
+   "intermediate_violation_count": 0,
+   "intermediate_violations": [],
+   "min_C_actually_needed_for_true_h": 1,
+   "min_slack": 3,
+   "statement": "h N <= Nat.sqrt N + Nat.sqrt (Nat.sqrt N) + 4   [E30.h_le_sharp, Lean-proved]",
+   "violation_count": 0,
+   "violations": []
+  },
+  "C6_error_term": {
+   "conjecture_direction": "Erdos 30 asks whether h(N) - sqrt(N) = O_eps(N^eps); the proved upper bound in this campaign is O(N^(1/4)).",
+   "max_h_minus_sqrtN": {
+    "N": 493,
+    "h": 26,
+    "value": 3.796397
+   },
+   "max_ratio_over_N_pow_quarter": {
+    "N": 56,
+    "h": 10,
+    "value": 0.919987
+   },
+   "note": "OBSERVED data on the exactly-known range only; NOT a proof of anything."
+  }
+ },
+ "sha256_of_body": "80c9c437307ab6e4f6c7f6fc03a96b017f3e1cb9c1c3f9b41e7c995de5bea373",
+ "tool": "verify_bounds.py",
+ "utc": "2026-09-05T17:35:49.299684+00:00"
+}

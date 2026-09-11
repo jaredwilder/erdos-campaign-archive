@@ -1,0 +1,50 @@
+{
+ "id": "erdos289-campaign-001",
+ "model": "z-ai/glm-5.3-flash",
+ "problem": {
+  "canonical_statement": "Erdos problem 289 (erdosproblems.com/289, OPEN): Is it true that, for all sufficiently large k, there exist finite intervals I_1, ..., I_k of consecutive integers in N, pairwise distinct, not overlapping or adjacent, with |I_i| >= 2 for 1 <= i <= k, such that 1 = sum over i of sum over n in I_i of 1/n?",
+  "definitions": [
+   "interval I = [a,b]: the consecutive integers a, a+1, ..., b inclusive; |I| = b - a + 1",
+   "non-adjacent: for sorted intervals, next.a >= prev.b + 2 (a gap of at least one integer)",
+   "a >= 2 for every interval (1/1 excluded by the reciprocal-sum context; a=1 gives sum >= 1 trivially and is treated per source convention as excluded)",
+   "the equation is EXACT rational equality, not approximation",
+   "quantifier order: for all sufficiently large k, THERE EXIST intervals (existence per k, uniform threshold)"
+  ],
+  "permitted_background": [
+   "elementary unit-fraction identities (e.g. 1/n = 1/(n+1) + 1/(n(n+1)))",
+   "harmonic partial sum asymptotics H(b)-H(a-1) ~ ln(b/(a-1))",
+   "exact Fraction arithmetic as WORLD verifier (machine-checked)"
+  ],
+  "close_branch_A": {
+   "statement": "AFFIRMATIVE: prove for all k >= K0 (explicit or existence of K0) a valid k-interval decomposition of 1 exists",
+   "must_determine": ["a construction scheme valid for every sufficiently large k", "proof the scheme's sums are exactly 1 with all constraints"]
+  },
+  "close_branch_B": {
+   "statement": "NEGATIVE: prove infinitely many k admit NO valid k-interval decomposition of 1",
+   "must_determine": ["an obstruction argument (parity/valuation/measure) ruling out infinitely many k"]
+  },
+  "non_results": [
+   "decompositions for finitely many specific k without a scheme for all large k",
+   "approximate sums (any inequality in place of exact equality)",
+   "decompositions using length-1 intervals or adjacent intervals",
+   "density or almost-all-k statements when the problem demands all sufficiently large k",
+   "a reduction to another open unit-fraction conjecture of comparable strength"
+  ],
+  "invariants_that_must_survive_every_reformulation": [
+   "EXACT equality to 1 in Q",
+   "interval structure (consecutive integers), length >= 2",
+   "pairwise disjoint AND non-adjacent",
+   "start >= 2",
+   "the quantifier: all sufficiently large k"
+  ],
+  "known_traps": [
+   "adjacency violations (e.g. [2,3] and [4,5] are ADJACENT and illegal) - killed run-15 attempts",
+   "sum drift: partial-fraction splits that break interval structure",
+   "1/n = 1/(n+1) + 1/(n(n+1)) produces NON-interval terms; interval structure must be restored",
+   "verifying k intervals but claiming all large k (sampled-to-universal, MSL L-law)",
+   "the empty/trivial k=1 case: no single interval of length >= 2 starting >= 2 sums to exactly 1 in any small range searched (starts < 120, exhaustive)"
+  ],
+  "allowed_search": {"standard_background_only": true, "search_exact_solution_to_target": false},
+  "output_gate": {"return_only_complete_resolution": true}
+ }
+}

@@ -1,0 +1,59 @@
+MODEL ANSWERED  : google/gemini-3.7-flash
+tokens          : prompt 7015, completion 4105
+receipt         : C:\Users\jared\Local Sites\woocommerce-enterprise\oracle\evidence\ask-gemini\20260905T184141-2055c6f2.json
+======================================================================
+Here is the adversarial audit, item by item:
+
+### C1. Equivalence Statement & Polarities
+**No defects found.** 
+- **$n = 0$:** Excluded by $n > 0$ / $1 < n$ domains across both theorems.
+- **$n = 1$:** In `collatz_of_descent`, $n = 1$ hits $h_1 : 1 < 2$, discharging with $m = 0$ and $\text{collatzStep}^0(1) = 1$.
+- **Descent:** In `descent_of_collatz`, since $n > 1$, $m = 0$ is impossible because $\text{collatzStep}^0(n) = n \neq 1$; thus $m > 0$ and $\text{collatzStep}^m(n) = 1 < n$. The quantifiers, polarities, and domain bounds are exact.
+
+---
+
+### C2. Symbolic Affine Identities & Small-$j$ Checks
+**No defects found.** Hand trace of affine identities:
+- `iter1_mod2_0`: $2j \to j$. For $j=1$ ($n=2$), step is $1 < 2$. For $n>1$ even, $j \ge 1$, so $j < 2j$.
+- `iter3_mod4_1`: $4j+1 \to 3j+1$. For $j=0$ ($n=1$, bypassed by $n>1$); for $j=1$ ($n=5$), value is $4 < 5$. For $j \ge 1$, $3j+1 < 4j+1$.
+- `iter6_mod16_3`: $16j+3 \to 9j+2$. For $j=0$ ($n=3$), value is $2 < 3$. For $j \ge 1$, $9j+2 < 16j+3$.
+- `iter8_mod32_11`: $32j+11 \to 27j+10$. For $j=0$ ($n=11$), value is $10 < 11$. For $j \ge 1$, $27j+10 < 32j+11$.
+- `iter8_mod32_23`: $32j+23 \to 27j+20$. For $j=0$ ($n=23$), value is $20 < 23$. For $j \ge 1$, $27j+20 < 32j+23$.
+
+`collatz_of_residual_descent` does not suffer from small-$j$ failures: $n > 1$ ensures $j \ge 1$ on the $4j+1$ branch, while the $16j+3$, $32j+11$, and $32j+23$ identities strictly descend even at $j = 0$.
+
+---
+
+### C3. Phrasing of the Residual Obstruction
+**The sentence as phrased is overstated.**
+- **Artifact support:** The artifact proves that the uniform 1-cycle affine branches at depth $k \le 8$ cover $\frac{28}{32}$ of $\mathbb{N}$, leaving 4 residue classes mod 32.
+- **Reader interpretation:** A reader will easily read "the remaining obstruction is descent on the four residue classes" as implying these classes fail to descend. In reality, Terras (1976) proved that almost all integers (density 1) have a finite stopping time, and branching further down the Collatz tree (e.g. mod $2^k$ for $k > 5$) clears almost all of these residual sub-branches. 
+- **Recommendation:** Phrase it strictly as: *"the remaining residue classes mod 32 unreached at symbolic search depth $k \le 8$"*.
+
+---
+
+### C4. Exactness of the Frozen Signature
+**No defects found.** The conclusion of `frozen_target_of_residual_descent` is `(n : ℕ) (hn : n > 0) : ∃ m, collatzStep^[m] n = 1`, which is definitionally and syntactically identical to DeepMind’s frozen `CollatzConjecture.collatz_conjecture`.
+
+---
+
+### C5. Novelty
+**Zero new mathematics; routine formalization.**
+- **Mathematics:** This is the standard Terras (1976) / Everett (1977) tree-pruning via $k$-step linear modular systems $(3^{k_0}n + c)/2^{k_1}$.
+- **Formalizations:** Collatz descent reductions and finite verification certificates of this type have appeared repeatedly in Lean 3/4 community repos, Coq (e.g. standard Coq gym examples), and Isabelle/HOL. It is a clean pedagogical artifact, but has no foundational or novel mathematical/formal claim.
+
+---
+
+### C6. Finite Computation Soundness
+**No defects found.**
+- `cstep (n + 1)` supplies step 1, and `drops_sound` supplies $t \ge 0$ additional steps to reach $< n+1$, yielding total steps $k = t + 1 \ge 1 > 0$.
+- `scan_sound` induction correctly checks $n = N + 1$ against $N$, without off-by-one errors.
+- `scan 1024` evaluates entirely inside the kernel via `decide`.
+
+---
+
+### C7. Single Highest-Value Missing Feature
+**A parametric meta-program or inductive tree generator for arbitrary modular depth.**
+Rather than manually writing and hardcoding 5 Lean lemmas for mod 32, the artifact should provide an automated elaborator/tactic (or generalized tree-pruning inductive type) that takes any depth $k$, automatically computes all descending paths mod $2^k$, and emits the sorry-free proof terms and residual set definition for any arbitrary precision $\varepsilon = (3/4)^{k/2}$.
+======================================================================
+ONE MODEL'S READ. Every number above is a lead to verify, not a fact to quote.

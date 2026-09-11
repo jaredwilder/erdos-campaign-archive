@@ -1,0 +1,234 @@
+{
+  "campaign": "erdos28-close-2026-09-05",
+  "target": "erdos:28",
+  "target_source": "https://www.erdosproblems.com/28",
+  "instrument": {
+    "kind": "EVALUATOR",
+    "file": "verify_finite_claims.py",
+    "sha256": "6aca06ffcfea69010566a027c72d84305c5dfc1d948fdec9cc6a153588f2cf87",
+    "python": "3.13.2",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "error_model": "EXACT (integer arithmetic only)",
+    "preconditions": "none; every quantity is a finite cardinality over an enumerated family"
+  },
+  "wall_seconds": 2.11,
+  "verdict": "ALL_PASS",
+  "arms": [
+    {
+      "arm": "rep_card == rep_conv",
+      "status": "PASS",
+      "domain": "every A subset [0,12], every n in [0,24]",
+      "subsets": 8192,
+      "checks": 204800,
+      "independence_class": "DIFFERENT_KIND (set membership vs materialised indicator dot product)"
+    },
+    {
+      "arm": "odd n => r_A(n) even",
+      "status": "PASS",
+      "domain": "every A subset [0,12], every odd n in [1,24]",
+      "checks": 98304
+    },
+    {
+      "arm": "odd n and r_A(n) >= 1 => r_A(n) >= 2",
+      "status": "PASS",
+      "domain": "every A subset [0,12], every odd n in [1,24]",
+      "checks": 98304,
+      "nonvacuous_instances": 57900
+    },
+    {
+      "arm": "counting sandwich",
+      "status": "PASS",
+      "domain": "every A subset [0,12], every N in [1,12]",
+      "checks": 196608
+    },
+    {
+      "arm": "parity kill",
+      "status": "PASS",
+      "statement": "the function n |-> (2 if n odd else 1) satisfies every constraint the parity route places on r_A (positive everywhere, even at every odd n), AND every linear second-moment bound (sum_{n<N} f(n)^2 <= 4N), while never exceeding 2; hence neither the parity route nor any moment estimate of that shape can prove limsup r_A >= 3",
+      "domain": "n in [0, 10000] (the Lean theorems are universal)",
+      "lean_theorems": [
+        "Erdos28.parity_saturates_at_two",
+        "Erdos28.parity_and_moment_saturate_at_two"
+      ],
+      "why_the_moment_axis": "Ruzsa, A just basis, Monatsh. Math. 109 (1990) 145-151: there IS an additive basis of order 2 with sum_{n<=N} r_A(n)^2 = O(N). CITED, not formalised here."
+    },
+    {
+      "arm": "window search",
+      "status": "COMPLETE",
+      "interpretation": "CANDIDATE_DATA",
+      "globality": "CERTIFIED over the declared window (exhaustive over all 2^(N+1) subsets)",
+      "search_space": "every A subset [0,N], N in [2,16]",
+      "restricted_to": "window-covering sets, not additive bases of order 2",
+      "space_relation": "the window condition is NEITHER a subset nor a superset of the basis condition",
+      "transport_to": "NONE",
+      "quotients": "none needed: the quantity is an exact minimum over an exhaustively enumerated finite family",
+      "extrapolation": "REFUSED -- a minimum over a finite window bounds nothing about the infinite problem",
+      "table": [
+        {
+          "N": 2,
+          "min_max_rep": 2,
+          "witness_A": [
+            0,
+            1
+          ]
+        },
+        {
+          "N": 3,
+          "min_max_rep": 2,
+          "witness_A": [
+            0,
+            1,
+            3
+          ]
+        },
+        {
+          "N": 4,
+          "min_max_rep": 2,
+          "witness_A": [
+            0,
+            1,
+            3
+          ]
+        },
+        {
+          "N": 5,
+          "min_max_rep": 2,
+          "witness_A": [
+            0,
+            1,
+            3,
+            5
+          ]
+        },
+        {
+          "N": 6,
+          "min_max_rep": 3,
+          "witness_A": [
+            0,
+            1,
+            2,
+            4
+          ]
+        },
+        {
+          "N": 7,
+          "min_max_rep": 3,
+          "witness_A": [
+            0,
+            1,
+            2,
+            5
+          ]
+        },
+        {
+          "N": 8,
+          "min_max_rep": 3,
+          "witness_A": [
+            0,
+            1,
+            2,
+            4,
+            7
+          ]
+        },
+        {
+          "N": 9,
+          "min_max_rep": 3,
+          "witness_A": [
+            0,
+            1,
+            2,
+            4,
+            7
+          ]
+        },
+        {
+          "N": 10,
+          "min_max_rep": 3,
+          "witness_A": [
+            0,
+            1,
+            2,
+            5,
+            8
+          ]
+        },
+        {
+          "N": 11,
+          "min_max_rep": 3,
+          "witness_A": [
+            0,
+            1,
+            2,
+            5,
+            8,
+            11
+          ]
+        },
+        {
+          "N": 12,
+          "min_max_rep": 3,
+          "witness_A": [
+            0,
+            1,
+            2,
+            5,
+            8,
+            11
+          ]
+        },
+        {
+          "N": 13,
+          "min_max_rep": 4,
+          "witness_A": [
+            0,
+            1,
+            2,
+            5,
+            6,
+            8
+          ]
+        },
+        {
+          "N": 14,
+          "min_max_rep": 4,
+          "witness_A": [
+            0,
+            1,
+            2,
+            5,
+            6,
+            8
+          ]
+        },
+        {
+          "N": 15,
+          "min_max_rep": 4,
+          "witness_A": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            7,
+            11
+          ]
+        },
+        {
+          "N": 16,
+          "min_max_rep": 4,
+          "witness_A": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            7,
+            11
+          ]
+        }
+      ]
+    }
+  ],
+  "claim_ceiling": "These are EXHAUSTIVE checks over explicitly declared FINITE windows. They confirm the finite content of the banked Lean and refute nothing about the infinite problem. Erdos 28 remains UNRESOLVED."
+}

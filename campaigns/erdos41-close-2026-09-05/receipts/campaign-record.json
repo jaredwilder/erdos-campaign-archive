@@ -1,0 +1,75 @@
+{
+ "campaign": "erdos41-close-2026-09-05",
+ "target": {
+  "id": "erdos41",
+  "source": "https://www.erdosproblems.com/41",
+  "prize_usd": 500,
+  "status_at_start": "OPEN",
+  "status_at_end": "OPEN (not closed by this campaign)",
+  "prose": "Let A subset N be infinite such that the triple sums a+b+c are all distinct for a,b,c in A (aside from the trivial coincidences). Is liminf |A cap {1,...,N}| / N^(1/3) = 0?",
+  "corpus_lean_file": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/41.lean"
+ },
+ "outcome": "PARTIALS BANKED + FORMALISATION DEFECT FOUND",
+
+ "finding_1_formalisation_defect": {
+  "severity": "HIGH",
+  "claim": "The DeepMind formal-conjectures encoding of Erdos 41 is NOT a faithful transcription of the problem. Its hypothesis NtupleCondition A 3 quantifies over Finsets of card 3 (three DISTINCT elements), whereas the prose B_3 condition is a MULTISET condition allowing repetitions.",
+  "direction": "NtupleCondition is strictly WEAKER than IsB3, so the corpus theorem erdos_41 is strictly STRONGER than Erdos 41. A proof of the corpus statement would settle Erdos 41; a REFUTATION of the corpus statement would NOT.",
+  "same_defect_in": "erdos_41.variants.pairwise in the same file uses NtupleCondition A 2, which is the 'weak Sidon' condition, not the Sidon (B_2) condition.",
+  "evidence": [
+   "lean/Erdos41Partials.lean :: isB3_imp_ntupleCondition (kernel-checked)",
+   "lean/Erdos41Partials.lean :: ntupleCondition_not_isB3 (kernel-checked)",
+   "receipts/separation-search.json (exhaustive, n = 1..42)"
+  ],
+  "quantitative_severity": "The defect is NOT cosmetic. Exhaustive search shows the two conditions have DIFFERENT extremal sizes for every n >= 3. At n = 40..42 the corpus condition admits an 8-element set while a genuine B_3 set admits at most 5.",
+  "recommended_repair": "Replace NtupleCondition with a multiset/Sym-based B_h predicate, e.g. quantify over Multiset alpha with card n, or over Sym alpha n."
+ },
+
+ "finding_2_counting_bound": {
+  "claim": "For any A satisfying NtupleCondition A 3 (hence for any B_3 set), C(m,3) <= 3N+1 where m = |A cap [1,N]|; equivalently (m-2)^3 <= 18N+6.",
+  "significance": "Proves the N^(1/3) normalisation in the conjecture is correct: the ratio is bounded, the liminf is finite, and the whole open question is whether that finite number is 0.",
+  "evidence": "lean/Erdos41Partials.lean :: ntuple3_card_choose_le, ntuple3_cube_bound (kernel-checked)",
+  "empirical_tightness": "At n = 42 the proved bound gives m <= (18*42)^(1/3) + 2 = 11.1; the exhaustive true maximum is 8. Bound is within ~40% at this scale."
+ },
+
+ "finding_3_pairwise_collapse": {
+  "claim": "For infinite A, NtupleCondition A 3 implies NtupleCondition A 2.",
+  "significance": "The corpus statement erdos_41 hands you the hypothesis of erdos_41.variants.pairwise (Erdos's SOLVED theorem) for free. So liminf |A cap [1,N]|/N^(1/2) = 0 holds for every admissible A with no extra work. The entire open content of Erdos 41 is the exponent gap 1/2 -> 1/3.",
+  "consequence_for_attack": "Any candidate proof that only reproduces the pairwise/Sidon argument is provably insufficient and can be rejected without reading it.",
+  "evidence": "lean/Erdos41Partials.lean :: ntuple3_imp_ntuple2 (kernel-checked)"
+ },
+
+ "finding_4_even_odd_obstruction": {
+  "status": "UNPROVED — structural analysis, not machine-verified. Recorded as an attack map, not as a result.",
+  "literature_context_status": "UNVERIFIED (obtained via web search, not via the estate's federated acquisition tool; treat citations as leads to confirm)",
+  "literature_leads": [
+   "Erdos: infinite B_2 set has liminf A(N) (log N)^(1/2) / N^(1/2) < infinity",
+   "Nash 1989 (Canad. Math. Bull. 32(4)): the h=4 case",
+   "Chen 1996: all EVEN h",
+   "odd h >= 3 reportedly OPEN — this is why Erdos 41 carries the prize"
+  ],
+  "why_even_h_works": "For h = 2k, the k-fold sumset kA has all its elements distinct (B_h implies B_k) and every n has at most C(2k,k) representations as a sum of two elements of kA. So kA is a B_2[g] set with g = C(2k,k), and the SYMMETRIC Erdos liminf theorem for B_2[g] sets applies. Transporting back through |kA cap [1,kN]| >= C(m+k-1,k) ~ m^k/k! converts liminf (kA)(x)/x^(1/2) = 0 into liminf A(N)/N^(1/(2k)) = 0.",
+  "why_h=3_resists": "3 is odd, so there is no k with 2k = 3 and no symmetric split of a triple sum into two equal halves. The natural split is 1+2, which yields only the ASYMMETRIC bounded-representation statement r_{A + 2A}(n) <= 3. The Erdos counting argument balances the number of close pairs against the range of available differences; in the asymmetric case it pairs a set of size m against a set of size ~m^2/2 and loses exactly that balance.",
+  "attack_implication": "A close of Erdos 41 must either (a) prove an asymmetric analogue of the Erdos/B_2[g] liminf theorem for the pair (A, 2A), or (b) avoid the sumset reduction entirely."
+ },
+
+ "prior_work_superseded": {
+  "campaign": "oracle/evidence/msl-machine/campaigns/erdos41-campaign-001",
+  "assessment": "275 LLM-driven iterations, zero certificates. All routes recorded NO_FINDING or were killed. Its lemma R001/L1 ('|A|<=6 for all collision-free A subset {1,...,60}') CONFLATES the two conditions this campaign separates and is not reproduced by the exhaustive search here; it should not be cited.",
+  "action": "Superseded by this campaign's kernel-checked results."
+ },
+
+ "estate_machinery_note": {
+  "claim": "The existing sidon: lane (oracle/kbk/engine/sidon_bridge.py, sidon_decide.py) is NOT applicable to Erdos 41.",
+  "reason": "It solves OEIS A309370 — maximum Sidon sets inside the hypercube {0,1}^d — a finite extremal problem in a different ambient group. The 'verified 24-element witness for f(7)>=24' concerns that problem, not B_3 sets in N.",
+  "action": "No reuse; no false claim of reuse."
+ },
+
+ "artifacts": {
+  "lean/Erdos41Partials.lean": "9aad37a0f3cc04bb18374a9e28e44fff1461ffde2d2f73ba3fafa8ab735f9ec4",
+  "separation_search.py": "bbe070492f2d3cbca915f7419d4564caf1c0386a21bd4558932ff1d85dec568d",
+  "receipts/lean-verification.json": "kernel + axiom audit",
+  "receipts/separation-search.json": "exhaustive extremal data n=1..42, every witness re-verified from the definition",
+  "receipts/separation-search.log": "raw run log"
+ }
+}

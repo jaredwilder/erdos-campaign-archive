@@ -1,0 +1,15 @@
+{
+ "IsSidon_identical": true,
+ "IsSidon_fc": "def IsSidon (A : Set α) : Prop := ∀ᵉ (i₁ ∈ A) (j₁ ∈ A) (i₂ ∈ A) (j₂ ∈ A), i₁ + i₂ = j₁ + j₂ → (i₁ = j₁ ∧ i₂ = j₂) ∨ (i₁ = j₂ ∧ i₂ = j₁)",
+ "IsSidon_ours": "def IsSidon (A : Set α) : Prop := ∀ᵉ (i₁ ∈ A) (j₁ ∈ A) (i₂ ∈ A) (j₂ ∈ A), i₁ + i₂ = j₁ + j₂ → (i₁ = j₁ ∧ i₂ = j₂) ∨ (i₁ = j₂ ∧ i₂ = j₁)",
+ "maxSidonSubsetCard_identical": true,
+ "maxSidonSubsetCard_fc": "def maxSidonSubsetCard (A : Finset α) [DecidableEq α] : ℕ := (A.powerset.filter fun B : Finset α ↦ IsSidon (B : Set α)).sup Finset.card",
+ "maxSidonSubsetCard_ours": "def maxSidonSubsetCard (A : Finset α) [DecidableEq α] : ℕ := (A.powerset.filter fun B : Finset α ↦ IsSidon (B : Set α)).sup Finset.card",
+ "h_fc": "noncomputable abbrev h (N : ℕ) : ℕ := Finset.maxSidonSubsetCard (Finset.Icc 1 N)",
+ "h_ours": "noncomputable abbrev h (N : ℕ) : ℕ := maxSidonSubsetCard (Finset.Icc 1 N)",
+ "h_same_modulo_namespace": true,
+ "Decidable_instance_identical": true,
+ "sha256_E30_lean": "645fcc4cbbd80ecf9cda8bd928c1f3dd5e6cb3e3dc5264e2b57a5c3ddedd857b",
+ "sha256_FC_Basic_lean": "4be64805a44ad40a80946323ae95596b0337ed1456feaabd3d5244c3cdbd6696",
+ "sha256_FC_30_lean": "80c3a248a6de98daada9331e28e6972a36a6b48ff0d9b4b43e919b05ae030fb7"
+}

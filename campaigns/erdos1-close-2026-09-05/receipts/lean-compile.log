@@ -1,0 +1,49 @@
+=== lake env lean E1.lean ===
+E1.lean:96:6: warning: 'push_cast' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+E1.lean:113:4: warning: `Finset.filter_card_add_filter_neg_card_eq_card` has been deprecated: Use `Finset.card_filter_add_card_filter_not` instead
+E1.lean:125:4: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+E1.lean:175:41: warning: `Int.ofNat_nonneg` has been deprecated: Use `Int.natCast_nonneg` instead
+
+real	0m9.923s
+user	0m12.053s
+sys	0m1.583s
+COMPILE_EXIT=0
+=== lake env lean E1_audit.lean ===
+E1_audit.lean:96:6: warning: 'push_cast' tactic does nothing
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+E1_audit.lean:113:4: warning: `Finset.filter_card_add_filter_neg_card_eq_card` has been deprecated: Use `Finset.card_filter_add_card_filter_not` instead
+E1_audit.lean:125:4: warning: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+E1_audit.lean:175:41: warning: `Int.ofNat_nonneg` has been deprecated: Use `Int.natCast_nonneg` instead
+'Erdos1.secondMoment' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos1.sum_sq_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos1.erdos1_sqrt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos1.erdos1_sqrt_real' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos1.witness6' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos1.witness7' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos1.sumDistinct_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Erdos1.sumDistinct_of_card_image' depends on axioms: [propext, Classical.choice, Quot.sound]
+AUDIT_EXIT=0
+=== sha256 ===
+adf41c431aa6e5ba46be39ecbac02357ad5d2439871f177429e1bf82851243bd  E1.lean
+f22c89ebee9a6c3f803469ccfea92ad220ff4e6ee59779c562870ae71f09b621  E1_audit.lean
+=== sorry count ===
+1
+=== toolchain ===
+leanprover/lean4:v4.31.0-rc1
+require mathlib from git
+  "https://github.com/leanprover-community/mathlib4.git" @ "919544d4309104b3f19724b0e6e48c701d27948f"

@@ -1,0 +1,31 @@
+{
+  "campaign": "erdos949-extend-2026-09-05",
+  "status": "SEALED_CLEAN",
+  "mathlib_rev": "919544d4309104b3f19724b0e6e48c701d27948f",
+  "toolchain": "leanprover/lean4:v4.31.0-rc1",
+  "box": "root@51.158.234.15:/root/peer/sub-949",
+  "kernel_iterations_used": 4,
+  "summary": "Four kernel-checkable strengthenings/companions of the sealed Erdos 949 assets, all sorryFree. (1) the 2-fold universal theorem generalized to any AddCommMonoidWithOne (reals inessential) with Z/Q/C instances; (2) the FULL Hindman finite-sums theorem generalized to arbitrary k-fold multiples, recovering the sealed k=2 as a corollary; (3) minimality of the multiplier set {1,2,3,4,5}; plus (4) a refutation that the q<=5 bound does NOT extend to the 3-fold problem (tripling bound is >=9).",
+  "sealed": [
+    {"name": "erdos949_finite_core", "file": "Attack01.lean", "axioms": "[propext, Classical.choice, Quot.sound]", "note": "sealed core copied verbatim (decide +kernel over 2^10)"},
+    {"name": "erdos949_universal_monoid", "file": "Attack01.lean", "axioms": "[propext, Classical.choice, Quot.sound]", "note": "NEW: 2-fold q<=5 over any AddCommMonoidWithOne"},
+    {"name": "erdos949_universal_int", "file": "Attack01.lean", "axioms": "[propext, Classical.choice, Quot.sound]", "note": "NEW: instance over Z"},
+    {"name": "erdos949_universal_rat", "file": "Attack01.lean", "axioms": "[propext, Classical.choice, Quot.sound]", "note": "NEW: instance over Q"},
+    {"name": "erdos949_universal_complex", "file": "Attack01.lean", "axioms": "[propext, Classical.choice, Quot.sound]", "note": "NEW: instance over C"},
+    {"name": "erdos949_universal_real", "file": "Attack01.lean", "axioms": "[propext, Classical.choice, Quot.sound]", "note": "re-derivation of the sealed real statement (consistency)"},
+    {"name": "erdos949_five_sharp_int", "file": "Attack01.lean", "axioms": "[propext]", "note": "NEW: sharpness over Z, witness {1,4,6} defeats q<=4"},
+    {"name": "erdos949_threefold_bound_gt_five", "file": "Attack01.lean", "axioms": "[propext, Classical.choice, Quot.sound]", "note": "NEW REFUTATION: sum-free {1,4,6,15} blocks 3-fold for all q<=5"},
+    {"name": "erdos949_threefold_bound_ge_nine", "file": "Attack01.lean", "axioms": "[propext, Classical.choice, Quot.sound]", "note": "NEW REFUTATION: sum-free {1,6,8,10,21} blocks 3-fold for all q<=8, so tripling bound >= 9 > 5"},
+    {"name": "Erdos949HindmanKfold.ypos_finset_sum_mem", "file": "Attack02.lean", "axioms": "[propext, Classical.choice, Quot.sound]", "note": "block-sum machinery, source-included verbatim"},
+    {"name": "Erdos949HindmanKfold.erdos949_hindman_kfold", "file": "Attack02.lean", "axioms": "[propext, Classical.choice, Quot.sound]", "note": "CROWN NEW: for every k, sum-free S => infinite A with j*FS(A) disjoint from S for all j<=k"},
+    {"name": "Erdos949HindmanKfold.erdos949_hindman_full_finite_sums", "file": "Attack02.lean", "axioms": "[propext, Classical.choice, Quot.sound]", "note": "the sealed statement, recovered as the k=2 corollary of the k-fold theorem"},
+    {"name": "Erdos949HindmanKfold.erdos949_hindman_kfold_control", "file": "Attack02.lean", "axioms": "[propext, Classical.choice, Quot.sound]", "note": "non-vacuity control (unsatisfiable for S=univ)"},
+    {"name": "erdos949_multiplier_minimal", "file": "Attack03.lean", "axioms": "[propext, Classical.choice, Quot.sound]", "note": "NEW: multiplier set {1,2,3,4,5} is minimal; per-q0 unique-good witnesses {4,5,6},{1,6,8,10},{2,5,8},{2,6,10},{2,3,8}"}
+  ],
+  "open": [
+    {"claim": "3-fold POSITIVE bound: every sum-free S has q in {1..9} with q,2q,3q all outside S (backtracking search finds no counterexample for M>=9; counterexamples exist for M<=8)", "typed_statement": "(k=3, M=9) forall sum-free S subset R, exists q, 1<=q<=9 and (q:R) notin S and (2q:R) notin S and (3q:R) notin S", "status": "CONJECTURED_not_formalized", "reason": "finite core would be decide over 2^27 subsets of {1..27}; infeasible for decide+kernel. Needs a non-brute-force argument."},
+    {"claim": "k-fold Hindman over Z/Q (not just R)", "status": "believed_true_not_formalized", "reason": "same proof; skipped as low-marginal-value duplication"}
+  ],
+  "novelty_honest": "Base problem #949 is flagged 'apparently unrecorded' by the estate. These are strengthenings/companions BUILT ON the sealed formalization, not independent discoveries. The Hindman k-fold result is a standard-style application of Hindman's finite-sums theorem (the novelty is the explicit sum-free-kills-every-nonzero-colour argument and its formal seal, generalizing the estate's own k=2). The finite q<=5 bound, its sharpness, z/q/c generalization, and the multiplier-set minimality appear specific to this formalization. noveltyforge was NOT run; novelty is asserted only relative to the sealed baseline.",
+  "next_command": "python -m oracle.reality.noveltyforge.cli run --claim <mission.json> --out <verdict.json>   # let the system decide novelty; or attempt the 3-fold M=9 positive result via a covering argument (not decide)"
+}

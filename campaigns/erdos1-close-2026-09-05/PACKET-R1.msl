@@ -1,0 +1,522 @@
+MSL_DIALECT v2.0
+MSL_PROFILE MSL-F
+MSL_MODE CLOSE
+
+RUNTIME_SELF_CHECK RSC1
+  FILE_VERSION MSL_CANONICAL_ALIEN_v2_0
+  BOOT_VERSION MSL_CANONICAL_ALIEN_v2_0
+  PROFILE MSL-F
+  RELEASE_FINGERPRINT NONE
+  RESULT PASS
+
+SOURCE E1
+  CITATION the Erdos problem database entry number one, erdosproblems.com/1, prize 500 dollars
+  FINGERPRINT oracle/math/erdos-status-cache/problems.yaml entry number 1, state open, last_update 2025-08-31
+  ACCESSED the frozen estate snapshot read this campaign
+  SOURCE_COVERAGE PARTIAL
+  OBJECT_INVENTORY GENERATOR evidence/lean-source-intake/formal-conjectures-2026-07-18/candidates.json
+  UNHARVESTED the main erdos_1 declaration is absent from the estate snapshot; only the two variants are held
+
+TARGET_IDENTITY T0
+  SOURCE E1
+  SOURCE_STATEMENT If A subset {1,...,N} with |A|=n is such that the subset sums sum_{a in S} a are distinct for all S subset A then N >> 2^n
+  SOURCE_FINGERPRINT the enriched_statement string in oracle/evidence/encirclement-quad/erdos_1_v2/S01_terminal.json
+  FORMAL_STATEMENT exists C > 0, for all N and all A with IsSumDistinctSet A N and N nonzero, C * 2 ^ A.card <= N
+  BINDING TRANSCRIPTION_CERT
+  BINDING_WITNESS the predicate IsSumDistinctSet transcribed byte-identically into lean/E1.lean from the estate copy of the formal-conjectures file
+  OPERATION additive subset sum over the full powerset
+  ARITH_FN subset_sum
+  TARGET_LOCK LOCKED
+
+TARGET_SHAPE TS0
+  TARGET T0
+  KIND EXISTENCE_OF_A_CONSTANT
+  REQUIRED_COMPONENTS a single constant C > 0 valid for every n and every sum-distinct A
+  CONTEXT_COMPONENTS the two variant declarations in the frozen file close nothing of the target
+  CLOSURE_CRITERION a proof that there is a constant C > 0 with N >= C * 2 ^ n for every sum-distinct A subset of the interval one to N with cardinality n
+  DOMAIN finite subsets A of the integer interval from one to N, cardinality n at least two
+  COLLECTION_KIND SET
+  DISTINCTNESS DISTINCT
+  DEGENERATE_CASES empty A OUT, singleton A OUT
+  DEGENERACY_FLOOR cardinality at least two
+  LEAN_DEFAULTS the powerset includes the empty set and its sum is zero, so injectivity is over all two-to-the-n subsets
+  BINDER_PREFIX there exists C positive, for all n, for all N, for all A
+  POLARITY AFFIRMS
+  DIRECTION LOWER
+  QUANTIFIED_OVER MIN_OVER_CONFIGS
+  NORMALIZATION the bound is on N, the ambient interval endpoint, not on the sum of A
+  ANCHOR the least N admitting a three-element sum-distinct set is four
+
+SOURCE_BIND S1
+  SOURCE E1
+  SYMBOL interval_endpoint_N
+  READS_AS the endpoint of the ambient interval, A is contained in the integer interval one to N
+  DISTINCT_FROM max_element_of_A
+  WHY_DISTINCT a set with max A strictly below N satisfies the predicate for that N, so N is an upper bound on the largest element and not the largest element
+  FINGERPRINT the Finset.Icc 1 N clause of IsSumDistinctSet in the frozen file
+
+SOURCE_BIND S2
+  SOURCE E1
+  SYMBOL cardinality_of_A
+  READS_AS the cardinality of A
+  DISTINCT_FROM interval_endpoint_N
+  WHY_DISTINCT they differ on every instance with cardinality below the interval length, which is every instance with n at least two
+  FINGERPRINT the A.card occurrences in the frozen file
+
+SOURCE_BIND S3
+  SOURCE E1
+  SYMBOL sum_distinct
+  READS_AS the map sending a subset of A to the sum of its elements is injective on the entire powerset of A, the empty subset included
+  DISTINCT_FROM Sidon
+  WHY_DISTINCT a Sidon set only requires the pairwise sums to be distinct, and every three-element arithmetic progression separates the two classes
+  FINGERPRINT the Injective clause of IsSumDistinctSet in the frozen file
+
+CLOSE_CONTRACT CC1
+  TARGET T0
+  PROOF_REQUIRES a proof of a constant C > 0 with N >= C * 2 ^ n for every sum-distinct A of cardinality n inside the interval one to N
+  DISPROOF_REQUIRES a proof that no positive constant works, that is a family of sum-distinct sets whose ratio N over two-to-the-n tends to zero
+  NOT_CLOSURE STANDARD_FLOOR
+  NOT_CLOSURE any bound carrying an n-dependent loss, in particular any bound of the form two-to-the-n over a positive power of n
+  NOT_CLOSURE a bound on the sum of A rather than on the interval endpoint N
+  FROZEN_WITH T0
+
+META_STATE M1
+  META_STATUS NEEDS_EXTERNAL_INPUT
+  CAMPAIGN_KIND CLOSE_SUPPORT
+  MOVE_SET pigeonhole counting, signed second moment with integer spread counting, doubling induction on the exact minima, structural dichotomy on the element scales
+  NEXT_REQUIREMENT an anticoncentration dichotomy that forbids the subset sums of a near-extremal set from occupying an interval of length of order square root of n times N
+
+INSTRUMENT I1
+  KIND KERNEL
+  HASH adf41c431aa6e5ba46be39ecbac02357ad5d2439871f177429e1bf82851243bd
+  VERSION lean 4.31.0-rc1 with mathlib 919544d4309104b3f19724b0e6e48c701d27948f
+  DOMAIN Lean 4 propositions elaborated against that Mathlib revision
+  OUTPUT kernel acceptance plus the axiom footprint of each declaration
+  PRECONDITIONS the file elaborates with exit code zero and carries no sorry
+  DECOMPOSITION NONE
+  SINGULAR_EVENTS NONE
+  ERROR_MODEL EXACT
+  CONTROL X1
+  CONTROL_SCOPE GLOBAL receipts/lean-receipt.json
+
+INSTRUMENT I2
+  KIND EVALUATOR
+  HASH the file oracle/evidence/msl-machine/campaigns/erdos1-close-2026-09-05/fsearch.py as banked
+  VERSION fsearch exhaustive branch and bound, CPython 3.13
+  DOMAIN sets of positive integers of cardinality at most seven inside an interval scanned upward from n
+  OUTPUT the exact minimum of max A over sum-distinct A of cardinality n, with a witness
+  PRECONDITIONS exact integer arithmetic only, no floating point in the search
+  DECOMPOSITION NONE
+  SINGULAR_EVENTS a clock exhaustion returns UNDECIDED_RESOURCE and never a negative answer
+  ERROR_MODEL EXACT
+  CONTROL X1
+  CONTROL_SCOPE REGION every returned witness is re-verified from the definition by a second independent routine
+
+WORLD_RESULT W1
+  CLAIM_STATUS PROVED
+  DERIVATION_STATUS VALID
+  FORMAL_STATUS KERNEL_CHECKED_UNIVERSAL
+  EVIDENCE_STATUS LIVE
+  FAMILY_SCOPE AMBIENT_FAMILY
+  SAMPLE EXHAUSTIVE
+  BINDS S1 S2 S3
+  WITNESS lean/E1.lean elaborates with exit code zero and every declaration audits to exactly propext, Classical.choice and Quot.sound
+  AUTHORITY the Lean 4 kernel executed on the rented box, invocation nice -n 19 lake env lean E1.lean
+  RECEIPT oracle/evidence/msl-machine/campaigns/erdos1-close-2026-09-05/receipts/lean-receipt.json
+  VERIFICATION_DEPTH DERIVATION_CHECKED
+  INSTRUMENT_ID I1
+  QUOTIENTS NONE
+
+WORLD_RESULT W2
+  CLAIM_STATUS COMPUTATION_SUPPORTED
+  DERIVATION_STATUS VALID
+  FORMAL_STATUS NOT_TARGETED
+  EVIDENCE_STATUS LIVE
+  FAMILY_SCOPE TESTED_FAMILY
+  SAMPLE EXHAUSTIVE
+  DOMAIN cardinality n from one to seven, N scanned upward from n with no upper cutoff
+  BINDS S1 S2 S3
+  WITNESS the exact minima are 1, 2, 4, 7, 13, 24, 44 with witnesses {1}, {1,2}, {1,2,4}, {3,5,6,7}, {3,6,11,12,13}, {11,17,20,22,23,24}, {20,31,37,40,42,43,44}
+  AUTHORITY exhaustive branch and bound over the declared domain, exact integer arithmetic, every witness re-verified from the definition
+  RECEIPT oracle/evidence/msl-machine/campaigns/erdos1-close-2026-09-05/receipts/f-of-n.json
+  VERIFICATION_DEPTH DERIVATION_CHECKED
+  INSTRUMENT_ID I2
+  EXHAUSTS PREDICATE K1 COUNT 7
+  QUOTIENTS NONE
+
+WORLD_RESULT W3
+  CLAIM_STATUS COMPUTED
+  DERIVATION_STATUS VALID
+  FORMAL_STATUS NOT_TARGETED
+  EVIDENCE_STATUS LIVE
+  FAMILY_SCOPE TESTED_FAMILY
+  SAMPLE EXHAUSTIVE
+  DOMAIN cardinality n from two to forty
+  BINDS S1 S2
+  WITNESS the least n at which two-to-the-n over eight root n strictly exceeds two-to-the-n over three n is eight
+  AUTHORITY direct evaluation of both closed forms, no literal supplied to the evaluator
+  RECEIPT oracle/evidence/msl-machine/campaigns/erdos1-close-2026-09-05/receipts/compare.json
+  VERIFICATION_DEPTH STATEMENT_MATCHES
+  INSTRUMENT_ID I2
+  QUOTIENTS NONE
+
+CROSSCHECK X1
+  CLAIM K1
+  WITNESS_ID the three-element minimum
+  WITNESS_HASH the pair n equals three and value four
+  METHOD_A I2
+  METHOD_B the frozen file declaration erdos_1.variants.least_N_3
+  SHARED_COMPONENTS NONE
+  INDEPENDENCE_CLASS DIFFERENT_KIND
+  VALUE_A 4
+  VALUE_B 4
+  TOLERANCE exact integer equality
+  VERDICT AGREE
+
+LEAN_RESULT LR1
+  FORMAL_STATUS KERNEL_CHECKED_UNIVERSAL
+  FILE oracle/evidence/msl-machine/campaigns/erdos1-close-2026-09-05/lean/E1.lean
+  THEOREMS Erdos1.secondMoment Erdos1.sum_sq_lower Erdos1.erdos1_sqrt Erdos1.erdos1_sqrt_real
+  BACKEND rented box root@51.158.234.15, lean 4.31.0-rc1, mathlib 919544d4
+  AXIOMS propext, Classical.choice, Quot.sound
+  TACTIC elaboration of the banked file, no native_decide anywhere
+  BUDGET 2400s COMPLETED_IN 9.9s
+  FAILURE NONE
+  RECEIPT receipts/lean-receipt.json
+  LAW the category is UNIVERSAL because each of these four statements quantifies over all N and all A
+
+LEAN_RESULT LR2
+  FORMAL_STATUS KERNEL_CHECKED_FINITE_COMPUTATION
+  FILE oracle/evidence/msl-machine/campaigns/erdos1-close-2026-09-05/lean/E1.lean
+  THEOREMS Erdos1.witness6 Erdos1.witness7
+  BACKEND rented box root@51.158.234.15, lean 4.31.0-rc1, mathlib 919544d4
+  AXIOMS propext, Classical.choice, Quot.sound
+  TACTIC decide, with maxRecDepth raised; native_decide deliberately not used so no ofReduceBool enters the footprint
+  BUDGET 2400s COMPLETED_IN 9.9s
+  FAILURE NONE
+  RECEIPT receipts/lean-receipt.json
+  LAW the category is FINITE_COMPUTATION because each statement is a bounded Boolean over one fixed set
+
+NODE K1
+  KIND definition
+  SCOPE WORLD
+  CLAIM_STATUS PROVED
+  DERIVATION_STATUS VALID
+  FORMAL_STATUS KERNEL_CHECKED_UNIVERSAL
+  EVIDENCE_STATUS LIVE
+  FORMALISM LEAN
+  TYPE definition
+  FAMILY_SCOPE AMBIENT_FAMILY
+  DOMAIN finite subsets of the positive integers
+  SEMANTICS a set is sum-distinct for N when it lies in the interval one to N and the subset-sum map is injective on its whole powerset
+  BINDS S1 S3
+  CONCLUSION_MATCH PASS
+  DEPS NONE
+  PROVENANCE the transcription of IsSumDistinctSet into lean/E1.lean, kernel-elaborated at W1
+
+NODE K2
+  KIND lemma
+  SCOPE WORLD
+  CLAIM_STATUS PROVED
+  DERIVATION_STATUS VALID
+  FORMAL_STATUS KERNEL_CHECKED_UNIVERSAL
+  EVIDENCE_STATUS LIVE
+  FORMALISM LEAN
+  TYPE identity
+  FAMILY_SCOPE AMBIENT_FAMILY
+  DOMAIN every finite set A of natural numbers
+  SEMANTICS the sum over subsets of A of the square of twice the subset sum minus the total equals two-to-the-cardinality times the sum of the squares of the elements
+  BINDS S3
+  CONCLUSION_MATCH PASS
+  DEPS K1
+  PROVENANCE Erdos1.secondMoment in lean/E1.lean, kernel event recorded at LR1 and W1
+
+NODE K3
+  KIND lemma
+  SCOPE WORLD
+  CLAIM_STATUS PROVED
+  DERIVATION_STATUS VALID
+  FORMAL_STATUS KERNEL_CHECKED_UNIVERSAL
+  EVIDENCE_STATUS LIVE
+  FORMALISM LEAN
+  TYPE bound
+  FAMILY_SCOPE AMBIENT_FAMILY
+  DOMAIN every finite set of integers and every natural number m
+  SEMANTICS the sum of squares over a finite integer set is at least the cardinality minus two m plus one, times m plus one squared
+  BINDS NONE
+  CONCLUSION_MATCH PASS
+  DEPS NONE
+  PROVENANCE Erdos1.sum_sq_lower in lean/E1.lean, kernel event recorded at LR1 and W1
+
+NODE K4
+  KIND lemma
+  SCOPE WORLD
+  CLAIM_STATUS PROVED
+  DERIVATION_STATUS VALID
+  FORMAL_STATUS KERNEL_CHECKED_UNIVERSAL
+  EVIDENCE_STATUS LIVE
+  FORMALISM LEAN
+  TYPE bound
+  FAMILY_SCOPE AMBIENT_FAMILY
+  DOMAIN sum-distinct A inside the interval one to N with cardinality at least two
+  SEMANTICS two-to-the-twice-cardinality is at most sixty four times the cardinality times N squared, equivalently N is at least two-to-the-n over eight root n
+  BINDS S1 S2 S3
+  CONCLUSION_MATCH PASS
+  DEPS K1 K2 K3
+  PROVENANCE Erdos1.erdos1_sqrt and Erdos1.erdos1_sqrt_real in lean/E1.lean, kernel event recorded at LR1 and W1
+
+NODE K5
+  KIND lemma
+  SCOPE WORLD
+  CLAIM_STATUS PROVED
+  DERIVATION_STATUS VALID
+  FORMAL_STATUS KERNEL_CHECKED_FINITE_COMPUTATION
+  EVIDENCE_STATUS LIVE
+  FORMALISM LEAN
+  TYPE witness
+  FAMILY_SCOPE INSTANCE
+  DOMAIN the two named sets of cardinality six and seven
+  SEMANTICS the minimum of max A over sum-distinct sets is at most twenty four at cardinality six and at most forty four at cardinality seven, both strictly below two-to-the-n-minus-one
+  BINDS S1 S3
+  ADMISSIBLE_BECAUSE the kernel evaluated the injectivity certificate for each set from the frozen definition
+  CONCLUSION_MATCH PASS
+  DEPS K1
+  PROVENANCE Erdos1.witness6 and Erdos1.witness7 in lean/E1.lean, kernel event recorded at LR2 and W1
+
+NODE K6
+  KIND lemma
+  SCOPE WORLD
+  CLAIM_STATUS COMPUTATION_SUPPORTED
+  DERIVATION_STATUS VALID
+  FORMAL_STATUS NOT_TARGETED
+  EVIDENCE_STATUS LIVE
+  TYPE refutation
+  FAMILY_SCOPE TESTED_FAMILY
+  SAMPLE EXHAUSTIVE
+  DOMAIN cardinalities five and six
+  SEMANTICS the minimum at cardinality six is twenty four while twice the minimum at cardinality five is twenty six, so the minima do not double
+  BINDS S1 S2
+  CONCLUSION_MATCH PASS
+  DEPS K1
+  PROVENANCE the exhaustive search receipted at W2, rows n equals five and n equals six
+
+SCOPE_LIFT SL1
+  CLAIM K4
+  FROM_SCOPE the finite set of distinct integers produced by one sum-distinct set
+  TO_SCOPE every sum-distinct set of cardinality at least two
+  BRIDGE K3 is proved for an arbitrary finite integer set and K2 for an arbitrary finite A, so no lift from a tested family is performed anywhere in the chain
+  STATUS PROVED
+
+DOMAIN_COVERAGE DC1
+  CLAIM K4
+  CLAIM_DOMAIN sum-distinct A inside the interval one to N with cardinality at least two
+  SENSITIVE_STEPS the choice of the spread parameter m as two-to-the-cardinality-minus-two
+  COVERED_REGION cardinality at least two
+  ESCAPED_REGION cardinality zero and cardinality one
+  EXTENSION_LEMMAS NONE
+  VERDICT PASS
+
+BOUNDARY_AUDIT BA1
+  CLAIM K4
+  FULL_DOMAIN all finite A inside the interval one to N
+  INTERIOR_OR_PUNCTURED_DOMAIN cardinality at least two
+  BOUNDARY_SET cardinality zero and cardinality one
+  TESTS card = 0, N = 5 and card = 1, N = 1 and card = 1, N = 5
+  COUNTEREXAMPLES at card = 0 the statement reads one is at most zero and is FALSE, so the cardinality hypothesis is load-bearing and not decoration
+  RESULT PASS
+
+BOUNDARY_AUDIT BA2
+  CLAIM K4
+  FULL_DOMAIN every cardinality at which an exact minimum is known
+  INTERIOR_OR_PUNCTURED_DOMAIN cardinality two to seven
+  BOUNDARY_SET the exact minima themselves, the tightest admissible N at each cardinality
+  TESTS n = 6, N = 24 gives 4096 at most 221184 and n = 7, N = 44 gives 16384 at most 867328
+  COUNTEREXAMPLES NONE
+  RESULT PASS
+
+ROUTE R1
+  TARGET_LINK T0
+  ROUTE_KIND PROVE
+  METHOD signed second moment over the powerset, then an integer spread count on the recentred sums
+  FAMILY MOMENT_METHOD
+  DIFFICULTY_DELTA KNOWN_THEOREM the loss against the target drops from a factor n to a factor root n, and the whole argument becomes elementary integer counting with no probability
+  ROUTE_STATUS BLOCKED_CURRENT_TECHNIQUE
+  BLOCKER the only facts used about A are that the two-to-the-n sums are distinct integers and that the sum of squares of the elements is at most n N squared, and those two facts are jointly satisfiable by a spread of order root n times N
+  KILL_THEOREM NONE
+  DELTA_STATUS PROVED
+  NEXT_REQUIREMENT a third fact about A that forbids the root n spread
+  BINDING_CONSTRAINT CLASS PROOF_TECHNIQUE EVIDENCE K2 K3 K4 BN1
+
+ROUTE R2
+  TARGET_LINK T0
+  ROUTE_KIND FALSIFY
+  METHOD induct on cardinality through the exact minima, aiming at the doubling inequality that would give the constant immediately
+  FAMILY INDUCTION_ON_CARDINALITY
+  DIFFICULTY_DELTA DIRECT the doubling inequality would close the target outright with the constant read off any single cardinality
+  ROUTE_STATUS KILLED_BY_THEOREM
+  BLOCKER the doubling inequality is false at the first cardinality where the minima are not powers of two
+  KILL_THEOREM K6, the exact minima at cardinality five and six are thirteen and twenty four, and twenty four is strictly below twenty six
+  DELTA_STATUS PROVED
+  NEXT_REQUIREMENT NONE
+
+ROUTE R3
+  TARGET_LINK T0
+  ROUTE_KIND PROVE
+  METHOD split on the scale profile of A, one branch where the elements are spread over many scales and one where they concentrate at one scale
+  FAMILY ANTICONCENTRATION_DICHOTOMY
+  DIFFICULTY_DELTA NEW_STRUCTURE the target is replaced by an anticoncentration statement about the subset-sum distribution, which is a question about A rather than about its moments
+  ROUTE_STATUS OPEN
+  BLOCKER no proof yet that the concentrated branch contradicts sum-distinctness
+  KILL_THEOREM NONE
+  DELTA_STATUS UNCHECKED
+  NEXT_REQUIREMENT GAP1
+
+BOTTLENECK BN1
+  RANK 1
+  STATEMENT no proof that the two-to-the-n recentred subset sums of a sum-distinct set cannot occupy an interval of length of order root n times N, which is exactly the configuration that saturates the second moment constraint and is therefore the ceiling of the entire moment family
+  BLOCKS CC1
+  BINDING_CONSTRAINT CLASS PROOF_TECHNIQUE EVIDENCE K2 K3 K4
+  SURVIVORS_TRIED K2@W1 K3@W1 K4@W1 K5@W1 K6@W2
+
+BOTTLENECK BN2
+  RANK 2
+  STATEMENT the estate holds no receipted statement of the strongest published lower bound for this problem, so the campaign cannot verify whether its own kernel-checked constant is at or below the literature frontier
+  BLOCKS CC1
+  BINDING_CONSTRAINT CLASS SOURCE EVIDENCE E1 W3
+  SURVIVORS_TRIED NONE
+
+PROOF_DRAFT PD1
+  TARGET T0
+  CONTRACT CC1
+  STEP K2 the signed second moment identity
+  STEP K3 the integer spread count
+  STEP K4 the resulting bound with the root n loss
+  STEP GAP1 the anticoncentration dichotomy that removes the root n
+  STATUS OPEN_GAPS
+
+GAP GAP1
+  STATEMENT for every sum-distinct A of cardinality n inside the interval one to N there is an absolute constant c such that the number of subsets of A whose sum lies in any interval of length N is at most two-to-the-n over c root n is FALSE, and instead the sums of a near-extremal A must occupy an interval of length at most a constant times N
+  WHY_SUFFICIENT with this the spread count of K3 runs at m of order two-to-the-n rather than two-to-the-n over root n, and the same chain gives N at least a constant times two-to-the-n, which is CC1's PROOF_REQUIRES
+  DEPS K2 K3
+
+HARVEST_STATE HS1
+  SCOPE oracle/evidence/encirclement-quad/erdos_1 and erdos_1_v2, sixteen jsonl lanes plus three terminal files
+  MATHEMATICAL_ARTIFACTS the twenty-round adversarial debate digests and their surviving attack list
+  HARVESTED the exact-minima backtracking idea, independently reimplemented and receipted at W2
+  UNHARVESTED the eight P-lane files and the S02 to S07 session logs of erdos_1_v2
+  STATUS PARTIAL
+
+IMPLEMENTATION_AUDIT IA1
+  INSTRUMENT_ID the estate blade module oracle/tools/msl_campaign.py, read not retyped
+  CLAIMED_MECHANISM the v2.0 line law, form registry, gate-field law, source-binding law and terminal laws
+  EXECUTED_MECHANISM the v1.6-era implementations of those laws; MSL16_LANGUAGE_ID is pinned to the v1.6 file id and msl_dialect_version collapses every marker from v1.7 to v2.1 onto the string 1.8
+  TRACE oracle/evidence/msl-machine/campaigns/erdos1-close-2026-09-05/receipts/blade-run.json
+  STATUS MISMATCH
+
+LANGUAGE_DEFECT LD1
+  EQUIVALENT_UNDER the current vocabulary, in which s.43.14 requires an adjudicating WORLD_RESULT to bind an instrument identity and s.43.31 requires an INCUMBENT to carry a crosscheck id
+  SEPARATED_BY s.7 reserves INSTRUMENT and CROSSCHECK as header names and s.4 reads a reserved name as a header at any indent, so the only compliant utterance of either law detonates its own object into two
+  INSTANCE three, all convicted HEADER_INDENTED by the estate blade: two-space INSTRUMENT I1 inside a WORLD_RESULT, two-space CROSSCHECK NONE inside an INCUMBENT which also stripped that object of its STATUS and fired INCUMBENT_AS_OPTIMUM downstream, and two-space INSTRUMENT inside the IMPLEMENTATION_AUDIT of s.43.21, whose own canonical example in the spec carries that exact line, so this defect report reproduced the defect it reports and the blade caught it
+  PROPOSAL rename the two fields INSTRUMENT_ID and CROSSCHECK_ID, by the same repair that made FINAL_BOTTLENECK the package field in s.41.8 G12, and run the G12 collision audit over every field s.43 introduces
+
+LANGUAGE_DEFECT LD2
+  EQUIVALENT_UNDER the current vocabulary, in which s.12 lets a SOURCE_BIND declare any string as its SYMBOL
+  SEPARATED_BY the binding blade decides use by a case-folded substring test of the symbol against the semantics text, so a one-letter symbol matches almost every English sentence and a bind for the letter n convicts every node in the round
+  INSTANCE the first draft of this packet bound the symbols N and n and drew ten SOURCE_BINDING_BROKEN convictions, every one of them spurious; renaming the symbols interval_endpoint_N and cardinality_of_A cleared all ten without changing a single mathematical claim
+  PROPOSAL require a SOURCE_BIND SYMBOL to be a token that cannot occur as a substring of ordinary English, or give the blade a word-boundary matcher; until then a one-letter bind is unwritable in practice and the register should say so
+
+INCUMBENT adf41c431aa6
+  DOMAIN erdos1 lower bound constant
+  ROLE VERIFIED
+  SIZE 1
+  VALUE the kernel-checked bound N at least two-to-the-n over eight root n
+  OBJECT Erdos1.erdos1_sqrt in lean/E1.lean
+  VERIFIED_BY the Lean 4 kernel with a clean axiom footprint
+  PROVENANCE W1
+  HASH adf41c431aa6e5ba46be39ecbac02357ad5d2439871f177429e1bf82851243bd
+  EVIDENCE_STATUS LIVE
+  CROSSCHECK_ID NONE
+  REPLAY NONE
+  STATUS INCUMBENT_NOT_PROVEN_OPTIMAL
+
+DERIVATION_LEDGER DL1
+  SCOPE TP1
+  ROW K1 lean/E1.lean IsSumDistinctSet, kernel event W1
+  ROW K2 lean/E1.lean Erdos1.secondMoment, kernel event W1
+  ROW K3 lean/E1.lean Erdos1.sum_sq_lower, kernel event W1
+  ROW K4 lean/E1.lean Erdos1.erdos1_sqrt, kernel event W1
+  ROW K5 lean/E1.lean Erdos1.witness6 and Erdos1.witness7, kernel event W1
+
+PROMOTION_GATE G1
+  DEPS_AUTHORIZED PASS K1 K2 K3
+  DERIVATION_VALID PASS K4
+  HYPOTHESES_PRESERVED PASS TS0
+  FAMILY_SCOPE_PRESERVED SCOPE_LIFT(SL1)
+  BOUNDARY_CASES_CLOSED BOUNDARY_AUDIT(BA1)
+  SEMANTIC_TRANSPORT NOT_USED
+  RESULT PASS
+
+CLOSE_STATUS T0
+  CONTRACT CC1
+  SOURCE_CORRECTNESS BOUND K1
+  SEMANTIC_BINDING PASS_CANDIDATE T0
+  MATHEMATICAL_TRUTH PROVED K4
+  KERNEL_SCOPE KERNEL_CHECKED_UNIVERSAL LR1
+  COVERS FRAGMENT
+  CONCLUSION_SHAPE QUANTIFIED
+  SCOPE_CHECKED N is at least two-to-the-n over eight root n
+  SCOPE_TARGET N is at least a constant times two-to-the-n
+  GATES statement transcription against the frozen file, axiom audit, boundary audit, exact-minima crosscheck
+  RECEIPT_BASE REPO
+  RECEIPT_HASH adf41c431aa6e5ba46be39ecbac02357ad5d2439871f177429e1bf82851243bd
+  CLOSURE_WORD LEMMA_CERTIFIED
+
+TERMINAL_AUDIT TA1
+  TARGET_IDENTITY_LOCK PASS T0
+  CLOSURE_CRITERION PASS TS0
+  PROMOTION_GATES PASS G1
+  SOURCE_BINDS PASS S1 S3
+  ASYMPTOTIC_TRANSFERS NOT_USED
+  WITNESS_INVARIANTS PASS K5
+  BOUNDARY_AUDITS PASS BA1 BA2
+  TRANSPORT_LEDGERS NOT_USED
+  TERMINAL_FALSIFY PASS W2
+  RETRACTION_SWEEP PASS NONE
+  AUTHORITY_BINDINGS NOT_USED
+  FORMAL_PROVENANCE PASS LR1 LR2
+  CERTIFICATE_REPLAY PASS W1
+  RESULT PASS
+
+REQUEST Q1
+  KIND SOURCE
+  TARGET_KEY E1_FRONTIER
+  TARGET a receipted statement of the strongest published lower bound for the distinct-subset-sums problem, with its constant and its exponent, so BN2 can be discharged and the campaign can tell whether the kernel-checked constant is at the frontier or below it
+  WHY_LOAD_BEARING without it no CLOSE round can rank routes by distance to the frontier, and the estate's own digest of this problem names no such bound
+  ROUTE R1
+
+TERMINAL_PACKAGE TP1
+  CONTRACT CC1
+  SURVIVORS K1 K2 K3 K4 K5 K6
+  DEAD_ROUTES R2 the doubling induction is dead by the exact minima at cardinality five and six
+  COUNTEREXAMPLES NONE
+  FINAL_BOTTLENECK BN1
+  DRAFT PD1
+  NEXT_ATTACKS discharge GAP1 by classifying the scale profiles of sum-distinct sets at cardinality eight to twelve against the exact minima, and lift the spread parameter in K3 from two-to-the-n-over-four to a scale-dependent choice
+
+TARGET_STATUS T0
+  CLOSURE_CRITERION a proof that there is a constant C > 0 with N >= C * 2 ^ n for every sum-distinct A subset of the interval one to N with cardinality n
+  BRANCH MOMENT_METHOD ACTIVE the root n loss is proved and named
+  BRANCH INDUCTION_ON_CARDINALITY CLOSED K6 kills the doubling inequality outright
+  BRANCH ANTICONCENTRATION_DICHOTOMY ACTIVE GAP1 is stated and undischarged
+  CASE cardinality_at_most_seven CLOSED the exact minima are known and receipted at W2
+  PIECE lower_bound HELD
+  CLAIMED_STATUS OPEN
+  SOURCE oracle/math/erdos-status-cache/problems.yaml
+  SOURCE_AS_OF 2025-08-31
+  FETCHED_AT the estate snapshot read on 2026-09-05
+  RECEIPT oracle/math/erdos-status-cache/fetch-receipt.json
+  FRESHNESS STALE
+  OPEN_DEBT GAP1 BN1 BN2
+  RETRACTED_THIS_ROUND NONE
+
+LEMMA_VERDICT route=R1 lemma=K4 status=PROVED note=every sum-distinct set inside one to N with cardinality at least two obeys two-to-the-twice-cardinality at most sixty four times cardinality times N squared, kernel-checked sorry-free, and this is a FRAGMENT of the target and not the target

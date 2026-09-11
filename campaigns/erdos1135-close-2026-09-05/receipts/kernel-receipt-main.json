@@ -1,0 +1,180 @@
+{
+ "label": "E1135-MAIN",
+ "tool": "stamp_receipt.py",
+ "rules": [
+  "R1 exit!=0 -> KERNEL_FAILED",
+  "R2 sorry -> KERNEL_FAILED",
+  "R3 dirty axioms -> KERNEL_CHECKED_DIRTY_AXIOMS",
+  "R4 binder over an infinite type -> KERNEL_CHECKED_UNIVERSAL",
+  "R5 closed equation -> KERNEL_CHECKED_FINITE_COMPUTATION",
+  "R6 declared finite-derived -> KERNEL_CHECKED_FINITE_COMPUTATION"
+ ],
+ "finite_derived_declared": [
+  "residual_drops_below_1024",
+  "scan_1024"
+ ],
+ "source_file": "lean/Erdos1135.lean",
+ "source_sha256": "7463568dca32590c571ab3401254a0bf38afb9c1ea0d32b629db4bd38bbfc775",
+ "lean_output_file": "receipts/lean-Erdos1135.out",
+ "lean_output_sha256": "aef04035d3e938a0b21019d26a0fc24925a0600fae7986207250a8ad4b8120f6",
+ "exit_code": 0,
+ "error_lines": [],
+ "sorry_free": true,
+ "declaration_count": 14,
+ "declarations": [
+  {
+   "declaration": "Erdos1135.collatz_of_descent",
+   "statement": "(H : \u2200 n, 1 < n \u2192 \u2203 k, 0 < k \u2227 collatzStep^[k] n < n) : \u2200 n, 0 < n \u2192 \u2203 m, collatzStep^[m] n = 1",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "dirty_axioms": [],
+   "formal_status": "KERNEL_CHECKED_UNIVERSAL"
+  },
+  {
+   "declaration": "Erdos1135.collatz_of_residual_descent",
+   "statement": "(H : \u2200 n, 1 < n \u2192 RESIDUAL n \u2192 \u2203 k, 0 < k \u2227 collatzStep^[k] n < n) : \u2200 n, 0 < n \u2192 \u2203 m, collatzStep^[m] n = 1",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "dirty_axioms": [],
+   "formal_status": "KERNEL_CHECKED_UNIVERSAL"
+  },
+  {
+   "declaration": "Erdos1135.descent_of_collatz",
+   "statement": "(C : \u2200 n, 0 < n \u2192 \u2203 m, collatzStep^[m] n = 1) : \u2200 n, 1 < n \u2192 \u2203 k, 0 < k \u2227 collatzStep^[k] n < n",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "dirty_axioms": [],
+   "formal_status": "KERNEL_CHECKED_UNIVERSAL"
+  },
+  {
+   "declaration": "Erdos1135.frozen_target_of_residual_descent",
+   "statement": "(H : \u2200 n, 1 < n \u2192 RESIDUAL n \u2192 \u2203 k, 0 < k \u2227 collatzStep^[k] n < n) (n : \u2115) (hn : n > 0) : \u2203 m, collatzStep^[m] n = 1",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "dirty_axioms": [],
+   "formal_status": "KERNEL_CHECKED_UNIVERSAL"
+  },
+  {
+   "declaration": "Erdos1135.iter1_mod2_0",
+   "statement": "(j : \u2115) : collatzStep^[1] (2 * j + 0) = 1 * j + 0",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "dirty_axioms": [],
+   "formal_status": "KERNEL_CHECKED_UNIVERSAL"
+  },
+  {
+   "declaration": "Erdos1135.iter3_mod4_1",
+   "statement": "(j : \u2115) : collatzStep^[3] (4 * j + 1) = 3 * j + 1",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "dirty_axioms": [],
+   "formal_status": "KERNEL_CHECKED_UNIVERSAL"
+  },
+  {
+   "declaration": "Erdos1135.iter6_mod16_3",
+   "statement": "(j : \u2115) : collatzStep^[6] (16 * j + 3) = 9 * j + 2",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "dirty_axioms": [],
+   "formal_status": "KERNEL_CHECKED_UNIVERSAL"
+  },
+  {
+   "declaration": "Erdos1135.iter8_mod32_11",
+   "statement": "(j : \u2115) : collatzStep^[8] (32 * j + 11) = 27 * j + 10",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "dirty_axioms": [],
+   "formal_status": "KERNEL_CHECKED_UNIVERSAL"
+  },
+  {
+   "declaration": "Erdos1135.iter8_mod32_23",
+   "statement": "(j : \u2115) : collatzStep^[8] (32 * j + 23) = 27 * j + 20",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "dirty_axioms": [],
+   "formal_status": "KERNEL_CHECKED_UNIVERSAL"
+  },
+  {
+   "declaration": "Erdos1135.iterate_pos",
+   "statement": "(k : \u2115) {n : \u2115} (h : 0 < n) : 0 < collatzStep^[k] n",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "dirty_axioms": [],
+   "formal_status": "KERNEL_CHECKED_UNIVERSAL"
+  },
+  {
+   "declaration": "Erdos1135.reaches_one_pow_two",
+   "statement": "(k : \u2115) : \u2203 m, collatzStep^[m] (2 ^ k) = 1",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "dirty_axioms": [],
+   "formal_status": "KERNEL_CHECKED_UNIVERSAL"
+  },
+  {
+   "declaration": "Erdos1135.step_even",
+   "statement": "(m : \u2115) : collatzStep (2 * m) = m",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "dirty_axioms": [],
+   "formal_status": "KERNEL_CHECKED_UNIVERSAL"
+  },
+  {
+   "declaration": "Erdos1135.step_odd",
+   "statement": "(m : \u2115) : collatzStep (2 * m + 1) = 6 * m + 4",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "dirty_axioms": [],
+   "formal_status": "KERNEL_CHECKED_UNIVERSAL"
+  },
+  {
+   "declaration": "Erdos1135.step_pos",
+   "statement": "{n : \u2115} (h : 0 < n) : 0 < collatzStep n",
+   "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+   ],
+   "dirty_axioms": [],
+   "formal_status": "KERNEL_CHECKED_UNIVERSAL"
+  }
+ ]
+}

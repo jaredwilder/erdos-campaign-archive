@@ -1,0 +1,131 @@
+{
+  "campaign": "erdos564-close-2026-09-05",
+  "problem": {
+    "id": "erdos-564",
+    "url": "https://www.erdosproblems.com/564",
+    "prize_usd": 500,
+    "tags": ["graph theory", "ramsey theory", "hypergraphs"],
+    "statement": "Is there c > 0 such that R_3(n) >= 2^(2^(c n))?",
+    "formal_source": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/564.lean",
+    "formal_source_sha256": "df2339f468cf21b0962d2fc1a0989b011c1248a453f7d824c02239aafeb07987",
+    "status_after_campaign": "OPEN"
+  },
+  "closure_claim": {
+    "closed": false,
+    "note": "No proof or disproof. The 2^{Omega(n^2)} literature lower bound was not improved."
+  },
+  "prior_estate_work": {
+    "receipt": "oracle/reality/frontier_arsenal/bladeforge/verification/theoremos/LIVE-ERDOS-564-ROUTED-RECEIPT-2.json",
+    "outcome": "OPEN_WITH_FORMAL_RESIDUE - 2 blind tactic candidates (assumption, rfl), both failed. No mathematics attempted."
+  },
+  "environment": {
+    "lean_compile_host": "root@51.158.234.15",
+    "lean_version": "4.31.0-rc1 (commit fd009949156901e6cf15b6d9bf1122294b8e697a)",
+    "mathlib_rev": "919544d4309104b3f19724b0e6e48c701d27948f",
+    "lean_project": "/root/formalizer/proofs",
+    "sat_solver": "cadical (/usr/local/bin/cadical)",
+    "compute_policy": "all Lean + SAT executed on the rented box under nice -n 19; nothing heavy run locally"
+  },
+  "artifacts": [
+    {
+      "path": "lean/E564.lean",
+      "sha256": "0cbc6e290de61e6da53d04f4567bde8e145b6e0b8b7c7c5cb2219bb8674fba7d",
+      "kind": "lean-source",
+      "note": "sha256 of the version compiled and audited; recompute before citing if edited"
+    },
+    { "path": "sat/gen_r3.py", "sha256": "cfea070bf41d3fd45b0ca912bb48a4e7592fc4b9dad866feb54588ed7d80aa49", "kind": "cnf-generator" },
+    { "path": "sat/verify_witness.py", "sha256": "648e6de06c0b4c773fdcba0ac8906cb65cc7ba034900c712f93e3b1d16bc59c1", "kind": "independent-verifier" },
+    { "path": "sat/r3_4_N12.cnf", "sha256": "64172ab3cf44c609b58e8a38bf5a54d843931546f8ab5e40f56f7a2273314511", "kind": "cnf", "vars": 220, "clauses": 990 },
+    { "path": "sat/r3_4_N13.cnf", "sha256": "14155c91c44cc1d1c4b26f3176b5ceb4322358c829ecc5345f4847e87c1414e0", "kind": "cnf", "vars": 286, "clauses": 1430 },
+    { "path": "sat/N12_cadical.log", "sha256": "20969e74c51f5c81a05f78f347a5d4b577ff3bd0b7fed023047b55fb8c46742e", "kind": "solver-log" },
+    { "path": "sat/verify_N12.txt", "kind": "independent-verification-output" },
+    { "path": "DOSSIER.md", "kind": "campaign-dossier" }
+  ],
+  "lean_receipts": {
+    "compile": {
+      "command": "lake env lean /root/e564/lean/E564.lean",
+      "exit_code": 0,
+      "stdout": "(empty - no errors, no warnings)",
+      "verdict": "PASS"
+    },
+    "axiom_audit": {
+      "command": "lake env lean /root/e564/lean/E564_audit.lean  (source + #print axioms)",
+      "exit_code": 0,
+      "sorry_free": true,
+      "axioms_for_every_theorem": ["propext", "Classical.choice", "Quot.sound"],
+      "sorryAx_present": false,
+      "theorems_audited": [
+        "Erdos564.ramseySet_upward",
+        "Erdos564.lt_hypergraphRamsey_iff",
+        "Erdos564.not_mem_ramseySet_of_colouring",
+        "Erdos564.dropMax_insert",
+        "Erdos564.ramseySet_shrink",
+        "Erdos564.hypergraphRamsey_shrink",
+        "Erdos564.graphRamsey_le_hypergraphRamsey",
+        "Erdos564.erdos564_of_colourings",
+        "Erdos564.card_host",
+        "Erdos564.delta_spec",
+        "Erdos564.delta_ne",
+        "Erdos564.col_triple",
+        "Erdos564.mono_card_le",
+        "Erdos564.not_mem_ramseySet_pow",
+        "Erdos564.pow_lt_hypergraphRamsey"
+      ]
+    }
+  },
+  "banked_results": [
+    {
+      "name": "Erdos564.ramseySet_shrink / hypergraphRamsey_shrink",
+      "claim": "R_r(n) <= R_{r+1}(n+1); in particular R_2(n) <= R_3(n+1)",
+      "status": "PROVED (kernel-checked, sorry-free)"
+    },
+    {
+      "name": "Erdos564.lt_hypergraphRamsey_iff",
+      "claim": "m < R_r(n) iff m carries a witness colouring (given the admissible set is nonempty)",
+      "status": "PROVED (kernel-checked, sorry-free)"
+    },
+    {
+      "name": "Erdos564.erdos564_of_colourings",
+      "claim": "Erdos 564 follows from a family of explicit witness colourings of size >= 2^(2^(cn))",
+      "status": "PROVED (kernel-checked, sorry-free) - this is a REDUCTION, not a solution"
+    },
+    {
+      "name": "Erdos564.not_mem_ramseySet_pow",
+      "claim": "2^m is not admissible for (3, m+3): an explicit colex/delta colouring of the triples of a 2^m-element host has no monochromatic (m+3)-set",
+      "status": "PROVED (kernel-checked, sorry-free, UNCONDITIONAL)"
+    },
+    {
+      "name": "Erdos564.pow_lt_hypergraphRamsey",
+      "claim": "R_3(n) > 2^(n-3), given that R_3(n) is well defined",
+      "status": "PROVED (kernel-checked, sorry-free)",
+      "caveat": "WEAKER than the literature bound 2^{Omega(n^2)}. Value is that it is explicit, unconditional and formal."
+    },
+    {
+      "name": "r_3(4) >= 13",
+      "claim": "a 2-colouring of the 220 triples of [12] with no monochromatic 4-set exists",
+      "status": "VERIFIED (SAT model, then re-checked independently by brute force over all 495 4-subsets)",
+      "caveat": "known published value (McKay-Radziszowski 1991); a receipt, not a record"
+    }
+  ],
+  "unproved_or_incomplete": [
+    {
+      "item": "r_3(4) <= 13 (the UNSAT direction on N=13)",
+      "status": "UNPROVED - IN PROGRESS at time of writing",
+      "detail": "cadical -q -t 7200 on /root/e564/sat/r3_4_N13.cnf, started 2026-09-05T17:43:02Z, taskset -c 30, nice -n 19. Completion writes /root/e564/sat/N13.EXIT and N13.EXITED. NOT DRAT-logged: a first attempt with proof output was aborted because N13.drat reached 2 GB in ~7 minutes and threatened the box disk. Any UNSAT it reports is solver-trusted only."
+    },
+    {
+      "item": "(RamseySet r n).Nonempty  (the hypergraph Ramsey theorem)",
+      "status": "UNPROVED - not in Mathlib 919544d4 either (no Ramsey theorem of any kind)",
+      "detail": "Required for every numeric lower-bound statement about hypergraphRamsey, since sInf of the empty set is 0. Carried as an explicit hypothesis throughout rather than assumed."
+    },
+    {
+      "item": "literature bounds quoted in DOSSIER.md section 2",
+      "status": "UNPROVED here - cited from the literature, not verified by this campaign"
+    }
+  ],
+  "next_moves": [
+    "Formalise the hypergraph Ramsey theorem (Erdos-Rado induction on r) - absent from Mathlib, prerequisite for everything numeric.",
+    "Formalise the 2^{Omega(n^2)} union bound - the current world-record lower bound for 564. Obstacle is Lean cardinality API for function spaces constant on a sub-domain, not the mathematics.",
+    "Only then attack the double exponential itself; the delta apparatus in E564.lean section Construction is the place to build a new two-colour construction."
+  ]
+}

@@ -1,0 +1,656 @@
+MSL_DIALECT v2.0
+MSL_PROFILE MSL-F
+MSL_MODE CLOSE
+
+RUNTIME_SELF_CHECK RSC1
+  FILE_VERSION MSL_CANONICAL_ALIEN_v2_0
+  BOOT_VERSION MSL_CANONICAL_ALIEN_v2_0
+  PROFILE MSL-F
+  RELEASE_FINGERPRINT NONE
+  RESULT PASS
+
+SOURCE E1135
+  CITATION erdosproblems.com/1135, prize five hundred dollars, number theory
+  FINGERPRINT 1fa9d777f34cbfe9e023e864049b8499a970b949ed7b32a1f5dc93054de1064f
+  ACCESSED oracle/evidence/targets/lean-sources/FormalConjectures__ErdosProblems__1135.lean
+  SOURCE_COVERAGE EXHAUSTIVE
+  OBJECT_INVENTORY ENUM[erdos_1135, CollatzConjecture.collatzStep, CollatzConjecture.collatz_conjecture]
+  UNHARVESTED NONE
+
+TARGET_IDENTITY T1135
+  SOURCE E1135
+  SOURCE_STATEMENT the Collatz conjecture states that for any positive integer n there exists a natural number m such that the m-th term of the sequence is 1
+  SOURCE_FINGERPRINT 1fa9d777f34cbfe9e023e864049b8499a970b949ed7b32a1f5dc93054de1064f
+  FORMAL_STATEMENT theorem collatz_conjecture (n : Nat) (hn : n > 0) : exists m, collatzStep^[m] n = 1
+  BINDING TRANSCRIPTION_CERT
+  BINDING_WITNESS the banked file re-declares collatzStep character-for-character and the external audit confirmed signature identity at its item four
+  OPERATION iteration of the map n maps to n over two on evens and three n plus one on odds
+  ARITH_FN collatzStep
+  TARGET_LOCK LOCKED
+
+TARGET_SHAPE TS1135
+  TARGET T1135
+  KIND DECISION
+  REQUIRED_COMPONENTS for every n greater than zero, exhibit m with the m-fold iterate equal to one
+  CONTEXT_COMPONENTS the Lagarias surveys and the Guy entry close nothing
+  CLOSURE_CRITERION for any positive integer n there exists a natural number m such that the m-th term of the sequence is 1
+  DOMAIN positive integers
+  COLLECTION_KIND SET
+  DISTINCTNESS NOT_APPLICABLE
+  DEGENERATE_CASES zero OUT by the hypothesis n greater than zero, one IN and closed by m equal to zero
+  DEGENERACY_FLOOR every admissible n is at least one
+  LEAN_DEFAULTS natural division truncates so collatzStep of zero is zero, and Even is Mathlib Even not a parity numeral
+  BINDER_PREFIX for all n, there exists m
+  POLARITY AFFIRMS
+  DIRECTION NOT_APPLICABLE
+  QUANTIFIED_OVER ALL_POSITIVE_INTEGERS
+  NORMALIZATION iterate count starts at zero
+  ANCHOR n equal to three reaches one at m equal to seven
+
+SOURCE_BIND S1
+  SOURCE E1135
+  SYMBOL collatzStep
+  READS_AS the full map, n over two when Even n, three n plus one otherwise, one step per application
+  DISTINCT_FROM the Syracuse shortcut map T
+  WHY_DISTINCT T sends odd n to three n plus one over two in ONE step, so every step count, every iterate index and every descent witness differs on every odd n
+  FINGERPRINT 1fa9d777f34cbfe9e023e864049b8499a970b949ed7b32a1f5dc93054de1064f
+
+SOURCE_BIND S2
+  SOURCE E1135
+  SYMBOL iterate
+  READS_AS Function.iterate, the m-fold composition, with the zero-fold iterate the identity
+  DISTINCT_FROM the total stopping time and the orbit set
+  WHY_DISTINCT the zero-fold iterate is admissible and closes n equal to one, which a stopping-time reading excludes
+  FINGERPRINT 1fa9d777f34cbfe9e023e864049b8499a970b949ed7b32a1f5dc93054de1064f
+
+CLOSE_CONTRACT CC1
+  TARGET T1135
+  PROOF_REQUIRES a proof that for every n greater than zero some finite iterate of collatzStep equals one
+  DISPROOF_REQUIRES a proof that some n greater than zero has no finite iterate equal to one, by divergence or by a cycle other than the one-two cycle
+  NOT_CLOSURE STANDARD_FLOOR
+  NOT_CLOSURE a reduction of the conjecture to a descent statement of equal difficulty
+  NOT_CLOSURE a residue-class covering that leaves any class unproved
+  FROZEN_WITH T1135
+
+INSTRUMENT I1
+  KIND SYMBOLIC_ITERATOR
+  HASH 3b0fee778c8e4b49fe12a1b7815f27d8e760e99f0476e6ac590f8cb89ab8ba31
+  VERSION residue_descent.py 2026-09-05
+  DOMAIN affine states a times j plus b under collatzStep while a is even
+  OUTPUT per residue class, the exact affine program and whether it descends uniformly in j
+  PRECONDITIONS parity is determined for all j exactly when the slope a is even
+  DECOMPOSITION NONE
+  SINGULAR_EVENTS the split point where a becomes odd
+  ERROR_MODEL EXACT
+  CONTROL X1
+  CONTROL_SCOPE REGION every residue class it certifies
+
+INSTRUMENT I2
+  KIND KERNEL
+  HASH 919544d4309104b3f19724b0e6e48c701d27948f
+  VERSION Lean 4.31.0-rc1 commit fd009949156901e6cf15b6d9bf1122294b8e697a with Mathlib 919544d4
+  DOMAIN elaboration and kernel type-checking of the two banked Lean files
+  OUTPUT accept or reject, plus the axiom footprint of every declaration
+  PRECONDITIONS the declaration elaborates and the file exits zero
+  DECOMPOSITION NONE
+  SINGULAR_EVENTS NONE
+  ERROR_MODEL EXACT
+  CONTROL AA1
+  CONTROL_SCOPE GLOBAL receipts/lean-Erdos1135.out and receipts/lean-Erdos1135Finite.out
+
+INSTRUMENT I3
+  KIND FOREIGN_REVIEWER
+  HASH e0d6cdaf1871f9ab951b11e785537bdc26bfbf065aef967d22993fa5689f1d6b
+  VERSION ask_gemini.py against google slash gemini-3.7-flash, 2026-09-05
+  DOMAIN adversarial review of a stated artifact that travels in full, English report
+  OUTPUT a per-item finding list; it executes nothing and proves nothing
+  PRECONDITIONS the artifact is sent verbatim, never as the speaker's summary
+  DECOMPOSITION NONE
+  SINGULAR_EVENTS NONE
+  ERROR_MODEL MODEL_LEAD
+  CONTROL NONE
+  CONTROL_SCOPE SINGLE_WITNESS
+
+WORLD_RESULT W1
+  CLAIM_STATUS COMPUTED
+  DERIVATION_STATUS VALID
+  FORMAL_STATUS NOT_TARGETED
+  FAMILY_SCOPE PARAMETRIC_FAMILY
+  EVIDENCE_STATUS LIVE
+  SAMPLE EXHAUSTIVE
+  DOMAIN every residue class modulo two to the k for k from one to six
+  WITNESS five classes admit a descent affine program uniform in j, namely modulus two residue zero in one step, modulus four residue one in three steps, modulus sixteen residue three in six steps, modulus thirty-two residues eleven and twenty-three in eight steps
+  AUTHORITY exact integer symbolic iteration by I1, no floating point, no sampling
+  INSTRUMENT_ID I1
+  RECEIPT receipts/residue-descent-k6.json
+  VERIFICATION_DEPTH DERIVATION_CHECKED
+  QUOTIENTS NONE
+  FALSIFIER MEASURE the concrete integer map on 200 members of each certified class. THE CLAIM IS DEAD IF any member fails the affine identity or fails to descend.
+  AUDITED_BY BA3
+
+WORLD_RESULT W2
+  CLAIM_STATUS COMPUTED
+  DERIVATION_STATUS VALID
+  FORMAL_STATUS NOT_TARGETED
+  FAMILY_SCOPE PARAMETRIC_FAMILY
+  EVIDENCE_STATUS LIVE
+  SAMPLE EXHAUSTIVE
+  DOMAIN every residue class modulo two to the k for k from one to twelve
+  WITNESS the unreached density falls one half, one quarter, one quarter, three sixteenths, one eighth, one eighth, thirteen over one hundred twenty-eight, nineteen over two hundred fifty-six, nineteen over two hundred fifty-six, one sixteenth, one sixteenth, one hundred thirteen over two thousand forty-eight, while the certificate count needed rises from five to fifty-seven
+  AUTHORITY exact integer symbolic iteration by I1
+  INSTRUMENT_ID I1
+  RECEIPT receipts/residue-descent-k12.json
+  VERIFICATION_DEPTH DERIVATION_CHECKED
+  QUOTIENTS NONE
+
+WORLD_RESULT W3
+  CLAIM_STATUS COMPUTATION_SUPPORTED
+  DERIVATION_STATUS VALID
+  FORMAL_STATUS NOT_TARGETED
+  FAMILY_SCOPE AMBIENT_FAMILY
+  EVIDENCE_STATUS LIVE
+  DOMAIN the file lean/Erdos1135.lean
+  WITNESS exit zero, fourteen declarations, every axiom footprint exactly propext Classical.choice Quot.sound, zero sorry
+  AUTHORITY Lean kernel elaboration and type-checking by I2 on the rented box
+  INSTRUMENT_ID I2
+  RECEIPT receipts/lean-Erdos1135.out
+  VERIFICATION_DEPTH DERIVATION_CHECKED
+  QUOTIENTS NONE
+
+WORLD_RESULT W4
+  CLAIM_STATUS COMPUTATION_SUPPORTED
+  DERIVATION_STATUS VALID
+  FORMAL_STATUS NOT_TARGETED
+  FAMILY_SCOPE TESTED_FAMILY
+  EVIDENCE_STATUS LIVE
+  SAMPLE EXHAUSTIVE
+  DOMAIN the file lean/Erdos1135Finite.lean, and inside it every n at most one thousand twenty-four in the four unreached classes
+  WITNESS exit zero, five declarations, zero sorry, and scan_1024 depends on NO axioms at all
+  AUTHORITY Lean kernel evaluation of a decidable Boolean by I2
+  INSTRUMENT_ID I2
+  RECEIPT receipts/lean-Erdos1135Finite.out
+  VERIFICATION_DEPTH DERIVATION_CHECKED
+  QUOTIENTS NONE
+
+WORLD_RESULT W5
+  CLAIM_STATUS COMPUTED
+  DERIVATION_STATUS VALID
+  FORMAL_STATUS NOT_TARGETED
+  FAMILY_SCOPE TESTED_FAMILY
+  EVIDENCE_STATUS LIVE
+  SAMPLE EXHAUSTIVE
+  DOMAIN every n at most four thousand ninety-six whose residue modulo thirty-two lies in seven, fifteen, twenty-seven, thirty-one
+  WITNESS all five hundred twelve such n descend strictly below themselves, worst case one hundred thirty-two steps at n equal to seven hundred three
+  AUTHORITY exact integer iteration of the concrete map in Python
+  INSTRUMENT_ID I1
+  RECEIPT receipts/crosscheck-python.json
+  VERIFICATION_DEPTH DERIVATION_CHECKED
+  QUOTIENTS NONE
+
+WORLD_RESULT W6
+  CLAIM_STATUS COMPUTED
+  DERIVATION_STATUS VALID
+  FORMAL_STATUS NOT_TARGETED
+  FAMILY_SCOPE AMBIENT_FAMILY
+  EVIDENCE_STATUS LIVE
+  DOMAIN the estate index over fifty thousand four hundred sixty-two files, and the prior campaign erdos1135-campaign-001
+  WITNESS the estate holds the frozen statement in four copies and NO proved Collatz mathematics, the prior 280-round campaign banked zero closures, zero universal lemmas, four dead routes and 256 no-findings
+  AUTHORITY repo_index query and direct read of results.json and routes/registry.jsonl
+  INSTRUMENT_ID I1
+  RECEIPT oracle/evidence/msl-machine/campaigns/erdos1135-campaign-001/results.json
+  VERIFICATION_DEPTH STATEMENT_MATCHES
+  QUOTIENTS NONE
+
+WORLD_RESULT W7
+  CLAIM_STATUS CITED
+  DERIVATION_STATUS UNCHECKED
+  FORMAL_STATUS NOT_TARGETED
+  FAMILY_SCOPE AMBIENT_FAMILY
+  EVIDENCE_STATUS LIVE
+  DOMAIN the two banked Lean files, sent in full to an outside model
+  WITNESS audit items one two four and six returned no defect, item three returned one defect against the residual PHRASING, item five returned zero new mathematics and asserted prior Lean Coq Isabelle artifacts of this kind
+  AUTHORITY foreign skill askgemini, model google slash gemini-3.7-flash, prompt seven thousand fifteen tokens
+  INSTRUMENT_ID I3
+  RECEIPT audit/askgemini-20260905T184141-2055c6f2.json
+  VERIFICATION_DEPTH STATEMENT_MATCHES
+  QUOTIENTS NONE
+
+LEAN_RESULT LR1
+  FORMAL_STATUS KERNEL_CHECKED_UNIVERSAL
+  FILE oracle/evidence/msl-machine/campaigns/erdos1135-close-2026-09-05/lean/Erdos1135.lean
+  THEOREMS step_even step_odd step_pos iterate_pos collatz_of_descent descent_of_collatz iter1_mod2_0 iter3_mod4_1 iter6_mod16_3 iter8_mod32_11 iter8_mod32_23 collatz_of_residual_descent reaches_one_pow_two frozen_target_of_residual_descent
+  BACKEND rented box root at fifty-one dot one five eight dot two three four dot one five, Lean 4.31.0-rc1, Mathlib 919544d4
+  AXIOMS propext Classical.choice Quot.sound
+  TACTIC generated rewrite chains plus omega, ring, strong induction
+  BUDGET no timeout, exit zero
+  FAILURE NONE
+  TRANSCRIBED_FROM receipts/kernel-receipt-main.json, stamped by tools/stamp_receipt.py under its infinite-binder shape rule, never by the speaker
+  HASH 7463568dca32590c571ab3401254a0bf38afb9c1ea0d32b629db4bd38bbfc775
+  LAW the status word is the harness stamp; the speaker's own ceiling is COMPUTATION_SUPPORTED
+
+LEAN_RESULT LR2
+  FORMAL_STATUS KERNEL_CHECKED_FINITE_COMPUTATION
+  FILE oracle/evidence/msl-machine/campaigns/erdos1135-close-2026-09-05/lean/Erdos1135Finite.lean
+  THEOREMS scan_1024 residual_drops_below_1024
+  BACKEND the same box and toolchain as LR1
+  AXIOMS NONE for scan_1024, propext Classical.choice Quot.sound for the soundness lemmas
+  TACTIC decide, under maxRecDepth two hundred thousand
+  BUDGET maxHeartbeats four million, exit zero
+  FAILURE NONE
+  TRANSCRIBED_FROM receipts/kernel-receipt-finite.json, stamped by tools/stamp_receipt.py under its declared finite-derived rule
+  HASH 0af8e79ca6ddf90692252b51d4c6ff26a41772f00cefa00799be9e45309213fd
+  LAW a finite computation certificate is not a universal theorem and this word says so
+
+AXIOM_AUDIT AA1
+  DECLARATION all nineteen banked declarations across LR1 and LR2
+  AXIOMS propext, Classical.choice, Quot.sound
+  DIRTY NONE
+  RESULT PASS
+
+NODE K1
+  KIND definition
+  SCOPE WORLD
+  CLAIM_STATUS PROVED
+  DERIVATION_STATUS VALID
+  FORMAL_STATUS KERNEL_CHECKED_UNIVERSAL
+  FORMALISM LEAN
+  EVIDENCE_STATUS LIVE
+  TYPE normal form
+  FAMILY_SCOPE PARAMETRIC_FAMILY
+  DOMAIN every natural m
+  SEMANTICS collatzStep of two m is m, and collatzStep of two m plus one is six m plus four
+  CONCLUSION_MATCH PASS
+  BINDS S1
+  WITNESS_SCHEMA NOT_APPLICABLE
+  ASYMPTOTIC_SIGNATURE NOT_APPLICABLE
+  TRANSPORT_LEDGER NOT_APPLICABLE
+  DEPS NONE
+  PROVENANCE LR1 declarations step_even and step_odd, receipt receipts/lean-Erdos1135.out
+
+NODE K2
+  KIND lemma
+  SCOPE WORLD
+  CLAIM_STATUS PROVED
+  DERIVATION_STATUS VALID
+  FORMAL_STATUS KERNEL_CHECKED_UNIVERSAL
+  FORMALISM LEAN
+  EVIDENCE_STATUS LIVE
+  TYPE invariant
+  FAMILY_SCOPE PARAMETRIC_FAMILY
+  DOMAIN every natural n greater than zero and every iterate count k
+  SEMANTICS positivity is preserved by every iterate of collatzStep
+  CONCLUSION_MATCH PASS
+  BINDS S1 S2
+  DEPS K1
+  PROVENANCE LR1 declarations step_pos and iterate_pos, receipt receipts/lean-Erdos1135.out
+
+NODE K3
+  KIND theorem
+  SCOPE WORLD
+  CLAIM_STATUS PROVED
+  DERIVATION_STATUS VALID
+  FORMAL_STATUS KERNEL_CHECKED_UNIVERSAL
+  FORMALISM LEAN
+  EVIDENCE_STATUS LIVE
+  TYPE reduction
+  FAMILY_SCOPE AMBIENT_FAMILY
+  DOMAIN all positive integers
+  SEMANTICS if every n greater than one has a positive k with the k-fold iterate strictly less than n, then every n greater than zero reaches one
+  CONCLUSION_MATCH PASS
+  BINDS S1 S2
+  DEPS K2
+  PROVENANCE LR1 declaration collatz_of_descent, receipt receipts/lean-Erdos1135.out
+
+NODE K4
+  KIND theorem
+  SCOPE WORLD
+  CLAIM_STATUS PROVED
+  DERIVATION_STATUS VALID
+  FORMAL_STATUS KERNEL_CHECKED_UNIVERSAL
+  FORMALISM LEAN
+  EVIDENCE_STATUS LIVE
+  TYPE reduction
+  FAMILY_SCOPE AMBIENT_FAMILY
+  DOMAIN all positive integers
+  SEMANTICS if every n greater than zero reaches one, then every n greater than one has a positive k with the k-fold iterate strictly less than n
+  CONCLUSION_MATCH PASS
+  BINDS S1 S2
+  DEPS NONE
+  PROVENANCE LR1 declaration descent_of_collatz, receipt receipts/lean-Erdos1135.out
+
+NODE K5
+  KIND lemma
+  SCOPE WORLD
+  CLAIM_STATUS PROVED
+  DERIVATION_STATUS VALID
+  FORMAL_STATUS KERNEL_CHECKED_UNIVERSAL
+  FORMALISM LEAN
+  EVIDENCE_STATUS LIVE
+  TYPE exact identity
+  FAMILY_SCOPE PARAMETRIC_FAMILY
+  DOMAIN every natural j, with no lower bound on j
+  SEMANTICS one step carries two j to j, three steps carry four j plus one to three j plus one, six steps carry sixteen j plus three to nine j plus two, eight steps carry thirty-two j plus eleven to twenty-seven j plus ten, eight steps carry thirty-two j plus twenty-three to twenty-seven j plus twenty
+  CONCLUSION_MATCH PASS
+  SAMPLE EXHAUSTIVE
+  BINDS S1 S2
+  DEPS K1
+  PROVENANCE LR1 declarations iter1_mod2_0 iter3_mod4_1 iter6_mod16_3 iter8_mod32_11 iter8_mod32_23, generated from receipts/residue-descent-k6.json, receipt receipts/lean-Erdos1135.out
+
+NODE K6
+  KIND lemma
+  SCOPE WORLD
+  CLAIM_STATUS PROVED
+  DERIVATION_STATUS VALID
+  FORMAL_STATUS KERNEL_CHECKED_UNIVERSAL
+  FORMALISM LEAN
+  EVIDENCE_STATUS LIVE
+  TYPE family
+  FAMILY_SCOPE PARAMETRIC_FAMILY
+  DOMAIN every natural k
+  SEMANTICS every power of two reaches one
+  CONCLUSION_MATCH PASS
+  BINDS S1 S2
+  DEPS K1
+  PROVENANCE LR1 declaration reaches_one_pow_two, receipt receipts/lean-Erdos1135.out
+
+NODE K9
+  KIND theorem
+  SCOPE WORLD
+  CLAIM_STATUS PROVED
+  DERIVATION_STATUS VALID
+  FORMAL_STATUS KERNEL_CHECKED_UNIVERSAL
+  FORMALISM LEAN
+  EVIDENCE_STATUS LIVE
+  TYPE reduction
+  FAMILY_SCOPE AMBIENT_FAMILY
+  DOMAIN all positive integers
+  SEMANTICS if every n greater than one whose residue modulo thirty-two is seven, fifteen, twenty-seven or thirty-one has a positive k with the k-fold iterate strictly less than n, then every n greater than zero reaches one
+  CONCLUSION_MATCH PASS
+  BINDS S1 S2
+  DEPS K3 K5
+  PROVENANCE LR1 declarations collatz_of_residual_descent and frozen_target_of_residual_descent, receipt receipts/lean-Erdos1135.out
+
+NODE K10
+  KIND lemma
+  SCOPE WORLD
+  CLAIM_STATUS COMPUTATION_SUPPORTED
+  DERIVATION_STATUS VALID
+  FORMAL_STATUS KERNEL_CHECKED_FINITE_COMPUTATION
+  FORMALISM LEAN
+  EVIDENCE_STATUS LIVE
+  TYPE finite certificate
+  FAMILY_SCOPE TESTED_FAMILY
+  SAMPLE EXHAUSTIVE
+  DOMAIN every n at most one thousand twenty-four whose residue modulo thirty-two is seven, fifteen, twenty-seven or thirty-one
+  SEMANTICS every such n has a positive k with the k-fold iterate strictly less than n
+  CONCLUSION_MATCH PASS
+  BINDS S1 S2
+  DEPS NONE
+  PROVENANCE LR2 declarations scan_1024 and residual_drops_below_1024, receipt receipts/lean-Erdos1135Finite.out
+
+RELATION RL1
+  LEFT K3
+  RIGHT K4
+  DIRECTION EQUIVALENT
+  FORWARD_PROOF K3
+  REVERSE_PROOF K4
+
+CROSSCHECK X1
+  CLAIM W1
+  WITNESS_ID the five affine certificates of K5
+  WITNESS_HASH cb11c0f16f2cf9dfd6fd60e91cc634d85ada3e7946e5df49ba2e24e873337f0a
+  METHOD_A I1
+  METHOD_B I2
+  SHARED_COMPONENTS NONE
+  INDEPENDENCE_CLASS DIFFERENT_KIND
+  VALUE_A five classes descend, verified on five hundred j values per class by the concrete integer map
+  VALUE_B the same five identities hold for EVERY j, proved by the Lean kernel
+  TOLERANCE exact integer equality, no tolerance
+  VERDICT AGREE
+
+BOUNDARY_AUDIT BA1
+  CLAIM K9
+  FULL_DOMAIN every n greater than one
+  INTERIOR_OR_PUNCTURED_DOMAIN n large enough that the class parameter j is at least one
+  BOUNDARY_SET the smallest member of each certified class, where j equals zero or one
+  TESTS n = 2, n = 3, n = 5, n = 11, n = 23, n = 703
+  COUNTEREXAMPLES NONE
+  DOMAIN_PREDICATE n > 1
+  RESULT PASS
+  FALSIFIER MEASURE the iterate at the branch step count for each listed n. THE CLAIM IS DEAD IF any listed n fails to descend on the branch the case split assigns it.
+  FALSIFIER_VERDICT SURVIVED
+  EXECUTION_RECEIPT receipts/crosscheck-python.json field case_split_edges
+
+BOUNDARY_AUDIT BA3
+  CLAIM W1
+  FULL_DOMAIN every member of the five certified residue classes
+  INTERIOR_OR_PUNCTURED_DOMAIN members whose class parameter j is at least one
+  BOUNDARY_SET members whose class parameter j is zero
+  TESTS j = 0, j = 1, j = 499
+  COUNTEREXAMPLES NONE
+  RESULT PASS
+  FALSIFIER MEASURE the concrete integer map against the affine identity on 500 members per class. THE CLAIM IS DEAD IF any member disagrees.
+  FALSIFIER_VERDICT SURVIVED
+  EXECUTION_RECEIPT receipts/residue-descent-k6.json field brute_violations_total equals zero at every level
+
+NODE D1
+  KIND claim
+  SCOPE WORLD
+  CLAIM_STATUS REFUTED
+  DERIVATION_STATUS INVALID
+  FORMAL_STATUS NOT_TARGETED
+  EVIDENCE_STATUS RETRACTED
+  TYPE coverage
+  FAMILY_SCOPE AMBIENT_FAMILY
+  DOMAIN the four residue classes seven, fifteen, twenty-seven, thirty-one modulo thirty-two
+  SEMANTICS the remaining obstruction is descent on those four classes, phrased so a reader takes it to say those classes fail to descend
+  CONCLUSION_MATCH FAIL
+  BINDS S1
+  DEPS NONE
+  PROVENANCE the docstring this campaign wrote into lean/Erdos1135.lean before the external audit
+
+NODE ML1
+  KIND model lead
+  SCOPE META
+  CLAIM_STATUS CITED
+  DERIVATION_STATUS UNCHECKED
+  FORMAL_STATUS NOT_TARGETED
+  EVIDENCE_STATUS LIVE
+  TYPE prior art
+  FAMILY_SCOPE AMBIENT_FAMILY
+  DOMAIN the external reviewer's own assertions at its items three and five
+  SEMANTICS the reviewer asserts that Collatz descent reductions and finite certificates of this kind already exist in Lean, Coq and Isabelle repositories, and quotes a residual density three quarters raised to k over two
+  USABLE_AS_BACKGROUND NO
+  BINDS NONE
+  DEPS NONE
+  PROVENANCE audit/askgemini-20260905T184141-2055c6f2.json, numeral class MODEL_LEAD, every figure UNVERIFIED and no named repository checked
+
+BOUNDARY_AUDIT BA2
+  CLAIM D1
+  FULL_DOMAIN the English sentence naming the residual classes
+  INTERIOR_OR_PUNCTURED_DOMAIN the reading in which the classes are unreached BY THIS METHOD
+  BOUNDARY_SET the reading in which the classes fail to descend
+  TESTS n = 7, n = 15, n = 27, n = 31, and the whole residual class set below 4096
+  COUNTEREXAMPLES all five hundred twelve residual n below four thousand ninety-six do descend, so the stronger reading is FALSE
+  RESULT FAIL
+  FALSIFIER MEASURE whether an outside reader takes the sentence to assert non-descent. THE CLAIM IS DEAD IF the outside reader reports the sentence as overstated.
+  FALSIFIER_VERDICT KILLED
+  EXECUTION_RECEIPT audit/askgemini-20260905T184141-2055c6f2.json audit item three
+
+RETRACT_RESULT D1
+  REASON the classes unreached by a method were written as the classes where descent fails, so a property of the SEARCH was read as a property of the TRAJECTORIES
+  DESCENDANTS RETRACTED
+  CONDITION the weaker reading survives verbatim and is the only one any banked theorem supports
+  SUPERSEDES NONE
+  REFUTED_BY W5
+  SURVIVES D2
+  SURVIVING_STATEMENT the four classes are exactly those the uniform-in-j symbolic method leaves without a certificate at depth at most eight
+  CLAIM_STATUS RETRACTED
+
+NODE D2
+  KIND lemma
+  SCOPE WORLD
+  CLAIM_STATUS PROVED
+  DERIVATION_STATUS VALID
+  FORMAL_STATUS KERNEL_CHECKED_UNIVERSAL
+  FORMALISM LEAN
+  EVIDENCE_STATUS LIVE
+  TYPE coverage
+  FAMILY_SCOPE AMBIENT_FAMILY
+  DOMAIN all positive integers
+  SEMANTICS twenty-eight of the thirty-two residue classes modulo thirty-two carry a kernel-checked uniform descent certificate, and the remaining four carry none from this method
+  CONCLUSION_MATCH PASS
+  BINDS S1 S2
+  DEPS K5 K9
+  PROVENANCE LR1 declaration collatz_of_residual_descent, receipt receipts/lean-Erdos1135.out, and W5
+
+DOMAIN_COVERAGE DC1
+  CLAIM K9
+  CLAIM_DOMAIN all n greater than zero
+  SENSITIVE_STEPS the five residue branches of K5 and the residual branch
+  COVERED_REGION every n whose residue modulo thirty-two is not seven, fifteen, twenty-seven or thirty-one
+  ESCAPED_REGION the four residual classes, density one eighth
+  EXTENSION_LEMMAS K10 covers those classes only below one thousand twenty-four
+  VERDICT FAIL
+
+SCOPE_LIFT SL1
+  CLAIM K10
+  FROM_SCOPE residual n at most one thousand twenty-four
+  TO_SCOPE all residual n
+  FROM the kernel-evaluated finite scan
+  TO the unbounded residual class
+  BRIDGE NONE
+  STATUS UNPROVED
+
+BRIDGE_DEBT BD1
+  FROM the banked file's own re-declaration of collatzStep
+  TO the frozen FormalConjectures declaration CollatzConjecture.collatzStep
+  MISSING_BRIDGE the banked file does not import FormalConjectures, so identity rests on a transcription certificate confirmed by external review rather than on the elaborator
+  STATUS ABSENT
+
+ROUTE R1
+  TARGET_LINK T1135
+  METHOD reduce the conjecture to uniform descent, then discharge descent residue class by residue class with exact affine programs that are uniform in the class parameter
+  FAMILY MODULAR_SYMBOLIC_DESCENT
+  ROUTE_KIND PROVE
+  DIFFICULTY_DELTA CLASSIFICATION the obligation becomes descent on four named residue classes instead of on all integers, and every discharged class is a kernel-checked universal theorem
+  ROUTE_STATUS BLOCKED_DIFFICULTY_PRESERVED
+  BLOCKER the residual classes are exactly where the parity walk rises before it falls, so no bounded-depth uniform program terminates there
+  KILL_THEOREM NONE
+  NEXT_REQUIREMENT a descent argument for the residual classes that is not bounded-depth-uniform, or a parametric generator that emits certificates at unbounded depth
+  DELTA_STATUS PROVED
+
+BOTTLENECK BN1
+  RANK 1
+  STATEMENT no proof that every n greater than one with n modulo thirty-two in seven, fifteen, twenty-seven, thirty-one has a positive k with collatzStep iterated k times below n
+  BLOCKS CC1
+  SURVIVORS_TRIED K5@W1 K9@W4 K10@W5
+  BINDING_CONSTRAINT PROOF_TECHNIQUE
+  EVIDENCE W1 W2
+
+BOTTLENECK BN2
+  RANK 2
+  STATEMENT no bridge from the finite residual certificate at bound one thousand twenty-four to the unbounded residual class
+  BLOCKS CC1
+  SURVIVORS_TRIED K10@W5
+  BINDING_CONSTRAINT PROOF_TECHNIQUE
+  EVIDENCE W2 W5
+
+PROOF_DRAFT PD1
+  TARGET T1135
+  CONTRACT CC1
+  STEP K3 the descent reduction
+  STEP K5 the five uniform residue certificates
+  STEP K9 the sharpened reduction to the four residual classes
+  STEP GAP1 descent on the four residual classes
+  STATUS OPEN_GAPS
+
+GAP GAP1
+  STATEMENT every n greater than one whose residue modulo thirty-two is seven, fifteen, twenty-seven or thirty-one has a positive k with the k-fold collatzStep iterate strictly below n
+  WHY_SUFFICIENT with GAP1 discharged, K9 yields the frozen statement verbatim and CC1 is met
+  CONTRACT CC1
+  DEPS K9
+
+META_STATE M1
+  META_STATUS REPRESENTATION_STALLED
+  CAMPAIGN_KIND CLOSE_SUPPORT
+  MOVE_SET uniform affine symbolic iteration per residue class, kernel-checked strong-induction reduction, kernel-evaluated finite scan of the residual, external adversarial audit
+  NEXT_REQUIREMENT a proof technique for the residual classes that is not bounded-depth-uniform
+
+HARVEST_STATE H1
+  SCOPE the whole estate index of fifty thousand four hundred sixty-two files, and campaign erdos1135-campaign-001
+  MATHEMATICAL_ARTIFACTS the frozen statement in four copies, one prior 280-round campaign log, one route registry
+  HARVESTED the frozen statement and the prior campaign verdicts, recorded at W6
+  UNHARVESTED NONE
+  STATUS COMPLETE
+
+DERIVATION_LEDGER DL1
+  SCOPE TP1
+  ROW K1 receipts/lean-Erdos1135.out
+  ROW K2 receipts/lean-Erdos1135.out
+  ROW K3 receipts/lean-Erdos1135.out
+  ROW K4 receipts/lean-Erdos1135.out
+  ROW K5 receipts/lean-Erdos1135.out
+  ROW K6 receipts/lean-Erdos1135.out
+  ROW K9 receipts/lean-Erdos1135.out
+  ROW D2 receipts/lean-Erdos1135.out
+
+CHECKPOINT_STATE CK1
+  TARGET T1135
+  ROUND the single close round of this campaign
+  WORLD_RESULTS W1 W2 W3 W4 W5 W6 W7
+  FILED W1 to K5, W3 to K1 K2 K3 K4 K5 K6 K9, W4 to K10, W5 to BA2 and the retraction D1, W6 to H1, W7 to BA2
+  DISMISSED NONE
+  DEFERRED W2 to BN1 as the depth-versus-certificate-count evidence
+  NEW_NODES K1 K2 K3 K4 K5 K6 K9 K10 D2
+  RETRACTED D1
+  CANDIDATE_INCUMBENT NONE
+  VERIFIED_INCUMBENT NONE
+  UNACCOUNTED NONE
+  BINDS S1 S2
+  OPEN_GAPS GAP1
+  NEXT_OBLIGATION discharge GAP1 or lift SL1
+
+CLOSE_STATUS T1135
+  CONTRACT CC1
+  SOURCE_CORRECTNESS BOUND T1135
+  SEMANTIC_BINDING REQUIRES_CITATION_AND_TARGET_BINDING BD1
+  MATHEMATICAL_TRUTH PROVED K9
+  KERNEL_SCOPE KERNEL_CHECKED_UNIVERSAL LR1
+  COVERS FRAGMENT
+  CONCLUSION_SHAPE QUANTIFIED
+  SCOPE_CHECKED the descent reduction and twenty-eight of thirty-two residue classes modulo thirty-two
+  SCOPE_TARGET every positive integer reaches one
+  GATES statement binding audit, axiom audit AA1, boundary audit BA1, boundary audit BA2, crosscheck X1, external adversarial audit W7, replay of the symbolic certificate against the concrete map
+  RECEIPT_BASE CAMPAIGN
+  RECEIPT_HASH 631379342c639abf0e887b82039cfefb87094af409cb823016f9e129a2536031
+  CLOSURE_WORD LEMMA_CERTIFIED
+
+TERMINAL_PACKAGE TP1
+  CONTRACT CC1
+  SURVIVORS K1 K2 K3 K4 K5 K6 K9 K10 D2
+  DEAD_ROUTES NONE
+  COUNTEREXAMPLES NONE
+  FINAL_BOTTLENECK BN1
+  DRAFT PD1
+  NEXT_ATTACKS a parametric Lean elaborator that emits residue certificates at arbitrary depth, since W2 measures fifty-seven certificates for density one hundred thirteen over two thousand forty-eight against five for one eighth
+  NEXT_ATTACKS import FormalConjectures and discharge BD1 by an elaborator-checked example against the frozen declaration
+  NEXT_ATTACKS lift SL1 by proving the residual descent for all n rather than below one thousand twenty-four
+
+TARGET_STATUS T1135
+  CLOSURE_CRITERION for any positive integer n there exists a natural number m such that the m-th term of the sequence is 1
+  CLAIMED_STATUS OPEN
+  SOURCE E1135
+  SOURCE_AS_OF the frozen snapshot dated two thousand twenty-six January thirteen
+  FETCHED_AT the local frozen copy, not refetched this round
+  RECEIPT oracle/reality/frontier_arsenal/bladeforge/frontier100/source_snapshot/case-records/025-1135.json
+  FRESHNESS UNKNOWN
+  BRANCH A ACTIVE the descent reduction is proved and twenty-eight of thirty-two residue classes are discharged
+  BRANCH B UNTOUCHED no divergence or cycle construction was attempted this round
+  CASE residual_classes OPEN no certificate exists for residue seven, fifteen, twenty-seven, thirty-one modulo thirty-two
+  PIECE reduction HELD
+  PIECE residue_cover HELD
+  OPEN_DEBT GAP1 SL1 BD1
+  RETRACTED_THIS_ROUND D1
+
+LEMMA_VERDICT route=R1 lemma=K9 status=PROVED note=descent on n mod 32 in seven fifteen twenty-seven thirty-one implies the frozen Collatz statement, kernel-checked sorry-free with axioms propext Classical.choice Quot.sound

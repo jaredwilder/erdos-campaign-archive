@@ -1,0 +1,66 @@
+{
+  "schema": "msl-ladder/1.0.0",
+  "status": "VERIFIED",
+  "exitCode": 0,
+  "verdict": "VERIFIED",
+  "problem": "erdos289",
+  "campaign": "erdos289-campaign-001",
+  "route": "R008",
+  "lemma": "P1",
+  "prior_status": "PROVED, annotated \"NOT kernel-checked\" (routes/registry.jsonl seq 48)",
+  "new_status": "KERNEL_CHECKED",
+  "declarations": [
+    { "declaration": "Erdos289.PInt.add", "axioms": ["Classical.choice", "Quot.sound", "propext"] },
+    { "declaration": "Erdos289.PInt.sum", "axioms": ["Classical.choice", "Quot.sound", "propext"] },
+    { "declaration": "Erdos289.PInt.sum_inv", "axioms": ["Classical.choice", "Quot.sound", "propext"] },
+    { "declaration": "Erdos289.sum_cofactors", "axioms": ["Classical.choice", "Quot.sound", "propext"] },
+    { "declaration": "Erdos289.num_dvd_of_eq_mul", "axioms": ["Classical.choice", "Quot.sound", "propext"] },
+    { "declaration": "Erdos289.P1_pIntegral_num", "axioms": ["Classical.choice", "Quot.sound", "propext"] },
+    { "declaration": "Erdos289.P1_num", "axioms": ["Classical.choice", "Quot.sound", "propext"] },
+    { "declaration": "Erdos289.one_le_padicValRat_of_num_dvd", "axioms": ["Classical.choice", "Quot.sound", "propext"] },
+    { "declaration": "Erdos289.P1", "axioms": ["Classical.choice", "Quot.sound", "propext"] },
+    { "declaration": "Erdos289.P1_kurschak_two", "axioms": ["Classical.choice", "Quot.sound", "propext"] },
+    { "declaration": "Erdos289.witness_sum", "axioms": ["Classical.choice", "Quot.sound", "propext"] },
+    { "declaration": "Erdos289.witness_P1_three", "axioms": ["Classical.choice", "Quot.sound", "propext"] },
+    { "declaration": "Erdos289.witness_P1_kurschak_two", "axioms": ["Classical.choice", "Quot.sound", "propext"] }
+  ],
+  "axioms": ["Classical.choice", "Quot.sound", "propext"],
+  "sha256": "7ccaf3bb6d1b55781bf8d8b41061eae028a248eb538cb3be4cdc495c700c549e",
+  "generated_utc": "2026-09-05",
+  "generator": "operator session 2026-09-05, hand-authored; name-drift resolved by probe_names.lean",
+  "prover": "deterministic; NO model calls in the verification path, $0",
+  "kernel": "lake env lean, root@51.158.234.15:/root/formalizer/proofs, leanprover/lean4:v4.31.0-rc1 + Mathlib pinned 919544d4",
+  "kernel_iterations_used": 3,
+  "sorry_count": 0,
+  "error_count": 0,
+  "warning_count": 0,
+  "axiom_audit": "P1_Kurschak.axioms.txt",
+  "name_probe": "probe_names.lean / probe_names.log",
+  "honesty_law": "VERIFIED means rc 0, no error line, and `#print axioms` is a subset of {propext, Classical.choice, Quot.sound}. Nothing else is claimed.",
+  "non_vacuity": {
+    "gate": "hypotheses are inhabited, kernel-checked, not asserted",
+    "witness": "S = {2,3,6}, 1/2 + 1/3 + 1/6 = 1 exactly",
+    "instances": [
+      "Erdos289.witness_P1_three  (p = 3, A_3 = {1,2}, sum 3/2, numerator 3)",
+      "Erdos289.witness_P1_kurschak_two  (p = 2, A_2 = {1,3}, sum 4/3, numerator 4)"
+    ]
+  },
+  "fidelity_delta": {
+    "repair": "campaign prose asserts v_p >= 1 unconditionally; false when A_p is empty since padicValRat p 0 = 0. Erdos289.P1 carries (cofactors p S).Nonempty - the same case split the campaign's own SEARCH-REPORT-2026-09-02.md section 2 uses (\"either A is empty or p divides the numerator\"). Erdos289.P1_num sidesteps it: p divides 0.",
+    "strengthenings": [
+      "2 <= n for n in S is not needed for the numerator form (P1_num, P1_pIntegral_num); it is used only to force T > 0 in the padicValRat form.",
+      "the hypothesis 'sum in Z' is weakened to p-integrality of the sum (P1_pIntegral_num).",
+      "the search report's side condition p^2 > B is not needed and is not assumed; it belongs to the C1 element ban, not to P1."
+    ],
+    "weakenings": "none"
+  },
+  "scope_limits": [
+    "P1 alone closes NO branch of Erdos 289. It is the necessary local condition underneath the C1 element ban.",
+    "C1 (registry seq 49), the operational prune implemented in p1ban.py, remains COURT_PROVED and is NOT kernel-checked by this file.",
+    "the search prunes tiered COURT_PROVED(P1) in SEARCH-REPORT-2026-09-02.md section 2 now rest on a kernel-checked P1; the tier label on those rows is downstream of this file and was not edited here."
+  ],
+  "node_id": "erdos289:R008:P1",
+  "shape": "P_ADIC_VALUATION",
+  "closed_by": "existential p-integrality (PInt) + div_add_div + Nat.Prime.dvd_mul + one cross-multiplication",
+  "reproduce": "cd /root/formalizer/proofs && export PATH=/root/.elan/bin:$PATH && lake env lean /root/peer/sub-289k/P1_Kurschak.lean"
+}

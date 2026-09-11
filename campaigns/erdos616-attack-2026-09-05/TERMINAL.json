@@ -1,0 +1,72 @@
+{
+  "campaign": "erdos616-attack-2026-09-05",
+  "target": "Erdos #616 (r-uniform hypergraph covering number under a 3r-3 local condition)",
+  "stub": "oracle/evidence/certified-corpus/erdos-616.lean",
+  "source": "oracle/evidence/formalizer-sources/erdos/entry-graph-erdos-616.json",
+  "attack_file": "oracle/evidence/msl-machine/campaigns/erdos616-attack-2026-09-05/Attack01.lean",
+  "mathlib": "919544d4",
+  "box": "root@51.158.234.15:/root/peer/sub-616",
+  "kernel_iterations_used": 6,
+  "status": "REFUTED_WITH_KERNEL_WITNESS + PARTIALS_SEALED",
+  "headline": "The stub's sorry'd goal is FALSE, and not only for arithmetic reasons. For 3 <= r <= 5 the optimum EXISTS and equals exactly 1 (below the claimed lower bound 3r/16+7/8). For every r >= 6 an explicit 4-edge family forces the optimum to be at least 2 (above the claimed upper bound r/5 whenever r < 10). Separately, the claimed window [3r/16+7/8, r/5] is empty for every r < 70.",
+  "sorries": 0,
+  "errors": 0,
+  "sealed": [
+    {"name": "window_nonempty_iff", "axioms": "'window_nonempty_iff' depends on axioms: [propext, Classical.choice, Quot.sound]", "claim": "the claimed EHT window [3r/16+7/8, r/5] is nonempty iff 70 <= r"},
+    {"name": "window_empty_of_lt_seventy", "axioms": "'window_empty_of_lt_seventy' depends on axioms: [propext, Classical.choice, Quot.sound]", "claim": "r < 70 -> no rational lies in the claimed window"},
+    {"name": "window_refutation", "axioms": "'window_refutation' depends on axioms: [propext, Classical.choice, Quot.sound]", "claim": "the exists-t half of the stub goal is already false at r = 3, on Q arithmetic alone"},
+    {"name": "meet_singleton_iff", "axioms": "'meet_singleton_iff' depends on axioms: [propext, Quot.sound]", "claim": "(f inter {v}).Nonempty <-> v in f"},
+    {"name": "good_mono", "axioms": "'good_mono' depends on axioms: [propext, Classical.choice, Quot.sound]", "claim": "Good r t -> t <= u -> Good r u"},
+    {"name": "good_one_le", "axioms": "'good_one_le' depends on axioms: [propext, Classical.choice, Quot.sound]", "claim": "0 < r -> Good r t -> 1 <= t (the single complete edge is a legal instance)"},
+    {"name": "optimal_unique", "axioms": "'optimal_unique' depends on axioms: [propext, Classical.choice, Quot.sound]", "claim": "Optimal r t -> Optimal r u -> t = u"},
+    {"name": "pair_meet", "axioms": "'pair_meet' depends on axioms: [propext, Classical.choice, Quot.sound]", "claim": "STRUCTURAL, all r >= 3: LocalOne forces H to be an intersecting family"},
+    {"name": "triple_common", "axioms": "'triple_common' depends on axioms: [propext, Classical.choice, Quot.sound]", "claim": "STRUCTURAL, all r >= 3: ANY THREE edges of H share a common vertex (Helly-type reduction; the union of three pairwise-meeting r-sets with no common vertex is at most 3r-3, exactly the window)"},
+    {"name": "good_three_one", "axioms": "'good_three_one' depends on axioms: [propext, Classical.choice, Quot.sound]", "claim": "Good 3 1, by the explicit K_4^(3) argument (independent of helly_small)"},
+    {"name": "optimal_three", "axioms": "'optimal_three' depends on axioms: [propext, Classical.choice, Quot.sound]", "claim": "Optimal 3 1 - the exact answer at r = 3"},
+    {"name": "optimal_three_eq", "axioms": "'optimal_three_eq' depends on axioms: [propext, Classical.choice, Quot.sound]", "claim": "Optimal 3 t -> t = 1"},
+    {"name": "erdos_616_stub_statement_is_false", "axioms": "'erdos_616_stub_statement_is_false' depends on axioms: [propext, Classical.choice, Quot.sound]", "claim": "REFUTATION: the stub's sorry'd goal, copied verbatim, is false"},
+    {"name": "eht_lower_bound_fails_at_three", "axioms": "'eht_lower_bound_fails_at_three' depends on axioms: [propext, Classical.choice, Quot.sound]", "claim": "3*3/16 + 7/8 = 23/16 > 1, the true optimum at r = 3"},
+    {"name": "exists_ne_fin4", "axioms": "'exists_ne_fin4' depends on axioms: [propext, Quot.sound]", "claim": "every element of Fin 4 has a distinct partner"},
+    {"name": "mem_P", "axioms": "'mem_P' depends on axioms: [propext, Classical.choice, Quot.sound]", "claim": "membership characterisation of the four constructed edges (product coordinates)"},
+    {"name": "card_P", "axioms": "'card_P' depends on axioms: [propext, Classical.choice, Quot.sound]", "claim": "each constructed edge has exactly m+3 = r vertices"},
+    {"name": "mem_E", "axioms": "'mem_E' depends on axioms: [propext, Classical.choice, Quot.sound]", "claim": "membership after transport to Fin (4*(m+1)) via finProdFinEquiv"},
+    {"name": "card_E", "axioms": "'card_E' depends on axioms: [propext, Classical.choice, Quot.sound]", "claim": "transport preserves edge size"},
+    {"name": "cover_all", "axioms": "'cover_all' depends on axioms: [propext, Classical.choice, Quot.sound]", "claim": "the four constructed edges cover every vertex, so their union is too big for a 3r-3 window"},
+    {"name": "good_two_le", "axioms": "'good_two_le' depends on axioms: [propext, Classical.choice, Quot.sound]", "claim": "CONSTRUCTION: 3 <= m -> Good (m+3) t -> 2 <= t"},
+    {"name": "good_two_le'", "axioms": "'good_two_le'' depends on axioms: [propext, Classical.choice, Quot.sound]", "claim": "6 <= r -> Good r t -> 2 <= t"},
+    {"name": "eht_upper_fails_lt_five", "axioms": "'eht_upper_fails_lt_five' depends on axioms: [propext, Classical.choice, Quot.sound]", "claim": "REFUTATION of the transcribed upper bound t <= r/5 for 0 < r < 5"},
+    {"name": "eht_upper_fails_six_to_nine", "axioms": "'eht_upper_fails_six_to_nine' depends on axioms: [propext, Classical.choice, Quot.sound]", "claim": "REFUTATION of the transcribed upper bound t <= r/5 for 6 <= r < 10, carried by a real hypergraph"},
+    {"name": "stub_fails_at_six", "axioms": "'stub_fails_at_six' depends on axioms: [propext, Classical.choice, Quot.sound]", "claim": "the stub goal also fails at r = 6, via the construction rather than via the empty window"},
+    {"name": "good_one_fails_of_six_le", "axioms": "'good_one_fails_of_six_le' depends on axioms: [propext, Classical.choice, Quot.sound]", "claim": "6 <= r -> not (Good r 1)"},
+    {"name": "union_bound_arith", "axioms": "'union_bound_arith' depends on axioms: [propext, Quot.sound]", "claim": "3 <= r <= 5, 2 <= m <= r+1 -> m + m*(r+1-m) <= 3r-3 (the exact-subtraction form; the truncated form r-m+1 is FALSE at m = r+1 for r in {3,4})"},
+    {"name": "helly_small", "axioms": "'helly_small' depends on axioms: [propext, Classical.choice, Quot.sound]", "claim": "MAIN: 3 <= r <= 5 -> every nonempty subfamily of H has a common vertex (minimal-counterexample + union bound + LocalOne)"},
+    {"name": "good_one_of_le_five", "axioms": "'good_one_of_le_five' depends on axioms: [propext, Classical.choice, Quot.sound]", "claim": "3 <= r <= 5 -> Good r 1"},
+    {"name": "optimal_of_le_five", "axioms": "'optimal_of_le_five' depends on axioms: [propext, Classical.choice, Quot.sound]", "claim": "3 <= r <= 5 -> Optimal r 1 (EXACT VALUE, all three cases)"},
+    {"name": "good_one_iff", "axioms": "'good_one_iff' depends on axioms: [propext, Classical.choice, Quot.sound]", "claim": "THRESHOLD: for r >= 3, Good r 1 <-> r <= 5"},
+    {"name": "stub_fails_of_le_five", "axioms": "'stub_fails_of_le_five' depends on axioms: [propext, Classical.choice, Quot.sound]", "claim": "the stub goal fails at every r in {3,4,5}"},
+    {"name": "ERDOS_616_ATTACK_2026_09_05", "axioms": "'ERDOS_616_ATTACK_2026_09_05' depends on axioms: [propext, Classical.choice, Quot.sound]", "claim": "the whole campaign as one declaration (6 conjuncts)"}
+  ],
+  "open": [
+    {
+      "obstruction": "EXISTENCE_OF_THE_OPTIMUM_FOR_r>=6",
+      "typed": "forall r : Nat, 6 <= r -> exists t : Q, Optimal r t",
+      "why": "Optimal r t asserts t is the LEAST admissible bound. For 3 <= r <= 5 we exhibited it (= 1). For r >= 6 nothing here shows the supremum of tau over all n and all admissible H is even finite, so `Optimal r t` may be uninhabited for every t. Every r >= 6 result in this file is therefore phrased on `Good r t`, never on `Optimal r t`."
+    },
+    {
+      "obstruction": "EHT_UPPER_BOUND_UNPROVEN",
+      "typed": "forall r : Nat, 3 <= r -> Good r (((1:Q)/5) * r)",
+      "why": "The genuine content of [EHT91] - that tau is bounded at all, by ~r/5 - is untouched. This file only shows the bound as transcribed is false for r in {3,4} and {6,...,9}; it says nothing for r >= 10, and in particular nothing about the r >= 70 range where the claimed window is nonempty."
+    },
+    {
+      "obstruction": "LOWER_BOUND_GROWTH",
+      "typed": "forall r : Nat, forall t : Q, Good r t -> ((3:Q)/16) * r + 7/8 <= t",
+      "why": "Our construction is a single 4-edge family and only ever yields tau = 2, for every r >= 6. Reaching the EHT lower bound's linear growth in r needs a genuinely different (EHT-style) family; the hub-plus-block shape used here has transversal number exactly 2 no matter how many blocks are used."
+    },
+    {
+      "obstruction": "FAITHFULNESS_OF_THE_FORMALISATION",
+      "typed": "n/a - a modelling question, not a Lean goal",
+      "why": "The refutation is of the stub AS WRITTEN, which quantifies the EHT inequalities over ALL r >= 3. The source page states them without a range; if [EHT91] intends them asymptotically (or for r large), the stub - not the literature - is what is wrong. Nothing in this file distinguishes those two readings, and the sealed r <= 5 values (optimum = 1) are evidence that the small-r regime is genuinely degenerate."
+    }
+  ],
+  "next_command": "ssh root@51.158.234.15 'cd /root/formalizer/proofs && export PATH=/root/.elan/bin:$PATH && nice -n 10 lake env lean /root/peer/sub-616/Attack01.lean > /root/peer/sub-616/A.log 2>&1; echo exit $?; grep -E \"error|sorryAx\" /root/peer/sub-616/A.log | head -20'"
+}

@@ -1,0 +1,67 @@
+{
+  "receiptId": "R-E138-KERNEL-2026-09-05",
+  "campaign": "erdos138-close-2026-09-05",
+  "target": "erdos:138",
+  "instrument": {
+    "kind": "LEAN_KERNEL",
+    "toolchain": "leanprover/lean4:v4.31.0-rc1",
+    "mathlibRev": "919544d4309104b3f19724b0e6e48c701d27948f",
+    "host": "root@51.158.234.15:/root/formalizer/proofs",
+    "command": "lake env lean E138Fragments.lean",
+    "niceness": 19,
+    "leanNumThreads": 2
+  },
+  "artifact": {
+    "path": "oracle/evidence/msl-machine/campaigns/erdos138-close-2026-09-05/E138Fragments.lean",
+    "sha256": "f19de61e3a31a3c4d739d9ba059aba3cc1c92a5e62f061d62ef86e69ee846cc1",
+    "sorryFree": true,
+    "compilerOutput": "EMPTY (no errors, no warnings, no sorry)"
+  },
+  "frozenSource": {
+    "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/138.lean",
+    "sha256": "c65c7f26e09baefa0b0f640c3e37b6d173a05c4b173a3a5685c6bcb547037298",
+    "provenance": "DeepMind formal-conjectures corpus, ErdosProblems/138.lean"
+  },
+  "axiomAudit": {
+    "command": "#print axioms",
+    "results": {
+      "rootDiv_of_ratioDiv": ["propext", "Classical.choice", "Quot.sound"],
+      "rootDiv_iff_forall_baseDiv": ["propext", "Classical.choice", "Quot.sound"],
+      "two_pow_div_of_rootDiv": ["propext", "Classical.choice", "Quot.sound"],
+      "variant_chain": ["propext", "Classical.choice", "Quot.sound"],
+      "sInf_monotone_of_antitone": ["propext", "Classical.choice", "Quot.sound"],
+      "transfer_lower_bound": ["propext", "Classical.choice", "Quot.sound"],
+      "gap_loss": ["propext", "Classical.choice", "Quot.sound"],
+      "prime_subsequence_bound": ["propext", "Classical.choice", "Quot.sound"],
+      "berlekamp_three_readings_differ": ["propext"],
+      "formal_statement_strictly_stronger": ["propext", "Classical.choice", "Quot.sound"]
+    },
+    "dirtyAxioms": "NONE"
+  },
+  "sealedStatements": {
+    "K1_rootDiv_iff_forall_baseDiv": "RootDiv W <-> forall C > 0, W k / C^k -> oo   (KERNEL_CHECKED_UNIVERSAL)",
+    "K2_two_pow_div_of_rootDiv": "erdos_138 implies erdos_138.variants.dvd_two_pow   (KERNEL_CHECKED_UNIVERSAL)",
+    "K3_rootDiv_of_ratioDiv": "erdos_138.variants.quotient implies erdos_138   (KERNEL_CHECKED_UNIVERSAL)",
+    "K4_variant_chain": "quotient => root => dvd_two_pow, the strength order of the three OPEN variants",
+    "K5_sInf_monotone_of_antitone": "antitone nonempty guarantee sets have monotone sInf; abstract content of W nondecreasing",
+    "K6_transfer_lower_bound": "Monotone W and p*2^p <= W(p+1) and p+1 <= k give p*2^p <= W k",
+    "K7_gap_loss": "p/2^(g+1) <= W(p+1+g)/2^(p+1+g); the transported Berlekamp bound loses exactly 2^(g+1)",
+    "K8_prime_subsequence_bound": "p/2 <= W(p+1)/2^(p+1); dvd_two_pow holds along k = p+1, p prime",
+    "K9_berlekamp_three_readings_differ": "21 != 24 != 6561 at p=3   (KERNEL_CHECKED_FINITE_COMPUTATION)",
+    "K10_formal_statement_strictly_stronger": "p*(2^p - 1) < p*2^p for p >= 1"
+  },
+  "notClosed": {
+    "target": "erdos_138 (W(k)^(1/k) -> oo)",
+    "status": "OPEN, UNCHANGED BY THIS CAMPAIGN",
+    "finalObstruction": "The prime-gap loss in K7. Berlekamp gives dvd_two_pow only along k = p+1 (K8). Monotone transfer to a general k costs a factor 2^(g+1) where g = k-1-p is the distance to the largest prime p <= k-1, so the transported bound diverges only when g <= log2(p) - omega(1). Rankin-type large prime gaps (g >> log p infinitely often) make that condition fail on an infinite set of k, and under Cramer (g = O((log p)^2)) it still fails. Even a full proof of dvd_two_pow would be strictly weaker than the target, by K1: the target needs W k / C^k -> oo for EVERY C, not for C = 2."
+  },
+  "sourceDefect": {
+    "location": "FormalConjectures/ErdosProblems/138.lean, erdos_138.variants.prime",
+    "reading_docstring": "W(p+1) >= p^(2^p)",
+    "reading_formalStatement": "p * 2^p <= W (p+1)",
+    "reading_publishedBerlekamp": "W(p+1) >= p*(2^p - 1)",
+    "receipt": "K9 (6561 vs 24 vs 21 at p=3) and K10 (formal statement strictly exceeds the cited theorem for all p >= 1)",
+    "classification": "CITED_STRENGTH_INFLATED plus a docstring/statement mismatch of a different order of magnitude",
+    "actionTaken": "REPORTED ONLY. No file outside this campaign directory was modified."
+  }
+}

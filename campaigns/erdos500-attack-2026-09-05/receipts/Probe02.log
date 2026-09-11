@@ -1,0 +1,13 @@
+@Finset.union_sdiff_of_subset : ∀ {α : Type u_1} [inst : DecidableEq α] {s t : Finset α}, s ⊆ t → s ∪ t \ s = t
+@Finset.union_sdiff_cancel_left : ∀ {α : Type u_1} [inst : DecidableEq α] {s t : Finset α},
+  Disjoint s t → (s ∪ t) \ s = t
+@Finset.sdiff_subset_sdiff : ∀ {α : Type u_1} [inst : DecidableEq α] {s t u v : Finset α}, s ⊆ t → v ⊆ u → s \ u ⊆ t \ v
+@Finset.card_sdiff_add_card_eq_card : ∀ {α : Type u_1} {s t : Finset α} [inst : DecidableEq α],
+  s ⊆ t → (t \ s).card + s.card = t.card
+@Finset.subset_union_left : ∀ {α : Type u_1} [inst : DecidableEq α] {s₁ s₂ : Finset α}, s₁ ⊆ s₁ ∪ s₂
+@Finset.disjoint_right : ∀ {α : Type u_1} {s t : Finset α}, Disjoint s t ↔ ∀ ⦃a : α⦄, a ∈ t → a ∉ s
+@Finset.card_pos : ∀ {α : Type u_1} {s : Finset α}, 0 < s.card ↔ s.Nonempty
+@Finset.card_sdiff : ∀ {α : Type u_1} {s t : Finset α} [inst : DecidableEq α], (t \ s).card = t.card - (s ∩ t).card
+@Nat.eq_of_mul_eq_mul_right : ∀ {n m k : ℕ}, 0 < m → n * m = k * m → n = k
+Nat.choose_one_right : ∀ (n : ℕ), n.choose 1 = n
+@Finset.Subset.refl : ∀ {α : Type u_1} (s : Finset α), s ⊆ s

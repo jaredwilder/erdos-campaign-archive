@@ -1,0 +1,36 @@
+{
+ "campaign": "erdos850-campaign-001",
+ "id": "erdos850-campaign-001",
+ "contract_sha": "7ac3e1eb3df7fbd64a4904fe708c21d2a4f4699fd045b016fd4b06eb91836ddb",
+ "iters": 1,
+ "log": [
+  {
+   "iter": 1,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'exact_reformulations'",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "open_route",
+    "route": "R001",
+    "family": "exact_reformulations"
+   },
+   "verdict": "ROUTE R001 OPENED family=exact_reformulations branch=A | RETRACTED by author boundary audit: \"primeFactors(0) = ∅\" was read as \"sf(0) is a finite divisor\" — the empty radical at the zero endpoint was conflated with a finite squarefree kernel, making the divisibility characterization ill-posed on the {0,1} boundary the contract explicitly requires to be discharged, not sil",
+   "utc": "2026-09-02T14:33:09Z",
+   "retraction": {
+    "audited": "ROUTE_PROPOSAL",
+    "route": "R001",
+    "lemma": null,
+    "node": "R001",
+    "reason": "\"primeFactors(0) = ∅\" was read as \"sf(0) is a finite divisor\" — the empty radical at the zero endpoint was conflated with a finite squarefree kernel, making the divisibility characterization ill-posed on the {0,1} boundary the contract explicitly requires to be discharged, not silently excluded",
+    "result": "FAIL",
+    "tests": "(x,y)=(0,1): k=0 gives rad(0)=∅=rad(1) ✓, k=1 gives rad(1)=∅ vs rad(2)={2} ✗ — no solution, but the lemma's RHS is meaningless here, so the biconditional is not even evaluable at this boundary point; (x,y)=(0,2): k=0 fails (∅ vs {2}); (x,y)=(1,0): mirror of the first test, same ill-definedness; (x,y",
+    "registry": "no lemma to downgrade: the audited move was a ROUTE_PROPOSAL"
+   },
+   "typed_round": true,
+   "registry_events": 1
+  }
+ ],
+ "routes": {
+  "R001": "ACTIVE"
+ }
+}

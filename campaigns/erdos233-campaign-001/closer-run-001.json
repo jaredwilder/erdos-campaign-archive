@@ -1,0 +1,27 @@
+{
+ "schema": "oracle.msl.closer.run.v1",
+ "campaign": "erdos233-campaign-001",
+ "contract_sha": "8b31f79b0e6545a44a36baa8d0ab093810961b50b8edf050941ebc862fe7829c",
+ "dealt": {
+  "packet": "closer",
+  "route_id": "R003",
+  "lemmas": [
+   "L1"
+  ],
+  "reason": "Wang 17: R003 carries standing PROVED lemma(s) L1 and no refuted lemma; convert the standing mathematics into a machine-checkable closure obligation or refuse in type"
+ },
+ "outcome": "CLOSURE_REFUSED",
+ "refusal": {
+  "reason": "MATHEMATICS_FAILED_SANITY",
+  "note": "L1 rests on a nonexistent \"Heath-Brown unconditional asymptotic ∑d_n²~N log N\"; the literature supports only ≪ N(log N)^{7/4+ε}, so L1 must be re-recorded in that (still sufficient) form before any CITATION_ANCHORED close can be filed."
+ },
+ "model": "z-ai/glm-5.3-flash",
+ "speaker_calls": 1,
+ "registry_written": false,
+ "why_registry_not_written": "a typed refusal mutates no registry, by design",
+ "target_was": "build the LITERATURE ASSUMPTION PACKET for the Heath-Brown implication named by R003/L1, against close branch A of the frozen contract.",
+ "what_happened": "The closer's SANITY GATE fired before any LAP was built. R003/L1 stands as PROVED on the claim that an 'unconditional Heath-Brown asymptotic sum d_n^2 ~ N log N' implies the canonical bound. The closer refused: that asymptotic is not a published unconditional theorem, so a LAP built on it would have declared an axiom that no paper supports — which is precisely the failure mode the verbatim citation field exists to expose. A refusal here is the packet working.",
+ "⛔ unverified_repair_suggestion": "The speaker's note proposes re-recording L1 against a bound of shape << N (log N)^{7/4+eps}. THAT SUGGESTION IS ITSELF UNVERIFIED AND IS PROBABLY FALSE: an exponent below 2 would already settle Erdos #233, which the frozen contract treats as open. It is recorded here as the speaker's words, not as a fact, and must be checked against the literature before any LAP is built on it.",
+ "lap_pipeline_status": "The CITATION_ANCHORED pipeline itself is LIVE and was exercised against real Mathlib on this exact implication shape (S N <= C*N*log N  =>  S N <= C*N*(log N)^2): exit 0, footprint = {propext, Classical.choice, Quot.sound} u exactly the one declared axiom, gate PASS. See the closer selftest's live LAP arm (python oracle/tools/msl_closer.py --selftest --with-kernel) and its receipt oracle/frontier_formalizer/cable/receipts/closer-selftest-lap.lap.json. What is missing for erdos233 is a REAL citation, not machinery.",
+ "run_record": "../../AppData/Local/Temp/claude/C--Users-jared-Local-Sites-woocommerce-enterprise/52c23e42-519e-40e0-8ab3-9741a49a124a/scratchpad/erdos233_closer_run.json"
+}

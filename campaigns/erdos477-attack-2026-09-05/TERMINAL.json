@@ -1,0 +1,90 @@
+{
+  "campaign": "erdos477-attack-2026-09-05",
+  "target": "Erdos 477 — OB1: generalize the kernel-sealed quadratic rung",
+  "status": "SEALED",
+  "date": "2026-09-05",
+  "box": "51.158.234.15:/root/peer/sub-477",
+  "project": "/root/formalizer/proofs",
+  "mathlib_pin": "919544d4",
+  "kernel_iterations_used": 4,
+  "kernel_iterations_budget": 8,
+  "files": [
+    {
+      "name": "Attack01.lean",
+      "sha256": "2e57761261d67d5c51d4303f89ca4f5215b2575089f9093e912bfb53aa7e162a",
+      "log": "A.log",
+      "exit": 0,
+      "errors": 0,
+      "warnings": 0,
+      "sorries": 0
+    },
+    {
+      "name": "Attack02.lean",
+      "sha256": "1d8a3829e55ac1211e5aa34a8519113bb485177f09771a4180df0e56596ffe99",
+      "log": "B.log",
+      "exit": 0,
+      "errors": 0,
+      "warnings": 0,
+      "sorries": 0
+    }
+  ],
+  "sealed": [
+    "Erdos477Attack.quad_diff_identity — depends on axioms: [propext, Quot.sound]",
+    "Erdos477Attack.quad_diff_modulus — depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "Erdos477Attack.erdos477_no_quadratic_tiling — depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "Erdos477Attack.erdos477_no_square_tiling_recovered — depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "Erdos477Attack.erdos477_no_quadratic_tiling_dvd — depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "Erdos477Attack.tiling_shape_is_satisfiable — depends on axioms: [propext, Quot.sound]",
+    "Erdos477Attack.sealed_pigeonhole_fails_at_a_three — depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "Erdos477Mechanism.no_tiling_of_subgroup_diff — depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "Erdos477Mechanism.quad_diff_identity — depends on axioms: [propext, Quot.sound]",
+    "Erdos477Mechanism.quadSet_subgroup_diff — depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "Erdos477Mechanism.quadSet_bdd — depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "Erdos477Mechanism.erdos477_no_quadratic_tiling_via_mechanism — depends on axioms: [propext, Classical.choice, Quot.sound]",
+    "Erdos477Mechanism.erdos477_no_square_tiling_via_mechanism — depends on axioms: [propext, Classical.choice, Quot.sound]"
+  ],
+  "headline": {
+    "theorem": "erdos477_no_quadratic_tiling (a b c : ℤ) (ha : a ≠ 0) : ¬ ∃ A : Set ℤ, ∀ n : ℤ, ∃! p : ℤ × ℤ, p.1 ∈ A ∧ (∃ k : ℤ, p.2 = a*k^2 + b*k + c) ∧ n = p.1 + p.2",
+    "generalizes": "erdos477_no_square_tiling (campaigns/erdos477-campaign-001/kernel), the (a,b,c)=(1,0,0) instance, re-derived as erdos477_no_square_tiling_recovered",
+    "strictly_stronger_than_upstream_variant": "FormalConjectures erdos_477.variants.degree_two_dvd_condition_b_ne_zero — needs neither a ∣ b nor b ≠ 0 (recorded as erdos477_no_quadratic_tiling_dvd)",
+    "engine": "f(r+t) - f(r-t) = (4*a*r + 2*b)*t; a ≠ 0 forces one of the slopes 2b (r=0), 4a (r=1, b=0) nonzero, so the difference set contains a nonzero SUBGROUP Nℤ; uniqueness then embeds A in ℤ/N, A is finite, and a finite A plus a one-sided-bounded tile cannot cover ℤ"
+  },
+  "open": [
+    {
+      "id": "OB1-positive-index",
+      "typed": "¬ ∃ A : Set ℤ, ∀ n : ℤ, ∃! p, p.1 ∈ A ∧ p.2 ∈ (fun k => a*k^2+b*k+c) '' {k : ℤ | 0 < k} ∧ n = p.1 + p.2",
+      "why_open": "The upstream FormalConjectures 477 variants quantify over f.eval '' {n | 0 < n}, i.e. STRICTLY POSITIVE indices. The estate's sealed asset and this generalization both quantify over all k ∈ ℤ. These are different tiling problems: 4 = 2^2 - 0^2 is a difference of two squares but NOT of two positive squares. With k,l > 0 the identity f(r+t) - f(r-t) = (4ar+2b)t is only usable for r > |t|, so the difference set contains no nonzero subgroup and no_tiling_of_subgroup_diff does not apply.",
+      "cost": "medium — the mechanism must be replaced by a co-finite-in-a-class argument, not reused"
+    },
+    {
+      "id": "OB2-degree-ge-3",
+      "typed": "¬ ∃ A : Set ℤ, ∀ n : ℤ, ∃! p, p.1 ∈ A ∧ (∃ k : ℤ, p.2 = k^3) ∧ n = p.1 + p.2",
+      "why_open": "NOT ATTACKED, per mission. Attack02 now states the boundary exactly: no_tiling_of_subgroup_diff needs a nonzero N with Nℤ inside the difference set. For degree d the difference set has counting function O(R^{2/d}) = o(R) once d ≥ 3, while any nonzero subgroup counts 2R/|N| + O(1), linear in R. So no such N exists and this tool returns nothing — the obstruction must be non-pigeonhole.",
+      "cost": "expensive, no mechanism (ranking's verdict stands, now with a stated reason)"
+    },
+    {
+      "id": "OB3-affirmative-side",
+      "typed": "∃ f : ℤ[X], 2 ≤ f.degree ∧ ∃ A : Set ℤ, (unique covering)",
+      "why_open": "An affirmative close of the canonical needs only ONE f and one A. Degree 2 is now fully dead over f(ℤ) (this campaign), so any affirmative witness must have degree ≥ 3. The $0 search over small-degree f with periodic/digit-structured A has still not been run.",
+      "cost": "cheap insurance, never executed"
+    }
+  ],
+  "corrections_to_prior_state": [
+    {
+      "claim": "closure-ranking-2026-09-02 OB1: 'Court-proved (R003: Δf covers every integer outside one class mod 4|a|)'",
+      "verdict": "FALSE as stated",
+      "counterexamples": "f(x)=x^2+x has difference set exactly 2ℤ (x(x+1) is always even), whose complement is TWO classes mod 4|a|=4. f(x)=3x^2 has difference set 3·{M : M ≢ 2 mod 4}, whose complement contains every integer not divisible by 3.",
+      "kernel_receipt": "Erdos477Attack.sealed_pigeonhole_fails_at_a_three — proves ±1, ±2 are not differences of two values of 3x^2, so A = {0,1,2} clears the difference obstruction and the sealed |A| ≤ 2 pigeonhole gives nothing at a=3"
+    },
+    {
+      "claim": "closure-ranking-2026-09-02 OB1 cost model: 'the same proof with 4 replaced by 4|a|', 'a day's work'",
+      "verdict": "WRONG IN BOTH DIRECTIONS — the stated route does not work (see above), and the theorem is far cheaper than estimated by a different route (one ring identity + a finiteness argument, 4 kernel iterations including the anti-vacuity gate and the abstraction)"
+    }
+  ],
+  "hardening": [
+    "ANTI-VACUITY: Erdos477Attack.tiling_shape_is_satisfiable exhibits A={0,1} tiling ℤ with {2k}, proving the ∃! shape is inhabitable — the negation is not won on a broken quantifier.",
+    "FAITHFULNESS: erdos477_no_square_tiling_recovered re-derives the sealed statement verbatim as the (1,0,0) instance, so the generalization is not a differently-shaped claim.",
+    "INDEPENDENT ROUTE: Attack02 re-proves the same theorem through the abstract mechanism (erdos477_no_quadratic_tiling_via_mechanism), a second derivation of the headline from different intermediate lemmas."
+  ],
+  "next_command": "python oracle/tools/invention_ratchet.py --spec oracle/evidence/msl-machine/campaigns/erdos477-attack-2026-09-05/invention.json"
+}

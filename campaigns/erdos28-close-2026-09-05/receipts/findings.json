@@ -1,0 +1,135 @@
+{
+  "campaign": "erdos28-close-2026-09-05",
+  "target": "erdos:28",
+  "target_name": "the Erdos-Turan conjecture on additive bases (Erdos-Turan 1941)",
+  "target_source": "https://www.erdosproblems.com/28",
+  "prize": "$500",
+  "source_status_at_read_time": "OPEN (source page fetch returned HTTP 403 on 2026-09-05; status, prize, tags and Lean flag taken from oracle/evidence/targets/open-frontier.jsonl, ingested by oracle/tools/target_ingest.py from the teorth/erdosproblems community database). FRESHNESS UNKNOWN.",
+  "upstream_lean": "google-deepmind/formal-conjectures FormalConjectures/ErdosProblems/28.lean, @[category research open, AMS 11], body sorry",
+
+  "VERDICT": "UNRESOLVED",
+  "closed_affirmative": false,
+  "closed_negative": false,
+  "note_on_verdict": "The campaign proves an elementary floor (limsup r_A >= 2), pins the shape of any counterexample, and KILLS two named proof routes. It neither proves nor disproves Erdos 28, and it does not reach the published record.",
+
+  "banked_lean": {
+    "sorry_free": true,
+    "theorem_count": 35,
+    "toolchain": "leanprover/lean4:v4.31.0-rc1",
+    "mathlib_rev": "919544d4309104b3f19724b0e6e48c701d27948f",
+    "receipt": "receipts/lean-build.json",
+    "axiom_footprint": "propext, Classical.choice, Quot.sound on every theorem; no sorryAx, no native_decide",
+
+    "semantic_binding": {
+      "rep_eq_sumConv": "rep A n = sum over antidiagonal n of 1_A p.1 * 1_A p.2 -- the object studied IS the upstream sumRep; ORDERED pairs, diagonal counted once",
+      "Erdos28Stmt": "the upstream erdos_28 restated with sumRep replaced by the bound rep",
+      "convention_warning": "the ORDERED convention is what makes the floor 2 rather than 1; an unordered reading shifts every statement here by a factor of two"
+    },
+
+    "reformulation": {
+      "limsup_eq_top_iff": "limsup (rep A n : ENat) = top  <->  r_A is NOT bounded by any B, uniformly on all of N",
+      "erdos28_iff_no_bounded_basis": "Erdos 28  <->  no set is simultaneously an additive basis of order 2 and a B2[B] set",
+      "erdos28_iff_every_bound_exceeded": "Erdos 28  <->  for every basis A and every B there is an n with rep A n > B. This is the exact gap: the campaign proves B = 1 is exceeded and nothing more."
+    },
+
+    "FLOOR": {
+      "swap_mem_rep_set": "the swap (a,b) -> (b,a) preserves the representation set of n",
+      "two_le_rep_of_odd": "n odd and rep A n >= 1  =>  rep A n >= 2 (the swap has no fixed point at odd n)",
+      "one_le_rep_of_basis": "(A+A)^c finite  =>  there is M with rep A n >= 1 for every n > M",
+      "two_le_rep_odd_of_basis": "hence rep A n >= 2 for every large ODD n",
+      "frequently_two_le_rep": "hence rep A n >= 2 frequently along atTop",
+      "two_le_limsup_of_basis": "THE FLOOR: limsup (rep A n : ENat) >= 2 for every additive basis of order 2",
+      "not_rep_le_one_of_basis": "equivalently, no additive basis of order 2 has rep A n <= 1 for all large n",
+      "two_le_bound_of_basis": "any uniform bound B on rep A for a basis satisfies 2 <= B"
+    },
+
+    "SANDWICH": {
+      "sum_rep_eq": "sum_{n<=N} rep A n = #{ordered pairs from A of sum <= N}",
+      "sum_rep_le": "sum_{n<=N} rep A n <= cnt A N ^ 2",
+      "le_sum_rep": "cnt A (N/2) ^ 2 <= sum_{n<=N} rep A n",
+      "basis_count": "(A+A)^c finite  =>  there is M with N - M <= cnt A N ^ 2 for every N",
+      "cnt_sq_le_of_rep_le": "rep A <= B everywhere  =>  cnt A N ^ 2 <= B * (2N+1) for every N",
+      "counterexample_sandwich": "a counterexample has 2 <= B and N - M <= cnt A N ^2 <= B(2N+1)",
+      "counterexample_sandwich_real": "explicitly sqrt(N - M) <= |A cap [0,N]| <= sqrt(B(2N+1)): the counting function of any counterexample is Theta(sqrt N)",
+      "counterexample_structure": "THE STRUCTURE THEOREM: everything the campaign knows about a counterexample, in one object",
+      "erdos28_iff_no_theta_sqrt_basis": "the Theta(sqrt N) clause is FREE -- adding it to the target costs no generality"
+    },
+
+    "KILLS": {
+      "parity_saturates_at_two": "ROUTE KILL. The function n |-> (2 if n odd else 1) is positive everywhere and even at every odd n -- every constraint the parity route places on r_A -- while never exceeding 2. Hence NO argument from those constraints alone can prove limsup r_A >= 3.",
+      "parity_and_moment_saturate_at_two": "ROUTE KILL, EXTENDED. The same function additionally satisfies sum_{n<N} f(n)^2 <= 4N, so positivity + parity + ANY linear second-moment bound is jointly consistent with r_A <= 2.",
+      "not_parityAdmissible_implies_three": "the negative form: 'every parity-admissible function exceeds 2 somewhere' is FALSE",
+      "route_status": "KILLED_BY_THEOREM, not BLOCKED_CURRENT_TECHNIQUE",
+      "why_the_moment_axis": "Ruzsa 1990 constructs a REAL additive basis of order 2 with sum_{n<=N} r_A(n)^2 = O(N), so the second moment cannot separate bounded from unbounded r_A. CITED, not formalised here."
+    },
+
+    "SUMMARY": {
+      "campaign_state": "floor 2, route dead at 2, target = 'every bound B is exceeded' -- one object",
+      "what_remains": "the target restated as the non-existence of the structure the campaign pinned"
+    }
+  },
+
+  "independent_finite_verification": {
+    "script": "verify_finite_claims.py",
+    "sha256": "6aca06ffcfea69010566a027c72d84305c5dfc1d948fdec9cc6a153588f2cf87",
+    "receipt": "receipts/receipt-finite-claims.json",
+    "verdict": "ALL_PASS",
+    "arms": [
+      "rep as filtered-antidiagonal cardinality == rep as materialised-indicator convolution (204800 checks, DIFFERENT_KIND code paths)",
+      "odd n => r_A(n) even (98304 checks, exhaustive over every A subset [0,12])",
+      "odd n and r_A(n) >= 1 => r_A(n) >= 2 (98304 checks, 57900 non-vacuous)",
+      "counting sandwich, both sides (196608 checks)",
+      "the parity/moment kill witness, checked to n = 10000",
+      "EXHAUSTIVE window search: min over window-covering A subset [0,N] of max_{1<=n<=N} r_A(n)"
+    ],
+    "window_search_data": "min_max_rep = 2 for N in [2,5], 3 for N in [6,12], 4 for N in [13,16]",
+    "window_search_ceiling": "EXTRAPOLATION REFUSED. A window-covering set is NOT an additive basis of order 2 -- the two conditions are neither a subset nor a superset of one another -- and a minimum over a finite window transports to nothing infinite. This is boundary-audit data, never a trend."
+  },
+
+  "prior_art": [
+    {
+      "who": "Erdos and Turan (1941)",
+      "what": "posed the conjecture",
+      "status_here": "CITED, VERIFICATION_DEPTH EXISTS"
+    },
+    {
+      "who": "Erdos and Fuchs (1956)",
+      "what": "the average of r_A cannot be too regular",
+      "status_here": "CITED, VERIFICATION_DEPTH EXISTS, UNPROVED here, and NOT used by anything banked"
+    },
+    {
+      "who": "Ruzsa, 'A just basis', Monatsh. Math. 109 (1990) 145-151",
+      "what": "an additive basis of order 2 with sum_{n<=N} r_A(n)^2 = O(N)",
+      "status_here": "CITED, VERIFICATION_DEPTH STATEMENT_MATCHES (web search snippet, NOT the published text), UNPROVED here, and nothing banked depends on it",
+      "role": "names why the second-moment axis is the right one to kill"
+    },
+    {
+      "who": "Grekos, Haddad, Helou, Pihko (2003)",
+      "what": "sigma_A(n) >= 6 infinitely often",
+      "status_here": "CITED, VERIFICATION_DEPTH STATEMENT_MATCHES (web search snippet), UNPROVED here"
+    },
+    {
+      "who": "Borwein, Choi, Chu (2006), Math. Comp. 75(253) 475-484",
+      "what": "sigma_A(n) >= 8 infinitely often ('cannot be bounded by 7') -- the published record",
+      "status_here": "CITED, VERIFICATION_DEPTH STATEMENT_MATCHES (web search snippet), UNPROVED here",
+      "convention_caveat": "whether sigma_A counts ORDERED or UNORDERED pairs was NOT verified against the papers; the comparison with this campaign's floor of 2 is therefore UNVERIFIED in its constant"
+    }
+  ],
+
+  "honest_comparison": "The published record is >= 8. This campaign proves >= 2. The banked value is the machine-checked formalisation, the counterexample structure theorem, and the two route kills -- NOT a new bound. Nothing here approaches, let alone closes, Erdos 28.",
+
+  "open_debt": [
+    "EXTERNAL_AUDIT -- BANKED_WITHOUT_EXTERNAL_AUDIT. No external audit was obtained; the campaign's write scope excluded the estate's ask-gemini receipt directory and the call was not authorised.",
+    "SOURCE_FRESHNESS -- erdosproblems.com/28 returned HTTP 403; the page body, its comments and its proof-exposition counts are UNKNOWN to this campaign, and the status is taken from a local ingest of unknown age.",
+    "PRIOR_ART_DEPTH -- the >= 6 and >= 8 records and the Ruzsa construction are at STATEMENT_MATCHES from search snippets only; none was read in its published form, and the ordered/unordered convention of sigma_A is UNVERIFIED.",
+    "RECORD_GAP -- formalising Borwein-Choi-Chu (>= 8) would lift the floor from 2 to 8 with no new mathematics. It was NOT attempted: the proof is a substantial finite computation over the structure of initial segments and is out of budget for this campaign.",
+    "THIRD_AXIS -- the kills cover positivity, parity, and linear second moments. They say NOTHING about routes using higher moments, the analytic Erdos-Fuchs machinery, or the structure of A itself. Naming the next axis and killing or opening it is the highest-value next attack."
+  ],
+
+  "next_attacks": [
+    "Formalise the Borwein-Choi-Chu >= 8 bound; the counting and parity infrastructure banked here is the substrate it would sit on.",
+    "Extend the KILL grammar: find the smallest set of constraints on r_A that is NOT consistent with a uniform bound. Each such set is a live route; each consistent set is dead by the same one-line witness technique used here.",
+    "Formalise Ruzsa's just basis. It would make parity_and_moment_saturate_at_two unconditional as a statement about REAL bases rather than about admissible functions.",
+    "Attack branch B directly: search for a basis of order 2 with small bounded r_A over long windows, using the Theta(sqrt N) pin from counterexample_sandwich_real as the search invariant."
+  ]
+}

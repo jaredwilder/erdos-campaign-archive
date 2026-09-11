@@ -1,0 +1,2930 @@
+{
+ "log": [
+  {
+   "iter": 1,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'exact_reformulations'",
+   "event": {
+    "op": "open_route",
+    "route": "R001",
+    "family": "analytic_probabilistic"
+   },
+   "verdict": "ROUTE R001 OPENED family=analytic_probabilistic branch=A",
+   "utc": "2026-09-01T22:14:36Z"
+  },
+  {
+   "iter": 2,
+   "packet": "route_search",
+   "reason": "Wang 3.1: routes concentrate in 'analytic_probabilistic' (1 of 1 live); open an independent route in the unused family 'exact_reformulations'",
+   "event": {
+    "op": "open_route",
+    "route": "R002",
+    "family": "discrete_optimization"
+   },
+   "verdict": "ROUTE R002 OPENED family=discrete_optimization branch=A",
+   "utc": "2026-09-01T22:20:43Z"
+  },
+  {
+   "iter": 3,
+   "packet": "computational",
+   "reason": "Wang 12.3: R001 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:22:16Z"
+  },
+  {
+   "iter": 4,
+   "packet": "computational",
+   "reason": "Wang 12.3: R001 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "event": {
+    "op": "lemma",
+    "route": "R001",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R001/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T22:32:28Z"
+  },
+  {
+   "iter": 5,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R001 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R001",
+    "lemma": "L1",
+    "status": "PROVED"
+   },
+   "verdict": "LEMMA R001/L1 RECORDED status=PROVED",
+   "utc": "2026-09-01T22:32:55Z"
+  },
+  {
+   "iter": 6,
+   "packet": "closer",
+   "reason": "Wang 17: R001 carries standing PROVED lemma(s) L1 and no refuted lemma; convert the standing mathematics into a machine-checkable closure obligation or refuse in type",
+   "event": {
+    "op": "closure_refused",
+    "route": "R001",
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "Standing L1 certifies only that gaps ≥2 exceed c₂ for c₂<2 (with k_max uncertified in the lemma itself); it contains no sieve-bound-to-runs implication and cannot discharge close branch A for the full ∀c₁,∀c₂ universal statement."
+   },
+   "verdict": "CLOSURE_REFUSED R001 reason=LEMMA_DOES_NOT_COVER_CLOSE_BRANCH (a typed refusal IS an outcome)",
+   "utc": "2026-09-01T22:33:17Z",
+   "closure_refused": {
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "Standing L1 certifies only that gaps ≥2 exceed c₂ for c₂<2 (with k_max uncertified in the lemma itself); it contains no sieve-bound-to-runs implication and cannot discharge close branch A for the full ∀c₁,∀c₂ universal statement."
+   },
+   "reclose_downgraded": [],
+   "closer_sig": [
+    [
+     "L1",
+     "0a6438096ed5afaa"
+    ]
+   ]
+  },
+  {
+   "iter": 7,
+   "packet": "computational",
+   "reason": "Wang 12.3: R002 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "event": {
+    "op": "lemma",
+    "route": "R002",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R002/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T22:33:51Z"
+  },
+  {
+   "iter": 8,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R002 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:34:21Z"
+  },
+  {
+   "iter": 9,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R002 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R002",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R002/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T22:34:53Z"
+  },
+  {
+   "iter": 10,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R002 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R002",
+    "lemma": "L1",
+    "status": "PROVED"
+   },
+   "verdict": "LEMMA R002/L1 RECORDED status=PROVED",
+   "utc": "2026-09-01T22:35:19Z"
+  },
+  {
+   "iter": 11,
+   "packet": "closer",
+   "reason": "Wang 17: R002 carries standing PROVED lemma(s) L1 and no refuted lemma; convert the standing mathematics into a machine-checkable closure obligation or refuse in type",
+   "event": {
+    "op": "closure_refused",
+    "route": "R002",
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "Standing lemma L1 is an exact finite check scoped to x ≤ 10^6 with certificate=null, while close branch A requires a proof of \"for any sufficiently large x\" over all c1,c2>0 — the sieve-composite-run observation does not reduce the asymptotic universal claim to any finite computation, so no machine-"
+   },
+   "verdict": "CLOSURE_REFUSED R002 reason=LEMMA_DOES_NOT_COVER_CLOSE_BRANCH (a typed refusal IS an outcome)",
+   "utc": "2026-09-01T22:35:26Z",
+   "closure_refused": {
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "Standing lemma L1 is an exact finite check scoped to x ≤ 10^6 with certificate=null, while close branch A requires a proof of \"for any sufficiently large x\" over all c1,c2>0 — the sieve-composite-run observation does not reduce the asymptotic universal claim to any finite computation, so no machine-"
+   },
+   "reclose_downgraded": [],
+   "closer_sig": [
+    [
+     "L1",
+     "beaa3d834b557c99"
+    ]
+   ]
+  },
+  {
+   "iter": 12,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'exact_reformulations'",
+   "event": {
+    "op": "open_route",
+    "route": "R003",
+    "family": "local_to_global"
+   },
+   "verdict": "ROUTE R003 OPENED family=local_to_global branch=A",
+   "utc": "2026-09-01T22:37:39Z"
+  },
+  {
+   "iter": 13,
+   "packet": "computational",
+   "reason": "Wang 12.3: R003 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "event": {
+    "op": "lemma",
+    "route": "R003",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R003/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T22:38:48Z"
+  },
+  {
+   "iter": 14,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R003 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R003",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R003/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T22:39:08Z"
+  },
+  {
+   "iter": 15,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R003 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R003",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R003/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T22:39:40Z"
+  },
+  {
+   "iter": 16,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R003 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R003",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R003/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T22:40:17Z"
+  },
+  {
+   "iter": 17,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R003 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R003",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R003/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T22:40:29Z"
+  },
+  {
+   "iter": 18,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R003 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R003",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R003/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-01T22:40:47Z"
+  },
+  {
+   "iter": 19,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R003 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "event": {
+    "op": "lemma",
+    "route": "R003",
+    "lemma": "L1",
+    "status": "UNTESTED"
+   },
+   "verdict": "LEMMA R003/L1 RECORDED status=UNTESTED",
+   "utc": "2026-09-01T22:40:59Z"
+  },
+  {
+   "iter": 20,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:43:26Z"
+  },
+  {
+   "iter": 21,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:43:50Z"
+  },
+  {
+   "iter": 22,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:44:37Z"
+  },
+  {
+   "iter": 23,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:44:51Z"
+  },
+  {
+   "iter": 24,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:45:04Z"
+  },
+  {
+   "iter": 25,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:45:10Z"
+  },
+  {
+   "iter": 26,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:45:44Z"
+  },
+  {
+   "iter": 27,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:45:53Z"
+  },
+  {
+   "iter": 28,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:46:03Z"
+  },
+  {
+   "iter": 29,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:46:28Z"
+  },
+  {
+   "iter": 30,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:46:48Z"
+  },
+  {
+   "iter": 31,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:47:00Z"
+  },
+  {
+   "iter": 32,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:47:15Z"
+  },
+  {
+   "iter": 33,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:49:10Z"
+  },
+  {
+   "iter": 34,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:49:23Z"
+  },
+  {
+   "iter": 35,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:49:37Z"
+  },
+  {
+   "iter": 36,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:49:59Z"
+  },
+  {
+   "iter": 37,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:50:36Z"
+  },
+  {
+   "iter": 38,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:50:48Z"
+  },
+  {
+   "iter": 39,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:51:15Z"
+  },
+  {
+   "iter": 40,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:51:41Z"
+  },
+  {
+   "iter": 41,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:51:50Z"
+  },
+  {
+   "iter": 42,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:52:58Z"
+  },
+  {
+   "iter": 43,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:53:10Z"
+  },
+  {
+   "iter": 44,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:54:46Z"
+  },
+  {
+   "iter": 45,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:56:07Z"
+  },
+  {
+   "iter": 46,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:56:32Z"
+  },
+  {
+   "iter": 47,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:56:56Z"
+  },
+  {
+   "iter": 48,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:57:07Z"
+  },
+  {
+   "iter": 49,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:57:25Z"
+  },
+  {
+   "iter": 50,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:57:45Z"
+  },
+  {
+   "iter": 51,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:58:08Z"
+  },
+  {
+   "iter": 52,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:58:21Z"
+  },
+  {
+   "iter": 53,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:58:42Z"
+  },
+  {
+   "iter": 54,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:58:57Z"
+  },
+  {
+   "iter": 55,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:59:25Z"
+  },
+  {
+   "iter": 56,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T22:59:38Z"
+  },
+  {
+   "iter": 57,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "lemma",
+    "route": "R003",
+    "lemma": "L1",
+    "status": "UNTESTED"
+   },
+   "verdict": "LEMMA R003/L1 RECORDED status=UNTESTED",
+   "utc": "2026-09-01T23:01:08Z"
+  },
+  {
+   "iter": 58,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:01:59Z"
+  },
+  {
+   "iter": 59,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:02:24Z"
+  },
+  {
+   "iter": 60,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:02:42Z"
+  },
+  {
+   "iter": 61,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:02:53Z"
+  },
+  {
+   "iter": 62,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:03:26Z"
+  },
+  {
+   "iter": 63,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:03:47Z"
+  },
+  {
+   "iter": 64,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:04:11Z"
+  },
+  {
+   "iter": 65,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:04:34Z"
+  },
+  {
+   "iter": 66,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:04:45Z"
+  },
+  {
+   "iter": 67,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:05:07Z"
+  },
+  {
+   "iter": 68,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:06:06Z"
+  },
+  {
+   "iter": 69,
+   "packet": "transference",
+   "reason": "Wang 11.5: R001 holds certified finite core(s) L1 and no transference lemma; the scaling step is owed before more finite work",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:06:40Z"
+  },
+  {
+   "iter": 70,
+   "packet": "transference",
+   "reason": "Wang 11.5: R002 holds certified finite core(s) L1 and no transference lemma; the scaling step is owed before more finite work",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:07:04Z"
+  },
+  {
+   "iter": 71,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:07:30Z"
+  },
+  {
+   "iter": 72,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:07:44Z"
+  },
+  {
+   "iter": 73,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:09:00Z"
+  },
+  {
+   "iter": 74,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:09:35Z"
+  },
+  {
+   "iter": 75,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:09:47Z"
+  },
+  {
+   "iter": 76,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:10:01Z"
+  },
+  {
+   "iter": 77,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:10:17Z"
+  },
+  {
+   "iter": 78,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:10:51Z"
+  },
+  {
+   "iter": 79,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:11:20Z"
+  },
+  {
+   "iter": 80,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:11:35Z"
+  },
+  {
+   "iter": 81,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:12:12Z"
+  },
+  {
+   "iter": 82,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:12:47Z"
+  },
+  {
+   "iter": 83,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:13:04Z"
+  },
+  {
+   "iter": 84,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:14:28Z"
+  },
+  {
+   "iter": 85,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:14:45Z"
+  },
+  {
+   "iter": 86,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:15:01Z"
+  },
+  {
+   "iter": 87,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:15:15Z"
+  },
+  {
+   "iter": 88,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:15:21Z"
+  },
+  {
+   "iter": 89,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:15:33Z"
+  },
+  {
+   "iter": 90,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:15:41Z"
+  },
+  {
+   "iter": 91,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:15:59Z"
+  },
+  {
+   "iter": 92,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:16:15Z"
+  },
+  {
+   "iter": 93,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:16:21Z"
+  },
+  {
+   "iter": 94,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:16:35Z"
+  },
+  {
+   "iter": 95,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:16:56Z"
+  },
+  {
+   "iter": 96,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:17:14Z"
+  },
+  {
+   "iter": 97,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:17:27Z"
+  },
+  {
+   "iter": 98,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:17:38Z"
+  },
+  {
+   "iter": 99,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:17:52Z"
+  },
+  {
+   "iter": 100,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:18:08Z"
+  },
+  {
+   "iter": 101,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:18:17Z"
+  },
+  {
+   "iter": 102,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:18:43Z"
+  },
+  {
+   "iter": 103,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:18:50Z"
+  },
+  {
+   "iter": 104,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:19:12Z"
+  },
+  {
+   "iter": 105,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:19:25Z"
+  },
+  {
+   "iter": 106,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:19:36Z"
+  },
+  {
+   "iter": 107,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:19:56Z"
+  },
+  {
+   "iter": 108,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:20:04Z"
+  },
+  {
+   "iter": 109,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:20:17Z"
+  },
+  {
+   "iter": 110,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:20:26Z"
+  },
+  {
+   "iter": 111,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:20:35Z"
+  },
+  {
+   "iter": 112,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:20:44Z"
+  },
+  {
+   "iter": 113,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:21:01Z"
+  },
+  {
+   "iter": 114,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:21:13Z"
+  },
+  {
+   "iter": 115,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:21:24Z"
+  },
+  {
+   "iter": 116,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:21:33Z"
+  },
+  {
+   "iter": 117,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:21:49Z"
+  },
+  {
+   "iter": 118,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:22:03Z"
+  },
+  {
+   "iter": 119,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:22:30Z"
+  },
+  {
+   "iter": 120,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:22:41Z"
+  },
+  {
+   "iter": 121,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:23:05Z"
+  },
+  {
+   "iter": 122,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:23:16Z"
+  },
+  {
+   "iter": 123,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:23:25Z"
+  },
+  {
+   "iter": 124,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:23:35Z"
+  },
+  {
+   "iter": 125,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:23:52Z"
+  },
+  {
+   "iter": 126,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:24:11Z"
+  },
+  {
+   "iter": 127,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:24:20Z"
+  },
+  {
+   "iter": 128,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:24:33Z"
+  },
+  {
+   "iter": 129,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:24:43Z"
+  },
+  {
+   "iter": 130,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:24:57Z"
+  },
+  {
+   "iter": 131,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:25:08Z"
+  },
+  {
+   "iter": 132,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:25:18Z"
+  },
+  {
+   "iter": 133,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:27:07Z"
+  },
+  {
+   "iter": 134,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:27:31Z"
+  },
+  {
+   "iter": 135,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:27:43Z"
+  },
+  {
+   "iter": 136,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:27:53Z"
+  },
+  {
+   "iter": 137,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:28:07Z"
+  },
+  {
+   "iter": 138,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:28:18Z"
+  },
+  {
+   "iter": 139,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:28:31Z"
+  },
+  {
+   "iter": 140,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:28:48Z"
+  },
+  {
+   "iter": 141,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:29:10Z"
+  },
+  {
+   "iter": 142,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:29:31Z"
+  },
+  {
+   "iter": 143,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:29:37Z"
+  },
+  {
+   "iter": 144,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:29:59Z"
+  },
+  {
+   "iter": 145,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:30:12Z"
+  },
+  {
+   "iter": 146,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:30:24Z"
+  },
+  {
+   "iter": 147,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:30:43Z"
+  },
+  {
+   "iter": 148,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:30:58Z"
+  },
+  {
+   "iter": 149,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:31:09Z"
+  },
+  {
+   "iter": 150,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:31:23Z"
+  },
+  {
+   "iter": 151,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:31:35Z"
+  },
+  {
+   "iter": 152,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:31:45Z"
+  },
+  {
+   "iter": 153,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:32:12Z"
+  },
+  {
+   "iter": 154,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:32:26Z"
+  },
+  {
+   "iter": 155,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:32:44Z"
+  },
+  {
+   "iter": 156,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:33:03Z"
+  },
+  {
+   "iter": 157,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:33:17Z"
+  },
+  {
+   "iter": 158,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:33:38Z"
+  },
+  {
+   "iter": 159,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:33:46Z"
+  },
+  {
+   "iter": 160,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:34:12Z"
+  },
+  {
+   "iter": 161,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:34:25Z"
+  },
+  {
+   "iter": 162,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:34:40Z"
+  },
+  {
+   "iter": 163,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:34:52Z"
+  },
+  {
+   "iter": 164,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:35:05Z"
+  },
+  {
+   "iter": 165,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:35:16Z"
+  },
+  {
+   "iter": 166,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:35:28Z"
+  },
+  {
+   "iter": 167,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:35:34Z"
+  },
+  {
+   "iter": 168,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:35:42Z"
+  },
+  {
+   "iter": 169,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:35:49Z"
+  },
+  {
+   "iter": 170,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:35:54Z"
+  },
+  {
+   "iter": 171,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:36:20Z"
+  },
+  {
+   "iter": 172,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:36:30Z"
+  },
+  {
+   "iter": 173,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:36:47Z"
+  },
+  {
+   "iter": 174,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:37:02Z"
+  },
+  {
+   "iter": 175,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:37:12Z"
+  },
+  {
+   "iter": 176,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:37:28Z"
+  },
+  {
+   "iter": 177,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:37:37Z"
+  },
+  {
+   "iter": 178,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:37:44Z"
+  },
+  {
+   "iter": 179,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:38:03Z"
+  },
+  {
+   "iter": 180,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:38:20Z"
+  },
+  {
+   "iter": 181,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:38:35Z"
+  },
+  {
+   "iter": 182,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:38:43Z"
+  },
+  {
+   "iter": 183,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:39:03Z"
+  },
+  {
+   "iter": 184,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:39:15Z"
+  },
+  {
+   "iter": 185,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:39:24Z"
+  },
+  {
+   "iter": 186,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:39:36Z"
+  },
+  {
+   "iter": 187,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:39:42Z"
+  },
+  {
+   "iter": 188,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:39:54Z"
+  },
+  {
+   "iter": 189,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:40:03Z"
+  },
+  {
+   "iter": 190,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:40:15Z"
+  },
+  {
+   "iter": 191,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:40:31Z"
+  },
+  {
+   "iter": 192,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:40:39Z"
+  },
+  {
+   "iter": 193,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:40:50Z"
+  },
+  {
+   "iter": 194,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:41:01Z"
+  },
+  {
+   "iter": 195,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:41:16Z"
+  },
+  {
+   "iter": 196,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:41:29Z"
+  },
+  {
+   "iter": 197,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:41:50Z"
+  },
+  {
+   "iter": 198,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:42:00Z"
+  },
+  {
+   "iter": 199,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:42:15Z"
+  },
+  {
+   "iter": 200,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:42:26Z"
+  },
+  {
+   "iter": 201,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:42:42Z"
+  },
+  {
+   "iter": 202,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:42:49Z"
+  },
+  {
+   "iter": 203,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:42:56Z"
+  },
+  {
+   "iter": 204,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:43:06Z"
+  },
+  {
+   "iter": 205,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:43:20Z"
+  },
+  {
+   "iter": 206,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:43:30Z"
+  },
+  {
+   "iter": 207,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:43:38Z"
+  },
+  {
+   "iter": 208,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:43:54Z"
+  },
+  {
+   "iter": 209,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:44:07Z"
+  },
+  {
+   "iter": 210,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:44:21Z"
+  },
+  {
+   "iter": 211,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:44:30Z"
+  },
+  {
+   "iter": 212,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:44:38Z"
+  },
+  {
+   "iter": 213,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:44:57Z"
+  },
+  {
+   "iter": 214,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:45:12Z"
+  },
+  {
+   "iter": 215,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:45:22Z"
+  },
+  {
+   "iter": 216,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:45:37Z"
+  },
+  {
+   "iter": 217,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:46:05Z"
+  },
+  {
+   "iter": 218,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:46:12Z"
+  },
+  {
+   "iter": 219,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:46:18Z"
+  },
+  {
+   "iter": 220,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:46:27Z"
+  },
+  {
+   "iter": 221,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:46:39Z"
+  },
+  {
+   "iter": 222,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:46:45Z"
+  },
+  {
+   "iter": 223,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:47:07Z"
+  },
+  {
+   "iter": 224,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:47:14Z"
+  },
+  {
+   "iter": 225,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:47:24Z"
+  },
+  {
+   "iter": 226,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:47:32Z"
+  },
+  {
+   "iter": 227,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:47:53Z"
+  },
+  {
+   "iter": 228,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:48:03Z"
+  },
+  {
+   "iter": 229,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:48:13Z"
+  },
+  {
+   "iter": 230,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:48:22Z"
+  },
+  {
+   "iter": 231,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:48:33Z"
+  },
+  {
+   "iter": 232,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:48:48Z"
+  },
+  {
+   "iter": 233,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:49:07Z"
+  },
+  {
+   "iter": 234,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:49:18Z"
+  },
+  {
+   "iter": 235,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:49:34Z"
+  },
+  {
+   "iter": 236,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:49:51Z"
+  },
+  {
+   "iter": 237,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:50:02Z"
+  },
+  {
+   "iter": 238,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:50:13Z"
+  },
+  {
+   "iter": 239,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:50:23Z"
+  },
+  {
+   "iter": 240,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:50:34Z"
+  },
+  {
+   "iter": 241,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:50:46Z"
+  },
+  {
+   "iter": 242,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:50:57Z"
+  },
+  {
+   "iter": 243,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:51:03Z"
+  },
+  {
+   "iter": 244,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:51:09Z"
+  },
+  {
+   "iter": 245,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:51:21Z"
+  },
+  {
+   "iter": 246,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:51:26Z"
+  },
+  {
+   "iter": 247,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:51:41Z"
+  },
+  {
+   "iter": 248,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:51:51Z"
+  },
+  {
+   "iter": 249,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:51:59Z"
+  },
+  {
+   "iter": 250,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-01T23:52:12Z"
+  },
+  {
+   "iter": 251,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T00:57:07Z",
+   "route_id": "R003"
+  },
+  {
+   "iter": 252,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T00:57:20Z",
+   "route_id": "R003"
+  },
+  {
+   "iter": 253,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T00:57:48Z",
+   "route_id": "R003"
+  },
+  {
+   "iter": 254,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T00:57:57Z",
+   "route_id": "R003"
+  },
+  {
+   "iter": 255,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T00:58:05Z",
+   "route_id": "R003"
+  },
+  {
+   "iter": 256,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T00:58:17Z",
+   "route_id": "R003"
+  },
+  {
+   "iter": 257,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T00:58:36Z",
+   "route_id": "R003"
+  },
+  {
+   "iter": 258,
+   "packet": "falsifier",
+   "reason": "Wang 18.1: R003 carries UNTESTED key lemma(s) L1; falsify before building on them",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R003",
+    "lemma": "L1",
+    "status": "PROVED"
+   },
+   "verdict": "LEMMA R003/L1 RECORDED status=PROVED",
+   "utc": "2026-09-02T01:00:26Z",
+   "route_id": "R003"
+  },
+  {
+   "iter": 259,
+   "packet": "closer",
+   "reason": "Wang 17: R003 carries standing PROVED lemma(s) L1 and no refuted lemma; convert the standing mathematics into a machine-checkable closure obligation or refuse in type",
+   "model": "openai/gpt-5.6-luna-pro",
+   "event": {
+    "op": "closure_refused",
+    "route": "R003",
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "L1 rigorously establishes only the restricted small-c1 sibling and does not provide the required full-scope closure of erdos_238.",
+    "covered": "the affirmative small-c1 lower-bound piece: for each fixed c2>0 and sufficiently small c1<Σ(c2)^{-1}, the sieve bound and pigeonhole argument prove the existence, for all sufficiently large x, of more than c1 log x consecutive primes <=x with every pairwise difference >c2",
+    "missing": "the remaining affirmative branch: proof of the canonical proposition uniformly for every c1,c2>0, including the full universal c1 quantifier"
+   },
+   "verdict": "CLOSURE_REFUSED R003 reason=LEMMA_DOES_NOT_COVER_CLOSE_BRANCH with the split NAMED (covered / missing) — file PIECE_DECLARE for the covered half to make it attackable",
+   "utc": "2026-09-02T01:00:37Z",
+   "route_id": "R003",
+   "closure_refused": {
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "L1 rigorously establishes only the restricted small-c1 sibling and does not provide the required full-scope closure of erdos_238."
+   },
+   "reclose_downgraded": [],
+   "closer_sig": [
+    [
+     "L1",
+     "cefbb21ee0ea6a79"
+    ]
+   ]
+  },
+  {
+   "iter": 260,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'exact_reformulations'",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "open_route",
+    "route": "R004",
+    "family": "exact_reformulations"
+   },
+   "verdict": "ROUTE R004 OPENED family=exact_reformulations branch=A",
+   "utc": "2026-09-02T01:02:47Z"
+  },
+  {
+   "iter": 261,
+   "packet": "computational",
+   "reason": "Wang 12.3: R004 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R004",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R004/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-02T01:04:07Z",
+   "route_id": "R004"
+  },
+  {
+   "iter": 262,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R004 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R004",
+    "lemma": "L1",
+    "status": "PROVED"
+   },
+   "verdict": "LEMMA R004/L1 RECORDED status=PROVED",
+   "utc": "2026-09-02T01:04:47Z",
+   "route_id": "R004"
+  },
+  {
+   "iter": 263,
+   "packet": "closer",
+   "reason": "Wang 17: R004 carries standing PROVED lemma(s) L1 and no refuted lemma; convert the standing mathematics into a machine-checkable closure obligation or refuse in type",
+   "model": "openai/gpt-5.6-luna-pro",
+   "event": {
+    "op": "closure_refused",
+    "route": "R004",
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "L1 is scoped only to the single finite instance n=13 and supplies no finite-to-global reduction or proof of the canonical statement.",
+    "covered": "exact finite verification of the prime-gap statistic at n=13, namely R(13;3/2)=3 with certified integer and rational comparisons",
+    "missing": "the affirmative proposition for all c1,c2>0 and all sufficiently large x, including the required asymptotic construction and global quantifier coverage"
+   },
+   "verdict": "CLOSURE_REFUSED R004 reason=LEMMA_DOES_NOT_COVER_CLOSE_BRANCH with the split NAMED (covered / missing) — file PIECE_DECLARE for the covered half to make it attackable",
+   "utc": "2026-09-02T01:04:54Z",
+   "route_id": "R004",
+   "closure_refused": {
+    "reason": "LEMMA_DOES_NOT_COVER_CLOSE_BRANCH",
+    "note": "L1 is scoped only to the single finite instance n=13 and supplies no finite-to-global reduction or proof of the canonical statement."
+   },
+   "reclose_downgraded": [],
+   "closer_sig": [
+    [
+     "L1",
+     "2397ae469a031117"
+    ]
+   ]
+  },
+  {
+   "iter": 264,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'algebraic_combinatorial'",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "open_route",
+    "route": "R005",
+    "family": "extremal_reduction"
+   },
+   "verdict": "ROUTE R005 OPENED family=extremal_reduction branch=A",
+   "utc": "2026-09-02T01:06:49Z"
+  },
+  {
+   "iter": 265,
+   "packet": "computational",
+   "reason": "Wang 12.3: R005 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R005",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R005/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-02T01:08:43Z",
+   "route_id": "R005"
+  },
+  {
+   "iter": 266,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R005 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R005",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R005/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-02T02:00:15Z",
+   "boundary_audit": {
+    "lemma": "L1",
+    "test": "(1) endpoint case x=59, triple (47,53,59): contained ✓, next triple (53,59,61) excluded since 61>59 — verified the exclusion is what forces the second witness (31,37,41), gaps 6,4, to be enumerated; count 2 confirmed. (2) degenerate small-prime triple (2,3,5): gaps (1,2), fails c=2 test, correctly not counted — no spurious count at the small boundary. (3) the flagged boundary case x=97, c=6: (47,5"
+   },
+   "typed_round": true,
+   "route_id": "R005"
+  },
+  {
+   "iter": 267,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R005 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R005",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R005/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-02T02:01:05Z",
+   "boundary_audit": {
+    "lemma": "L1",
+    "test": "the exact conflicting instance K(97;6): literal triple-containment enumeration over primes p ≤ 97 yields 2 witnesses, contract record states 1 — verifier's domain-validity check cannot instantiate, so PROVED is correctly withheld; second test at endpoint K(100;8): exhaustive enumeration yields 0, matches record — literal reading agrees with contract there, so the discrepancy is isolated to K(97;6)"
+   },
+   "typed_round": true,
+   "route_id": "R005"
+  },
+  {
+   "iter": 268,
+   "packet": "certifier",
+   "reason": "Wang 18.2 + 7.2: R005 lemma(s) L1 are EVIDENCE only; extract an exact certificate or they never carry the close",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R005",
+    "lemma": "L1",
+    "status": "FALSE"
+   },
+   "verdict": "LEMMA R005/L1 RECORDED status=FALSE",
+   "utc": "2026-09-02T02:01:48Z",
+   "typed_round": false,
+   "route_id": "R005"
+  },
+  {
+   "iter": 269,
+   "packet": "auditor",
+   "reason": "Wang 4.1 K8: R005 carries a refuted central lemma L1 (concrete counterexample); adjudicate the kill/block citing the rule",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "kill",
+    "route": "R005",
+    "rule": "K8"
+   },
+   "verdict": "ROUTE R005 ADJUDICATED under K8 (kill/block per rule)",
+   "utc": "2026-09-02T02:02:07Z",
+   "typed_round": false,
+   "route_id": "R005"
+  },
+  {
+   "iter": 270,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'algebraic_combinatorial'",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "no_finding"
+   },
+   "verdict": "NO_FINDING recorded (not progress)",
+   "utc": "2026-09-02T02:07:13Z",
+   "typed_round": false
+  },
+  {
+   "iter": 271,
+   "packet": "route_search",
+   "reason": "Wang 6: seed a genuinely independent route in the unexplored family 'algebraic_combinatorial'",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "open_route",
+    "route": "R006",
+    "family": "algebraic_combinatorial"
+   },
+   "verdict": "ROUTE R006 OPENED family=algebraic_combinatorial branch=A | RETRACTED by author boundary audit: \"bounded second moment (Var=o(E²) at bounded mean) was read as bounded distribution at all orders (P(N=0)>0 for arbitrarily large c₁c₂)\"",
+   "utc": "2026-09-02T02:23:18Z",
+   "retraction": {
+    "audited": "ROUTE_PROPOSAL",
+    "route": "R006",
+    "lemma": null,
+    "node": "R006",
+    "reason": "\"bounded second moment (Var=o(E²) at bounded mean) was read as bounded distribution at all orders (P(N=0)>0 for arbitrarily large c₁c₂)\"",
+    "result": "FAIL",
+    "tests": "concrete: (c₁,c₂)=(10,10): mean bad-count per window ~ 2C₂c₁c₂ ≈ 2·0.66·100 ≈ 132 ≫ 1; Var=o(E²) alone guarantees NOTHING about P(N=0) when E→∞ — Chebyshev gives only P(|N−E|<E/2)→1, i.e. N is concentrated NEAR E, not at 0. Zero-bad windows then need N-th moment/Poisson control for all N, which is t",
+    "registry": "no lemma to downgrade: the audited move was a ROUTE_PROPOSAL"
+   },
+   "typed_round": true
+  },
+  {
+   "iter": 272,
+   "packet": "computational",
+   "reason": "Wang 12.3: R006 has a thesis and no lemmas; implement the exact finite model and attack it",
+   "model": "z-ai/glm-5.3-flash",
+   "event": {
+    "op": "lemma",
+    "route": "R006",
+    "lemma": "L1",
+    "status": "COMPUTATION_SUPPORTED"
+   },
+   "verdict": "LEMMA R006/L1 RECORDED status=COMPUTATION_SUPPORTED",
+   "utc": "2026-09-02T02:25:11Z",
+   "boundary_audit": {
+    "lemma": "L1",
+    "test": "endpoint case: top witness prime exactly equal to x (29≤29, 59≤59) — passes, ≤ is literal, BLOCK-ABOVE-X trap avoided since the block ends at x. Degenerate k=1 test: at x=17, c₁·ln 17 ≈ 1.13 < 2 but no two consecutive gaps >4 exist below 17 (gaps 2,4,2,4,2 up to 17), so no witness — confirms the model is not trivially satisfied and k≥2 is doing work. Strict-inequality test at the length boundary: "
+   },
+   "typed_round": true,
+   "route_id": "R006"
+  }
+ ]
+}

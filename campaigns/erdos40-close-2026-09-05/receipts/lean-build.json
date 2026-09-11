@@ -1,0 +1,110 @@
+{
+  "campaign": "erdos40-close-2026-09-05",
+  "target": "erdos:40",
+  "target_source": "https://www.erdosproblems.com/40",
+  "target_status_on_source_at_read_time": "OPEN, $500, 'This is open, and cannot be resolved with a finite computation.', read 2026-09-05",
+  "resolved": false,
+  "tool": "lean",
+  "toolchain": "leanprover/lean4:v4.31.0-rc1",
+  "mathlib_rev": "919544d4309104b3f19724b0e6e48c701d27948f",
+  "host": "scw-gracious-galois (root@51.158.234.15)",
+  "lean_path_root": "/root/formalizer/proofs (lake env printenv LEAN_PATH)",
+  "workdir_on_host": "/root/erdos40-close",
+  "run_policy": "nice -n 19, taskset -c 0,1 (2 cores); host load ~31 at run time; no existing jobs touched",
+  "clean_rebuild": "build/*.olean removed before the receipted run",
+  "sources": [
+    {
+      "file": "lean/Erdos40Core.lean",
+      "sha256": "1d663fd1c24829f9e192fcfbbda6f44228bbf04199e637f33f337747bf04d8c5",
+      "lean_exit": 0,
+      "wall_seconds": 4.43,
+      "maxrss_kb": 6766804,
+      "diagnostics": "no errors, no warnings"
+    },
+    {
+      "file": "lean/Erdos40Ceiling.lean",
+      "sha256": "1ba684d571525a65ecf7905604bc49cf3e34d47d041ba3bb0cf75581621bbacf",
+      "lean_exit": 0,
+      "wall_seconds": 5.26,
+      "maxrss_kb": 6787044,
+      "diagnostics": "no errors, no warnings"
+    },
+    {
+      "file": "lean/Erdos40Turan.lean",
+      "sha256": "19575e8bb0ab7afb2defbc9b583637d1555df23eed33649baa16e12d4d58a462",
+      "lean_exit": 0,
+      "wall_seconds": 5.11,
+      "maxrss_kb": 6791028,
+      "diagnostics": "no errors, no warnings"
+    },
+    {
+      "file": "lean/Erdos40Summary.lean",
+      "sha256": "ebf90fbcf9163a0ad20db2efcb431b8bc8a8b0ba87dc246696fa1128f12685a5",
+      "lean_exit": 0,
+      "wall_seconds": 4.45,
+      "maxrss_kb": 6741408,
+      "diagnostics": "no errors; 1 warning (unused binder name `A` in a statement, cosmetic)"
+    },
+    {
+      "file": "lean/Erdos40Check.lean",
+      "sha256": "87c05ad211384fa21eb83ed03cc56f6bdc0eec4113f9b5dd7a367dafbce4b130",
+      "lean_exit": 0,
+      "wall_seconds": 4.27,
+      "maxrss_kb": 6722360,
+      "diagnostics": "axiom audit output only"
+    }
+  ],
+  "axiom_audit": {
+    "method": "#print axioms on every banked theorem (lean/Erdos40Check.lean), lean_exit 0",
+    "expected_clean_set": ["propext", "Classical.choice", "Quot.sound"],
+    "sorryAx_present": false,
+    "native_decide_used": false,
+    "theorem_count": 29,
+    "theorems": {
+      "Erdos40.rep_eq_sumConv": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos40.ncard_eq_cnt": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos40.rep_le_succ": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos40.limsup_le_of_rep_le": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos40.rep_bdd_of_limsup_ne_top": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos40.limsup_eq_top_iff": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos40.not_erdos40For_of_bounded_witness": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos40.erdos40For_iff": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos40.Erdos40For.of_isBigO": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos40.Erdos40For.of_le": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos40.rep_le_two_of_max_unique": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos40.rep_le_two_of_isSidon": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos40.P2_max_unique": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos40.P2_isSidon": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos40.rep_P2_le_two": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos40.cnt_P2_ge": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos40.log_isBigO_cnt_P2": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos40.not_erdos40For_of_thr_isBigO_log": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos40.not_erdos40For_sqrt_div_log": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos40.tendsto_sqrt_div_log_atTop": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos40.answer_set_ceiling": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos40.not_erdos40For_of_dense_sidon": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos40.cnt_zero_le": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos40.basis_count": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos40.sqrt_le_three_mul_cnt": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos40.erdos28_of_erdos40For": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos40.erdos28_of_exists_answer": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos40.exists_tendsto_atTop_not_erdos40For": ["propext", "Classical.choice", "Quot.sound"],
+      "Erdos40.answer_set_trapped": ["propext", "Classical.choice", "Quot.sound"]
+    }
+  },
+  "reproduce": [
+    "ssh root@51.158.234.15 'mkdir -p /root/erdos40-close/src /root/erdos40-close/build'",
+    "# build.sh is /root/erdos66-close/build.sh with the workdir string swapped:",
+    "#   export PATH=/root/.elan/bin:$PATH",
+    "#   LP=$(cd /root/formalizer/proofs && lake env printenv LEAN_PATH)",
+    "#   export LEAN_PATH=\"$LP:/root/erdos40-close/build\"",
+    "#   cd /root/erdos40-close/src && nice -n 19 taskset -c 0,1 lean -o ../build/$1.olean $1.lean",
+    "scp lean/*.lean root@51.158.234.15:/root/erdos40-close/src/",
+    "ssh root@51.158.234.15 '/root/erdos40-close/build.sh Erdos40Core'",
+    "ssh root@51.158.234.15 '/root/erdos40-close/build.sh Erdos40Ceiling'",
+    "ssh root@51.158.234.15 '/root/erdos40-close/build.sh Erdos40Turan'",
+    "ssh root@51.158.234.15 '/root/erdos40-close/build.sh Erdos40Summary'",
+    "ssh root@51.158.234.15 '/root/erdos40-close/build.sh Erdos40Check'   # prints the axiom audit"
+  ],
+  "claim_ceiling": "These 29 theorems are kernel-checked structure theory for the answer set of Erdos 40, plus semantic bindings to the upstream formalisation. They do NOT resolve Erdos 40. The mathematics is elementary and classical in character; the banked artifact is the machine-checked formalisation and the receipts, NOT a novel theorem."
+}
