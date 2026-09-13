@@ -6,6 +6,20 @@ The archive preserves successful, refuted, inconclusive, and null runs together 
 
 Author: Jared Wilder. First public timestamp: 2026-09-10.
 
+## Focused homes recovered from this archive
+
+These programs now have problem-specific reading maps, exact source copies,
+provenance manifests and their original evidence boundaries:
+
+| Problem | Focused repository |
+|---|---|
+| #20: sunflower lemmas and constructions | [erdos20-sunflower](https://github.com/jaredwilder/erdos20-sunflower) |
+| #592: ordinal Ramsey framework and conditional reductions | [erdos592-ordinal-ramsey](https://github.com/jaredwilder/erdos592-ordinal-ramsey) |
+| #593: obligatory hypergraph witnesses and conditional separations | [erdos593-obligatory-hypergraphs](https://github.com/jaredwilder/erdos593-obligatory-hypergraphs) |
+
+The original campaign folders remain here for chronology and provenance.
+
+
 ## What is here
 
 Each research directory preserves the problem statement used for that run, the sequence of attempted approaches, the transcript, verification receipts, and any mathematical objects produced. Across the 96 MB archive are:
@@ -39,7 +53,7 @@ That denominator matters if the archive is used to study automated proof search.
 | 595 | 27 sorry-free barrier theorems | `erdos595-barrier-tower` |
 | 142 | first exact values of Mathlib's `rothNumberNat` | `erdos-close-campaigns` |
 | 89 | Erdős 1946 bound formalized, with a gap ledger | `erdos-close-campaigns` |
-| 850, 273 | a `4.6×10^11` exhaustion frontier and a parity-split reduction | `erdos-computational-searches` |
+| 850, 273 | a `4.6×10^11` exhaustion frontier and a parity-split reduction | [radical coincidences](https://github.com/jaredwilder/erdos850-radical-coincidences), [covering systems](https://github.com/jaredwilder/erdos273-covering-systems) |
 | 949, 1061, 276, 313, 400, 412, 456, 477, 479, 700, 885, 936, 289 | 79 clean-axiom declarations | `erdos-theorems` |
 
 Further mathematics has since been extracted into focused theorem, paper, computation, and archive repositories. This repository remains the underlying research record.
