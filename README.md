@@ -16,6 +16,10 @@ provenance manifests and their original evidence boundaries:
 | #20: sunflower lemmas and constructions | [erdos20-sunflower](https://github.com/jaredwilder/erdos20-sunflower) |
 | #592: ordinal Ramsey framework and conditional reductions | [erdos592-ordinal-ramsey](https://github.com/jaredwilder/erdos592-ordinal-ramsey) |
 | #593: obligatory hypergraph witnesses and conditional separations | [erdos593-obligatory-hypergraphs](https://github.com/jaredwilder/erdos593-obligatory-hypergraphs) |
+| #146: degenerate Turán reductions and minimum-degree extraction | [erdos146-degenerate-turan](https://github.com/jaredwilder/erdos146-degenerate-turan) |
+| #1192: additive-basis representation energy and corrections | [erdos1192-representation-energy](https://github.com/jaredwilder/erdos1192-representation-energy) |
+| #39: Sidon density bounds and infinite greedy construction | [erdos39-sidon-density](https://github.com/jaredwilder/erdos39-sidon-density) |
+| #74: bounded bipartite defect and coloring | [erdos74-bipartite-defect](https://github.com/jaredwilder/erdos74-bipartite-defect) |
 
 The original campaign folders remain here for chronology and provenance.
 
