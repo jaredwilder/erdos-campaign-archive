@@ -55,6 +55,7 @@ That denominator matters if the archive is used to study automated proof search.
 |---|---|---|
 | 1084 | prior-art correction to a research-open tag, plus a formalized lower bound | `erdos1084-harborth` |
 | 595 | 27 sorry-free barrier theorems | `erdos595-barrier-tower` |
+| 513 | a candidate exact value B = 1/A\* ≈ 0.58507882, reduced to two open statements | [`campaigns/erdos513-close-packet-2026-08-11`](campaigns/erdos513-close-packet-2026-08-11/) |
 | 142 | first exact values of Mathlib's `rothNumberNat` | `erdos-close-campaigns` |
 | 89 | Erdős 1946 bound formalized, with a gap ledger | `erdos-close-campaigns` |
 | 850, 273 | a `4.6×10^11` exhaustion frontier and a parity-split reduction | [radical coincidences](https://github.com/jaredwilder/erdos850-radical-coincidences), [covering systems](https://github.com/jaredwilder/erdos273-covering-systems) |
