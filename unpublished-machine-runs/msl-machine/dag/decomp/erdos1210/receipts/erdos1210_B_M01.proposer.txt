@@ -1,0 +1,16 @@
+{"definitions": "",
+  "parent_typed": {"name": "erdos1210_B_M01", "binders": ["(n : Nat)", "(A : Finset Nat)", "(C : ℝ)"],
+    "statement": "(∀ a ∈ A, (1 : Nat) ≤ a ∧ a < n) ∧ (∀ a ∈ A, ∀ b ∈ A, a ≠ b → a.Coprime b) ∧ (∑ a ∈ A, (1 : ℝ) / ((n : ℝ) - a)) > (∑ p ∈ (range n).filter Prime, (1 : ℝ) / (p : ℝ)) + C",
+    "reading": "A counterexample family is a set A ⊆ [1,n) with pairwise coprime elements whose reciprocal sum (in 1/(n-a)) exceeds the prime reciprocal sum up to n plus the constant C."},
+  "children": [
+    {"name": "erdos1210_B_M01_bounds", "binders": ["(n : Nat)", "(A : Finset Nat)"],
+      "statement": "∀ a ∈ A, (1 : Nat) ≤ a ∧ a < n",
+      "reading": "Every element of the counterexample set A lies in the half-open interval [1, n)."},
+    {"name": "erdos1210_B_M01_coprime", "binders": ["(n : Nat)", "(A : Finset Nat)"],
+      "statement": "∀ a ∈ A, ∀ b ∈ A, a ≠ b → a.Coprime b",
+      "reading": "Every two distinct elements of the counterexample set A are coprime."},
+    {"name": "erdos1210_B_M01_refutes", "binders": ["(n : Nat)", "(A : Finset Nat)", "(C : ℝ)"],
+      "statement": "(∑ a ∈ A, (1 : ℝ) / ((n : ℝ) - a)) > (∑ p ∈ (range n).filter Prime, (1 : ℝ) / (p : ℝ)) + C",
+      "reading": "The counterexample sum strictly exceeds the prime reciprocal sum for n plus the constant C, i.e. the main inequality fails at this C."}
+  ],
+  "composition_claim": "The parent is exactly the conjunction of the three children: children 1 and 2 assert the hypotheses (the bounds and pairwise coprimality) are preserved by the counterexample family, and child 3 asserts it actually refutes the inequality for the given C; conjoining them with the same binders (n, A, C) yields the parent verbatim."}

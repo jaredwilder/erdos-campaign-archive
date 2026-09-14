@@ -1,0 +1,1455 @@
+{
+ "schema": "obligation-dag/1.0.0",
+ "problem": "erdos1004",
+ "problem_number": "1004",
+ "campaign": "erdos1004-campaign-001",
+ "root": "erdos1004:ROOT",
+ "contract_divergence": {
+  "authoritative": {
+   "role": "campaign",
+   "path": "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json",
+   "sha256": "38ae3456bf24eced9382fa5ba064a0f112d91ebd4976eb736f14b5960a62b843",
+   "declared_contract_sha256": "1e0c52ca4c7f6d10ee2525b80cfe5277dc743de29ada061606a14680df80c9ed"
+  },
+  "others": [
+   {
+    "role": "ingest",
+    "path": "oracle/evidence/msl-machine/contracts/erdos1004/contract.json",
+    "sha256": "1f06c0a0e9d9998675ed6105a19c5b5f41f5538213cf6f3147e0c5363f2fa954",
+    "declared_contract_sha256": "5c3d6e62852c57bc6dd1237d950aa0751fdf423c9d8082a39717a38d8d8c5412",
+    "canonical_statement_matches_authoritative": true
+   },
+   {
+    "role": "launch_queue",
+    "path": "oracle/evidence/msl-machine/contracts/LAUNCH-QUEUE/erdos1004.json",
+    "sha256": "ed97cfd5f2403ef11629cbb7d491b17d127562eaeb9ee4ebc01c4336d133375f",
+    "declared_contract_sha256": null,
+    "canonical_statement_matches_authoritative": true
+   }
+  ],
+  "diverges": false
+ },
+ "courts": [
+  "court",
+  "closer",
+  "formalizer",
+  "kernel"
+ ],
+ "summary": {
+  "nodes": 32,
+  "proved_kernel": 0,
+  "proved_speaker": 1,
+  "computed_bounded": 1,
+  "open": 26,
+  "refuted": 4,
+  "orphans": 0,
+  "proof_obligations": 16,
+  "open_leaves_on_dead_routes": 3,
+  "root_kind": "NOT_DECIDABLE",
+  "root_disqualifiers": [
+   "ASYMPTOTIC",
+   "UNBOUNDED_FORALL_REAL"
+  ],
+  "formal_root": {
+   "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/1004.lean",
+   "category": "category research open, AMS 11",
+   "declaration": "erdos_1004",
+   "statement": "answer(sorry) ↔ ∀ c > (0 : ℝ), ∀ᶠ x in atTop, ∃ n ≤ x, IsDistinctTotientRun n ⌊(Real.log (x : ℝ)) ^ c⌋₊"
+  },
+  "leaf_frontier_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "leaf_frontier_reason": "3 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaf_frontier_deciding_leaf": {
+   "id": "erdos1004:DEMAND:R004:L1:1",
+   "kind": "CAPABILITY_DEMAND",
+   "status": "OPEN",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "restrict to the bare existential, which is itself open."
+  },
+  "ladder_shape_reason": "the formal root is not decidable: ASYMPTOTIC, UNBOUNDED_FORALL_REAL (oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/1004.lean). No leaf set can close it, however clean the leaves are. Leaf frontier, kept for the grind queue: HAS_OPEN_ANALYTIC_LEAF.",
+  "leaves": 12,
+  "open_leaves": 8,
+  "open_technical_leaves": 6,
+  "open_prose_obligations": 0,
+  "open_analytic_leaves": 3,
+  "ladder_shape": "ROOT_NOT_DECIDABLE",
+  "deciding_leaf": {
+   "id": "erdos1004:ROOT",
+   "kind": "CANONICAL_ROOT",
+   "status": "OPEN",
+   "binding": "VERBATIM",
+   "leaf_tactic_hint": null,
+   "statement": "answer(sorry) ↔ ∀ c > (0 : ℝ), ∀ᶠ x in atTop, ∃ n ≤ x, IsDistinctTotientRun n ⌊(Real.log (x : ℝ)) ^ c⌋₊"
+  },
+  "orphan_detail": []
+ },
+ "validation": {
+  "acyclic": true,
+  "edges": 32,
+  "root_binds_verbatim": true,
+  "kernel_receipts_checked": 0
+ },
+ "nodes": [
+  {
+   "id": "erdos1004:A:M01",
+   "statement": "A complete proof of the affirmative proposition over its full stated scope.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json",
+   "contract_sha256": "38ae3456bf24eced9382fa5ba064a0f112d91ebd4976eb736f14b5960a62b843",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1004",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:A:M02",
+   "statement": "If the proposition is existential, an explicit witness/construction or a rigorous existence proof, together with verification of every required property.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 2,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json",
+   "contract_sha256": "38ae3456bf24eced9382fa5ba064a0f112d91ebd4976eb736f14b5960a62b843",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1004",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:A:M03",
+   "statement": "If the proposition is universal, coverage of every allowed object/parameter rather than sampled instances or a restricted family.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 3,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json",
+   "contract_sha256": "38ae3456bf24eced9382fa5ba064a0f112d91ebd4976eb736f14b5960a62b843",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1004",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:A:M04",
+   "statement": "All endpoint, degeneracy, distinctness, integrality, normalization, and full-sequence conditions required by the canonical statement.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 4,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json",
+   "contract_sha256": "38ae3456bf24eced9382fa5ba064a0f112d91ebd4976eb736f14b5960a62b843",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1004",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:BRANCH_A",
+   "statement": "AFFIRMATIVE CLOSE: prove the canonical proposition exactly as stated, with every quantifier, domain restriction, asymptotic qualifier, and structural condition preserved.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos1004:A:M01",
+    "erdos1004:A:M02",
+    "erdos1004:A:M03",
+    "erdos1004:A:M04"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json",
+   "contract_sha256": "38ae3456bf24eced9382fa5ba064a0f112d91ebd4976eb736f14b5960a62b843",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1004",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-1004-5d4999461f-A-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:B:M01",
+   "statement": "A concrete counterexample/parameter choice satisfying every premise but violating the asserted conclusion, or an equivalent proof of the exact negation.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json",
+   "contract_sha256": "38ae3456bf24eced9382fa5ba064a0f112d91ebd4976eb736f14b5960a62b843",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1004",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:B:M02",
+   "statement": "The quantifiers reversed exactly according to classical logic, including “for all sufficiently large”, “infinitely many”, “for every ε”, and nested existential/universal binders.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 2,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json",
+   "contract_sha256": "38ae3456bf24eced9382fa5ba064a0f112d91ebd4976eb736f14b5960a62b843",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1004",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:B:M03",
+   "statement": "Verification that the negative witness uses the same domains, normalizations, and definitions as the affirmative statement.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 3,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json",
+   "contract_sha256": "38ae3456bf24eced9382fa5ba064a0f112d91ebd4976eb736f14b5960a62b843",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1004",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:B:M04",
+   "statement": "No appeal to a weakened/strawman version of the target.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 4,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json",
+   "contract_sha256": "38ae3456bf24eced9382fa5ba064a0f112d91ebd4976eb736f14b5960a62b843",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1004",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:BRANCH_B",
+   "statement": "NEGATIVE CLOSE: prove the literal logical negation of the canonical proposition—not failure of a proof strategy, not a counterexample to a stronger variant, and not a refutation of an informal guess.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos1004:B:M01",
+    "erdos1004:B:M02",
+    "erdos1004:B:M03",
+    "erdos1004:B:M04"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json",
+   "contract_sha256": "38ae3456bf24eced9382fa5ba064a0f112d91ebd4976eb736f14b5960a62b843",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1004",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-1004-5d4999461f-B-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:ROOT",
+   "statement": "Let $c>0$. If $x$ is sufficiently large then does there exist $n\\leq x$ such that the values of $\\phi(n+k)$ are all distinct for $1\\leq k\\leq (\\log x)^c$, where $\\phi$ is the Euler totient function?",
+   "kind": "CANONICAL_ROOT",
+   "depends_on": [
+    "erdos1004:BRANCH_A",
+    "erdos1004:BRANCH_B"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "root_by_construction",
+   "closure_mode": "DISJUNCTIVE",
+   "satisfied_by_any": [
+    "erdos1004:BRANCH_A",
+    "erdos1004:BRANCH_B"
+   ],
+   "root_kind": "NOT_DECIDABLE",
+   "root_disqualifiers": [
+    "ASYMPTOTIC",
+    "UNBOUNDED_FORALL_REAL"
+   ],
+   "formal_root": {
+    "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/1004.lean",
+    "category": "category research open, AMS 11",
+    "declaration": "erdos_1004",
+    "statement": "answer(sorry) ↔ ∀ c > (0 : ℝ), ∀ᶠ x in atTop, ∃ n ≤ x, IsDistinctTotientRun n ⌊(Real.log (x : ℝ)) ^ c⌋₊"
+   },
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json",
+   "contract_sha256": "38ae3456bf24eced9382fa5ba064a0f112d91ebd4976eb736f14b5960a62b843",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1004",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:P4:C-1004-5d4999461f-A-M01",
+   "statement": "A complete proof of the affirmative proposition over its full stated scope.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_in_campaign_contract",
+   "binding_to_authoritative_contract": "VERBATIM",
+   "binding_to_authoritative_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 1,
+   "pass4_obligation_id": "C-1004-5d4999461f-A-M01",
+   "canonical_id": "C-1004-5d4999461f",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json",
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_CONTRACT_CLOSURE_OBLIGATIONS.csv"
+   ],
+   "supports": [
+    {
+     "node": "erdos1004:BRANCH_A",
+     "evidence": "pass4_branch"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1004",
+   "court": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:P4:C-1004-5d4999461f-A-M02",
+   "statement": "If the proposition is existential, an explicit witness/construction or a rigorous existence proof, together with verification of every required property.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_in_campaign_contract",
+   "binding_to_authoritative_contract": "VERBATIM",
+   "binding_to_authoritative_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 2,
+   "pass4_obligation_id": "C-1004-5d4999461f-A-M02",
+   "canonical_id": "C-1004-5d4999461f",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json",
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_CONTRACT_CLOSURE_OBLIGATIONS.csv"
+   ],
+   "supports": [
+    {
+     "node": "erdos1004:BRANCH_A",
+     "evidence": "pass4_branch"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1004",
+   "court": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:P4:C-1004-5d4999461f-A-M03",
+   "statement": "If the proposition is universal, coverage of every allowed object/parameter rather than sampled instances or a restricted family.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_in_campaign_contract",
+   "binding_to_authoritative_contract": "VERBATIM",
+   "binding_to_authoritative_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 3,
+   "pass4_obligation_id": "C-1004-5d4999461f-A-M03",
+   "canonical_id": "C-1004-5d4999461f",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json",
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_CONTRACT_CLOSURE_OBLIGATIONS.csv"
+   ],
+   "supports": [
+    {
+     "node": "erdos1004:BRANCH_A",
+     "evidence": "pass4_branch"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1004",
+   "court": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:P4:C-1004-5d4999461f-A-M04",
+   "statement": "All endpoint, degeneracy, distinctness, integrality, normalization, and full-sequence conditions required by the canonical statement.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_in_campaign_contract",
+   "binding_to_authoritative_contract": "VERBATIM",
+   "binding_to_authoritative_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 4,
+   "pass4_obligation_id": "C-1004-5d4999461f-A-M04",
+   "canonical_id": "C-1004-5d4999461f",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json",
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_CONTRACT_CLOSURE_OBLIGATIONS.csv"
+   ],
+   "supports": [
+    {
+     "node": "erdos1004:BRANCH_A",
+     "evidence": "pass4_branch"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1004",
+   "court": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:P4:C-1004-5d4999461f-B-M01",
+   "statement": "A concrete counterexample/parameter choice satisfying every premise but violating the asserted conclusion, or an equivalent proof of the exact negation.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_in_campaign_contract",
+   "binding_to_authoritative_contract": "VERBATIM",
+   "binding_to_authoritative_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 1,
+   "pass4_obligation_id": "C-1004-5d4999461f-B-M01",
+   "canonical_id": "C-1004-5d4999461f",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json",
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_CONTRACT_CLOSURE_OBLIGATIONS.csv"
+   ],
+   "supports": [
+    {
+     "node": "erdos1004:BRANCH_B",
+     "evidence": "pass4_branch"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1004",
+   "court": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:P4:C-1004-5d4999461f-B-M02",
+   "statement": "The quantifiers reversed exactly according to classical logic, including “for all sufficiently large”, “infinitely many”, “for every ε”, and nested existential/universal binders.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_in_campaign_contract",
+   "binding_to_authoritative_contract": "VERBATIM",
+   "binding_to_authoritative_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 2,
+   "pass4_obligation_id": "C-1004-5d4999461f-B-M02",
+   "canonical_id": "C-1004-5d4999461f",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json",
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_CONTRACT_CLOSURE_OBLIGATIONS.csv"
+   ],
+   "supports": [
+    {
+     "node": "erdos1004:BRANCH_B",
+     "evidence": "pass4_branch"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1004",
+   "court": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:P4:C-1004-5d4999461f-B-M03",
+   "statement": "Verification that the negative witness uses the same domains, normalizations, and definitions as the affirmative statement.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_in_campaign_contract",
+   "binding_to_authoritative_contract": "VERBATIM",
+   "binding_to_authoritative_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 3,
+   "pass4_obligation_id": "C-1004-5d4999461f-B-M03",
+   "canonical_id": "C-1004-5d4999461f",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json",
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_CONTRACT_CLOSURE_OBLIGATIONS.csv"
+   ],
+   "supports": [
+    {
+     "node": "erdos1004:BRANCH_B",
+     "evidence": "pass4_branch"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1004",
+   "court": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:P4:C-1004-5d4999461f-B-M04",
+   "statement": "No appeal to a weakened/strawman version of the target.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_in_campaign_contract",
+   "binding_to_authoritative_contract": "VERBATIM",
+   "binding_to_authoritative_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 4,
+   "pass4_obligation_id": "C-1004-5d4999461f-B-M04",
+   "canonical_id": "C-1004-5d4999461f",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/contract.json",
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_CONTRACT_CLOSURE_OBLIGATIONS.csv"
+   ],
+   "supports": [
+    {
+     "node": "erdos1004:BRANCH_B",
+     "evidence": "pass4_branch"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1004",
+   "court": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:LEM:R001:L1",
+   "statement": "Exact integer verifier: Σ_{k=1}^{n} k = n(n+1)/2 for all n ≥ 1, closed-form identity, zero residual, fail-closed satisfied.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 4,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 3,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:06:31Z"
+    },
+    {
+     "seq": 4,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:15:31Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1004:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "∀ n : Nat, 1 ≤ n → sumFromOne n = n * (n + 1) / 2 | For every natural number n ≥ 1, the sum of the integers from 1 through n equals n(n+1)/2. | by\n  intro n hn\n  simp [sumFromOne, Finset.sum_Icc_succ_top hn]\n  omega"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "∀ n : Nat, 1 ≤ n → check_sum n = true | The computable verifier confirms the closed-form identity for every natural number n ≥ 1. | by decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "sumFromOne 1 = 1 * (1 + 1) / 2 | The closed-form identity is kernel-checked for the concrete instance n = 1: the sum from 1 through 1 equals 1. | by\n  norm_num [sumFromOne]"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1004",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:LEM:R002:L1",
+   "statement": "L1's construction reaches only ≍log x/log log x < ⌊(log x)^c⌋ for every c>0, so it fails branch A; it supplies no branch-B negation witness either.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R002",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 10,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 (GHP run-length construction) is machine-refuted and load-bearing: no packet material shows R002's close survives without it, and its best content (length ≍ log x/log log x) fails every c>0 and supplies no branch-B witness either.",
+    "seq": 11
+   },
+   "history": [
+    {
+     "seq": 5,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:26:01Z"
+    },
+    {
+     "seq": 7,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:39:27Z"
+    },
+    {
+     "seq": 8,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:40:27Z"
+    },
+    {
+     "seq": 9,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:40:45Z"
+    },
+    {
+     "seq": 10,
+     "status": "FALSE",
+     "utc": "2026-09-01T19:42:35Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1004:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1004",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:LEM:R002:R002",
+   "statement": "No analytic reduction supplied and residual claim is contract-verbatim; certifier fails closed, no certificate issued.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R002",
+   "lemma_id": "R002",
+   "registry_status": "UNTESTED",
+   "registry_seq": 6,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 (GHP run-length construction) is machine-refuted and load-bearing: no packet material shows R002's close survives without it, and its best content (length ≍ log x/log log x) fails every c>0 and supplies no branch-B witness either.",
+    "seq": 11
+   },
+   "history": [
+    {
+     "seq": 6,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:28:23Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1004:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "No analytic reduction supplied and residual claim is contract-verbatim; certifier fails closed, no certificate issued."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1004",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:LEM:R003:L1",
+   "statement": "Prime-shift density argument kills window-avoidance for c≥2; repaired form is an equivalent-strength circular reduction for c<1.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 15,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Lemma L1 (existence of distinct-totient runs of length ⌊(log x)^c⌋ for all c>0) is load-bearing — it carries the route's entire affirmative close and has a machine-verified counterexample; no surviving argument exists with it deleted.",
+    "seq": 16
+   },
+   "history": [
+    {
+     "seq": 13,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:46:24Z"
+    },
+    {
+     "seq": 14,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:47:40Z"
+    },
+    {
+     "seq": 15,
+     "status": "FALSE",
+     "utc": "2026-09-01T19:55:27Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1004:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1004",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:LEM:R004:L1",
+   "statement": "Universal injectivity clause refuted by φ(1)=φ(2)=1; repair: restrict to the bare existential, which is itself open.",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos1004:DEMAND:R004:L1:1"
+   ],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 20,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified concrete counterexample and no proof was supplied that R004's close survives its deletion, so the route is dead under Wang 4.1.",
+    "seq": 21
+   },
+   "history": [
+    {
+     "seq": 18,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:58:36Z"
+    },
+    {
+     "seq": 19,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:00:27Z"
+    },
+    {
+     "seq": 20,
+     "status": "FALSE",
+     "utc": "2026-09-01T20:04:00Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1004:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1004",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:DEMAND:R004:L1:1",
+   "statement": "restrict to the bare existential, which is itself open.",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "repair:",
+   "demand_rank": 2,
+   "demand_strength": "STRONG",
+   "route_status": "DEAD",
+   "demand_source_text": "Universal injectivity clause refuted by φ(1)=φ(2)=1; repair: restrict to the bare existential, which is itself open.",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos1004:LEM:R004:L1",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1004",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:LEM:R005:L1",
+   "statement": "Counterexample n=2: φ(3)=φ(4)=2 repeats within the length-3 window, refuting uniform-in-n distinctness; any repair must restate existentially with the asymptotic (log x)^c length and universal c>0.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R005",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 26,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified counterexample and no proof exists showing the close survives with L1 deleted; per K8 the route is dead.",
+    "seq": 27
+   },
+   "history": [
+    {
+     "seq": 23,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T20:05:18Z"
+    },
+    {
+     "seq": 25,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:05:56Z"
+    },
+    {
+     "seq": 26,
+     "status": "FALSE",
+     "utc": "2026-09-01T20:34:24Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1004:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1004",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:LEM:R005:contract",
+   "statement": "Analytic claim with no finite residual or interval enclosure; fail-closed abort, no certificate issued.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R005",
+   "lemma_id": "contract",
+   "registry_status": "UNTESTED",
+   "registry_seq": 24,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified counterexample and no proof exists showing the close survives with L1 deleted; per K8 the route is dead.",
+    "seq": 27
+   },
+   "history": [
+    {
+     "seq": 24,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:05:36Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1004:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "Analytic claim with no finite residual or interval enclosure; fail-closed abort, no certificate issued."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1004",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:LEM:R006:ALL",
+   "statement": "Contract provides no analytic reduction and no finite numerical residual basis (\"none\"/\"per contract\"); no exact rational/integer or outward interval certificate can be constructed under fail-closed rules — abort on unresolved sign.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R006",
+   "lemma_id": "ALL",
+   "registry_status": "UNTESTED",
+   "registry_seq": 30,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 30,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:39:33Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1004:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "Contract provides no analytic reduction and no finite numerical residual basis (\"none\"/\"per contract\"); no exact rational/integer or outward interval certificate can be constructed under fail-closed rules — abort on unresolved sign."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1004",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:LEM:R006:L1",
+   "statement": "Least witnesses W(2..5)=1,17,1019,2521 certified by exhaustive integer search to n≤2·10⁵; ∀m≥2 extension (and hence the canonical claim) remains open, no counterexample found.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "COMPUTED_BOUNDED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R006",
+   "lemma_id": "L1",
+   "registry_status": "COMPUTATION_SUPPORTED",
+   "registry_seq": 29,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 29,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T20:37:22Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1004-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1004:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_COMPUTATION_SUPPORTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "Least witnesses W(2..5)=1,17,1019,2521 certified by exhaustive integer search to n≤2·10⁵; ∀m≥2 extension (and hence the canonical claim) remains open, no counterexample found."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "leaf_tactic_hint": "interval_cases",
+   "hint_source": "bounded_forall_over_N",
+   "leaf_tactic_sketch": "intro m; interval_cases m <;> decide",
+   "leaf_tactic_alternatives": [
+    "decide",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos1004",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:FLEAF:225a4a9f17504ea375c5:1",
+   "statement": "∀ n : Nat, 1 ≤ n → sumFromOne n = n * (n + 1) / 2",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def sumFromOne (n : Nat) : Nat := ∑ k in Finset.Icc 1 n, k",
+   "type_context": "Mathlib\ndef sumFromOne (n : Nat) : Nat := ∑ k in Finset.Icc 1 n, k",
+   "proof": "by\n  intro n hn\n  simp [sumFromOne, Finset.sum_Icc_succ_top hn]\n  omega",
+   "claim": "For every natural number n ≥ 1, the sum of the integers from 1 through n equals n(n+1)/2.",
+   "covers": "full",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "CLOSURE_SHAPELESS_REFUSED: proof must be a decision procedure (`by decide`, or `by native_decide` when plain decide cannot finish); got 'by\\n  intro n hn\\n  simp [sumFromOne, Finset.sum_Icc_succ_top '. This pipeline generates from a template and does not accept a free-form Lean proof.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "omega",
+   "supports": [
+    {
+     "node": "erdos1004:LEM:R001:L1",
+     "evidence": "formalizer obligation route=R001 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "leaf_tactic_sketch": "intro n; interval_cases n <;> decide",
+   "leaf_tactic_alternatives": [
+    "decide",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos1004",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:FLEAF:225a4a9f17504ea375c5:2",
+   "statement": "∀ n : Nat, 1 ≤ n → check_sum n = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def check_sum (n : Nat) : Bool := (∑ k in Finset.Icc 1 n, k) = n * (n + 1) / 2",
+   "type_context": "Mathlib\ndef check_sum (n : Nat) : Bool := (∑ k in Finset.Icc 1 n, k) = n * (n + 1) / 2",
+   "proof": "by decide",
+   "claim": "The computable verifier confirms the closed-form identity for every natural number n ≥ 1.",
+   "covers": "full",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "decide",
+   "supports": [
+    {
+     "node": "erdos1004:LEM:R001:L1",
+     "evidence": "formalizer obligation route=R001 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "leaf_tactic_sketch": "intro n; interval_cases n <;> decide",
+   "leaf_tactic_alternatives": [
+    "decide",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos1004",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1004:FLEAF:225a4a9f17504ea375c5:3",
+   "statement": "sumFromOne 1 = 1 * (1 + 1) / 2",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "LEAN_PROOF",
+   "imports": "Mathlib",
+   "definitions": "def sumFromOne (n : Nat) : Nat := ∑ k in Finset.Icc 1 n, k",
+   "type_context": "Mathlib\ndef sumFromOne (n : Nat) : Nat := ∑ k in Finset.Icc 1 n, k",
+   "proof": "by\n  norm_num [sumFromOne]",
+   "claim": "The closed-form identity is kernel-checked for the concrete instance n = 1: the sum from 1 through 1 equals 1.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_SCOPE_REFUSED: body.covers must be \"full\" — the theorem agent proves whole statements; a partial scope belongs to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "norm_num",
+   "supports": [
+    {
+     "node": "erdos1004:LEM:R001:L1",
+     "evidence": "formalizer obligation route=R001 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos1004",
+   "is_leaf": true,
+   "manufacture_target": false
+  }
+ ]
+}

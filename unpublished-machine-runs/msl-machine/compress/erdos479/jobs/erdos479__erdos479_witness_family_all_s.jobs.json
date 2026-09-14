@@ -1,0 +1,92 @@
+{
+ "schema": "msl-compress/1.0.0",
+ "consumes": "msl-ladder/1.0.0",
+ "problem": "erdos479",
+ "theorem": "erdos479_witness_family_all_s",
+ "law": "A JOB IS A DEMAND, NEVER A RESULT. No kernel has seen either file. T is PROVED_KERNEL only when the IMPLICATION file returns rc 0, error-free, with an axiom footprint inside the allowed three.",
+ "jobs": {
+  "compress_erdos479__erdos479_witness_family_all_s_implication": {
+   "kind": "IMPLICATION_BY_SOURCE_INCLUSION",
+   "decl": "erdos479_witness_family_all_s",
+   "composition_decl": "erdos479_witness_family_all_s_composition",
+   "lean_path": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_witness_family_all_s.implication.lean",
+   "lean_sha256": "c0798550f669078b1128547dde0c051886e801156c8b8229d43440eefb0be7ce",
+   "promotes_T_on_clean_verdict": true,
+   "builder": "msl_ladder.composed_file"
+  },
+  "compress_erdos479__erdos479_witness_family_all_s_standalone": {
+   "kind": "T_STANDALONE_BY_DETERMINISTIC_LADDER",
+   "decl": "erdos479_witness_family_all_s",
+   "lean_path": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_witness_family_all_s.standalone.lean",
+   "lean_sha256": "8b7aafc74359c96da6657b44e748b9e7d430258d6a7d5790a14e08449a3ddd9b",
+   "shape": "ARITHMETIC",
+   "arms": [
+    "decide",
+    "omega",
+    "norm_num",
+    "ring_nf",
+    "ring",
+    "linarith",
+    "nlinarith",
+    "positivity",
+    "gcongr",
+    "simp_all",
+    "aesop",
+    "prelude-alone",
+    "prelude+omega",
+    "prelude+norm_num",
+    "prelude+linarith",
+    "prelude+nlinarith",
+    "prelude+ring_nf",
+    "prelude+ring",
+    "prelude+decide",
+    "prelude+simp_all",
+    "prelude+aesop",
+    "prelude+field_simp",
+    "prelude+field_simp+ring",
+    "prelude+qify+omega"
+   ],
+   "promotes_T_on_clean_verdict": false,
+   "builder": "msl_ladder.leaf_file"
+  }
+ },
+ "included_sources": [
+  {
+   "leaf": "erdos479:ORE:39a300ec8d427fec",
+   "declaration": "msl_fmz_erdos479_campaign_001_R003_L1",
+   "included_via": "LEAN_STATEMENT_LINE",
+   "sha256": "49578f944b113b11d965c7e432d69f0f99e2d3cf289a8ba8c8f4983db681ba78",
+   "receipt": "oracle/evidence/msl-machine/gpt-mine-day2-2026-09-02/kernel-verified/erdos479/msl_fmz_erdos479_campaign_001_R003_L1__199e80ffaad1.verify.json",
+   "source": null
+  },
+  {
+   "leaf": "erdos479:ORE:bdad8b1e2f3cabf4",
+   "declaration": "msl_fmz_erdos479_campaign_001_R008_L1",
+   "included_via": "LEAN_STATEMENT_LINE",
+   "sha256": "d97bc80f61d640aa74e87fbc05a36bf5037a0a78795048e1b67e883b3c20e093",
+   "receipt": "oracle/evidence/msl-machine/gpt-mine-day2-2026-09-02/kernel-verified/erdos479/msl_fmz_erdos479_campaign_001_R008_L1__fe8972ec2084.verify.json",
+   "source": null
+  },
+  {
+   "leaf": "erdos479:ORE:c96696c4aa12506b",
+   "declaration": "msl_fmz_erdos479_campaign_001_R003_T1_a1r2",
+   "included_via": "LEAN_STATEMENT_LINE",
+   "sha256": "816d27c5d58e7b2b7d7559b97991abfa3a00b49b90fe907540e0fc8cdcb43575",
+   "receipt": "oracle/evidence/msl-machine/gpt-mine-day2-2026-09-02/kernel-verified/erdos479/msl_fmz_erdos479_campaign_001_R003_T1_a1r2__3462718c603d.verify.json",
+   "source": null
+  }
+ ],
+ "cable_spec": {
+  "id": "compress_erdos479__erdos479_witness_family_all_s",
+  "imports": "Mathlib",
+  "definitions": "def witness : List Nat := [2, 4, 8, 16, 32, 64]\ndef isWitness (n : Nat) : Bool := (2 ^ n) % n == 0\ndef check : Bool := witness.all isWitness\nnamespace R008\n/-- Decidable check of the full lemma content at a single s:\n(1) exact valuation v₂(2^(2^s)) = 2^s, encoded as: 2^(2^s) ∣ 2^(2^s) and ¬(2^(2^s + 1) ∣ 2^(2^s));\n(2) 2^s ≥ s;\n(3) divisibility 2^s ∣ 2^(2^s) (witness family n = 2^s for k = 0). --/\ndef check_s (s : ℕ) : Bool :=\n  (2 ^ (2 ^ s) ∣ 2 ^ (2 ^ s))\n  && ¬ (2 ^ (2 ^ s + 1) ∣ 2 ^ (2 ^ s))\n  && (s ≤ 2 ^ s)\n  && ((2 ^ s : ℕ) ∣ 2 ^ (2 ^ s))\n/-- Bounded check over s = 1, …, bound. --/\ndef check (bound : ℕ) : Bool :=\n  (List.range bound).all (fun s => s = 0 || check_s s)\nend R008\ndef witnessOk (a : Nat) : Bool := (2^(2^a)) % (2^a) == 0\ndef check_range : Bool := (List.range 7).all (fun a => witnessOk a)\n\n-- THE NORMALIZATION PRELUDE (msl_ladder, deterministic, $0).\n-- The claim it tests: most leaf failures on an arithmetic DAG are SIDE-CONDITIONS\n-- (an un-introduced hypothesis, a numeric coercion, a nonnegativity obligation),\n-- not mathematics.  Each step is `try`, so the prelude never fails and never\n-- changes what a tactic after it is allowed to prove.\nmacro \"msl_prelude\" : tactic =>\n  `(tactic| ((try intros); (try push_cast); (try positivity)))\n\n-- ---- children, INCLUDED BY SOURCE (each already PROVED_KERNEL alone)\ntheorem msl_fmz_erdos479_campaign_001_R003_L1 check = true := by\n  first\n  | decide\n  | norm_num\n  | simp\n\ntheorem msl_fmz_erdos479_campaign_001_R008_L1 R008.check 6 = true := by\n  first\n  | decide\n  | norm_num\n  | simp\n\ntheorem msl_fmz_erdos479_campaign_001_R003_T1_a1r2 check_range = true := by\n  first\n  | decide\n  | norm_num\n  | simp\n\n-- ---- the composition: children -> parent\ntheorem erdos479_witness_family_all_s_composition (s : ℕ) : ((msl_fmz_erdos479_campaign_001_R003_L1 : check = true) ∧ (msl_fmz_erdos479_campaign_001_R008_L1 : $v0.check 6 = true) ∧ (msl_fmz_erdos479_campaign_001_R003_T1_a1r2 : check_range = true)) → (∀ (s : ℕ), (2 ^ (2 ^ s) ∣ 2 ^ (2 ^ s)) ∧ ¬(2 ^ (2 ^ s + 1) ∣ 2 ^ (2 ^ s)) ∧ (s ≤ 2 ^ s) ∧ ((2 ^ s : ℕ) ∣ 2 ^ (2 ^ s))) := by\n  first\n  | (decide; done)\n  | (omega; done)\n  | (norm_num; done)\n  | (ring_nf; done)\n  | (ring_nf; ring; done)\n  | (linarith; done)\n  | (nlinarith; done)\n  | (positivity; done)\n  | (gcongr; done)\n  | (simp_all; done)\n  | (aesop; done)\n  | (msl_prelude; done)\n  | (msl_prelude; omega; done)\n  | (msl_prelude; norm_num; done)\n  | (msl_prelude; linarith; done)\n  | (msl_prelude; nlinarith; done)\n  | (msl_prelude; ring_nf; done)\n  | (msl_prelude; ring_nf; ring; done)\n  | (msl_prelude; decide; done)\n  | (msl_prelude; simp_all; done)\n  | (msl_prelude; aesop; done)\n  | (msl_prelude; field_simp; done)\n  | (msl_prelude; field_simp; ring; done)\n  | (msl_prelude; qify; omega; done)\n",
+  "hypotheses": [
+   "(s : ℕ)"
+  ],
+  "conclusion": "∀ (s : ℕ), (2 ^ (2 ^ s) ∣ 2 ^ (2 ^ s)) ∧ ¬(2 ^ (2 ^ s + 1) ∣ 2 ^ (2 ^ s)) ∧ (s ≤ 2 ^ s) ∧ ((2 ^ s : ℕ) ∣ 2 ^ (2 ^ s))",
+  "set_options": [
+   "set_option maxHeartbeats 400000"
+  ]
+ },
+ "cable_note": ""
+}

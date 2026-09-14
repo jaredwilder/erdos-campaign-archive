@@ -1,0 +1,16 @@
+{"definitions": "open Filter\n\ndef GapDensity (S : Set Nat) (r : Rat) : Prop :=\n  Filter.Tendsto (fun (N : Nat) =>\n    ((((Finset.Iic N).filter fun (n : Nat) => n ∈ S).card : Rat) / ((N + 1 : Nat) : Rat)))\n    Filter.atTop (nhds r)",
+  "parent_typed": {"name": "erdos218_LEM_R007_L1", "binders": ["(d : Nat → Nat)"],
+    "statement": "GapDensity {n : Nat | d (n+1) ≥ d n} (1/2 : Rat) ∧ GapDensity {n : Nat | d (n+1) ≤ d n} (1/2 : Rat) ∧ {n : Nat | d (n+1) = d n}.Infinite",
+    "reading": "The set of n with d_{n+1} ≥ d_n has density 1/2, likewise for d_{n+1} ≤ d_n, and there are infinitely many n with d_{n+1} = d_n."},
+  "children": [
+    {"name": "erdos218_LEM_R007_L1_ge", "binders": ["(d : Nat → Nat)"],
+      "statement": "GapDensity {n : Nat | d (n+1) ≥ d n} (1/2 : Rat)",
+      "reading": "The set of indices n where d_{n+1} ≥ d_n has natural density 1/2."},
+    {"name": "erdos218_LEM_R007_L1_le", "binders": ["(d : Nat → Nat)"],
+      "statement": "GapDensity {n : Nat | d (n+1) ≤ d n} (1/2 : Rat)",
+      "reading": "The set of indices n where d_{n+1} ≤ d_n has natural density 1/2."},
+    {"name": "erdos218_LEM_R007_L1_infinite", "binders": ["(d : Nat → Nat)"],
+      "statement": "{n : Nat | d (n+1) = d n}.Infinite",
+      "reading": "There are infinitely many n with d_{n+1} = d n (plateau / equal consecutive gaps)."}
+  ],
+  "composition_claim": "The parent is exactly the conjunction of the three children: children 1 and 2 give the two density-1/2 clauses and child 3 gives the infinitude clause, so combining them by ∧_intro yields erdos218_LEM_R007_L1."}

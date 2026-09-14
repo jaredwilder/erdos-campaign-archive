@@ -1,0 +1,16 @@
+{"definitions": "",
+  "parent_typed": {"name": "herzog_schoenheim_universal",
+                   "binders": [],
+                   "statement": "∀ (G : Type) [Group G], 1 < ENat.card G → ∀ (ι : Type) [Fintype ι], ∀ (P : Group.ExactCovering G ι), 1 < Fintype.card ι → ∃ i j : ι, i ≠ j ∧ #(P.parts i) = #(P.parts j)",
+                   "reading": "Every exact covering of a nontrivial group by more than one coset contains two parts of equal cardinality (the universal side of the biconditional; answer is 'no such covering with all-distinct sizes exists')."},
+  "children": [
+    {"name": "hs_finite_group",
+     "binders": [],
+     "statement": "∀ (G : Type) [Group G] [Fintype G], 1 < Fintype.card G → ∀ (ι : Type) [Fintype ι], ∀ (P : Group.ExactCovering G ι), 1 < Fintype.card ι → ∃ i j : ι, i ≠ j ∧ #(P.parts i) = #(P.parts j)",
+     "reading": "The Herzog–Schönheim conclusion for finite groups: an exact covering of a finite nontrivial group by more than one coset has two parts of equal size."},
+    {"name": "hs_infinite_group",
+     "binders": [],
+     "statement": "∀ (G : Type) [Group G], ENat.card G = ⊤ → ∀ (ι : Type) [Fintype ι], ∀ (P : Group.ExactCovering G ι), 1 < Fintype.card ι → ∃ i j : ι, i ≠ j ∧ #(P.parts i) = #(P.parts j)",
+     "reading": "The Herzog–Schönheim conclusion for infinite groups: an exact covering by more than one coset has two parts of equal (infinite) cardinality."}
+  ],
+  "composition_claim": "Every group G satisfies either ENat.card G = ⊤ or ENat.card G is a finite natural, and 1 < ENat.card G excludes the value 1; child 1 covers the finite case (with Fintype.card G = (ENat.card G).toNat) and child 2 covers the infinite case, so together they give herzog_schoenheim_universal for every G with 1 < ENat.card G."}

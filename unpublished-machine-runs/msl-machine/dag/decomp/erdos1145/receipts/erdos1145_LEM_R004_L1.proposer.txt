@@ -1,0 +1,16 @@
+{"definitions": "open Filter Classical\n\ndef isConv (a b : ℕ → ℕ) (n : ℕ) : ℕ :=\n  ∑ i ∈ Finset.range (n + 1),\n    if (∃ k : ℕ, a k = i) ∧ (∃ k : ℕ, b k = n - i) then 1 else 0\n\ndef Erdos1145Prop : Prop :=\n∀ (a b : ℕ → ℕ),\n  (∀ k : ℕ, 1 ≤ a k ∧ a k < a (k + 1)) →\n  (∀ k : ℕ, 1 ≤ b k ∧ b k < b (k + 1)) →\n  Filter.Tendsto (fun k => ((a k : ℚ) / (b k : ℚ))) Filter.atTop (nhds (1 : ℚ)) →\n  (∃ N : ℕ, ∀ n ≥ N, ∃ i j : ℕ, a i + b j = n) →\n  Filter.limsup (fun n => ((isConv a b n : ℕ) : ENNReal)) Filter.atTop = ⊤",
+  "parent_typed": {"name": "erdos1145_LEM_R004_L1", "binders": [],
+    "statement": "Erdos1145Prop",
+    "reading": "If strictly increasing integer sequences a, b starting at ≥ 1 have a_n/b_n → 1 and A+B contains all sufficiently large integers, then the convolution 1_A ∗ 1_B has infinite limsup."},
+  "children": [
+    {"name": "limsup_bounded_char", "binders": ["(f : ℕ → ENNReal)"],
+      "statement": "Filter.limsup f Filter.atTop = ⊤ ↔ ∀ (M N : ℕ), ∃ n ≥ N, f n ≥ M",
+      "reading": "A nonnegative sequence has infinite limsup exactly when, for every threshold M and every starting point N, some n ≥ N has value at least M."},
+    {"name": "bounded_occurrences", "binders": ["(M N : ℕ)", "(a b : ℕ → ℕ)"],
+      "statement": "(∀ k : ℕ, 1 ≤ a k ∧ a k < a (k + 1)) → (∀ k : ℕ, 1 ≤ b k ∧ b k < b (k + 1)) →\n  Filter.Tendsto (fun k => ((a k : ℚ) / (b k : ℚ))) Filter.atTop (nhds (1 : ℚ)) →\n  (∃ N₀ : ℕ, ∀ n ≥ N₀, ∃ i j : ℕ, a i + b j = n) →\n  ∃ n ≥ N, isConv a b n ≥ M",
+      "reading": "Under the Erdős 1145 hypotheses (strict increase, ratio tending to 1, eventual covering by A+B), for every threshold M and start N some n ≥ N has convolution value at least M."},
+    {"name": "base_cover", "binders": ["(a b : ℕ → ℕ)", "(N : ℕ)"],
+      "statement": "(∀ k : ℕ, 1 ≤ a k ∧ a k < a (k + 1)) → (∀ k : ℕ, 1 ≤ b k ∧ b k < b (k + 1)) →\n  (∀ n ≥ N, ∃ i j : ℕ, a i + b j = n) →\n  ∃ n ≥ N, isConv a b n ≥ 1",
+      "reading": "Bounded base instance: if A+B covers all n ≥ N, then for every N some n ≥ N admits at least one representation, i.e. the convolution is ≥ 1 there."}
+  ],
+  "composition_claim": "Child 1 rewrites the parent's limsup = ⊤ conclusion into the bounded form ∀ M N, ∃ n ≥ N, value ≥ M; child 2 supplies exactly that bounded form under the parent's hypotheses for arbitrary M and N; child 3 is the bounded M = 1 base instance of the same. Instantiating child 2 at f := fun n => ((isConv a b n : ℕ) : ENNReal) and combining with child 1 yields Erdos1145Prop."}

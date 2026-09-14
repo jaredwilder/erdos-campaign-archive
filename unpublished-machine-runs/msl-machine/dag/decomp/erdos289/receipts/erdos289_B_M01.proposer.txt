@@ -1,0 +1,7 @@
+{"definitions": "open Filter\n\ndef HasDecomp (k : Nat) : Prop :=\n  ∃ I : Fin k → Nat × Nat,\n    (∀ i : Fin k, (I i).1 < (I i).2) ∧\n    (∀ (i j : Fin k), i ≠ j → (I i).2 < (I j).1 ∨ (I j).2 < (I i).1) ∧\n    ∑ i : Fin k, ∑ n ∈ Icc (I i).1 (I i).2, ((n : Nat)⁻¹ : Rat) = 1\n\ndef blockedResidue (k : Nat) : Prop := k % 6 = 2",
+  "parent_typed": {"name": "erdos289_B_M01_parent", "binders": [], "statement": "¬ ∀ᶠ (k : Nat) in atTop, HasDecomp k", "reading": "It is not the case that all sufficiently large k admit a decomposition of 1 into pairwise disjoint, non-adjacent integer intervals of length at least 2 with reciprocal sum exactly 1; i.e. infinitely many k are obstructed."},
+  "children": [
+    {"name": "parity_obstruction_criterion", "binders": ["(k : Nat)"], "statement": "HasDecomp k → k % 6 ≠ 2", "reading": "Valuation/parity obstruction: any k admitting a valid decomposition avoids the residue class 2 mod 6."},
+    {"name": "residue_class_infinite", "binders": ["(N : Nat)"], "statement": "∃ k ∈ Icc N (N + 5), blockedResidue k", "reading": "Every window of 6 consecutive integers contains a k congruent to 2 mod 6, so the obstructed residue class occurs infinitely often, in bounded decidable form."}
+  ],
+  "composition_claim": "Child 2 supplies, for every bound N, a k in [N, N+5] with k ≡ 2 (mod 6), yielding infinitely many such k tending to infinity; child 1 rules out HasDecomp at each of them. Hence HasDecomp k fails for arbitrarily large k, which is exactly ¬∀ᶠ k in atTop, HasDecomp k, the parent."}

@@ -1,0 +1,8 @@
+{"theorem_name": "l1_bridge_curry",
+ "binders": ["(R : ℚ)", "(B : ℚ)"],
+ "definitions": "",
+ "statement": "∀ (R B : ℚ), (0 : ℚ) ≤ B → ((R ^ 2 ≤ B ^ 2 ∧ (0 : ℚ) ≤ B) ↔ |R| ≤ B) → (R ^ 2 ≤ B ^ 2 ↔ |R| ≤ B)",
+ "premises": ["erdos289:ORE:17ed27ce5353389c"],
+ "derivation_claim": "erdos289:ORE:17ed27ce5353389c ∧ l1_bridge_curry → erdos289:FLEAF:987cb071355b04164228:7 (l1_statement): instantiate the leaf at (R, B) to get h : (R ^ 2 ≤ B ^ 2 ∧ (0 : ℚ) ≤ B) ↔ |R| ≤ B; then l1_bridge_curry R B hB h with hB : (0 : ℚ) ≤ B yields exactly R ^ 2 ≤ B ^ 2 ↔ |R| ≤ B (forward: h.1 ⟨hr, hB⟩; backward: (h.2 habs).1); ∀-introduction over R, B reproduces l1_statement verbatim, so the open FLEAF is discharged in one application. Note the derivation deliberately does NOT cite premise erdos289:ORE:accfb2d9ca00b559, which would be circular.",
+ "discharges": "erdos289:FLEAF:987cb071355b04164228:7",
+ "reason": "It curries the domain bound 0 ≤ B out of the proved conjunction-form leaf into hypothesis position, turning the kernel-checked leaf into the exact implication-form target l1_statement and closing the last gap on the Level-1 rung of the Erdős-289 ladder; it is a single short implication (not a conjunction of premises, not a restatement), carries every ℚ type ascription and the 0 ≤ B domain bound explicitly, and contains no sorry/axiom/native_decide."}

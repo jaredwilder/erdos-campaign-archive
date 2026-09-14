@@ -1,0 +1,487 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos507",
+  "generated_utc": "2026-09-02T16:47:54Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos507:LEM:R005:R005",
+    "statement": "Certifier inputs are placeholders (\"none\", \"per contract\") with no lemma statement, exact verifier artifact, or certificate scope supplied; fail-closed aborts on unresolved claim, so no proof or computation can be certified this round.",
+    "statement_sha256": "f2d496006fa8a2b18348b42353f1ed7b44c1d9e980fc7b64148e3053d7de1893",
+    "kind": "LEMMA",
+    "binding": "UNBOUND",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "Let $\\alpha(n)$ be such that every set of $n$ points in the unit disk contains three points which determine a triangle of area at most $\\alpha(n)$. Estimate $\\alpha(n)$.",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos507-campaign-001/contract.json",
+    "sha256": "a6447773fb1bda46ce4cd7ef31e9be2530b88fb2b015b9f5359497cae914cac2"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos507:LEM:R005:R005",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "f9b9009470f3f59701fe7e643b7bebdf31633d515970de9dd1a9da9d8637a1af",
+    "prompt_chars": 4249,
+    "response_sha256": "c475c0671829662c948292edb9141fdf1ff63604a428ba0ecf1fe387c78a92a7",
+    "usage": {
+      "prompt_tokens": 1079,
+      "completion_tokens": 15065,
+      "total_tokens": 16144,
+      "cost": 0.003839495,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 128,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.003839495,
+        "upstream_inference_prompt_cost": 7.3245e-05,
+        "upstream_inference_completions_cost": 0.00376625
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 14124,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.003839495,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 347.03,
+    "utc": "2026-09-02T16:34:10Z"
+  },
+  "children": [
+    {
+      "id": "erdos507:LEM:R005:R005#D1",
+      "statement": "isPlaceholder i = true → unresolved i = true",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos507",
+      "decomposed_from": "erdos507:LEM:R005:R005",
+      "imports": "Mathlib",
+      "definitions": "inductive InputKind where\n  | missing : InputKind\n  | perContract : InputKind\n  | concrete : InputKind\nderiving DecidableEq\n\ninductive Claim where\n  | proof : Claim\n  | computation : Claim\nderiving DecidableEq\n\ninductive Verdict where\n  | aborted : Verdict\n  | certified : Claim → Verdict\nderiving DecidableEq\n\nstructure CertifierInput where\n  kind : InputKind\n  claim : Claim\n  hasLemmaStmt : Bool\n  hasVerifierArtifact : Bool\n  hasCertificateScope : Bool\nderiving DecidableEq\n\ndef isPlaceholder (i : CertifierInput) : Bool :=\n  match i.kind with\n  | InputKind.missing => true\n  | InputKind.perContract => true\n  | InputKind.concrete => false\n\ndef unresolved (i : CertifierInput) : Bool :=\n  isPlaceholder i || !i.hasLemmaStmt || !i.hasVerifierArtifact || !i.hasCertificateScope\n\ndef certify (i : CertifierInput) : Verdict :=\n  if unresolved i = true then Verdict.aborted else Verdict.certified i.claim",
+      "type_context": "Mathlib\ninductive InputKind where\n  | missing : InputKind\n  | perContract : InputKind\n  | concrete : InputKind\nderiving DecidableEq\n\ninductive Claim where\n  | proof : Claim\n  | computation : Claim\nderiving DecidableEq\n\ninductive Verdict where\n  | aborted : Verdict\n  | certified : Claim → Verdict\nderiving DecidableEq\n\nstructure CertifierInput where\n  kind : InputKind\n  claim : Claim\n  hasLemmaStmt : Bool\n  hasVerifierArtifact : Bool\n  hasCertificateScope : Bool\nderiving DecidableEq\n\ndef isPlaceholder (i : CertifierInput) : Bool :=\n  match i.kind with\n  | InputKind.missing => true\n  | InputKind.perContract => true\n  | InputKind.concrete => false\n\ndef unresolved (i : CertifierInput) : Bool :=\n  isPlaceholder i || !i.hasLemmaStmt || !i.hasVerifierArtifact || !i.hasCertificateScope\n\ndef certify (i : CertifierInput) : Verdict :=\n  if unresolved i = true then Verdict.aborted else Verdict.certified i.claim",
+      "lean_binders": [
+        "(i : CertifierInput)"
+      ],
+      "lean_theorem_name": "msl_erdos507_lem_r005_r005_c1",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ninductive InputKind where\n  | missing : InputKind\n  | perContract : InputKind\n  | concrete : InputKind\nderiving DecidableEq\n\ninductive Claim where\n  | proof : Claim\n  | computation : Claim\nderiving DecidableEq\n\ninductive Verdict where\n  | aborted : Verdict\n  | certified : Claim → Verdict\nderiving DecidableEq\n\nstructure CertifierInput where\n  kind : InputKind\n  claim : Claim\n  hasLemmaStmt : Bool\n  hasVerifierArtifact : Bool\n  hasCertificateScope : Bool\nderiving DecidableEq\n\ndef isPlaceholder (i : CertifierInput) : Bool :=\n  match i.kind with\n  | InputKind.missing => true\n  | InputKind.perContract => true\n  | InputKind.concrete => false\n\ndef unresolved (i : CertifierInput) : Bool :=\n  isPlaceholder i || !i.hasLemmaStmt || !i.hasVerifierArtifact || !i.hasCertificateScope\n\ndef certify (i : CertifierInput) : Verdict :=\n  if unresolved i = true then Verdict.aborted else Verdict.certified i.claim\n\n",
+      "lean_signature": "theorem msl_erdos507_lem_r005_r005_c1 (i : CertifierInput) : isPlaceholder i = true → unresolved i = true",
+      "lean_statement_line": "theorem msl_erdos507_lem_r005_r005_c1 (i : CertifierInput) : isPlaceholder i = true → unresolved i = true := by sorry",
+      "lean_file_sha256": "d86a53988733d3210308d3423fa98eb9c27cc12f6013d59583e62ee582eaceda",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "A certifier input whose kind is the placeholder \"none\" or \"per contract\" counts as an unresolved claim.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos507/receipts/erdos507_LEM_R005_R005_D1.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos507/lean/erdos507_LEM_R005_R005_D1.lean"
+    },
+    {
+      "id": "erdos507:LEM:R005:R005#D2",
+      "statement": "i.hasLemmaStmt = false → unresolved i = true",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos507",
+      "decomposed_from": "erdos507:LEM:R005:R005",
+      "imports": "Mathlib",
+      "definitions": "inductive InputKind where\n  | missing : InputKind\n  | perContract : InputKind\n  | concrete : InputKind\nderiving DecidableEq\n\ninductive Claim where\n  | proof : Claim\n  | computation : Claim\nderiving DecidableEq\n\ninductive Verdict where\n  | aborted : Verdict\n  | certified : Claim → Verdict\nderiving DecidableEq\n\nstructure CertifierInput where\n  kind : InputKind\n  claim : Claim\n  hasLemmaStmt : Bool\n  hasVerifierArtifact : Bool\n  hasCertificateScope : Bool\nderiving DecidableEq\n\ndef isPlaceholder (i : CertifierInput) : Bool :=\n  match i.kind with\n  | InputKind.missing => true\n  | InputKind.perContract => true\n  | InputKind.concrete => false\n\ndef unresolved (i : CertifierInput) : Bool :=\n  isPlaceholder i || !i.hasLemmaStmt || !i.hasVerifierArtifact || !i.hasCertificateScope\n\ndef certify (i : CertifierInput) : Verdict :=\n  if unresolved i = true then Verdict.aborted else Verdict.certified i.claim",
+      "type_context": "Mathlib\ninductive InputKind where\n  | missing : InputKind\n  | perContract : InputKind\n  | concrete : InputKind\nderiving DecidableEq\n\ninductive Claim where\n  | proof : Claim\n  | computation : Claim\nderiving DecidableEq\n\ninductive Verdict where\n  | aborted : Verdict\n  | certified : Claim → Verdict\nderiving DecidableEq\n\nstructure CertifierInput where\n  kind : InputKind\n  claim : Claim\n  hasLemmaStmt : Bool\n  hasVerifierArtifact : Bool\n  hasCertificateScope : Bool\nderiving DecidableEq\n\ndef isPlaceholder (i : CertifierInput) : Bool :=\n  match i.kind with\n  | InputKind.missing => true\n  | InputKind.perContract => true\n  | InputKind.concrete => false\n\ndef unresolved (i : CertifierInput) : Bool :=\n  isPlaceholder i || !i.hasLemmaStmt || !i.hasVerifierArtifact || !i.hasCertificateScope\n\ndef certify (i : CertifierInput) : Verdict :=\n  if unresolved i = true then Verdict.aborted else Verdict.certified i.claim",
+      "lean_binders": [
+        "(i : CertifierInput)"
+      ],
+      "lean_theorem_name": "msl_erdos507_lem_r005_r005_c2",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ninductive InputKind where\n  | missing : InputKind\n  | perContract : InputKind\n  | concrete : InputKind\nderiving DecidableEq\n\ninductive Claim where\n  | proof : Claim\n  | computation : Claim\nderiving DecidableEq\n\ninductive Verdict where\n  | aborted : Verdict\n  | certified : Claim → Verdict\nderiving DecidableEq\n\nstructure CertifierInput where\n  kind : InputKind\n  claim : Claim\n  hasLemmaStmt : Bool\n  hasVerifierArtifact : Bool\n  hasCertificateScope : Bool\nderiving DecidableEq\n\ndef isPlaceholder (i : CertifierInput) : Bool :=\n  match i.kind with\n  | InputKind.missing => true\n  | InputKind.perContract => true\n  | InputKind.concrete => false\n\ndef unresolved (i : CertifierInput) : Bool :=\n  isPlaceholder i || !i.hasLemmaStmt || !i.hasVerifierArtifact || !i.hasCertificateScope\n\ndef certify (i : CertifierInput) : Verdict :=\n  if unresolved i = true then Verdict.aborted else Verdict.certified i.claim\n\n",
+      "lean_signature": "theorem msl_erdos507_lem_r005_r005_c2 (i : CertifierInput) : i.hasLemmaStmt = false → unresolved i = true",
+      "lean_statement_line": "theorem msl_erdos507_lem_r005_r005_c2 (i : CertifierInput) : i.hasLemmaStmt = false → unresolved i = true := by sorry",
+      "lean_file_sha256": "f26d5219695df36273738dd39ff4edc671fcba679f14de30f43a7f93cfb230b8",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "A certifier input with no lemma statement supplied counts as an unresolved claim.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos507/receipts/erdos507_LEM_R005_R005_D2.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos507/lean/erdos507_LEM_R005_R005_D2.lean"
+    },
+    {
+      "id": "erdos507:LEM:R005:R005#D3",
+      "statement": "i.hasVerifierArtifact = false → unresolved i = true",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos507",
+      "decomposed_from": "erdos507:LEM:R005:R005",
+      "imports": "Mathlib",
+      "definitions": "inductive InputKind where\n  | missing : InputKind\n  | perContract : InputKind\n  | concrete : InputKind\nderiving DecidableEq\n\ninductive Claim where\n  | proof : Claim\n  | computation : Claim\nderiving DecidableEq\n\ninductive Verdict where\n  | aborted : Verdict\n  | certified : Claim → Verdict\nderiving DecidableEq\n\nstructure CertifierInput where\n  kind : InputKind\n  claim : Claim\n  hasLemmaStmt : Bool\n  hasVerifierArtifact : Bool\n  hasCertificateScope : Bool\nderiving DecidableEq\n\ndef isPlaceholder (i : CertifierInput) : Bool :=\n  match i.kind with\n  | InputKind.missing => true\n  | InputKind.perContract => true\n  | InputKind.concrete => false\n\ndef unresolved (i : CertifierInput) : Bool :=\n  isPlaceholder i || !i.hasLemmaStmt || !i.hasVerifierArtifact || !i.hasCertificateScope\n\ndef certify (i : CertifierInput) : Verdict :=\n  if unresolved i = true then Verdict.aborted else Verdict.certified i.claim",
+      "type_context": "Mathlib\ninductive InputKind where\n  | missing : InputKind\n  | perContract : InputKind\n  | concrete : InputKind\nderiving DecidableEq\n\ninductive Claim where\n  | proof : Claim\n  | computation : Claim\nderiving DecidableEq\n\ninductive Verdict where\n  | aborted : Verdict\n  | certified : Claim → Verdict\nderiving DecidableEq\n\nstructure CertifierInput where\n  kind : InputKind\n  claim : Claim\n  hasLemmaStmt : Bool\n  hasVerifierArtifact : Bool\n  hasCertificateScope : Bool\nderiving DecidableEq\n\ndef isPlaceholder (i : CertifierInput) : Bool :=\n  match i.kind with\n  | InputKind.missing => true\n  | InputKind.perContract => true\n  | InputKind.concrete => false\n\ndef unresolved (i : CertifierInput) : Bool :=\n  isPlaceholder i || !i.hasLemmaStmt || !i.hasVerifierArtifact || !i.hasCertificateScope\n\ndef certify (i : CertifierInput) : Verdict :=\n  if unresolved i = true then Verdict.aborted else Verdict.certified i.claim",
+      "lean_binders": [
+        "(i : CertifierInput)"
+      ],
+      "lean_theorem_name": "msl_erdos507_lem_r005_r005_c3",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ninductive InputKind where\n  | missing : InputKind\n  | perContract : InputKind\n  | concrete : InputKind\nderiving DecidableEq\n\ninductive Claim where\n  | proof : Claim\n  | computation : Claim\nderiving DecidableEq\n\ninductive Verdict where\n  | aborted : Verdict\n  | certified : Claim → Verdict\nderiving DecidableEq\n\nstructure CertifierInput where\n  kind : InputKind\n  claim : Claim\n  hasLemmaStmt : Bool\n  hasVerifierArtifact : Bool\n  hasCertificateScope : Bool\nderiving DecidableEq\n\ndef isPlaceholder (i : CertifierInput) : Bool :=\n  match i.kind with\n  | InputKind.missing => true\n  | InputKind.perContract => true\n  | InputKind.concrete => false\n\ndef unresolved (i : CertifierInput) : Bool :=\n  isPlaceholder i || !i.hasLemmaStmt || !i.hasVerifierArtifact || !i.hasCertificateScope\n\ndef certify (i : CertifierInput) : Verdict :=\n  if unresolved i = true then Verdict.aborted else Verdict.certified i.claim\n\n",
+      "lean_signature": "theorem msl_erdos507_lem_r005_r005_c3 (i : CertifierInput) : i.hasVerifierArtifact = false → unresolved i = true",
+      "lean_statement_line": "theorem msl_erdos507_lem_r005_r005_c3 (i : CertifierInput) : i.hasVerifierArtifact = false → unresolved i = true := by sorry",
+      "lean_file_sha256": "e0459fd302decf45a9102a888a700a662b18f983f965234399918a1d90284006",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "A certifier input with no exact verifier artifact supplied counts as an unresolved claim.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos507/receipts/erdos507_LEM_R005_R005_D3.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos507/lean/erdos507_LEM_R005_R005_D3.lean"
+    },
+    {
+      "id": "erdos507:LEM:R005:R005#D4",
+      "statement": "i.hasCertificateScope = false → unresolved i = true",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos507",
+      "decomposed_from": "erdos507:LEM:R005:R005",
+      "imports": "Mathlib",
+      "definitions": "inductive InputKind where\n  | missing : InputKind\n  | perContract : InputKind\n  | concrete : InputKind\nderiving DecidableEq\n\ninductive Claim where\n  | proof : Claim\n  | computation : Claim\nderiving DecidableEq\n\ninductive Verdict where\n  | aborted : Verdict\n  | certified : Claim → Verdict\nderiving DecidableEq\n\nstructure CertifierInput where\n  kind : InputKind\n  claim : Claim\n  hasLemmaStmt : Bool\n  hasVerifierArtifact : Bool\n  hasCertificateScope : Bool\nderiving DecidableEq\n\ndef isPlaceholder (i : CertifierInput) : Bool :=\n  match i.kind with\n  | InputKind.missing => true\n  | InputKind.perContract => true\n  | InputKind.concrete => false\n\ndef unresolved (i : CertifierInput) : Bool :=\n  isPlaceholder i || !i.hasLemmaStmt || !i.hasVerifierArtifact || !i.hasCertificateScope\n\ndef certify (i : CertifierInput) : Verdict :=\n  if unresolved i = true then Verdict.aborted else Verdict.certified i.claim",
+      "type_context": "Mathlib\ninductive InputKind where\n  | missing : InputKind\n  | perContract : InputKind\n  | concrete : InputKind\nderiving DecidableEq\n\ninductive Claim where\n  | proof : Claim\n  | computation : Claim\nderiving DecidableEq\n\ninductive Verdict where\n  | aborted : Verdict\n  | certified : Claim → Verdict\nderiving DecidableEq\n\nstructure CertifierInput where\n  kind : InputKind\n  claim : Claim\n  hasLemmaStmt : Bool\n  hasVerifierArtifact : Bool\n  hasCertificateScope : Bool\nderiving DecidableEq\n\ndef isPlaceholder (i : CertifierInput) : Bool :=\n  match i.kind with\n  | InputKind.missing => true\n  | InputKind.perContract => true\n  | InputKind.concrete => false\n\ndef unresolved (i : CertifierInput) : Bool :=\n  isPlaceholder i || !i.hasLemmaStmt || !i.hasVerifierArtifact || !i.hasCertificateScope\n\ndef certify (i : CertifierInput) : Verdict :=\n  if unresolved i = true then Verdict.aborted else Verdict.certified i.claim",
+      "lean_binders": [
+        "(i : CertifierInput)"
+      ],
+      "lean_theorem_name": "msl_erdos507_lem_r005_r005_c4",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ninductive InputKind where\n  | missing : InputKind\n  | perContract : InputKind\n  | concrete : InputKind\nderiving DecidableEq\n\ninductive Claim where\n  | proof : Claim\n  | computation : Claim\nderiving DecidableEq\n\ninductive Verdict where\n  | aborted : Verdict\n  | certified : Claim → Verdict\nderiving DecidableEq\n\nstructure CertifierInput where\n  kind : InputKind\n  claim : Claim\n  hasLemmaStmt : Bool\n  hasVerifierArtifact : Bool\n  hasCertificateScope : Bool\nderiving DecidableEq\n\ndef isPlaceholder (i : CertifierInput) : Bool :=\n  match i.kind with\n  | InputKind.missing => true\n  | InputKind.perContract => true\n  | InputKind.concrete => false\n\ndef unresolved (i : CertifierInput) : Bool :=\n  isPlaceholder i || !i.hasLemmaStmt || !i.hasVerifierArtifact || !i.hasCertificateScope\n\ndef certify (i : CertifierInput) : Verdict :=\n  if unresolved i = true then Verdict.aborted else Verdict.certified i.claim\n\n",
+      "lean_signature": "theorem msl_erdos507_lem_r005_r005_c4 (i : CertifierInput) : i.hasCertificateScope = false → unresolved i = true",
+      "lean_statement_line": "theorem msl_erdos507_lem_r005_r005_c4 (i : CertifierInput) : i.hasCertificateScope = false → unresolved i = true := by sorry",
+      "lean_file_sha256": "3e19133d4c93bf521e468361daa8cb18d37af1f6240d95e1b36315d00c8698e0",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "A certifier input with no certificate scope supplied counts as an unresolved claim.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos507/receipts/erdos507_LEM_R005_R005_D4.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos507/lean/erdos507_LEM_R005_R005_D4.lean"
+    },
+    {
+      "id": "erdos507:LEM:R005:R005#D5",
+      "statement": "unresolved i = true → certify i = Verdict.aborted",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos507",
+      "decomposed_from": "erdos507:LEM:R005:R005",
+      "imports": "Mathlib",
+      "definitions": "inductive InputKind where\n  | missing : InputKind\n  | perContract : InputKind\n  | concrete : InputKind\nderiving DecidableEq\n\ninductive Claim where\n  | proof : Claim\n  | computation : Claim\nderiving DecidableEq\n\ninductive Verdict where\n  | aborted : Verdict\n  | certified : Claim → Verdict\nderiving DecidableEq\n\nstructure CertifierInput where\n  kind : InputKind\n  claim : Claim\n  hasLemmaStmt : Bool\n  hasVerifierArtifact : Bool\n  hasCertificateScope : Bool\nderiving DecidableEq\n\ndef isPlaceholder (i : CertifierInput) : Bool :=\n  match i.kind with\n  | InputKind.missing => true\n  | InputKind.perContract => true\n  | InputKind.concrete => false\n\ndef unresolved (i : CertifierInput) : Bool :=\n  isPlaceholder i || !i.hasLemmaStmt || !i.hasVerifierArtifact || !i.hasCertificateScope\n\ndef certify (i : CertifierInput) : Verdict :=\n  if unresolved i = true then Verdict.aborted else Verdict.certified i.claim",
+      "type_context": "Mathlib\ninductive InputKind where\n  | missing : InputKind\n  | perContract : InputKind\n  | concrete : InputKind\nderiving DecidableEq\n\ninductive Claim where\n  | proof : Claim\n  | computation : Claim\nderiving DecidableEq\n\ninductive Verdict where\n  | aborted : Verdict\n  | certified : Claim → Verdict\nderiving DecidableEq\n\nstructure CertifierInput where\n  kind : InputKind\n  claim : Claim\n  hasLemmaStmt : Bool\n  hasVerifierArtifact : Bool\n  hasCertificateScope : Bool\nderiving DecidableEq\n\ndef isPlaceholder (i : CertifierInput) : Bool :=\n  match i.kind with\n  | InputKind.missing => true\n  | InputKind.perContract => true\n  | InputKind.concrete => false\n\ndef unresolved (i : CertifierInput) : Bool :=\n  isPlaceholder i || !i.hasLemmaStmt || !i.hasVerifierArtifact || !i.hasCertificateScope\n\ndef certify (i : CertifierInput) : Verdict :=\n  if unresolved i = true then Verdict.aborted else Verdict.certified i.claim",
+      "lean_binders": [
+        "(i : CertifierInput)"
+      ],
+      "lean_theorem_name": "msl_erdos507_lem_r005_r005_c5",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ninductive InputKind where\n  | missing : InputKind\n  | perContract : InputKind\n  | concrete : InputKind\nderiving DecidableEq\n\ninductive Claim where\n  | proof : Claim\n  | computation : Claim\nderiving DecidableEq\n\ninductive Verdict where\n  | aborted : Verdict\n  | certified : Claim → Verdict\nderiving DecidableEq\n\nstructure CertifierInput where\n  kind : InputKind\n  claim : Claim\n  hasLemmaStmt : Bool\n  hasVerifierArtifact : Bool\n  hasCertificateScope : Bool\nderiving DecidableEq\n\ndef isPlaceholder (i : CertifierInput) : Bool :=\n  match i.kind with\n  | InputKind.missing => true\n  | InputKind.perContract => true\n  | InputKind.concrete => false\n\ndef unresolved (i : CertifierInput) : Bool :=\n  isPlaceholder i || !i.hasLemmaStmt || !i.hasVerifierArtifact || !i.hasCertificateScope\n\ndef certify (i : CertifierInput) : Verdict :=\n  if unresolved i = true then Verdict.aborted else Verdict.certified i.claim\n\n",
+      "lean_signature": "theorem msl_erdos507_lem_r005_r005_c5 (i : CertifierInput) : unresolved i = true → certify i = Verdict.aborted",
+      "lean_statement_line": "theorem msl_erdos507_lem_r005_r005_c5 (i : CertifierInput) : unresolved i = true → certify i = Verdict.aborted := by sorry",
+      "lean_file_sha256": "5263c2b2b469ac1425e133245881f41a59af449c59c338204bdc03bf117ab95d",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "Fail-closed rule: the certifier aborts on any unresolved claim.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos507/receipts/erdos507_LEM_R005_R005_D5.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos507/lean/erdos507_LEM_R005_R005_D5.lean"
+    },
+    {
+      "id": "erdos507:LEM:R005:R005#D6",
+      "statement": "Verdict.aborted ≠ Verdict.certified c",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos507",
+      "decomposed_from": "erdos507:LEM:R005:R005",
+      "imports": "Mathlib",
+      "definitions": "inductive InputKind where\n  | missing : InputKind\n  | perContract : InputKind\n  | concrete : InputKind\nderiving DecidableEq\n\ninductive Claim where\n  | proof : Claim\n  | computation : Claim\nderiving DecidableEq\n\ninductive Verdict where\n  | aborted : Verdict\n  | certified : Claim → Verdict\nderiving DecidableEq\n\nstructure CertifierInput where\n  kind : InputKind\n  claim : Claim\n  hasLemmaStmt : Bool\n  hasVerifierArtifact : Bool\n  hasCertificateScope : Bool\nderiving DecidableEq\n\ndef isPlaceholder (i : CertifierInput) : Bool :=\n  match i.kind with\n  | InputKind.missing => true\n  | InputKind.perContract => true\n  | InputKind.concrete => false\n\ndef unresolved (i : CertifierInput) : Bool :=\n  isPlaceholder i || !i.hasLemmaStmt || !i.hasVerifierArtifact || !i.hasCertificateScope\n\ndef certify (i : CertifierInput) : Verdict :=\n  if unresolved i = true then Verdict.aborted else Verdict.certified i.claim",
+      "type_context": "Mathlib\ninductive InputKind where\n  | missing : InputKind\n  | perContract : InputKind\n  | concrete : InputKind\nderiving DecidableEq\n\ninductive Claim where\n  | proof : Claim\n  | computation : Claim\nderiving DecidableEq\n\ninductive Verdict where\n  | aborted : Verdict\n  | certified : Claim → Verdict\nderiving DecidableEq\n\nstructure CertifierInput where\n  kind : InputKind\n  claim : Claim\n  hasLemmaStmt : Bool\n  hasVerifierArtifact : Bool\n  hasCertificateScope : Bool\nderiving DecidableEq\n\ndef isPlaceholder (i : CertifierInput) : Bool :=\n  match i.kind with\n  | InputKind.missing => true\n  | InputKind.perContract => true\n  | InputKind.concrete => false\n\ndef unresolved (i : CertifierInput) : Bool :=\n  isPlaceholder i || !i.hasLemmaStmt || !i.hasVerifierArtifact || !i.hasCertificateScope\n\ndef certify (i : CertifierInput) : Verdict :=\n  if unresolved i = true then Verdict.aborted else Verdict.certified i.claim",
+      "lean_binders": [
+        "(c : Claim)"
+      ],
+      "lean_theorem_name": "msl_erdos507_lem_r005_r005_c6",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ninductive InputKind where\n  | missing : InputKind\n  | perContract : InputKind\n  | concrete : InputKind\nderiving DecidableEq\n\ninductive Claim where\n  | proof : Claim\n  | computation : Claim\nderiving DecidableEq\n\ninductive Verdict where\n  | aborted : Verdict\n  | certified : Claim → Verdict\nderiving DecidableEq\n\nstructure CertifierInput where\n  kind : InputKind\n  claim : Claim\n  hasLemmaStmt : Bool\n  hasVerifierArtifact : Bool\n  hasCertificateScope : Bool\nderiving DecidableEq\n\ndef isPlaceholder (i : CertifierInput) : Bool :=\n  match i.kind with\n  | InputKind.missing => true\n  | InputKind.perContract => true\n  | InputKind.concrete => false\n\ndef unresolved (i : CertifierInput) : Bool :=\n  isPlaceholder i || !i.hasLemmaStmt || !i.hasVerifierArtifact || !i.hasCertificateScope\n\ndef certify (i : CertifierInput) : Verdict :=\n  if unresolved i = true then Verdict.aborted else Verdict.certified i.claim\n\n",
+      "lean_signature": "theorem msl_erdos507_lem_r005_r005_c6 (c : Claim) : Verdict.aborted ≠ Verdict.certified c",
+      "lean_statement_line": "theorem msl_erdos507_lem_r005_r005_c6 (c : Claim) : Verdict.aborted ≠ Verdict.certified c := by sorry",
+      "lean_file_sha256": "566f10f584cdc899caf8502fc02c778d334d7d51e89fbebf7242a4a27e1a04d4",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "Constructor disjointness: an aborted verdict is never a certified claim, so an abort certifies no proof and no computation.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos507/receipts/erdos507_LEM_R005_R005_D6.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos507/lean/erdos507_LEM_R005_R005_D6.lean"
+    }
+  ],
+  "composition": {
+    "id": "erdos507:LEM:R005:R005#COMPOSE",
+    "statement": "((isPlaceholder i = true → unresolved i = true) ∧ (i.hasLemmaStmt = false → unresolved i = true) ∧ (i.hasVerifierArtifact = false → unresolved i = true) ∧ (i.hasCertificateScope = false → unresolved i = true) ∧ (unresolved i = true → certify i = Verdict.aborted) ∧ (∀ (c : Claim), Verdict.aborted ≠ Verdict.certified c)) → (isPlaceholder i = true → i.hasLemmaStmt = false → i.hasVerifierArtifact = false → i.hasCertificateScope = false → certify i = Verdict.aborted ∧ ∀ (c : Claim), certify i ≠ Verdict.certified c)",
+    "kind": "COMPOSITION",
+    "depends_on": [
+      "erdos507:LEM:R005:R005#D1",
+      "erdos507:LEM:R005:R005#D2",
+      "erdos507:LEM:R005:R005#D3",
+      "erdos507:LEM:R005:R005#D4",
+      "erdos507:LEM:R005:R005#D5",
+      "erdos507:LEM:R005:R005#D6"
+    ],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "PROVED_KERNEL",
+    "problem": "erdos507",
+    "decomposed_from": "erdos507:LEM:R005:R005",
+    "imports": "Mathlib",
+    "definitions": "inductive InputKind where\n  | missing : InputKind\n  | perContract : InputKind\n  | concrete : InputKind\nderiving DecidableEq\n\ninductive Claim where\n  | proof : Claim\n  | computation : Claim\nderiving DecidableEq\n\ninductive Verdict where\n  | aborted : Verdict\n  | certified : Claim → Verdict\nderiving DecidableEq\n\nstructure CertifierInput where\n  kind : InputKind\n  claim : Claim\n  hasLemmaStmt : Bool\n  hasVerifierArtifact : Bool\n  hasCertificateScope : Bool\nderiving DecidableEq\n\ndef isPlaceholder (i : CertifierInput) : Bool :=\n  match i.kind with\n  | InputKind.missing => true\n  | InputKind.perContract => true\n  | InputKind.concrete => false\n\ndef unresolved (i : CertifierInput) : Bool :=\n  isPlaceholder i || !i.hasLemmaStmt || !i.hasVerifierArtifact || !i.hasCertificateScope\n\ndef certify (i : CertifierInput) : Verdict :=\n  if unresolved i = true then Verdict.aborted else Verdict.certified i.claim",
+    "type_context": "Mathlib\ninductive InputKind where\n  | missing : InputKind\n  | perContract : InputKind\n  | concrete : InputKind\nderiving DecidableEq\n\ninductive Claim where\n  | proof : Claim\n  | computation : Claim\nderiving DecidableEq\n\ninductive Verdict where\n  | aborted : Verdict\n  | certified : Claim → Verdict\nderiving DecidableEq\n\nstructure CertifierInput where\n  kind : InputKind\n  claim : Claim\n  hasLemmaStmt : Bool\n  hasVerifierArtifact : Bool\n  hasCertificateScope : Bool\nderiving DecidableEq\n\ndef isPlaceholder (i : CertifierInput) : Bool :=\n  match i.kind with\n  | InputKind.missing => true\n  | InputKind.perContract => true\n  | InputKind.concrete => false\n\ndef unresolved (i : CertifierInput) : Bool :=\n  isPlaceholder i || !i.hasLemmaStmt || !i.hasVerifierArtifact || !i.hasCertificateScope\n\ndef certify (i : CertifierInput) : Verdict :=\n  if unresolved i = true then Verdict.aborted else Verdict.certified i.claim",
+    "parent_typed": {
+      "statement": "isPlaceholder i = true → i.hasLemmaStmt = false → i.hasVerifierArtifact = false → i.hasCertificateScope = false → certify i = Verdict.aborted ∧ ∀ (c : Claim), certify i ≠ Verdict.certified c",
+      "binders": [
+        "(i : CertifierInput)"
+      ],
+      "reading": "For any certifier input of this round that is a placeholder (\"none\" or \"per contract\") with no lemma statement, no exact verifier artifact, and no certificate scope supplied, the fail-closed certifier aborts and certifies neither a proof claim nor a computation claim.",
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": null,
+        "prose_contract_root_report": {
+          "ok": true,
+          "missing": [],
+          "reason": "",
+          "blocking": false,
+          "why_not_blocking": "tokens mined from ENGLISH prose are not Lean tokens; `Fin k` carries `1 <= i <= k` structurally"
+        }
+      }
+    },
+    "composition_claim": {
+      "text": "Children 1–4 are independent sufficient triggers for `unresolved i = true` (placeholder kind, or any one of the three missing artifacts), so the parent's hypotheses make the round's input unresolved via child 1, or alternatively via children 2–4; child 5 (the fail-closed rule) converts unresolved into the abort verdict, and child 6 (constructor disjointness of Verdict) upgrades the abort to `∀ c : Claim, certify i ≠ Verdict.certified c`, yielding both conjuncts of the parent.",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "KERNEL_CHECKED",
+      "rc": 0,
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "counts_toward_parent": 1
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "source": "oracle/evidence/msl-machine/dag/decomp/erdos507/lean/erdos507_LEM_R005_R005_COMPOSE.lean",
+    "lean_theorem_name": "msl_erdos507_lem_r005_r005_composition",
+    "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxHeartbeats 400000\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ninductive InputKind where\n  | missing : InputKind\n  | perContract : InputKind\n  | concrete : InputKind\nderiving DecidableEq\n\ninductive Claim where\n  | proof : Claim\n  | computation : Claim\nderiving DecidableEq\n\ninductive Verdict where\n  | aborted : Verdict\n  | certified : Claim → Verdict\nderiving DecidableEq\n\nstructure CertifierInput where\n  kind : InputKind\n  claim : Claim\n  hasLemmaStmt : Bool\n  hasVerifierArtifact : Bool\n  hasCertificateScope : Bool\nderiving DecidableEq\n\ndef isPlaceholder (i : CertifierInput) : Bool :=\n  match i.kind with\n  | InputKind.missing => true\n  | InputKind.perContract => true\n  | InputKind.concrete => false\n\ndef unresolved (i : CertifierInput) : Bool :=\n  isPlaceholder i || !i.hasLemmaStmt || !i.hasVerifierArtifact || !i.hasCertificateScope\n\ndef certify (i : CertifierInput) : Verdict :=\n  if unresolved i = true then Verdict.aborted else Verdict.certified i.claim\n\n",
+    "lean_signature": "theorem msl_erdos507_lem_r005_r005_composition (i : CertifierInput) : ((isPlaceholder i = true → unresolved i = true) ∧ (i.hasLemmaStmt = false → unresolved i = true) ∧ (i.hasVerifierArtifact = false → unresolved i = true) ∧ (i.hasCertificateScope = false → unresolved i = true) ∧ (unresolved i = true → certify i = Verdict.aborted) ∧ (∀ (c : Claim), Verdict.aborted ≠ Verdict.certified c)) → (isPlaceholder i = true → i.hasLemmaStmt = false → i.hasVerifierArtifact = false → i.hasCertificateScope = false → certify i = Verdict.aborted ∧ ∀ (c : Claim), certify i ≠ Verdict.certified c)",
+    "lean_statement_line": "theorem msl_erdos507_lem_r005_r005_composition (i : CertifierInput) : ((isPlaceholder i = true → unresolved i = true) ∧ (i.hasLemmaStmt = false → unresolved i = true) ∧ (i.hasVerifierArtifact = false → unresolved i = true) ∧ (i.hasCertificateScope = false → unresolved i = true) ∧ (unresolved i = true → certify i = Verdict.aborted) ∧ (∀ (c : Claim), Verdict.aborted ≠ Verdict.certified c)) → (isPlaceholder i = true → i.hasLemmaStmt = false → i.hasVerifierArtifact = false → i.hasCertificateScope = false → certify i = Verdict.aborted ∧ ∀ (c : Claim), certify i ≠ Verdict.certified c) := by\n  first\n  | tauto\n  | (intro h; exact h.1)\n  | (intro h; simp_all)\n  | (intro h; omega)\n  | (intro h; norm_num at h ⊢ <;> tauto)\n  | aesop\n  | decide",
+    "lean_trailer": "\n#print axioms msl_erdos507_lem_r005_r005_composition\n",
+    "lean_binders": [
+      "(i : CertifierInput)"
+    ],
+    "lean_file_sha256": "ef5e6fe117bb297a036cc51fb50bdf0f3dca6e9ccfc6b168a046c08cbb8622d0",
+    "lean_file_contract": "TO REPRODUCE GATE 4: compile `lean_preamble + lean_statement_line + \"\\n\" + lean_trailer` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text the deterministic ladder ran on. TO ATTEMPT A DIFFERENT PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\" + lean_trailer` -- keep the trailer, it is the `#print axioms` line the footprint is read from. Do NOT rebuild a header from `definitions` and do NOT drop the binders.",
+    "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos507/receipts/erdos507_LEM_R005_R005_COMPOSE.verify.json",
+    "receipt_kind": "VERIFY_JSON"
+  },
+  "parent_new_depends_on": [
+    "erdos507:LEM:R005:R005#COMPOSE"
+  ],
+  "rejected": [],
+  "counts": {
+    "proposed": 6,
+    "elaborated": 6,
+    "bound": 6,
+    "non_circular": 6,
+    "non_trivial": 6,
+    "surviving": 6,
+    "composition_kernel_checked": 1,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 6,
+    "counts_toward_parent_note": "composition PROVED_KERNEL: the children are load-bearing"
+  },
+  "definitions": {
+    "block": "inductive InputKind where\n  | missing : InputKind\n  | perContract : InputKind\n  | concrete : InputKind\nderiving DecidableEq\n\ninductive Claim where\n  | proof : Claim\n  | computation : Claim\nderiving DecidableEq\n\ninductive Verdict where\n  | aborted : Verdict\n  | certified : Claim → Verdict\nderiving DecidableEq\n\nstructure CertifierInput where\n  kind : InputKind\n  claim : Claim\n  hasLemmaStmt : Bool\n  hasVerifierArtifact : Bool\n  hasCertificateScope : Bool\nderiving DecidableEq\n\ndef isPlaceholder (i : CertifierInput) : Bool :=\n  match i.kind with\n  | InputKind.missing => true\n  | InputKind.perContract => true\n  | InputKind.concrete => false\n\ndef unresolved (i : CertifierInput) : Bool :=\n  isPlaceholder i || !i.hasLemmaStmt || !i.hasVerifierArtifact || !i.hasCertificateScope\n\ndef certify (i : CertifierInput) : Verdict :=\n  if unresolved i = true then Verdict.aborted else Verdict.certified i.claim",
+    "gate0": {
+      "verdict": "DEFS_ELABORATE"
+    },
+    "campaign_vocabulary_prepended": [],
+    "normalization": {
+      "body": "inductive InputKind where\n  | missing : InputKind\n  | perContract : InputKind\n  | concrete : InputKind\nderiving DecidableEq\n\ninductive Claim where\n  | proof : Claim\n  | computation : Claim\nderiving DecidableEq\n\ninductive Verdict where\n  | aborted : Verdict\n  | certified : Claim → Verdict\nderiving DecidableEq\n\nstructure CertifierInput where\n  kind : InputKind\n  claim : Claim\n  hasLemmaStmt : Bool\n  hasVerifierArtifact : Bool\n  hasCertificateScope : Bool\nderiving DecidableEq\n\ndef isPlaceholder (i : CertifierInput) : Bool :=\n  match i.kind with\n  | InputKind.missing => true\n  | InputKind.perContract => true\n  | InputKind.concrete => false\n\ndef unresolved (i : CertifierInput) : Bool :=\n  isPlaceholder i || !i.hasLemmaStmt || !i.hasVerifierArtifact || !i.hasCertificateScope\n\ndef certify (i : CertifierInput) : Verdict :=\n  if unresolved i = true then Verdict.aborted else Verdict.certified i.claim",
+      "opens": [],
+      "dropped_imports": []
+    }
+  }
+}

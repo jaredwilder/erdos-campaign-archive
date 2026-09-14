@@ -1,0 +1,57 @@
+{
+ "route": "erdos479:COMPRESS",
+ "family": "compressor",
+ "thesis": "theorems built one level up from this problem's kernel-proved leaves by msl_compress",
+ "target_close_branch": "erdos479:ROOT",
+ "lemmas": [
+  {
+   "id": "erdos479:COMPRESS:erdos479_k_neg_one_inf",
+   "status": "OPEN",
+   "statement": "theorem erdos479_k_neg_one_inf (N : ℕ) : ∃ n : ℕ, N ≤ n ∧ (2 : ℤ) ^ n ≡ -1 [ZMOD (n : ℤ)]",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_k_neg_one_inf.jobs.json"
+  },
+  {
+   "id": "erdos479:COMPRESS:erdos479_family_odd_generalized",
+   "status": "OPEN",
+   "statement": "theorem erdos479_family_odd_generalized (j m : ℕ) (hm1 : 1 ≤ j) (hodd : Odd m) :\n    (2 ^ (2 ^ j * m) : ℤ) ≡ (2 ^ (2 ^ j) : ℤ) [ZMOD ((2 ^ j * m : ℕ) : ℤ)]",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_family_odd_generalized.jobs.json"
+  },
+  {
+   "id": "erdos479:COMPRESS:erdos479_affirmative_bridge",
+   "status": "OPEN",
+   "statement": "theorem erdos479_affirmative_bridge (k : ℤ) (hk : k = 0 ∨ (∃ j : ℕ, k = (2 : ℤ) ^ (2 ^ j)) ∨ k = -1) : ∀ N : ℕ, ∃ n : ℕ, N < n ∧ (2 : ℤ) ^ n ≡ k [ZMOD n]",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_affirmative_bridge.jobs.json"
+  },
+  {
+   "id": "erdos479:COMPRESS:erdos479_k3_no_witness_range",
+   "status": "OPEN",
+   "statement": "theorem erdos479_k3_no_witness_range : ∀ n ∈ Finset.Icc (1 : ℕ) 120, (2 ^ n : ℕ) % n ≠ 3",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_k3_no_witness_range.jobs.json"
+  },
+  {
+   "id": "erdos479:COMPRESS:erdos479_witness_structure",
+   "status": "OPEN",
+   "statement": "theorem erdos479_witness_structure (j n : ℕ) (hj : 2 ^ j ≤ n)\n    (h : (2 ^ n : ℕ) ≡ 2 ^ (2 ^ j) [MOD n]) :\n    (2 ^ (2 ^ j) : ℕ) * (2 ^ (n - 2 ^ j) - 1) ≡ 0 [MOD n] ∧\n    n.factorization 2 ≤ 2 ^ j",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_witness_structure.jobs.json"
+  },
+  {
+   "id": "erdos479:COMPRESS:erdos479_witness_lift",
+   "status": "OPEN",
+   "statement": "theorem erdos479_witness_lift (k n p : ℕ) (hp : p.Prime) (hgcd : Nat.gcd n p = 1) (hn : (2 ^ n : ℕ) ≡ k [MOD n]) (hp1 : (2 ^ n : ℕ) ≡ k [MOD p]) (hp2 : (k ^ p : ℕ) ≡ k [MOD n]) : (2 ^ (n * p) : ℕ) ≡ k [MOD n * p]",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_witness_lift.jobs.json"
+  },
+  {
+   "id": "erdos479:COMPRESS:erdos479_witness_family_all_s",
+   "status": "OPEN",
+   "statement": "∀ (s : ℕ), (2 ^ (2 ^ s) ∣ 2 ^ (2 ^ s)) ∧ ¬(2 ^ (2 ^ s + 1) ∣ 2 ^ (2 ^ s)) ∧ (s ≤ 2 ^ s) ∧ ((2 ^ s : ℕ) ∣ 2 ^ (2 ^ s))",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_witness_family_all_s.jobs.json"
+  },
+  {
+   "id": "erdos479:COMPRESS:check_l1_fragment_bridge",
+   "status": "OPEN",
+   "statement": "∀ s ∈ Finset.Icc (1 : ℕ) 5, check_l1_fragment s = true",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__check_l1_fragment_bridge.jobs.json"
+  }
+ ],
+ "law": "STATUS IS OPEN UNTIL A KERNEL ROW LANDS.  A COMBINED_THEOREM in this list is a candidate with a filed job, not a proved lemma."
+}

@@ -1,0 +1,74 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos968",
+  "generated_utc": "2026-09-02T16:49:33Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos968:LEM:R007:L1",
+    "statement": "\"residual claim 'per contract' is a placeholder; no witness artifact, fail closed\"",
+    "statement_sha256": "4af8ecf48608e3e8e5f38bfe32048a668df2fcb0ef601753f3aa83d9c5558e5f",
+    "kind": "LEMMA",
+    "binding": "UNBOUND",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "Let $u_n=p_n/n$, where $p_n$ is the $n$th prime. Does the set of $n$ such that $u_n<u_{n+1}$ have positive density?",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos968-campaign-001/contract.json",
+    "sha256": "4407627dd5cc68a04d1a82c3d05f9a28d68ec8339b3e358d0a208f01b9700a17"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos968:LEM:R007:L1",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "6f8cd13586b52eb706335ef20bcad399a6df8bfa5fc965164d9c0625f6be4882",
+    "prompt_chars": 4069,
+    "response_sha256": "db84e762eb48e0d4189695c3bc6ceb02c09afd8176f0725448e220d2114d6932",
+    "usage": {
+      "prompt_tokens": 1069,
+      "completion_tokens": 899,
+      "total_tokens": 1968,
+      "cost": 0.000304925,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.000304925,
+        "upstream_inference_prompt_cost": 8.0175e-05,
+        "upstream_inference_completions_cost": 0.00022475
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 714,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.000304925,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 24.74,
+    "utc": "2026-09-02T16:49:33Z"
+  },
+  "children": [],
+  "composition": null,
+  "parent_new_depends_on": [],
+  "rejected": [],
+  "counts": {
+    "proposed": 0,
+    "elaborated": 0,
+    "bound": 0,
+    "non_circular": 0,
+    "non_trivial": 0,
+    "surviving": 0,
+    "composition_kernel_checked": 0,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 0
+  },
+  "refusal": "PROPOSAL_NO_CHILDREN"
+}

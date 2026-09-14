@@ -1,0 +1,74 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos1052",
+  "generated_utc": "2026-09-02T16:36:26Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos1052:LEM:R003:L1",
+    "statement": "RETRACTED by author boundary audit: \"range-bounded enumeration was read as verification of an out-of-range large candidate\": the note asserted σ*-verification of n ≈ 1.46 × 10^23 that the sweep never reached and the run never recomputed.",
+    "statement_sha256": "66f1906ede5e0696e26c0709e65b903237e99e84c1b5f77b84c44a511b0d82d4",
+    "kind": "LEMMA",
+    "binding": "UNBOUND",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "A unitary divisor of $n$ is $d\\mid n$ such that $(d,n/d)=1$. A number $n\\geq 1$ is a unitary perfect number if it is the sum of its unitary divisors (aside from $n$ itself). Are there only finite many unitary perfect numbers?",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos1052-campaign-001/contract.json",
+    "sha256": "199b45f3a62891f9e04dc35b098b7498300fdb02e5ed17953ee3a8ddd9fa8af6"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos1052:LEM:R003:L1",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "135292b6cb26c66be13701a02349be95baab1cdaaf4982c995ba72f002358095",
+    "prompt_chars": 4327,
+    "response_sha256": "41822a880cc77c04812170cd0aeb436547d32ac464667fcd090cb2f72cc10ce5",
+    "usage": {
+      "prompt_tokens": 1125,
+      "completion_tokens": 489,
+      "total_tokens": 1614,
+      "cost": 0.000198945,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 128,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.000198945,
+        "upstream_inference_prompt_cost": 7.6695e-05,
+        "upstream_inference_completions_cost": 0.00012225
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 334,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.000198945,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 16.52,
+    "utc": "2026-09-02T16:23:29Z"
+  },
+  "children": [],
+  "composition": null,
+  "parent_new_depends_on": [],
+  "rejected": [],
+  "counts": {
+    "proposed": 0,
+    "elaborated": 0,
+    "bound": 0,
+    "non_circular": 0,
+    "non_trivial": 0,
+    "surviving": 0,
+    "composition_kernel_checked": 0,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 0
+  },
+  "refusal": "PROPOSAL_NO_CHILDREN"
+}

@@ -1,0 +1,19 @@
+{"definitions": "def sigmaN (n : Nat) : Nat := ∑ d ∈ Nat.divisors n, d\n\ndef trialSigma (n : Nat) : Nat := ∑ d ∈ Finset.Icc 1 n, if n % d = 0 then d else 0\n\ndef isAmicable (a b : Nat) : Prop := sigmaN a = sigmaN b ∧ sigmaN a = a + b\n\ndef Acount (x : Nat) : Nat :=\n  (Finset.filter (fun p : Nat × Nat => p.1 ≤ p.2 ∧ p.2 ≤ x ∧ isAmicable p.1 p.2)\n    (Finset.product (Finset.Icc 1 x) (Finset.Icc 1 x))).card\n\ndef witnessPairs : List (Nat × Nat) :=\n  [(220, 284), (1184, 1210), (2620, 2924), (5020, 5564), (6232, 6368)]\n\ndef verifierAgrees (V : Nat → Nat) : Prop := ∀ x ≤ (10 ^ 7 : Nat), V x = Acount x",
+  "parent_typed": {"name": "erdos830_LEM_R005_L1_prime", "binders": ["(V : Nat → Nat)"],
+    "statement": "verifierAgrees V ∧ (∀ n ≤ (10 ^ 7 : Nat), sigmaN n = trialSigma n) ∧ (∀ p ∈ witnessPairs, isAmicable p.1 p.2 ∧ p.1 ≤ p.2 ∧ p.2 ≤ (10 ^ 7 : Nat)) ∧ (∃ x₁ x₂ x₃ x₄ : Nat, x₁ ≤ x₂ ∧ x₂ ≤ x₃ ∧ x₃ ≤ x₄ ∧ x₄ ≤ (10 ^ 7 : Nat) ∧ Acount x₁ = (5 : Nat) ∧ Acount x₂ = (13 : Nat) ∧ Acount x₃ = (42 : Nat) ∧ Acount x₄ = (108 : Nat))",
+    "reading": "The σ-sieve verifier agrees with the true amicable count A on the whole scope N ≤ 10⁷, its σ values are independently recomputable by trial division, the five witness pairs are amicable in scope, and A takes the tabulated values 5, 13, 42, 108 at four ascending bounds."},
+  "children": [
+    {"name": "erdos830_L1p_verifier_agreement", "binders": ["(V : Nat → Nat)"],
+      "statement": "verifierAgrees V",
+      "reading": "The exact integer verifier V outputs the true amicable count A(x) for every x ≤ 10⁷ (fail-closed, deterministic, ints only, scope-bounded)."},
+    {"name": "erdos830_L1p_sigma_crosscheck", "binders": [],
+      "statement": "∀ n ≤ (10 ^ 7 : Nat), sigmaN n = trialSigma n",
+      "reading": "Within the scope, the σ used by the verifier equals an independent trial-division recomputation, replacing any tautological self-check."},
+    {"name": "erdos830_L1p_witness_pairs", "binders": [],
+      "statement": "∀ p ∈ witnessPairs, isAmicable p.1 p.2 ∧ p.1 ≤ p.2 ∧ p.2 ≤ (10 ^ 7 : Nat)",
+      "reading": "Each of the five witness pairs is an amicable pair with a ≤ b inside the scope N ≤ 10⁷."},
+    {"name": "erdos830_L1p_tabulated_A_values", "binders": [],
+      "statement": "∃ x₁ x₂ x₃ x₄ : Nat, x₁ ≤ x₂ ∧ x₂ ≤ x₃ ∧ x₃ ≤ x₄ ∧ x₄ ≤ (10 ^ 7 : Nat) ∧ Acount x₁ = (5 : Nat) ∧ Acount x₂ = (13 : Nat) ∧ Acount x₃ = (42 : Nat) ∧ Acount x₄ = (108 : Nat)",
+      "reading": "There are four ascending bounds within scope at which the true count A takes the tabulated values 5, 13, 42, 108 (computation-supported pending a PASS run)."}
+  ],
+  "composition_claim": "The parent is exactly the conjunction of the four children: child 1 gives verifier eligibility/correctness on the bounded scope, child 2 gives the independent trial-division cross-check of σ, child 3 certifies the five witness pairs, and child 4 certifies the tabulated A-values 5, 13, 42, 108; the pending-PASS status is procedural and is discharged by an actual run emitting PASS with the cross-check of child 2 in place."}

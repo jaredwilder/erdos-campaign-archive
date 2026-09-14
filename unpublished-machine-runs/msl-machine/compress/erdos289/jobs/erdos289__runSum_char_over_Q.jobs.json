@@ -1,0 +1,86 @@
+{
+ "schema": "msl-compress/1.0.0",
+ "consumes": "msl-ladder/1.0.0",
+ "problem": "erdos289",
+ "theorem": "runSum_char_over_Q",
+ "law": "A JOB IS A DEMAND, NEVER A RESULT. No kernel has seen either file. T is PROVED_KERNEL only when the IMPLICATION file returns rc 0, error-free, with an axiom footprint inside the allowed three.",
+ "jobs": {
+  "compress_erdos289__runSum_char_over_Q_implication": {
+   "kind": "IMPLICATION_BY_SOURCE_INCLUSION",
+   "decl": "runSum_char_over_Q",
+   "composition_decl": "runSum_char_over_Q_composition",
+   "lean_path": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__runSum_char_over_Q.implication.lean",
+   "lean_sha256": "011704136347b689b93826c5ebd3b08c39404f66c1c3ed9ffbdba28c4ae06321",
+   "promotes_T_on_clean_verdict": true,
+   "builder": "msl_ladder.composed_file"
+  },
+  "compress_erdos289__runSum_char_over_Q_standalone": {
+   "kind": "T_STANDALONE_BY_DETERMINISTIC_LADDER",
+   "decl": "runSum_char_over_Q",
+   "lean_path": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__runSum_char_over_Q.standalone.lean",
+   "lean_sha256": "048fdffa5dc262587e2f4728475f958aa1fb5a34433b5f64a6ea63b31414e435",
+   "shape": "ARITHMETIC",
+   "arms": [
+    "decide",
+    "omega",
+    "norm_num",
+    "ring_nf",
+    "ring",
+    "linarith",
+    "nlinarith",
+    "positivity",
+    "gcongr",
+    "simp_all",
+    "aesop",
+    "prelude-alone",
+    "prelude+omega",
+    "prelude+norm_num",
+    "prelude+linarith",
+    "prelude+nlinarith",
+    "prelude+ring_nf",
+    "prelude+ring",
+    "prelude+decide",
+    "prelude+simp_all",
+    "prelude+aesop",
+    "prelude+field_simp",
+    "prelude+field_simp+ring",
+    "prelude+qify+omega"
+   ],
+   "promotes_T_on_clean_verdict": false,
+   "builder": "msl_ladder.leaf_file"
+  }
+ },
+ "included_sources": [
+  {
+   "leaf": "erdos289:ORE:25d89c30bf1b00a0",
+   "declaration": "runProd_pos",
+   "included_via": "LEAN_STATEMENT_LINE",
+   "sha256": "c2079af663cd8e86fb3cb65de095c819878876264406356fedefdfbbe9fb6f0c",
+   "receipt": "oracle/evidence/msl-machine/gpt-mine-day2-2026-09-02/kernel-verified/erdos289/Erdos289Head__5da8b478fba0.verify.json",
+   "source": null
+  },
+  {
+   "leaf": "erdos289:ORE:377845d942ddb89d",
+   "declaration": "W4_bridge",
+   "included_via": "LEAN_STATEMENT_LINE",
+   "sha256": "6bdc0d252adf3ca8456c1e0ce0428bcdcba5792d61e2c215debd3b6c0a43ae85",
+   "receipt": "oracle/evidence/msl-machine/gpt-mine-day2-2026-09-02/kernel-verified/erdos289/Erdos289Head__5da8b478fba0.verify.json",
+   "source": null
+  }
+ ],
+ "cable_spec": {
+  "id": "compress_erdos289__runSum_char_over_Q",
+  "imports": "Mathlib",
+  "definitions": "open Finset\n/-!\nErdős 289, MSL round 2026-09-01.  Kernel targets, each an exact fragment.\n  F1  : 1/2 + 1/3 + 1/4 > 1        (the run containing 2 is forced to be [2,3])\n  F1' : 1 - (1/2 + 1/3) = 1/6       (the tail must sum to exactly 1/6)\n  W4n : pure-ℕ form of \"no run [a,b], 5 ≤ a < b ≤ 60, has reciprocal sum 1/6\":\n        with P = ∏ n and N = ∑ P/n over the run, 6·N ≠ P.   Kernel `decide`, Nat only.\n  W4b : the bridge  runSum a b = N / P  in ℚ, so W4n is the ℚ statement.\n-/\ndef runSum (a b : ℕ) : ℚ := ∑ n ∈ Icc a b, (1 : ℚ) / n\ndef runProd (a b : ℕ) : ℕ := ∏ n ∈ Icc a b, n\ndef runNum (a b : ℕ) : ℕ := ∑ n ∈ Icc a b, runProd a b / n\ntheorem F1_head_forced : (1 : ℚ) / 2 + 1 / 3 + 1 / 4 > 1 := by norm_num\ntheorem F1_tail_value : (1 : ℚ) - (1 / 2 + 1 / 3) = 1 / 6 := by norm_num\ntheorem W4_nat_fragment :\n    ∀ a ∈ Icc 5 60, ∀ b ∈ Icc (a + 1) 60, 6 * runNum a b ≠ runProd a b := by\n  decide +kernel\ntheorem runProd_pos (a b : ℕ) (ha : 1 ≤ a) : 0 < runProd a b := by\n  unfold runProd\n  apply Finset.prod_pos\n  intro n hn\n  have := (Finset.mem_Icc.mp hn).1\n  omega\ntheorem dvd_runProd (a b n : ℕ) (hn : n ∈ Icc a b) : n ∣ runProd a b :=\n  Finset.dvd_prod_of_mem _ hn\n\n-- THE NORMALIZATION PRELUDE (msl_ladder, deterministic, $0).\n-- The claim it tests: most leaf failures on an arithmetic DAG are SIDE-CONDITIONS\n-- (an un-introduced hypothesis, a numeric coercion, a nonnegativity obligation),\n-- not mathematics.  Each step is `try`, so the prelude never fails and never\n-- changes what a tactic after it is allowed to prove.\nmacro \"msl_prelude\" : tactic =>\n  `(tactic| ((try intros); (try push_cast); (try positivity)))\n\n-- ---- children, INCLUDED BY SOURCE (each already PROVED_KERNEL alone)\ntheorem runProd_pos (a b : ℕ) (ha : 1 ≤ a) : 0 < runProd a b := by\n  first\n  | decide\n  | norm_num\n  | simp\n\ntheorem W4_bridge (a b : ℕ) (ha : 1 ≤ a) : runSum a b = (runNum a b : ℚ) / (runProd a b : ℚ) := by\n  first\n  | decide\n  | norm_num\n  | simp\n\n-- ---- the composition: children -> parent\ntheorem runSum_char_over_Q_composition (a b : ℕ) (ha : 1 ≤ a) (q : ℚ) : ((runProd_pos : ($v0 $v1 : ℕ) (ha : 1 ≤ $v0) : 0 < runProd $v0 $v1) ∧ (W4_bridge : ($v0 $v1 : ℕ) (ha : 1 ≤ $v0) : runSum $v0 $v1 = (runNum $v0 $v1 : ℚ) / (runProd $v0 $v1 : ℚ))) → (∀ (a b : ℕ), 1 ≤ a → ∀ (q : ℚ), runSum a b = q ↔ (runProd a b : ℚ) * q = (runNum a b : ℚ)) := by\n  first\n  | (decide; done)\n  | (omega; done)\n  | (norm_num; done)\n  | (ring_nf; done)\n  | (ring_nf; ring; done)\n  | (linarith; done)\n  | (nlinarith; done)\n  | (positivity; done)\n  | (gcongr; done)\n  | (simp_all; done)\n  | (aesop; done)\n  | (msl_prelude; done)\n  | (msl_prelude; omega; done)\n  | (msl_prelude; norm_num; done)\n  | (msl_prelude; linarith; done)\n  | (msl_prelude; nlinarith; done)\n  | (msl_prelude; ring_nf; done)\n  | (msl_prelude; ring_nf; ring; done)\n  | (msl_prelude; decide; done)\n  | (msl_prelude; simp_all; done)\n  | (msl_prelude; aesop; done)\n  | (msl_prelude; field_simp; done)\n  | (msl_prelude; field_simp; ring; done)\n  | (msl_prelude; qify; omega; done)\n",
+  "hypotheses": [
+   "(a b : ℕ)",
+   "(ha : 1 ≤ a)",
+   "(q : ℚ)"
+  ],
+  "conclusion": "∀ (a b : ℕ), 1 ≤ a → ∀ (q : ℚ), runSum a b = q ↔ (runProd a b : ℚ) * q = (runNum a b : ℚ)",
+  "set_options": [
+   "set_option maxHeartbeats 400000"
+  ]
+ },
+ "cable_note": ""
+}

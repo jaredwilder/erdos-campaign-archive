@@ -1,0 +1,339 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos1065",
+  "generated_utc": "2026-09-02T16:26:25Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos1065:LEM:R003:L3",
+    "statement": "RETRACTED by author boundary audit: \"16 rows found\" was read as \"the enumeration is complete\"; the k=0 endpoint class (p=q+1) and the k=3, k=6 classes were searched in task 2 but silently dropped in the task 3/4 table assembly",
+    "statement_sha256": "1e3e7be55b9d0562996737f8e5694f08e0fa7c707d371d6cd980ebf345bbfee2",
+    "kind": "LEMMA",
+    "binding": "UNBOUND",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "Are there infinitely many primes $p$ such that $p=2^kq+1$ for some prime $q$ and $k\\geq 0$? Or $p=2^k3^lq+1$?",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos1065-campaign-001/contract.json",
+    "sha256": "ee8c941c719f3a144ae9e668e90c7c280379c98b1c8b5d7eabe1eaa4db6808bd"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos1065:LEM:R003:L3",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "99e0f27cf61b20e7d38d5c26e49b313a2111de12a7c57b330fb0470652622a04",
+    "prompt_chars": 4306,
+    "response_sha256": "926e916d6793f992dddf0a1ea5bf6bbfa6fcc3e0fc2ae03bae3880697324e8eb",
+    "usage": {
+      "prompt_tokens": 1160,
+      "completion_tokens": 2017,
+      "total_tokens": 3177,
+      "cost": 0.00058357,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 128,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00058357,
+        "upstream_inference_prompt_cost": 7.932e-05,
+        "upstream_inference_completions_cost": 0.00050425
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 1302,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.00058357,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 58.54,
+    "utc": "2026-09-02T16:25:07Z"
+  },
+  "children": [
+    {
+      "id": "erdos1065:LEM:R003:L3#D1",
+      "statement": "∃ (p : Nat), p ∈ Icc 2 100 → False ∨ ∃ (q : Nat), q ∈ Icc 2 100 ∧ p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p 0 q ∧ p = q + 1",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos1065",
+      "decomposed_from": "erdos1065:LEM:R003:L3",
+      "imports": "Mathlib",
+      "definitions": "def IsTwoPowQ (p k q : Nat) : Prop := p.Prime ∧ q.Prime ∧ p = 2 ^ k * q + 1\n\ndef CompleteRows (S : Finset Nat) : Prop :=\n  ∀ (k : Nat), (∃ (p q : Nat), p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p k q) → k ∈ S",
+      "type_context": "Mathlib\ndef IsTwoPowQ (p k q : Nat) : Prop := p.Prime ∧ q.Prime ∧ p = 2 ^ k * q + 1\n\ndef CompleteRows (S : Finset Nat) : Prop :=\n  ∀ (k : Nat), (∃ (p q : Nat), p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p k q) → k ∈ S",
+      "lean_binders": [],
+      "lean_theorem_name": "msl_erdos1065_lem_r003_l3_c1",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef IsTwoPowQ (p k q : Nat) : Prop := p.Prime ∧ q.Prime ∧ p = 2 ^ k * q + 1\n\ndef CompleteRows (S : Finset Nat) : Prop :=\n  ∀ (k : Nat), (∃ (p q : Nat), p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p k q) → k ∈ S\n\n",
+      "lean_signature": "theorem msl_erdos1065_lem_r003_l3_c1 : ∃ (p : Nat), p ∈ Icc 2 100 → False ∨ ∃ (q : Nat), q ∈ Icc 2 100 ∧ p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p 0 q ∧ p = q + 1",
+      "lean_statement_line": "theorem msl_erdos1065_lem_r003_l3_c1 : ∃ (p : Nat), p ∈ Icc 2 100 → False ∨ ∃ (q : Nat), q ∈ Icc 2 100 ∧ p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p 0 q ∧ p = q + 1 := by sorry",
+      "lean_file_sha256": "993b88885ac8a7a3d5e2db86c43c77a2f6e96ddbc080a1d21434deeae9325116",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "The k=0 endpoint class (p = q + 1) has a bounded witness (e.g. p = 3, q = 2), so it is a genuine class the enumeration must contain.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos1065/receipts/erdos1065_LEM_R003_L3_D1.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos1065/lean/erdos1065_LEM_R003_L3_D1.lean",
+      "leaf_tactic_hint": "interval_cases",
+      "hint_source": "bounded_forall_over_N",
+      "leaf_tactic_sketch": "intro a; interval_cases a <;> decide",
+      "leaf_tactic_alternatives": [
+        "decide",
+        "native_decide",
+        "bounded_search"
+      ]
+    },
+    {
+      "id": "erdos1065:LEM:R003:L3#D2",
+      "statement": "∃ (p : Nat), p ∈ Icc 2 100 → False ∨ ∃ (q : Nat), q ∈ Icc 2 100 ∧ p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p 3 q ∧ p = 2 ^ (3 : Nat) * q + 1",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos1065",
+      "decomposed_from": "erdos1065:LEM:R003:L3",
+      "imports": "Mathlib",
+      "definitions": "def IsTwoPowQ (p k q : Nat) : Prop := p.Prime ∧ q.Prime ∧ p = 2 ^ k * q + 1\n\ndef CompleteRows (S : Finset Nat) : Prop :=\n  ∀ (k : Nat), (∃ (p q : Nat), p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p k q) → k ∈ S",
+      "type_context": "Mathlib\ndef IsTwoPowQ (p k q : Nat) : Prop := p.Prime ∧ q.Prime ∧ p = 2 ^ k * q + 1\n\ndef CompleteRows (S : Finset Nat) : Prop :=\n  ∀ (k : Nat), (∃ (p q : Nat), p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p k q) → k ∈ S",
+      "lean_binders": [],
+      "lean_theorem_name": "msl_erdos1065_lem_r003_l3_c2",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef IsTwoPowQ (p k q : Nat) : Prop := p.Prime ∧ q.Prime ∧ p = 2 ^ k * q + 1\n\ndef CompleteRows (S : Finset Nat) : Prop :=\n  ∀ (k : Nat), (∃ (p q : Nat), p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p k q) → k ∈ S\n\n",
+      "lean_signature": "theorem msl_erdos1065_lem_r003_l3_c2 : ∃ (p : Nat), p ∈ Icc 2 100 → False ∨ ∃ (q : Nat), q ∈ Icc 2 100 ∧ p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p 3 q ∧ p = 2 ^ (3 : Nat) * q + 1",
+      "lean_statement_line": "theorem msl_erdos1065_lem_r003_l3_c2 : ∃ (p : Nat), p ∈ Icc 2 100 → False ∨ ∃ (q : Nat), q ∈ Icc 2 100 ∧ p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p 3 q ∧ p = 2 ^ (3 : Nat) * q + 1 := by sorry",
+      "lean_file_sha256": "783d41a5170890914e4f0fcc0af7cb00c17bc3cabd593e0e4dd4724fc3ec38c3",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "The k=3 class (p = 8q + 1) has a bounded witness (e.g. p = 17, q = 2), so it was searched in task 2 and must appear in any complete table.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos1065/receipts/erdos1065_LEM_R003_L3_D2.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos1065/lean/erdos1065_LEM_R003_L3_D2.lean",
+      "leaf_tactic_hint": "interval_cases",
+      "hint_source": "bounded_forall_over_N",
+      "leaf_tactic_sketch": "intro a; interval_cases a <;> decide",
+      "leaf_tactic_alternatives": [
+        "decide",
+        "native_decide",
+        "bounded_search"
+      ]
+    },
+    {
+      "id": "erdos1065:LEM:R003:L3#D3",
+      "statement": "∃ (p : Nat), p ∈ Icc 2 200 → False ∨ ∃ (q : Nat), q ∈ Icc 2 100 ∧ p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p 6 q ∧ p = 2 ^ (6 : Nat) * q + 1",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos1065",
+      "decomposed_from": "erdos1065:LEM:R003:L3",
+      "imports": "Mathlib",
+      "definitions": "def IsTwoPowQ (p k q : Nat) : Prop := p.Prime ∧ q.Prime ∧ p = 2 ^ k * q + 1\n\ndef CompleteRows (S : Finset Nat) : Prop :=\n  ∀ (k : Nat), (∃ (p q : Nat), p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p k q) → k ∈ S",
+      "type_context": "Mathlib\ndef IsTwoPowQ (p k q : Nat) : Prop := p.Prime ∧ q.Prime ∧ p = 2 ^ k * q + 1\n\ndef CompleteRows (S : Finset Nat) : Prop :=\n  ∀ (k : Nat), (∃ (p q : Nat), p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p k q) → k ∈ S",
+      "lean_binders": [],
+      "lean_theorem_name": "msl_erdos1065_lem_r003_l3_c3",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef IsTwoPowQ (p k q : Nat) : Prop := p.Prime ∧ q.Prime ∧ p = 2 ^ k * q + 1\n\ndef CompleteRows (S : Finset Nat) : Prop :=\n  ∀ (k : Nat), (∃ (p q : Nat), p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p k q) → k ∈ S\n\n",
+      "lean_signature": "theorem msl_erdos1065_lem_r003_l3_c3 : ∃ (p : Nat), p ∈ Icc 2 200 → False ∨ ∃ (q : Nat), q ∈ Icc 2 100 ∧ p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p 6 q ∧ p = 2 ^ (6 : Nat) * q + 1",
+      "lean_statement_line": "theorem msl_erdos1065_lem_r003_l3_c3 : ∃ (p : Nat), p ∈ Icc 2 200 → False ∨ ∃ (q : Nat), q ∈ Icc 2 100 ∧ p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p 6 q ∧ p = 2 ^ (6 : Nat) * q + 1 := by sorry",
+      "lean_file_sha256": "0f87bcd77f192ac55ab2e9c04b12d71f1217a47a0ec166f0be7f7a8761fb3ad4",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "The k=6 class (p = 64q + 1) has a bounded witness (e.g. p = 193, q = 3), so it was searched in task 2 and must appear in any complete table.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos1065/receipts/erdos1065_LEM_R003_L3_D3.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos1065/lean/erdos1065_LEM_R003_L3_D3.lean",
+      "leaf_tactic_hint": "interval_cases",
+      "hint_source": "bounded_forall_over_N",
+      "leaf_tactic_sketch": "intro a; interval_cases a <;> decide",
+      "leaf_tactic_alternatives": [
+        "decide",
+        "native_decide",
+        "bounded_search"
+      ]
+    }
+  ],
+  "composition": {
+    "id": "erdos1065:LEM:R003:L3#COMPOSE",
+    "statement": "((∃ (p : Nat), p ∈ Icc 2 100 → False ∨ ∃ (q : Nat), q ∈ Icc 2 100 ∧ p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p 0 q ∧ p = q + 1) ∧ (∃ (p : Nat), p ∈ Icc 2 100 → False ∨ ∃ (q : Nat), q ∈ Icc 2 100 ∧ p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p 3 q ∧ p = 2 ^ (3 : Nat) * q + 1) ∧ (∃ (p : Nat), p ∈ Icc 2 200 → False ∨ ∃ (q : Nat), q ∈ Icc 2 100 ∧ p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p 6 q ∧ p = 2 ^ (6 : Nat) * q + 1)) → ((S.card = 16) → CompleteRows S → ({0, 3, 6} : Finset Nat) ⊆ S)",
+    "kind": "COMPOSITION",
+    "depends_on": [
+      "erdos1065:LEM:R003:L3#D1",
+      "erdos1065:LEM:R003:L3#D2",
+      "erdos1065:LEM:R003:L3#D3"
+    ],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "OPEN",
+    "problem": "erdos1065",
+    "decomposed_from": "erdos1065:LEM:R003:L3",
+    "imports": "Mathlib",
+    "definitions": "def IsTwoPowQ (p k q : Nat) : Prop := p.Prime ∧ q.Prime ∧ p = 2 ^ k * q + 1\n\ndef CompleteRows (S : Finset Nat) : Prop :=\n  ∀ (k : Nat), (∃ (p q : Nat), p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p k q) → k ∈ S",
+    "type_context": "Mathlib\ndef IsTwoPowQ (p k q : Nat) : Prop := p.Prime ∧ q.Prime ∧ p = 2 ^ k * q + 1\n\ndef CompleteRows (S : Finset Nat) : Prop :=\n  ∀ (k : Nat), (∃ (p q : Nat), p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p k q) → k ∈ S",
+    "parent_typed": {
+      "statement": "(S.card = 16) → CompleteRows S → ({0, 3, 6} : Finset Nat) ⊆ S",
+      "binders": [
+        "(S : Finset Nat)"
+      ],
+      "reading": "Any 16-row table that is a complete enumeration of k-classes with bounded witnesses must include the k=0 endpoint class and the k=3 and k=6 classes.",
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": null,
+        "prose_contract_root_report": {
+          "ok": true,
+          "missing": [],
+          "reason": "",
+          "blocking": false,
+          "why_not_blocking": "tokens mined from ENGLISH prose are not Lean tokens; `Fin k` carries `1 <= i <= k` structurally"
+        }
+      }
+    },
+    "composition_claim": {
+      "text": "Each child exhibits a bounded witness (p ≤ 200, q ≤ 100) for IsTwoPowQ at k = 0, 3, 6 respectively; under the completeness hypothesis CompleteRows S, each of these forces k ∈ S, and together they give {0, 3, 6} ⊆ S, which is exactly the parent.",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "COMPOSITION_OPEN",
+      "rc": 1,
+      "kernel_error": "/root/peer/decomp/b20260902_092603_3/erdos1065_LEM_R003_L3_comp.lean:14:520: error: unsolved goals",
+      "counts_toward_parent": 0
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "source": "oracle/evidence/msl-machine/dag/decomp/erdos1065/lean/erdos1065_LEM_R003_L3_COMPOSE.lean",
+    "lean_theorem_name": "msl_erdos1065_lem_r003_l3_composition",
+    "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxHeartbeats 400000\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef IsTwoPowQ (p k q : Nat) : Prop := p.Prime ∧ q.Prime ∧ p = 2 ^ k * q + 1\n\ndef CompleteRows (S : Finset Nat) : Prop :=\n  ∀ (k : Nat), (∃ (p q : Nat), p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p k q) → k ∈ S\n\n",
+    "lean_signature": "theorem msl_erdos1065_lem_r003_l3_composition (S : Finset Nat) : ((∃ (p : Nat), p ∈ Icc 2 100 → False ∨ ∃ (q : Nat), q ∈ Icc 2 100 ∧ p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p 0 q ∧ p = q + 1) ∧ (∃ (p : Nat), p ∈ Icc 2 100 → False ∨ ∃ (q : Nat), q ∈ Icc 2 100 ∧ p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p 3 q ∧ p = 2 ^ (3 : Nat) * q + 1) ∧ (∃ (p : Nat), p ∈ Icc 2 200 → False ∨ ∃ (q : Nat), q ∈ Icc 2 100 ∧ p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p 6 q ∧ p = 2 ^ (6 : Nat) * q + 1)) → ((S.card = 16) → CompleteRows S → ({0, 3, 6} : Finset Nat) ⊆ S)",
+    "lean_statement_line": "theorem msl_erdos1065_lem_r003_l3_composition (S : Finset Nat) : ((∃ (p : Nat), p ∈ Icc 2 100 → False ∨ ∃ (q : Nat), q ∈ Icc 2 100 ∧ p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p 0 q ∧ p = q + 1) ∧ (∃ (p : Nat), p ∈ Icc 2 100 → False ∨ ∃ (q : Nat), q ∈ Icc 2 100 ∧ p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p 3 q ∧ p = 2 ^ (3 : Nat) * q + 1) ∧ (∃ (p : Nat), p ∈ Icc 2 200 → False ∨ ∃ (q : Nat), q ∈ Icc 2 100 ∧ p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p 6 q ∧ p = 2 ^ (6 : Nat) * q + 1)) → ((S.card = 16) → CompleteRows S → ({0, 3, 6} : Finset Nat) ⊆ S) := by\n  first\n  | tauto\n  | (intro h; exact h.1)\n  | (intro h; simp_all)\n  | (intro h; omega)\n  | (intro h; norm_num at h ⊢ <;> tauto)\n  | aesop\n  | decide",
+    "lean_trailer": "\n#print axioms msl_erdos1065_lem_r003_l3_composition\n",
+    "lean_binders": [
+      "(S : Finset Nat)"
+    ],
+    "lean_file_sha256": "b050783b89f13df542301a645f7104c08e5311dbb5a7e388d5aad0285b6975bb",
+    "lean_file_contract": "TO REPRODUCE GATE 4: compile `lean_preamble + lean_statement_line + \"\\n\" + lean_trailer` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text the deterministic ladder ran on. TO ATTEMPT A DIFFERENT PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\" + lean_trailer` -- keep the trailer, it is the `#print axioms` line the footprint is read from. Do NOT rebuild a header from `definitions` and do NOT drop the binders.",
+    "composition_receipt": "oracle/evidence/msl-machine/dag/decomp/erdos1065/receipts/erdos1065_LEM_R003_L3_COMPOSE.composition.json"
+  },
+  "parent_new_depends_on": [
+    "erdos1065:LEM:R003:L3#COMPOSE"
+  ],
+  "rejected": [],
+  "counts": {
+    "proposed": 3,
+    "elaborated": 3,
+    "bound": 3,
+    "non_circular": 3,
+    "non_trivial": 3,
+    "surviving": 3,
+    "composition_kernel_checked": 0,
+    "fireable_decidable_leaves": 3,
+    "counts_toward_parent": 0,
+    "counts_toward_parent_note": "composition OPEN: these children contribute ZERO toward the parent until it closes; they remain formal leaves for the rung loop"
+  },
+  "definitions": {
+    "block": "def IsTwoPowQ (p k q : Nat) : Prop := p.Prime ∧ q.Prime ∧ p = 2 ^ k * q + 1\n\ndef CompleteRows (S : Finset Nat) : Prop :=\n  ∀ (k : Nat), (∃ (p q : Nat), p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p k q) → k ∈ S",
+    "gate0": {
+      "verdict": "DEFS_ELABORATE"
+    },
+    "campaign_vocabulary_prepended": [],
+    "normalization": {
+      "body": "def IsTwoPowQ (p k q : Nat) : Prop := p.Prime ∧ q.Prime ∧ p = 2 ^ k * q + 1\n\ndef CompleteRows (S : Finset Nat) : Prop :=\n  ∀ (k : Nat), (∃ (p q : Nat), p ≤ 200 ∧ q ≤ 100 ∧ IsTwoPowQ p k q) → k ∈ S",
+      "opens": [],
+      "dropped_imports": []
+    }
+  }
+}

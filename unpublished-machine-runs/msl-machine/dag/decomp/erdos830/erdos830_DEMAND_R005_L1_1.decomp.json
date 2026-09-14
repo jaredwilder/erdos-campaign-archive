@@ -1,0 +1,216 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos830",
+  "generated_utc": "2026-09-02T16:32:03Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos830:DEMAND:R005:L1':1",
+    "statement": "one actual run emitting PASS, with the tautological check replaced by an independent trial-division recomputation.",
+    "statement_sha256": "76f1d18f5336f1f066d3afecfc1b32790ee96bf664cb09fa0b52233a0bb8be8e",
+    "kind": "CAPABILITY_DEMAND",
+    "binding": "UNBOUND",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "We say that $a,b\\in \\mathbb{N}$ are an amicable pair if $\\sigma(a)=\\sigma(b)=a+b$. Are there infinitely many amicable pairs? If $A(x)$ counts the number of amicable $1\\leq a\\leq b\\leq x$ then is it true that\\[A(x)>x^{1-o(1)}?\\]",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos830-campaign-001/contract.json",
+    "sha256": "16c29247445147cb382b9b1fe6ee2f17023c28a8106d8957f26d6512bf6aa0ea"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos830:DEMAND:R005:L1':1",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "6af481ad216064c88b7715a98259131e32bfe579e8d869b30cfb0e015a9ecbb2",
+    "prompt_chars": 4202,
+    "response_sha256": "15ccc769764ab93c3b93a23e95ed8412621e72a480e546b010faa6eb58f17c9b",
+    "usage": {
+      "prompt_tokens": 1099,
+      "completion_tokens": 1583,
+      "total_tokens": 2682,
+      "cost": 0.000458975,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 320,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.000458975,
+        "upstream_inference_prompt_cost": 6.3225e-05,
+        "upstream_inference_completions_cost": 0.00039575
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 1064,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.000458975,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 46.13,
+    "utc": "2026-09-02T16:30:11Z"
+  },
+  "children": [
+    {
+      "id": "erdos830:DEMAND:R005:L1':1#D2",
+      "statement": "∀ (n : Nat), n ≤ (300 : Nat) → sigmaTrial n = ∑ d ∈ n.divisors, d",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos830",
+      "decomposed_from": "erdos830:DEMAND:R005:L1':1",
+      "imports": "Mathlib",
+      "definitions": "def sigmaTrial (n : Nat) : Nat :=\n  (Finset.filter (fun (d : Nat) => d ∣ n) (Finset.Icc (1 : Nat) n)).sum (fun (d : Nat) => d)",
+      "type_context": "Mathlib\ndef sigmaTrial (n : Nat) : Nat :=\n  (Finset.filter (fun (d : Nat) => d ∣ n) (Finset.Icc (1 : Nat) n)).sum (fun (d : Nat) => d)",
+      "lean_binders": [],
+      "lean_theorem_name": "msl_erdos830_demand_r005_l1_1_c2",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef sigmaTrial (n : Nat) : Nat :=\n  (Finset.filter (fun (d : Nat) => d ∣ n) (Finset.Icc (1 : Nat) n)).sum (fun (d : Nat) => d)\n\n",
+      "lean_signature": "theorem msl_erdos830_demand_r005_l1_1_c2 : ∀ (n : Nat), n ≤ (300 : Nat) → sigmaTrial n = ∑ d ∈ n.divisors, d",
+      "lean_statement_line": "theorem msl_erdos830_demand_r005_l1_1_c2 : ∀ (n : Nat), n ≤ (300 : Nat) → sigmaTrial n = ∑ d ∈ n.divisors, d := by sorry",
+      "lean_file_sha256": "438b43717c842458d47220b0b97068599889b44b896c830c74521ff3062eae07",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "For every n ≤ 300, the trial-division recomputation of σ(n) agrees with Mathlib's sum over n.divisors.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos830/receipts/erdos830_DEMAND_R005_L1_1_D2.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos830/lean/erdos830_DEMAND_R005_L1_1_D2.lean"
+    }
+  ],
+  "composition": {
+    "id": "erdos830:DEMAND:R005:L1':1#COMPOSE",
+    "statement": "((∀ (n : Nat), n ≤ (300 : Nat) → sigmaTrial n = ∑ d ∈ n.divisors, d)) → (∃ (a b : Nat), 1 ≤ a ∧ a ≤ b ∧ sigmaTrial a = a + b ∧ sigmaTrial b = a + b ∧ sigmaTrial a = ∑ d ∈ a.divisors, d ∧ sigmaTrial b = ∑ d ∈ b.divisors, d)",
+    "kind": "COMPOSITION",
+    "depends_on": [
+      "erdos830:DEMAND:R005:L1':1#D2"
+    ],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "OPEN",
+    "problem": "erdos830",
+    "decomposed_from": "erdos830:DEMAND:R005:L1':1",
+    "imports": "Mathlib",
+    "definitions": "def sigmaTrial (n : Nat) : Nat :=\n  (Finset.filter (fun (d : Nat) => d ∣ n) (Finset.Icc (1 : Nat) n)).sum (fun (d : Nat) => d)",
+    "type_context": "Mathlib\ndef sigmaTrial (n : Nat) : Nat :=\n  (Finset.filter (fun (d : Nat) => d ∣ n) (Finset.Icc (1 : Nat) n)).sum (fun (d : Nat) => d)",
+    "parent_typed": {
+      "statement": "∃ (a b : Nat), 1 ≤ a ∧ a ≤ b ∧ sigmaTrial a = a + b ∧ sigmaTrial b = a + b ∧ sigmaTrial a = ∑ d ∈ a.divisors, d ∧ sigmaTrial b = ∑ d ∈ b.divisors, d",
+      "binders": [],
+      "reading": "Some run emits PASS: there is an amicable pair (a,b) whose sigma, computed by independent trial division, satisfies the defining equation and agrees with Mathlib's divisor-sum.",
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": null,
+        "prose_contract_root_report": {
+          "ok": true,
+          "missing": [],
+          "reason": "",
+          "blocking": false,
+          "why_not_blocking": "tokens mined from ENGLISH prose are not Lean tokens; `Fin k` carries `1 <= i <= k` structurally"
+        }
+      }
+    },
+    "composition_claim": {
+      "text": "Child 1 supplies the concrete amicable pair (220, 284) with all conjuncts of the parent's existential expressed via Mathlib's divisor sum; child 2, applied at n = 220 and n = 284 (both ≤ 300), converts those into the trial-division recomputation checks. Instantiating the parent's ∃ with a = 220, b = 284 and rewriting by child 2 yields exactly erdos830_run_pass.",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "COMPOSITION_OPEN",
+      "rc": 1,
+      "kernel_error": "/root/peer/decomp/b20260902_093141_3/erdos830_DEMAND_R005_L1_1_comp.lean:12:278: error: unsolved goals",
+      "counts_toward_parent": 0
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "source": "oracle/evidence/msl-machine/dag/decomp/erdos830/lean/erdos830_DEMAND_R005_L1_1_COMPOSE.lean",
+    "lean_theorem_name": "msl_erdos830_demand_r005_l1_1_composition",
+    "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxHeartbeats 400000\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef sigmaTrial (n : Nat) : Nat :=\n  (Finset.filter (fun (d : Nat) => d ∣ n) (Finset.Icc (1 : Nat) n)).sum (fun (d : Nat) => d)\n\n",
+    "lean_signature": "theorem msl_erdos830_demand_r005_l1_1_composition : ((∀ (n : Nat), n ≤ (300 : Nat) → sigmaTrial n = ∑ d ∈ n.divisors, d)) → (∃ (a b : Nat), 1 ≤ a ∧ a ≤ b ∧ sigmaTrial a = a + b ∧ sigmaTrial b = a + b ∧ sigmaTrial a = ∑ d ∈ a.divisors, d ∧ sigmaTrial b = ∑ d ∈ b.divisors, d)",
+    "lean_statement_line": "theorem msl_erdos830_demand_r005_l1_1_composition : ((∀ (n : Nat), n ≤ (300 : Nat) → sigmaTrial n = ∑ d ∈ n.divisors, d)) → (∃ (a b : Nat), 1 ≤ a ∧ a ≤ b ∧ sigmaTrial a = a + b ∧ sigmaTrial b = a + b ∧ sigmaTrial a = ∑ d ∈ a.divisors, d ∧ sigmaTrial b = ∑ d ∈ b.divisors, d) := by\n  first\n  | tauto\n  | (intro h; exact h.1)\n  | (intro h; simp_all)\n  | (intro h; omega)\n  | (intro h; norm_num at h ⊢ <;> tauto)\n  | aesop\n  | decide",
+    "lean_trailer": "\n#print axioms msl_erdos830_demand_r005_l1_1_composition\n",
+    "lean_binders": [],
+    "lean_file_sha256": "ae6e9338ac4298f28cbf98ec9134eeb29094feb1c1bf2431c3bac1702a346122",
+    "lean_file_contract": "TO REPRODUCE GATE 4: compile `lean_preamble + lean_statement_line + \"\\n\" + lean_trailer` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text the deterministic ladder ran on. TO ATTEMPT A DIFFERENT PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\" + lean_trailer` -- keep the trailer, it is the `#print axioms` line the footprint is read from. Do NOT rebuild a header from `definitions` and do NOT drop the binders.",
+    "composition_receipt": "oracle/evidence/msl-machine/dag/decomp/erdos830/receipts/erdos830_DEMAND_R005_L1_1_COMPOSE.composition.json"
+  },
+  "parent_new_depends_on": [
+    "erdos830:DEMAND:R005:L1':1#COMPOSE"
+  ],
+  "rejected": [
+    {
+      "proposed_index": 1,
+      "statement": "(∑ d ∈ (220 : Nat).divisors, d) = (220 : Nat) + (284 : Nat) ∧ (∑ d ∈ (284 : Nat).divisors, d) = (220 : Nat) + (284 : Nat) ∧ (1 : Nat) ≤ (220 : Nat) ∧ (220 : Nat) ≤ (284 : Nat)",
+      "binders": [],
+      "gate": "GATE3_NON_TRIVIALITY",
+      "reason": "closes on the bare ladder inside 20000 heartbeats: padding, not a rung",
+      "kernel_error": null
+    }
+  ],
+  "counts": {
+    "proposed": 2,
+    "elaborated": 2,
+    "bound": 2,
+    "non_circular": 2,
+    "non_trivial": 1,
+    "surviving": 1,
+    "composition_kernel_checked": 0,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 0,
+    "counts_toward_parent_note": "composition OPEN: these children contribute ZERO toward the parent until it closes; they remain formal leaves for the rung loop"
+  },
+  "definitions": {
+    "block": "def sigmaTrial (n : Nat) : Nat :=\n  (Finset.filter (fun (d : Nat) => d ∣ n) (Finset.Icc (1 : Nat) n)).sum (fun (d : Nat) => d)",
+    "gate0": {
+      "verdict": "DEFS_ELABORATE"
+    },
+    "campaign_vocabulary_prepended": [],
+    "normalization": {
+      "body": "def sigmaTrial (n : Nat) : Nat :=\n  (Finset.filter (fun (d : Nat) => d ∣ n) (Finset.Icc (1 : Nat) n)).sum (fun (d : Nat) => d)",
+      "opens": [],
+      "dropped_imports": []
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{"theorem_name": "erdos479_witness_lift",
+ "binders": ["(k n p : ℕ)", "(hp : p.Prime)", "(hgcd : Nat.gcd n p = 1)", "(hn : (2 ^ n : ℕ) ≡ k [MOD n])", "(hp1 : (2 ^ n : ℕ) ≡ k [MOD p])", "(hp2 : (k ^ p : ℕ) ≡ k [MOD n])"],
+ "definitions": "",
+ "statement": "theorem erdos479_witness_lift (k n p : ℕ) (hp : p.Prime) (hgcd : Nat.gcd n p = 1) (hn : (2 ^ n : ℕ) ≡ k [MOD n]) (hp1 : (2 ^ n : ℕ) ≡ k [MOD p]) (hp2 : (k ^ p : ℕ) ≡ k [MOD n]) : (2 ^ (n * p) : ℕ) ≡ k [MOD n * p]",
+ "premises": ["erdos479:ORE:497dc6ba972d1307"],
+ "derivation_claim": "A single generalized lifting lemma (not a conjunction): mod n, 2^(n*p) = (2^n)^p ≡ k^p ≡ k by hn and hp2; mod p, p | (p-1+1) scaling gives 2^(n*p) = 2^(n + n*(p-1)) ≡ 2^n ≡ k by Fermat (hp) and hp1; CRT via hgcd. It strictly GENERALIZES erdos479_family (L1): instantiating k = 2^(2^j), n = 2^j, p odd prime recovers erdos479_family as the iterated corollary, since 2^j ∣ k gives hp2 and 2^n = k gives hp1.",
+ "discharges": "erdos479:BRANCH_B",
+ "reason": "It replaces the infinite-family construction by a closure rule on exact ZMOD witness sets, so BRANCH_B's finite-witness-set search reduces to finding k admitting no (or finitely many) base witnesses satisfying the three congruences — a strictly smaller, root-directed obligation."}

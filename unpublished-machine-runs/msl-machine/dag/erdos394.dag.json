@@ -1,0 +1,996 @@
+{
+ "schema": "obligation-dag/1.0.0",
+ "problem": "erdos394",
+ "problem_number": "394",
+ "campaign": "erdos394-campaign-001",
+ "root": "erdos394:ROOT",
+ "contract_divergence": {
+  "authoritative": {
+   "role": "campaign",
+   "path": "oracle/evidence/msl-machine/campaigns/erdos394-campaign-001/contract.json",
+   "sha256": "96dc259ebfae829a25688d1ebf87e9527405d5d7e88305b2df42212667925133",
+   "declared_contract_sha256": "fc9488ed6b19e1b934ced91154756702caa940a69278faa65e671e4f3f4b62fc"
+  },
+  "others": [
+   {
+    "role": "ingest",
+    "path": "oracle/evidence/msl-machine/contracts/erdos394/contract.json",
+    "sha256": "275182640b821e301383ff04ce444951c2dfcfe22f4fac10ad8c9e21360f96ba",
+    "declared_contract_sha256": "c469e998d2d44dbd19ebb0b52eb85568c027ad48f47bbb9027da99e44c8742c4",
+    "canonical_statement_matches_authoritative": true
+   },
+   {
+    "role": "launch_queue",
+    "path": "oracle/evidence/msl-machine/contracts/LAUNCH-QUEUE/erdos394.json",
+    "sha256": "093aa6b416fda6692fb1672762a337120defed68bab0e195e7b50714bdb70d02",
+    "declared_contract_sha256": null,
+    "canonical_statement_matches_authoritative": true
+   }
+  ],
+  "diverges": false
+ },
+ "courts": [
+  "court",
+  "closer",
+  "formalizer",
+  "kernel"
+ ],
+ "summary": {
+  "nodes": 17,
+  "proved_kernel": 0,
+  "proved_speaker": 3,
+  "computed_bounded": 0,
+  "open": 11,
+  "refuted": 3,
+  "orphans": 3,
+  "proof_obligations": 0,
+  "open_leaves_on_dead_routes": 3,
+  "root_kind": "UNKNOWN",
+  "root_disqualifiers": [],
+  "formal_root": null,
+  "leaf_frontier_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "leaf_frontier_reason": "5 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaf_frontier_deciding_leaf": {
+   "id": "erdos394:LEM:R001:L1",
+   "kind": "LEMMA",
+   "status": "PROVED_SPEAKER",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "t₂(p)=p−1 for odd primes proved via p∤m(m+1) for m≤p−2; forces c≤1 in part (i) and requires fixing the m≥1 convention before any close."
+  },
+  "ladder_shape_reason": "5 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaves": 14,
+  "open_leaves": 11,
+  "open_technical_leaves": 5,
+  "open_prose_obligations": 3,
+  "open_analytic_leaves": 5,
+  "ladder_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "deciding_leaf": {
+   "id": "erdos394:LEM:R001:L1",
+   "kind": "LEMMA",
+   "status": "PROVED_SPEAKER",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "t₂(p)=p−1 for odd primes proved via p∤m(m+1) for m≤p−2; forces c≤1 in part (i) and requires fixing the m≥1 convention before any close."
+  },
+  "orphan_detail": [
+   {
+    "id": "erdos394:A:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos394:B:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos394:B:M02",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   }
+  ]
+ },
+ "validation": {
+  "acyclic": true,
+  "edges": 16,
+  "root_binds_verbatim": true,
+  "kernel_receipts_checked": 0
+ },
+ "nodes": [
+  {
+   "id": "erdos394:A:M01",
+   "statement": "For part (i) either exhibit c>0 and prove the required O-bound or prove its exact negation. For part (ii) determine the universal k≥2 little-o assertion.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos394-campaign-001/contract.json",
+   "contract_sha256": "96dc259ebfae829a25688d1ebf87e9527405d5d7e88305b2df42212667925133",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos394-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos394",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-394-34105677fb-A-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos394:BRANCH_A",
+   "statement": "COMPLETE TWO-CLAUSE CLOSE: determine both canonical asymptotic questions under the exact t_k minimality and parameter conventions.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos394:A:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos394-campaign-001/contract.json",
+   "contract_sha256": "96dc259ebfae829a25688d1ebf87e9527405d5d7e88305b2df42212667925133",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos394-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos394",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-394-34105677fb-A-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos394:B:M01",
+   "statement": "The negation of part (i) is ∀c>0, failure of the corresponding eventual O-bound; failure for one selected c is not enough.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos394-campaign-001/contract.json",
+   "contract_sha256": "96dc259ebfae829a25688d1ebf87e9527405d5d7e88305b2df42212667925133",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos394-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos394",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-394-34105677fb-B-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos394:B:M02",
+   "statement": "A negative part-(ii) component supplies some natural k≥2 for which the exact little-o relation fails.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 2,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos394-campaign-001/contract.json",
+   "contract_sha256": "96dc259ebfae829a25688d1ebf87e9527405d5d7e88305b2df42212667925133",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos394-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos394",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-394-34105677fb-B-M02"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos394:BRANCH_B",
+   "statement": "COMPLETE NEGATIVE/MIXED CLOSE: negative components use the literal quantifier reversal and all canonical clauses are still determined.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos394:B:M01",
+    "erdos394:B:M02"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos394-campaign-001/contract.json",
+   "contract_sha256": "96dc259ebfae829a25688d1ebf87e9527405d5d7e88305b2df42212667925133",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos394-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos394",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-394-34105677fb-B-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos394:ROOT",
+   "statement": "Let $t_k(n)$ denote the least $m$ such that\\[n\\mid m(m+1)(m+2)\\cdots (m+k-1).\\]Is it true that\\[\\sum_{n\\leq x}t_2(n)\\ll \\frac{x^2}{(\\log x)^c}\\]for some $c>0$?Is it true that, for $k\\geq 2$,\\[\\sum_{n\\leq x}t_{k+1}(n) =o\\left(\\sum_{n\\leq x}t_k(n)\\right)?\\]",
+   "kind": "CANONICAL_ROOT",
+   "depends_on": [
+    "erdos394:BRANCH_A",
+    "erdos394:BRANCH_B"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "root_by_construction",
+   "closure_mode": "DISJUNCTIVE",
+   "satisfied_by_any": [
+    "erdos394:BRANCH_A",
+    "erdos394:BRANCH_B"
+   ],
+   "root_kind": "UNKNOWN",
+   "root_disqualifiers": [],
+   "formal_root": null,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos394-campaign-001/contract.json",
+   "contract_sha256": "96dc259ebfae829a25688d1ebf87e9527405d5d7e88305b2df42212667925133",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos394-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos394",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos394:LEM:R001:L1",
+   "statement": "t₂(p)=p−1 for odd primes proved via p∤m(m+1) for m≤p−2; forces c≤1 in part (i) and requires fixing the m≥1 convention before any close.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 7,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 3,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:03:18Z"
+    },
+    {
+     "seq": 4,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:09:47Z"
+    },
+    {
+     "seq": 5,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:13:24Z"
+    },
+    {
+     "seq": 6,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:14:46Z"
+    },
+    {
+     "seq": 7,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:16:55Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos394-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos394:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos394",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos394:LEM:R002:L1",
+   "statement": "t₂(4)=2 since 4 | 2·3·4=24, contradicting the claimed least m=3",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R002",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 14,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 is R002's sole PROVED lemma and entire proved content — deleting it empties the route's proof set, and even intact the finite fact t2(4)=3 has no transfer theorem to the ∃c>0 O-bound of clause (i) or the universal k≥2 little-o of clause (ii), so the close cannot survive verbatim without it; route",
+    "seq": 15
+   },
+   "history": [
+    {
+     "seq": 8,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:26:35Z"
+    },
+    {
+     "seq": 10,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:36:46Z"
+    },
+    {
+     "seq": 11,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:37:04Z"
+    },
+    {
+     "seq": 12,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:37:28Z"
+    },
+    {
+     "seq": 13,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:38:34Z"
+    },
+    {
+     "seq": 14,
+     "status": "FALSE",
+     "utc": "2026-09-01T19:38:50Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos394-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos394:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos394",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos394:LEM:R002:main",
+   "statement": "No residual expression or numeric witness supplied; certificate construction aborted fail-closed.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R002",
+   "lemma_id": "main",
+   "registry_status": "UNTESTED",
+   "registry_seq": 9,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 is R002's sole PROVED lemma and entire proved content — deleting it empties the route's proof set, and even intact the finite fact t2(4)=3 has no transfer theorem to the ∃c>0 O-bound of clause (i) or the universal k≥2 little-o of clause (ii), so the close cannot survive verbatim without it; route",
+    "seq": 15
+   },
+   "history": [
+    {
+     "seq": 9,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:33:22Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos394-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos394:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "No residual expression or numeric witness supplied; certificate construction aborted fail-closed."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos394",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos394:LEM:R003:ALL",
+   "statement": "No analytic reduction and no concrete residual supplied; unresolved sign forces fail-closed abort, no certificate issued.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "ALL",
+   "registry_status": "UNTESTED",
+   "registry_seq": 18,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Machine-verified counterexample falsifies central lemma L1, which carried R003's sole bridge to the canonical two-clause close; no surviving argument exists with L1 deleted, so the route is dead.",
+    "seq": 20
+   },
+   "history": [
+    {
+     "seq": 18,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:45:35Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos394-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos394:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "No analytic reduction and no concrete residual supplied; unresolved sign forces fail-closed abort, no certificate issued."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos394",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos394:LEM:R003:L1",
+   "statement": "t₂(2)=1 counterexample; correct value is t₂(p)=p−1 for all primes p.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 19,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Machine-verified counterexample falsifies central lemma L1, which carried R003's sole bridge to the canonical two-clause close; no surviving argument exists with L1 deleted, so the route is dead.",
+    "seq": 20
+   },
+   "history": [
+    {
+     "seq": 17,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:43:57Z"
+    },
+    {
+     "seq": 19,
+     "status": "FALSE",
+     "utc": "2026-09-01T19:46:48Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos394-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos394:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos394",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos394:LEM:R004:L1",
+   "statement": "Prime witness n=p has t_2(p)=p−1 (roots 0,−1 mod p), so all prime contribution ~x²/(2log x) must be absorbed by the main term; L1's uncriteriated decomposition neither determines c>0 nor handles this case, and its missing sieve step is the original branch-A difficulty renamed (equivalent-strength re",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 35,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Load-bearing lemma L1 (length-additive parabolic decomposition) carries a machine-verified counterexample and was the sole structural input to the branch-A splitting-lattice sieve close; no surviving argument shown, so the route is dead pending a repaired lemma or new representation.",
+    "seq": 36
+   },
+   "history": [
+    {
+     "seq": 22,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:49:21Z"
+    },
+    {
+     "seq": 23,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:55:25Z"
+    },
+    {
+     "seq": 33,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T00:58:03Z"
+    },
+    {
+     "seq": 34,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T00:58:45Z"
+    },
+    {
+     "seq": 35,
+     "status": "FALSE",
+     "utc": "2026-09-02T00:59:29Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos394-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos394:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos394",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos394:LEM:R004:T1",
+   "statement": "Hypothesis: the kernel-checked L1 certificate establishes only for 1≤n,T≤32 the exact coprime-splitting/CRT count identity and t₂(n)=min_{(a,b)=1,ab=n}r⁺(a,b), with 2^ω(n) distinct splitting classes. Conclusion required: a uniform all-n, all-x layer-cake/splitting-lattice sieve (and corresponding un",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "T1",
+   "registry_status": "UNTESTED",
+   "registry_seq": 32,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Load-bearing lemma L1 (length-additive parabolic decomposition) carries a machine-verified counterexample and was the sole structural input to the branch-A splitting-lattice sieve close; no surviving argument shown, so the route is dead pending a repaired lemma or new representation.",
+    "seq": 36
+   },
+   "history": [
+    {
+     "seq": 32,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T00:57:10Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos394-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos394:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "Hypothesis: the kernel-checked L1 certificate establishes only for 1≤n,T≤32 the exact coprime-splitting/CRT count identity and t₂(n)=min_{(a,b)=1,ab=n}r⁺(a,b), with 2^ω(n) distinct splitting classes. Conclusion required: a uniform all-n, all-x layer-cake/splitting-lattice sieve (and corresponding un"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos394",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos394:LEM:R005:L1",
+   "statement": "Degenerate packet: no residual expression, bound, or domain supplied; fail-closed rules force non-certification, so no conforming verifier can exist.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R005",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 26,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 25,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T20:00:39Z"
+    },
+    {
+     "seq": 26,
+     "status": "PROVED",
+     "utc": "2026-09-01T20:02:03Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos394-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos394:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos394",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos394:LEM:R006:L1",
+   "statement": "Exact §16.1 verifier (fractions-only, fail-closed, deterministic) run and aborts at first require: no finite witness loadable and 'per contract' names no predicate/r/N0 — certifies only that no residual certificate exists as stated; repair target: packet must emit explicit rational r, predicate, N0,",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R006",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 41,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 28,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T20:04:00Z"
+    },
+    {
+     "seq": 37,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:00:04Z"
+    },
+    {
+     "seq": 38,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:00:26Z"
+    },
+    {
+     "seq": 39,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:00:51Z"
+    },
+    {
+     "seq": 40,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:04:32Z"
+    },
+    {
+     "seq": 41,
+     "status": "PROVED",
+     "utc": "2026-09-02T01:05:01Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos394-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos394:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos394",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos394:LEM:R007:L1",
+   "statement": "RETRACTED by author boundary audit: \"COMPUTATION_SUPPORTED for all input configurations\" was read as \"COMPUTATION_SUPPORTED for this packet's configuration\" — the ∃-for-∀ obstruction was stated as universal when it fails at the empty-recheck-set boundary",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R007",
+   "lemma_id": "L1",
+   "registry_status": "UNTESTED",
+   "registry_seq": 52,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 43,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:08:42Z"
+    },
+    {
+     "seq": 44,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T02:15:40Z"
+    },
+    {
+     "seq": 45,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T02:16:23Z"
+    },
+    {
+     "seq": 46,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T02:17:07Z"
+    },
+    {
+     "seq": 47,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T02:17:54Z"
+    },
+    {
+     "seq": 48,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T02:18:33Z"
+    },
+    {
+     "seq": 49,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T02:19:19Z"
+    },
+    {
+     "seq": 50,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T02:20:12Z"
+    },
+    {
+     "seq": 51,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T02:20:47Z"
+    },
+    {
+     "seq": 52,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:21:07Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos394-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos394:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "RETRACTED by author boundary audit: \"COMPUTATION_SUPPORTED for all input configurations\" was read as \"COMPUTATION_SUPPORTED for this packet's configuration\" — the ∃-for-∀ obstruction was stated as universal when it fails at the empty-recheck-set boundary"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos394",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos394:LEM:R007:L1'",
+   "statement": "R007/L1' — for every nonempty six-instance recheck configuration with analytic reduction \"none\", the recheck is an ∃-for-∀ quantifier slip (matching the erdos1210 R005/L1 refutation on record) and cannot be certified without a proved tail bound P; and for every configuration lacking an exact definition of t_k, no finite object exists to extract and no §16.1/§16.2 verifier can be written",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R007",
+   "lemma_id": "L1'",
+   "registry_status": "UNTESTED",
+   "registry_seq": 53,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 53,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:21:07Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos394-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos394:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "R007/L1' — for every nonempty six-instance recheck configuration with analytic reduction \"none\", the recheck is an ∃-for-∀ quantifier slip (matching the erdos1210 R005/L1 refutation on record) and cannot be certified without a proved tail bound P; and for every configuration lacking an exact definition of t_k, no finite object exists to extract and no §16.1/§16.2 verifier can be written"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos394",
+   "is_leaf": true,
+   "manufacture_target": false
+  }
+ ]
+}

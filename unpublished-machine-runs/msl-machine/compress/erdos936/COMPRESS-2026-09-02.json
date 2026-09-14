@@ -1,0 +1,844 @@
+{
+ "schema": "msl-compress/1.0.0",
+ "consumes_schema": "obligation-dag/1.0.0",
+ "problem": "erdos936",
+ "generated_utc": "2026-09-02T22:56:26Z",
+ "outdir": "oracle/evidence/msl-machine/compress/erdos936",
+ "leaves_proved": 23,
+ "leaves_proved_and_unused": 21,
+ "leaves_ore": 4,
+ "headline_ledger": {
+  "path": "oracle/frontier_formalizer/HEADLINE-LEDGER.jsonl",
+  "exists": true,
+  "lines": 59,
+  "rows": 59,
+  "bad_lines": [],
+  "by_class": {
+   "": 1,
+   "CLOSURE_CLAIM": 2,
+   "KILLED_HEADLINE": 13,
+   "NEAR_CLOSE": 5,
+   "HEADLINE_THEOREM": 26,
+   "EXACT_REDUCTION": 2,
+   "IMPROVED_BOUND": 4,
+   "OBSTRUCTION": 6
+  },
+  "by_status": {
+   "": 1,
+   "CONDITIONAL": 2,
+   "KILLED": 10,
+   "UNRECOVERED": 10,
+   "CERTIFICATE": 5,
+   "KERNEL_VERIFIED": 21,
+   "PROSE_ONLY": 10
+  },
+  "unknown_class": 1,
+  "unknown_status": 1,
+  "for_problem": 0,
+  "law": "NEAR_CLOSE rows outrank every DAG open node; KERNEL_VERIFIED rows are leaves with their artifact as source; KILLED_HEADLINE rows are NEGATIVE constraints enforced by gate G4_KILLED",
+  "near_close_targets": 0,
+  "near_close_skipped_no_obligation": [],
+  "kernel_verified_leaves": 0,
+  "kernel_verified_refused_no_artifact": [],
+  "killed_headlines": 0
+ },
+ "targets": [
+  {
+   "id": "erdos936:BRANCH_A",
+   "kind": "BRANCH_STATEMENT",
+   "depth_from_frontier": 1,
+   "on_root_path": true,
+   "source": null,
+   "headline_class": null,
+   "headline_status": null,
+   "needs_typing": null,
+   "statement": "COMPLETE FOUR-VARIANT DETERMINATION: for each of 2^n−1, 2^n+1, n!−1, n!+1 determine whether powerful values occur only finitely often."
+  },
+  {
+   "id": "erdos936:DEMAND:R002:L1:1",
+   "kind": "CAPABILITY_DEMAND",
+   "depth_from_frontier": 1,
+   "on_root_path": false,
+   "source": "FRONTIER_ADJACENT",
+   "headline_class": null,
+   "headline_status": null,
+   "needs_typing": null,
+   "statement": "proving squared exponents for all remaining prime factors of 2^n+1 — equivalent to the open target, so no closure obligation is constructible from L1."
+  }
+ ],
+ "harvest": {
+  "chains": {
+   "file": "oracle/evidence/msl-machine/gpt-mine-day2-2026-09-02/chains/erdos936.chains.json",
+   "chains": 138,
+   "premises_all_proved": 0,
+   "premises_not_proved": 138,
+   "bad_shape": 0,
+   "join_rule": "statement content sha256 (msl_promote._statement_key) OR normalized declaration (msl_promote._norm_decl)"
+  },
+  "decomposer": {
+   "dir": "oracle/evidence/msl-machine/dag/decomp/erdos936",
+   "sidecars": 4,
+   "children_all_proved": 0,
+   "children_open": 3,
+   "error_count": 0,
+   "unreadable": []
+  },
+  "door_composition_jobs": {
+   "dir": "oracle/evidence/msl-machine/ore/jobs/composition",
+   "scanned": 4000,
+   "for_this_problem": 14,
+   "statement_joins_proved": 0,
+   "capped": true,
+   "error_count": 0,
+   "unreadable": []
+  },
+  "law": "CHAINS FIRST, MODEL SECOND. Not one proposer call is made until this harvest has run."
+ },
+ "lifts": [],
+ "candidates": [
+  {
+   "t_id": "erdos936:COMPRESS:erdos936_period_all_k",
+   "theorem_name": "erdos936_period_all_k",
+   "origin": "PROPOSER",
+   "variant": "v1_direct",
+   "statement": "theorem erdos936_period_all_k (n k : ℕ) : (2 ^ (n + 6 * k) + 1) % 9 = (2 ^ n + 1) % 9",
+   "premises": [
+    "erdos936:ORE:92a0f9bc5b8e550c"
+   ],
+   "discharges": "erdos936:BRANCH_A",
+   "derivation_claim": "L (erdos936_period, the single-step shift 2^(n+6)+1 ≡ 2^n+1 mod 9) → T by induction on k: the one-step periodicity is promoted to a quantified all-step periodicity ∀ k, turning the literal shift 6 into the parameter 6*k (L1 generalization, not a conjunction or rename).",
+   "reason": "Full mod-9 periodicity in k, combined with erdos936_nine_dvd_iff, decides 9-divisibility (hence non-powerfulness via the prime 3) of 2^n+1 for every residue class of n mod 6, shrinking the 2^n+1 variant of the four-variant determination to ",
+   "gates": {
+    "order": [
+     "G1_SCHEMA",
+     "G2_TYPE",
+     "G3_CIRCULAR",
+     "G4_KILLED",
+     "G5_CONJUNCTION",
+     "G6_FALSIFY",
+     "G7_RISE"
+    ],
+    "passed": [
+     "G1_SCHEMA",
+     "G2_TYPE",
+     "G3_CIRCULAR",
+     "G4_KILLED",
+     "G5_CONJUNCTION",
+     "G6_FALSIFY",
+     "G7_RISE"
+    ],
+    "failed_at": null,
+    "detail": {
+     "G1_SCHEMA": {
+      "ok": true,
+      "reason": ""
+     },
+     "G2_TYPE": {
+      "standalone_ok": true,
+      "standalone_missing": [],
+      "referenced_missing": [],
+      "fatal": [],
+      "domain_bounds_dropped": [],
+      "ok": true,
+      "reason": ""
+     },
+     "G3_CIRCULAR": {
+      "ok": true,
+      "reason": ""
+     },
+     "G4_KILLED": {
+      "checked_against": 0,
+      "ok": true,
+      "reason": ""
+     },
+     "G5_CONJUNCTION": {
+      "conjunct_count": 1,
+      "t_len": 43,
+      "conjunction_len": 73,
+      "shorter_than_conjunction": true,
+      "generalizes": false,
+      "generalization_reason": "",
+      "measure": "SHORTER_THAN_CONJUNCTION",
+      "ok": true,
+      "reason": ""
+     },
+     "G6_FALSIFY": {
+      "ok": true,
+      "state": "NOT_APPLICABLE",
+      "reason": "NOT_APPLICABLE: not a ∀ over a natural parameter"
+     },
+     "G7_RISE": {
+      "ok": true,
+      "verdict": "RISE",
+      "reasons": [
+       "DISCHARGES:erdos936:BRANCH_A",
+       "ON_ROOT_PATH"
+      ]
+     }
+    },
+    "rise": "RISE"
+   },
+   "rise": "RISE",
+   "kernel": {
+    "verdict": "KERNEL_NOT_RUN",
+    "reason": "no Lean on this machine tonight; the job is filed, nothing is claimed",
+    "axioms": null,
+    "clean": false
+   },
+   "status": "OPEN",
+   "node_validation": {
+    "binding_after_builder": "PARAPHRASE",
+    "type_gate": {
+     "ok": true,
+     "missing": [],
+     "reason": "",
+     "reference": null,
+     "used_type_context": false
+    },
+    "unbound": false
+   },
+   "jobs": {
+    "jobs_file": "oracle/evidence/msl-machine/compress/erdos936/jobs/erdos936__erdos936_period_all_k.jobs.json",
+    "implication_lean": "oracle/evidence/msl-machine/compress/erdos936/jobs/erdos936__erdos936_period_all_k.implication.lean",
+    "standalone_lean": "oracle/evidence/msl-machine/compress/erdos936/jobs/erdos936__erdos936_period_all_k.standalone.lean",
+    "cable_spec_ok": true
+   }
+  },
+  {
+   "t_id": "erdos936:COMPRESS:erdos936_three_adic_lifting",
+   "theorem_name": "erdos936_three_adic_lifting",
+   "origin": "PROPOSER",
+   "variant": "v2_general",
+   "statement": "theorem erdos936_three_adic_lifting (n k : ℕ) :\n    (3 ^ (k + 1) : ℕ) ∣ 2 ^ n + 1 ↔ (n % 2 = 1 ∧ 3 ^ k ∣ n)",
+   "premises": [
+    "erdos936:ORE:1f33adb59737ddbd",
+    "erdos936:ORE:92a0f9bc5b8e550c"
+   ],
+   "discharges": "erdos936:BRANCH_A",
+   "derivation_claim": "The leaf erdos936_nine_dvd_iff is the instance k = 1 (9 ∣ 2^n+1 ↔ n odd ∧ 3 ∣ n, i.e. n ≡ 3 mod 6); the new theorem replaces the literal exponent 2 in 9 = 3^2 by a quantified parameter k+1, characterizing the full 3-adic valuation v_3(2^n+1) = 1 + v_3(n) for odd n, so it strictly generalizes the pro",
+   "reason": "Powerfulness of 2^n+1 requires every prime divisor to appear to exponent ≥ 2; this theorem determines the exact exponent of 3 for all n, converting the mod-9 congruence tool into the full 3-adic lifting step needed to rule out powerful valu",
+   "gates": {
+    "order": [
+     "G1_SCHEMA",
+     "G2_TYPE",
+     "G3_CIRCULAR",
+     "G4_KILLED",
+     "G5_CONJUNCTION",
+     "G6_FALSIFY",
+     "G7_RISE"
+    ],
+    "passed": [
+     "G1_SCHEMA",
+     "G2_TYPE",
+     "G3_CIRCULAR",
+     "G4_KILLED",
+     "G5_CONJUNCTION",
+     "G6_FALSIFY",
+     "G7_RISE"
+    ],
+    "failed_at": null,
+    "detail": {
+     "G1_SCHEMA": {
+      "ok": true,
+      "reason": ""
+     },
+     "G2_TYPE": {
+      "standalone_ok": true,
+      "standalone_missing": [],
+      "referenced_missing": [],
+      "fatal": [],
+      "domain_bounds_dropped": [],
+      "ok": true,
+      "reason": ""
+     },
+     "G3_CIRCULAR": {
+      "ok": true,
+      "reason": ""
+     },
+     "G4_KILLED": {
+      "checked_against": 0,
+      "ok": true,
+      "reason": ""
+     },
+     "G5_CONJUNCTION": {
+      "conjunct_count": 1,
+      "t_len": 55,
+      "conjunction_len": 141,
+      "shorter_than_conjunction": true,
+      "generalizes": false,
+      "generalization_reason": "",
+      "measure": "SHORTER_THAN_CONJUNCTION",
+      "ok": true,
+      "reason": ""
+     },
+     "G6_FALSIFY": {
+      "ok": true,
+      "state": "NOT_APPLICABLE",
+      "reason": "NOT_APPLICABLE: not a ∀ over a natural parameter"
+     },
+     "G7_RISE": {
+      "ok": true,
+      "verdict": "RISE",
+      "reasons": [
+       "DISCHARGES:erdos936:BRANCH_A",
+       "ON_ROOT_PATH"
+      ]
+     }
+    },
+    "rise": "RISE"
+   },
+   "rise": "RISE",
+   "kernel": {
+    "verdict": "KERNEL_NOT_RUN",
+    "reason": "no Lean on this machine tonight; the job is filed, nothing is claimed",
+    "axioms": null,
+    "clean": false
+   },
+   "status": "OPEN",
+   "node_validation": {
+    "binding_after_builder": "PARAPHRASE",
+    "type_gate": {
+     "ok": true,
+     "missing": [],
+     "reason": "",
+     "reference": null,
+     "used_type_context": false
+    },
+    "unbound": false
+   },
+   "jobs": {
+    "jobs_file": "oracle/evidence/msl-machine/compress/erdos936/jobs/erdos936__erdos936_three_adic_lifting.jobs.json",
+    "implication_lean": "oracle/evidence/msl-machine/compress/erdos936/jobs/erdos936__erdos936_three_adic_lifting.implication.lean",
+    "standalone_lean": "oracle/evidence/msl-machine/compress/erdos936/jobs/erdos936__erdos936_three_adic_lifting.standalone.lean",
+    "cable_spec_ok": true
+   }
+  },
+  {
+   "t_id": "erdos936:COMPRESS:erdos936_81_dvd_iff",
+   "theorem_name": "erdos936_81_dvd_iff",
+   "origin": "PROPOSER",
+   "variant": "v3_bridge",
+   "statement": "theorem erdos936_81_dvd_iff (n : ℕ) : 81 ∣ 2 ^ n + 1 ↔ n % 54 = 27",
+   "premises": [
+    "erdos936:ORE:1f33adb59737ddbd",
+    "erdos936:ORE:92a0f9bc5b8e550c"
+   ],
+   "discharges": "erdos936:BRANCH_A",
+   "derivation_claim": "L1 ∧ L2 → T: the proved mod-9 criterion (9 ∣ 2^n+1 ↔ n ≡ 3 mod 6) plus its periodicity transfer (2^(n+6) ≡ 2^n mod 9) are lifted one valuation level: the same order-of-2 analysis mod 81 (ord_81(2) = 54, and 2^27 ≡ −1 mod 81 but 2^9, 2^18 ≢ −1) yields the exact mod-54 criterion. L1 is satisfied becau",
+   "reason": "It pins the exact 3-adic valuation behavior of 2^n+1 one layer above the kernel-proved mod-9 leaf, which is the missing bridge to showing 2^n+1 is powerful only in residue-class-narrowed cases (n ≡ 27 mod 54), strictly shrinking the 2^n+1 a",
+   "gates": {
+    "order": [
+     "G1_SCHEMA",
+     "G2_TYPE",
+     "G3_CIRCULAR",
+     "G4_KILLED",
+     "G5_CONJUNCTION",
+     "G6_FALSIFY",
+     "G7_RISE"
+    ],
+    "passed": [
+     "G1_SCHEMA",
+     "G2_TYPE",
+     "G3_CIRCULAR",
+     "G4_KILLED",
+     "G5_CONJUNCTION",
+     "G6_FALSIFY",
+     "G7_RISE"
+    ],
+    "failed_at": null,
+    "detail": {
+     "G1_SCHEMA": {
+      "ok": true,
+      "reason": ""
+     },
+     "G2_TYPE": {
+      "standalone_ok": true,
+      "standalone_missing": [],
+      "referenced_missing": [],
+      "fatal": [],
+      "domain_bounds_dropped": [],
+      "ok": true,
+      "reason": ""
+     },
+     "G3_CIRCULAR": {
+      "ok": true,
+      "reason": ""
+     },
+     "G4_KILLED": {
+      "checked_against": 0,
+      "ok": true,
+      "reason": ""
+     },
+     "G5_CONJUNCTION": {
+      "conjunct_count": 1,
+      "t_len": 28,
+      "conjunction_len": 141,
+      "shorter_than_conjunction": true,
+      "generalizes": true,
+      "generalization_reason": "BOUND_EXTENSION: T's numeric bound exceeds a premise's",
+      "measure": "SHORTER_THAN_CONJUNCTION",
+      "ok": true,
+      "reason": ""
+     },
+     "G6_FALSIFY": {
+      "ok": true,
+      "state": "NOT_APPLICABLE",
+      "reason": "NOT_APPLICABLE: not a ∀ over a natural parameter"
+     },
+     "G7_RISE": {
+      "ok": true,
+      "verdict": "RISE",
+      "reasons": [
+       "DISCHARGES:erdos936:BRANCH_A",
+       "ON_ROOT_PATH"
+      ]
+     }
+    },
+    "rise": "RISE"
+   },
+   "rise": "RISE",
+   "kernel": {
+    "verdict": "KERNEL_NOT_RUN",
+    "reason": "no Lean on this machine tonight; the job is filed, nothing is claimed",
+    "axioms": null,
+    "clean": false
+   },
+   "status": "OPEN",
+   "node_validation": {
+    "binding_after_builder": "PARAPHRASE",
+    "type_gate": {
+     "ok": true,
+     "missing": [],
+     "reason": "",
+     "reference": null,
+     "used_type_context": false
+    },
+    "unbound": false
+   },
+   "jobs": {
+    "jobs_file": "oracle/evidence/msl-machine/compress/erdos936/jobs/erdos936__erdos936_81_dvd_iff.jobs.json",
+    "implication_lean": "oracle/evidence/msl-machine/compress/erdos936/jobs/erdos936__erdos936_81_dvd_iff.implication.lean",
+    "standalone_lean": "oracle/evidence/msl-machine/compress/erdos936/jobs/erdos936__erdos936_81_dvd_iff.standalone.lean",
+    "cable_spec_ok": true
+   }
+  },
+  {
+   "t_id": "erdos936:COMPRESS:erdos936_odd_not_mult3_not_powerful",
+   "theorem_name": "erdos936_odd_not_mult3_not_powerful",
+   "origin": "PROPOSER",
+   "variant": "v1_direct",
+   "statement": "theorem erdos936_odd_not_mult3_not_powerful (n : ℕ) (hn : n % 2 = 1) (hm : n % 3 ≠ 0) : ¬ Powerful (2 ^ n + 1)",
+   "premises": [
+    "erdos936:ORE:1f33adb59737ddbd"
+   ],
+   "discharges": "erdos936:DEMAND:R002:L1:1 (shrinks: eliminates every odd n with 3 ∤ n from the squared-exponent demand for 2^n + 1)",
+   "derivation_claim": "erdos936:ORE:1f33adb59737ddbd → T: since n is odd, 2^n + 1 ≡ (−1)^n + 1 ≡ 0 (mod 3), so the prime 3 divides 2^n + 1; if 9 ∣ 2^n + 1 then by erdos936_nine_dvd_iff n % 6 = 3, forcing n % 3 = 0, contradicting hm; so 9 ∤ 2^n + 1 while 3 ∣ 2^n + 1, i.e. the prime 3 occurs to exponent exactly 1, so Powerf",
+   "reason": "It converts the 9-adic periodicity leaf into an unconditional non-powerfulness result, reducing the open 2^n+1 target to n even or n ≡ 3 (mod 6), i.e. exactly the remaining prime factors' exponents for n ≡ 3 mod 6.",
+   "gates": {
+    "order": [
+     "G1_SCHEMA",
+     "G2_TYPE",
+     "G3_CIRCULAR",
+     "G4_KILLED",
+     "G5_CONJUNCTION",
+     "G6_FALSIFY",
+     "G7_RISE"
+    ],
+    "passed": [
+     "G1_SCHEMA",
+     "G2_TYPE",
+     "G3_CIRCULAR",
+     "G4_KILLED",
+     "G5_CONJUNCTION",
+     "G6_FALSIFY",
+     "G7_RISE"
+    ],
+    "failed_at": null,
+    "detail": {
+     "G1_SCHEMA": {
+      "ok": true,
+      "reason": ""
+     },
+     "G2_TYPE": {
+      "standalone_ok": true,
+      "standalone_missing": [],
+      "referenced_missing": [],
+      "fatal": [],
+      "domain_bounds_dropped": [],
+      "ok": true,
+      "reason": ""
+     },
+     "G3_CIRCULAR": {
+      "ok": true,
+      "reason": ""
+     },
+     "G4_KILLED": {
+      "checked_against": 0,
+      "ok": true,
+      "reason": ""
+     },
+     "G5_CONJUNCTION": {
+      "conjunct_count": 1,
+      "t_len": 22,
+      "conjunction_len": 65,
+      "shorter_than_conjunction": true,
+      "generalizes": false,
+      "generalization_reason": "",
+      "measure": "SHORTER_THAN_CONJUNCTION",
+      "ok": true,
+      "reason": ""
+     },
+     "G6_FALSIFY": {
+      "ok": true,
+      "state": "NOT_APPLICABLE",
+      "reason": "NOT_APPLICABLE: not a ∀ over a natural parameter"
+     },
+     "G7_RISE": {
+      "ok": true,
+      "verdict": "LATERAL",
+      "reasons": [
+       "NO_OPEN_NODE_DISCHARGED_OR_SHRUNK: kept and registered, excluded from tower height and compression ratio"
+      ]
+     }
+    },
+    "rise": "LATERAL"
+   },
+   "rise": "LATERAL",
+   "kernel": {
+    "verdict": "KERNEL_NOT_RUN",
+    "reason": "no Lean on this machine tonight; the job is filed, nothing is claimed",
+    "axioms": null,
+    "clean": false
+   },
+   "status": "OPEN",
+   "node_validation": {
+    "binding_after_builder": "PARAPHRASE",
+    "type_gate": {
+     "ok": true,
+     "missing": [],
+     "reason": "",
+     "reference": null,
+     "used_type_context": true
+    },
+    "unbound": false
+   },
+   "jobs": {
+    "jobs_file": "oracle/evidence/msl-machine/compress/erdos936/jobs/erdos936__erdos936_odd_not_mult3_not_powerful.jobs.json",
+    "implication_lean": "oracle/evidence/msl-machine/compress/erdos936/jobs/erdos936__erdos936_odd_not_mult3_not_powerful.implication.lean",
+    "standalone_lean": "oracle/evidence/msl-machine/compress/erdos936/jobs/erdos936__erdos936_odd_not_mult3_not_powerful.standalone.lean",
+    "cable_spec_ok": true
+   }
+  },
+  {
+   "t_id": "erdos936:COMPRESS:erdos936_period_divisor_of_63",
+   "theorem_name": "erdos936_period_divisor_of_63",
+   "origin": "PROPOSER",
+   "variant": "v2_general",
+   "statement": "∀ (n m : ℕ), m ∣ (2 ^ 6 - 1) → ((2 ^ (n + 6) + 1) % m = (2 ^ n + 1) % m)",
+   "premises": [
+    "erdos936:ORE:92a0f9bc5b8e550c",
+    "erdos936:ORE:1f33adb59737ddbd"
+   ],
+   "discharges": "erdos936:DEMAND:R002:L1:1",
+   "derivation_claim": "The kernel proves 2^(n+6) + 1 - (2^n + 1) = 2^n * (2^6 - 1), so any m dividing 63 = 2^6 - 1 divides the difference, giving congruence of 2^(n+6)+1 and 2^n+1 mod m. Instantiating m = 9 (since 9 ∣ 63) recovers erdos936_period; instantiating with any other divisor of 63 (1, 3, 7, 21, 63) extends it, so",
+   "reason": "It replaces the fixed modulus 9 with a universally quantified divisor of 2^6-1, upgrading a pointwise periodicity fact into the general congruence engine needed to certify prime-power (squared-exponent) divisibility of 2^n+1 across all modu",
+   "gates": {
+    "order": [
+     "G1_SCHEMA",
+     "G2_TYPE",
+     "G3_CIRCULAR",
+     "G4_KILLED",
+     "G5_CONJUNCTION",
+     "G6_FALSIFY",
+     "G7_RISE"
+    ],
+    "passed": [
+     "G1_SCHEMA",
+     "G2_TYPE",
+     "G3_CIRCULAR",
+     "G4_KILLED",
+     "G5_CONJUNCTION",
+     "G6_FALSIFY",
+     "G7_RISE"
+    ],
+    "failed_at": null,
+    "detail": {
+     "G1_SCHEMA": {
+      "ok": true,
+      "reason": ""
+     },
+     "G2_TYPE": {
+      "standalone_ok": true,
+      "standalone_missing": [],
+      "referenced_missing": [],
+      "fatal": [],
+      "domain_bounds_dropped": [],
+      "ok": true,
+      "reason": ""
+     },
+     "G3_CIRCULAR": {
+      "ok": true,
+      "reason": ""
+     },
+     "G4_KILLED": {
+      "checked_against": 0,
+      "ok": true,
+      "reason": ""
+     },
+     "G5_CONJUNCTION": {
+      "conjunct_count": 1,
+      "t_len": 72,
+      "conjunction_len": 141,
+      "shorter_than_conjunction": true,
+      "generalizes": true,
+      "generalization_reason": "BINDER_GENERALIZATION: T quantifies where a premise held the literal(s) 3,9",
+      "measure": "SHORTER_THAN_CONJUNCTION",
+      "ok": true,
+      "reason": ""
+     },
+     "G6_FALSIFY": {
+      "ok": true,
+      "state": "NOT_APPLICABLE",
+      "reason": "NOT_APPLICABLE: not a ∀ over a natural parameter"
+     },
+     "G7_RISE": {
+      "ok": true,
+      "verdict": "RISE",
+      "reasons": [
+       "DISCHARGES:erdos936:DEMAND:R002:L1:1"
+      ]
+     }
+    },
+    "rise": "RISE"
+   },
+   "rise": "RISE",
+   "kernel": {
+    "verdict": "KERNEL_NOT_RUN",
+    "reason": "no Lean on this machine tonight; the job is filed, nothing is claimed",
+    "axioms": null,
+    "clean": false
+   },
+   "status": "OPEN",
+   "node_validation": {
+    "binding_after_builder": "PARAPHRASE",
+    "type_gate": {
+     "ok": true,
+     "missing": [],
+     "reason": "",
+     "reference": null,
+     "used_type_context": false
+    },
+    "unbound": false
+   },
+   "jobs": {
+    "jobs_file": "oracle/evidence/msl-machine/compress/erdos936/jobs/erdos936__erdos936_period_divisor_of_63.jobs.json",
+    "implication_lean": "oracle/evidence/msl-machine/compress/erdos936/jobs/erdos936__erdos936_period_divisor_of_63.implication.lean",
+    "standalone_lean": "oracle/evidence/msl-machine/compress/erdos936/jobs/erdos936__erdos936_period_divisor_of_63.standalone.lean",
+    "cable_spec_ok": true
+   }
+  },
+  {
+   "t_id": "erdos936:COMPRESS:erdos936_powerful_odd_to_mod6_3",
+   "theorem_name": "erdos936_powerful_odd_to_mod6_3",
+   "origin": "PROPOSER",
+   "variant": "v3_bridge",
+   "statement": "∀ (n : ℕ), (∀ p : ℕ, p ∣ 2 ^ n + 1 → p ^ 2 ∣ 2 ^ n + 1) → n % 2 = 1 → n % 6 = 3",
+   "premises": [
+    "erdos936:ORE:1f33adb59737ddbd"
+   ],
+   "discharges": "erdos936:DEMAND:R002:L1:1",
+   "derivation_claim": "From hodd, 3 ∣ 2^n+1 (since 2 ≡ -1 mod 3 and n is odd); hpow applied at the prime 3 gives 9 ∣ 2^n+1; then erdos936_nine_dvd_iff yields n % 6 = 3. So L(nine_dvd_iff) + elementary parity/cubic-residue facts → T.",
+   "reason": "It reduces the open obligation 'squared exponents for all remaining prime factors of 2^n+1' to the single arithmetic task of ruling out even n (or proving n odd), since powerfulness plus oddness now forces the 3^2 factor and pins n ≡ 3 mod ",
+   "gates": {
+    "order": [
+     "G1_SCHEMA",
+     "G2_TYPE",
+     "G3_CIRCULAR",
+     "G4_KILLED",
+     "G5_CONJUNCTION",
+     "G6_FALSIFY",
+     "G7_RISE"
+    ],
+    "passed": [
+     "G1_SCHEMA",
+     "G2_TYPE",
+     "G3_CIRCULAR",
+     "G4_KILLED",
+     "G5_CONJUNCTION",
+     "G6_FALSIFY",
+     "G7_RISE"
+    ],
+    "failed_at": null,
+    "detail": {
+     "G1_SCHEMA": {
+      "ok": true,
+      "reason": ""
+     },
+     "G2_TYPE": {
+      "standalone_ok": true,
+      "standalone_missing": [],
+      "referenced_missing": [],
+      "fatal": [],
+      "domain_bounds_dropped": [],
+      "ok": true,
+      "reason": ""
+     },
+     "G3_CIRCULAR": {
+      "ok": true,
+      "reason": ""
+     },
+     "G4_KILLED": {
+      "checked_against": 0,
+      "ok": true,
+      "reason": ""
+     },
+     "G5_CONJUNCTION": {
+      "conjunct_count": 1,
+      "t_len": 79,
+      "conjunction_len": 65,
+      "shorter_than_conjunction": false,
+      "generalizes": true,
+      "generalization_reason": "BINDER_GENERALIZATION: T quantifies where a premise held the literal(s) 9",
+      "measure": "GENERALIZATION",
+      "ok": true,
+      "reason": ""
+     },
+     "G6_FALSIFY": {
+      "ok": true,
+      "state": "UNDECIDED",
+      "rows": [],
+      "param": "n",
+      "lean": "import Mathlib\nset_option autoImplicit false\n-- Powerfulness of m is decided against its complete prime factorization,\n-- given explicitly as (prime, exponent) pairs, all computed by hand trial division.\n-- isPowerfulFactorization: m is powerful iff every prime exponent is >= 2.\ndef Factorization := List (Nat × Nat)\ndef exponentsAtLeastTwo (f : Factorization) : Bool :=\n  f.all (fun pe => pe.2 >= 2)\n-- Factorizations obtained by exact trial division:\n--   9    = 3^2\n--   25   = 5^2\n--   121  = 11^2\n--   5041 = 71^2\n-- (Primality of 3, 5, 11, 71: none is divisible by any prime <= its square root:\n--  3: none <2; 5: none <3; 11: not by 2,3; 71: not by 2,3,5,7. Encoded below.)\ndef prime3 : Bool := !(2 <= 3 && 3 % 2 == 0)\ndef prime5 : Bool := !(2 <= 5 && 5 % 2 == 0) && !(3 <= 5 && 5 % 3 == 0)\ndef prime11 : Bool := !(2 <= 11 && 11 % 2 == 0) && !(3 <= 11 && 11 % 3 == 0)\ndef prime71 : Bool :=\n  !(2 <= 71 && 71 % 2 == 0) && !(3 <= 71 && 71 % 3 == 0) &&\n  !(5 <= 71 && 71 % 5 == 0) && !(7 <= 71 && 71 % 7 == 0)\ndef recon : Factorization -> Nat\n  | [] => 1\n  | (p, e) :: rest => p ^ e * recon rest\ndef f9 : Factorization   := [(3, 2)]\ndef f25 : Factorization  := [(5, 2)]\ndef f121 : Factorization := [(11, 2)]\ndef f5041 : Factorization := [(71, 2)]\ndef checkWitnesses : Bool :=\n  prime3 && prime5 && prime11 && prime71 &&\n  exponentsAtLeastTwo f9 && recon f9 == 9 &&\n  exponentsAtLeastTwo f25 && recon f25 == 25 &&\n  exponentsAtLeastTwo f121 && recon f121 == 121 &&\n  exponentsAtLeastTwo f5041 && recon f5041 == 5041\n/-!\nErdős 936, adversarial-mine promotion (opus ranked auditor + gold pack, 2026-09-02).\nThe exact mod-9 periodicity tool for the powerful-number question on 2^n + 1:\n9 ∣ 2^n + 1 iff n ≡ 3 (mod 6). Order of 2 mod 9 is 6; the six residues are decided\nby the kernel and the periodicity transfers by 2^(n+6) ≡ 2^n (mod 9).\n-/\ntheorem erdos936_period (n : ℕ) : (2 ^ (n + 6) + 1) % 9 = (2 ^ n + 1) % 9 := by\n  have h : 2 ^ (n + 6) % 9 = 2 ^ n % 9 := by\n    rw [pow_add]\n    calc (2 ^ n * 2 ^ 6) % 9 = (2 ^ n % 9) * (2 ^ 6 % 9) % 9 := Nat.mul_mod _ _ _\n      _ = (2 ^ n % 9) * 1 % 9 := by norm_num\n      _ = 2 ^ n % 9 := by rw [mul_one]; omega\n  omega\ndef sq2 : Nat → Nat → Bool := fun k m => (2^(k+m) % 9) == (2^k % 9)\ndef check_periodicity : Bool := (List.range 6).all (fun k => sq2 k 6)\ndef check_tt : Bool := (List.range 12).all (fun n => ((2^n + 1) % 9 == 0) == (n % 6 == 3))\nabbrev erdos936_powerful_odd_to_mod6_3_prop (n : Nat) : Prop := (∀ p : ℕ, p ∣ 2 ^ n + 1 → p ^ 2 ∣ 2 ^ n + 1) → n % 2 = 1 → n % 6 = 3\n\n#eval (if (decide (erdos936_powerful_odd_to_mod6_3_prop 0)) then \"MSLF 0 TRUE\" else \"MSLF 0 FALSE\")\n#eval (if (decide (erdos936_powerful_odd_to_mod6_3_prop 1)) then \"MSLF 1 TRUE\" else \"MSLF 1 FALSE\")\n#eval (if (decide (erdos936_powerful_odd_to_mod6_3_prop 2)) then \"MSLF 2 TRUE\" else \"MSLF 2 FALSE\")\n",
+      "law": "SILENCE IS UNDECIDED, NEVER A PASS (msl_strengthen S7d)"
+     },
+     "G7_RISE": {
+      "ok": true,
+      "verdict": "RISE",
+      "reasons": [
+       "DISCHARGES:erdos936:DEMAND:R002:L1:1"
+      ]
+     }
+    },
+    "rise": "RISE"
+   },
+   "rise": "RISE",
+   "kernel": {
+    "verdict": "KERNEL_NOT_RUN",
+    "reason": "no Lean on this machine tonight; the job is filed, nothing is claimed",
+    "axioms": null,
+    "clean": false
+   },
+   "status": "OPEN",
+   "node_validation": {
+    "binding_after_builder": "PARAPHRASE",
+    "type_gate": {
+     "ok": true,
+     "missing": [],
+     "reason": "",
+     "reference": null,
+     "used_type_context": false
+    },
+    "unbound": false
+   },
+   "jobs": {
+    "jobs_file": "oracle/evidence/msl-machine/compress/erdos936/jobs/erdos936__erdos936_powerful_odd_to_mod6_3.jobs.json",
+    "implication_lean": "oracle/evidence/msl-machine/compress/erdos936/jobs/erdos936__erdos936_powerful_odd_to_mod6_3.implication.lean",
+    "standalone_lean": "oracle/evidence/msl-machine/compress/erdos936/jobs/erdos936__erdos936_powerful_odd_to_mod6_3.standalone.lean",
+    "cable_spec_ok": true
+   }
+  }
+ ],
+ "gated_out": {},
+ "kernel_jobs": 12,
+ "proved_T": 0,
+ "lateral": 1,
+ "rounds": [
+  {
+   "round": 0,
+   "proposals": 6,
+   "new_proved_leaves_for_next_round": 0,
+   "stop": "FIXED_POINT: the pool did not grow"
+  }
+ ],
+ "cost_usd": 0.0039204,
+ "model_calls": 6,
+ "law": "NOTHING HERE IS PROVED. A candidate that clears all six gates is a candidate with a filed kernel job.",
+ "target_mode": "ROOT_PULLED+FRONTIER_ADJACENT",
+ "frontier_adjacent_targets": 1,
+ "distance_to_root_before": 2,
+ "root_path": [
+  "erdos936:ROOT",
+  "erdos936:BRANCH_A",
+  "erdos936:LEM:R001:L1"
+ ],
+ "root_path_detail": {
+  "root": "erdos936:ROOT",
+  "proved_kernel_nodes": 23,
+  "reason": "shortest root-to-proved path",
+  "terminus": "erdos936:LEM:R001:L1",
+  "path_cost": 2
+ },
+ "lift_info": {
+  "erdos936:BRANCH_A": {
+   "liftable": false,
+   "reason": "NO_RELATION: no quantifier or relational symbol -- this is prose"
+  },
+  "erdos936:DEMAND:R002:L1:1": {
+   "liftable": false,
+   "reason": "NO_RELATION: no quantifier or relational symbol -- this is prose"
+  }
+ },
+ "premise_pool": {
+  "offerable": 4,
+  "prose_proved_not_includable": 17,
+  "examples": [
+   "erdos936:LEM:R001:L1",
+   "erdos936:LEM:R005:L1",
+   "erdos936:LEM:R006:L1",
+   "erdos936:LEM:R009:L1",
+   "erdos936:LEM:R010:L1",
+   "erdos936:LEM:R011:L1",
+   "erdos936:LEM:R012:L1",
+   "erdos936:LEM:R013:L1"
+  ],
+  "law": "A PROVED node with no includable source is PROVED IN NAME. It cannot be a premise in a file re-checked from zero; the fix for it is formalization, not compression."
+ },
+ "vocab_graph": {
+  "nodes": 4,
+  "edges": 6
+ },
+ "metrics": {
+  "leaves_proved": 23,
+  "leaves_proved_and_unused": 21,
+  "targets_found": 2,
+  "target_mode": "ROOT_PULLED+FRONTIER_ADJACENT",
+  "headline_near_close_targets": 0,
+  "headline_kernel_verified_leaves": 0,
+  "headline_killed_constraints": 0,
+  "killed_restatements_refused": 0,
+  "premises_offerable": 4,
+  "proved_but_not_includable": 17,
+  "chain_jobs_filed_free": 0,
+  "decomposer_compositions_free": 0,
+  "directed_lifts_proposed": 0,
+  "model_candidates": 6,
+  "combined_theorems_proposed": 6,
+  "gated_out_by_gate": {},
+  "kernel_jobs_filed": 12,
+  "proved_T": 0,
+  "lateral_kept": 1,
+  "tower_height": 0,
+  "compression_ratio": 0.0,
+  "tower_detail": {
+   "rise_theorems_proved": 0,
+   "at_height_ge_1": 0,
+   "proved_leaves_denominator": 23,
+   "heights": {},
+   "law": "LATERAL theorems are excluded from height and ratio by construction"
+  },
+  "distance_to_root_before": 2,
+  "distance_to_root_after": 2,
+  "cost_usd": 0.00392,
+  "model_calls": 6
+ }
+}

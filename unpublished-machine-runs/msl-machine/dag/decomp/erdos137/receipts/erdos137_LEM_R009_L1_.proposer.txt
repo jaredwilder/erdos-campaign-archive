@@ -1,0 +1,16 @@
+{"definitions": "",
+  "parent_typed": {"name": "erdos137_R009_finite_core", "binders": [],
+                   "statement": "(∀ (n : Nat), n ∈ Finset.Icc (1 : Nat) (999 : Nat) → ¬ powerful (blockProduct n (3 : Nat))) ∧ (∀ (n : Nat), n ∈ Finset.Icc (1 : Nat) (999 : Nat) → ¬ (powerful n ∧ powerful (n + 1) ∧ powerful (n + 2))) ∧ (∀ (n : Nat), n ∈ Finset.Icc (1 : Nat) (6 : Nat) → ¬ powerful (blockProduct n (4 : Nat)))",
+                   "reading": "The finite certified core: no powerful product of 3 consecutive integers with first factor in [1,999] (F2/F2'), no 3 consecutive powerful integers starting in [1,999] (F1), and no powerful product of 4 consecutive integers with first factor in [1,6] (F3); the unrestricted k ≥ 3 claim is carried unproven (U)."},
+  "children": [
+    {"name": "no_powerful_triple_block_999", "binders": ["(n : Nat)"],
+     "statement": "n ∈ Finset.Icc (1 : Nat) (999 : Nat) → ¬ powerful (blockProduct n (3 : Nat))",
+     "reading": "(F2') For 1 ≤ n ≤ 999, the product n(n+1)(n+2) is not powerful."},
+    {"name": "no_three_consecutive_powerful_999", "binders": ["(n : Nat)"],
+     "statement": "n ∈ Finset.Icc (1 : Nat) (999 : Nat) → ¬ (powerful n ∧ powerful (n + 1) ∧ powerful (n + 2))",
+     "reading": "(F1) No three consecutive integers, with the first in [1,999], are all powerful."},
+    {"name": "no_powerful_quad_block_6", "binders": ["(n : Nat)"],
+     "statement": "n ∈ Finset.Icc (1 : Nat) (6 : Nat) → ¬ powerful (blockProduct n (4 : Nat))",
+     "reading": "(F3) For 1 ≤ n ≤ 6, the product of n, n+1, n+2, n+3 is not powerful."}
+  ],
+  "composition_claim": "The parent is exactly the conjunction of the three children: child 1 is the F2/F2' finite disjunction on [1,999] for blocks of 3, child 2 is the F1 no-three-consecutive-powerful fact on [1,999], and child 3 is the F3 four-consecutive fact on [1,6]; their conjunction (via And.intro) yields the parent verbatim. The unrestricted k ≥ 3 claim and the even-case reduction are explicitly outside the certified core and carried unproven, as the obligation states."}

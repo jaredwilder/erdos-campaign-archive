@@ -1,0 +1,13 @@
+{"definitions": "def certPassed (b : Bool) : Prop := b = true\n\ndef verifierRefutes (P : Prop) [inst : Decidable P] : Prop := decide P = false",
+  "parent_typed": {"name": "erdos18LEM_R004_L1_retraction", "binders": ["(P : Prop)", "(inst : Decidable P)"],
+    "statement": "verifierRefutes P → ¬ certPassed (decide P)",
+    "reading": "If the fail-closed verifier refutes the hand-asserted arithmetic identity P, then no PROVED certificate for it reaches its PASS line, so the claim is retracted."},
+  "children": [
+    {"name": "verifier_dichotomy", "binders": ["(P : Prop)", "(inst : Decidable P)"],
+      "statement": "decide P = true ∨ verifierRefutes P",
+      "reading": "The fail-closed verifier yields exactly one of two outcomes: the identity verifies, or it is refuted."},
+    {"name": "pass_requires_verification", "binders": ["(P : Prop)", "(inst : Decidable P)"],
+      "statement": "certPassed (decide P) → decide P = true",
+      "reading": "A certificate can only pass if the verifier itself marked the identity as verified (true); hand-summed prose arithmetic never suffices."}
+  ],
+  "composition_claim": "Child 2 says a PASS line forces decide P = true; the parent's hypothesis (the boundary audit's refutation, per child 1 the sole alternative) gives decide P = false, so certPassed (decide P) is impossible and the certificate is retracted — exactly the parent."}

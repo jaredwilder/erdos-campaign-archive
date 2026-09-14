@@ -1,0 +1,74 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos1113",
+  "generated_utc": "2026-09-02T16:57:59Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos1113:A:M02",
+    "statement": "Prove that for every finite set P of primes there exists n≥0 such that no p∈P divides k·2^n+1.",
+    "statement_sha256": "5cf10bb26270872ca639dfdd17c88f69b937959c5245386402bcea4436a47576",
+    "kind": "MUST_DETERMINE",
+    "binding": "VERBATIM",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "A positive odd integer $m$ such that none of $2^km+1$ are prime for $k\\geq 0$ is called a Sierpinski number. We say that a set of primes $P$ is a covering set for $m$ if every $2^km+1$ is divisible by some $p\\in P$.Are there Sierpinski numbers with no finite covering set of primes?",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos1113-campaign-001/contract.json",
+    "sha256": "5c818461ef6c321282f3cff05e6e1976608a6ddd78849cb47ff8da3a559e4919"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos1113:A:M02",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "bfd1238927b215ed64133ce34e8c08f3cb6f67557bf0d1d9fc14956d1564a6c7",
+    "prompt_chars": 4388,
+    "response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "usage": {
+      "prompt_tokens": 1295,
+      "completion_tokens": 25442,
+      "total_tokens": 26737,
+      "cost": 0,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.006457625,
+        "upstream_inference_prompt_cost": 9.7125e-05,
+        "upstream_inference_completions_cost": 0.0063605
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 0,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.0,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 612.39,
+    "utc": "2026-09-02T16:45:35Z"
+  },
+  "children": [],
+  "composition": null,
+  "parent_new_depends_on": [],
+  "rejected": [],
+  "counts": {
+    "proposed": 0,
+    "elaborated": 0,
+    "bound": 0,
+    "non_circular": 0,
+    "non_trivial": 0,
+    "surviving": 0,
+    "composition_kernel_checked": 0,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 0
+  },
+  "refusal": "PROPOSAL_NOT_JSON: no object found in response"
+}

@@ -1,0 +1,93 @@
+{
+ "schema": "msl-compress/1.0.0",
+ "consumes": "msl-ladder/1.0.0",
+ "problem": "erdos289",
+ "theorem": "abs_sq_bound_no_sign_hypothesis",
+ "law": "A JOB IS A DEMAND, NEVER A RESULT. No kernel has seen either file. T is PROVED_KERNEL only when the IMPLICATION file returns rc 0, error-free, with an axiom footprint inside the allowed three.",
+ "jobs": {
+  "compress_erdos289__abs_sq_bound_no_sign_hypothesis_implication": {
+   "kind": "IMPLICATION_BY_SOURCE_INCLUSION",
+   "decl": "abs_sq_bound_no_sign_hypothesis",
+   "composition_decl": "abs_sq_bound_no_sign_hypothesis_composition",
+   "lean_path": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__abs_sq_bound_no_sign_hypothesis.implication.lean",
+   "lean_sha256": "cdc65205fa464baedcd67148a9d7a8d1449915705b99ae8fdbee932f9d5e4a62",
+   "promotes_T_on_clean_verdict": true,
+   "builder": "msl_ladder.composed_file"
+  },
+  "compress_erdos289__abs_sq_bound_no_sign_hypothesis_standalone": {
+   "kind": "T_STANDALONE_BY_DETERMINISTIC_LADDER",
+   "decl": "abs_sq_bound_no_sign_hypothesis",
+   "lean_path": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__abs_sq_bound_no_sign_hypothesis.standalone.lean",
+   "lean_sha256": "b67c234b718ad208875944d7a780c35870df48ac77605ff39c25f77dfcd71554",
+   "shape": "ARITHMETIC",
+   "arms": [
+    "decide",
+    "omega",
+    "norm_num",
+    "ring_nf",
+    "ring",
+    "linarith",
+    "nlinarith",
+    "positivity",
+    "gcongr",
+    "simp_all",
+    "aesop",
+    "prelude-alone",
+    "prelude+omega",
+    "prelude+norm_num",
+    "prelude+linarith",
+    "prelude+nlinarith",
+    "prelude+ring_nf",
+    "prelude+ring",
+    "prelude+decide",
+    "prelude+simp_all",
+    "prelude+aesop",
+    "prelude+field_simp",
+    "prelude+field_simp+ring",
+    "prelude+qify+omega"
+   ],
+   "promotes_T_on_clean_verdict": false,
+   "builder": "msl_ladder.leaf_file"
+  }
+ },
+ "included_sources": [
+  {
+   "leaf": "erdos289:ORE:17ed27ce5353389c",
+   "declaration": "msl_fmz_erdos289_campaign_001_R006_L1",
+   "included_via": "LEAN_STATEMENT_LINE",
+   "sha256": "e5300a0b53842801fab3db42abbb1af410acf17dfe117d933584c429a7235380",
+   "receipt": "oracle/evidence/msl-machine/gpt-mine-day2-2026-09-02/kernel-verified/erdos289/msl_fmz_erdos289_campaign_001_R006_L1__0650c845fb6c.verify.json",
+   "source": null
+  },
+  {
+   "leaf": "erdos289:ORE:9055db9a0a4c50d0",
+   "declaration": "msl_fmz_erdos289_campaign_001_R006_L1",
+   "included_via": "LEAN_STATEMENT_LINE",
+   "sha256": "77017670f87b168a952a6b483b515da3483ca29beed4f53e3f9b37cae4ba1e98",
+   "receipt": "oracle/evidence/msl-machine/gpt-mine-day2-2026-09-02/kernel-verified/erdos289/msl_fmz_erdos289_campaign_001_R006_L1__701ea2fa5fe0.verify.json",
+   "source": null
+  },
+  {
+   "leaf": "erdos289:ORE:f1d0bf347ab58784",
+   "declaration": "msl_fmz_erdos289_campaign_001_R006_L1_a2r3",
+   "included_via": "LEAN_STATEMENT_LINE",
+   "sha256": "692ea9a7105a07235425db94aba1179220cf927986da3233c6746baf63c50e8c",
+   "receipt": "oracle/evidence/msl-machine/gpt-mine-day2-2026-09-02/kernel-verified/erdos289/msl_fmz_erdos289_campaign_001_R006_L1_a2r3__416297e582a4.verify.json",
+   "source": null
+  }
+ ],
+ "cable_spec": {
+  "id": "compress_erdos289__abs_sq_bound_no_sign_hypothesis",
+  "imports": "Mathlib",
+  "definitions": "-- no auxiliary definitions\n\n-- THE NORMALIZATION PRELUDE (msl_ladder, deterministic, $0).\n-- The claim it tests: most leaf failures on an arithmetic DAG are SIDE-CONDITIONS\n-- (an un-introduced hypothesis, a numeric coercion, a nonnegativity obligation),\n-- not mathematics.  Each step is `try`, so the prelude never fails and never\n-- changes what a tactic after it is allowed to prove.\nmacro \"msl_prelude\" : tactic =>\n  `(tactic| ((try intros); (try push_cast); (try positivity)))\n\n-- ---- children, INCLUDED BY SOURCE (each already PROVED_KERNEL alone)\ntheorem msl_fmz_erdos289_campaign_001_R006_L1 ∀ R B : ℚ, (R ^ 2 ≤ B ^ 2 ∧ 0 ≤ B) ↔ |R| ≤ B := by\n  first\n  | decide\n  | norm_num\n  | simp\n\ntheorem msl_fmz_erdos289_campaign_001_R006_L1 ∀ R B : ℚ, (0 ≤ B → (R ^ 2 ≤ B ^ 2 ↔ |R| ≤ B)) ∧ (B < 0 → ¬(|R| ≤ B)) := by\n  first\n  | decide\n  | norm_num\n  | simp\n\ntheorem msl_fmz_erdos289_campaign_001_R006_L1_a2r3 ∀ R B : ℚ, (0 ≤ B ∧ R ^ 2 ≤ B ^ 2) ↔ (0 ≤ B ∧ |R| ≤ B) := by\n  first\n  | decide\n  | norm_num\n  | simp\n\n-- ---- the composition: children -> parent\ntheorem abs_sq_bound_no_sign_hypothesis_composition (R : ℚ) (B : ℚ) : ((msl_fmz_erdos289_campaign_001_R006_L1 : ∀ $v1 $v0 : ℚ, ($v1 ^ 2 ≤ $v0 ^ 2 ∧ 0 ≤ $v0) ↔ |$v1| ≤ $v0) ∧ (msl_fmz_erdos289_campaign_001_R006_L1 : ∀ $v1 $v0 : ℚ, (0 ≤ $v0 → ($v1 ^ 2 ≤ $v0 ^ 2 ↔ |$v1| ≤ $v0)) ∧ ($v0 < 0 → ¬(|$v1| ≤ $v0))) ∧ (msl_fmz_erdos289_campaign_001_R006_L1_a2r3 : ∀ $v1 $v0 : ℚ, (0 ≤ $v0 ∧ $v1 ^ 2 ≤ $v0 ^ 2) ↔ (0 ≤ $v0 ∧ |$v1| ≤ $v0))) → (∀ (R B : ℚ), R ^ 2 ≤ B ^ 2 ↔ |R| ≤ |B|) := by\n  first\n  | (decide; done)\n  | (omega; done)\n  | (norm_num; done)\n  | (ring_nf; done)\n  | (ring_nf; ring; done)\n  | (linarith; done)\n  | (nlinarith; done)\n  | (positivity; done)\n  | (gcongr; done)\n  | (simp_all; done)\n  | (aesop; done)\n  | (msl_prelude; done)\n  | (msl_prelude; omega; done)\n  | (msl_prelude; norm_num; done)\n  | (msl_prelude; linarith; done)\n  | (msl_prelude; nlinarith; done)\n  | (msl_prelude; ring_nf; done)\n  | (msl_prelude; ring_nf; ring; done)\n  | (msl_prelude; decide; done)\n  | (msl_prelude; simp_all; done)\n  | (msl_prelude; aesop; done)\n  | (msl_prelude; field_simp; done)\n  | (msl_prelude; field_simp; ring; done)\n  | (msl_prelude; qify; omega; done)\n",
+  "hypotheses": [
+   "(R : ℚ)",
+   "(B : ℚ)"
+  ],
+  "conclusion": "∀ (R B : ℚ), R ^ 2 ≤ B ^ 2 ↔ |R| ≤ |B|",
+  "set_options": [
+   "set_option maxHeartbeats 400000"
+  ]
+ },
+ "cable_note": ""
+}

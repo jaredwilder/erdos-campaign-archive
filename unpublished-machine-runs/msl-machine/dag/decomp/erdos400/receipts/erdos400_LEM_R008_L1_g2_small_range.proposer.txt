@@ -1,0 +1,16 @@
+{"definitions": "def feasiblePair (n a b : Nat) : Prop := a.factorial * b.factorial ∣ n.factorial\n\ndef excessAtLeast1 (n a b : Nat) : Prop := a + b ≥ n + 1\n\ndef witnessPair (n : Nat) : Nat × Nat := (n, 1)\n\ndef smallRange : Finset Nat := Finset.Icc (2 : Nat) (200 : Nat)",
+  "parent_typed": {"name": "erdos400_R008_L1_g2_small_range", "binders": ["(n : Nat)"],
+    "statement": "n ∈ smallRange → ∃ (a b : Nat), feasiblePair n a b ∧ excessAtLeast1 n a b",
+    "reading": "For every n in the computed range [2, 200] there exists a feasible pair (a,b) with a!·b! ∣ n! and a+b-n ≥ 1, i.e. g_2(n) ≥ 1 on the small range (lower bound only, not exact maxima)."},
+  "children": [
+    {"name": "erdos400_R008_witness_feasible_all", "binders": ["(n : Nat)"],
+      "statement": "2 ≤ n → feasiblePair n (witnessPair n).1 (witnessPair n).2",
+      "reading": "For every n ≥ 2 the universal witness pair (n, 1) is feasible: n! · 1! = n! divides n!."},
+    {"name": "erdos400_R008_witness_excess_all", "binders": ["(n : Nat)"],
+      "statement": "2 ≤ n → excessAtLeast1 n (witnessPair n).1 (witnessPair n).2",
+      "reading": "For every n ≥ 2 the witness pair (n, 1) yields excess (n + 1) - n ≥ 1."},
+    {"name": "erdos400_R008_bounded_range_membership", "binders": ["(n : Nat)"],
+      "statement": "n ∈ smallRange → 2 ≤ n",
+      "reading": "Every n in the computed bounded range [2, 200] satisfies n ≥ 2, so the range check is decidable and non-vacuous."}
+  ],
+  "composition_claim": "Children 1 and 2 together give, for every n ≥ 2, a feasible witness pair (n, 1) with excess at least 1; child 3 licenses instantiating this on the bounded range smallRange. Hence for each n ∈ smallRange there exists (a, b) = (n, 1) with feasiblePair n a b ∧ excessAtLeast1 n a b, which is exactly the parent. Note the parent is deliberately only the g_2(n) ≥ 1 lower bound on the range — no extremal-maxima or exact-table clause, per the retraction audit."}

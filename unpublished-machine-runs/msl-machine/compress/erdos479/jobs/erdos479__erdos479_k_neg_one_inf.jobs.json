@@ -1,0 +1,76 @@
+{
+ "schema": "msl-compress/1.0.0",
+ "consumes": "msl-ladder/1.0.0",
+ "problem": "erdos479",
+ "theorem": "erdos479_k_neg_one_inf",
+ "law": "A JOB IS A DEMAND, NEVER A RESULT. No kernel has seen either file. T is PROVED_KERNEL only when the IMPLICATION file returns rc 0, error-free, with an axiom footprint inside the allowed three.",
+ "jobs": {
+  "compress_erdos479__erdos479_k_neg_one_inf_implication": {
+   "kind": "IMPLICATION_BY_SOURCE_INCLUSION",
+   "decl": "erdos479_k_neg_one_inf",
+   "composition_decl": "erdos479_k_neg_one_inf_composition",
+   "lean_path": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_k_neg_one_inf.implication.lean",
+   "lean_sha256": "d4fa6c2856aab89a5de4eb0d5011eeea6f450cebce9691aa11717d2b495ef440",
+   "promotes_T_on_clean_verdict": true,
+   "builder": "msl_ladder.composed_file"
+  },
+  "compress_erdos479__erdos479_k_neg_one_inf_standalone": {
+   "kind": "T_STANDALONE_BY_DETERMINISTIC_LADDER",
+   "decl": "erdos479_k_neg_one_inf",
+   "lean_path": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_k_neg_one_inf.standalone.lean",
+   "lean_sha256": "7097a54408fbe87d9556069a7f941dd69874c0b9f9e0ff8d7061d31226408cbf",
+   "shape": "ARITHMETIC",
+   "arms": [
+    "decide",
+    "omega",
+    "norm_num",
+    "ring_nf",
+    "ring",
+    "linarith",
+    "nlinarith",
+    "positivity",
+    "gcongr",
+    "simp_all",
+    "aesop",
+    "prelude-alone",
+    "prelude+omega",
+    "prelude+norm_num",
+    "prelude+linarith",
+    "prelude+nlinarith",
+    "prelude+ring_nf",
+    "prelude+ring",
+    "prelude+decide",
+    "prelude+simp_all",
+    "prelude+aesop",
+    "prelude+field_simp",
+    "prelude+field_simp+ring",
+    "prelude+qify+omega"
+   ],
+   "promotes_T_on_clean_verdict": false,
+   "builder": "msl_ladder.leaf_file"
+  }
+ },
+ "included_sources": [
+  {
+   "leaf": "erdos479:ORE:2b23edb1fcd33097",
+   "declaration": "erdos479_lte",
+   "included_via": "LEAN_STATEMENT_LINE",
+   "sha256": "655831b2a3db8b9d50547163da574f15ce68ceae58f51b7767987c293ee749ab",
+   "receipt": "oracle/evidence/msl-machine/gpt-mine-day2-2026-09-02/kernel-verified/erdos479/Erdos479LTE__88f7aa08f802.verify.json",
+   "source": null
+  }
+ ],
+ "cable_spec": {
+  "id": "compress_erdos479__erdos479_k_neg_one_inf",
+  "imports": "Mathlib",
+  "definitions": "/-!\nErdős 479, second family (adversarial transcript mine, 2026-09-02 — the campaign itself\nmissed this; the auditor derived it): k = −1 is settled. For every a,\n3^(a+1) ∣ 2^(3^a) + 1, so in particular n = 3^a divides 2^n + 1, giving infinitely many\nwitnesses for k = −1 (2^n ≡ −1 mod n). Lifting-the-exponent induction: if\n2^(3^a) = 3^(a+1)·m − 1 then cubing gives (3tm−1)³ + 1 = 9t·(3t²m³ − 3tm² + m) with\nt = 3^a. Stated in ℤ to keep the subtraction honest; ℕ divisibility corollary follows.\n-/\n\n-- THE NORMALIZATION PRELUDE (msl_ladder, deterministic, $0).\n-- The claim it tests: most leaf failures on an arithmetic DAG are SIDE-CONDITIONS\n-- (an un-introduced hypothesis, a numeric coercion, a nonnegativity obligation),\n-- not mathematics.  Each step is `try`, so the prelude never fails and never\n-- changes what a tactic after it is allowed to prove.\nmacro \"msl_prelude\" : tactic =>\n  `(tactic| ((try intros); (try push_cast); (try positivity)))\n\n-- ---- children, INCLUDED BY SOURCE (each already PROVED_KERNEL alone)\ntheorem erdos479_lte (a : ℕ) : (3 : ℤ) ^ (a + 1) ∣ 2 ^ (3 ^ a) + 1 := by\n  first\n  | decide\n  | norm_num\n  | simp\n\n-- ---- the composition: children -> parent\ntheorem erdos479_k_neg_one_inf_composition (N : ℕ) : ((erdos479_lte : ($v0 : ℕ) : (3 : ℤ) ^ ($v0 + 1) ∣ 2 ^ (3 ^ $v0) + 1)) → (theorem erdos479_k_neg_one_inf (N : ℕ) : ∃ n : ℕ, N ≤ n ∧ (2 : ℤ) ^ n ≡ -1 [ZMOD (n : ℤ)]) := by\n  first\n  | (decide; done)\n  | (omega; done)\n  | (norm_num; done)\n  | (ring_nf; done)\n  | (ring_nf; ring; done)\n  | (linarith; done)\n  | (nlinarith; done)\n  | (positivity; done)\n  | (gcongr; done)\n  | (simp_all; done)\n  | (aesop; done)\n  | (msl_prelude; done)\n  | (msl_prelude; omega; done)\n  | (msl_prelude; norm_num; done)\n  | (msl_prelude; linarith; done)\n  | (msl_prelude; nlinarith; done)\n  | (msl_prelude; ring_nf; done)\n  | (msl_prelude; ring_nf; ring; done)\n  | (msl_prelude; decide; done)\n  | (msl_prelude; simp_all; done)\n  | (msl_prelude; aesop; done)\n  | (msl_prelude; field_simp; done)\n  | (msl_prelude; field_simp; ring; done)\n  | (msl_prelude; qify; omega; done)\n",
+  "hypotheses": [
+   "(N : ℕ)"
+  ],
+  "conclusion": "theorem erdos479_k_neg_one_inf (N : ℕ) : ∃ n : ℕ, N ≤ n ∧ (2 : ℤ) ^ n ≡ -1 [ZMOD (n : ℤ)]",
+  "set_options": [
+   "set_option maxHeartbeats 400000"
+  ]
+ },
+ "cable_note": ""
+}

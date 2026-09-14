@@ -1,0 +1,155 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos1056",
+  "generated_utc": "2026-09-02T16:57:39Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos1056:LEM:R006:L1",
+    "statement": "RETRACTED by author boundary audit: The verified finite facts (k=2, p∈{11,17}) were read as a lemma supporting the campaign's ∀k≥2 target; the node's actual controlled domain is two fixed parameter values, and the empty-interval convention — which makes the instance trivial — was never pinned.",
+    "statement_sha256": "96adace702bef8dd4c22441065f20ce335cc1237926d420a08847cc65c2be1ec",
+    "kind": "LEMMA",
+    "binding": "UNBOUND",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "Let $k\\geq 2$. Does there exist a prime $p$ and consecutive intervals $I_1,\\ldots,I_k$ such that\\[\\prod_{n\\in I_i}n \\equiv 1\\pmod{p}\\]for all $1\\leq i\\leq k$?",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos1056-campaign-001/contract.json",
+    "sha256": "b9132eb2ebbc19ef1332a8925e797321431e923d78cb24abe161a2025ccccc6b"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos1056:LEM:R006:L1",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "69eb269ae7f44d71d17c6bf7faf79065b63fe0d46140b4169c1989b0455c5b18",
+    "prompt_chars": 5280,
+    "response_sha256": "ca09c22726d2129b4de5a572e1ed32504eb935c687af46dfbf6a1eebfe1640c9",
+    "usage": {
+      "prompt_tokens": 1480,
+      "completion_tokens": 1349,
+      "total_tokens": 2829,
+      "cost": 0.00044825,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00044825,
+        "upstream_inference_prompt_cost": 0.000111,
+        "upstream_inference_completions_cost": 0.00033725
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 727,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.00044825,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 36.18,
+    "utc": "2026-09-02T16:56:00Z"
+  },
+  "children": [],
+  "composition": {
+    "id": "erdos1056:LEM:R006:L1#COMPOSE",
+    "statement": "(composition not constructed)",
+    "kind": "COMPOSITION",
+    "depends_on": [],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "OPEN",
+    "problem": "erdos1056",
+    "decomposed_from": "erdos1056:LEM:R006:L1",
+    "imports": "Mathlib",
+    "definitions": "def HasStrictBoundaries (k : Nat) (boundaries : Fin (k + 1) → Nat) : Prop :=\n  StrictMono boundaries ∧ ∀ i : Fin k, boundaries i.castSucc < boundaries (i.castSucc + 1)\n\ndef NonemptyIntervalProd (p : Nat) (boundaries : Fin (k : Nat) → Nat) : Prop :=\n  ∀ i : Fin k, (∏ n ∈ Finset.Ico (boundaries i.castSucc) (boundaries (i.castSucc + 1)), n) ≡ 1 [MOD p]",
+    "type_context": "Mathlib\ndef HasStrictBoundaries (k : Nat) (boundaries : Fin (k + 1) → Nat) : Prop :=\n  StrictMono boundaries ∧ ∀ i : Fin k, boundaries i.castSucc < boundaries (i.castSucc + 1)\n\ndef NonemptyIntervalProd (p : Nat) (boundaries : Fin (k : Nat) → Nat) : Prop :=\n  ∀ i : Fin k, (∏ n ∈ Finset.Ico (boundaries i.castSucc) (boundaries (i.castSucc + 1)), n) ≡ 1 [MOD p]",
+    "parent_typed": {
+      "statement": "((11 : Nat).Prime ∧ Erdos1056.AllModProdEqualsOne 11 (![3, 5, 8] : Fin 3 → Nat) ∧ HasStrictBoundaries 2 (![3, 5, 8] : Fin 3 → Nat)) ∧ ((17 : Nat).Prime ∧ ∃ boundaries : Fin 3 → Nat, HasStrictBoundaries 2 boundaries ∧ Erdos1056.AllModProdEqualsOne 17 boundaries)",
+      "binders": [],
+      "reading": "The controlled domain of this node is exactly two fixed parameter values: k=2 with p=11 (explicit witness boundaries 3,5,8) and k=2 with p=17 (some witness), in each case with strictly increasing, hence nonempty, intervals.",
+      "elaboration": {
+        "verdict": "DEFS_DO_NOT_ELABORATE",
+        "kernel_error": "/root/peer/decomp/b20260902_095656_1/erdos1056_LEM_R006_L1_defs.lean:11:54: error(lean.unknownIdentifier): Unknown identifier `k`\n\nNote: It is not possible to treat `k` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.\n/root/peer/decomp/b20260902_095656_1/erdos1056_LEM_R006_L1_defs.lean:12:12: error(lean.unknownIdentifier): Unknown identifier `k`"
+      },
+      "type_gate_decomp": {
+        "ok": false,
+        "missing": [
+          "domain bound 'k 2'"
+        ],
+        "reason": "inherited type ascription or domain bound dropped",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": "parent",
+        "prose_contract_root_report": null
+      }
+    },
+    "composition_claim": {
+      "text": "The parent is the conjunction of the two fixed parameter values the node actually controls; child 1 pins the p=11 fact with the explicit witness and the nonempty-interval (StrictMono) convention, child 2 pins the p=17 fact in the same convention, so their conjunction is exactly the parent proposition.",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "COMPOSITION_NOT_RUN",
+      "counts_toward_parent": 0,
+      "reason": "no surviving child"
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "composition_receipt": "oracle/evidence/msl-machine/dag/decomp/erdos1056/receipts/erdos1056_LEM_R006_L1_COMPOSE.composition.json"
+  },
+  "parent_new_depends_on": [
+    "erdos1056:LEM:R006:L1#COMPOSE"
+  ],
+  "rejected": [
+    {
+      "proposed_index": 1,
+      "statement": "(11 : Nat).Prime ∧ Erdos1056.AllModProdEqualsOne 11 (![3, 5, 8] : Fin 3 → Nat) ∧ HasStrictBoundaries 2 (![3, 5, 8] : Fin 3 → Nat)",
+      "binders": [],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: /root/peer/decomp/b20260902_095656_1/erdos1056_LEM_R006_L1_defs.lean:11:54: error(lean.unknownIdentifier): Unknown identifier `k`\n\nNote: It is not possible to treat `k` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.\n/root/peer/decomp/b20260902_095656_1/erdos1056_LEM_R006_L1_defs.lean:12:12: error(lean.unknownIdentifier): Unknown identifier `k`",
+      "kernel_error": "/root/peer/decomp/b20260902_095656_1/erdos1056_LEM_R006_L1_defs.lean:11:54: error(lean.unknownIdentifier): Unknown identifier `k`\n\nNote: It is not possible to treat `k` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.\n/root/peer/decomp/b20260902_095656_1/erdos1056_LEM_R006_L1_defs.lean:12:12: error(lean.unknownIdentifier): Unknown identifier `k`"
+    },
+    {
+      "proposed_index": 2,
+      "statement": "(17 : Nat).Prime ∧ ∃ boundaries : Fin 3 → Nat, HasStrictBoundaries 2 boundaries ∧ Erdos1056.AllModProdEqualsOne 17 boundaries",
+      "binders": [],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: /root/peer/decomp/b20260902_095656_1/erdos1056_LEM_R006_L1_defs.lean:11:54: error(lean.unknownIdentifier): Unknown identifier `k`\n\nNote: It is not possible to treat `k` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.\n/root/peer/decomp/b20260902_095656_1/erdos1056_LEM_R006_L1_defs.lean:12:12: error(lean.unknownIdentifier): Unknown identifier `k`",
+      "kernel_error": "/root/peer/decomp/b20260902_095656_1/erdos1056_LEM_R006_L1_defs.lean:11:54: error(lean.unknownIdentifier): Unknown identifier `k`\n\nNote: It is not possible to treat `k` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.\n/root/peer/decomp/b20260902_095656_1/erdos1056_LEM_R006_L1_defs.lean:12:12: error(lean.unknownIdentifier): Unknown identifier `k`"
+    }
+  ],
+  "counts": {
+    "proposed": 2,
+    "elaborated": 0,
+    "bound": 0,
+    "non_circular": 0,
+    "non_trivial": 0,
+    "surviving": 0,
+    "composition_kernel_checked": 0,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 0,
+    "counts_toward_parent_note": "composition OPEN: these children contribute ZERO toward the parent until it closes; they remain formal leaves for the rung loop"
+  },
+  "definitions": {
+    "block": "def HasStrictBoundaries (k : Nat) (boundaries : Fin (k + 1) → Nat) : Prop :=\n  StrictMono boundaries ∧ ∀ i : Fin k, boundaries i.castSucc < boundaries (i.castSucc + 1)\n\ndef NonemptyIntervalProd (p : Nat) (boundaries : Fin (k : Nat) → Nat) : Prop :=\n  ∀ i : Fin k, (∏ n ∈ Finset.Ico (boundaries i.castSucc) (boundaries (i.castSucc + 1)), n) ≡ 1 [MOD p]",
+    "gate0": {
+      "verdict": "DEFS_DO_NOT_ELABORATE",
+      "kernel_error": "/root/peer/decomp/b20260902_095656_1/erdos1056_LEM_R006_L1_defs.lean:11:54: error(lean.unknownIdentifier): Unknown identifier `k`\n\nNote: It is not possible to treat `k` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.\n/root/peer/decomp/b20260902_095656_1/erdos1056_LEM_R006_L1_defs.lean:12:12: error(lean.unknownIdentifier): Unknown identifier `k`"
+    },
+    "campaign_vocabulary_prepended": [],
+    "normalization": {
+      "body": "def HasStrictBoundaries (k : Nat) (boundaries : Fin (k + 1) → Nat) : Prop :=\n  StrictMono boundaries ∧ ∀ i : Fin k, boundaries i.castSucc < boundaries (i.castSucc + 1)\n\ndef NonemptyIntervalProd (p : Nat) (boundaries : Fin (k : Nat) → Nat) : Prop :=\n  ∀ i : Fin k, (∏ n ∈ Finset.Ico (boundaries i.castSucc) (boundaries (i.castSucc + 1)), n) ≡ 1 [MOD p]",
+      "opens": [],
+      "dropped_imports": []
+    }
+  }
+}

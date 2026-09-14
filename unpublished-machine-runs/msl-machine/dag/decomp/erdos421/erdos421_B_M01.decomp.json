@@ -1,0 +1,203 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos421",
+  "generated_utc": "2026-09-02T16:31:11Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos421:B:M01",
+    "statement": "Quantify over every in-domain sequence and prove existence of two distinct index intervals with equal product.",
+    "statement_sha256": "86ed4b86a20b595449115b96032ce037d9cc3eaaabf987a10b720b01ac545200",
+    "kind": "MUST_DETERMINE",
+    "binding": "VERBATIM",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "Is there a sequence $1\\leq d_1<d_2<\\cdots$ with density $1$ such that all products $\\prod_{u\\leq i\\leq v}d_i$ are distinct?",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos421-campaign-001/contract.json",
+    "sha256": "074e919d39a6df37b59f7a2bd4ffed97bd05af71967435c4131e3976465f6641"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos421:B:M01",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "ce490592c661a43fdf2e33bd20e4a8c4caac94fcbc311d53c1fa609cc2a740c8",
+    "prompt_chars": 4208,
+    "response_sha256": "d09b9c7be2dbc7d822111310b196fe698c6e46f3bfe4e74aa7e82546b931404a",
+    "usage": {
+      "prompt_tokens": 1120,
+      "completion_tokens": 5095,
+      "total_tokens": 6215,
+      "cost": 0.00135007,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 128,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00135007,
+        "upstream_inference_prompt_cost": 7.632e-05,
+        "upstream_inference_completions_cost": 0.00127375
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 4028,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.00135007,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 146.17,
+    "utc": "2026-09-02T16:29:45Z"
+  },
+  "children": [],
+  "composition": {
+    "id": "erdos421:B:M01#COMPOSE",
+    "statement": "(composition not constructed)",
+    "kind": "COMPOSITION",
+    "depends_on": [],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "OPEN",
+    "problem": "erdos421",
+    "decomposed_from": "erdos421:B:M01",
+    "imports": "Mathlib",
+    "definitions": "def HasDensity (A : Set ℕ) (ρ : Rat) : Prop :=\n  Filter.Tendsto (fun (n : ℕ) => (((A ∩ Finset.Icc (1 : ℕ) n).card : ℕ) : Rat) / (n : Rat))\n    Filter.atTop (nhds ρ)",
+    "type_context": "Mathlib\ndef HasDensity (A : Set ℕ) (ρ : Rat) : Prop :=\n  Filter.Tendsto (fun (n : ℕ) => (((A ∩ Finset.Icc (1 : ℕ) n).card : ℕ) : Rat) / (n : Rat))\n    Filter.atTop (nhds ρ)",
+    "parent_typed": {
+      "statement": "StrictMono d → ((1 : ℕ) ≤ d 0) → HasDensity (Set.range d) (1 : Rat) →\n  ∃ (u v u' v' : ℕ), (u : ℕ) ≤ v ∧ u' ≤ v' ∧ (u, v) ≠ (u', v') ∧\n    (∏ i ∈ Finset.Icc u v, d i) = ∏ i ∈ Finset.Icc u' v', d i",
+      "binders": [
+        "(d : ℕ → ℕ)"
+      ],
+      "reading": "Every strictly increasing positive-integer sequence whose range has density 1 admits two distinct index intervals with equal product.",
+      "elaboration": {
+        "verdict": "DEFS_DO_NOT_ELABORATE",
+        "kernel_error": "/root/peer/decomp/b20260902_092945_1/erdos421_B_M01_defs.lean:9:62: error(lean.invalidField): Invalid field `card`: The environment does not contain `Function.card`, so it is not possible to project the field `card` from an expression\n  A ∩ ↑(Icc 1 n)\nof type `ℕ → Prop`"
+      },
+      "type_gate_decomp": {
+        "ok": false,
+        "missing": [
+          "domain bound '1 d'"
+        ],
+        "reason": "inherited type ascription or domain bound dropped",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": "formal_root",
+        "prose_contract_root_report": {
+          "ok": false,
+          "missing": [
+            "domain bound '1 d'"
+          ],
+          "reason": "inherited type ascription or domain bound dropped",
+          "blocking": false,
+          "why_not_blocking": "tokens mined from ENGLISH prose are not Lean tokens; `Fin k` carries `1 <= i <= k` structurally"
+        }
+      }
+    },
+    "composition_claim": {
+      "text": "Children 1–3 supply the finite pigeonhole template: the N(N+1)/2 intervals inside [1, N] map into the product window [1, ∏_{i≤N} d i], so any density-1 sequence whose prefix products stay below the interval count yields two distinct intervals with equal product; children 4 and 5 give the growth and counting control on in-domain sequences needed to run that pigeonhole, and together they produce the existential collision asserted in the parent.",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "COMPOSITION_NOT_RUN",
+      "counts_toward_parent": 0,
+      "reason": "no surviving child"
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "composition_receipt": "oracle/evidence/msl-machine/dag/decomp/erdos421/receipts/erdos421_B_M01_COMPOSE.composition.json"
+  },
+  "parent_new_depends_on": [
+    "erdos421:B:M01#COMPOSE"
+  ],
+  "rejected": [
+    {
+      "proposed_index": 1,
+      "statement": "(S.card : ℕ) > B → (∀ (p : ℕ × ℕ), p ∈ S → g p ≤ B) →\n  ∃ (p : ℕ × ℕ), ∃ (q : ℕ × ℕ), p ∈ S ∧ q ∈ S ∧ p ≠ q ∧ g p = g q",
+      "binders": [
+        "(g : ℕ × ℕ → ℕ)",
+        "(S : Finset (ℕ × ℕ))",
+        "(B : ℕ)"
+      ],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: /root/peer/decomp/b20260902_092945_1/erdos421_B_M01_defs.lean:9:62: error(lean.invalidField): Invalid field `card`: The environment does not contain `Function.card`, so it is not possible to project the field `card` from an expression\n  A ∩ ↑(Icc 1 n)\nof type `ℕ → Prop`",
+      "kernel_error": "/root/peer/decomp/b20260902_092945_1/erdos421_B_M01_defs.lean:9:62: error(lean.invalidField): Invalid field `card`: The environment does not contain `Function.card`, so it is not possible to project the field `card` from an expression\n  A ∩ ↑(Icc 1 n)\nof type `ℕ → Prop`"
+    },
+    {
+      "proposed_index": 2,
+      "statement": "((1 : ℕ) ≤ d 0) → StrictMono d → ∀ (u v : ℕ), (1 : ℕ) ≤ u → u ≤ v → v ≤ N →\n  ((1 : ℕ) ≤ ∏ i ∈ Finset.Icc u v, d i) ∧\n    (∏ i ∈ Finset.Icc u v, d i) ≤ ∏ i ∈ Finset.Icc (1 : ℕ) N, d i",
+      "binders": [
+        "(d : ℕ → ℕ)",
+        "(N : ℕ)"
+      ],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: /root/peer/decomp/b20260902_092945_1/erdos421_B_M01_defs.lean:9:62: error(lean.invalidField): Invalid field `card`: The environment does not contain `Function.card`, so it is not possible to project the field `card` from an expression\n  A ∩ ↑(Icc 1 n)\nof type `ℕ → Prop`",
+      "kernel_error": "/root/peer/decomp/b20260902_092945_1/erdos421_B_M01_defs.lean:9:62: error(lean.invalidField): Invalid field `card`: The environment does not contain `Function.card`, so it is not possible to project the field `card` from an expression\n  A ∩ ↑(Icc 1 n)\nof type `ℕ → Prop`"
+    },
+    {
+      "proposed_index": 3,
+      "statement": "(Finset.sum (Finset.range N) (fun (i : ℕ) => (i + 1 : ℕ))) = (N : ℕ) * (N + 1) / 2",
+      "binders": [
+        "(N : ℕ)"
+      ],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: /root/peer/decomp/b20260902_092945_1/erdos421_B_M01_defs.lean:9:62: error(lean.invalidField): Invalid field `card`: The environment does not contain `Function.card`, so it is not possible to project the field `card` from an expression\n  A ∩ ↑(Icc 1 n)\nof type `ℕ → Prop`",
+      "kernel_error": "/root/peer/decomp/b20260902_092945_1/erdos421_B_M01_defs.lean:9:62: error(lean.invalidField): Invalid field `card`: The environment does not contain `Function.card`, so it is not possible to project the field `card` from an expression\n  A ∩ ↑(Icc 1 n)\nof type `ℕ → Prop`"
+    },
+    {
+      "proposed_index": 4,
+      "statement": "StrictMono d → ((1 : ℕ) ≤ d 0) → HasDensity (Set.range d) (1 : Rat) →\n  ∃ (N : ℕ), ∀ (i : ℕ), N ≤ i → d i ≤ (2 : ℕ) * i",
+      "binders": [
+        "(d : ℕ → ℕ)"
+      ],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: /root/peer/decomp/b20260902_092945_1/erdos421_B_M01_defs.lean:9:62: error(lean.invalidField): Invalid field `card`: The environment does not contain `Function.card`, so it is not possible to project the field `card` from an expression\n  A ∩ ↑(Icc 1 n)\nof type `ℕ → Prop`",
+      "kernel_error": "/root/peer/decomp/b20260902_092945_1/erdos421_B_M01_defs.lean:9:62: error(lean.invalidField): Invalid field `card`: The environment does not contain `Function.card`, so it is not possible to project the field `card` from an expression\n  A ∩ ↑(Icc 1 n)\nof type `ℕ → Prop`"
+    },
+    {
+      "proposed_index": 5,
+      "statement": "((0 : Rat) < ε) → ε < 1 → StrictMono d → ((1 : ℕ) ≤ d 0) → HasDensity (Set.range d) (1 : Rat) →\n  ∃ (N : ℕ), ∀ (n : ℕ), N ≤ n →\n    (((Set.range d ∩ Finset.Icc (1 : ℕ) n).card : ℕ) : Rat) > ((1 : Rat) - ε) * (n : Rat)",
+      "binders": [
+        "(d : ℕ → ℕ)",
+        "(ε : Rat)"
+      ],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: /root/peer/decomp/b20260902_092945_1/erdos421_B_M01_defs.lean:9:62: error(lean.invalidField): Invalid field `card`: The environment does not contain `Function.card`, so it is not possible to project the field `card` from an expression\n  A ∩ ↑(Icc 1 n)\nof type `ℕ → Prop`",
+      "kernel_error": "/root/peer/decomp/b20260902_092945_1/erdos421_B_M01_defs.lean:9:62: error(lean.invalidField): Invalid field `card`: The environment does not contain `Function.card`, so it is not possible to project the field `card` from an expression\n  A ∩ ↑(Icc 1 n)\nof type `ℕ → Prop`"
+    }
+  ],
+  "counts": {
+    "proposed": 5,
+    "elaborated": 0,
+    "bound": 0,
+    "non_circular": 0,
+    "non_trivial": 0,
+    "surviving": 0,
+    "composition_kernel_checked": 0,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 0,
+    "counts_toward_parent_note": "composition OPEN: these children contribute ZERO toward the parent until it closes; they remain formal leaves for the rung loop"
+  },
+  "definitions": {
+    "block": "def HasDensity (A : Set ℕ) (ρ : Rat) : Prop :=\n  Filter.Tendsto (fun (n : ℕ) => (((A ∩ Finset.Icc (1 : ℕ) n).card : ℕ) : Rat) / (n : Rat))\n    Filter.atTop (nhds ρ)",
+    "gate0": {
+      "verdict": "DEFS_DO_NOT_ELABORATE",
+      "kernel_error": "/root/peer/decomp/b20260902_092945_1/erdos421_B_M01_defs.lean:9:62: error(lean.invalidField): Invalid field `card`: The environment does not contain `Function.card`, so it is not possible to project the field `card` from an expression\n  A ∩ ↑(Icc 1 n)\nof type `ℕ → Prop`"
+    },
+    "campaign_vocabulary_prepended": [],
+    "normalization": {
+      "body": "def HasDensity (A : Set ℕ) (ρ : Rat) : Prop :=\n  Filter.Tendsto (fun (n : ℕ) => (((A ∩ Finset.Icc (1 : ℕ) n).card : ℕ) : Rat) / (n : Rat))\n    Filter.atTop (nhds ρ)",
+      "opens": [],
+      "dropped_imports": []
+    }
+  }
+}

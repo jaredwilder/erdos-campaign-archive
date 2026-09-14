@@ -1,0 +1,24 @@
+{"definitions": "def CoprimeSeq (u : ℕ → ℕ) : Prop :=\n  ∀ (i j : ℕ), i ≠ j → Nat.gcd (u i) (u j) = 1\n\ndef Tux (u : ℕ → ℕ) (x t : ℕ) : Prop :=\n  (∏ i ∈ Finset.range t, u i) ≤ x ∧ x < ∏ i ∈ Finset.range (t + 1), u i\n\ndef Excluded (u : ℕ → ℕ) (n : ℕ) : Prop := ∀ (i : ℕ), ¬ (u i ∣ n)\n\ndef GapOK (u : ℕ → ℕ) (x : ℕ) (B : ℝ) : Prop :=\n  ∀ (n m : ℕ), n < x → Excluded u n → Excluded u m → n < m →\n    (∀ (l : ℕ), n < l → l < m → ¬ Excluded u l) → ((m - n : ℝ) < B)\n\ndef GoodSeq (u : ℕ → ℕ) : Prop :=\n  StrictMono u ∧ CoprimeSeq u ∧ Summable (fun i : ℕ => (1 : ℝ) / (u i : ℝ)) ∧\n    ∀ (ε : ℝ), 0 < ε → ∃ (N : ℕ), ∀ (x : ℕ), N ≤ x → ∃ (t : ℕ),\n      Tux u x t ∧ GapOK u x ((1 + ε) * (t : ℝ) * (∏' i : ℕ, (1 - (1 : ℝ) / (u i : ℝ)))⁻¹)",
+
+  "parent_typed": {
+    "name": "erdos1101_demand_R003_L1p",
+    "binders": [],
+    "statement": "∃ (u : ℕ → ℕ), GoodSeq u ∧ ∃ (c : ℕ), 0 < c ∧ ∀ (n : ℕ), u n ≤ c * n ^ c",
+    "reading": "There exists a good sequence of pairwise coprime integers whose growth is polynomially bounded."},
+
+  "children": [
+    {
+      "name": "erdos1101_R003_seq_exists",
+      "binders": [],
+      "statement": "∃ (u : ℕ → ℕ), StrictMono u ∧ CoprimeSeq u ∧ Summable (fun i : ℕ => (1 : ℝ) / (u i : ℝ)) ∧ ∃ (c : ℕ), 0 < c ∧ ∀ (n : ℕ), u n ≤ c * n ^ c",
+      "reading": "There exists a strictly increasing, pairwise coprime, reciprocally summable sequence of integers with polynomial growth (e.g. the primes)."
+    },
+    {
+      "name": "erdos1101_R003_goodness",
+      "binders": ["(u : ℕ → ℕ)"],
+      "statement": "StrictMono u → CoprimeSeq u → Summable (fun i : ℕ => (1 : ℝ) / (u i : ℝ)) → GoodSeq u",
+      "reading": "Every strictly increasing pairwise-coprime sequence with summable reciprocals is good: for each ε > 0, eventually the maximal gap between consecutive integers not divisible by any u i is below (1 + ε) · t_x · ∏_i (1 − 1/u_i)⁻¹."
+    }
+  ],
+
+  "composition_claim": "Child 1 supplies a sequence u satisfying StrictMono, CoprimeSeq, summability of reciprocals, and polynomial growth; child 2 applied to that same u yields GoodSeq u, so conjoining both children gives exactly the parent's existential statement."}

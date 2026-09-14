@@ -1,0 +1,16 @@
+{"definitions": "",
+  "parent_typed": {"name": "erdos289_parent", "binders": [],
+                   "statement": "∀ᶠ k : ℕ in Filter.atTop, ∃ I : Fin k → ℕ × ℕ, (∀ (i : Fin k), (I i).1 < (I i).2) ∧ (∀ (i j : Fin k), i ≠ j → (I i).2 < (I j).1 ∨ (I j).2 < (I i).1) ∧ ∑ i, ∑ n ∈ Icc (I i).1 (I i).2, ((n : ℚ)⁻¹) = (1 : ℚ)",
+                   "reading": "For all sufficiently large k there are k pairwise distinct, pairwise non-overlapping and non-adjacent finite intervals of consecutive integers, each of length at least 2, whose reciprocal sums add up to exactly 1."},
+  "children": [
+    {"name": "split_identity", "binders": ["(n : Nat)"],
+      "statement": "2 ≤ n → ((1 : ℚ) / n = (1 : ℚ) / (n + 1) + (1 : ℚ) / (n * (n + 1)))",
+      "reading": "The splitting identity 1/n = 1/(n+1) + 1/(n(n+1)) in ℚ, the engine for growing the number of runs by one."},
+    {"name": "split_separation", "binders": ["(n : Nat)"],
+      "statement": "2 ≤ n → (n + 1) + 1 < n * (n + 1)",
+      "reading": "The two pieces [n+1] and [n(n+1)] produced by the split are ordered and non-adjacent (strictly more than one integer apart)."},
+    {"name": "tail_runs_exist", "binders": [],
+      "statement": "∀ᶠ k : ℕ in Filter.atTop, ∃ J : Fin k → ℕ × ℕ, (∀ (i : Fin k), 5 ≤ (J i).1 ∧ (J i).1 < (J i).2) ∧ (∀ (i j : Fin k), i ≠ j → (J i).2 < (J j).1 ∨ (J j).2 < (J i).1) ∧ ∑ i, ∑ n ∈ Icc (J i).1 (J i).2, ((n : ℚ)⁻¹) = (1 : ℚ) / 6",
+      "reading": "For all sufficiently large k there are k pairwise non-adjacent runs, each starting at 5 or more with length at least 2, whose reciprocal sums total exactly 1/6."}
+  ],
+  "composition_claim": "By the kernel-checked head reduction, any admissible decomposition of 1 containing 2 forces the run containing 2 to be exactly [2,3] with the remaining runs summing to exactly 1/6 and starting at 5 or more; hence the parent is equivalent to tail_runs_exist. split_identity and split_separation supply the concrete refinement step (replacing a run by two separated runs preserving the reciprocal sum) that a construction of tail_runs_exist for arbitrarily large k must rely on, so children 1–3 together determine the parent."}

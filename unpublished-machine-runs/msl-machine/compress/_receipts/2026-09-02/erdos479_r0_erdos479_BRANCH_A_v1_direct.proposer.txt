@@ -1,0 +1,8 @@
+{"theorem_name":"erdos479_k_neg_one_inf",
+"binders":["(N : ℕ)"],
+"definitions":"",
+"statement":"theorem erdos479_k_neg_one_inf (N : ℕ) : ∃ n : ℕ, N ≤ n ∧ (2 : ℤ) ^ n ≡ -1 [ZMOD (n : ℤ)]",
+"premises":["erdos479:ORE:2b23edb1fcd33097"],
+"derivation_claim":"erdos479_lte → erdos479_k_neg_one_inf: given N, pick a with 3^a ≥ N and set n := 3^a; erdos479_lte gives (3:ℤ)^(a+1) ∣ 2^(3^a)+1, and since n = 3^a divides 3^(a+1) in ℤ, transitivity of Int.dvd yields (n:ℤ) ∣ 2^n + 1, which unfolds to the ZMOD congruence; unboundedness of a makes n arbitrarily large, so this is the infinitude statement for k = −1, not a restatement of the single-a leaf.",
+"discharges":"erdos479:BRANCH_A",
+"reason":"It converts the pointwise LTE leaf into the infinitude (all-N) form in ZMOD over ℤ, settling k = −1 entirely and shrinking BRANCH_A to k ∉ {0, −1, 1}."}

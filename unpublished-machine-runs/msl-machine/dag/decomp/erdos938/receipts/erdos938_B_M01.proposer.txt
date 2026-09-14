@@ -1,0 +1,22 @@
+{"definitions": "def Powerful (n : ℕ) : Prop := ∀ (p : ℕ), p.Prime → p ∣ n → p * p ∣ n\n\ndef IsAP3 (a b c : ℕ) : Prop := a + c = b + b\n\ndef IsNondegenerateAP3 (a b c : ℕ) : Prop := IsAP3 a b c ∧ a < b ∧ b < c\n\nopen scoped Classical in\nnoncomputable def nthPowerful (k : ℕ) : ℕ :=\n  sInf {n : ℕ | k < (Finset.filter (fun m => Powerful m) (Finset.range (n + 1))).card}",
+
+  "parent_typed": {"name": "erdos938_B_M01", "binders": [],
+    "statement": "{k : ℕ | IsNondegenerateAP3 (nthPowerful k) (nthPowerful (k + 1)) (nthPowerful (k + 2))}.Infinite ∧\n  ¬{P : Finset ℕ | ∃ (k : ℕ), P = ({nthPowerful k, nthPowerful (k + 1), nthPowerful (k + 2)} : Finset ℕ) ∧\n      IsNondegenerateAP3 (nthPowerful k) (nthPowerful (k + 1)) (nthPowerful (k + 2))}.Finite",
+    "reading": "There are infinitely many starting indices k whose consecutive powerful triple is a nondegenerate 3-term AP, and consequently the set of such progression finsets is not finite (negative instantiation of the answer wrapper)."},
+
+  "children": [
+    {"name": "ap_indices_infinite", "binders": [],
+      "statement": "{k : ℕ | IsNondegenerateAP3 (nthPowerful k) (nthPowerful (k + 1)) (nthPowerful (k + 2))}.Infinite",
+      "reading": "Infinitely many distinct starting indices k yield a nondegenerate 3-term AP of consecutive powerful numbers."},
+    {"name": "ap_triple_is_three_element_AP", "binders": ["(k : ℕ)"],
+      "statement": "IsNondegenerateAP3 (nthPowerful k) (nthPowerful (k + 1)) (nthPowerful (k + 2)) →\n  (({nthPowerful k, nthPowerful (k + 1), nthPowerful (k + 2)} : Finset ℕ).card = 3 ∧\n    (nthPowerful k : ℕ) + nthPowerful (k + 2) = nthPowerful (k + 1) + nthPowerful (k + 1))",
+      "reading": "For any qualifying k, the triple finset has exactly three elements and satisfies the AP equation a + c = 2b."},
+    {"name": "nthPowerful_strictMono", "binders": [],
+      "statement": "∀ (k : ℕ), nthPowerful k < nthPowerful (k + 1)",
+      "reading": "The enumeration of powerful numbers is strictly increasing, so distinct qualifying indices give distinct triples."},
+    {"name": "answer_wrapper_not_finite", "binders": [],
+      "statement": "¬{P : Finset ℕ | ∃ (k : ℕ), P = ({nthPowerful k, nthPowerful (k + 1), nthPowerful (k + 2)} : Finset ℕ) ∧\n    IsNondegenerateAP3 (nthPowerful k) (nthPowerful (k + 1)) (nthPowerful (k + 2))}.Finite",
+      "reading": "The set of consecutive-triple nondegenerate AP finsets of powerful numbers is infinite, i.e. the answer wrapper's side is not finite."}
+  ],
+
+  "composition_claim": "Children 1–3 give the first conjunct of the parent directly (child 1), and together children 2 and 3 make the map k ↦ {n_k, n_{k+1}, n_{k+2}} an injective map from the infinite index set of child 1 into the finset collection, so that collection is infinite, yielding child 4 (the second conjunct). Hence child 1 ∧ child 4 is exactly the parent."}

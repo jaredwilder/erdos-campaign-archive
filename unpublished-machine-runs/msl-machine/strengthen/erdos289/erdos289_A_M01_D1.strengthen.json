@@ -1,0 +1,658 @@
+{
+  "schema": "obligation-strengthen/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "organ": "STRENGTHENER (Wang's loop)",
+  "problem": "erdos289",
+  "target": {
+    "id": "erdos289:A:M01#D1",
+    "statement": "2 ≤ n → ((1 : ℚ) / n = (1 : ℚ) / (n + 1) + (1 : ℚ) / (n * (n + 1)))",
+    "statement_sha256": "4b20c27d665c630fe492c30e35c97f953014fc926e43b5ab3a631c6b6e9f2d76",
+    "kind": "DECOMPOSED_LEAF",
+    "binding": "PARAPHRASE",
+    "status": "OPEN",
+    "lean_binders": [
+      "(n : Nat)"
+    ],
+    "param": "n",
+    "source": "oracle/evidence/msl-machine/dag/decomp/erdos289/erdos289_A_M01.decomp.json",
+    "manufacture_target_by_rule": true,
+    "manufacture_target_declared": null
+  },
+  "utc_started": "2026-09-02T16:23:56Z",
+  "candidates": [
+    {
+      "receipt_id": "erdos289:A:M01#D1#S1",
+      "original_target": {
+        "id": "erdos289:A:M01#D1",
+        "statement": "2 ≤ n → ((1 : ℚ) / n = (1 : ℚ) / (n + 1) + (1 : ℚ) / (n * (n + 1)))",
+        "statement_sha256": "4b20c27d665c630fe492c30e35c97f953014fc926e43b5ab3a631c6b6e9f2d76",
+        "param": "n"
+      },
+      "strengthened_target": {
+        "name": "P'telescoping",
+        "statement": "(2 ≤ n → (∑ i ∈ Finset.Icc 2 n, (1 : ℚ) / (i * (i - 1)) = (1 : ℚ) - (1 : ℚ) / n))",
+        "kind": "closed_form",
+        "skeleton": "Base n = 0, 1 vacuous (guard 2 ≤ n); step: peel the i = n+1 summand, (1:ℚ)/((n+1)*n) = 1/n - 1/(n+1), and apply IH.",
+        "reading": "The bounded telescoping sum of reciprocal pronic numbers has the exact closed form 1 - 1/n.",
+        "statement_sha256": "62d7000ac815b474e792af5be10ec112596e08e12132ddd5f44bd9114f25bd67"
+      },
+      "gates": {
+        "E": {
+          "syntactic": {
+            "verdict": "PASS",
+            "arm": "SYNTACTIC"
+          },
+          "kernel_defeq": {
+            "verdict": "PASS",
+            "arm": "KERNEL_DEFEQ",
+            "reason": "rfl failed: P' is not definitionally the target"
+          },
+          "verdict": "PASS"
+        },
+        "T": {
+          "gate": "msl_obligation_dag.type_gate (imported, two arms)",
+          "standalone": {
+            "ok": true,
+            "missing": [],
+            "reason": ""
+          },
+          "referenced": {
+            "ok": true,
+            "missing": [],
+            "reason": ""
+          },
+          "fatal_missing": [],
+          "bound_relaxations": [],
+          "bound_relaxation_note": "a relaxed domain bound is recorded, not rejected: it cannot put the statement over the wrong type, and CHECK 1 (∀ n, P' n → P n) settles in the kernel whether anything the target needed was actually lost",
+          "used_definitions_in_unit": true,
+          "verdict": "PASS",
+          "reason": "",
+          "missing": []
+        },
+        "F": {
+          "verdict": "PASS",
+          "evaluated": {
+            "0": true,
+            "1": true,
+            "2": true
+          },
+          "undecided": [],
+          "note": "true at [0, 1, 2]; none not decidable and therefore untested"
+        }
+      },
+      "implication_check": {
+        "verdict": "OPEN",
+        "rc": 0,
+        "closed_by": null,
+        "goal_state": "Note: This linter can be disabled with `set_option linter.unusedTactic false`\n'th_t01_c1_impl' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]",
+        "reason": "the ladder did not close this goal; the capture alternative ran and the goal state is banked above",
+        "theorem": "th_t01_c1_impl",
+        "statement": "∀ (n : Nat), msl_q_erdos289_a_m01_d1_s1 n → msl_p_erdos289_a_m01_d1 n",
+        "repair": {
+          "verdict": "STILL_OPEN",
+          "proposer": {
+            "kind": "PROPOSER_CALL",
+            "tag": "t01.c1.repair.implication",
+            "model": "z-ai/glm-5.3-flash",
+            "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+            "prompt_sha256": "c69d655ecf01212350063b561a44e6d691cb296094bb22261ce9c5206f0ac4a6",
+            "prompt_chars": 1601,
+            "response_sha256": "ed776ec38eaf2acb66a384c12a8c02072b867c90682dab7568a266c69fe4e987",
+            "usage": {
+              "prompt_tokens": 571,
+              "completion_tokens": 167,
+              "total_tokens": 738,
+              "cost": 0.00016915,
+              "is_byok": false,
+              "prompt_tokens_details": {
+                "cached_tokens": 0,
+                "cache_write_tokens": 0,
+                "audio_tokens": 0,
+                "video_tokens": 0
+              },
+              "cost_details": {
+                "upstream_inference_cost": 0.00016915,
+                "upstream_inference_prompt_cost": 8.565e-05,
+                "upstream_inference_completions_cost": 8.35e-05
+              },
+              "completion_tokens_details": {
+                "reasoning_tokens": 95,
+                "image_tokens": 0,
+                "audio_tokens": 0
+              }
+            },
+            "reserved_usd": 0.01,
+            "reported_cost_usd": 0.00016915,
+            "cost_basis": "endpoint usage.cost",
+            "seconds": 5.19,
+            "utc": "2026-09-02T16:26:01Z"
+          },
+          "tactics": "intro n h hn\nfield_simp\nring",
+          "reading": "The identity 1/n = 1/(n+1) + 1/(n(n+1)) is a pure field identity (common denominator n(n+1)); the hypothesis is irrelevant, so field_simp + ring closes it.",
+          "kernel": {
+            "verdict": "OPEN",
+            "rc": 1,
+            "closed_by": null,
+            "goal_state": null,
+            "kernel_error": "/root/peer/strengthen/s20260902_092858_3/t01.c1__implication_repair.lean:25:10: error: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce"
+          }
+        }
+      },
+      "base_case_check": {
+        "verdict": "closed_by_t10_simp",
+        "rc": 0,
+        "closed_by": "t10_simp",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "theorem": "th_t01_c1_base",
+        "statement": "msl_q_erdos289_a_m01_d1_s1 0"
+      },
+      "step_case_check": {
+        "verdict": "OPEN",
+        "rc": 0,
+        "closed_by": null,
+        "goal_state": "Note: This linter can be disabled with `set_option linter.unusedTactic false`\n'th_t01_c1_step' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]",
+        "reason": "the ladder did not close this goal; the capture alternative ran and the goal state is banked above",
+        "theorem": "th_t01_c1_step",
+        "statement": "∀ (k : Nat), msl_q_erdos289_a_m01_d1_s1 k → msl_q_erdos289_a_m01_d1_s1 (k + 1)",
+        "repair": {
+          "verdict": "STILL_OPEN",
+          "proposer": {
+            "kind": "PROPOSER_CALL",
+            "tag": "t01.c1.repair.step",
+            "model": "z-ai/glm-5.3-flash",
+            "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+            "prompt_sha256": "1390294d61ba6877f48c18c6e8b0bd0ee68e94876562c2466c429a3d5f5a863f",
+            "prompt_chars": 1610,
+            "response_sha256": "a847f37681a03c898ac0c61af69fcadecfd5e7c9867ffb02a2fed0b91eaf8028",
+            "usage": {
+              "prompt_tokens": 577,
+              "completion_tokens": 7984,
+              "total_tokens": 8561,
+              "cost": 0.00407855,
+              "is_byok": false,
+              "prompt_tokens_details": {
+                "cached_tokens": 0,
+                "cache_write_tokens": 0,
+                "audio_tokens": 0,
+                "video_tokens": 0
+              },
+              "cost_details": {
+                "upstream_inference_cost": 0.00407855,
+                "upstream_inference_prompt_cost": 8.655e-05,
+                "upstream_inference_completions_cost": 0.003992
+              },
+              "completion_tokens_details": {
+                "reasoning_tokens": 7410,
+                "image_tokens": 0,
+                "audio_tokens": 0
+              }
+            },
+            "reserved_usd": 0.01,
+            "reported_cost_usd": 0.00407855,
+            "cost_basis": "endpoint usage.cost",
+            "seconds": 174.32,
+            "utc": "2026-09-02T16:28:55Z"
+          },
+          "tactics": "intro k ih\nrcases k with _ | _ | k\n· show (∑ i ∈ Finset.Icc 2 1, (1:ℚ)/(i*(i-1))) = (1:ℚ) - 1/1\n  simp [Finset.Icc_eq_empty_iff] <;> norm_num\n· show (∑ i ∈ Finset.Icc 2 2, (1:ℚ)/(i*(i-1))) = (1:ℚ) - 1/2\n  simp only [Finset.Icc_self, Finset.sum_singleton]\n  norm_num\n· show (∑ i ∈ Finset.Icc 2 (k+2+1), (1:ℚ)/(i*(i-1))) = (1:ℚ) - 1/(k+2+1)\n  have hle : (2:ℕ) ≤ k + 2 := by omega\n  have htop : (2:ℕ) ≤ k + 2 + 1 := by omega\n  rw [Finset.sum_Icc_succ_top htop, ih hle]\n  have hsub : ((k + 2 + 1 : ℕ) - 1) = k + 2 := by omega\n  rw [hsub]\n  have h1 : (k + 2 : ℚ) ≠ 0 := by exact_mod_cast (by omega : (k + 2 : ℕ) ≠ 0)\n  have h3 : (k + 2 + 1 : ℚ) ≠ 0 := by exact_mod_cast (by omega : (k + 2 + 1 : ℕ) ≠ 0)\n  have key : (1:ℚ)/((k+2+1)*(k+2)) = 1/(k+2) - 1/(k+2+1) := by\n    field_simp\n  rw [key]\n  ring",
+          "reading": "Splits k into 0, 1, k+2: the base cases are empty/singleton sums closed by simp/norm_num, and the step peels off the top term i = k+3 with sum_Icc_succ_top, rewrites it via the induction hypothesis and the identity 1/((k+3)(k+2)) = 1/(k+2) - 1/(k+3), leaving a rational identity that ring closes.",
+          "kernel": {
+            "verdict": "OPEN",
+            "rc": 1,
+            "closed_by": null,
+            "goal_state": null,
+            "kernel_error": "/root/peer/strengthen/s20260902_092858_3/t01.c1__step_repair.lean:25:10: error: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce"
+          }
+        }
+      },
+      "composed_file": null,
+      "kernel_verdict": "CHECKS_OPEN",
+      "axioms": [],
+      "cost_usd": 0.0,
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      }
+    },
+    {
+      "receipt_id": "erdos289:A:M01#D1#S2",
+      "original_target": {
+        "id": "erdos289:A:M01#D1",
+        "statement": "2 ≤ n → ((1 : ℚ) / n = (1 : ℚ) / (n + 1) + (1 : ℚ) / (n * (n + 1)))",
+        "statement_sha256": "4b20c27d665c630fe492c30e35c97f953014fc926e43b5ab3a631c6b6e9f2d76",
+        "param": "n"
+      },
+      "strengthened_target": {
+        "name": "P'shiftPair",
+        "statement": "((2 ≤ n → (1 : ℚ) / n = (1 : ℚ) / (n + 1) + (1 : ℚ) / (n * (n + 1))) ∧ (2 ≤ n + 1 → (1 : ℚ) / (n + 1) = (1 : ℚ) / (n + 2) + (1 : ℚ) / ((n + 1) * (n + 2))))",
+        "kind": "extra_invariant",
+        "skeleton": "Base n = 0, 1, 2 holds since each guard fails or reduces to the true two-term identity; step: the second conjunct is exactly P(n+1), which the induction hypothesis at n+1 (i.e. the first conjunct shifted) hands you, and the first is P(n).",
+        "reading": "P holds at n and simultaneously at n+1, so the step case has the successor instance ready-made.",
+        "statement_sha256": "3dd553256f195eaf4fa4d871303654bb818bbd4565555da26221199df74da080"
+      },
+      "gates": {
+        "E": {
+          "syntactic": {
+            "verdict": "PASS",
+            "arm": "SYNTACTIC"
+          },
+          "kernel_defeq": {
+            "verdict": "PASS",
+            "arm": "KERNEL_DEFEQ",
+            "reason": "rfl failed: P' is not definitionally the target"
+          },
+          "verdict": "PASS"
+        },
+        "T": {
+          "gate": "msl_obligation_dag.type_gate (imported, two arms)",
+          "standalone": {
+            "ok": true,
+            "missing": [],
+            "reason": ""
+          },
+          "referenced": {
+            "ok": true,
+            "missing": [],
+            "reason": ""
+          },
+          "fatal_missing": [],
+          "bound_relaxations": [],
+          "bound_relaxation_note": "a relaxed domain bound is recorded, not rejected: it cannot put the statement over the wrong type, and CHECK 1 (∀ n, P' n → P n) settles in the kernel whether anything the target needed was actually lost",
+          "used_definitions_in_unit": true,
+          "verdict": "PASS",
+          "reason": "",
+          "missing": []
+        },
+        "F": {
+          "verdict": "PASS",
+          "evaluated": {
+            "0": true,
+            "1": true,
+            "2": true
+          },
+          "undecided": [],
+          "note": "true at [0, 1, 2]; none not decidable and therefore untested"
+        }
+      },
+      "implication_check": {
+        "verdict": "OPEN",
+        "rc": 1,
+        "closed_by": null,
+        "goal_state": null,
+        "kernel_error": "/root/peer/strengthen/s20260902_092522_2/t01.c2__implication.lean:34:68: error: Tactic `simp` failed with a nested error:",
+        "theorem": "th_t01_c2_impl",
+        "statement": "∀ (n : Nat), msl_q_erdos289_a_m01_d1_s2 n → msl_p_erdos289_a_m01_d1 n",
+        "repair": {
+          "verdict": "STILL_OPEN",
+          "proposer": {
+            "kind": "PROPOSER_CALL",
+            "tag": "t01.c2.repair.implication",
+            "model": "z-ai/glm-5.3-flash",
+            "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+            "prompt_sha256": "3a91da15ca57fb9ad68306f638cf3f6e1da193a1d527d7ab2fd15d225a208b75",
+            "prompt_chars": 1634,
+            "response_sha256": "0327bf22341ca817b2ce2e4cbe5f73f2d700a904d0305238c8dc4808227dee85",
+            "usage": {
+              "prompt_tokens": 621,
+              "completion_tokens": 62,
+              "total_tokens": 683,
+              "cost": 6.2075e-05,
+              "is_byok": false,
+              "prompt_tokens_details": {
+                "cached_tokens": 0,
+                "cache_write_tokens": 0,
+                "audio_tokens": 0,
+                "video_tokens": 0
+              },
+              "cost_details": {
+                "upstream_inference_cost": 6.2075e-05,
+                "upstream_inference_prompt_cost": 4.6575e-05,
+                "upstream_inference_completions_cost": 1.55e-05
+              },
+              "completion_tokens_details": {
+                "reasoning_tokens": 0,
+                "image_tokens": 0,
+                "audio_tokens": 0
+              }
+            },
+            "reserved_usd": 0.01,
+            "reported_cost_usd": 6.2075e-05,
+            "cost_basis": "endpoint usage.cost",
+            "seconds": 3.12,
+            "utc": "2026-09-02T16:28:58Z"
+          },
+          "tactics": "intro n h hp",
+          "reading": "After intro and applying the conjunction h, hp reduces to the algebraic identity (1/n = 1/(n+1) + 1/(n*(n+1))), which ring/field_simp closes.",
+          "kernel": {
+            "verdict": "OPEN",
+            "rc": 1,
+            "closed_by": null,
+            "goal_state": null,
+            "kernel_error": "/root/peer/strengthen/s20260902_092858_3/t01.c2__implication_repair.lean:25:10: error: Tactic `introN` failed: There are no additional binders or `let` bindings in the goal to introduce"
+          }
+        }
+      },
+      "base_case_check": {
+        "verdict": "closed_by_t10_simp",
+        "rc": 0,
+        "closed_by": "t10_simp",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "theorem": "th_t01_c2_base",
+        "statement": "msl_q_erdos289_a_m01_d1_s2 0"
+      },
+      "step_case_check": {
+        "verdict": "OPEN",
+        "rc": 1,
+        "closed_by": null,
+        "goal_state": null,
+        "kernel_error": "/root/peer/strengthen/s20260902_092522_2/t01.c2__step.lean:34:68: error: Tactic `simp` failed with a nested error:",
+        "theorem": "th_t01_c2_step",
+        "statement": "∀ (k : Nat), msl_q_erdos289_a_m01_d1_s2 k → msl_q_erdos289_a_m01_d1_s2 (k + 1)",
+        "repair": {
+          "verdict": "NOT_ATTEMPTED",
+          "reason": "repair cap 3 reached for this target"
+        }
+      },
+      "composed_file": null,
+      "kernel_verdict": "CHECKS_OPEN",
+      "axioms": [],
+      "cost_usd": 0.0,
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      }
+    },
+    {
+      "receipt_id": "erdos289:A:M01#D1#S3",
+      "original_target": {
+        "id": "erdos289:A:M01#D1",
+        "statement": "2 ≤ n → ((1 : ℚ) / n = (1 : ℚ) / (n + 1) + (1 : ℚ) / (n * (n + 1)))",
+        "statement_sha256": "4b20c27d665c630fe492c30e35c97f953014fc926e43b5ab3a631c6b6e9f2d76",
+        "param": "n"
+      },
+      "strengthened_target": {
+        "name": "P'allBelow",
+        "statement": "(∀ m ≤ n, 2 ≤ m → (1 : ℚ) / m = (1 : ℚ) / (m + 1) + (1 : ℚ) / (m * (m + 1)))",
+        "kind": "generalized_hypothesis",
+        "skeleton": "Base n = 0, 1 vacuous since no 2 ≤ m ≤ n; step: instantiate the ∀ m ≤ n with m = n+1 (guard 2 ≤ n+1) and finish by the same algebraic identity.",
+        "reading": "The two-term decomposition holds uniformly for every m from 2 up to n, giving the step a usable hypothesis.",
+        "statement_sha256": "3960a6b602c24f69488f01eee90c9883ce0efb8b85f9ba81c33cda1b05ecc541"
+      },
+      "gates": {
+        "E": {
+          "syntactic": {
+            "verdict": "PASS",
+            "arm": "SYNTACTIC"
+          },
+          "kernel_defeq": {
+            "verdict": "PASS",
+            "arm": "KERNEL_DEFEQ",
+            "reason": "rfl failed: P' is not definitionally the target"
+          },
+          "verdict": "PASS"
+        },
+        "T": {
+          "gate": "msl_obligation_dag.type_gate (imported, two arms)",
+          "standalone": {
+            "ok": true,
+            "missing": [],
+            "reason": ""
+          },
+          "referenced": {
+            "ok": false,
+            "missing": [
+              "domain bound '2 n'"
+            ],
+            "reason": "inherited type ascription or domain bound dropped"
+          },
+          "fatal_missing": [],
+          "bound_relaxations": [
+            "domain bound '2 n'"
+          ],
+          "bound_relaxation_note": "a relaxed domain bound is recorded, not rejected: it cannot put the statement over the wrong type, and CHECK 1 (∀ n, P' n → P n) settles in the kernel whether anything the target needed was actually lost",
+          "used_definitions_in_unit": true,
+          "verdict": "PASS",
+          "reason": "",
+          "missing": []
+        },
+        "F": {
+          "verdict": "PASS",
+          "evaluated": {
+            "0": true,
+            "1": true,
+            "2": true
+          },
+          "undecided": [],
+          "note": "true at [0, 1, 2]; none not decidable and therefore untested"
+        }
+      },
+      "implication_check": {
+        "verdict": "OPEN",
+        "rc": 0,
+        "closed_by": null,
+        "goal_state": "Note: This linter can be disabled with `set_option linter.unusedTactic false`\n'th_t01_c3_impl' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]",
+        "reason": "the ladder did not close this goal; the capture alternative ran and the goal state is banked above",
+        "theorem": "th_t01_c3_impl",
+        "statement": "∀ (n : Nat), msl_q_erdos289_a_m01_d1_s3 n → msl_p_erdos289_a_m01_d1 n",
+        "repair": {
+          "verdict": "NOT_ATTEMPTED",
+          "reason": "repair cap 3 reached for this target"
+        }
+      },
+      "base_case_check": {
+        "verdict": "closed_by_t10_simp",
+        "rc": 0,
+        "closed_by": "t10_simp",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "theorem": "th_t01_c3_base",
+        "statement": "msl_q_erdos289_a_m01_d1_s3 0"
+      },
+      "step_case_check": {
+        "verdict": "OPEN",
+        "rc": 0,
+        "closed_by": null,
+        "goal_state": "Note: This linter can be disabled with `set_option linter.unusedTactic false`\n'th_t01_c3_step' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]",
+        "reason": "the ladder did not close this goal; the capture alternative ran and the goal state is banked above",
+        "theorem": "th_t01_c3_step",
+        "statement": "∀ (k : Nat), msl_q_erdos289_a_m01_d1_s3 k → msl_q_erdos289_a_m01_d1_s3 (k + 1)",
+        "repair": {
+          "verdict": "NOT_ATTEMPTED",
+          "reason": "repair cap 3 reached for this target"
+        }
+      },
+      "composed_file": null,
+      "kernel_verdict": "CHECKS_OPEN",
+      "axioms": [],
+      "cost_usd": 0.0,
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      }
+    },
+    {
+      "receipt_id": "erdos289:A:M01#D1#S4",
+      "original_target": {
+        "id": "erdos289:A:M01#D1",
+        "statement": "2 ≤ n → ((1 : ℚ) / n = (1 : ℚ) / (n + 1) + (1 : ℚ) / (n * (n + 1)))",
+        "statement_sha256": "4b20c27d665c630fe492c30e35c97f953014fc926e43b5ab3a631c6b6e9f2d76",
+        "param": "n"
+      },
+      "strengthened_target": {
+        "name": "P'nonzeroInv",
+        "statement": "((2 ≤ n → (1 : ℚ) / n = (1 : ℚ) / (n + 1) + (1 : ℚ) / (n * (n + 1))) ∧ (1 ≤ n → (n : ℚ) ≠ 0 ∧ (1 : ℚ) / n ≤ (1 : ℚ)))",
+        "kind": "extra_invariant",
+        "skeleton": "Base n = 0, 1, 2 checked by decide (guards fail or identity holds, 1/n nonzero for 1 ≤ n); step: the first conjunct is P(n), the second survives via n+1 ≥ 1 and field_simp-style nonzero reasoning needed to cancel denominators.",
+        "reading": "P holds together with the denominator nonvanishing and unit-bound invariant that the cancellation in the step needs.",
+        "statement_sha256": "8327a7f78db6370c27d413f94b2cc3c5f728556304b2cc9c8e02e602e72e0719"
+      },
+      "gates": {
+        "E": {
+          "syntactic": {
+            "verdict": "PASS",
+            "arm": "SYNTACTIC"
+          },
+          "kernel_defeq": {
+            "verdict": "PASS",
+            "arm": "KERNEL_DEFEQ",
+            "reason": "rfl failed: P' is not definitionally the target"
+          },
+          "verdict": "PASS"
+        },
+        "T": {
+          "gate": "msl_obligation_dag.type_gate (imported, two arms)",
+          "standalone": {
+            "ok": true,
+            "missing": [],
+            "reason": ""
+          },
+          "referenced": {
+            "ok": true,
+            "missing": [],
+            "reason": ""
+          },
+          "fatal_missing": [],
+          "bound_relaxations": [],
+          "bound_relaxation_note": "a relaxed domain bound is recorded, not rejected: it cannot put the statement over the wrong type, and CHECK 1 (∀ n, P' n → P n) settles in the kernel whether anything the target needed was actually lost",
+          "used_definitions_in_unit": true,
+          "verdict": "PASS",
+          "reason": "",
+          "missing": []
+        },
+        "F": {
+          "verdict": "PASS",
+          "evaluated": {
+            "0": true,
+            "1": true,
+            "2": true
+          },
+          "undecided": [],
+          "note": "true at [0, 1, 2]; none not decidable and therefore untested"
+        }
+      },
+      "implication_check": {
+        "verdict": "OPEN",
+        "rc": 1,
+        "closed_by": null,
+        "goal_state": null,
+        "kernel_error": "/root/peer/strengthen/s20260902_092522_2/t01.c4__implication.lean:34:68: error: Tactic `simp` failed with a nested error:",
+        "theorem": "th_t01_c4_impl",
+        "statement": "∀ (n : Nat), msl_q_erdos289_a_m01_d1_s4 n → msl_p_erdos289_a_m01_d1 n",
+        "repair": {
+          "verdict": "NOT_ATTEMPTED",
+          "reason": "repair cap 3 reached for this target"
+        }
+      },
+      "base_case_check": {
+        "verdict": "closed_by_t10_simp",
+        "rc": 0,
+        "closed_by": "t10_simp",
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "theorem": "th_t01_c4_base",
+        "statement": "msl_q_erdos289_a_m01_d1_s4 0"
+      },
+      "step_case_check": {
+        "verdict": "OPEN",
+        "rc": 0,
+        "closed_by": null,
+        "goal_state": "Note: This linter can be disabled with `set_option linter.unusedTactic false`\n'th_t01_c4_step' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]",
+        "reason": "the ladder did not close this goal; the capture alternative ran and the goal state is banked above",
+        "theorem": "th_t01_c4_step",
+        "statement": "∀ (k : Nat), msl_q_erdos289_a_m01_d1_s4 k → msl_q_erdos289_a_m01_d1_s4 (k + 1)",
+        "repair": {
+          "verdict": "NOT_ATTEMPTED",
+          "reason": "repair cap 3 reached for this target"
+        }
+      },
+      "composed_file": null,
+      "kernel_verdict": "CHECKS_OPEN",
+      "axioms": [],
+      "cost_usd": 0.0,
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      }
+    }
+  ],
+  "counts": {
+    "proposed": 4,
+    "dropped_gate_E": 0,
+    "dropped_gate_F": 0,
+    "dropped_gate_T": 0,
+    "dropped_no_elaboration": 0,
+    "checks_open": 4,
+    "composed_attempted": 0,
+    "composition_failed": 0,
+    "verified_theorems": 0,
+    "repairs_used": 3
+  },
+  "honesty_law": "VERIFIED_THEOREM is stamped off the COMPOSED file's kernel verdict and nothing else. Three checks that each compiled alone are three files that each compiled.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "t01.propose",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "1ce5a4661e480007a026d1c7374a5607fea3da9bf0bbfb9aff55ef54a7d7b4aa",
+    "prompt_chars": 3874,
+    "response_sha256": "75676f02154075fe8e57bf02c358af945903c76bc7dcdb9114a00acd0b6a9169",
+    "usage": {
+      "prompt_tokens": 1133,
+      "completion_tokens": 1759,
+      "total_tokens": 2892,
+      "cost": 0.000524725,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.000524725,
+        "upstream_inference_prompt_cost": 8.4975e-05,
+        "upstream_inference_completions_cost": 0.00043975
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 993,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.000524725,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 52.99,
+    "utc": "2026-09-02T16:24:49Z"
+  },
+  "definitions_used": "-- campaign vocabulary, already kernel-checked (msl_decompose)\ndef runSum (a b : ℕ) : ℚ := ∑ n ∈ Icc a b, (1 : ℚ) / n\n\ndef runProd (a b : ℕ) : ℕ := ∏ n ∈ Icc a b, n\n\ndef runNum (a b : ℕ) : ℕ := ∑ n ∈ Icc a b, runProd a b / n\n\n-- proposed definitions",
+  "utc_finished": "2026-09-02T16:29:10Z",
+  "budget": {
+    "cap_usd": 0.5,
+    "spent_usd": 0.004835,
+    "calls": 4,
+    "calls_with_reported_cost": 4,
+    "reserve_per_call_usd": 0.01
+  }
+}

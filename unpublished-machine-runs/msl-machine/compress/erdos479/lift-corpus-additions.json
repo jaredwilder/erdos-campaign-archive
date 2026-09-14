@@ -1,0 +1,103 @@
+{
+ "schema": "msl-compress/1.0.0",
+ "problem": "erdos479",
+ "rows": [
+  {
+   "fingerprint": "17dfd88176ef034843e7ba71800d9df556b508209a5cfb8e56abd5d4c489ea1c",
+   "normal_form": "($b0 : ℕ) : ∃ $b1 : ℕ, $b0 ≤ $b1 ∧ (2 : ℤ) ^ $b1 ≡ -1 [ZMOD ($b1 : ℤ)]",
+   "problem": "erdos479",
+   "node": "erdos479:COMPRESS:erdos479_k_neg_one_inf",
+   "declaration": "erdos479_k_neg_one_inf",
+   "statement": "theorem erdos479_k_neg_one_inf (N : ℕ) : ∃ n : ℕ, N ≤ n ∧ (2 : ℤ) ^ n ≡ -1 [ZMOD (n : ℤ)]",
+   "origin": "PROPOSER",
+   "status": "OPEN",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_k_neg_one_inf.jobs.json",
+   "law": "OFFERED ONLY WHEN status == PROVED_KERNEL; a candidate lifts nothing."
+  },
+  {
+   "fingerprint": "4f6fe5e92129f4a91a9148d9217780e6ffd075a9f10d741f2b3e21833d402ef0",
+   "normal_form": "($b0 $b1 : ℕ) ($b2 : 1 ≤ $b0) ($b3 : Odd $b1) : (2 ^ (2 ^ $b0 * $b1) : ℤ) ≡ (2 ^ (2 ^ $b0) : ℤ) [ZMOD ((2 ^ $b0 * $b1 : ℕ) : ℤ)]",
+   "problem": "erdos479",
+   "node": "erdos479:COMPRESS:erdos479_family_odd_generalized",
+   "declaration": "erdos479_family_odd_generalized",
+   "statement": "theorem erdos479_family_odd_generalized (j m : ℕ) (hm1 : 1 ≤ j) (hodd : Odd m) :\n    (2 ^ (2 ^ j * m) : ℤ) ≡ (2 ^ (2 ^ j) : ℤ) [ZMOD ((2 ^ j * m : ℕ) : ℤ)]",
+   "origin": "PROPOSER",
+   "status": "OPEN",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_family_odd_generalized.jobs.json",
+   "law": "OFFERED ONLY WHEN status == PROVED_KERNEL; a candidate lifts nothing."
+  },
+  {
+   "fingerprint": "8949ecf0fc5d83f2c0e6357b4fa3bc5452a6340ff2264bf2e66d95716a54e82f",
+   "normal_form": "($b0 : ℤ) ($b1 : $b0 = 0 ∨ (∃ $b2 : ℕ, $b0 = (2 : ℤ) ^ (2 ^ $b2)) ∨ $b0 = -1) : ∀ $b3 : ℕ, ∃ $b4 : ℕ, $b3 < $b4 ∧ (2 : ℤ) ^ $b4 ≡ $b0 [ZMOD $b4]",
+   "problem": "erdos479",
+   "node": "erdos479:COMPRESS:erdos479_affirmative_bridge",
+   "declaration": "erdos479_affirmative_bridge",
+   "statement": "theorem erdos479_affirmative_bridge (k : ℤ) (hk : k = 0 ∨ (∃ j : ℕ, k = (2 : ℤ) ^ (2 ^ j)) ∨ k = -1) : ∀ N : ℕ, ∃ n : ℕ, N < n ∧ (2 : ℤ) ^ n ≡ k [ZMOD n]",
+   "origin": "PROPOSER",
+   "status": "OPEN",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_affirmative_bridge.jobs.json",
+   "law": "OFFERED ONLY WHEN status == PROVED_KERNEL; a candidate lifts nothing."
+  },
+  {
+   "fingerprint": "a38c30090a3d71cf0e321836259419af259f2c6b255271a178f5c2d196e5978b",
+   "normal_form": ": ∀ n ∈ Finset.Icc (1 : ℕ) 120, (2 ^ n : ℕ) % n ≠ 3",
+   "problem": "erdos479",
+   "node": "erdos479:COMPRESS:erdos479_k3_no_witness_range",
+   "declaration": "erdos479_k3_no_witness_range",
+   "statement": "theorem erdos479_k3_no_witness_range : ∀ n ∈ Finset.Icc (1 : ℕ) 120, (2 ^ n : ℕ) % n ≠ 3",
+   "origin": "PROPOSER",
+   "status": "OPEN",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_k3_no_witness_range.jobs.json",
+   "law": "OFFERED ONLY WHEN status == PROVED_KERNEL; a candidate lifts nothing."
+  },
+  {
+   "fingerprint": "9835da3bd05d0ae79d61a26c617af37e65dc68aa0ca32d675ad6e96b6159d9ad",
+   "normal_form": "($b0 $b1 : ℕ) ($b2 : 2 ^ $b0 ≤ $b1) ($b3 : (2 ^ $b1 : ℕ) ≡ 2 ^ (2 ^ $b0) [MOD $b1]) : (2 ^ (2 ^ $b0) : ℕ) * (2 ^ ($b1 - 2 ^ $b0) - 1) ≡ 0 [MOD $b1] ∧ $b1.factorization 2 ≤ 2 ^ $b0",
+   "problem": "erdos479",
+   "node": "erdos479:COMPRESS:erdos479_witness_structure",
+   "declaration": "erdos479_witness_structure",
+   "statement": "theorem erdos479_witness_structure (j n : ℕ) (hj : 2 ^ j ≤ n)\n    (h : (2 ^ n : ℕ) ≡ 2 ^ (2 ^ j) [MOD n]) :\n    (2 ^ (2 ^ j) : ℕ) * (2 ^ (n - 2 ^ j) - 1) ≡ 0 [MOD n] ∧\n    n.factorization 2 ≤ 2 ^ j",
+   "origin": "PROPOSER",
+   "status": "OPEN",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_witness_structure.jobs.json",
+   "law": "OFFERED ONLY WHEN status == PROVED_KERNEL; a candidate lifts nothing."
+  },
+  {
+   "fingerprint": "50ba3441dfcf84729b7923efd70da14fd61982209040c824d65e1e86bede50fe",
+   "normal_form": "($b0 $b1 $b2 : ℕ) ($b3 : $b2.Prime) ($b4 : Nat.gcd $b1 $b2 = 1) ($b5 : (2 ^ $b1 : ℕ) ≡ $b0 [MOD $b1]) ($b6 : (2 ^ $b1 : ℕ) ≡ $b0 [MOD $b2]) ($b7 : ($b0 ^ $b2 : ℕ) ≡ $b0 [MOD $b1]) : (2 ^ ($b1 * $b2) : ℕ) ≡ $b0 [MOD $b1 * $b2]",
+   "problem": "erdos479",
+   "node": "erdos479:COMPRESS:erdos479_witness_lift",
+   "declaration": "erdos479_witness_lift",
+   "statement": "theorem erdos479_witness_lift (k n p : ℕ) (hp : p.Prime) (hgcd : Nat.gcd n p = 1) (hn : (2 ^ n : ℕ) ≡ k [MOD n]) (hp1 : (2 ^ n : ℕ) ≡ k [MOD p]) (hp2 : (k ^ p : ℕ) ≡ k [MOD n]) : (2 ^ (n * p) : ℕ) ≡ k [MOD n * p]",
+   "origin": "PROPOSER",
+   "status": "OPEN",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_witness_lift.jobs.json",
+   "law": "OFFERED ONLY WHEN status == PROVED_KERNEL; a candidate lifts nothing."
+  },
+  {
+   "fingerprint": "0fcb7fdb5afa18f207a6d81739f2a6a4dcf24c27acfd95a38d3572946dfefd03",
+   "normal_form": "∀ ($b0 : ℕ), (2 ^ (2 ^ $b0) ∣ 2 ^ (2 ^ $b0)) ∧ ¬(2 ^ (2 ^ $b0 + 1) ∣ 2 ^ (2 ^ $b0)) ∧ ($b0 ≤ 2 ^ $b0) ∧ ((2 ^ $b0 : ℕ) ∣ 2 ^ (2 ^ $b0))",
+   "problem": "erdos479",
+   "node": "erdos479:COMPRESS:erdos479_witness_family_all_s",
+   "declaration": "erdos479_witness_family_all_s",
+   "statement": "∀ (s : ℕ), (2 ^ (2 ^ s) ∣ 2 ^ (2 ^ s)) ∧ ¬(2 ^ (2 ^ s + 1) ∣ 2 ^ (2 ^ s)) ∧ (s ≤ 2 ^ s) ∧ ((2 ^ s : ℕ) ∣ 2 ^ (2 ^ s))",
+   "origin": "PROPOSER",
+   "status": "OPEN",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_witness_family_all_s.jobs.json",
+   "law": "OFFERED ONLY WHEN status == PROVED_KERNEL; a candidate lifts nothing."
+  },
+  {
+   "fingerprint": "05c186eed83a8be447e978c52abee0e1ac72c69a86ae8db66ed6ab3727b05ceb",
+   "normal_form": "∀ s ∈ Finset.Icc (1 : ℕ) 5, check_l1_fragment s = true",
+   "problem": "erdos479",
+   "node": "erdos479:COMPRESS:check_l1_fragment_bridge",
+   "declaration": "check_l1_fragment_bridge",
+   "statement": "∀ s ∈ Finset.Icc (1 : ℕ) 5, check_l1_fragment s = true",
+   "origin": "PROPOSER",
+   "status": "OPEN",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__check_l1_fragment_bridge.jobs.json",
+   "law": "OFFERED ONLY WHEN status == PROVED_KERNEL; a candidate lifts nothing."
+  }
+ ],
+ "law": "BESIDE the sweeper's state, never into it. A row is offered to other problems only at PROVED_KERNEL."
+}

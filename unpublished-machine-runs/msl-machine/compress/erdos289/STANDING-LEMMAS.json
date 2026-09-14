@@ -1,0 +1,63 @@
+{
+ "route": "erdos289:COMPRESS",
+ "family": "compressor",
+ "thesis": "theorems built one level up from this problem's kernel-proved leaves by msl_compress",
+ "target_close_branch": "erdos289:ROOT",
+ "lemmas": [
+  {
+   "id": "erdos289:COMPRESS:erdos289_one_sixth_interval_reaches_beyond_sixty",
+   "status": "OPEN",
+   "statement": "theorem erdos289_one_sixth_interval_reaches_beyond_sixty (a b : ℕ) (hab : a < b) (h : runSum a b = (1 : ℚ) / 6) : a ≤ 4 ∨ 60 < b",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__erdos289_one_sixth_interval_reaches_beyond_sixty.jobs.json"
+  },
+  {
+   "id": "erdos289:COMPRESS:W4_two_interval_fragment",
+   "status": "OPEN",
+   "statement": "theorem W4_two_interval_fragment : ∀ a ∈ Finset.Icc 5 60, ∀ b ∈ Finset.Icc (a + 1) 60, ∀ c ∈ Finset.Icc (b + 2) 60, ∀ d ∈ Finset.Icc (c + 1) 60, runSum a b + runSum c d ≠ (1 : ℚ) / 6",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__W4_two_interval_fragment.jobs.json"
+  },
+  {
+   "id": "erdos289:COMPRESS:erdos289_bridge_head_tail",
+   "status": "OPEN",
+   "statement": "theorem erdos289_bridge_head_tail :\n  ((∃ (m : ℕ) (as bs : Fin m → ℕ),\n      (∀ i, 5 ≤ as i ∧ as i + 1 ≤ bs i) ∧\n      (∀ i j, i ≠ j → bs i + 1 < as j ∨ bs j + 1 < as i) ∧\n      (∑ i, runSum (as i) (bs i) = (1:ℚ) / 6)) ↔\n   (∃ (k : ℕ) (as bs : Fin k → ℕ),\n      (∀ i, 2 ≤ as i ∧ as i + 1 ≤ bs i) ∧\n      (∀ i j, i ≠ j → bs i + 1 < as j ∨ bs j + 1 < as i) ∧\n      (∑ i, runSum (as i) (bs i) = (1:ℚ)))",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__erdos289_bridge_head_tail.jobs.json"
+  },
+  {
+   "id": "erdos289:COMPRESS:sq_le_sq_iff_abs_le_of_nonneg",
+   "status": "OPEN",
+   "statement": "0 ≤ B → (R ^ 2 ≤ B ^ 2 ↔ |R| ≤ B)",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__sq_le_sq_iff_abs_le_of_nonneg.jobs.json"
+  },
+  {
+   "id": "erdos289:COMPRESS:runSum_eq_iff_nat_eq",
+   "status": "OPEN",
+   "statement": "∀ (a b : ℕ) (q : ℚ), 1 ≤ a → a ≤ b → (runSum a b = q ↔ (q * (runProd a b : ℚ) = (runNum a b : ℚ)))",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__runSum_eq_iff_nat_eq.jobs.json"
+  },
+  {
+   "id": "erdos289:COMPRESS:l1_bridge_curry",
+   "status": "OPEN",
+   "statement": "∀ (R B : ℚ), (0 : ℚ) ≤ B → ((R ^ 2 ≤ B ^ 2 ∧ (0 : ℚ) ≤ B) ↔ |R| ≤ B) → (R ^ 2 ≤ B ^ 2 ↔ |R| ≤ B)",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__l1_bridge_curry.jobs.json"
+  },
+  {
+   "id": "erdos289:COMPRESS:L1_no_sixth_from_two",
+   "status": "OPEN",
+   "statement": "theorem L1_no_sixth_from_two :\n    ∀ a ∈ Finset.Icc 2 60, ∀ b ∈ Finset.Icc (a + 1) 60,\n      runSum a b ≠ (1 : ℚ) / 6",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__L1_no_sixth_from_two.jobs.json"
+  },
+  {
+   "id": "erdos289:COMPRESS:runSum_2_4_exceeds_one",
+   "status": "OPEN",
+   "statement": "theorem runSum_2_4_exceeds_one : runSum 2 4 > (1 : ℚ)",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__runSum_2_4_exceeds_one.jobs.json"
+  },
+  {
+   "id": "erdos289:COMPRESS:W4_nat_fragment_gen",
+   "status": "OPEN",
+   "statement": "∀ m ∈ Finset.Icc 2 6, ∀ a ∈ Finset.Icc 5 60, ∀ b ∈ Finset.Icc (a + 1) 60, m * runNum a b ≠ runProd a b",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__W4_nat_fragment_gen.jobs.json"
+  }
+ ],
+ "law": "STATUS IS OPEN UNTIL A KERNEL ROW LANDS.  A COMBINED_THEOREM in this list is a candidate with a filed job, not a proved lemma."
+}

@@ -1,0 +1,74 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos40",
+  "generated_utc": "2026-09-02T16:47:50Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos40:LEM:R005:L1",
+    "statement": "Correct negation form of the canonical claim, but the ∀g witness construction is unproved for slowly divergent g (e.g. g=log log log N); as stated it is an equivalent-strength restatement of the open problem, not a lemma.",
+    "statement_sha256": "08611113fefc9735a66668ee6fbe7db26676df32786fd4035fa9fbf372097784",
+    "kind": "LEMMA",
+    "binding": "UNBOUND",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "For what functions $g(N)\\to \\infty$ is it true that\\[\\lvert A\\cap \\{1,\\ldots,N\\}\\rvert \\gg \\frac{N^{1/2}}{g(N)}\\]implies $\\limsup 1_A\\ast 1_A(n)=\\infty$?",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos40-campaign-001/contract.json",
+    "sha256": "ae683543cb8744fc0163aa987e8fa5b03162b84763ea372670bf8e07d3c74862"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos40:LEM:R005:L1",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "db57c935e48c72ecbb45a28fa3919b8cf3f1c5f5b5b292b78c12d085c82bd90d",
+    "prompt_chars": 4217,
+    "response_sha256": "20f4174a8d6d014b1ab5958373f2257690b55d16c4d54ad34e8fddda4cad994a",
+    "usage": {
+      "prompt_tokens": 1116,
+      "completion_tokens": 2423,
+      "total_tokens": 3539,
+      "cost": 0.00068177,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 128,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00068177,
+        "upstream_inference_prompt_cost": 7.602e-05,
+        "upstream_inference_completions_cost": 0.00060575
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 1432,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.00068177,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 65.2,
+    "utc": "2026-09-02T16:47:08Z"
+  },
+  "children": [],
+  "composition": null,
+  "parent_new_depends_on": [],
+  "rejected": [],
+  "counts": {
+    "proposed": 0,
+    "elaborated": 0,
+    "bound": 0,
+    "non_circular": 0,
+    "non_trivial": 0,
+    "surviving": 0,
+    "composition_kernel_checked": 0,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 0
+  },
+  "refusal": "PROPOSAL_NOT_JSON: Expecting property name enclosed in double quotes: line 1 column 1224 (char 1223)"
+}

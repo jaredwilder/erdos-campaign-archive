@@ -1,0 +1,159 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos208",
+  "generated_utc": "2026-09-02T16:26:00Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos208:LEM:R004:residual",
+    "statement": "analytic reduction none, no instantiated bound, fail closed on unresolved sign.",
+    "statement_sha256": "51e7899b10808a00171dc415af3fc2de328c41202348e883ef216e9e7364ab17",
+    "kind": "LEMMA",
+    "binding": "UNBOUND",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "Let $s_1&lt;s_2&lt;\\cdots$ be the sequence of squarefree numbers. Is it true that, for any $\\epsilon&gt;0$ and large $n$,\\[s_{n+1}-s_n \\ll_\\epsilon s_n^{\\epsilon}?\\]Is it true that\\[s_{n+1}-s_n \\leq (1+o(1))\\frac{\\pi^2}{6}\\frac{\\log s_n}{\\log\\log s_n}?\\]",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos208-campaign-001/contract.json",
+    "sha256": "2d6d9c41d9f86117d83dc2834448e6e4fc38fafa368bcf4e8b9bc810de89ab62"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos208:LEM:R004:residual",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "8b0759e7fb0449429039dea15cca330017840c27541189a22423fc36c51c5d18",
+    "prompt_chars": 4182,
+    "response_sha256": "29833fcb755f149d36ab91f1678a3afb793d787fd50d6c597a67811121c68230",
+    "usage": {
+      "prompt_tokens": 1114,
+      "completion_tokens": 1418,
+      "total_tokens": 2532,
+      "cost": 0.0008761,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0008761,
+        "upstream_inference_prompt_cost": 0.0001671,
+        "upstream_inference_completions_cost": 0.000709
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 850,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.0008761,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 44.17,
+    "utc": "2026-09-02T16:25:38Z"
+  },
+  "children": [],
+  "composition": {
+    "id": "erdos208:LEM:R004:residual#COMPOSE",
+    "statement": "(composition not constructed)",
+    "kind": "COMPOSITION",
+    "depends_on": [],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "OPEN",
+    "problem": "erdos208",
+    "decomposed_from": "erdos208:LEM:R004:residual",
+    "imports": "Mathlib",
+    "definitions": "def s : ℕ → ℕ := fun n => Nat.nth (fun k => Squarefree k) n\n\ndef gap (n : ℕ) : ℕ := s (n + 1) - s n",
+    "type_context": "Mathlib\ndef s : ℕ → ℕ := fun n => Nat.nth (fun k => Squarefree k) n\n\ndef gap (n : ℕ) : ℕ := s (n + 1) - s n",
+    "parent_typed": {
+      "statement": "(∀ (ε : ℝ), 0 < ε → ∃ (N : ℕ), ∀ (n : ℕ), N ≤ n → ((gap n : ℝ) ≤ (s n : ℝ) ^ ε)) ∧ (∀ (ε : ℝ), 0 < ε → ∃ (N : ℕ), ∀ (n : ℕ), N ≤ n → ((gap n : ℝ) ≤ (1 + ε) * (π ^ 2 / 6) * Real.log (s n : ℝ) / Real.log (Real.log (s n : ℝ))))",
+      "binders": [],
+      "reading": "For squarefree numbers s_n, both the ε-power gap bound (with constant depending on ε) and the asymptotic π²/6 · log s_n / log log s_n gap bound hold for all large n.",
+      "elaboration": {
+        "verdict": "DEFS_DO_NOT_ELABORATE",
+        "kernel_error": "/root/peer/decomp/b20260902_092538_1/erdos208_LEM_R004_residual_defs.lean:8:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Nat.nth', which is 'noncomputable'\n/root/peer/decomp/b20260902_092538_1/erdos208_LEM_R004_residual_defs.lean:10:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 's', which is 'noncomputable'"
+      },
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": null,
+        "prose_contract_root_report": {
+          "ok": true,
+          "missing": [],
+          "reason": "",
+          "blocking": false,
+          "why_not_blocking": "tokens mined from ENGLISH prose are not Lean tokens; `Fin k` carries `1 <= i <= k` structurally"
+        }
+      }
+    },
+    "composition_claim": {
+      "text": "The parent is exactly the conjunction of the two children: the first conjunct is child 1 (the ε-power gap bound) and the second conjunct is child 2 (the asymptotic π²/6 bound), so proving both children yields the parent by And.intro.",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "COMPOSITION_NOT_RUN",
+      "counts_toward_parent": 0,
+      "reason": "no surviving child"
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "composition_receipt": "oracle/evidence/msl-machine/dag/decomp/erdos208/receipts/erdos208_LEM_R004_residual_COMPOSE.composition.json"
+  },
+  "parent_new_depends_on": [
+    "erdos208:LEM:R004:residual#COMPOSE"
+  ],
+  "rejected": [
+    {
+      "proposed_index": 1,
+      "statement": "∀ (ε : ℝ), 0 < ε → ∃ (N : ℕ), ∀ (n : ℕ), N ≤ n → ((gap n : ℝ) ≤ (s n : ℝ) ^ ε)",
+      "binders": [],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: /root/peer/decomp/b20260902_092538_1/erdos208_LEM_R004_residual_defs.lean:8:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Nat.nth', which is 'noncomputable'\n/root/peer/decomp/b20260902_092538_1/erdos208_LEM_R004_residual_defs.lean:10:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 's', which is 'noncomputable'",
+      "kernel_error": "/root/peer/decomp/b20260902_092538_1/erdos208_LEM_R004_residual_defs.lean:8:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Nat.nth', which is 'noncomputable'\n/root/peer/decomp/b20260902_092538_1/erdos208_LEM_R004_residual_defs.lean:10:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 's', which is 'noncomputable'"
+    },
+    {
+      "proposed_index": 2,
+      "statement": "∀ (ε : ℝ), 0 < ε → ∃ (N : ℕ), ∀ (n : ℕ), N ≤ n → ((gap n : ℝ) ≤ (1 + ε) * (π ^ 2 / 6) * Real.log (s n : ℝ) / Real.log (Real.log (s n : ℝ)))",
+      "binders": [],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: /root/peer/decomp/b20260902_092538_1/erdos208_LEM_R004_residual_defs.lean:8:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Nat.nth', which is 'noncomputable'\n/root/peer/decomp/b20260902_092538_1/erdos208_LEM_R004_residual_defs.lean:10:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 's', which is 'noncomputable'",
+      "kernel_error": "/root/peer/decomp/b20260902_092538_1/erdos208_LEM_R004_residual_defs.lean:8:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Nat.nth', which is 'noncomputable'\n/root/peer/decomp/b20260902_092538_1/erdos208_LEM_R004_residual_defs.lean:10:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 's', which is 'noncomputable'"
+    }
+  ],
+  "counts": {
+    "proposed": 2,
+    "elaborated": 0,
+    "bound": 0,
+    "non_circular": 0,
+    "non_trivial": 0,
+    "surviving": 0,
+    "composition_kernel_checked": 0,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 0,
+    "counts_toward_parent_note": "composition OPEN: these children contribute ZERO toward the parent until it closes; they remain formal leaves for the rung loop"
+  },
+  "definitions": {
+    "block": "def s : ℕ → ℕ := fun n => Nat.nth (fun k => Squarefree k) n\n\ndef gap (n : ℕ) : ℕ := s (n + 1) - s n",
+    "gate0": {
+      "verdict": "DEFS_DO_NOT_ELABORATE",
+      "kernel_error": "/root/peer/decomp/b20260902_092538_1/erdos208_LEM_R004_residual_defs.lean:8:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Nat.nth', which is 'noncomputable'\n/root/peer/decomp/b20260902_092538_1/erdos208_LEM_R004_residual_defs.lean:10:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 's', which is 'noncomputable'"
+    },
+    "campaign_vocabulary_prepended": [],
+    "normalization": {
+      "body": "def s : ℕ → ℕ := fun n => Nat.nth (fun k => Squarefree k) n\n\ndef gap (n : ℕ) : ℕ := s (n + 1) - s n",
+      "opens": [],
+      "dropped_imports": []
+    }
+  }
+}

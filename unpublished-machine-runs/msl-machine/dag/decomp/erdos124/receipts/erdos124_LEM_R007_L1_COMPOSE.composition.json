@@ -1,0 +1,44 @@
+{
+  "kind": "COMPOSITION_KERNEL_CHECK",
+  "node": "erdos124:LEM:R007:L1#COMPOSE",
+  "verdict": {
+    "verdict": "COMPOSITION_OPEN",
+    "rc": 1,
+    "kernel_error": "/root/peer/decomp/b20260902_092652_3/erdos124_LEM_R007_L1_comp.lean:23:96: error: Application type mismatch: The argument\n/root/peer/decomp/b20260902_092652_3/erdos124_LEM_R007_L1_comp.lean:23:108: error: Application type mismatch: The argument",
+    "counts_toward_parent": 0
+  },
+  "lean_source": "oracle/evidence/msl-machine/dag/decomp/erdos124/lean/erdos124_LEM_R007_L1_COMPOSE.lean",
+  "ladder": [
+    "tauto",
+    "(intro h; exact h.1)",
+    "(intro h; simp_all)",
+    "(intro h; omega)",
+    "(intro h; norm_num at h ⊢ <;> tauto)",
+    "aesop",
+    "decide"
+  ],
+  "kernel_log": "/root/peer/decomp/b20260902_092652_3/erdos124_LEM_R007_L1_comp.lean:23:96: error: Application type mismatch: The argument\n  d\nhas type\n  Fin r → ℕ\nbut is expected to have type\n  ℕ\nin the application\n  InP d\n/root/peer/decomp/b20260902_092652_3/erdos124_LEM_R007_L1_comp.lean:23:108: error: Application type mismatch: The argument\n  d\nhas type\n  Fin r → ℕ\nbut is expected to have type\n  ℕ\nin the application\n  InP d\n'msl_erdos124_lem_r007_l1_composition' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]",
+  "utc": "2026-09-02T16:27:04Z",
+  "emitter_defect_supersession": {
+    "class": "EMITTER_DEFECT_SUPERSEDED",
+    "finding": "HUNT3:G5 -- composition_conjunct decided 'shares the parent's binder' by NAME only; the binder's TYPE and, for a hypothesis, its PROPOSITION were never compared. Fixed in oracle/tools/msl_decompose.py 2026-09-02 (COMPOSITION_EXTRA_HYPOTHESIS / COMPOSITION_BINDER_MISMATCH).",
+    "superseded_utc": "2026-09-02T20:54:08Z",
+    "previous_gate4_verdict": {
+      "verdict": "COMPOSITION_OPEN",
+      "rc": 1,
+      "kernel_error": "/root/peer/decomp/b20260902_092652_3/erdos124_LEM_R007_L1_comp.lean:23:96: error: Application type mismatch: The argument\n/root/peer/decomp/b20260902_092652_3/erdos124_LEM_R007_L1_comp.lean:23:108: error: Application type mismatch: The argument",
+      "counts_toward_parent": 0
+    },
+    "previous_statement": "((∀ (k : ℕ) (n : ℕ), InP d k n → InP d 0 n) ∧ (GoodBases r d → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → Coverable r d 0 n) ∧ (GoodBases r d → GcdOne r d → ∀ k : ℕ, 1 ≤ k → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → Coverable r d k n)) → (GoodBases r d → ((∃ N : ℕ, ∀ n : ℕ, N ≤ n → Coverable r d 0 n) ∧ (GcdOne r d → ∀ k : ℕ, 1 ≤ k → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → Coverable r d k n)))",
+    "previous_lean_signature": "theorem msl_erdos124_lem_r007_l1_composition (r : ℕ) (d : Fin r → ℕ) : ((∀ (k : ℕ) (n : ℕ), InP d k n → InP d 0 n) ∧ (GoodBases r d → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → Coverable r d 0 n) ∧ (GoodBases r d → GcdOne r d → ∀ k : ℕ, 1 ≤ k → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → Coverable r d k n)) → (GoodBases r d → ((∃ N : ℕ, ∀ n : ℕ, N ≤ n → Coverable r d 0 n) ∧ (GcdOne r d → ∀ k : ℕ, 1 ≤ k → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → Coverable r d k n)))",
+    "previous_lean_file_sha256": "f6cfea9b9ca01ef8888fb88069ee775bc86551c0b54bcca832488300dc9580c2",
+    "previous_source": "oracle/evidence/msl-machine/dag/decomp/erdos124/lean/erdos124_LEM_R007_L1_COMPOSE.lean",
+    "previous_lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxHeartbeats 400000\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef InP (d : ℕ) (k : ℕ) (n : ℕ) : Prop :=\n  ∃ (N : ℕ) (s : Finset (Fin N)), (∀ i ∈ s, k ≤ (i : ℕ)) ∧ n = ∑ i ∈ s, d ^ (i : ℕ)\n\ndef Coverable (r : ℕ) (d : Fin r → ℕ) (k : ℕ) (n : ℕ) : Prop :=\n  ∃ (a : Fin r → ℕ), (∀ i : Fin r, InP (d i) k (a i)) ∧ n = ∑ i : Fin r, a i\n\ndef GoodBases (r : ℕ) (d : Fin r → ℕ) : Prop :=\n  (∀ i : Fin r, (3 : ℕ) ≤ d i) ∧\n  (∀ (i j : Fin r), (i : ℕ) < (j : ℕ) → d i < d j) ∧\n  ((1 : ℚ) ≤ ∑ i : Fin r, (((d i : ℚ) - 1)⁻¹))\n\ndef GcdOne (r : ℕ) (d : Fin r → ℕ) : Prop :=\n  ∀ (p : ℕ), Nat.Prime p → ∃ i : Fin r, ¬ (p ∣ d i)\n\n",
+    "preamble_also_changed": true,
+    "preamble_note": "the re-emission uses TODAY's lean_preamble. `open scoped Classical` and `noncomputable section` were added on 2026-09-02 and were not in the header these sidecars were written under. Both files are unproved either way; a corrected statement spliced under a stale header would be a file no emitter ever produces.",
+    "why": "the previous verdict was recorded as a MATHEMATICAL outcome (COMPOSITION_OPEN). It was not: the statement the kernel judged had a child binder dropped and the child re-bound at the parent's binder. The row is kept for the record and must not be read as a result about the mathematics.",
+    "previous_lean_file_preserved_at": "oracle/evidence/msl-machine/dag/decomp/erdos124/lean/erdos124_LEM_R007_L1_COMPOSE.lean",
+    "previous_lean_file_note": "left on disk exactly as GATE 4 ran it. It is the artifact of the DEFECTIVE emission and is NOT the composition of this node -- do not compile it as one."
+  },
+  "superseded_note": "EMITTER_DEFECT_SUPERSEDED: the `verdict` field below was recorded against a composition statement this emitter should never have produced. See the sidecar's composition node for the current one."
+}

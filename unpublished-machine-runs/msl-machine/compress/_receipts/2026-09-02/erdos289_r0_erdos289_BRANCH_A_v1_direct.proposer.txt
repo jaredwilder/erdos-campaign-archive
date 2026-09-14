@@ -1,0 +1,8 @@
+{"theorem_name":"erdos289_one_sixth_interval_reaches_beyond_sixty",
+ "binders":["(a b : ℕ)"],
+ "definitions":"",
+ "statement":"theorem erdos289_one_sixth_interval_reaches_beyond_sixty (a b : ℕ) (hab : a < b) (h : runSum a b = (1 : ℚ) / 6) : a ≤ 4 ∨ 60 < b",
+ "premises":["erdos289:ORE:377845d942ddb89d","erdos289:ORE:a15080a025550157"],
+ "derivation_claim":"W4_bridge ∧ W4_fragment → T: suppose a ≥ 5 and b ≤ 60; then a ∈ Icc 5 60 and b ≥ a+1 so b ∈ Icc (a+1) 60; W4_fragment gives runSum a b ≠ 1/6, contradicting h; hence a ≤ 4 ∨ b > 60.",
+ "discharges":"erdos289:BRANCH_A",
+ "reason":"It converts the finite computational exclusion (a∈[5,60], b≤60 ⇒ runSum ≠ 1/6) into a universal structural constraint — every interval summing to the forced tail 1/6 must start below 5 or extend past 60 — the key branching fact that any 1/6-decomposition must reach beyond 60, shrinking BRANCH_A to a search outside the verified range."}

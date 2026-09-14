@@ -1,0 +1,8 @@
+{"definitions": "def IsFactorialSum (m : Nat) : Prop := ∃ S : Finset Nat, m = ∑ n ∈ S, n!\ndef IsPowerful (m : Nat) : Prop := ∀ p : Nat, p.Prime → p ∣ m → p * p ∣ m",
+  "parent_typed": {"name": "erdos1108_LEM_R001", "binders": [], "statement": "∀ (k : Nat), 2 ≤ k → (({m : Nat | IsFactorialSum m ∧ ∃ a : Nat, m = a ^ k}).Finite ∧ ({m : Nat | IsFactorialSum m ∧ IsPowerful m}).Finite)", "reading": "For every k ≥ 2, the set A of finite sums of factorials contains only finitely many kth powers, and only finitely many powerful numbers."},
+  "children": [
+    {"name": "erdos1108_LEM_R001_squares", "binders": [], "statement": "({m : Nat | IsFactorialSum m ∧ ∃ a : Nat, m = a * a}).Finite", "reading": "Endpoint k = 2: A contains only finitely many perfect squares."},
+    {"name": "erdos1108_LEM_R001_high_powers", "binders": ["(k : Nat)"], "statement": "3 ≤ k → ({m : Nat | IsFactorialSum m ∧ ∃ a : Nat, m = a ^ k}).Finite", "reading": "For each k ≥ 3, A contains only finitely many kth powers."},
+    {"name": "erdos1108_LEM_R001_powerful", "binders": [], "statement": "({m : Nat | IsFactorialSum m ∧ IsPowerful m}).Finite", "reading": "A contains only finitely many powerful numbers (primes p dividing m divide m at least twice)."}
+  ],
+  "composition_claim": "Children 1 and 2 together give the kth-power clause of the parent by splitting at k = 2 versus k ≥ 3 (for k = 2 child 1 applies since a ^ 2 = a * a); child 3 is exactly the powerful-number clause of the parent. Hence their conjunction implies the parent for every k ≥ 2."}

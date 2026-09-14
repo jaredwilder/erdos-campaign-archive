@@ -1,0 +1,182 @@
+{
+ "schema": "msl-compress/1.0.0",
+ "consumes_schema": "obligation-dag/1.0.0",
+ "problem": "erdos936",
+ "generated_utc": "2026-09-02T23:00:24Z",
+ "node": {
+  "id": "erdos936:COMPRESS:erdos936_powerful_odd_to_mod6_3",
+  "statement": "∀ (n : ℕ), (∀ p : ℕ, p ∣ 2 ^ n + 1 → p ^ 2 ∣ 2 ^ n + 1) → n % 2 = 1 → n % 6 = 3",
+  "kind": "COMBINED_THEOREM",
+  "depends_on": [
+   "erdos936:ORE:1f33adb59737ddbd"
+  ],
+  "binding": "PARAPHRASE",
+  "binding_detail": "PARAPHRASE: proposed one level up from proved premises by msl_compress; the composed file re-checks it from zero",
+  "status": "OPEN",
+  "problem": "erdos936",
+  "declaration": "erdos936_powerful_odd_to_mod6_3",
+  "type_context": "",
+  "lean_statement_line": "theorem erdos936_powerful_odd_to_mod6_3 (n : ℕ) (hpow : ∀ p : ℕ, p ∣ 2 ^ n + 1 → p ^ 2 ∣ 2 ^ n + 1) (hodd : n % 2 = 1) : ∀ (n : ℕ), (∀ p : ℕ, p ∣ 2 ^ n + 1 → p ^ 2 ∣ 2 ^ n + 1) → n % 2 = 1 → n % 6 = 3 := by sorry",
+  "lean_binders": [
+   "(n : ℕ)",
+   "(hpow : ∀ p : ℕ, p ∣ 2 ^ n + 1 → p ^ 2 ∣ 2 ^ n + 1)",
+   "(hodd : n % 2 = 1)"
+  ],
+  "lean_preamble": "import Mathlib\nset_option autoImplicit false\n-- Powerfulness of m is decided against its complete prime factorization,\n-- given explicitly as (prime, exponent) pairs, all computed by hand trial division.\n-- isPowerfulFactorization: m is powerful iff every prime exponent is >= 2.\ndef Factorization := List (Nat × Nat)\ndef exponentsAtLeastTwo (f : Factorization) : Bool :=\n  f.all (fun pe => pe.2 >= 2)\n-- Factorizations obtained by exact trial division:\n--   9    = 3^2\n--   25   = 5^2\n--   121  = 11^2\n--   5041 = 71^2\n-- (Primality of 3, 5, 11, 71: none is divisible by any prime <= its square root:\n--  3: none <2; 5: none <3; 11: not by 2,3; 71: not by 2,3,5,7. Encoded below.)\ndef prime3 : Bool := !(2 <= 3 && 3 % 2 == 0)\ndef prime5 : Bool := !(2 <= 5 && 5 % 2 == 0) && !(3 <= 5 && 5 % 3 == 0)\ndef prime11 : Bool := !(2 <= 11 && 11 % 2 == 0) && !(3 <= 11 && 11 % 3 == 0)\ndef prime71 : Bool :=\n  !(2 <= 71 && 71 % 2 == 0) && !(3 <= 71 && 71 % 3 == 0) &&\n  !(5 <= 71 && 71 % 5 == 0) && !(7 <= 71 && 71 % 7 == 0)\ndef recon : Factorization -> Nat\n  | [] => 1\n  | (p, e) :: rest => p ^ e * recon rest\ndef f9 : Factorization   := [(3, 2)]\ndef f25 : Factorization  := [(5, 2)]\ndef f121 : Factorization := [(11, 2)]\ndef f5041 : Factorization := [(71, 2)]\ndef checkWitnesses : Bool :=\n  prime3 && prime5 && prime11 && prime71 &&\n  exponentsAtLeastTwo f9 && recon f9 == 9 &&\n  exponentsAtLeastTwo f25 && recon f25 == 25 &&\n  exponentsAtLeastTwo f121 && recon f121 == 121 &&\n  exponentsAtLeastTwo f5041 && recon f5041 == 5041\n/-!\nErdős 936, adversarial-mine promotion (opus ranked auditor + gold pack, 2026-09-02).\nThe exact mod-9 periodicity tool for the powerful-number question on 2^n + 1:\n9 ∣ 2^n + 1 iff n ≡ 3 (mod 6). Order of 2 mod 9 is 6; the six residues are decided\nby the kernel and the periodicity transfers by 2^(n+6) ≡ 2^n (mod 9).\n-/\ntheorem erdos936_period (n : ℕ) : (2 ^ (n + 6) + 1) % 9 = (2 ^ n + 1) % 9 := by\n  have h : 2 ^ (n + 6) % 9 = 2 ^ n % 9 := by\n    rw [pow_add]\n    calc (2 ^ n * 2 ^ 6) % 9 = (2 ^ n % 9) * (2 ^ 6 % 9) % 9 := Nat.mul_mod _ _ _\n      _ = (2 ^ n % 9) * 1 % 9 := by norm_num\n      _ = 2 ^ n % 9 := by rw [mul_one]; omega\n  omega\ndef sq2 : Nat → Nat → Bool := fun k m => (2^(k+m) % 9) == (2^k % 9)\ndef check_periodicity : Bool := (List.range 6).all (fun k => sq2 k 6)\ndef check_tt : Bool := (List.range 12).all (fun n => ((2^n + 1) % 9 == 0) == (n % 6 == 3))\n",
+  "derivation_claim": "From hodd, 3 ∣ 2^n+1 (since 2 ≡ -1 mod 3 and n is odd); hpow applied at the prime 3 gives 9 ∣ 2^n+1; then erdos936_nine_dvd_iff yields n % 6 = 3. So L(nine_dvd_iff) + elementary parity/cubic-residue facts → T.",
+  "rise": "RISE",
+  "origin": "PROPOSER",
+  "court": [],
+  "supports": [
+   "erdos936:DEMAND:R002:L1:1"
+  ],
+  "sources": [
+   "oracle/evidence/msl-machine/compress/erdos936/jobs/erdos936__erdos936_powerful_odd_to_mod6_3.implication.lean",
+   "oracle/evidence/msl-machine/compress/erdos936/jobs/erdos936__erdos936_powerful_odd_to_mod6_3.standalone.lean"
+  ],
+  "type_gate": {
+   "ok": true,
+   "missing": [],
+   "reason": "",
+   "reference": null,
+   "used_type_context": false
+  }
+ },
+ "candidate": {
+  "t_id": "erdos936:COMPRESS:erdos936_powerful_odd_to_mod6_3",
+  "theorem_name": "erdos936_powerful_odd_to_mod6_3",
+  "origin": "PROPOSER",
+  "variant": "v3_bridge",
+  "statement": "∀ (n : ℕ), (∀ p : ℕ, p ∣ 2 ^ n + 1 → p ^ 2 ∣ 2 ^ n + 1) → n % 2 = 1 → n % 6 = 3",
+  "premises": [
+   "erdos936:ORE:1f33adb59737ddbd"
+  ],
+  "discharges": "erdos936:DEMAND:R002:L1:1",
+  "derivation_claim": "From hodd, 3 ∣ 2^n+1 (since 2 ≡ -1 mod 3 and n is odd); hpow applied at the prime 3 gives 9 ∣ 2^n+1; then erdos936_nine_dvd_iff yields n % 6 = 3. So L(nine_dvd_iff) + elementary parity/cubic-residue facts → T.",
+  "reason": "It reduces the open obligation 'squared exponents for all remaining prime factors of 2^n+1' to the single arithmetic task of ruling out even n (or proving n odd), since powerfulness plus oddness now forces the 3^2 factor and pins n ≡ 3 mod ",
+  "gates": {
+   "order": [
+    "G1_SCHEMA",
+    "G2_TYPE",
+    "G3_CIRCULAR",
+    "G4_KILLED",
+    "G5_CONJUNCTION",
+    "G6_FALSIFY",
+    "G7_RISE"
+   ],
+   "passed": [
+    "G1_SCHEMA",
+    "G2_TYPE",
+    "G3_CIRCULAR",
+    "G4_KILLED",
+    "G5_CONJUNCTION",
+    "G6_FALSIFY",
+    "G7_RISE"
+   ],
+   "failed_at": null,
+   "detail": {
+    "G1_SCHEMA": {
+     "ok": true,
+     "reason": ""
+    },
+    "G2_TYPE": {
+     "standalone_ok": true,
+     "standalone_missing": [],
+     "referenced_missing": [],
+     "fatal": [],
+     "domain_bounds_dropped": [],
+     "ok": true,
+     "reason": ""
+    },
+    "G3_CIRCULAR": {
+     "ok": true,
+     "reason": ""
+    },
+    "G4_KILLED": {
+     "checked_against": 0,
+     "ok": true,
+     "reason": ""
+    },
+    "G5_CONJUNCTION": {
+     "conjunct_count": 1,
+     "t_len": 79,
+     "conjunction_len": 65,
+     "shorter_than_conjunction": false,
+     "generalizes": true,
+     "generalization_reason": "BINDER_GENERALIZATION: T quantifies where a premise held the literal(s) 9",
+     "measure": "GENERALIZATION",
+     "ok": true,
+     "reason": ""
+    },
+    "G6_FALSIFY": {
+     "ok": true,
+     "state": "UNDECIDED",
+     "rows": [],
+     "param": "n",
+     "lean": "import Mathlib\nset_option autoImplicit false\n-- Powerfulness of m is decided against its complete prime factorization,\n-- given explicitly as (prime, exponent) pairs, all computed by hand trial division.\n-- isPowerfulFactorization: m is powerful iff every prime exponent is >= 2.\ndef Factorization := List (Nat × Nat)\ndef exponentsAtLeastTwo (f : Factorization) : Bool :=\n  f.all (fun pe => pe.2 >= 2)\n-- Factorizations obtained by exact trial division:\n--   9    = 3^2\n--   25   = 5^2\n--   121  = 11^2\n--   5041 = 71^2\n-- (Primality of 3, 5, 11, 71: none is divisible by any prime <= its square root:\n--  3: none <2; 5: none <3; 11: not by 2,3; 71: not by 2,3,5,7. Encoded below.)\ndef prime3 : Bool := !(2 <= 3 && 3 % 2 == 0)\ndef prime5 : Bool := !(2 <= 5 && 5 % 2 == 0) && !(3 <= 5 && 5 % 3 == 0)\ndef prime11 : Bool := !(2 <= 11 && 11 % 2 == 0) && !(3 <= 11 && 11 % 3 == 0)\ndef prime71 : Bool :=\n  !(2 <= 71 && 71 % 2 == 0) && !(3 <= 71 && 71 % 3 == 0) &&\n  !(5 <= 71 && 71 % 5 == 0) && !(7 <= 71 && 71 % 7 == 0)\ndef recon : Factorization -> Nat\n  | [] => 1\n  | (p, e) :: rest => p ^ e * recon rest\ndef f9 : Factorization   := [(3, 2)]\ndef f25 : Factorization  := [(5, 2)]\ndef f121 : Factorization := [(11, 2)]\ndef f5041 : Factorization := [(71, 2)]\ndef checkWitnesses : Bool :=\n  prime3 && prime5 && prime11 && prime71 &&\n  exponentsAtLeastTwo f9 && recon f9 == 9 &&\n  exponentsAtLeastTwo f25 && recon f25 == 25 &&\n  exponentsAtLeastTwo f121 && recon f121 == 121 &&\n  exponentsAtLeastTwo f5041 && recon f5041 == 5041\n/-!\nErdős 936, adversarial-mine promotion (opus ranked auditor + gold pack, 2026-09-02).\nThe exact mod-9 periodicity tool for the powerful-number question on 2^n + 1:\n9 ∣ 2^n + 1 iff n ≡ 3 (mod 6). Order of 2 mod 9 is 6; the six residues are decided\nby the kernel and the periodicity transfers by 2^(n+6) ≡ 2^n (mod 9).\n-/\ntheorem erdos936_period (n : ℕ) : (2 ^ (n + 6) + 1) % 9 = (2 ^ n + 1) % 9 := by\n  have h : 2 ^ (n + 6) % 9 = 2 ^ n % 9 := by\n    rw [pow_add]\n    calc (2 ^ n * 2 ^ 6) % 9 = (2 ^ n % 9) * (2 ^ 6 % 9) % 9 := Nat.mul_mod _ _ _\n      _ = (2 ^ n % 9) * 1 % 9 := by norm_num\n      _ = 2 ^ n % 9 := by rw [mul_one]; omega\n  omega\ndef sq2 : Nat → Nat → Bool := fun k m => (2^(k+m) % 9) == (2^k % 9)\ndef check_periodicity : Bool := (List.range 6).all (fun k => sq2 k 6)\ndef check_tt : Bool := (List.range 12).all (fun n => ((2^n + 1) % 9 == 0) == (n % 6 == 3))\nabbrev erdos936_powerful_odd_to_mod6_3_prop (n : Nat) : Prop := (∀ p : ℕ, p ∣ 2 ^ n + 1 → p ^ 2 ∣ 2 ^ n + 1) → n % 2 = 1 → n % 6 = 3\n\n#eval (if (decide (erdos936_powerful_odd_to_mod6_3_prop 0)) then \"MSLF 0 TRUE\" else \"MSLF 0 FALSE\")\n#eval (if (decide (erdos936_powerful_odd_to_mod6_3_prop 1)) then \"MSLF 1 TRUE\" else \"MSLF 1 FALSE\")\n#eval (if (decide (erdos936_powerful_odd_to_mod6_3_prop 2)) then \"MSLF 2 TRUE\" else \"MSLF 2 FALSE\")\n",
+     "law": "SILENCE IS UNDECIDED, NEVER A PASS (msl_strengthen S7d)"
+    },
+    "G7_RISE": {
+     "ok": true,
+     "verdict": "RISE",
+     "reasons": [
+      "DISCHARGES:erdos936:DEMAND:R002:L1:1"
+     ]
+    }
+   },
+   "rise": "RISE"
+  },
+  "rise": "RISE",
+  "kernel": {
+   "verdict": "KERNEL_NOT_RUN",
+   "reason": "no Lean on this machine tonight; the job is filed, nothing is claimed",
+   "axioms": null,
+   "clean": false
+  },
+  "status": "OPEN",
+  "node_validation": {
+   "binding_after_builder": "PARAPHRASE",
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "unbound": false
+  },
+  "jobs": {
+   "jobs_file": "oracle/evidence/msl-machine/compress/erdos936/jobs/erdos936__erdos936_powerful_odd_to_mod6_3.jobs.json",
+   "implication_lean": "oracle/evidence/msl-machine/compress/erdos936/jobs/erdos936__erdos936_powerful_odd_to_mod6_3.implication.lean",
+   "standalone_lean": "oracle/evidence/msl-machine/compress/erdos936/jobs/erdos936__erdos936_powerful_odd_to_mod6_3.standalone.lean",
+   "cable_spec_ok": true
+  }
+ },
+ "included_sources": [
+  {
+   "leaf": "erdos936:ORE:1f33adb59737ddbd",
+   "declaration": "erdos936_nine_dvd_iff",
+   "included_via": "LEAN_STATEMENT_LINE",
+   "sha256": "58a146e888d5c168a78194fba65ea30f412233f917b0cbfe1760fb2435f1e394",
+   "receipt": "oracle/evidence/msl-machine/gpt-mine-day2-2026-09-02/kernel-verified/erdos936/Erdos936Congruence__78f4955ec217.verify.json",
+   "source": null
+  }
+ ],
+ "derivation_claim": "From hodd, 3 ∣ 2^n+1 (since 2 ≡ -1 mod 3 and n is odd); hpow applied at the prime 3 gives 9 ∣ 2^n+1; then erdos936_nine_dvd_iff yields n % 6 = 3. So L(nine_dvd_iff) + elementary parity/cubic-residue facts → T.",
+ "provenance": {
+  "proposer_receipt": "23137d1b9e3afe143b41c6aeff61aea06308b8cbe3e99702e46bb703989796c4",
+  "selection": {
+   "method": "GREEDY_CONNECTED_TOWARD_TARGET",
+   "seed": "erdos936:ORE:45cb329e592999e5",
+   "seed_overlap": 3,
+   "overlap": {
+    "erdos936:ORE:45cb329e592999e5": 3,
+    "erdos936:ORE:1f33adb59737ddbd": 2,
+    "erdos936:ORE:92a0f9bc5b8e550c": 2,
+    "erdos936:ORE:d511eecca29c0721": 2
+   },
+   "internal_weight": 71
+  }
+ },
+ "law": "status is OPEN until a kernel row lands; the node schema was validated by msl_obligation_dag.DagBuilder.add"
+}

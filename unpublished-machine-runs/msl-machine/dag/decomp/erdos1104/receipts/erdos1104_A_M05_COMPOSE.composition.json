@@ -1,0 +1,22 @@
+{
+  "kind": "COMPOSITION_KERNEL_CHECK",
+  "node": "erdos1104:A:M05#COMPOSE",
+  "verdict": {
+    "verdict": "COMPOSITION_OPEN",
+    "rc": 1,
+    "kernel_error": "/root/peer/decomp/b20260902_100024_3/erdos1104_A_M05_comp.lean:20:69: error: unsolved goals",
+    "counts_toward_parent": 0
+  },
+  "lean_source": "oracle/evidence/msl-machine/dag/decomp/erdos1104/lean/erdos1104_A_M05_COMPOSE.lean",
+  "ladder": [
+    "tauto",
+    "(intro h; exact h.1)",
+    "(intro h; simp_all)",
+    "(intro h; omega)",
+    "(intro h; norm_num at h ⊢ <;> tauto)",
+    "aesop",
+    "decide"
+  ],
+  "kernel_log": "/root/peer/decomp/b20260902_100024_3/erdos1104_A_M05_comp.lean:20:69: error: unsolved goals\nh :\n  (∀ (n : ℕ), ∃ G, TriangleFree G ∧ ↑(f n) = G.chromaticNumber) ∧\n    (∃ c₁, 0 < c₁ ∧ c₁ ≤ 1 ∧ ∃ a, ∀ (b : ℕ), a ≤ b → c₁ * (√↑b / √(Real.log ↑b)) ≤ ↑(f b)) ∧\n      ∃ c₂, 2 ≤ c₂ ∧ ∃ a, ∀ (b : ℕ), a ≤ b → ↑(f b) ≤ c₂ * (√↑b / √(Real.log ↑b))\n⊢ ∃ c₁,\n    0 < c₁ ∧\n      c₁ ≤ 1 ∧\n        ∃ x, 2 ≤ x ∧ ∃ a, ∀ (b : ℕ), a ≤ b → c₁ * (√↑b / √(Real.log ↑b)) ≤ ↑(f b) ∧ ↑(f b) ≤ x * (√↑b / √(Real.log ↑b))\n'msl_erdos1104_a_m05_composition' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]",
+  "utc": "2026-09-02T17:00:35Z"
+}

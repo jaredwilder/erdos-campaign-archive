@@ -1,0 +1,207 @@
+{
+ "schema": "msl-compress/1.0.0",
+ "consumes_schema": "obligation-dag/1.0.0",
+ "problem": "erdos289",
+ "generated_utc": "2026-09-02T22:19:06Z",
+ "node": {
+  "id": "erdos289:COMPRESS:erdos289_no_tail_run",
+  "statement": "theorem erdos289_no_tail_run :\n    ∀ a ∈ Finset.Icc 5 60, ∀ b ∈ Finset.Icc (a + 1) 60,\n      ((1 : ℚ) - (1 / 2 + 1 / 3)) ≠ runSum a b := by\n  intro a ha b hb\n  rw [F1_tail_value]\n  exact W4_fragment a ha b hb",
+  "kind": "COMBINED_THEOREM",
+  "depends_on": [
+   "erdos289:ORE:6a4f2b9be6f30310",
+   "erdos289:ORE:561a62aee809bbc8",
+   "erdos289:ORE:a15080a025550157"
+  ],
+  "binding": "PARAPHRASE",
+  "binding_detail": "PARAPHRASE: proposed one level up from proved premises by msl_compress; the composed file re-checks it from zero",
+  "status": "OPEN",
+  "problem": "erdos289",
+  "declaration": "erdos289_no_tail_run",
+  "type_context": "",
+  "lean_statement_line": "theorem erdos289_no_tail_run : theorem erdos289_no_tail_run :\n    ∀ a ∈ Finset.Icc 5 60, ∀ b ∈ Finset.Icc (a + 1) 60,\n      ((1 : ℚ) - (1 / 2 + 1 / 3)) ≠ runSum a b := by\n  intro a ha b hb\n  rw [F1_tail_value]\n  exact W4_fragment a ha b hb := by sorry",
+  "lean_binders": [],
+  "lean_preamble": "import Mathlib\nopen Finset\nset_option autoImplicit false\n/-!\nErdős 289, MSL round 2026-09-01.  Kernel targets, each an exact fragment.\n  F1  : 1/2 + 1/3 + 1/4 > 1        (the run containing 2 is forced to be [2,3])\n  F1' : 1 - (1/2 + 1/3) = 1/6       (the tail must sum to exactly 1/6)\n  W4n : pure-ℕ form of \"no run [a,b], 5 ≤ a < b ≤ 60, has reciprocal sum 1/6\":\n        with P = ∏ n and N = ∑ P/n over the run, 6·N ≠ P.   Kernel `decide`, Nat only.\n  W4b : the bridge  runSum a b = N / P  in ℚ, so W4n is the ℚ statement.\n-/\ndef runSum (a b : ℕ) : ℚ := ∑ n ∈ Icc a b, (1 : ℚ) / n\ndef runProd (a b : ℕ) : ℕ := ∏ n ∈ Icc a b, n\ndef runNum (a b : ℕ) : ℕ := ∑ n ∈ Icc a b, runProd a b / n\ntheorem F1_head_forced : (1 : ℚ) / 2 + 1 / 3 + 1 / 4 > 1 := by norm_num\ntheorem F1_tail_value : (1 : ℚ) - (1 / 2 + 1 / 3) = 1 / 6 := by norm_num\ntheorem W4_nat_fragment :\n    ∀ a ∈ Icc 5 60, ∀ b ∈ Icc (a + 1) 60, 6 * runNum a b ≠ runProd a b := by\n  decide +kernel\ntheorem runProd_pos (a b : ℕ) (ha : 1 ≤ a) : 0 < runProd a b := by\n  unfold runProd\n  apply Finset.prod_pos\n  intro n hn\n  have := (Finset.mem_Icc.mp hn).1\n  omega\ntheorem dvd_runProd (a b n : ℕ) (hn : n ∈ Icc a b) : n ∣ runProd a b :=\n  Finset.dvd_prod_of_mem _ hn\ntheorem W4_bridge (a b : ℕ) (ha : 1 ≤ a) :\n    runSum a b = (runNum a b : ℚ) / (runProd a b : ℚ) := by\n  have hP : (runProd a b : ℚ) ≠ 0 := by\n    exact_mod_cast (runProd_pos a b ha).ne'\n  unfold runSum runNum\n  rw [Nat.cast_sum, Finset.sum_div]\n  apply Finset.sum_congr rfl\n  have hd := dvd_runProd a b n hn\n  have hn0 : (n : ℚ) ≠ 0 := by\n    exact_mod_cast (show n ≠ 0 by omega)\n  rw [Nat.cast_div hd hn0]\n  field_simp\n",
+  "derivation_claim": "F1_tail_value ∧ W4_fragment → T: the tail constant (1:ℚ) - (1/2 + 1/3) equals 1/6 by F1_tail_value, and W4_fragment says no run [a,b] with 5 ≤ a < b ≤ 60 has reciprocal sum 1/6; rewriting the LHS to 1/6 and applying W4_fragment yields the inequality. This is a single composed statement, strictly shorter than the conjunction of its premises.",
+  "rise": "RISE",
+  "origin": "PROPOSER",
+  "court": [],
+  "supports": [
+   "erdos289:FLEAF:987cb071355b04164228:8"
+  ],
+  "sources": [
+   "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__erdos289_no_tail_run.implication.lean",
+   "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__erdos289_no_tail_run.standalone.lean"
+  ],
+  "type_gate": {
+   "ok": true,
+   "missing": [],
+   "reason": "",
+   "reference": null,
+   "used_type_context": false
+  },
+  "leaf_tactic_hint": "interval_cases",
+  "hint_source": "bounded_forall_over_Q",
+  "leaf_tactic_sketch": "intro a b; interval_cases a <;> interval_cases b <;> norm_num",
+  "leaf_tactic_alternatives": [
+   "norm_num",
+   "native_decide",
+   "bounded_search"
+  ]
+ },
+ "candidate": {
+  "t_id": "erdos289:COMPRESS:erdos289_no_tail_run",
+  "theorem_name": "erdos289_no_tail_run",
+  "origin": "PROPOSER",
+  "variant": "v3_bridge",
+  "statement": "theorem erdos289_no_tail_run :\n    ∀ a ∈ Finset.Icc 5 60, ∀ b ∈ Finset.Icc (a + 1) 60,\n      ((1 : ℚ) - (1 / 2 + 1 / 3)) ≠ runSum a b := by\n  intro a ha b hb\n  rw [F1_tail_value]\n  exact W4_fragment a ha b hb",
+  "premises": [
+   "erdos289:ORE:6a4f2b9be6f30310",
+   "erdos289:ORE:561a62aee809bbc8",
+   "erdos289:ORE:a15080a025550157"
+  ],
+  "discharges": "erdos289:FLEAF:987cb071355b04164228:8",
+  "derivation_claim": "F1_tail_value ∧ W4_fragment → T: the tail constant (1:ℚ) - (1/2 + 1/3) equals 1/6 by F1_tail_value, and W4_fragment says no run [a,b] with 5 ≤ a < b ≤ 60 has reciprocal sum 1/6; rewriting the LHS to 1/6 and applying W4_fragment yields the inequality. This is a single composed statement, strictly sho",
+  "reason": "It is the missing bridge from the arithmetic fragments to the decomposition structure: it rules out every 2-interval candidate decomposition {[2,3],[a,b]} of 1 with all elements ≤ 60, directly shrinking the open obligation check_l1_fragment",
+  "gates": {
+   "order": [
+    "G1_SCHEMA",
+    "G2_TYPE",
+    "G3_CIRCULAR",
+    "G4_KILLED",
+    "G5_CONJUNCTION",
+    "G6_FALSIFY",
+    "G7_RISE"
+   ],
+   "passed": [
+    "G1_SCHEMA",
+    "G2_TYPE",
+    "G3_CIRCULAR",
+    "G4_KILLED",
+    "G5_CONJUNCTION",
+    "G6_FALSIFY",
+    "G7_RISE"
+   ],
+   "failed_at": null,
+   "detail": {
+    "G1_SCHEMA": {
+     "ok": true,
+     "reason": ""
+    },
+    "G2_TYPE": {
+     "standalone_ok": true,
+     "standalone_missing": [],
+     "referenced_missing": [],
+     "fatal": [],
+     "domain_bounds_dropped": [],
+     "ok": true,
+     "reason": ""
+    },
+    "G3_CIRCULAR": {
+     "ok": true,
+     "reason": ""
+    },
+    "G4_KILLED": {
+     "checked_against": 0,
+     "ok": true,
+     "reason": ""
+    },
+    "G5_CONJUNCTION": {
+     "conjunct_count": 1,
+     "t_len": 92,
+     "conjunction_len": 233,
+     "shorter_than_conjunction": true,
+     "generalizes": true,
+     "generalization_reason": "BINDER_GENERALIZATION: T quantifies where a premise held the literal(s) 6",
+     "measure": "SHORTER_THAN_CONJUNCTION",
+     "ok": true,
+     "reason": ""
+    },
+    "G6_FALSIFY": {
+     "ok": true,
+     "state": "NOT_APPLICABLE",
+     "reason": "NOT_APPLICABLE: not a ∀ over a natural parameter"
+    },
+    "G7_RISE": {
+     "ok": true,
+     "verdict": "RISE",
+     "reasons": [
+      "DISCHARGES:erdos289:FLEAF:987cb071355b04164228:8"
+     ]
+    }
+   },
+   "rise": "RISE"
+  },
+  "rise": "RISE",
+  "kernel": {
+   "verdict": "KERNEL_NOT_RUN",
+   "reason": "no Lean on this machine tonight; the job is filed, nothing is claimed",
+   "axioms": null,
+   "clean": false
+  },
+  "status": "OPEN",
+  "node_validation": {
+   "binding_after_builder": "PARAPHRASE",
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "unbound": false
+  },
+  "jobs": {
+   "jobs_file": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__erdos289_no_tail_run.jobs.json",
+   "implication_lean": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__erdos289_no_tail_run.implication.lean",
+   "standalone_lean": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__erdos289_no_tail_run.standalone.lean",
+   "cable_spec_ok": true
+  }
+ },
+ "included_sources": [
+  {
+   "leaf": "erdos289:ORE:561a62aee809bbc8",
+   "declaration": "F1_tail_value",
+   "included_via": "LEAN_STATEMENT_LINE",
+   "sha256": "081c8f8c2c1acb1298008e7815f8fdafa5eb6a3295e7812af2fa647a925e9a5d",
+   "receipt": "oracle/evidence/msl-machine/gpt-mine-day2-2026-09-02/kernel-verified/erdos289/Erdos289Head__5da8b478fba0.verify.json",
+   "source": null
+  },
+  {
+   "leaf": "erdos289:ORE:6a4f2b9be6f30310",
+   "declaration": "W4_nat_fragment",
+   "included_via": "LEAN_STATEMENT_LINE",
+   "sha256": "ec7f36b42213c4fd6ddcaf0f8b3219eb0cc81eb4cd017b42f6c15717edeaf084",
+   "receipt": "oracle/evidence/msl-machine/gpt-mine-day2-2026-09-02/kernel-verified/erdos289/Erdos289Head__5da8b478fba0.verify.json",
+   "source": null
+  },
+  {
+   "leaf": "erdos289:ORE:a15080a025550157",
+   "declaration": "W4_fragment",
+   "included_via": "LEAN_STATEMENT_LINE",
+   "sha256": "f53a43a3fba43e3d41bef34ec0b595a1f1782d8aa725c506a3154d743fb751a9",
+   "receipt": "oracle/evidence/msl-machine/gpt-mine-day2-2026-09-02/kernel-verified/erdos289/Erdos289Head__5da8b478fba0.verify.json",
+   "source": null
+  }
+ ],
+ "derivation_claim": "F1_tail_value ∧ W4_fragment → T: the tail constant (1:ℚ) - (1/2 + 1/3) equals 1/6 by F1_tail_value, and W4_fragment says no run [a,b] with 5 ≤ a < b ≤ 60 has reciprocal sum 1/6; rewriting the LHS to 1/6 and applying W4_fragment yields the inequality. This is a single composed statement, strictly shorter than the conjunction of its premises.",
+ "provenance": {
+  "proposer_receipt": "a5395191f64324af8782607f325d26c14b9521f763bfdff86d727041295d4318",
+  "selection": {
+   "method": "GREEDY_CONNECTED_TOWARD_TARGET",
+   "seed": "erdos289:ORE:25d89c30bf1b00a0",
+   "seed_overlap": 6,
+   "overlap": {
+    "erdos289:ORE:25d89c30bf1b00a0": 6,
+    "erdos289:ORE:377845d942ddb89d": 6,
+    "erdos289:ORE:a15080a025550157": 6,
+    "erdos289:ORE:79ef5c1ef0bf7a61": 6,
+    "erdos289:ORE:6a4f2b9be6f30310": 5,
+    "erdos289:ORE:561a62aee809bbc8": 5,
+    "erdos289:ORE:6e6df53936815f45": 5,
+    "erdos289:LEM:R008:W4f": 5
+   },
+   "internal_weight": 1283
+  }
+ },
+ "law": "status is OPEN until a kernel row lands; the node schema was validated by msl_obligation_dag.DagBuilder.add"
+}

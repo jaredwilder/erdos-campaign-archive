@@ -1,0 +1,893 @@
+{
+ "schema": "obligation-dag/1.0.0",
+ "problem": "erdos789",
+ "problem_number": "789",
+ "campaign": "erdos789-campaign-001",
+ "root": "erdos789:ROOT",
+ "contract_divergence": {
+  "authoritative": {
+   "role": "campaign",
+   "path": "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json",
+   "sha256": "57d81e5936cf1c201152b1abdbdb5a148228f8c85f962bd613b51d28a0a423af",
+   "declared_contract_sha256": "16fa9094761e0741377eed23044a3044eb981a6aa972817c8307ea1e1fecbabc"
+  },
+  "others": [
+   {
+    "role": "ingest",
+    "path": "oracle/evidence/msl-machine/contracts/erdos789/contract.json",
+    "sha256": "6b6955617588ec26ae5e4d579ad52ccba609d619e512edca14b2bd98224090a9",
+    "declared_contract_sha256": "898950b8fe8efb484dce60b3ef889916983ce495fa9d88c0767e1d61917b0e9b",
+    "canonical_statement_matches_authoritative": true
+   },
+   {
+    "role": "launch_queue",
+    "path": "oracle/evidence/msl-machine/contracts/LAUNCH-QUEUE/erdos789.json",
+    "sha256": "ab3590fd5c553c4c0986b40bd3bdb9fd4685f74e88c3829fe47d52bcc53c95b6",
+    "declared_contract_sha256": null,
+    "canonical_statement_matches_authoritative": true
+   }
+  ],
+  "diverges": false
+ },
+ "courts": [
+  "court",
+  "closer",
+  "formalizer",
+  "kernel"
+ ],
+ "summary": {
+  "nodes": 22,
+  "proved_kernel": 0,
+  "proved_speaker": 0,
+  "computed_bounded": 0,
+  "open": 22,
+  "refuted": 0,
+  "orphans": 1,
+  "proof_obligations": 16,
+  "open_leaves_on_dead_routes": 0,
+  "root_kind": "NOT_DECIDABLE",
+  "root_disqualifiers": [
+   "ASYMPTOTIC"
+  ],
+  "formal_root": {
+   "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/789.lean",
+   "category": "category research open, AMS 5",
+   "declaration": "erdos_789",
+   "statement": "(fun n ↦ (subsetSumThreshold n : ℝ)) =Θ[atTop] (answer(sorry) : ℕ → ℝ)"
+  },
+  "leaf_frontier_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "leaf_frontier_reason": "2 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaf_frontier_deciding_leaf": {
+   "id": "erdos789:LEM:R001:L1",
+   "kind": "LEMMA",
+   "status": "OPEN",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "Θ((n log n)^{1/3}) lower side is an open conjecture and upper side exceeds the best known Straus O(√n); no proof segment supplied, only contract-quarantined variant claims."
+  },
+  "ladder_shape_reason": "the formal root is not decidable: ASYMPTOTIC (oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/789.lean). No leaf set can close it, however clean the leaves are. Leaf frontier, kept for the grind queue: HAS_OPEN_ANALYTIC_LEAF.",
+  "leaves": 3,
+  "open_leaves": 3,
+  "open_technical_leaves": 2,
+  "open_prose_obligations": 1,
+  "open_analytic_leaves": 2,
+  "ladder_shape": "ROOT_NOT_DECIDABLE",
+  "deciding_leaf": {
+   "id": "erdos789:ROOT",
+   "kind": "CANONICAL_ROOT",
+   "status": "OPEN",
+   "binding": "VERBATIM",
+   "leaf_tactic_hint": null,
+   "statement": "(fun n ↦ (subsetSumThreshold n : ℝ)) =Θ[atTop] (answer(sorry) : ℕ → ℝ)"
+  },
+  "orphan_detail": [
+   {
+    "id": "erdos789:A:M05",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   }
+  ]
+ },
+ "validation": {
+  "acyclic": true,
+  "edges": 21,
+  "root_binds_verbatim": true,
+  "kernel_receipts_checked": 0
+ },
+ "nodes": [
+  {
+   "id": "erdos789:A:M01",
+   "statement": "The requested value, class, function, order of growth, optimal constant, or necessary-and-sufficient criterion—whatever the canonical statement asks to determine—without leaving a residual parameter family.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json",
+   "contract_sha256": "57d81e5936cf1c201152b1abdbdb5a148228f8c85f962bd613b51d28a0a423af",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos789",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos789:A:M02",
+   "statement": "Both sides of every extremal claim: a construction/lower-side witness (when applicable) and a matching obstruction/upper-side proof establishing optimality or exactness.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 2,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json",
+   "contract_sha256": "57d81e5936cf1c201152b1abdbdb5a148228f8c85f962bd613b51d28a0a423af",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos789",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos789:A:M03",
+   "statement": "Every subquestion or explicit “in particular” target in the canonical statement, unless the source itself formally declares that only a named subpart is the target.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 3,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json",
+   "contract_sha256": "57d81e5936cf1c201152b1abdbdb5a148228f8c85f962bd613b51d28a0a423af",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos789",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos789:A:M04",
+   "statement": "A proof that the stated answer has exactly the required quantifier scope, endpoint conventions, and full-sequence/asymptotic meaning.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 4,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json",
+   "contract_sha256": "57d81e5936cf1c201152b1abdbdb5a148228f8c85f962bd613b51d28a0a423af",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos789",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos789:A:M05",
+   "statement": "Reviewer-mandated close condition: definitions: The 'Estimate h(n)' target is ambiguous: the source itself interprets it as Θ(h(n)) against an unknown answer(sorry) function, with alternative variants Θ(√n) and Θ((n log n)^{1/3}). close_branch_A ('explicit value/classification/asymptotic law') does not force the campaign to bind to the source's own interpretation (Θ against the placeholder) versus, e.g., any valid Θ-estimate of a different function; the contract must state that the close must determine the asymptotic order of h(n) itself, and that the Θ(√n) / Θ((n log n)^{1/3}) variants are distinct conjectures not implied by an arbitrary 'estimate'.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "branch": "A",
+   "ordinal": 5,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json",
+   "contract_sha256": "57d81e5936cf1c201152b1abdbdb5a148228f8c85f962bd613b51d28a0a423af",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos789",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-789-86511a84a0-A-M05"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos789:BRANCH_A",
+   "statement": "DETERMINATION CLOSE: answer the canonical determination problem completely, over the entire stated parameter domain, with an explicit value/classification/asymptotic law or a theorem giving necessary-and-sufficient conditions.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos789:A:M01",
+    "erdos789:A:M02",
+    "erdos789:A:M03",
+    "erdos789:A:M04",
+    "erdos789:A:M05"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json",
+   "contract_sha256": "57d81e5936cf1c201152b1abdbdb5a148228f8c85f962bd613b51d28a0a423af",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos789",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-789-86511a84a0-A-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos789:B:M01",
+   "statement": "The base theory relative to which independence/undecidability is asserted.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json",
+   "contract_sha256": "57d81e5936cf1c201152b1abdbdb5a148228f8c85f962bd613b51d28a0a423af",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos789",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos789:B:M02",
+   "statement": "An exhaustive description of which requested cases are decided and which are independent/undecidable, with no case left merely “unknown”.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 2,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json",
+   "contract_sha256": "57d81e5936cf1c201152b1abdbdb5a148228f8c85f962bd613b51d28a0a423af",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos789",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos789:B:M03",
+   "statement": "Standard model-theoretic/recursion-theoretic witnesses or equivalent rigorous proof showing incompatible answers in appropriate models/extensions when independence is claimed.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 3,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json",
+   "contract_sha256": "57d81e5936cf1c201152b1abdbdb5a148228f8c85f962bd613b51d28a0a423af",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos789",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos789:B:M04",
+   "statement": "Exact preservation of the canonical statement; proving independence of a weakened proxy or a single parameter value does not qualify.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 4,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json",
+   "contract_sha256": "57d81e5936cf1c201152b1abdbdb5a148228f8c85f962bd613b51d28a0a423af",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos789",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos789:BRANCH_B",
+   "statement": "METAMATHEMATICAL COMPLETE CLOSE: if no determinate mathematical answer exists in the accepted base theory, prove that fact by a genuine independence/undecidability theorem for the canonical determination problem. Mere current openness or failure of a method is not a negative resolution.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos789:B:M01",
+    "erdos789:B:M02",
+    "erdos789:B:M03",
+    "erdos789:B:M04"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json",
+   "contract_sha256": "57d81e5936cf1c201152b1abdbdb5a148228f8c85f962bd613b51d28a0a423af",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos789",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-789-86511a84a0-B-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos789:ROOT",
+   "statement": "Let $h(n)$ be maximal such that if $A\\subseteq \\mathbb{Z}$ with $\\lvert A\\rvert=n$ then there is $B\\subseteq A$ with $\\lvert B\\rvert \\geq h(n)$ such that if $a_1+\\cdots+a_r=b_1+\\cdots+b_s$ with $a_i,b_i\\in B$ then $r=s$.Estimate $h(n)$.",
+   "kind": "CANONICAL_ROOT",
+   "depends_on": [
+    "erdos789:BRANCH_A",
+    "erdos789:BRANCH_B"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "root_by_construction",
+   "closure_mode": "DISJUNCTIVE",
+   "satisfied_by_any": [
+    "erdos789:BRANCH_A",
+    "erdos789:BRANCH_B"
+   ],
+   "root_kind": "NOT_DECIDABLE",
+   "root_disqualifiers": [
+    "ASYMPTOTIC"
+   ],
+   "formal_root": {
+    "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/789.lean",
+    "category": "category research open, AMS 5",
+    "declaration": "erdos_789",
+    "statement": "(fun n ↦ (subsetSumThreshold n : ℝ)) =Θ[atTop] (answer(sorry) : ℕ → ℝ)"
+   },
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json",
+   "contract_sha256": "57d81e5936cf1c201152b1abdbdb5a148228f8c85f962bd613b51d28a0a423af",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos789",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos789:P4:C-789-86511a84a0-A-M01",
+   "statement": "The requested value, class, function, order of growth, optimal constant, or necessary-and-sufficient criterion—whatever the canonical statement asks to determine—without leaving a residual parameter family.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_in_campaign_contract",
+   "binding_to_authoritative_contract": "VERBATIM",
+   "binding_to_authoritative_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 1,
+   "pass4_obligation_id": "C-789-86511a84a0-A-M01",
+   "canonical_id": "C-789-86511a84a0",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json",
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_CONTRACT_CLOSURE_OBLIGATIONS.csv"
+   ],
+   "supports": [
+    {
+     "node": "erdos789:BRANCH_A",
+     "evidence": "pass4_branch"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos789",
+   "court": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos789:P4:C-789-86511a84a0-A-M02",
+   "statement": "Both sides of every extremal claim: a construction/lower-side witness (when applicable) and a matching obstruction/upper-side proof establishing optimality or exactness.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_in_campaign_contract",
+   "binding_to_authoritative_contract": "VERBATIM",
+   "binding_to_authoritative_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 2,
+   "pass4_obligation_id": "C-789-86511a84a0-A-M02",
+   "canonical_id": "C-789-86511a84a0",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json",
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_CONTRACT_CLOSURE_OBLIGATIONS.csv"
+   ],
+   "supports": [
+    {
+     "node": "erdos789:BRANCH_A",
+     "evidence": "pass4_branch"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos789",
+   "court": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos789:P4:C-789-86511a84a0-A-M03",
+   "statement": "Every subquestion or explicit “in particular” target in the canonical statement, unless the source itself formally declares that only a named subpart is the target.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_in_campaign_contract",
+   "binding_to_authoritative_contract": "VERBATIM",
+   "binding_to_authoritative_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 3,
+   "pass4_obligation_id": "C-789-86511a84a0-A-M03",
+   "canonical_id": "C-789-86511a84a0",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json",
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_CONTRACT_CLOSURE_OBLIGATIONS.csv"
+   ],
+   "supports": [
+    {
+     "node": "erdos789:BRANCH_A",
+     "evidence": "pass4_branch"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos789",
+   "court": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos789:P4:C-789-86511a84a0-A-M04",
+   "statement": "A proof that the stated answer has exactly the required quantifier scope, endpoint conventions, and full-sequence/asymptotic meaning.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_in_campaign_contract",
+   "binding_to_authoritative_contract": "VERBATIM",
+   "binding_to_authoritative_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 4,
+   "pass4_obligation_id": "C-789-86511a84a0-A-M04",
+   "canonical_id": "C-789-86511a84a0",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json",
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_CONTRACT_CLOSURE_OBLIGATIONS.csv"
+   ],
+   "supports": [
+    {
+     "node": "erdos789:BRANCH_A",
+     "evidence": "pass4_branch"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos789",
+   "court": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos789:P4:C-789-86511a84a0-B-M01",
+   "statement": "The base theory relative to which independence/undecidability is asserted.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_in_campaign_contract",
+   "binding_to_authoritative_contract": "VERBATIM",
+   "binding_to_authoritative_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 1,
+   "pass4_obligation_id": "C-789-86511a84a0-B-M01",
+   "canonical_id": "C-789-86511a84a0",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json",
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_CONTRACT_CLOSURE_OBLIGATIONS.csv"
+   ],
+   "supports": [
+    {
+     "node": "erdos789:BRANCH_B",
+     "evidence": "pass4_branch"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos789",
+   "court": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos789:P4:C-789-86511a84a0-B-M02",
+   "statement": "An exhaustive description of which requested cases are decided and which are independent/undecidable, with no case left merely “unknown”.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_in_campaign_contract",
+   "binding_to_authoritative_contract": "VERBATIM",
+   "binding_to_authoritative_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 2,
+   "pass4_obligation_id": "C-789-86511a84a0-B-M02",
+   "canonical_id": "C-789-86511a84a0",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json",
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_CONTRACT_CLOSURE_OBLIGATIONS.csv"
+   ],
+   "supports": [
+    {
+     "node": "erdos789:BRANCH_B",
+     "evidence": "pass4_branch"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos789",
+   "court": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos789:P4:C-789-86511a84a0-B-M03",
+   "statement": "Standard model-theoretic/recursion-theoretic witnesses or equivalent rigorous proof showing incompatible answers in appropriate models/extensions when independence is claimed.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_in_campaign_contract",
+   "binding_to_authoritative_contract": "VERBATIM",
+   "binding_to_authoritative_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 3,
+   "pass4_obligation_id": "C-789-86511a84a0-B-M03",
+   "canonical_id": "C-789-86511a84a0",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json",
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_CONTRACT_CLOSURE_OBLIGATIONS.csv"
+   ],
+   "supports": [
+    {
+     "node": "erdos789:BRANCH_B",
+     "evidence": "pass4_branch"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos789",
+   "court": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos789:P4:C-789-86511a84a0-B-M04",
+   "statement": "Exact preservation of the canonical statement; proving independence of a weakened proxy or a single parameter value does not qualify.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_in_campaign_contract",
+   "binding_to_authoritative_contract": "VERBATIM",
+   "binding_to_authoritative_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 4,
+   "pass4_obligation_id": "C-789-86511a84a0-B-M04",
+   "canonical_id": "C-789-86511a84a0",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/contract.json",
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_CONTRACT_CLOSURE_OBLIGATIONS.csv"
+   ],
+   "supports": [
+    {
+     "node": "erdos789:BRANCH_B",
+     "evidence": "pass4_branch"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos789",
+   "court": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos789:LEM:R001:L1",
+   "statement": "Θ((n log n)^{1/3}) lower side is an open conjecture and upper side exceeds the best known Straus O(√n); no proof segment supplied, only contract-quarantined variant claims.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R001",
+   "lemma_id": "L1",
+   "registry_status": "UNTESTED",
+   "registry_seq": 7,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 3,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T16:46:33Z"
+    },
+    {
+     "seq": 5,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:01:52Z"
+    },
+    {
+     "seq": 6,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:06:25Z"
+    },
+    {
+     "seq": 7,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:12:37Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos789:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos789",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos789:LEM:R001:all",
+   "statement": "No analytic reduction provided (\"none\") and residual claim is a placeholder (\"per contract\") — no finite/numerical statement to certify; fail closed per contract SHA 16fa9094761e0741.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "all",
+   "registry_status": "UNTESTED",
+   "registry_seq": 4,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 4,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T18:56:31Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos789-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos789:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos789",
+   "is_leaf": true,
+   "manufacture_target": false
+  }
+ ]
+}

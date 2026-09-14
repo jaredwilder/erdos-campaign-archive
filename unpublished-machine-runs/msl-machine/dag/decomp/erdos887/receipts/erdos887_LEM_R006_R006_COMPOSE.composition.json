@@ -1,0 +1,22 @@
+{
+  "kind": "COMPOSITION_KERNEL_CHECK",
+  "node": "erdos887:LEM:R006:R006#COMPOSE",
+  "verdict": {
+    "verdict": "COMPOSITION_OPEN",
+    "rc": 1,
+    "kernel_error": "/root/peer/decomp/b20260902_093609_3/erdos887_LEM_R006_R006_comp.lean:22:518: error: unsolved goals",
+    "counts_toward_parent": 0
+  },
+  "lean_source": "oracle/evidence/msl-machine/dag/decomp/erdos887/lean/erdos887_LEM_R006_R006_COMPOSE.lean",
+  "ladder": [
+    "tauto",
+    "(intro h; exact h.1)",
+    "(intro h; simp_all)",
+    "(intro h; omega)",
+    "(intro h; norm_num at h ⊢ <;> tauto)",
+    "aesop",
+    "decide"
+  ],
+  "kernel_log": "/root/peer/decomp/b20260902_093609_3/erdos887_LEM_R006_R006_comp.lean:22:518: error: unsolved goals\nh :\n  (∀ (n : ℕ) (C : ℝ), ∀ d ∈ divisorsInWindow n C, n / d ∈ divisorsBelowWindow n C ∧ d * (n / d) = n) ∧\n    (∀ (n : ℕ) (C C' : ℝ), C ≤ C' → #(divisorsInWindow n C) ≤ #(divisorsInWindow n C')) ∧\n      (∃ K1, ∀ (n : ℕ), #(divisorsInWindow n 1) ≤ K1) ∧\n        ∃ K0, ∀ (n : ℕ), 1 ≤ n → n ≤ 20000 → #(divisorsInWindow n 1) ≤ K0\n⊢ ∃ K, ∀ (C : ℝ), 0 < C → ∃ N, ∀ (n : ℕ), N ≤ n → #(divisorsInWindow n C) ≤ K\n'msl_erdos887_lem_r006_r006_composition' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]",
+  "utc": "2026-09-02T16:36:20Z"
+}

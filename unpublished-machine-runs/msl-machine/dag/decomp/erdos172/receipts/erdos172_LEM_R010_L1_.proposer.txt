@@ -1,0 +1,19 @@
+{"definitions": "def erdos172_A : Finset ℕ := ({2, 4, 6, 8, 10, 12} : Finset ℕ)\ndef erdos172_c : ℕ → ℕ := fun (n : ℕ) => n % (2 : ℕ)",
+  "parent_typed": {"name": "erdos172_LEM_R010_L1prime", "binders": [],
+                   "statement": "(∀ (S : Finset ℕ), S ⊆ erdos172_A → S.Nonempty →\n    erdos172_c (∑ x ∈ S, x) = (0 : ℕ) ∧ erdos172_c (∏ x ∈ S, x) = (0 : ℕ)) ∧\n  (erdos172_A.powerset.filter (fun (T : Finset ℕ) => ¬ (T = ∅))).card = (63 : ℕ) ∧\n  certificationFailsClosed residualExpressions = (false : Bool)",
+                   "reading": "For A={2,4,6,8,10,12} and c(n)=n mod 2, every nonempty S⊆A has c(sum S)=0 and c(prod S)=0; A has exactly 63 nonempty subsets (the verifier's exhaustive scope), and the fail-closed verifier closed with no residuals; v₂-mod-2 behaviour is deliberately outside this block."},
+  "children": [
+    {"name": "erdos172_LEM_R010_L1prime_sums", "binders": [],
+      "statement": "∀ (S : Finset ℕ), S ⊆ erdos172_A → S.Nonempty → erdos172_c (∑ x ∈ S, x) = (0 : ℕ)",
+      "reading": "Every nonempty subset S of A={2,4,6,8,10,12} has even sum, i.e. colour 0 under c(n)=n mod 2."},
+    {"name": "erdos172_LEM_R010_L1prime_prods", "binders": [],
+      "statement": "∀ (S : Finset ℕ), S ⊆ erdos172_A → S.Nonempty → erdos172_c (∏ x ∈ S, x) = (0 : ℕ)",
+      "reading": "Every nonempty subset S of A={2,4,6,8,10,12} has even product, i.e. colour 0 under c(n)=n mod 2 (nonemptiness is essential: the empty product 1 is odd)."},
+    {"name": "erdos172_LEM_R010_L1prime_scope63", "binders": [],
+      "statement": "(erdos172_A.powerset.filter (fun (T : Finset ℕ) => ¬ (T = ∅))).card = (63 : ℕ)",
+      "reading": "A={2,4,6,8,10,12} has exactly 63 nonempty subsets (2^6 − 1): the bounded, fully decidable scope over which the verifier ranges."},
+    {"name": "erdos172_LEM_R010_L1prime_certPassed", "binders": [],
+      "statement": "certificationFailsClosed residualExpressions = (false : Bool)",
+      "reading": "The exact fail-closed integer verifier reports an empty residual list, so certification for this block and this colouring passed."}
+  ],
+  "composition_claim": "The parent is precisely the conjunction of the four children: children 1 and 2 supply the two halves of the universal clause (for every nonempty S ⊆ erdos172_A, c(sum S)=0 and c(prod S)=0 under c(n)=n mod 2), child 3 pins the quantifier's exhaustive scope at exactly the 63 nonempty subsets of A, and child 4 supplies the fail-closed certification clause with no residuals; conjoining them (an anonymous-constructor step from children to parent) reproduces the parent verbatim, and no child mentions the v₂-mod-2 question, matching L1′'s declared scope."}

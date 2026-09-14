@@ -1,0 +1,74 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos289",
+  "generated_utc": "2026-09-02T15:10:53Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos289:P4:C-289-2f5e6a0a3b-B-ROOT",
+    "statement": "NEGATIVE CLOSE: prove the literal logical negation of the canonical proposition—not failure of a proof strategy, not a counterexample to a stronger variant, and not a refutation of an informal guess.",
+    "statement_sha256": "58857d11a2ed043ec3a63d39d55e4541bb17a08108f85b0b56b1bc398e3df340",
+    "kind": "BRANCH_STATEMENT",
+    "binding": "VERBATIM",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "Erdos problem 289 (erdosproblems.com/289, OPEN): Is it true that, for all sufficiently large k, there exist finite intervals I_1, ..., I_k of consecutive integers in N, pairwise distinct, not overlapping or adjacent, with |I_i| >= 2 for 1 <= i <= k, such that 1 = sum over i of sum over n in I_i of 1/n?",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos289-campaign-001/contract.json",
+    "sha256": "300c94a111d4ff43771f4872392d304ec72703ec9550e1ea1a867442faee2e7f"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos289:P4:C-289-2f5e6a0a3b-B-ROOT",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "9547cb8cbe2c5acc527b68ce35fc609d3ca20eb55473337121bc32c878d9a7eb",
+    "prompt_chars": 9670,
+    "response_sha256": "d9576ac26794d63dd63a39c239f9a411ac059fd5a8a132af3d7f63e4b2e6e8df",
+    "usage": {
+      "prompt_tokens": 3282,
+      "completion_tokens": 4833,
+      "total_tokens": 8115,
+      "cost": 0.0029088,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0029088,
+        "upstream_inference_prompt_cost": 0.0004923,
+        "upstream_inference_completions_cost": 0.0024165
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 3720,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.0029088,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 175.27,
+    "utc": "2026-09-02T15:09:57Z"
+  },
+  "children": [],
+  "composition": null,
+  "parent_new_depends_on": [],
+  "rejected": [],
+  "counts": {
+    "proposed": 0,
+    "elaborated": 0,
+    "bound": 0,
+    "non_circular": 0,
+    "non_trivial": 0,
+    "surviving": 0,
+    "composition_kernel_checked": 0,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 0
+  },
+  "refusal": "PROPOSAL_NOT_JSON: Expecting property name enclosed in double quotes: line 1 column 232 (char 231)"
+}

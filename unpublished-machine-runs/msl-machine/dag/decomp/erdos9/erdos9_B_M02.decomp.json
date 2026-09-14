@@ -1,0 +1,74 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos9",
+  "generated_utc": "2026-09-02T16:32:50Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos9:B:M02",
+    "statement": "Use the same Nat.Prime and exponent conventions, including k=l and k=l=0 cases; a counterexample to another representation convention is irrelevant.",
+    "statement_sha256": "586591e0a15aa75bbbb964b92cdbd40321e94909f866904d01659925090d3355",
+    "kind": "MUST_DETERMINE",
+    "binding": "VERBATIM",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "Let $A$ be the set of all odd integers $\\geq 1$ not of the form $p+2^{k}+2^l$ (where $k,l\\geq 0$ and $p$ is prime). Is the upper density of $A$ positive?",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos9-campaign-001/contract.json",
+    "sha256": "b389c8fdb4a9bdaaab694a7b2c836c7b42126754d0b10dea2d49713c631000a7"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos9:B:M02",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "fe37e772ce16509906b3e6481490325eb85d7d02d4fcc946ad545543d0367aae",
+    "prompt_chars": 4130,
+    "response_sha256": "3726abd8e74fa5eb6132b8e695f6c19a287b7c3f171168140d87ebba0905dd3e",
+    "usage": {
+      "prompt_tokens": 1077,
+      "completion_tokens": 2528,
+      "total_tokens": 3605,
+      "cost": 0.000705095,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 128,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.000705095,
+        "upstream_inference_prompt_cost": 7.3095e-05,
+        "upstream_inference_completions_cost": 0.000632
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 1927,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.000705095,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 74.95,
+    "utc": "2026-09-02T16:32:17Z"
+  },
+  "children": [],
+  "composition": null,
+  "parent_new_depends_on": [],
+  "rejected": [],
+  "counts": {
+    "proposed": 0,
+    "elaborated": 0,
+    "bound": 0,
+    "non_circular": 0,
+    "non_trivial": 0,
+    "surviving": 0,
+    "composition_kernel_checked": 0,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 0
+  },
+  "refusal": "PROPOSAL_NOT_JSON: Expecting property name enclosed in double quotes: line 1 column 436 (char 435)"
+}

@@ -1,0 +1,8 @@
+{"definitions": "def facRes : Finset Nat :=\n  (Finset.univ : Finset (Fin 9)).powerset.image\n    (fun (S : Finset (Fin 9)) => (∑ i ∈ S, (i : Nat).factorial) % 16)",
+ "parent_typed": {"name": "erdos1108_residues_mod16_complete", "binders": [], "statement": "∀ (r : Nat), r < 16 → ∃ (S : Finset Nat), (∑ n ∈ S, (n : Nat).factorial) % 16 = r", "reading": "Every residue class mod 16 is attained by a subset-sum of factorials, i.e. the residue set of A mod 16 is all of Z/16Z."},
+ "children": [
+   {"name": "erdos1108_tail_factorial_zero_mod16", "binders": ["(m : Nat)"], "statement": "6 ≤ m → (m : Nat).factorial % 16 = 0", "reading": "For every m ≥ 6, m! is divisible by 16, so only factorials 0! through 5! contribute nonzero residues mod 16 (this corrects the retracted table, where 5! = 120 ≡ 8 mod 16 was missed)."},
+   {"name": "erdos1108_facRes_bounded", "binders": [], "statement": "facRes ⊆ Finset.range 16", "reading": "The finitely enumerable residue set of subset-sums of 0!,...,8! mod 16 is contained in {0,...,15}."},
+   {"name": "erdos1108_facRes_full_card", "binders": [], "statement": "facRes.card = 16", "reading": "The decidable enumeration of subset-sums of {1,1,2,6,8,8} (mod 16) yields all 16 residue classes; provable by decide over the 512 subsets of Fin 9."}
+ ],
+ "composition_claim": "Child 3 says the enumerated residue set facRes has 16 elements and child 2 says it sits inside Finset.range 16, so facRes = Finset.range 16, i.e. every residue r < 16 is realized by a subset of {0,...,8}. Child 1 says factorials beyond 5! vanish mod 16, so any finite S ⊆ ℕ has the same residue mod 16 as S ∩ {0,...,8}, whose residue lies in facRes; hence the parent's ∃-statement holds for every r < 16."}

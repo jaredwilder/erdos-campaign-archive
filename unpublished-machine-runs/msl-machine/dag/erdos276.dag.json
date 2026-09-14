@@ -1,0 +1,1778 @@
+{
+ "schema": "obligation-dag/1.0.0",
+ "problem": "erdos276",
+ "problem_number": "276",
+ "campaign": "erdos276-campaign-001",
+ "root": "erdos276:ROOT",
+ "contract_divergence": {
+  "authoritative": {
+   "role": "campaign",
+   "path": "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/contract.json",
+   "sha256": "2c87782be95dbcd7a138e36686d52eb9f9c74be0e23c5ecafc4f22b85632b10c",
+   "declared_contract_sha256": "4953f4e8d1ab7eaf0ebea48d6dbcf534e78f3ee01d6d0b1eaaa3063d9e06f95d"
+  },
+  "others": [
+   {
+    "role": "ingest",
+    "path": "oracle/evidence/msl-machine/contracts/erdos276/contract.json",
+    "sha256": "c45a7a882236f83e6ae184b7abc35703f4ccceea12e64dded417aaf9c0186b21",
+    "declared_contract_sha256": "af73da0a30bf28b7b35dd134cf90fe1081f479a45934cc96f61aa7eb5cf20b9b",
+    "canonical_statement_matches_authoritative": true
+   },
+   {
+    "role": "launch_queue",
+    "path": "oracle/evidence/msl-machine/contracts/LAUNCH-QUEUE/erdos276.json",
+    "sha256": "4df3277161ba919c715f325066a430bbd8b76de39e9aeb153f6bdc1dbe3135fc",
+    "declared_contract_sha256": null,
+    "canonical_statement_matches_authoritative": true
+   }
+  ],
+  "diverges": false
+ },
+ "courts": [
+  "court",
+  "closer",
+  "formalizer",
+  "kernel"
+ ],
+ "summary": {
+  "nodes": 34,
+  "proved_kernel": 4,
+  "proved_speaker": 1,
+  "computed_bounded": 1,
+  "open": 26,
+  "refuted": 2,
+  "orphans": 1,
+  "proof_obligations": 8,
+  "open_leaves_on_dead_routes": 4,
+  "root_kind": "NOT_DECIDABLE",
+  "root_disqualifiers": [
+   "UNBOUNDED_FORALL"
+  ],
+  "formal_root": {
+   "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/276.lean",
+   "category": "category research open, AMS 11",
+   "declaration": "erdos_276",
+   "statement": "answer(sorry) ↔ ∃ (a : ℕ → ℕ), IsLucasSequence a ∧ (∀ k, (a k).Composite) ∧ (∀ n > 1, ∃ k, Nat.gcd n (a k) = 1)"
+  },
+  "leaf_frontier_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "leaf_frontier_reason": "9 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaf_frontier_deciding_leaf": {
+   "id": "erdos276:DEMAND:R002:L1:1",
+   "kind": "CAPABILITY_DEMAND",
+   "status": "OPEN",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "a covering scheme with gcd(a_0,a_1)=1 and no single integer meeting all covering primes."
+  },
+  "ladder_shape_reason": "the formal root is not decidable: UNBOUNDED_FORALL (oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/276.lean). No leaf set can close it, however clean the leaves are. Leaf frontier, kept for the grind queue: HAS_OPEN_ANALYTIC_LEAF.",
+  "leaves": 21,
+  "open_leaves": 16,
+  "open_technical_leaves": 13,
+  "open_prose_obligations": 1,
+  "open_analytic_leaves": 9,
+  "ladder_shape": "ROOT_NOT_DECIDABLE",
+  "deciding_leaf": {
+   "id": "erdos276:ROOT",
+   "kind": "CANONICAL_ROOT",
+   "status": "OPEN",
+   "binding": "VERBATIM",
+   "leaf_tactic_hint": null,
+   "statement": "answer(sorry) ↔ ∃ (a : ℕ → ℕ), IsLucasSequence a ∧ (∀ k, (a k).Composite) ∧ (∀ n > 1, ∃ k, Nat.gcd n (a k) = 1)"
+  },
+  "orphan_detail": [
+   {
+    "id": "erdos276:B:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   }
+  ]
+ },
+ "validation": {
+  "acyclic": true,
+  "edges": 41,
+  "root_binds_verbatim": true,
+  "kernel_receipts_checked": 4
+ },
+ "nodes": [
+  {
+   "id": "erdos276:A:M01",
+   "statement": "A complete proof of the affirmative proposition over its full stated scope.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/contract.json",
+   "contract_sha256": "2c87782be95dbcd7a138e36686d52eb9f9c74be0e23c5ecafc4f22b85632b10c",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos276",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:A:M02",
+   "statement": "If the proposition is existential, an explicit witness/construction or a rigorous existence proof, together with verification of every required property.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 2,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/contract.json",
+   "contract_sha256": "2c87782be95dbcd7a138e36686d52eb9f9c74be0e23c5ecafc4f22b85632b10c",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos276",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:A:M03",
+   "statement": "If the proposition is universal, coverage of every allowed object/parameter rather than sampled instances or a restricted family.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 3,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/contract.json",
+   "contract_sha256": "2c87782be95dbcd7a138e36686d52eb9f9c74be0e23c5ecafc4f22b85632b10c",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos276",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:A:M04",
+   "statement": "All endpoint, degeneracy, distinctness, integrality, normalization, and full-sequence conditions required by the canonical statement.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 4,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/contract.json",
+   "contract_sha256": "2c87782be95dbcd7a138e36686d52eb9f9c74be0e23c5ecafc4f22b85632b10c",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos276",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:BRANCH_A",
+   "statement": "AFFIRMATIVE CLOSE: prove the canonical proposition exactly as stated, with every quantifier, domain restriction, asymptotic qualifier, and structural condition preserved.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos276:A:M01",
+    "erdos276:A:M02",
+    "erdos276:A:M03",
+    "erdos276:A:M04"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/contract.json",
+   "contract_sha256": "2c87782be95dbcd7a138e36686d52eb9f9c74be0e23c5ecafc4f22b85632b10c",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos276",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-276-27e578ef0e-A-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:B:M01",
+   "statement": "Show that every all-composite sequence has some n>1 sharing a nontrivial factor with every term.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/contract.json",
+   "contract_sha256": "2c87782be95dbcd7a138e36686d52eb9f9c74be0e23c5ecafc4f22b85632b10c",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos276",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-276-27e578ef0e-B-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos276:BRANCH_B",
+   "statement": "NEGATIVE CLOSE: prove no sequence of composite naturals can satisfy the exact universal coprimality condition.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos276:B:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/contract.json",
+   "contract_sha256": "2c87782be95dbcd7a138e36686d52eb9f9c74be0e23c5ecafc4f22b85632b10c",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos276",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-276-27e578ef0e-B-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:ROOT",
+   "statement": "Is there an infinite Lucas sequence $a_0,a_1,\\ldots$ where $a_{n+2}=a_{n+1}+a_n$ for $n\\geq 0$ such that all $a_k$ are composite, and yet no integer has a common factor with every term of the sequence?",
+   "kind": "CANONICAL_ROOT",
+   "depends_on": [
+    "erdos276:BRANCH_A",
+    "erdos276:BRANCH_B"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "root_by_construction",
+   "closure_mode": "DISJUNCTIVE",
+   "satisfied_by_any": [
+    "erdos276:BRANCH_A",
+    "erdos276:BRANCH_B"
+   ],
+   "root_kind": "NOT_DECIDABLE",
+   "root_disqualifiers": [
+    "UNBOUNDED_FORALL"
+   ],
+   "formal_root": {
+    "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/276.lean",
+    "category": "category research open, AMS 11",
+    "declaration": "erdos_276",
+    "statement": "answer(sorry) ↔ ∃ (a : ℕ → ℕ), IsLucasSequence a ∧ (∀ k, (a k).Composite) ∧ (∀ n > 1, ∃ k, Nat.gcd n (a k) = 1)"
+   },
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/contract.json",
+   "contract_sha256": "2c87782be95dbcd7a138e36686d52eb9f9c74be0e23c5ecafc4f22b85632b10c",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos276",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:P4:C-276-27e578ef0e-A-M01",
+   "statement": "A complete proof of the affirmative proposition over its full stated scope.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_in_campaign_contract",
+   "binding_to_authoritative_contract": "VERBATIM",
+   "binding_to_authoritative_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 1,
+   "pass4_obligation_id": "C-276-27e578ef0e-A-M01",
+   "canonical_id": "C-276-27e578ef0e",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/contract.json",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/contract.json",
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_CONTRACT_CLOSURE_OBLIGATIONS.csv"
+   ],
+   "supports": [
+    {
+     "node": "erdos276:BRANCH_A",
+     "evidence": "pass4_branch"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos276",
+   "court": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:P4:C-276-27e578ef0e-A-M02",
+   "statement": "If the proposition is existential, an explicit witness/construction or a rigorous existence proof, together with verification of every required property.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_in_campaign_contract",
+   "binding_to_authoritative_contract": "VERBATIM",
+   "binding_to_authoritative_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 2,
+   "pass4_obligation_id": "C-276-27e578ef0e-A-M02",
+   "canonical_id": "C-276-27e578ef0e",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/contract.json",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/contract.json",
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_CONTRACT_CLOSURE_OBLIGATIONS.csv"
+   ],
+   "supports": [
+    {
+     "node": "erdos276:BRANCH_A",
+     "evidence": "pass4_branch"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos276",
+   "court": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:P4:C-276-27e578ef0e-A-M03",
+   "statement": "If the proposition is universal, coverage of every allowed object/parameter rather than sampled instances or a restricted family.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_in_campaign_contract",
+   "binding_to_authoritative_contract": "VERBATIM",
+   "binding_to_authoritative_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 3,
+   "pass4_obligation_id": "C-276-27e578ef0e-A-M03",
+   "canonical_id": "C-276-27e578ef0e",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/contract.json",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/contract.json",
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_CONTRACT_CLOSURE_OBLIGATIONS.csv"
+   ],
+   "supports": [
+    {
+     "node": "erdos276:BRANCH_A",
+     "evidence": "pass4_branch"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos276",
+   "court": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:P4:C-276-27e578ef0e-A-M04",
+   "statement": "All endpoint, degeneracy, distinctness, integrality, normalization, and full-sequence conditions required by the canonical statement.",
+   "kind": "PROOF_OBLIGATION",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_in_campaign_contract",
+   "binding_to_authoritative_contract": "VERBATIM",
+   "binding_to_authoritative_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 4,
+   "pass4_obligation_id": "C-276-27e578ef0e-A-M04",
+   "canonical_id": "C-276-27e578ef0e",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/contract.json",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/contract.json",
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_CONTRACT_CLOSURE_OBLIGATIONS.csv"
+   ],
+   "supports": [
+    {
+     "node": "erdos276:BRANCH_A",
+     "evidence": "pass4_branch"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos276",
+   "court": [],
+   "is_leaf": false,
+   "not_a_leaf_reason": "boilerplate contract clause: an obligation ABOUT the proof, never a rung to stand on",
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:KER:Erdos276Corollary:erdos276_common_divisor_iff",
+   "statement": "theorem erdos276_common_divisor_iff (a : ℕ → ℕ) (hrec : ∀ n : ℕ, a (n + 2) = a (n + 1) + a n) (d : ℕ) : CommonDivisor a d ↔ d ∣ Nat.gcd (a 0) (a 1)",
+   "kind": "KERNEL_DECL",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_KERNEL",
+   "receipt": "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/kernel/Erdos276Corollary.verify.json",
+   "receipt_kind": "VERIFY_JSON",
+   "receipt_notes": [
+    "verify.json status=VERIFIED exitCode=0"
+   ],
+   "source": "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/kernel/Erdos276Corollary.lean",
+   "source_sha256": "565de68c3f9a826ddb64246082a2e64c6eb255998e24868643ecd62f3ac1f3ff",
+   "binding_detail": "no_frozen_match",
+   "declaration": "erdos276_common_divisor_iff",
+   "court": [
+    "kernel"
+   ],
+   "type_context": "import Mathlib\ndef CommonDivisor (a : ℕ → ℕ) (d : ℕ) : Prop := ∀ n, d ∣ a n",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/kernel/Erdos276Corollary.lean",
+    "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/kernel/Erdos276Corollary.verify.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos276",
+   "supports": [],
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:KER:Erdos276Corollary:erdos276_coprime_seeds_no_common_divisor",
+   "statement": "theorem erdos276_coprime_seeds_no_common_divisor (a : ℕ → ℕ) (hrec : ∀ n : ℕ, a (n + 2) = a (n + 1) + a n) (hcop : Nat.gcd (a 0) (a 1) = 1) (d : ℕ) (hd : CommonDivisor a d) : d = 1",
+   "kind": "KERNEL_DECL",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_KERNEL",
+   "receipt": "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/kernel/Erdos276Corollary.verify.json",
+   "receipt_kind": "VERIFY_JSON",
+   "receipt_notes": [
+    "verify.json status=VERIFIED exitCode=0"
+   ],
+   "source": "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/kernel/Erdos276Corollary.lean",
+   "source_sha256": "565de68c3f9a826ddb64246082a2e64c6eb255998e24868643ecd62f3ac1f3ff",
+   "binding_detail": "no_frozen_match",
+   "declaration": "erdos276_coprime_seeds_no_common_divisor",
+   "court": [
+    "kernel"
+   ],
+   "type_context": "import Mathlib\ndef CommonDivisor (a : ℕ → ℕ) (d : ℕ) : Prop := ∀ n, d ∣ a n",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/kernel/Erdos276Corollary.lean",
+    "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/kernel/Erdos276Corollary.verify.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos276",
+   "supports": [],
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:LEM:R001:L1",
+   "statement": "gcd(all terms)=gcd(a0,a1) since a0,a1 are terms; coprime seeds force the universal coprimality condition, reducing branch A to existence of coprime all-composite seeds.",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos276:KER:Erdos276Corollary:erdos276_common_divisor_iff",
+    "erdos276:KER:Erdos276Corollary:erdos276_coprime_seeds_no_common_divisor"
+   ],
+   "binding": "UNBOUND",
+   "status": "PROVED_KERNEL",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 5,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 3,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:07:08Z"
+    },
+    {
+     "seq": 4,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:18:48Z"
+    },
+    {
+     "seq": 5,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:19:29Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer",
+    "kernel"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/routes/registry.jsonl"
+   ],
+   "kernel_link_evidence": [
+    {
+     "cert_seq": 57,
+     "artifact_file": "kernel/Erdos276Corollary.lean"
+    }
+   ],
+   "receipt": "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/kernel/Erdos276Corollary.verify.json",
+   "source": "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/kernel/Erdos276Corollary.lean",
+   "receipt_kind": "VERIFY_JSON",
+   "supports": [
+    {
+     "node": "erdos276:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "∀ (L : ℕ → ℕ), IsLucasSequence L → Nat.Coprime (L 0) (L 1) → ∀ n > 1, ∃ k, Nat.gcd n (L k) = 1 | For every Lucas sequence with coprime initial terms, the universal coprimality condition holds. | by\n  intro L hL hcop n hn\n  refine ⟨0, ?_⟩\n  have hdiv : Nat.gcd n (L 0) ∣ Nat.gcd (L 0) (L 1) := by\n    exact Nat.gcd_dvd_left n (L 0)\n  have hg : Nat.gcd (L 0) (L 1) = 1 := hcop\n  have hunit : Nat.gcd n (L 0) = 1 := by\n    apply Nat.eq_one_of_dvd_one\n    simpa [hg] using hdiv\n  exact hunit"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_coprime_seed_gcd = true | The concrete seed pair (1,1) has gcd 1; this checks only the finite coprime-seed fragment and does not establish compositeness or existence of a qualifying Lucas sequence. | by decide"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos276",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:LEM:R002:ALL",
+   "statement": "Contract predicates referenced only by SHA and analytic reduction is none, so no exact rational residual exists to sign-resolve; fail-closed halt per abort rule.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R002",
+   "lemma_id": "ALL",
+   "registry_status": "UNTESTED",
+   "registry_seq": 7,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 has a machine-verified counterexample and no proof shows R002's close survives without it, so the route is dead.",
+    "seq": 9
+   },
+   "history": [
+    {
+     "seq": 7,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:27:41Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos276:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "Contract predicates referenced only by SHA and analytic reduction is none, so no exact rational residual exists to sign-resolve; fail-closed halt per abort rule."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos276",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:LEM:R002:L1",
+   "statement": "Graham's covering-prime construction has all covering primes dividing a_1, so N=a_1 shares a factor with every term, violating the canonical universal coprimality condition; repair requires a covering scheme with gcd(a_0,a_1)=1 and no single integer meeting all covering primes.",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos276:DEMAND:R002:L1:1",
+    "erdos276:KER:Erdos276Corollary:erdos276_common_divisor_iff",
+    "erdos276:KER:Erdos276Corollary:erdos276_coprime_seeds_no_common_divisor"
+   ],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R002",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 8,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 has a machine-verified counterexample and no proof shows R002's close survives without it, so the route is dead.",
+    "seq": 9
+   },
+   "history": [
+    {
+     "seq": 6,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:20:14Z"
+    },
+    {
+     "seq": 8,
+     "status": "FALSE",
+     "utc": "2026-09-01T19:30:36Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/routes/registry.jsonl"
+   ],
+   "kernel_link_evidence": [
+    {
+     "cert_seq": 57,
+     "artifact_file": "kernel/Erdos276Corollary.lean"
+    }
+   ],
+   "supports": [
+    {
+     "node": "erdos276:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos276",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:DEMAND:R002:L1:1",
+   "statement": "a covering scheme with gcd(a_0,a_1)=1 and no single integer meeting all covering primes.",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "repair requires",
+   "demand_rank": 0,
+   "demand_strength": "STRONG",
+   "route_status": "DEAD",
+   "demand_source_text": "Graham's covering-prime construction has all covering primes dividing a_1, so N=a_1 shares a factor with every term, violating the canonical universal coprimality condition; repair requires a covering scheme with gcd(a_0,a_1)=1 and no single integer meeting all covering primes.",
+   "route_id": "R002",
+   "lemma_id": "L1",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos276:LEM:R002:L1",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos276",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:LEM:R003:L1",
+   "statement": "Constant seed a₀=a₁=N forces N as a common divisor of all terms; repair requires gcd(a₀,a₁)=1 with a Graham-type covering construction.",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos276:DEMAND:R003:L1:1",
+    "erdos276:KER:Erdos276Corollary:erdos276_common_divisor_iff",
+    "erdos276:KER:Erdos276Corollary:erdos276_coprime_seeds_no_common_divisor"
+   ],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 14,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified concrete counterexample and no argument shows R003's close survives its deletion; route is dead.",
+    "seq": 15
+   },
+   "history": [
+    {
+     "seq": 11,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:32:36Z"
+    },
+    {
+     "seq": 14,
+     "status": "FALSE",
+     "utc": "2026-09-01T19:37:23Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/routes/registry.jsonl"
+   ],
+   "kernel_link_evidence": [
+    {
+     "cert_seq": 57,
+     "artifact_file": "kernel/Erdos276Corollary.lean"
+    }
+   ],
+   "supports": [
+    {
+     "node": "erdos276:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos276",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:DEMAND:R003:L1:1",
+   "statement": "gcd(a₀,a₁)=1 with a Graham-type covering construction.",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "repair requires",
+   "demand_rank": 0,
+   "demand_strength": "STRONG",
+   "route_status": "DEAD",
+   "demand_source_text": "Constant seed a₀=a₁=N forces N as a common divisor of all terms; repair requires gcd(a₀,a₁)=1 with a Graham-type covering construction.",
+   "route_id": "R003",
+   "lemma_id": "L1",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos276:LEM:R003:L1",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos276",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:LEM:R003:R003",
+   "statement": "Packet supplies no analytic reduction and no explicit residual claim (\"per contract\" is not a finite numerical statement); certifier cannot instantiate an exact rational/interval verifier, aborts fail-closed with no tolerance introduced.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "R003",
+   "registry_status": "UNTESTED",
+   "registry_seq": 13,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified concrete counterexample and no argument shows R003's close survives its deletion; route is dead.",
+    "seq": 15
+   },
+   "history": [
+    {
+     "seq": 13,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:36:29Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos276:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "Packet supplies no analytic reduction and no explicit residual claim (\"per contract\" is not a finite numerical statement); certifier cannot instantiate an exact rational/interval verifier, aborts fail-closed with no tolerance introduced."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos276",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:LEM:R003:certifier",
+   "statement": "Exact rational verifier with fail-closed semantics delivered; no residual instance supplied, so zero certificates issued, scope limited to CONTRACT_SHA 4953f4e8d1ab7eaf",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "COMPUTED_BOUNDED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "certifier",
+   "registry_status": "COMPUTATION_SUPPORTED",
+   "registry_seq": 12,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified concrete counterexample and no argument shows R003's close survives its deletion; route is dead.",
+    "seq": 15
+   },
+   "history": [
+    {
+     "seq": 12,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:33:26Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos276:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_COMPUTATION_SUPPORTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "Exact rational verifier with fail-closed semantics delivered; no residual instance supplied, so zero certificates issued, scope limited to CONTRACT_SHA 4953f4e8d1ab7eaf"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos276",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:LEM:R004:ALL",
+   "statement": "empty candidate: all-composite witness lemma needs explicit covering system + CRT seed pair (gcd(a0,a1)=1) + term-by-term artifact; subsequence/eventually-composite and pairwise-coprimality forms banned by contract non_results (imported trap: erdos1101 R001/L1, adapted); affirmative branch is Graham",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "ALL",
+   "registry_status": "UNTESTED",
+   "registry_seq": 54,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 18,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:39:24Z"
+    },
+    {
+     "seq": 20,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:41:58Z"
+    },
+    {
+     "seq": 21,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:42:49Z"
+    },
+    {
+     "seq": 25,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:46:23Z"
+    },
+    {
+     "seq": 26,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:47:56Z"
+    },
+    {
+     "seq": 27,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:48:19Z"
+    },
+    {
+     "seq": 28,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:49:01Z"
+    },
+    {
+     "seq": 29,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:49:56Z"
+    },
+    {
+     "seq": 30,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:50:16Z"
+    },
+    {
+     "seq": 32,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:52:14Z"
+    },
+    {
+     "seq": 34,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:53:32Z"
+    },
+    {
+     "seq": 35,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:54:00Z"
+    },
+    {
+     "seq": 36,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:54:31Z"
+    },
+    {
+     "seq": 37,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:56:05Z"
+    },
+    {
+     "seq": 38,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:57:44Z"
+    },
+    {
+     "seq": 39,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:58:26Z"
+    },
+    {
+     "seq": 40,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:59:02Z"
+    },
+    {
+     "seq": 41,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:59:52Z"
+    },
+    {
+     "seq": 42,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:01:16Z"
+    },
+    {
+     "seq": 43,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:04:00Z"
+    },
+    {
+     "seq": 44,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:04:48Z"
+    },
+    {
+     "seq": 45,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:05:03Z"
+    },
+    {
+     "seq": 46,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:05:44Z"
+    },
+    {
+     "seq": 47,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:09:59Z"
+    },
+    {
+     "seq": 49,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T00:57:43Z"
+    },
+    {
+     "seq": 50,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T00:58:30Z"
+    },
+    {
+     "seq": 51,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T00:59:14Z"
+    },
+    {
+     "seq": 52,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T00:59:32Z"
+    },
+    {
+     "seq": 53,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T01:00:47Z"
+    },
+    {
+     "seq": 54,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T01:01:35Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos276:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "empty candidate: all-composite witness lemma needs explicit covering system + CRT seed pair (gcd(a0,a1)=1) + term-by-term artifact; subsequence/eventually-composite and pairwise-coprimality forms banned by contract non_results (imported trap: erdos1101 R001/L1, adapted); affirmative branch is Graham"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos276",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:LEM:R004:L1",
+   "statement": "necessary conditions for any branch-A close: a_0,a_1 composite, all-k inductive compositeness, and ∀n>1∃k coprimality with exact quantifier order; imported/adapted from erdos1101 R001/L1, survived all 12 §12.2 attacks; consequence of frozen contract guards, bans finite-prefix and pairwise-coprimalit",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos276:KER:Erdos276Corollary:erdos276_common_divisor_iff",
+    "erdos276:KER:Erdos276Corollary:erdos276_coprime_seeds_no_common_divisor"
+   ],
+   "binding": "UNBOUND",
+   "status": "PROVED_KERNEL",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 56,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 17,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:38:17Z"
+    },
+    {
+     "seq": 19,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:40:56Z"
+    },
+    {
+     "seq": 22,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:44:18Z"
+    },
+    {
+     "seq": 24,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:46:04Z"
+    },
+    {
+     "seq": 31,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:51:06Z"
+    },
+    {
+     "seq": 33,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:53:02Z"
+    },
+    {
+     "seq": 56,
+     "status": "PROVED",
+     "utc": "2026-09-02T02:11:11Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer",
+    "kernel"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/routes/registry.jsonl"
+   ],
+   "kernel_link_evidence": [
+    {
+     "cert_seq": 57,
+     "artifact_file": "kernel/Erdos276Corollary.lean"
+    }
+   ],
+   "receipt": "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/kernel/Erdos276Corollary.verify.json",
+   "source": "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/kernel/Erdos276Corollary.lean",
+   "receipt_kind": "VERIFY_JSON",
+   "supports": [
+    {
+     "node": "erdos276:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "∀ (a : Nat → Nat), NecessaryConditions a → (a 0).Composite ∧ (a 1).Composite | For every sequence satisfying the full formalized necessary-condition predicate, both endpoint terms a 0 and a 1 are composite. | by\n  intro a h\n  exact ⟨h.2.1 0, h.2.1 1⟩"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "endpointComposite 4 9 = true | The explicit composite endpoint pair (4, 9) passes the decidable endpoint-compositeness check. | by decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "∀ (a : ℕ → ℕ), (∀ k, (a k).Composite) → EndpointComposite a | For every natural-valued sequence whose every term is composite, the endpoint terms a 0 and a 1 are composite. | by\n  intro a h\n  exact ⟨h 0, h 1⟩"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_L1_fragment = true | The kernel-checked computation establishes that for the explicit sequence with a₀ = 6 and a₁ = 10, the recurrence holds for every n < 59 and gcd(a₀,a₁) divides every term a₀,…,a₆₀. This is only the stated finite fragment of L1, not the full infinite common-divisor lemma. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "∀ (a : ℕ → ℕ), IsLucasSequence a → Nat.gcd (a 0) (a 1) ∣ a 0 ∧ Nat.gcd (a 0) (a 1) ∣ a 1 ∧ ∀ n, Nat.gcd (a 0) (a 1) ∣ a n | The proof establishes the generic divisibility fragment of L1: for every Lucas sequence a, gcd(a₀,a₁) divides a₀, a₁, and every term aₙ. It does not establish the equality with the common-divisor ideal or the all-composite construction. | by\n  intro a ha\n  let d := Nat.gcd (a 0) (a 1)\n  have h0 : d ∣ a 0 := Nat.gcd_dvd_left _ _\n  have h1 : d ∣ a 1 := Nat.gcd_dvd_right _ _\n  have hall : ∀ n, d ∣ a n := by\n    intro n\n    induction n using Nat.twoStepInduction with\n    | zero => exact h0\n    | one => exact h1\n    | more n ih0 ih1 =>\n        rw [ha n]\n        exact dvd_add ih1 ih0\n  exact ⟨h0, h1, hall⟩"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos276",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:LEM:R004:L2",
+   "statement": "gcd(a0,a1) divides every term by induction on the recurrence, so all trivial composite seeds (4,4),(6,10),(8,12) fail coprimality at n=g; any Branch A witness needs coprime composite seeds (e.g. 4,9) plus a CRT covering mechanism; endpoint discipline adapted from erdos821 R004/L1.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "L2",
+   "registry_status": "PROVED",
+   "registry_seq": 55,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 23,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:45:23Z"
+    },
+    {
+     "seq": 55,
+     "status": "PROVED",
+     "utc": "2026-09-02T02:08:59Z"
+    }
+   ],
+   "court": [
+    "court"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos276-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos276:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "∀ a0 a1 : Nat, gcd_divides_all_terms a0 a1 | For every pair of natural seeds a0 and a1, the gcd of the seeds divides every term of every natural Lucas sequence with those initial values; this is the kernel-checkable divisibility fragment of L2. | by\n  intro a0 a1 a h h0 h1\n  let d := Nat.gcd a0 a1\n  have hd0 : d ∣ a 0 := by\n    rw [h0]\n    exact Nat.gcd_dvd_left a0 a1\n  have hd1 : d ∣ a 1 := by\n    rw [h1]\n    exact Nat.gcd_dvd_right a0 a1\n  intro n\n  induction n using Nat.twoStepInduction with\n  | zero => exact hd0\n  | one => exact hd1\n  | more n ih0 ih1 =>\n      rw [h n]\n      exact dvd_add ih1 ih0"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_fixed_seed = true | The decidable finite fragment checks that gcd(4,4)=4 and that 4 divides the first five terms of the recursively defined Lucas sequence with seeds (4,4). | by decide"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos276",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:FLEAF:752a35225a9c3c242a0f:1",
+   "statement": "∀ a0 a1 : Nat, gcd_divides_all_terms a0 a1",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "L2",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def divides_all_terms (a0 a1 d : Nat) : Prop := ∀ a : Nat → Nat, (∀ n, a (n + 2) = a (n + 1) + a n) → a 0 = a0 → a 1 = a1 → ∀ n, d ∣ a n\n\ndef gcd_divides_all_terms (a0 a1 : Nat) : Prop := ∀ a : Nat → Nat, (∀ n, a (n + 2) = a (n + 1) + a n) → a 0 = a0 → a 1 = a1 → ∀ n, Nat.gcd a0 a1 ∣ a n",
+   "type_context": "Mathlib\ndef divides_all_terms (a0 a1 d : Nat) : Prop := ∀ a : Nat → Nat, (∀ n, a (n + 2) = a (n + 1) + a n) → a 0 = a0 → a 1 = a1 → ∀ n, d ∣ a n\n\ndef gcd_divides_all_terms (a0 a1 : Nat) : Prop := ∀ a : Nat → Nat, (∀ n, a (n + 2) = a (n + 1) + a n) → a 0 = a0 → a 1 = a1 → ∀ n, Nat.gcd a0 a1 ∣ a n",
+   "proof": "by\n  intro a0 a1 a h h0 h1\n  let d := Nat.gcd a0 a1\n  have hd0 : d ∣ a 0 := by\n    rw [h0]\n    exact Nat.gcd_dvd_left a0 a1\n  have hd1 : d ∣ a 1 := by\n    rw [h1]\n    exact Nat.gcd_dvd_right a0 a1\n  intro n\n  induction n using Nat.twoStepInduction with\n  | zero => exact hd0\n  | one => exact hd1\n  | more n ih0 ih1 =>\n      rw [h n]\n      exact dvd_add ih1 ih0",
+   "claim": "For every pair of natural seeds a0 and a1, the gcd of the seeds divides every term of every natural Lucas sequence with those initial values; this is the kernel-checkable divisibility fragment of L2.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "CLOSURE_SHAPELESS_REFUSED: proof must be a decision procedure (`by decide`, or `by native_decide` when plain decide cannot finish); got 'by\\n  intro a0 a1 a h h0 h1\\n  let d := Nat.gcd a0 a1\\n  have h'. This pipeline generates from a template and does not accept a free-form Lean proof.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "supports": [
+    {
+     "node": "erdos276:LEM:R004:L2",
+     "evidence": "formalizer obligation route=R004 lemma=L2"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos276",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:FLEAF:752a35225a9c3c242a0f:2",
+   "statement": "check_fixed_seed = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "L2",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def lucas (a0 a1 : Nat) : Nat → Nat\n  | 0 => a0\n  | 1 => a1\n  | n + 2 => lucas a0 a1 (n + 1) + lucas a0 a1 n\n\ndef check_fixed_seed : Bool :=\n  (Nat.gcd 4 4 = 4) && (4 ∣ lucas 4 4 0) && (4 ∣ lucas 4 4 1) &&\n  (4 ∣ lucas 4 4 2) && (4 ∣ lucas 4 4 3) && (4 ∣ lucas 4 4 4)\n",
+   "type_context": "Mathlib\ndef lucas (a0 a1 : Nat) : Nat → Nat\n  | 0 => a0\n  | 1 => a1\n  | n + 2 => lucas a0 a1 (n + 1) + lucas a0 a1 n\n\ndef check_fixed_seed : Bool :=\n  (Nat.gcd 4 4 = 4) && (4 ∣ lucas 4 4 0) && (4 ∣ lucas 4 4 1) &&\n  (4 ∣ lucas 4 4 2) && (4 ∣ lucas 4 4 3) && (4 ∣ lucas 4 4 4)\n",
+   "proof": "by decide",
+   "claim": "The decidable finite fragment checks that gcd(4,4)=4 and that 4 divides the first five terms of the recursively defined Lucas sequence with seeds (4,4).",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "decide",
+   "supports": [
+    {
+     "node": "erdos276:LEM:R004:L2",
+     "evidence": "formalizer obligation route=R004 lemma=L2"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos276",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:FLEAF:a7bae54868906b01eb1a:3",
+   "statement": "∀ (a : Nat → Nat), NecessaryConditions a → (a 0).Composite ∧ (a 1).Composite",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def IsLucasSequence (L : Nat → Nat) : Prop := ∀ n, L (n + 2) = L (n + 1) + L n\n\ndef NecessaryConditions (a : Nat → Nat) : Prop :=\n  IsLucasSequence a ∧\n  (∀ k, (a k).Composite) ∧\n  (∀ n > 1, ∃ k, Nat.gcd n (a k) = 1)",
+   "type_context": "Mathlib\ndef IsLucasSequence (L : Nat → Nat) : Prop := ∀ n, L (n + 2) = L (n + 1) + L n\n\ndef NecessaryConditions (a : Nat → Nat) : Prop :=\n  IsLucasSequence a ∧\n  (∀ k, (a k).Composite) ∧\n  (∀ n > 1, ∃ k, Nat.gcd n (a k) = 1)",
+   "proof": "by\n  intro a h\n  exact ⟨h.2.1 0, h.2.1 1⟩",
+   "claim": "For every sequence satisfying the full formalized necessary-condition predicate, both endpoint terms a 0 and a 1 are composite.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "CLOSURE_SHAPELESS_REFUSED: proof must be a decision procedure (`by decide`, or `by native_decide` when plain decide cannot finish); got 'by\\n  intro a h\\n  exact ⟨h.2.1 0, h.2.1 1⟩'. This pipeline generates from a template and does not accept a free-form Lean proof.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "supports": [
+    {
+     "node": "erdos276:LEM:R004:L1",
+     "evidence": "formalizer obligation route=R004 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos276",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:FLEAF:a7bae54868906b01eb1a:4",
+   "statement": "endpointComposite 4 9 = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def endpointComposite (a0 a1 : Nat) : Bool := (a0).Composite && (a1).Composite",
+   "type_context": "Mathlib\ndef endpointComposite (a0 a1 : Nat) : Bool := (a0).Composite && (a1).Composite",
+   "proof": "by decide",
+   "claim": "The explicit composite endpoint pair (4, 9) passes the decidable endpoint-compositeness check.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "decide",
+   "supports": [
+    {
+     "node": "erdos276:LEM:R004:L1",
+     "evidence": "formalizer obligation route=R004 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos276",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:FLEAF:a7bae54868906b01eb1a:5",
+   "statement": "∀ (a : ℕ → ℕ), (∀ k, (a k).Composite) → EndpointComposite a",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "LEAN_PROOF",
+   "imports": "Mathlib",
+   "definitions": "def IsLucasSequence (L : ℕ → ℕ) : Prop := ∀ n, L (n + 2) = L (n + 1) + L n\n\ndef EndpointComposite (a : ℕ → ℕ) : Prop := (a 0).Composite ∧ (a 1).Composite",
+   "type_context": "Mathlib\ndef IsLucasSequence (L : ℕ → ℕ) : Prop := ∀ n, L (n + 2) = L (n + 1) + L n\n\ndef EndpointComposite (a : ℕ → ℕ) : Prop := (a 0).Composite ∧ (a 1).Composite",
+   "proof": "by\n  intro a h\n  exact ⟨h 0, h 1⟩",
+   "claim": "For every natural-valued sequence whose every term is composite, the endpoint terms a 0 and a 1 are composite.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_SCOPE_REFUSED: body.covers must be \"full\" — the theorem agent proves whole statements; a partial scope belongs to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "supports": [
+    {
+     "node": "erdos276:LEM:R004:L1",
+     "evidence": "formalizer obligation route=R004 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos276",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:FLEAF:b2c063df641d38b40b8a:6",
+   "statement": "check_L1_fragment = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def lucas : Nat → Nat → Nat → Nat\n  | a, b, 0 => a\n  | a, b, 1 => b\n  | a, b, n + 2 => lucas a b (n + 1) + lucas a b n\n\ndef divides_through_60 : Bool :=\n  (List.range 61).all (fun n => lucas 6 10 n % Nat.gcd 6 10 == 0)\n\ndef recurrence_through_60 : Bool :=\n  (List.range 59).all (fun n =>\n    lucas 6 10 (n + 2) == lucas 6 10 (n + 1) + lucas 6 10 n)\n\ndef check_L1_fragment : Bool :=\n  divides_through_60 && recurrence_through_60",
+   "type_context": "Mathlib\ndef lucas : Nat → Nat → Nat → Nat\n  | a, b, 0 => a\n  | a, b, 1 => b\n  | a, b, n + 2 => lucas a b (n + 1) + lucas a b n\n\ndef divides_through_60 : Bool :=\n  (List.range 61).all (fun n => lucas 6 10 n % Nat.gcd 6 10 == 0)\n\ndef recurrence_through_60 : Bool :=\n  (List.range 59).all (fun n =>\n    lucas 6 10 (n + 2) == lucas 6 10 (n + 1) + lucas 6 10 n)\n\ndef check_L1_fragment : Bool :=\n  divides_through_60 && recurrence_through_60",
+   "proof": "by native_decide",
+   "claim": "The kernel-checked computation establishes that for the explicit sequence with a₀ = 6 and a₁ = 10, the recurrence holds for every n < 59 and gcd(a₀,a₁) divides every term a₀,…,a₆₀. This is only the stated finite fragment of L1, not the full infinite common-divisor lemma.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos276:LEM:R004:L1",
+     "evidence": "formalizer obligation route=R004 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos276",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:FLEAF:b2c063df641d38b40b8a:7",
+   "statement": "∀ (a : ℕ → ℕ), IsLucasSequence a → Nat.gcd (a 0) (a 1) ∣ a 0 ∧ Nat.gcd (a 0) (a 1) ∣ a 1 ∧ ∀ n, Nat.gcd (a 0) (a 1) ∣ a n",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "LEAN_PROOF",
+   "imports": "Mathlib",
+   "definitions": "def IsLucasSequence (L : ℕ → ℕ) : Prop := ∀ n, L (n + 2) = L (n + 1) + L n",
+   "type_context": "Mathlib\ndef IsLucasSequence (L : ℕ → ℕ) : Prop := ∀ n, L (n + 2) = L (n + 1) + L n",
+   "proof": "by\n  intro a ha\n  let d := Nat.gcd (a 0) (a 1)\n  have h0 : d ∣ a 0 := Nat.gcd_dvd_left _ _\n  have h1 : d ∣ a 1 := Nat.gcd_dvd_right _ _\n  have hall : ∀ n, d ∣ a n := by\n    intro n\n    induction n using Nat.twoStepInduction with\n    | zero => exact h0\n    | one => exact h1\n    | more n ih0 ih1 =>\n        rw [ha n]\n        exact dvd_add ih1 ih0\n  exact ⟨h0, h1, hall⟩",
+   "claim": "The proof establishes the generic divisibility fragment of L1: for every Lucas sequence a, gcd(a₀,a₁) divides a₀, a₁, and every term aₙ. It does not establish the equality with the common-divisor ideal or the all-composite construction.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_SCOPE_REFUSED: body.covers must be \"full\" — the theorem agent proves whole statements; a partial scope belongs to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "supports": [
+    {
+     "node": "erdos276:LEM:R004:L1",
+     "evidence": "formalizer obligation route=R004 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos276",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:FLEAF:c915046e0eefbb0f4f9f:8",
+   "statement": "∀ (L : ℕ → ℕ), IsLucasSequence L → Nat.Coprime (L 0) (L 1) → ∀ n > 1, ∃ k, Nat.gcd n (L k) = 1",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def IsLucasSequence (L : ℕ → ℕ) : Prop := ∀ n, L (n + 2) = L (n + 1) + L n",
+   "type_context": "Mathlib\ndef IsLucasSequence (L : ℕ → ℕ) : Prop := ∀ n, L (n + 2) = L (n + 1) + L n",
+   "proof": "by\n  intro L hL hcop n hn\n  refine ⟨0, ?_⟩\n  have hdiv : Nat.gcd n (L 0) ∣ Nat.gcd (L 0) (L 1) := by\n    exact Nat.gcd_dvd_left n (L 0)\n  have hg : Nat.gcd (L 0) (L 1) = 1 := hcop\n  have hunit : Nat.gcd n (L 0) = 1 := by\n    apply Nat.eq_one_of_dvd_one\n    simpa [hg] using hdiv\n  exact hunit",
+   "claim": "For every Lucas sequence with coprime initial terms, the universal coprimality condition holds.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "CLOSURE_SHAPELESS_REFUSED: proof must be a decision procedure (`by decide`, or `by native_decide` when plain decide cannot finish); got 'by\\n  intro L hL hcop n hn\\n  refine ⟨0, ?_⟩\\n  have hdiv : Nat'. This pipeline generates from a template and does not accept a free-form Lean proof.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "supports": [
+    {
+     "node": "erdos276:LEM:R001:L1",
+     "evidence": "formalizer obligation route=R001 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos276",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos276:FLEAF:c915046e0eefbb0f4f9f:9",
+   "statement": "check_coprime_seed_gcd = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def check_coprime_seed_gcd : Bool := Nat.gcd 1 1 == 1",
+   "type_context": "Mathlib\ndef check_coprime_seed_gcd : Bool := Nat.gcd 1 1 == 1",
+   "proof": "by decide",
+   "claim": "The concrete seed pair (1,1) has gcd 1; this checks only the finite coprime-seed fragment and does not establish compositeness or existence of a qualifying Lucas sequence.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "decide",
+   "supports": [
+    {
+     "node": "erdos276:LEM:R001:L1",
+     "evidence": "formalizer obligation route=R001 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos276",
+   "is_leaf": true,
+   "manufacture_target": false
+  }
+ ]
+}

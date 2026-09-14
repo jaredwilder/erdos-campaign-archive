@@ -1,0 +1,35 @@
+{"definitions": "noncomputable def Tri2Area (p q r : ℂ) : ℝ :=\n  |Complex.im (Complex.conj (q - p) * (r - p))| / (2 : ℝ)\n\n/-- `Tri2Admissible n a`: every `n`-point set in the closed unit disk contains three\ndistinct points spanning a triangle of area at most `a`. -/\ndef Tri2Admissible (n : Nat) (a : ℝ) : Prop :=\n  ∀ (S : Finset ℂ), (∀ (z : ℂ), z ∈ S → ‖z‖ ≤ (1 : ℝ)) → S.card = n →\n    ∃ (p : ℂ), p ∈ S ∧ ∃ (q : ℂ), q ∈ S ∧ ∃ (r : ℂ), r ∈ S ∧\n      p ≠ q ∧ q ≠ r ∧ p ≠ r ∧ Tri2Area p q r ≤ a\n\n/-- The directly determined Erdős #507 quantity: the infimum of the triangle-area\nbounds admissible for every `n`-point set in the closed unit disk. -/\nnoncomputable def erdos507Alpha (n : Nat) : ℝ :=\n  sInf {a : ℝ | Tri2Admissible n a}",
+  "parent_typed": {
+    "name": "erdos507_A_M02",
+    "binders": ["(n : Nat)", "(hn : (3 : Nat) ≤ n)"],
+    "statement": "Tri2Admissible n (erdos507Alpha n) ∧ ∀ (b : ℝ), Tri2Admissible n b → erdos507Alpha n ≤ b",
+    "reading": "For n ≥ 3, erdos507Alpha n — the infimum of triangle-area bounds admissible for every n-point set in the closed unit disk — is itself admissible and is the least such bound: α(n) is determined outright, with no answer metavariable and no sandwich on a mismatched simplex quantity."
+  },
+  "children": [
+    {
+      "name": "erdos507_A_M02_bound2",
+      "binders": ["(n : Nat)", "(hn : (3 : Nat) ≤ n)"],
+      "statement": "Tri2Admissible n (2 : ℝ)",
+      "reading": "Every n-point set in the closed unit disk contains three distinct points spanning a triangle of area at most 2, so the matched triangle-area admissible family is nonempty and the quantity under determination is the triangle-area one, not a substitute."
+    },
+    {
+      "name": "erdos507_A_M02_attained",
+      "binders": ["(n : Nat)", "(hn : (3 : Nat) ≤ n)"],
+      "statement": "Tri2Admissible n (erdos507Alpha n)",
+      "reading": "The infimum of the admissible triangle-area bounds is attained: erdos507Alpha n is itself an admissible bound, so the answer is a single determined value rather than a two-sided sandwich."
+    },
+    {
+      "name": "erdos507_A_M02_least",
+      "binders": ["(n : Nat)", "(hn : (3 : Nat) ≤ n)"],
+      "statement": "∀ (b : ℝ), Tri2Admissible n b → erdos507Alpha n ≤ b",
+      "reading": "Every admissible triangle-area bound dominates erdos507Alpha n, so the determined value is least and no free answer metavariable is left."
+    },
+    {
+      "name": "erdos507_A_M02_unique",
+      "binders": ["(n : Nat)", "(hn : (3 : Nat) ≤ n)"],
+      "statement": "∀ (v : ℝ), Tri2Admissible n v → (∀ (b : ℝ), Tri2Admissible n b → v ≤ b) → v = erdos507Alpha n",
+      "reading": "Any candidate determination v that is admissible and least coincides with erdos507Alpha n, so no auxiliary answer metavariable or mismatched-simplex substitute can stand in for the direct determination."
+    }
+  ],
+  "composition_claim": "Children erdos507_A_M02_attained and erdos507_A_M02_least are exactly the two conjuncts of the parent, so the conjunction of all four children yields the parent by And.intro. Child erdos507_A_M02_bound2 anchors the determination to the matched quantity (triangle area in the closed unit disk) by giving a concrete admissible bound of 2, and child erdos507_A_M02_unique forces every admissible-and-least candidate to equal erdos507Alpha n, so neither an auxiliary answer metavariable nor a sandwich on a mismatched simplex quantity can substitute for the direct determination."
+}

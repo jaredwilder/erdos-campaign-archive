@@ -1,0 +1,8 @@
+{"theorem_name": "runSum_eq_iff_nat_eq",
+ "binders": ["(a b : ℕ)", "(q : ℚ)"],
+ "definitions": "",
+ "statement": "∀ (a b : ℕ) (q : ℚ), 1 ≤ a → a ≤ b → (runSum a b = q ↔ (q * (runProd a b : ℚ) = (runNum a b : ℚ)))",
+ "premises": ["erdos289:ORE:377845d942ddb89d", "erdos289:ORE:25d89c30bf1b00a0"],
+ "derivation_claim": "W4_bridge (runSum a b = runNum a b / runProd a b, valid since 1 ≤ a gives runProd a b > 0) plus field algebra in ℚ gives: runSum a b = q ↔ runNum a b / runProd a b = q ↔ q * runProd a b = runNum a b. This generalizes W4_fragment/W4_nat_fragment: instead of the fixed literal target 1/6 on the fixed range 5 ≤ a < b ≤ 60, it quantifies over every rational target q and every interval [a,b], reducing any 'runSum a b = q' question to a pure-ℕ divisibility-style equation q·P = N — exactly the kernel-decidable form the 60-range fragment was checked in.",
+ "discharges": "erdos289:FLEAF:987cb071355b04164228:7",
+ "reason": "It lifts the fixed-target, fixed-range fragment to a quantified equivalence over all q and all intervals, turning the ℚ statement into the ℕ equation form the kernel can decide, one step closer to the root structure of Erdős 289."}

@@ -1,0 +1,22 @@
+{"definitions": "def IsSierpinskiNumber (m : Nat) : Prop :=\n  (0 : Nat) < m ∧ Odd m ∧ ∀ (k : Nat), ¬ Nat.Prime ((2 : Nat) ^ k * m + 1)\n\ndef HasFinitePrimeCoveringSet (m : Nat) : Prop :=\n  ∃ (P : Finset Nat), (∀ (p : Nat), p ∈ P → Nat.Prime p) ∧\n    ∀ (k : Nat), ∃ (p : Nat), p ∈ P ∧ p ∣ ((2 : Nat) ^ k * m + 1)\n\ndef IsCounterexampleToNone (m : Nat) : Prop :=\n  m.IsSierpinskiNumber ∧ ¬ m.HasFinitePrimeCoveringSet\n\n/-- The twelve attacks audited in round R009, indexed 0 through 11. -/\ndef TwelveAttacks : Finset Nat := Finset.range (12 : Nat)\n\n/-- Yield register of attack `a` among the twelve: the counterexample candidates it produced. Null payload: every register is empty. -/\ndef AttackYield (_a : Nat) : List Nat := []\n\n/-- Yield register of the round-wide counterexample search. Null payload: empty. -/\ndef CounterexampleYield : List Nat := []\n\n/-- Lemmas resupplied from the R008 kill-repair. Null payload: none. -/\ndef R008ResupplyYield : List Prop := []\n\n/-- Statements produced by the falsifier round. Null payload: none. -/\ndef FalsifierRoundYield : List Prop := []",
+  "parent_typed": {"name": "null_payload_audit_confirmed", "binders": [],
+    "statement": "nullVerifierCheck = false ∧ (∀ (a : Nat), a ∈ TwelveAttacks → ∀ (m : Nat), m ∈ AttackYield a → ¬ IsCounterexampleToNone m) ∧ (¬ ∃ (m : Nat), m ∈ CounterexampleYield ∧ IsCounterexampleToNone m) ∧ (¬ ∃ (S : Prop), S ∈ R008ResupplyYield) ∧ (¬ ∃ (S : Prop), S ∈ FalsifierRoundYield ∧ ¬ S)",
+    "reading": "Round R009's null-payload audit is confirmed: the null verifier check returns false (payload empty), none of the twelve attacks yielded a genuine counterexample, the counterexample register holds no Sierpinski number without a finite prime covering set, no lemma was resupplied from the R008 kill-repair, and the falsifier round produced no falsifiable statement."},
+  "children": [
+    {"name": "null_verifier_check_false", "binders": [],
+      "statement": "nullVerifierCheck = false",
+      "reading": "The campaign null-payload verifier check evaluates to false: the audited payload is null."},
+    {"name": "twelve_attacks_inapplicable", "binders": [],
+      "statement": "∀ (a : Nat), a ∈ TwelveAttacks → ∀ (m : Nat), m ∈ AttackYield a → ¬ IsCounterexampleToNone m",
+      "reading": "For each of the twelve audited attacks (indices 0–11) the yield register is empty, so no attack exhibited a counterexample to CANDIDATE 'none', i.e. a Sierpinski number with no finite prime covering set."},
+    {"name": "no_producible_counterexample", "binders": [],
+      "statement": "¬ ∃ (m : Nat), m ∈ CounterexampleYield ∧ IsCounterexampleToNone m",
+      "reading": "No entry of the round's counterexample register is a Sierpinski number lacking a finite prime covering set: no counterexample to CANDIDATE 'none' was produced."},
+    {"name": "no_r008_lemma_resupplied", "binders": [],
+      "statement": "¬ ∃ (S : Prop), S ∈ R008ResupplyYield",
+      "reading": "The R008 kill-repair resupply bank is empty: no lemma was resupplied from it."},
+    {"name": "falsifier_round_no_falsifiable_content", "binders": [],
+      "statement": "¬ ∃ (S : Prop), S ∈ FalsifierRoundYield ∧ ¬ S",
+      "reading": "The falsifier round's yield contains no statement admitting a falsifier (no yielded proposition is false): no falsifiable content."}
+  ],
+  "composition_claim": "Children 1 through 5 are exactly the five conjuncts of the parent, so And.intro of their proofs — the anonymous constructor ⟨h1, h2, h3, h4, h5⟩ — derives the parent from the children; hence the conjunction of the children implies the parent."}

@@ -1,0 +1,196 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos340",
+  "generated_utc": "2026-09-02T16:53:01Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos340:LEM:R002:L1",
+    "statement": "candidate field empty; attacks 1-12 vacuous; lower bound ∀ε>0 |A∩[1,N]|≫N^{1/2−ε} for large N remains undischarged, so branch-A close refused — repair = parametric lower-bound construction with ε-only constant dependence under greedy-Sidon convention",
+    "statement_sha256": "508071178eb279c1d6b002cfb7f69ea628775040967a488deb9c93386fdf8733",
+    "kind": "LEMMA",
+    "binding": "UNBOUND",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "Let $A=\\{1,2,4,8,13,21,31,45,66,81,97,\\ldots\\}$ be the greedy Sidon sequence: we begin with $1$ and iteratively include the next smallest integer that preserves the Sidon property (i.e. there are no non-trivial solutions to $a+b=c+d$). What is the order of growth of $A$? Is it true that\\[\\lvert A\\cap \\{1,\\ldots,N\\}\\rvert \\gg N^{1/2-\\epsilon}\\]for all $\\epsilon>0$ and large $N$?",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos340-campaign-001/contract.json",
+    "sha256": "995fff9e1b8ceea2a036686975aafa3f7e86361a320d220d29c823e8d5ef2a57"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos340:LEM:R002:L1",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "fdedd39ec706d0a4e2effcf336f28e9617ee2504d1f7a66093e8875a4f2dd7c6",
+    "prompt_chars": 4468,
+    "response_sha256": "44ff90da89160fe34e0963ff0278589b0a20d0728dcde4bf27977adfd816ef94",
+    "usage": {
+      "prompt_tokens": 1192,
+      "completion_tokens": 13396,
+      "total_tokens": 14588,
+      "cost": 0.0034384,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0034384,
+        "upstream_inference_prompt_cost": 8.94e-05,
+        "upstream_inference_completions_cost": 0.003349
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 12187,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.0034384,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 367.22,
+    "utc": "2026-09-02T16:51:46Z"
+  },
+  "children": [],
+  "composition": {
+    "id": "erdos340:LEM:R002:L1#COMPOSE",
+    "statement": "(composition not constructed)",
+    "kind": "COMPOSITION",
+    "depends_on": [],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "OPEN",
+    "problem": "erdos340",
+    "decomposed_from": "erdos340:LEM:R002:L1",
+    "imports": "Mathlib",
+    "definitions": "def SidonProp (s : Finset ℕ) : Prop :=\n  ∀ (a b c d : ℕ), a ∈ s → b ∈ s → c ∈ s → d ∈ s →\n    a + b = c + d → (a = c ∧ b = d) ∨ (a = d ∧ b = c)\n\ndef sidonGood (s : Finset ℕ) (m : ℕ) : Prop := SidonProp (insert m s)\n\ndef nextGreedy (s : Finset ℕ) : ℕ :=\n  s.sup + 1 +\n    Nat.findGreatest\n      (fun (j : ℕ) => ∀ (i : ℕ), i ∈ Finset.Icc 1 j → sidonGood s (s.sup + 1 + i))\n      ((s.sup + 3) ^ 3)\n  + 1\n\ndef greedySet : ℕ → Finset ℕ\n  | 0 => {1}\n  | (n + 1) => insert (nextGreedy (greedySet n)) (greedySet n)\n\ndef memSidon (n : ℕ) : Prop := ∃ (k : Fin (n + 1)), n ∈ greedySet (k : ℕ)\n\ndef sidonCount (N : ℕ) : ℕ :=\n  (Finset.Icc 1 N).filter (fun (n : ℕ) => memSidon n) |>.card",
+    "type_context": "Mathlib\ndef SidonProp (s : Finset ℕ) : Prop :=\n  ∀ (a b c d : ℕ), a ∈ s → b ∈ s → c ∈ s → d ∈ s →\n    a + b = c + d → (a = c ∧ b = d) ∨ (a = d ∧ b = c)\n\ndef sidonGood (s : Finset ℕ) (m : ℕ) : Prop := SidonProp (insert m s)\n\ndef nextGreedy (s : Finset ℕ) : ℕ :=\n  s.sup + 1 +\n    Nat.findGreatest\n      (fun (j : ℕ) => ∀ (i : ℕ), i ∈ Finset.Icc 1 j → sidonGood s (s.sup + 1 + i))\n      ((s.sup + 3) ^ 3)\n  + 1\n\ndef greedySet : ℕ → Finset ℕ\n  | 0 => {1}\n  | (n + 1) => insert (nextGreedy (greedySet n)) (greedySet n)\n\ndef memSidon (n : ℕ) : Prop := ∃ (k : Fin (n + 1)), n ∈ greedySet (k : ℕ)\n\ndef sidonCount (N : ℕ) : ℕ :=\n  (Finset.Icc 1 N).filter (fun (n : ℕ) => memSidon n) |>.card",
+    "parent_typed": {
+      "statement": "0 < ε → ∃ (N₀ : ℕ), ∀ (N : ℕ), N₀ ≤ N → ∃ (c : ℝ), 0 < c ∧ ((sidonCount N : ℝ) ≥ c * (N : ℝ) ^ ((1:ℝ) / 2 - ε))",
+      "binders": [
+        "(ε : ℝ)"
+      ],
+      "reading": "For every ε > 0 and all large N, the greedy Sidon set A has |A ∩ [1,N]| ≥ c(ε) · N^{1/2−ε} with c(ε) > 0 depending only on ε.",
+      "elaboration": {
+        "verdict": "DEFS_DO_NOT_ELABORATE",
+        "kernel_error": "hInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun j => ∀ i ∈ Icc 1 j, sidonGood s (s.sup + 1 + i)\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:15:2: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.1) → ?m.1) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:17:67: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.39 j i) → ?m.39 j i) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:18:8: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.46) → ?m.46) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:28:2: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun n => memSidon n\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command."
+      },
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": null,
+        "prose_contract_root_report": {
+          "ok": false,
+          "missing": [
+            "domain bound 'n 0'"
+          ],
+          "reason": "inherited type ascription or domain bound dropped",
+          "blocking": false,
+          "why_not_blocking": "tokens mined from ENGLISH prose are not Lean tokens; `Fin k` carries `1 <= i <= k` structurally"
+        }
+      }
+    },
+    "composition_claim": {
+      "text": "Children 1–3 fix the greedy-Sidon convention (Sidon preservation, one distinct positive element per stage) and control each greedy step through the gap bound of child 4, which feeds a stage-wise recursion on the maximum; child 3 converts stages into the decidable count sidonCount N, and child 5 (the counting core derived from the gap recursion) gives |A∩[1,N]| ≥ c N^{1/2}/(log N)^K with constants depending only on the construction. Since for each fixed ε > 0 the bound c N^{1/2}/(log N)^K ≥ c' N^{1/2−ε} holds for all N ≥ N₀(ε), the children together yield the parent's ∀ ε > 0, ∃ N₀, ∀ N ≥ N₀ lower bound with ε-only constant dependence.",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "COMPOSITION_NOT_RUN",
+      "counts_toward_parent": 0,
+      "reason": "no surviving child"
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "composition_receipt": "oracle/evidence/msl-machine/dag/decomp/erdos340/receipts/erdos340_LEM_R002_L1_COMPOSE.composition.json"
+  },
+  "parent_new_depends_on": [
+    "erdos340:LEM:R002:L1#COMPOSE"
+  ],
+  "rejected": [
+    {
+      "proposed_index": 1,
+      "statement": "SidonProp (greedySet k)",
+      "binders": [
+        "(k : Nat)"
+      ],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: hInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun j => ∀ i ∈ Icc 1 j, sidonGood s (s.sup + 1 + i)\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:15:2: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.1) → ?m.1) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:17:67: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.39 j i) → ?m.39 j i) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:18:8: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.46) → ?m.46) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:28:2: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun n => memSidon n\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.",
+      "kernel_error": "hInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun j => ∀ i ∈ Icc 1 j, sidonGood s (s.sup + 1 + i)\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:15:2: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.1) → ?m.1) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:17:67: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.39 j i) → ?m.39 j i) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:18:8: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.46) → ?m.46) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:28:2: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun n => memSidon n\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command."
+    },
+    {
+      "proposed_index": 2,
+      "statement": "(greedySet k).card = k + 1 ∧ ∀ (n : ℕ), n ∈ greedySet k → 1 ≤ n",
+      "binders": [
+        "(k : Nat)"
+      ],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: hInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun j => ∀ i ∈ Icc 1 j, sidonGood s (s.sup + 1 + i)\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:15:2: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.1) → ?m.1) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:17:67: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.39 j i) → ?m.39 j i) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:18:8: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.46) → ?m.46) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:28:2: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun n => memSidon n\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.",
+      "kernel_error": "hInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun j => ∀ i ∈ Icc 1 j, sidonGood s (s.sup + 1 + i)\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:15:2: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.1) → ?m.1) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:17:67: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.39 j i) → ?m.39 j i) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:18:8: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.46) → ?m.46) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:28:2: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun n => memSidon n\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command."
+    },
+    {
+      "proposed_index": 3,
+      "statement": "nextGreedy (greedySet k) ≤ (greedySet k).sup + 1 + ((greedySet k).card + 2) ^ 3",
+      "binders": [
+        "(k : Nat)"
+      ],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: hInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun j => ∀ i ∈ Icc 1 j, sidonGood s (s.sup + 1 + i)\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:15:2: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.1) → ?m.1) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:17:67: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.39 j i) → ?m.39 j i) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:18:8: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.46) → ?m.46) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:28:2: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun n => memSidon n\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.",
+      "kernel_error": "hInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun j => ∀ i ∈ Icc 1 j, sidonGood s (s.sup + 1 + i)\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:15:2: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.1) → ?m.1) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:17:67: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.39 j i) → ?m.39 j i) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:18:8: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.46) → ?m.46) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:28:2: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun n => memSidon n\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command."
+    },
+    {
+      "proposed_index": 4,
+      "statement": "k ≤ n → (n ∈ greedySet k → memSidon n)",
+      "binders": [
+        "(n : Nat)",
+        "(k : Nat)"
+      ],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: hInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun j => ∀ i ∈ Icc 1 j, sidonGood s (s.sup + 1 + i)\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:15:2: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.1) → ?m.1) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:17:67: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.39 j i) → ?m.39 j i) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:18:8: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.46) → ?m.46) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:28:2: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun n => memSidon n\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.",
+      "kernel_error": "hInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun j => ∀ i ∈ Icc 1 j, sidonGood s (s.sup + 1 + i)\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:15:2: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.1) → ?m.1) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:17:67: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.39 j i) → ?m.39 j i) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:18:8: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.46) → ?m.46) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:28:2: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun n => memSidon n\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command."
+    },
+    {
+      "proposed_index": 5,
+      "statement": "∃ (K : ℕ), ∃ (c : ℝ), 0 < c ∧ ∀ (N : ℕ), 2 ≤ N → ((sidonCount N : ℝ) ≥ c * (N : ℝ) ^ ((1:ℝ) / 2) / (Real.log (N : ℝ)) ^ (K : ℕ))",
+      "binders": [],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: hInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun j => ∀ i ∈ Icc 1 j, sidonGood s (s.sup + 1 + i)\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:15:2: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.1) → ?m.1) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:17:67: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.39 j i) → ?m.39 j i) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:18:8: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.46) → ?m.46) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:28:2: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun n => memSidon n\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.",
+      "kernel_error": "hInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun j => ∀ i ∈ Icc 1 j, sidonGood s (s.sup + 1 + i)\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:15:2: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.1) → ?m.1) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:17:67: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.39 j i) → ?m.39 j i) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:18:8: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.46) → ?m.46) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:28:2: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun n => memSidon n\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command."
+    }
+  ],
+  "counts": {
+    "proposed": 5,
+    "elaborated": 0,
+    "bound": 0,
+    "non_circular": 0,
+    "non_trivial": 0,
+    "surviving": 0,
+    "composition_kernel_checked": 0,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 0,
+    "counts_toward_parent_note": "composition OPEN: these children contribute ZERO toward the parent until it closes; they remain formal leaves for the rung loop"
+  },
+  "definitions": {
+    "block": "def SidonProp (s : Finset ℕ) : Prop :=\n  ∀ (a b c d : ℕ), a ∈ s → b ∈ s → c ∈ s → d ∈ s →\n    a + b = c + d → (a = c ∧ b = d) ∨ (a = d ∧ b = c)\n\ndef sidonGood (s : Finset ℕ) (m : ℕ) : Prop := SidonProp (insert m s)\n\ndef nextGreedy (s : Finset ℕ) : ℕ :=\n  s.sup + 1 +\n    Nat.findGreatest\n      (fun (j : ℕ) => ∀ (i : ℕ), i ∈ Finset.Icc 1 j → sidonGood s (s.sup + 1 + i))\n      ((s.sup + 3) ^ 3)\n  + 1\n\ndef greedySet : ℕ → Finset ℕ\n  | 0 => {1}\n  | (n + 1) => insert (nextGreedy (greedySet n)) (greedySet n)\n\ndef memSidon (n : ℕ) : Prop := ∃ (k : Fin (n + 1)), n ∈ greedySet (k : ℕ)\n\ndef sidonCount (N : ℕ) : ℕ :=\n  (Finset.Icc 1 N).filter (fun (n : ℕ) => memSidon n) |>.card",
+    "gate0": {
+      "verdict": "DEFS_DO_NOT_ELABORATE",
+      "kernel_error": "hInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun j => ∀ i ∈ Icc 1 j, sidonGood s (s.sup + 1 + i)\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:15:2: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.1) → ?m.1) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:17:67: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.39 j i) → ?m.39 j i) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:18:8: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  HAdd ((ℕ → ?m.46) → ?m.46) ℕ ℕ\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_095146_1/erdos340_LEM_R002_L1_defs.lean:28:2: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun n => memSidon n\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command."
+    },
+    "campaign_vocabulary_prepended": [],
+    "normalization": {
+      "body": "def SidonProp (s : Finset ℕ) : Prop :=\n  ∀ (a b c d : ℕ), a ∈ s → b ∈ s → c ∈ s → d ∈ s →\n    a + b = c + d → (a = c ∧ b = d) ∨ (a = d ∧ b = c)\n\ndef sidonGood (s : Finset ℕ) (m : ℕ) : Prop := SidonProp (insert m s)\n\ndef nextGreedy (s : Finset ℕ) : ℕ :=\n  s.sup + 1 +\n    Nat.findGreatest\n      (fun (j : ℕ) => ∀ (i : ℕ), i ∈ Finset.Icc 1 j → sidonGood s (s.sup + 1 + i))\n      ((s.sup + 3) ^ 3)\n  + 1\n\ndef greedySet : ℕ → Finset ℕ\n  | 0 => {1}\n  | (n + 1) => insert (nextGreedy (greedySet n)) (greedySet n)\n\ndef memSidon (n : ℕ) : Prop := ∃ (k : Fin (n + 1)), n ∈ greedySet (k : ℕ)\n\ndef sidonCount (N : ℕ) : ℕ :=\n  (Finset.Icc 1 N).filter (fun (n : ℕ) => memSidon n) |>.card",
+      "opens": [],
+      "dropped_imports": []
+    }
+  }
+}

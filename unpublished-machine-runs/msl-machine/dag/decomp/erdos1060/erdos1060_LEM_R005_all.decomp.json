@@ -1,0 +1,336 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos1060",
+  "generated_utc": "2026-09-02T16:24:25Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos1060:LEM:R005:all",
+    "statement": "no reduction or verifier artifact supplied; certification fails closed.",
+    "statement_sha256": "2da97803731ae41a737777c0e5ac6b8a3096d5e37e9f6443ef8575435e5fe1dd",
+    "kind": "LEMMA",
+    "binding": "UNBOUND",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "Let $f(n)$ count the number of solutions to $k\\sigma(k)=n$, where $\\sigma(k)$ is the sum of divisors of $k$. Is it true that $f(n)\\leq n^{o(\\frac{1}{\\log\\log n})}$? Perhaps even $\\leq (\\log n)^{O(1)}$?",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos1060-campaign-001/contract.json",
+    "sha256": "d583146be93e6b26108ef32a03337adf9d09950a6055072a75330bc3deab3116"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos1060:LEM:R005:all",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "8f658a83fb10b026ef6bf9ee27ee1bdd8782629a71baa4e73a8b37a73ef94f76",
+    "prompt_chars": 4254,
+    "response_sha256": "d3109295f218c28d4985511db3fc0108d4ad2f83e61cca3b9f6fd7568e6edb8d",
+    "usage": {
+      "prompt_tokens": 1116,
+      "completion_tokens": 2045,
+      "total_tokens": 3161,
+      "cost": 0.0011899,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0011899,
+        "upstream_inference_prompt_cost": 0.0001674,
+        "upstream_inference_completions_cost": 0.0010225
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 1467,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.0011899,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 67.46,
+    "utc": "2026-09-02T16:23:20Z"
+  },
+  "children": [
+    {
+      "id": "erdos1060:LEM:R005:all#D1",
+      "statement": "∃ (C : ℝ), ∀ (n : Nat), 3 ≤ n → (fCount n : ℝ) ≤ (Real.log (n : ℝ)) ^ C",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos1060",
+      "decomposed_from": "erdos1060:LEM:R005:all",
+      "imports": "Mathlib",
+      "definitions": "def sigma (k : Nat) : Nat := ∑ d ∈ Nat.divisors k, d\n\ndef fCount (n : Nat) : Nat :=\n  (Finset.filter (fun (k : Nat) => k * sigma k = n) (Finset.Icc 1 n)).card",
+      "type_context": "Mathlib\ndef sigma (k : Nat) : Nat := ∑ d ∈ Nat.divisors k, d\n\ndef fCount (n : Nat) : Nat :=\n  (Finset.filter (fun (k : Nat) => k * sigma k = n) (Finset.Icc 1 n)).card",
+      "lean_binders": [],
+      "lean_theorem_name": "msl_erdos1060_lem_r005_all_c1",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef sigma (k : Nat) : Nat := ∑ d ∈ Nat.divisors k, d\n\ndef fCount (n : Nat) : Nat :=\n  (Finset.filter (fun (k : Nat) => k * sigma k = n) (Finset.Icc 1 n)).card\n\n",
+      "lean_signature": "theorem msl_erdos1060_lem_r005_all_c1 : ∃ (C : ℝ), ∀ (n : Nat), 3 ≤ n → (fCount n : ℝ) ≤ (Real.log (n : ℝ)) ^ C",
+      "lean_statement_line": "theorem msl_erdos1060_lem_r005_all_c1 : ∃ (C : ℝ), ∀ (n : Nat), 3 ≤ n → (fCount n : ℝ) ≤ (Real.log (n : ℝ)) ^ C := by sorry",
+      "lean_file_sha256": "d6946e5095cf787f844d2bf8950002c1032398108592472ad63f61c3d77fe908",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "Polylog strengthening: f(n) ≤ (log n)^C for all n ≥ 3, for some constant C.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos1060/receipts/erdos1060_LEM_R005_all_D1.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos1060/lean/erdos1060_LEM_R005_all_D1.lean",
+      "leaf_tactic_hint": "interval_cases",
+      "hint_source": "bounded_forall_over_N",
+      "leaf_tactic_sketch": "intro a; interval_cases a <;> decide",
+      "leaf_tactic_alternatives": [
+        "decide",
+        "native_decide",
+        "bounded_search"
+      ]
+    },
+    {
+      "id": "erdos1060:LEM:R005:all#D2",
+      "statement": "(∃ (C : ℝ), ∀ (n : Nat), 3 ≤ n → g n ≤ (Real.log (n : ℝ)) ^ C) → ∀ (ε : ℝ), ε > 0 → ∃ (N : Nat), ∀ (n : Nat), n ≥ N → g n ≤ (n : ℝ) ^ (ε / Real.log (Real.log n))",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos1060",
+      "decomposed_from": "erdos1060:LEM:R005:all",
+      "imports": "Mathlib",
+      "definitions": "def sigma (k : Nat) : Nat := ∑ d ∈ Nat.divisors k, d\n\ndef fCount (n : Nat) : Nat :=\n  (Finset.filter (fun (k : Nat) => k * sigma k = n) (Finset.Icc 1 n)).card",
+      "type_context": "Mathlib\ndef sigma (k : Nat) : Nat := ∑ d ∈ Nat.divisors k, d\n\ndef fCount (n : Nat) : Nat :=\n  (Finset.filter (fun (k : Nat) => k * sigma k = n) (Finset.Icc 1 n)).card",
+      "lean_binders": [
+        "(g : Nat → ℝ)"
+      ],
+      "lean_theorem_name": "msl_erdos1060_lem_r005_all_c2",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef sigma (k : Nat) : Nat := ∑ d ∈ Nat.divisors k, d\n\ndef fCount (n : Nat) : Nat :=\n  (Finset.filter (fun (k : Nat) => k * sigma k = n) (Finset.Icc 1 n)).card\n\n",
+      "lean_signature": "theorem msl_erdos1060_lem_r005_all_c2 (g : Nat → ℝ) : (∃ (C : ℝ), ∀ (n : Nat), 3 ≤ n → g n ≤ (Real.log (n : ℝ)) ^ C) → ∀ (ε : ℝ), ε > 0 → ∃ (N : Nat), ∀ (n : Nat), n ≥ N → g n ≤ (n : ℝ) ^ (ε / Real.log (Real.log n))",
+      "lean_statement_line": "theorem msl_erdos1060_lem_r005_all_c2 (g : Nat → ℝ) : (∃ (C : ℝ), ∀ (n : Nat), 3 ≤ n → g n ≤ (Real.log (n : ℝ)) ^ C) → ∀ (ε : ℝ), ε > 0 → ∃ (N : Nat), ∀ (n : Nat), n ≥ N → g n ≤ (n : ℝ) ^ (ε / Real.log (Real.log n)) := by sorry",
+      "lean_file_sha256": "ce413c960fc3d41bd95f80a2192a4f1531925a3518c96a3f20379f57fdea404d",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "General reduction: any function bounded by (log n)^C eventually satisfies g(n) ≤ n^(ε / log log n) for every ε > 0.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos1060/receipts/erdos1060_LEM_R005_all_D2.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos1060/lean/erdos1060_LEM_R005_all_D2.lean",
+      "leaf_tactic_hint": "interval_cases",
+      "hint_source": "bounded_forall_over_N",
+      "leaf_tactic_sketch": "intro a; interval_cases a <;> decide",
+      "leaf_tactic_alternatives": [
+        "decide",
+        "native_decide",
+        "bounded_search"
+      ]
+    },
+    {
+      "id": "erdos1060:LEM:R005:all#D3",
+      "statement": "fCount n ≤ n",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos1060",
+      "decomposed_from": "erdos1060:LEM:R005:all",
+      "imports": "Mathlib",
+      "definitions": "def sigma (k : Nat) : Nat := ∑ d ∈ Nat.divisors k, d\n\ndef fCount (n : Nat) : Nat :=\n  (Finset.filter (fun (k : Nat) => k * sigma k = n) (Finset.Icc 1 n)).card",
+      "type_context": "Mathlib\ndef sigma (k : Nat) : Nat := ∑ d ∈ Nat.divisors k, d\n\ndef fCount (n : Nat) : Nat :=\n  (Finset.filter (fun (k : Nat) => k * sigma k = n) (Finset.Icc 1 n)).card",
+      "lean_binders": [
+        "(n : Nat)"
+      ],
+      "lean_theorem_name": "msl_erdos1060_lem_r005_all_c3",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef sigma (k : Nat) : Nat := ∑ d ∈ Nat.divisors k, d\n\ndef fCount (n : Nat) : Nat :=\n  (Finset.filter (fun (k : Nat) => k * sigma k = n) (Finset.Icc 1 n)).card\n\n",
+      "lean_signature": "theorem msl_erdos1060_lem_r005_all_c3 (n : Nat) : fCount n ≤ n",
+      "lean_statement_line": "theorem msl_erdos1060_lem_r005_all_c3 (n : Nat) : fCount n ≤ n := by sorry",
+      "lean_file_sha256": "afcfb6d31a9d7102fcebeacdeefee88ff41d8645d6ac486892f0136199588a74",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "Support bound: every solution k of k·σ(k) = n satisfies k ≤ n, so f(n) ≤ n.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos1060/receipts/erdos1060_LEM_R005_all_D3.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos1060/lean/erdos1060_LEM_R005_all_D3.lean"
+    }
+  ],
+  "composition": {
+    "id": "erdos1060:LEM:R005:all#COMPOSE",
+    "statement": "((∃ (C : ℝ), ∀ (n : Nat), 3 ≤ n → (fCount n : ℝ) ≤ (Real.log (n : ℝ)) ^ C) ∧ (∀ (g : Nat → ℝ), (∃ (C : ℝ), ∀ (n : Nat), 3 ≤ n → g n ≤ (Real.log (n : ℝ)) ^ C) → ∀ (ε : ℝ), ε > 0 → ∃ (N : Nat), ∀ (n : Nat), n ≥ N → g n ≤ (n : ℝ) ^ (ε / Real.log (Real.log n))) ∧ (∀ (n : Nat), fCount n ≤ n)) → (∀ (ε : ℝ), ε > 0 → ∃ (N : Nat), ∀ (n : Nat), n ≥ N → (fCount n : ℝ) ≤ (n : ℝ) ^ (ε / Real.log (Real.log n)))",
+    "kind": "COMPOSITION",
+    "depends_on": [
+      "erdos1060:LEM:R005:all#D1",
+      "erdos1060:LEM:R005:all#D2",
+      "erdos1060:LEM:R005:all#D3"
+    ],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "PROVED_KERNEL",
+    "problem": "erdos1060",
+    "decomposed_from": "erdos1060:LEM:R005:all",
+    "imports": "Mathlib",
+    "definitions": "def sigma (k : Nat) : Nat := ∑ d ∈ Nat.divisors k, d\n\ndef fCount (n : Nat) : Nat :=\n  (Finset.filter (fun (k : Nat) => k * sigma k = n) (Finset.Icc 1 n)).card",
+    "type_context": "Mathlib\ndef sigma (k : Nat) : Nat := ∑ d ∈ Nat.divisors k, d\n\ndef fCount (n : Nat) : Nat :=\n  (Finset.filter (fun (k : Nat) => k * sigma k = n) (Finset.Icc 1 n)).card",
+    "parent_typed": {
+      "statement": "∀ (ε : ℝ), ε > 0 → ∃ (N : Nat), ∀ (n : Nat), n ≥ N → (fCount n : ℝ) ≤ (n : ℝ) ^ (ε / Real.log (Real.log n))",
+      "binders": [],
+      "reading": "For every ε > 0, eventually f(n) ≤ n^(ε / log log n), i.e. f(n) ≤ n^{o(1/log log n)}.",
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": null,
+        "prose_contract_root_report": {
+          "ok": true,
+          "missing": [],
+          "reason": "",
+          "blocking": false,
+          "why_not_blocking": "tokens mined from ENGLISH prose are not Lean tokens; `Fin k` carries `1 <= i <= k` structurally"
+        }
+      }
+    },
+    "composition_claim": {
+      "text": "Applying child 2 (the general analytic reduction) to g := fCount with the polylog bound of child 1 yields exactly the parent statement. Child 3 is the elementary support bound f(n) ≤ n, a provable sanity rung consistent with and strictly weaker than the parent.",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "KERNEL_CHECKED",
+      "rc": 0,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "counts_toward_parent": 1
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "source": "oracle/evidence/msl-machine/dag/decomp/erdos1060/lean/erdos1060_LEM_R005_all_COMPOSE.lean",
+    "lean_theorem_name": "msl_erdos1060_lem_r005_all_composition",
+    "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxHeartbeats 400000\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef sigma (k : Nat) : Nat := ∑ d ∈ Nat.divisors k, d\n\ndef fCount (n : Nat) : Nat :=\n  (Finset.filter (fun (k : Nat) => k * sigma k = n) (Finset.Icc 1 n)).card\n\n",
+    "lean_signature": "theorem msl_erdos1060_lem_r005_all_composition : ((∃ (C : ℝ), ∀ (n : Nat), 3 ≤ n → (fCount n : ℝ) ≤ (Real.log (n : ℝ)) ^ C) ∧ (∀ (g : Nat → ℝ), (∃ (C : ℝ), ∀ (n : Nat), 3 ≤ n → g n ≤ (Real.log (n : ℝ)) ^ C) → ∀ (ε : ℝ), ε > 0 → ∃ (N : Nat), ∀ (n : Nat), n ≥ N → g n ≤ (n : ℝ) ^ (ε / Real.log (Real.log n))) ∧ (∀ (n : Nat), fCount n ≤ n)) → (∀ (ε : ℝ), ε > 0 → ∃ (N : Nat), ∀ (n : Nat), n ≥ N → (fCount n : ℝ) ≤ (n : ℝ) ^ (ε / Real.log (Real.log n)))",
+    "lean_statement_line": "theorem msl_erdos1060_lem_r005_all_composition : ((∃ (C : ℝ), ∀ (n : Nat), 3 ≤ n → (fCount n : ℝ) ≤ (Real.log (n : ℝ)) ^ C) ∧ (∀ (g : Nat → ℝ), (∃ (C : ℝ), ∀ (n : Nat), 3 ≤ n → g n ≤ (Real.log (n : ℝ)) ^ C) → ∀ (ε : ℝ), ε > 0 → ∃ (N : Nat), ∀ (n : Nat), n ≥ N → g n ≤ (n : ℝ) ^ (ε / Real.log (Real.log n))) ∧ (∀ (n : Nat), fCount n ≤ n)) → (∀ (ε : ℝ), ε > 0 → ∃ (N : Nat), ∀ (n : Nat), n ≥ N → (fCount n : ℝ) ≤ (n : ℝ) ^ (ε / Real.log (Real.log n))) := by\n  first\n  | tauto\n  | (intro h; exact h.1)\n  | (intro h; simp_all)\n  | (intro h; omega)\n  | (intro h; norm_num at h ⊢ <;> tauto)\n  | aesop\n  | decide",
+    "lean_trailer": "\n#print axioms msl_erdos1060_lem_r005_all_composition\n",
+    "lean_binders": [],
+    "lean_file_sha256": "c4fcc978a0c13623a737588e7294fc98fb0ef0836db8b93c309df73acf0bac46",
+    "lean_file_contract": "TO REPRODUCE GATE 4: compile `lean_preamble + lean_statement_line + \"\\n\" + lean_trailer` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text the deterministic ladder ran on. TO ATTEMPT A DIFFERENT PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\" + lean_trailer` -- keep the trailer, it is the `#print axioms` line the footprint is read from. Do NOT rebuild a header from `definitions` and do NOT drop the binders.",
+    "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos1060/receipts/erdos1060_LEM_R005_all_COMPOSE.verify.json",
+    "receipt_kind": "VERIFY_JSON"
+  },
+  "parent_new_depends_on": [
+    "erdos1060:LEM:R005:all#COMPOSE"
+  ],
+  "rejected": [],
+  "counts": {
+    "proposed": 3,
+    "elaborated": 3,
+    "bound": 3,
+    "non_circular": 3,
+    "non_trivial": 3,
+    "surviving": 3,
+    "composition_kernel_checked": 1,
+    "fireable_decidable_leaves": 2,
+    "counts_toward_parent": 3,
+    "counts_toward_parent_note": "composition PROVED_KERNEL: the children are load-bearing"
+  },
+  "definitions": {
+    "block": "def sigma (k : Nat) : Nat := ∑ d ∈ Nat.divisors k, d\n\ndef fCount (n : Nat) : Nat :=\n  (Finset.filter (fun (k : Nat) => k * sigma k = n) (Finset.Icc 1 n)).card",
+    "gate0": {
+      "verdict": "DEFS_ELABORATE"
+    },
+    "campaign_vocabulary_prepended": [],
+    "normalization": {
+      "body": "def sigma (k : Nat) : Nat := ∑ d ∈ Nat.divisors k, d\n\ndef fCount (n : Nat) : Nat :=\n  (Finset.filter (fun (k : Nat) => k * sigma k = n) (Finset.Icc 1 n)).card",
+      "opens": [],
+      "dropped_imports": []
+    }
+  }
+}

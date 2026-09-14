@@ -1,0 +1,22 @@
+{"definitions": "def ExactTuple (n : Nat) (S : Finset Nat) (c : Nat) : Prop :=\n  (∀ d ∈ S, 1 ≤ d ∧ d ∣ n) ∧ S.sum id = n - 1 ∧ S.card = c ∧\n    ∀ d ∈ S, (S.erase d).sum id < n - 1",
+  "parent_typed": {"name": "erdos18_LEM_R004_L1prime", "binders": [],
+    "statement": "ExactTuple (Nat.factorial 2) ({1} : Finset Nat) 1 ∧ ExactTuple (Nat.factorial 3) ({2, 3} : Finset Nat) 2 ∧ ExactTuple (Nat.factorial 4) ({3, 4, 6, 8} : Finset Nat) 4 ∧ ExactTuple (Nat.factorial 5) ({1, 8, 20, 30, 60} : Finset Nat) 5 ∧ ExactTuple (Nat.factorial 6) ({1, 6, 40, 72, 240, 360} : Finset Nat) 6",
+    "reading": "For n = 2..6 the listed tuples are sets of essential, pairwise-distinct positive divisors of n! whose exact sum is n! − 1, with the stated cardinalities."},
+  "children": [
+    {"name": "erdos18_R004_tuple_n2", "binders": [],
+      "statement": "ExactTuple (Nat.factorial 2) ({1} : Finset Nat) 1",
+      "reading": "For n = 2: {1} consists of positive divisors of 2! = 2, sums exactly to 2! − 1 = 1, has cardinality 1, and every element is essential."},
+    {"name": "erdos18_R004_tuple_n3", "binders": [],
+      "statement": "ExactTuple (Nat.factorial 3) ({2, 3} : Finset Nat) 2",
+      "reading": "For n = 3: {2, 3} consists of positive divisors of 3! = 6, sums exactly to 6 − 1 = 5, has cardinality 2, and every element is essential."},
+    {"name": "erdos18_R004_tuple_n4", "binders": [],
+      "statement": "ExactTuple (Nat.factorial 4) ({3, 4, 6, 8} : Finset Nat) 4",
+      "reading": "For n = 4: {3, 4, 6, 8} consists of positive divisors of 4! = 24, sums exactly to 24 − 1 = 21, has cardinality 4, and every element is essential."},
+    {"name": "erdos18_R004_tuple_n5", "binders": [],
+      "statement": "ExactTuple (Nat.factorial 5) ({1, 8, 20, 30, 60} : Finset Nat) 5",
+      "reading": "For n = 5: {1, 8, 20, 30, 60} consists of positive divisors of 5! = 120, sums exactly to 120 − 1 = 119, has cardinality 5, and every element is essential."},
+    {"name": "erdos18_R004_tuple_n6", "binders": [],
+      "statement": "ExactTuple (Nat.factorial 6) ({1, 6, 40, 72, 240, 360} : Finset Nat) 6",
+      "reading": "For n = 6: {1, 6, 40, 72, 240, 360} consists of positive divisors of 6! = 720, sums exactly to 720 − 1 = 719, has cardinality 6, and every element is essential."}
+  ],
+  "composition_claim": "The parent is literally the conjunction of the five children: each child certifies one tuple (termwise divisibility by n!, exact sum n! − 1, stated cardinality, and essentiality of every element via the erase-lower-bound condition), so proving children 1–5 and conjoining them yields erdos18_LEM_R004_L1prime verbatim."}

@@ -1,0 +1,815 @@
+{
+ "schema": "obligation-dag/1.0.0",
+ "problem": "erdos579",
+ "problem_number": "579",
+ "campaign": "erdos579-campaign-001",
+ "root": "erdos579:ROOT",
+ "contract_divergence": {
+  "authoritative": {
+   "role": "campaign",
+   "path": "oracle/evidence/msl-machine/campaigns/erdos579-campaign-001/contract.json",
+   "sha256": "f7b51a3d026a56467304180c661a4ed4d295f4a01f800c0ae70b78852584f99c",
+   "declared_contract_sha256": "98b08bb4d3c0c506a8c949599f7a4e4ac4a80784789aac6edf65d411e4f4120f"
+  },
+  "others": [
+   {
+    "role": "ingest",
+    "path": "oracle/evidence/msl-machine/contracts/erdos579/contract.json",
+    "sha256": "69a856ce01a12d7add8c2de5d9332ed4006f33dba11757b1f59f75416c0327b8",
+    "declared_contract_sha256": "c6c751edf56e4e68ec5be8a5dec4cbc52f1b0589d596077d14cc89a5e516aec7",
+    "canonical_statement_matches_authoritative": true
+   },
+   {
+    "role": "launch_queue",
+    "path": "oracle/evidence/msl-machine/contracts/LAUNCH-QUEUE/erdos579.json",
+    "sha256": "0d0535674c9c79bd992e44c4c7c8b410f0fe294227ba4d1e156a4322da643227",
+    "declared_contract_sha256": null,
+    "canonical_statement_matches_authoritative": true
+   }
+  ],
+  "diverges": false
+ },
+ "courts": [
+  "court",
+  "closer",
+  "formalizer",
+  "kernel"
+ ],
+ "summary": {
+  "nodes": 14,
+  "proved_kernel": 0,
+  "proved_speaker": 1,
+  "computed_bounded": 0,
+  "open": 11,
+  "refuted": 2,
+  "orphans": 2,
+  "proof_obligations": 0,
+  "open_leaves_on_dead_routes": 3,
+  "root_kind": "NOT_DECIDABLE",
+  "root_disqualifiers": [
+   "ASYMPTOTIC",
+   "UNBOUNDED_FORALL_REAL"
+  ],
+  "formal_root": {
+   "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/579.lean",
+   "category": "category research open, AMS 5",
+   "declaration": "erdos_579",
+   "statement": "answer(sorry) ↔ ∀ δ : ℝ, 0 < δ → ∃ c : ℝ, 0 < c ∧ ∀ᶠ n : ℕ in atTop, ∀ G : SimpleGraph (Fin n), octahedron.Free G → δ * (n : ℝ) ^ 2 ≤ G.edgeFinset.card → c * n ≤ (G.indepNum : ℝ)"
+  },
+  "leaf_frontier_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "leaf_frontier_reason": "3 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaf_frontier_deciding_leaf": {
+   "id": "erdos579:DEMAND:R003:L1:1",
+   "kind": "CAPABILITY_DEMAND",
+   "status": "OPEN",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "the unproved δ-uniform dependent-counting lift with satisfiable hypotheses for every real δ>0."
+  },
+  "ladder_shape_reason": "the formal root is not decidable: ASYMPTOTIC, UNBOUNDED_FORALL_REAL (oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/579.lean). No leaf set can close it, however clean the leaves are. Leaf frontier, kept for the grind queue: HAS_OPEN_ANALYTIC_LEAF.",
+  "leaves": 9,
+  "open_leaves": 8,
+  "open_technical_leaves": 3,
+  "open_prose_obligations": 2,
+  "open_analytic_leaves": 3,
+  "ladder_shape": "ROOT_NOT_DECIDABLE",
+  "deciding_leaf": {
+   "id": "erdos579:ROOT",
+   "kind": "CANONICAL_ROOT",
+   "status": "OPEN",
+   "binding": "VERBATIM",
+   "leaf_tactic_hint": null,
+   "statement": "answer(sorry) ↔ ∀ δ : ℝ, 0 < δ → ∃ c : ℝ, 0 < c ∧ ∀ᶠ n : ℕ in atTop, ∀ G : SimpleGraph (Fin n), octahedron.Free G → δ * (n : ℝ) ^ 2 ≤ G.edgeFinset.card → c * n ≤ (G.indepNum : ℝ)"
+  },
+  "orphan_detail": [
+   {
+    "id": "erdos579:A:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos579:B:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   }
+  ]
+ },
+ "validation": {
+  "acyclic": true,
+  "edges": 15,
+  "root_binds_verbatim": true,
+  "kernel_receipts_checked": 0
+ },
+ "nodes": [
+  {
+   "id": "erdos579:A:M01",
+   "statement": "Quantify over every real δ>0, including arbitrarily small δ, and every sufficiently large n and labeled/unlabeled graph via isomorphism invariance.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos579-campaign-001/contract.json",
+   "contract_sha256": "f7b51a3d026a56467304180c661a4ed4d295f4a01f800c0ae70b78852584f99c",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos579-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos579",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-579-464f81bcb3-A-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos579:BRANCH_A",
+   "statement": "AFFIRMATIVE CLOSE: prove the exact all-δ dense K222-free theorem with a per-δ positive linear independence constant.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos579:A:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos579-campaign-001/contract.json",
+   "contract_sha256": "f7b51a3d026a56467304180c661a4ed4d295f4a01f800c0ae70b78852584f99c",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos579-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos579",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-579-464f81bcb3-A-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos579:B:M01",
+   "statement": "Exhibit δ>0 such that for every c>0 and every threshold N0 there exist n≥N0 and a K222-free n-vertex graph with at least δn² edges but α(G)<cn.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos579-campaign-001/contract.json",
+   "contract_sha256": "f7b51a3d026a56467304180c661a4ed4d295f4a01f800c0ae70b78852584f99c",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos579-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos579",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-579-464f81bcb3-B-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos579:BRANCH_B",
+   "statement": "NEGATIVE CLOSE: prove the exact quantifier negation of the all-δ statement.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos579:B:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos579-campaign-001/contract.json",
+   "contract_sha256": "f7b51a3d026a56467304180c661a4ed4d295f4a01f800c0ae70b78852584f99c",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos579-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos579",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-579-464f81bcb3-B-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos579:ROOT",
+   "statement": "Let $\\delta>0$. If $n$ is sufficiently large and $G$ is a graph on $n$ vertices with no $K_{2,2,2}$ and at least $\\delta n^2$ edges then $G$ contains an independent set of size $\\gg_\\delta n$.",
+   "kind": "CANONICAL_ROOT",
+   "depends_on": [
+    "erdos579:BRANCH_A",
+    "erdos579:BRANCH_B"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "root_by_construction",
+   "closure_mode": "DISJUNCTIVE",
+   "satisfied_by_any": [
+    "erdos579:BRANCH_A",
+    "erdos579:BRANCH_B"
+   ],
+   "root_kind": "NOT_DECIDABLE",
+   "root_disqualifiers": [
+    "ASYMPTOTIC",
+    "UNBOUNDED_FORALL_REAL"
+   ],
+   "formal_root": {
+    "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/579.lean",
+    "category": "category research open, AMS 5",
+    "declaration": "erdos_579",
+    "statement": "answer(sorry) ↔ ∀ δ : ℝ, 0 < δ → ∃ c : ℝ, 0 < c ∧ ∀ᶠ n : ℕ in atTop, ∀ G : SimpleGraph (Fin n), octahedron.Free G → δ * (n : ℝ) ^ 2 ≤ G.edgeFinset.card → c * n ≤ (G.indepNum : ℝ)"
+   },
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos579-campaign-001/contract.json",
+   "contract_sha256": "f7b51a3d026a56467304180c661a4ed4d295f4a01f800c0ae70b78852584f99c",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos579-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos579",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos579:LEM:R001:L1",
+   "statement": "Nonadjacent pair's common neighborhood is K22-free, else a K222 arises directly; exact finite argument, no quantifier or domain drift.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 6,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 3,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:02:56Z"
+    },
+    {
+     "seq": 4,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:05:33Z"
+    },
+    {
+     "seq": 5,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:29:57Z"
+    },
+    {
+     "seq": 6,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:36:20Z"
+    }
+   ],
+   "court": [
+    "court"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos579-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos579:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos579",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos579:LEM:R002:L1",
+   "statement": "Packet's reduction and residual pointer do not jointly determine any concrete predicate; certifiable object absent, fail-closed abort is mandatory.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R002",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 8,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Lemma L1 is refuted by a banked machine-verified counterexample and is load-bearing: no surviving close was exhibited with L1 deleted, so the K8 exception does not apply and R002 is dead.",
+    "seq": 9
+   },
+   "history": [
+    {
+     "seq": 7,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:37:31Z"
+    },
+    {
+     "seq": 8,
+     "status": "FALSE",
+     "utc": "2026-09-01T19:39:19Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos579-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos579:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos579",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos579:LEM:R003:ALL",
+   "statement": "Packet supplies no instantiated lemma statement or verifier payload; certifier fails closed rather than assuming an exact/interval construction from placeholders.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "ALL",
+   "registry_status": "UNTESTED",
+   "registry_seq": 12,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Lemma L1 is R003's only PROVED load-bearing lemma; its machine-verified counterexample leaves the close resting solely on the unproved δ-uniform dependent-counting lift, so no surviving verbatim argument exists and the route is dead.",
+    "seq": 29
+   },
+   "history": [
+    {
+     "seq": 12,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:42:35Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos579-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos579:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "Packet supplies no instantiated lemma statement or verifier payload; certifier fails closed rather than assuming an exact/interval construction from placeholders."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos579",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos579:LEM:R003:L1",
+   "statement": "Vacuously instantiated over all base δ>0 and degenerate near δ=1/4, so L1 cannot anchor the all-δ close; repair requires the unproved δ-uniform dependent-counting lift with satisfiable hypotheses for every real δ>0.",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos579:DEMAND:R003:L1:1"
+   ],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R003",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 28,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Lemma L1 is R003's only PROVED load-bearing lemma; its machine-verified counterexample leaves the close resting solely on the unproved δ-uniform dependent-counting lift, so no surviving verbatim argument exists and the route is dead.",
+    "seq": 29
+   },
+   "history": [
+    {
+     "seq": 13,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:43:56Z"
+    },
+    {
+     "seq": 14,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:44:49Z"
+    },
+    {
+     "seq": 15,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:45:29Z"
+    },
+    {
+     "seq": 16,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:50:07Z"
+    },
+    {
+     "seq": 18,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:55:13Z"
+    },
+    {
+     "seq": 19,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:55:59Z"
+    },
+    {
+     "seq": 20,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:58:46Z"
+    },
+    {
+     "seq": 21,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:59:14Z"
+    },
+    {
+     "seq": 22,
+     "status": "PROVED",
+     "utc": "2026-09-01T20:00:14Z"
+    },
+    {
+     "seq": 23,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:00:46Z"
+    },
+    {
+     "seq": 24,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:01:20Z"
+    },
+    {
+     "seq": 25,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:02:49Z"
+    },
+    {
+     "seq": 26,
+     "status": "PROVED",
+     "utc": "2026-09-01T20:04:25Z"
+    },
+    {
+     "seq": 27,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:04:50Z"
+    },
+    {
+     "seq": 28,
+     "status": "FALSE",
+     "utc": "2026-09-01T20:05:47Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos579-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos579:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos579",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos579:DEMAND:R003:L1:1",
+   "statement": "the unproved δ-uniform dependent-counting lift with satisfiable hypotheses for every real δ>0.",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "repair requires",
+   "demand_rank": 0,
+   "demand_strength": "STRONG",
+   "route_status": "DEAD",
+   "demand_source_text": "Vacuously instantiated over all base δ>0 and degenerate near δ=1/4, so L1 cannot anchor the all-δ close; repair requires the unproved δ-uniform dependent-counting lift with satisfiable hypotheses for every real δ>0.",
+   "route_id": "R003",
+   "lemma_id": "L1",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos579:LEM:R003:L1",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos579-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos579",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos579:LEM:R003:LBLOWUP_K222FREE",
+   "statement": "No certificate or finite-reduction theorem supplied; computational support alone cannot establish the existential graph construction.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "LBLOWUP_K222FREE",
+   "registry_status": "UNTESTED",
+   "registry_seq": 17,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Lemma L1 is R003's only PROVED load-bearing lemma; its machine-verified counterexample leaves the close resting solely on the unproved δ-uniform dependent-counting lift, so no surviving verbatim argument exists and the route is dead.",
+    "seq": 29
+   },
+   "history": [
+    {
+     "seq": 11,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:42:19Z"
+    },
+    {
+     "seq": 17,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:52:18Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos579-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos579:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "No certificate or finite-reduction theorem supplied; computational support alone cannot establish the existential graph construction."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos579",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos579:LEM:R004:L1",
+   "statement": "falsifier fails to kill: 12/12 attacks survived; quantifier-cleanliness and the Erdős–Stone vacuity boundary δ=1/4 verified exactly (odd-n witness e=(n²+3)/4), semantics corrected to subgraph-K222 with all-pairs C4-free common-neighborhood characterization, triangle-free class proved α≥e/(2n), but n",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "registry_status": "UNTESTED",
+   "registry_seq": 34,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 31,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T20:07:48Z"
+    },
+    {
+     "seq": 33,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:09:45Z"
+    },
+    {
+     "seq": 34,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T03:21:50Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos579-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos579:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "falsifier fails to kill: 12/12 attacks survived; quantifier-cleanliness and the Erdős–Stone vacuity boundary δ=1/4 verified exactly (odd-n witness e=(n²+3)/4), semantics corrected to subgraph-K222 with all-pairs C4-free common-neighborhood characterization, triangle-free class proved α≥e/(2n), but n"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos579",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos579:LEM:R004:R004",
+   "statement": "Residual claim is a bare contract pointer with no exact residual body or dependency manifest; fail-closed abort, certificate withheld pending concrete rational/integer residual data.",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos579:DEMAND:R004:R004:1"
+   ],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "R004",
+   "registry_status": "UNTESTED",
+   "registry_seq": 32,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 32,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:08:23Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos579-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos579:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "Residual claim is a bare contract pointer with no exact residual body or dependency manifest; fail-closed abort, certificate withheld pending concrete rational/integer residual data."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos579",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos579:DEMAND:R004:R004:1",
+   "statement": "concrete rational/integer residual data.",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "pending ",
+   "demand_rank": 5,
+   "demand_strength": "WEAK",
+   "route_status": "LIVE",
+   "demand_source_text": "Residual claim is a bare contract pointer with no exact residual body or dependency manifest; fail-closed abort, certificate withheld pending concrete rational/integer residual data.",
+   "route_id": "R004",
+   "lemma_id": "R004",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos579:LEM:R004:R004",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos579-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos579",
+   "is_leaf": true,
+   "manufacture_target": false
+  }
+ ]
+}

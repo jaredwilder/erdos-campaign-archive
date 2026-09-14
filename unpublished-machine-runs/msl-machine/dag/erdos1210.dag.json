@@ -1,0 +1,1290 @@
+{
+ "schema": "obligation-dag/1.0.0",
+ "problem": "erdos1210",
+ "problem_number": "1210",
+ "campaign": "erdos1210-campaign-001",
+ "root": "erdos1210:ROOT",
+ "contract_divergence": {
+  "authoritative": {
+   "role": "campaign",
+   "path": "oracle/evidence/msl-machine/campaigns/erdos1210-campaign-001/contract.json",
+   "sha256": "29b3b98de8e69ef40d9f590a628da403546d27909dec08bc24e8123baaa55b6a",
+   "declared_contract_sha256": "b424732842a2b520344ee3a684d5554dcf0425d626bb9d3f7b34298a316d6b1a"
+  },
+  "others": [
+   {
+    "role": "ingest",
+    "path": "oracle/evidence/msl-machine/contracts/erdos1210/contract.json",
+    "sha256": "6c91cad2ca709d1609436d9cf2b59def50a19048e73553390b528b4603db7648",
+    "declared_contract_sha256": "0b80a8278d73c6e2fb2af0f9aeb57c9c6f66348e656bc9e56696c17a5de13897",
+    "canonical_statement_matches_authoritative": true
+   },
+   {
+    "role": "launch_queue",
+    "path": "oracle/evidence/msl-machine/contracts/LAUNCH-QUEUE/erdos1210.json",
+    "sha256": "82cfde6fbe756d056e1efce56801804ae17f7cf9ef0272723d955a8b8704b229",
+    "declared_contract_sha256": null,
+    "canonical_statement_matches_authoritative": true
+   }
+  ],
+  "diverges": false
+ },
+ "courts": [
+  "court",
+  "closer",
+  "formalizer",
+  "kernel"
+ ],
+ "summary": {
+  "nodes": 23,
+  "proved_kernel": 0,
+  "proved_speaker": 3,
+  "computed_bounded": 0,
+  "open": 15,
+  "refuted": 5,
+  "orphans": 5,
+  "proof_obligations": 0,
+  "open_leaves_on_dead_routes": 3,
+  "root_kind": "DECIDABLE_BOUNDED",
+  "root_disqualifiers": [],
+  "formal_root": {
+   "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/1210.lean",
+   "category": "category research open, AMS 11",
+   "declaration": "erdos_1210",
+   "statement": "answer(sorry) ↔ ∃ C : ℝ, ∀ n : ℕ, ∀ A : Finset ℕ, (∀ a ∈ A, 1 ≤ a ∧ a < n) → (∀ a ∈ A, ∀ b ∈ A, a ≠ b → a.Coprime b) → ∑ a ∈ A, (1 / ((n : ℝ) - a)) ≤ (∑ p ∈ (range n).filter Prime, (1 / (p : ℝ))) + C"
+  },
+  "leaf_frontier_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "leaf_frontier_reason": "5 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaf_frontier_deciding_leaf": {
+   "id": "erdos1210:LEM:R007:L1",
+   "kind": "LEMMA",
+   "status": "PROVED_SPEAKER",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "Main proposition proved with uniform C=1: gcd(n-a1,n-a2)|gcd(a1,a2)=1 so B={n-a} is pairwise coprime, and sum_{b>1}1/b <= sum_{p<=n-1}1/p via injective smallest-prime assignment; Er80 proposition untouched by this argument"
+  },
+  "ladder_shape_reason": "5 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaves": 20,
+  "open_leaves": 15,
+  "open_technical_leaves": 7,
+  "open_prose_obligations": 5,
+  "open_analytic_leaves": 5,
+  "ladder_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "deciding_leaf": {
+   "id": "erdos1210:LEM:R007:L1",
+   "kind": "LEMMA",
+   "status": "PROVED_SPEAKER",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "Main proposition proved with uniform C=1: gcd(n-a1,n-a2)|gcd(a1,a2)=1 so B={n-a} is pairwise coprime, and sum_{b>1}1/b <= sum_{p<=n-1}1/p via injective smallest-prime assignment; Er80 proposition untouched by this argument"
+  },
+  "orphan_detail": [
+   {
+    "id": "erdos1210:A:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos1210:A:M02",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos1210:A:M03",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos1210:B:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos1210:B:M02",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   }
+  ]
+ },
+ "validation": {
+  "acyclic": true,
+  "edges": 22,
+  "root_binds_verbatim": true,
+  "kernel_receipts_checked": 0
+ },
+ "nodes": [
+  {
+   "id": "erdos1210:A:M01",
+   "statement": "For the main proposition, prove the uniform-C inequality over every n and every admissible pairwise-coprime A, or prove its literal negation: for every C there exist n and admissible A violating the ≤ bound.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1210-campaign-001/contract.json",
+   "contract_sha256": "29b3b98de8e69ef40d9f590a628da403546d27909dec08bc24e8123baaa55b6a",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1210-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1210",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-1210-57fcd56a62-A-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos1210:A:M02",
+   "statement": "For the Er80 proposition, prove the uniform-C strict inequality for every n<m, or prove its literal negation: for every C there exist n<m for which the left prime-interval sum is at least the right prime sum plus C.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 2,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1210-campaign-001/contract.json",
+   "contract_sha256": "29b3b98de8e69ef40d9f590a628da403546d27909dec08bc24e8123baaa55b6a",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1210-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1210",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-1210-57fcd56a62-A-M02"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos1210:A:M03",
+   "statement": "Both propositions are independently determined; success on one never discharges the other.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 3,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1210-campaign-001/contract.json",
+   "contract_sha256": "29b3b98de8e69ef40d9f590a628da403546d27909dec08bc24e8123baaa55b6a",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1210-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1210",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-1210-57fcd56a62-A-M03"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos1210:BRANCH_A",
+   "statement": "COMPLETE TWO-PROPOSITION CLOSE: determine both the main coprime-set inequality and the distinct Er80 corrected prime-interval inequality. A complete result records one truth value for each proposition.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos1210:A:M01",
+    "erdos1210:A:M02",
+    "erdos1210:A:M03"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1210-campaign-001/contract.json",
+   "contract_sha256": "29b3b98de8e69ef40d9f590a628da403546d27909dec08bc24e8123baaa55b6a",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1210-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1210",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-1210-57fcd56a62-A-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1210:B:M01",
+   "statement": "A counterexample family for the main proposition preserves 1≤a<n and pairwise coprimality for every A used.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1210-campaign-001/contract.json",
+   "contract_sha256": "29b3b98de8e69ef40d9f590a628da403546d27909dec08bc24e8123baaa55b6a",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1210-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1210",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-1210-57fcd56a62-B-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos1210:B:M02",
+   "statement": "A counterexample family for the Er80 proposition uses primes q with n<q≤m, the right-hand prime range p<m−n, and reverses the strict '<' conclusion to '≥'.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 2,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1210-campaign-001/contract.json",
+   "contract_sha256": "29b3b98de8e69ef40d9f590a628da403546d27909dec08bc24e8123baaa55b6a",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1210-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1210",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-1210-57fcd56a62-B-M02"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos1210:BRANCH_B",
+   "statement": "COMPLETE NEGATIVE/MIXED CLOSE: any negative component is the literal uniform-constant negation of its own proposition, and both the main and Er80 propositions are still resolved.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos1210:B:M01",
+    "erdos1210:B:M02"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1210-campaign-001/contract.json",
+   "contract_sha256": "29b3b98de8e69ef40d9f590a628da403546d27909dec08bc24e8123baaa55b6a",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1210-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1210",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-1210-57fcd56a62-B-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1210:ROOT",
+   "statement": "Let $A\\subseteq [1,n)$ be a set of integers such that $(a,b)=1$ for all distinct $a,b\\in A$. Is it true that\\[\\sum_{a\\in A}\\frac{1}{n-a}\\leq \\sum_{p<n}\\frac{1}{p}+O(1)?\\]",
+   "kind": "CANONICAL_ROOT",
+   "depends_on": [
+    "erdos1210:BRANCH_A",
+    "erdos1210:BRANCH_B"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "root_by_construction",
+   "closure_mode": "DISJUNCTIVE",
+   "satisfied_by_any": [
+    "erdos1210:BRANCH_A",
+    "erdos1210:BRANCH_B"
+   ],
+   "root_kind": "DECIDABLE_BOUNDED",
+   "root_disqualifiers": [],
+   "formal_root": {
+    "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/1210.lean",
+    "category": "category research open, AMS 11",
+    "declaration": "erdos_1210",
+    "statement": "answer(sorry) ↔ ∃ C : ℝ, ∀ n : ℕ, ∀ A : Finset ℕ, (∀ a ∈ A, 1 ≤ a ∧ a < n) → (∀ a ∈ A, ∀ b ∈ A, a ≠ b → a.Coprime b) → ∑ a ∈ A, (1 / ((n : ℝ) - a)) ≤ (∑ p ∈ (range n).filter Prime, (1 / (p : ℝ))) + C"
+   },
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1210-campaign-001/contract.json",
+   "contract_sha256": "29b3b98de8e69ef40d9f590a628da403546d27909dec08bc24e8123baaa55b6a",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1210-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1210",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1210:LEM:R001:L1",
+   "statement": "Strict C=0 Er80 form fails at n=1,m=2 (left 1/2 vs right 0) and n=m−1, m prime; failure is O(1)-bounded so uniform-C proposition survives and needs a genuinely unbounded family.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R001",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 6,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 was the sole load-bearing transfer step in R001's close; no surviving argument exists without it, so the K8 exception does not apply and the route is dead.",
+    "seq": 7
+   },
+   "history": [
+    {
+     "seq": 3,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:19:19Z"
+    },
+    {
+     "seq": 4,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:28:07Z"
+    },
+    {
+     "seq": 5,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:30:33Z"
+    },
+    {
+     "seq": 6,
+     "status": "FALSE",
+     "utc": "2026-09-01T19:31:32Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1210-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1210:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos1210",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1210:LEM:R002:L1",
+   "statement": "reverse inequality fails: left side O(1/log n), right side ~log log n → ∞; does not counterexample the canonical ≤ claim",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R002",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 13,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified counterexample; no proof that R002's close survives without it, so the route is dead.",
+    "seq": 14
+   },
+   "history": [
+    {
+     "seq": 9,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:34:04Z"
+    },
+    {
+     "seq": 10,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:37:30Z"
+    },
+    {
+     "seq": 12,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:40:11Z"
+    },
+    {
+     "seq": 13,
+     "status": "FALSE",
+     "utc": "2026-09-01T19:40:44Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1210-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1210:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1210",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1210:LEM:R002:cert",
+   "statement": "Contract body absent from packet; exact/interval verifier cannot be instantiated; fail closed per no-silent-tolerance rule.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R002",
+   "lemma_id": "cert",
+   "registry_status": "UNTESTED",
+   "registry_seq": 11,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified counterexample; no proof that R002's close survives without it, so the route is dead.",
+    "seq": 14
+   },
+   "history": [
+    {
+     "seq": 11,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:38:38Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1210-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1210:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "Contract body absent from packet; exact/interval verifier cannot be instantiated; fail closed per no-silent-tolerance rule."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1210",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1210:LEM:R003:L2",
+   "statement": "certificate n=8: greedy {1,5,6,7} gives 23/12 < 137/60 from {1,3,4,5,7}",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R003",
+   "lemma_id": "L2",
+   "registry_status": "FALSE",
+   "registry_seq": 16,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L2 carries a machine-verified concrete counterexample; no proof exists in the packet that R003's close survives with L2 deleted, so the lemma was load-bearing and the route is dead.",
+    "seq": 17
+   },
+   "history": [
+    {
+     "seq": 16,
+     "status": "FALSE",
+     "utc": "2026-09-01T19:43:06Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1210-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1210:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos1210",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1210:LEM:R004:Er80",
+   "statement": "witness n=1,m=4: left sum 3/2 (or 5/6) vs right sum 1/2 violates strict '<'; main proposition separately COMPUTATION_SUPPORTED with max observed gap 63/60 at n=7.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R004",
+   "lemma_id": "Er80",
+   "registry_status": "FALSE",
+   "registry_seq": 19,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Lemma Er80 was load-bearing: it constitutes one of the two independently required propositions in the close; with it refuted by machine-verified counterexample, the two-proposition close cannot survive deletion, so no downgrade is available.",
+    "seq": 20
+   },
+   "history": [
+    {
+     "seq": 19,
+     "status": "FALSE",
+     "utc": "2026-09-01T19:45:28Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1210-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1210:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos1210",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1210:LEM:R005:L1",
+   "statement": "Vacuous subset fact, coprimality and both target sums never used; quantifier slip (∃-level fact offered for ∀-level proposition) and circularity confirmed; route R005 has no standing reduction and must produce a genuine bound or separating family.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R005",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 34,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "sole load-bearing lemma L1 has a recorded machine-verified counterexample and was vacuous (coprimality unused) with no surviving close, so no downgrade exception applies; minimal repair: a uniform coprimality-invoking reduction lemma or explicit finite counterexample certificate for the main or Er80",
+    "seq": 35
+   },
+   "history": [
+    {
+     "seq": 22,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:47:54Z"
+    },
+    {
+     "seq": 24,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:53:34Z"
+    },
+    {
+     "seq": 27,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:02:23Z"
+    },
+    {
+     "seq": 28,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:03:17Z"
+    },
+    {
+     "seq": 29,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:06:17Z"
+    },
+    {
+     "seq": 30,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:08:01Z"
+    },
+    {
+     "seq": 31,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:12:14Z"
+    },
+    {
+     "seq": 32,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:15:10Z"
+    },
+    {
+     "seq": 33,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:15:53Z"
+    },
+    {
+     "seq": 34,
+     "status": "FALSE",
+     "utc": "2026-09-02T00:57:59Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1210-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1210:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1210",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1210:LEM:R005:L2",
+   "statement": "Prime-near-n subfamily lower bound reduces the uniform gap to an equivalent-strength open question; no finite reduction available.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R005",
+   "lemma_id": "L2",
+   "registry_status": "UNTESTED",
+   "registry_seq": 26,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "sole load-bearing lemma L1 has a recorded machine-verified counterexample and was vacuous (coprimality unused) with no surviving close, so no downgrade exception applies; minimal repair: a uniform coprimality-invoking reduction lemma or explicit finite counterexample certificate for the main or Er80",
+    "seq": 35
+   },
+   "history": [
+    {
+     "seq": 25,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:55:58Z"
+    },
+    {
+     "seq": 26,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:01:26Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1210-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1210:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "Prime-near-n subfamily lower bound reduces the uniform gap to an equivalent-strength open question; no finite reduction available."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1210",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1210:LEM:R005:all",
+   "statement": "No exact certificate or interval contract supplied; certification not possible, fail closed.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R005",
+   "lemma_id": "all",
+   "registry_status": "UNTESTED",
+   "registry_seq": 23,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "sole load-bearing lemma L1 has a recorded machine-verified counterexample and was vacuous (coprimality unused) with no surviving close, so no downgrade exception applies; minimal repair: a uniform coprimality-invoking reduction lemma or explicit finite counterexample certificate for the main or Er80",
+    "seq": 35
+   },
+   "history": [
+    {
+     "seq": 23,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:52:52Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1210-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1210:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "No exact certificate or interval contract supplied; certification not possible, fail closed."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1210",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1210:LEM:R006:L1",
+   "statement": "Exact-rational exhaustive verifier over n≤6: Δ(4)=1 exactly, all extremizers satisfy Σ1/(n−a) ≤ Σ_{p<n}1/p + 2 in Fraction arithmetic, fail-closed, deterministic; scope = n≤6 only, n>6 remains analytic/open.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R006",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 38,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 37,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:00:47Z"
+    },
+    {
+     "seq": 38,
+     "status": "PROVED",
+     "utc": "2026-09-02T01:01:05Z"
+    }
+   ],
+   "court": [
+    "court"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1210-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1210:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "leaf_tactic_hint": "interval_cases",
+   "hint_source": "bounded_forall_over_N",
+   "leaf_tactic_sketch": "intro a; interval_cases a <;> decide",
+   "leaf_tactic_alternatives": [
+    "decide",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos1210",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1210:LEM:R007:L1",
+   "statement": "Main proposition proved with uniform C=1: gcd(n-a1,n-a2)|gcd(a1,a2)=1 so B={n-a} is pairwise coprime, and sum_{b>1}1/b <= sum_{p<=n-1}1/p via injective smallest-prime assignment; Er80 proposition untouched by this argument",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R007",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 48,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 39,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:04:23Z"
+    },
+    {
+     "seq": 40,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:04:55Z"
+    },
+    {
+     "seq": 41,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:05:20Z"
+    },
+    {
+     "seq": 42,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:05:44Z"
+    },
+    {
+     "seq": 43,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:10:16Z"
+    },
+    {
+     "seq": 44,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:10:32Z"
+    },
+    {
+     "seq": 45,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:10:52Z"
+    },
+    {
+     "seq": 46,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:11:12Z"
+    },
+    {
+     "seq": 47,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T01:13:44Z"
+    },
+    {
+     "seq": 48,
+     "status": "PROVED",
+     "utc": "2026-09-02T01:57:32Z"
+    }
+   ],
+   "court": [
+    "court"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1210-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1210:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1210",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1210:LEM:R008:L1",
+   "statement": "Uniform C in main proposition satisfies C>=1: witness n=2,A={1} gives LHS 1 vs empty prime sum; confirmed at n=3,A={1,2} (3/2 vs 1/2); C=1 sharpness unproven.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R008",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 55,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 55,
+     "status": "PROVED",
+     "utc": "2026-09-02T02:06:34Z"
+    }
+   ],
+   "court": [
+    "court"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1210-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1210:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "l1_fragment | Checks the vacuous witness fragment that C = 1 satisfies the implication C ≥ 1 → C ≥ 1; this does not establish the canonical main proposition or the Er80 proposition. | by\n  exact ⟨1, le_rfl, le_rfl⟩"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "l1_fragment = true | Kernel-checks the decidable witness inequality 1 ≤ 1 for the explicit constant C = 1; this is only a fragment of L1 and establishes neither canonical proposition. | by decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "l1_fragment = true | Kernel-checks the explicit witness inequality 1 ≤ 1, corresponding to the lower-bound fragment C = 1; it does not establish the uniform main proposition or the Er80 proposition. | by decide"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos1210",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1210:LEM:R008:L_main_deficit_le1_nle7",
+   "statement": "RETRACTED by author boundary audit: \"the repair suffices for the full range n ≤ 7\" was read as \"the repair suffices for the exhibited extremizer set {2,3,4,6} + shifted-prime class\" — the endpoint n = 1 and the uncovered members n = 5, 7 were silently absorbed into the exhaustiveness demand without being named",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R008",
+   "lemma_id": "L_main_deficit_le1_nle7",
+   "registry_status": "UNTESTED",
+   "registry_seq": 53,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 50,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T02:01:31Z"
+    },
+    {
+     "seq": 51,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T02:02:18Z"
+    },
+    {
+     "seq": 52,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T02:03:19Z"
+    },
+    {
+     "seq": 53,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:03:42Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1210-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1210:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "RETRACTED by author boundary audit: \"the repair suffices for the full range n ≤ 7\" was read as \"the repair suffices for the exhibited extremizer set {2,3,4,6} + shifted-prime class\" — the endpoint n = 1 and the uncovered members n = 5, 7 were silently absorbed into the exhaustiveness demand without being named"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1210",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1210:LEM:R008:L_main_deficit_le1_nle7'",
+   "statement": "L_main_deficit_le1_nle7_repair_scope: the lemma is uncertifiable as stated (D undefined, no witness tables, no exhaustiveness reduction — this part stands on packet inspection), AND the repair must additionally supply: (a) an explicit account of n = 1 (exclude it or exhibit its extremizer, per the erdos683/erdos821 endpoint precedents), and (b) extremizer coverage or separate treatment for n = 5 a",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R008",
+   "lemma_id": "L_main_deficit_le1_nle7'",
+   "registry_status": "UNTESTED",
+   "registry_seq": 54,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 54,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:03:42Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1210-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1210:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "L_main_deficit_le1_nle7_repair_scope: the lemma is uncertifiable as stated (D undefined, no witness tables, no exhaustiveness reduction — this part stands on packet inspection), AND the repair must additionally supply: (a) an explicit account of n = 1 (exclude it or exhibit its extremizer, per the erdos683/erdos821 endpoint precedents), and (b) extremizer coverage or separate treatment for n = 5 a"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1210",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1210:FLEAF:1af31268240571a79712:1",
+   "statement": "l1_fragment",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R008",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def l1_fragment : Prop := ∃ C : ℝ, (1 : ℝ) ≤ C → (1 : ℝ) ≤ C",
+   "type_context": "Mathlib\ndef l1_fragment : Prop := ∃ C : ℝ, (1 : ℝ) ≤ C → (1 : ℝ) ≤ C",
+   "proof": "by\n  exact ⟨1, le_rfl, le_rfl⟩",
+   "claim": "Checks the vacuous witness fragment that C = 1 satisfies the implication C ≥ 1 → C ≥ 1; this does not establish the canonical main proposition or the Er80 proposition.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "CLOSURE_SHAPELESS_REFUSED: proof must be a decision procedure (`by decide`, or `by native_decide` when plain decide cannot finish); got 'by\\n  exact ⟨1, le_rfl, le_rfl⟩'. This pipeline generates from a template and does not accept a free-form Lean proof.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "supports": [
+    {
+     "node": "erdos1210:LEM:R008:L1",
+     "evidence": "formalizer obligation route=R008 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos1210",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1210:FLEAF:1af31268240571a79712:2",
+   "statement": "l1_fragment = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R008",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def l1_fragment : Bool := decide ((1 : ℝ) ≤ 1)",
+   "type_context": "Mathlib\ndef l1_fragment : Bool := decide ((1 : ℝ) ≤ 1)",
+   "proof": "by decide",
+   "claim": "Kernel-checks the decidable witness inequality 1 ≤ 1 for the explicit constant C = 1; this is only a fragment of L1 and establishes neither canonical proposition.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 2,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "decide",
+   "supports": [
+    {
+     "node": "erdos1210:LEM:R008:L1",
+     "evidence": "formalizer obligation route=R008 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos1210",
+   "is_leaf": true,
+   "manufacture_target": false
+  }
+ ]
+}

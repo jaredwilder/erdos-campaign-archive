@@ -1,0 +1,22 @@
+{
+  "kind": "COMPOSITION_KERNEL_CHECK",
+  "node": "erdos1145:DEMAND:R004:L1:1#COMPOSE",
+  "verdict": {
+    "verdict": "COMPOSITION_OPEN",
+    "rc": 1,
+    "kernel_error": "/root/peer/decomp/b20260902_092739_3/erdos1145_DEMAND_R004_L1_1_comp.lean:26:52: error: unsolved goals",
+    "counts_toward_parent": 0
+  },
+  "lean_source": "oracle/evidence/msl-machine/dag/decomp/erdos1145/lean/erdos1145_DEMAND_R004_L1_1_COMPOSE.lean",
+  "ladder": [
+    "tauto",
+    "(intro h; exact h.1)",
+    "(intro h; simp_all)",
+    "(intro h; omega)",
+    "(intro h; norm_num at h ⊢ <;> tauto)",
+    "aesop",
+    "decide"
+  ],
+  "kernel_log": "/root/peer/decomp/b20260902_092739_3/erdos1145_DEMAND_R004_L1_1_comp.lean:26:52: error: unsolved goals\nh :\n  (∀ (a b : ℕ → ℕ), SeqStrict a → SeqStrict b → ∀ (m : ℕ), 2 ≤ m → sumsetMem a b m → ∃ i < m, ∃ x < m, a i + b x = m) ∧\n    (∀ (a b : ℕ → ℕ),\n        SeqStrict a →\n          SeqStrict b →\n            (Tendsto (fun n => ↑(a n) / ↑(b n)) atTop (nhds 1) ↔\n              Tendsto (fun n => (↑(a n) - ↑(b n)) / ↑(b n)) atTop (nhds 0))) ∧\n      ∀ (a b : ℕ → ℕ), (∀ (k : ℕ), {n | k ≤ convAB a b n}.Infinite) ↔ ∀ (k N : ℕ), ∃ n, N ≤ n ∧ k ≤ convAB a b n\n⊢ ∀ (a b : ℕ → ℕ),\n    SeqStrict a →\n      SeqStrict b →\n        Tendsto (fun n => (↑(a n) - ↑(b n)) / ↑(b n)) atTop (nhds 0) →\n          ∀ (x : ℕ), (∀ (m : ℕ), x ≤ m → sumsetMem a b m) → ∀ (k N : ℕ), ∃ n, N ≤ n ∧ k ≤ convAB a b n\n'msl_erdos1145_demand_r004_l1_1_composition' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]",
+  "utc": "2026-09-02T16:27:51Z"
+}

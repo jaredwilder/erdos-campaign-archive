@@ -1,0 +1,326 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos421",
+  "generated_utc": "2026-09-02T16:31:11Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos421:A:M01",
+    "statement": "Prove density 1 of the range and InjOn of the consecutive-product map on all u≤v.",
+    "statement_sha256": "dfdbf54c63001bb74f346f30dcbeea08f20d007ac4b30ad3c8ee12c66516affe",
+    "kind": "MUST_DETERMINE",
+    "binding": "VERBATIM",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "Is there a sequence $1\\leq d_1<d_2<\\cdots$ with density $1$ such that all products $\\prod_{u\\leq i\\leq v}d_i$ are distinct?",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos421-campaign-001/contract.json",
+    "sha256": "074e919d39a6df37b59f7a2bd4ffed97bd05af71967435c4131e3976465f6641"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos421:A:M01",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "5f5df870d28218c47988297c522038773ab1a0b47597fd6811e61187a0d4faa4",
+    "prompt_chars": 4179,
+    "response_sha256": "a7d5698e8b5fa2f6a51fcfdf70c7b0a5f6fb08a0ea92f615ffb8fb122b1588b6",
+    "usage": {
+      "prompt_tokens": 1124,
+      "completion_tokens": 855,
+      "total_tokens": 1979,
+      "cost": 0.00029037,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 128,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00029037,
+        "upstream_inference_prompt_cost": 7.662e-05,
+        "upstream_inference_completions_cost": 0.00021375
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 331,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.00029037,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 22.44,
+    "utc": "2026-09-02T16:27:41Z"
+  },
+  "children": [
+    {
+      "id": "erdos421:A:M01#D1",
+      "statement": "StrictMono d ∧ 1 ≤ d 0",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos421",
+      "decomposed_from": "erdos421:A:M01",
+      "imports": "Mathlib",
+      "definitions": "def HasDensity (s : Set Nat) (δ : ℝ) : Prop :=\n  Filter.Tendsto (fun (n : Nat) => ((s ∩ Set.Iio n).ncard : ℝ)) Filter.atTop (nhds δ)\n\ndef ProductMap (d : Nat → Nat) (p : Nat × Nat) : Nat :=\n  ∏ i ∈ Finset.Icc p.1 p.2, d i",
+      "type_context": "Mathlib\ndef HasDensity (s : Set Nat) (δ : ℝ) : Prop :=\n  Filter.Tendsto (fun (n : Nat) => ((s ∩ Set.Iio n).ncard : ℝ)) Filter.atTop (nhds δ)\n\ndef ProductMap (d : Nat → Nat) (p : Nat × Nat) : Nat :=\n  ∏ i ∈ Finset.Icc p.1 p.2, d i",
+      "lean_binders": [
+        "(d : Nat → Nat)"
+      ],
+      "lean_theorem_name": "msl_erdos421_a_m01_c1",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef HasDensity (s : Set Nat) (δ : ℝ) : Prop :=\n  Filter.Tendsto (fun (n : Nat) => ((s ∩ Set.Iio n).ncard : ℝ)) Filter.atTop (nhds δ)\n\ndef ProductMap (d : Nat → Nat) (p : Nat × Nat) : Nat :=\n  ∏ i ∈ Finset.Icc p.1 p.2, d i\n\n",
+      "lean_signature": "theorem msl_erdos421_a_m01_c1 (d : Nat → Nat) : StrictMono d ∧ 1 ≤ d 0",
+      "lean_statement_line": "theorem msl_erdos421_a_m01_c1 (d : Nat → Nat) : StrictMono d ∧ 1 ≤ d 0 := by sorry",
+      "lean_file_sha256": "b69f4ce77b9594bf1d2a39144dd4390771f3861bf14568788e3fbae4a7ace248",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "The sequence is strictly increasing and starts at least at 1.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos421/receipts/erdos421_A_M01_D1.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos421/lean/erdos421_A_M01_D1.lean"
+    },
+    {
+      "id": "erdos421:A:M01#D2",
+      "statement": "HasDensity (Set.range d) 1",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos421",
+      "decomposed_from": "erdos421:A:M01",
+      "imports": "Mathlib",
+      "definitions": "def HasDensity (s : Set Nat) (δ : ℝ) : Prop :=\n  Filter.Tendsto (fun (n : Nat) => ((s ∩ Set.Iio n).ncard : ℝ)) Filter.atTop (nhds δ)\n\ndef ProductMap (d : Nat → Nat) (p : Nat × Nat) : Nat :=\n  ∏ i ∈ Finset.Icc p.1 p.2, d i",
+      "type_context": "Mathlib\ndef HasDensity (s : Set Nat) (δ : ℝ) : Prop :=\n  Filter.Tendsto (fun (n : Nat) => ((s ∩ Set.Iio n).ncard : ℝ)) Filter.atTop (nhds δ)\n\ndef ProductMap (d : Nat → Nat) (p : Nat × Nat) : Nat :=\n  ∏ i ∈ Finset.Icc p.1 p.2, d i",
+      "lean_binders": [
+        "(d : Nat → Nat)",
+        "(hmono : StrictMono d)",
+        "(hd0 : 1 ≤ d 0)"
+      ],
+      "lean_theorem_name": "msl_erdos421_a_m01_c2",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef HasDensity (s : Set Nat) (δ : ℝ) : Prop :=\n  Filter.Tendsto (fun (n : Nat) => ((s ∩ Set.Iio n).ncard : ℝ)) Filter.atTop (nhds δ)\n\ndef ProductMap (d : Nat → Nat) (p : Nat × Nat) : Nat :=\n  ∏ i ∈ Finset.Icc p.1 p.2, d i\n\n",
+      "lean_signature": "theorem msl_erdos421_a_m01_c2 (d : Nat → Nat) (hmono : StrictMono d) (hd0 : 1 ≤ d 0) : HasDensity (Set.range d) 1",
+      "lean_statement_line": "theorem msl_erdos421_a_m01_c2 (d : Nat → Nat) (hmono : StrictMono d) (hd0 : 1 ≤ d 0) : HasDensity (Set.range d) 1 := by sorry",
+      "lean_file_sha256": "719b53913b7ea0fb0d922b17f206d471459c5213156088d41234c64d02ba686d",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "Under the monotonicity and positivity hypotheses, the range of d has asymptotic density 1.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos421/receipts/erdos421_A_M01_D2.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos421/lean/erdos421_A_M01_D2.lean"
+    },
+    {
+      "id": "erdos421:A:M01#D3",
+      "statement": "Set.InjOn (ProductMap d) {(p : Nat × Nat) | p.1 ≤ p.2}",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos421",
+      "decomposed_from": "erdos421:A:M01",
+      "imports": "Mathlib",
+      "definitions": "def HasDensity (s : Set Nat) (δ : ℝ) : Prop :=\n  Filter.Tendsto (fun (n : Nat) => ((s ∩ Set.Iio n).ncard : ℝ)) Filter.atTop (nhds δ)\n\ndef ProductMap (d : Nat → Nat) (p : Nat × Nat) : Nat :=\n  ∏ i ∈ Finset.Icc p.1 p.2, d i",
+      "type_context": "Mathlib\ndef HasDensity (s : Set Nat) (δ : ℝ) : Prop :=\n  Filter.Tendsto (fun (n : Nat) => ((s ∩ Set.Iio n).ncard : ℝ)) Filter.atTop (nhds δ)\n\ndef ProductMap (d : Nat → Nat) (p : Nat × Nat) : Nat :=\n  ∏ i ∈ Finset.Icc p.1 p.2, d i",
+      "lean_binders": [
+        "(d : Nat → Nat)",
+        "(hmono : StrictMono d)",
+        "(hd0 : 1 ≤ d 0)"
+      ],
+      "lean_theorem_name": "msl_erdos421_a_m01_c3",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef HasDensity (s : Set Nat) (δ : ℝ) : Prop :=\n  Filter.Tendsto (fun (n : Nat) => ((s ∩ Set.Iio n).ncard : ℝ)) Filter.atTop (nhds δ)\n\ndef ProductMap (d : Nat → Nat) (p : Nat × Nat) : Nat :=\n  ∏ i ∈ Finset.Icc p.1 p.2, d i\n\n",
+      "lean_signature": "theorem msl_erdos421_a_m01_c3 (d : Nat → Nat) (hmono : StrictMono d) (hd0 : 1 ≤ d 0) : Set.InjOn (ProductMap d) {(p : Nat × Nat) | p.1 ≤ p.2}",
+      "lean_statement_line": "theorem msl_erdos421_a_m01_c3 (d : Nat → Nat) (hmono : StrictMono d) (hd0 : 1 ≤ d 0) : Set.InjOn (ProductMap d) {(p : Nat × Nat) | p.1 ≤ p.2} := by sorry",
+      "lean_file_sha256": "567b079d7a876fe801450132ca96f6d3799fc885d8f9d24ad0f904f013404975",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "Under the same hypotheses, the consecutive-product map is injective on all pairs u ≤ v.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos421/receipts/erdos421_A_M01_D3.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos421/lean/erdos421_A_M01_D3.lean"
+    }
+  ],
+  "composition": {
+    "id": "erdos421:A:M01#COMPOSE",
+    "statement": "((∀ (d : Nat → Nat), StrictMono d ∧ 1 ≤ d 0) ∧ (∀ (d : Nat → Nat) (hmono : StrictMono d) (hd0 : 1 ≤ d 0), HasDensity (Set.range d) 1) ∧ (∀ (d : Nat → Nat) (hmono : StrictMono d) (hd0 : 1 ≤ d 0), Set.InjOn (ProductMap d) {(p : Nat × Nat) | p.1 ≤ p.2})) → (∃ (d : Nat → Nat), StrictMono d ∧ 1 ≤ d 0 ∧ HasDensity (Set.range d) 1 ∧\n  Set.InjOn (ProductMap d) {(p : Nat × Nat) | p.1 ≤ p.2})",
+    "kind": "COMPOSITION",
+    "depends_on": [
+      "erdos421:A:M01#D1",
+      "erdos421:A:M01#D2",
+      "erdos421:A:M01#D3"
+    ],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "PROVED_KERNEL",
+    "problem": "erdos421",
+    "decomposed_from": "erdos421:A:M01",
+    "imports": "Mathlib",
+    "definitions": "def HasDensity (s : Set Nat) (δ : ℝ) : Prop :=\n  Filter.Tendsto (fun (n : Nat) => ((s ∩ Set.Iio n).ncard : ℝ)) Filter.atTop (nhds δ)\n\ndef ProductMap (d : Nat → Nat) (p : Nat × Nat) : Nat :=\n  ∏ i ∈ Finset.Icc p.1 p.2, d i",
+    "type_context": "Mathlib\ndef HasDensity (s : Set Nat) (δ : ℝ) : Prop :=\n  Filter.Tendsto (fun (n : Nat) => ((s ∩ Set.Iio n).ncard : ℝ)) Filter.atTop (nhds δ)\n\ndef ProductMap (d : Nat → Nat) (p : Nat × Nat) : Nat :=\n  ∏ i ∈ Finset.Icc p.1 p.2, d i",
+    "parent_typed": {
+      "statement": "∃ (d : Nat → Nat), StrictMono d ∧ 1 ≤ d 0 ∧ HasDensity (Set.range d) 1 ∧\n  Set.InjOn (ProductMap d) {(p : Nat × Nat) | p.1 ≤ p.2}",
+      "binders": [],
+      "reading": "There is a strictly increasing sequence of naturals starting at ≥ 1 whose range has density 1 and whose interval-products are all distinct.",
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": null,
+        "prose_contract_root_report": {
+          "ok": true,
+          "missing": [],
+          "reason": "",
+          "blocking": false,
+          "why_not_blocking": "tokens mined from ENGLISH prose are not Lean tokens; `Fin k` carries `1 <= i <= k` structurally"
+        }
+      }
+    },
+    "composition_claim": {
+      "text": "Child 1 supplies the witness d, and children 2 and 3 supply the density-1 property and the InjOn property for that same d; conjoining them gives exactly the existential statement of erdos421_A_M01.",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "KERNEL_CHECKED",
+      "rc": 0,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "counts_toward_parent": 1
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "source": "oracle/evidence/msl-machine/dag/decomp/erdos421/lean/erdos421_A_M01_COMPOSE.lean",
+    "lean_theorem_name": "msl_erdos421_a_m01_composition",
+    "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxHeartbeats 400000\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef HasDensity (s : Set Nat) (δ : ℝ) : Prop :=\n  Filter.Tendsto (fun (n : Nat) => ((s ∩ Set.Iio n).ncard : ℝ)) Filter.atTop (nhds δ)\n\ndef ProductMap (d : Nat → Nat) (p : Nat × Nat) : Nat :=\n  ∏ i ∈ Finset.Icc p.1 p.2, d i\n\n",
+    "lean_signature": "theorem msl_erdos421_a_m01_composition : ((∀ (d : Nat → Nat), StrictMono d ∧ 1 ≤ d 0) ∧ (∀ (d : Nat → Nat) (hmono : StrictMono d) (hd0 : 1 ≤ d 0), HasDensity (Set.range d) 1) ∧ (∀ (d : Nat → Nat) (hmono : StrictMono d) (hd0 : 1 ≤ d 0), Set.InjOn (ProductMap d) {(p : Nat × Nat) | p.1 ≤ p.2})) → (∃ (d : Nat → Nat), StrictMono d ∧ 1 ≤ d 0 ∧ HasDensity (Set.range d) 1 ∧\n Set.InjOn (ProductMap d) {(p : Nat × Nat) | p.1 ≤ p.2})",
+    "lean_statement_line": "theorem msl_erdos421_a_m01_composition : ((∀ (d : Nat → Nat), StrictMono d ∧ 1 ≤ d 0) ∧ (∀ (d : Nat → Nat) (hmono : StrictMono d) (hd0 : 1 ≤ d 0), HasDensity (Set.range d) 1) ∧ (∀ (d : Nat → Nat) (hmono : StrictMono d) (hd0 : 1 ≤ d 0), Set.InjOn (ProductMap d) {(p : Nat × Nat) | p.1 ≤ p.2})) → (∃ (d : Nat → Nat), StrictMono d ∧ 1 ≤ d 0 ∧ HasDensity (Set.range d) 1 ∧\n Set.InjOn (ProductMap d) {(p : Nat × Nat) | p.1 ≤ p.2}) := by\n  first\n  | tauto\n  | (intro h; exact h.1)\n  | (intro h; simp_all)\n  | (intro h; omega)\n  | (intro h; norm_num at h ⊢ <;> tauto)\n  | aesop\n  | decide",
+    "lean_trailer": "\n#print axioms msl_erdos421_a_m01_composition\n",
+    "lean_binders": [],
+    "lean_file_sha256": "df869883893fca3cee8d7a6ec4bce0c9a9c3bd5bf84cd92f7964d3431f39664a",
+    "lean_file_contract": "TO REPRODUCE GATE 4: compile `lean_preamble + lean_statement_line + \"\\n\" + lean_trailer` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text the deterministic ladder ran on. TO ATTEMPT A DIFFERENT PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\" + lean_trailer` -- keep the trailer, it is the `#print axioms` line the footprint is read from. Do NOT rebuild a header from `definitions` and do NOT drop the binders.",
+    "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos421/receipts/erdos421_A_M01_COMPOSE.verify.json",
+    "receipt_kind": "VERIFY_JSON"
+  },
+  "parent_new_depends_on": [
+    "erdos421:A:M01#COMPOSE"
+  ],
+  "rejected": [],
+  "counts": {
+    "proposed": 3,
+    "elaborated": 3,
+    "bound": 3,
+    "non_circular": 3,
+    "non_trivial": 3,
+    "surviving": 3,
+    "composition_kernel_checked": 1,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 3,
+    "counts_toward_parent_note": "composition PROVED_KERNEL: the children are load-bearing"
+  },
+  "definitions": {
+    "block": "def HasDensity (s : Set Nat) (δ : ℝ) : Prop :=\n  Filter.Tendsto (fun (n : Nat) => ((s ∩ Set.Iio n).ncard : ℝ)) Filter.atTop (nhds δ)\n\ndef ProductMap (d : Nat → Nat) (p : Nat × Nat) : Nat :=\n  ∏ i ∈ Finset.Icc p.1 p.2, d i",
+    "gate0": {
+      "verdict": "DEFS_ELABORATE"
+    },
+    "campaign_vocabulary_prepended": [],
+    "normalization": {
+      "body": "def HasDensity (s : Set Nat) (δ : ℝ) : Prop :=\n  Filter.Tendsto (fun (n : Nat) => ((s ∩ Set.Iio n).ncard : ℝ)) Filter.atTop (nhds δ)\n\ndef ProductMap (d : Nat → Nat) (p : Nat × Nat) : Nat :=\n  ∏ i ∈ Finset.Icc p.1 p.2, d i",
+      "opens": [],
+      "dropped_imports": []
+    }
+  }
+}

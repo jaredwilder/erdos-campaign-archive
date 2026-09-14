@@ -1,0 +1,389 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos931",
+  "generated_utc": "2026-09-02T16:46:03Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos931:LEM:R006:L1",
+    "statement": "Not certifiable as supplied: analytic reduction=\"none\" means the proved arrow finite-residue-check⇒divisibility-at-gap-n2−n1 does not exist and no finite witness (n1,n2,p,quantity) was extracted, so Kind One has no input and Kind Two is out of scope for a discrete divisibility claim; repair target i",
+    "statement_sha256": "d3965d704119dcfad09bd1fb795f9398a921e7c7ea073bc79978b1ff5f2bf1a6",
+    "kind": "LEMMA",
+    "binding": "UNBOUND",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "Let $k_1\\geq k_2\\geq 3$. Are there only finitely many $n_2\\geq n_1+k_1$ such that\\[\\prod_{1\\leq i\\leq k_1}(n_1+i)\\textrm{ and }\\prod_{1\\leq j\\leq k_2}(n_2+j)\\]have the same prime factors?",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos931-campaign-001/contract.json",
+    "sha256": "0315b8e79b241e1f43d20c2eaf25b3a47d8714da10dd94d65e20317a9ceaa475"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos931:LEM:R006:L1",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "dcc2be83fc034530ea8fa0da150f6a2dde5cc73b76e705e5177b06db7d7677ff",
+    "prompt_chars": 4484,
+    "response_sha256": "d23b5fa7a69ad0a56709617d2db3f3ffaf877741322af3b62e381e9db6e6f1b4",
+    "usage": {
+      "prompt_tokens": 1244,
+      "completion_tokens": 33748,
+      "total_tokens": 34992,
+      "cost": 0.0085303,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0085303,
+        "upstream_inference_prompt_cost": 9.33e-05,
+        "upstream_inference_completions_cost": 0.008437
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 32500,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.0085303,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 825.37,
+    "utc": "2026-09-02T16:44:57Z"
+  },
+  "children": [
+    {
+      "id": "erdos931:LEM:R006:L1#D1",
+      "statement": "(3 : Nat) ≤ k → ∃ p : Nat, Nat.Prime p ∧ (2 : Nat) ≤ p ∧ p ≤ k",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos931",
+      "decomposed_from": "erdos931:LEM:R006:L1",
+      "imports": "Mathlib",
+      "definitions": "def blockPrimeFactors (n : Nat) (k : Nat) : Finset Nat :=\n  (Finset.prod (Finset.Icc (1 : Nat) k) (fun i : Nat => n + i)).primeFactors\n\ndef samePrimeBlockFactors (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  blockPrimeFactors n₁ k₁ = blockPrimeFactors n₂ k₂\n\ndef residueCheckPass (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∀ p : Nat, Nat.Prime p → (2 : Nat) ≤ p → p ≤ k₁ →\n    ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧ p ∣ n₂ + j\n\ndef sharedPrimeAcrossGap (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∃ p : Nat, Nat.Prime p ∧ (2 : Nat) ≤ p ∧ p ≤ k₁ ∧\n    ∃ i : Nat, i ∈ Finset.Icc (1 : Nat) k₁ ∧\n      ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧\n        p ∣ n₁ + i ∧ p ∣ n₁ + (n₂ - n₁) + j",
+      "type_context": "Mathlib\ndef blockPrimeFactors (n : Nat) (k : Nat) : Finset Nat :=\n  (Finset.prod (Finset.Icc (1 : Nat) k) (fun i : Nat => n + i)).primeFactors\n\ndef samePrimeBlockFactors (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  blockPrimeFactors n₁ k₁ = blockPrimeFactors n₂ k₂\n\ndef residueCheckPass (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∀ p : Nat, Nat.Prime p → (2 : Nat) ≤ p → p ≤ k₁ →\n    ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧ p ∣ n₂ + j\n\ndef sharedPrimeAcrossGap (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∃ p : Nat, Nat.Prime p ∧ (2 : Nat) ≤ p ∧ p ≤ k₁ ∧\n    ∃ i : Nat, i ∈ Finset.Icc (1 : Nat) k₁ ∧\n      ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧\n        p ∣ n₁ + i ∧ p ∣ n₁ + (n₂ - n₁) + j",
+      "lean_binders": [
+        "(k : Nat)"
+      ],
+      "lean_theorem_name": "msl_erdos931_lem_r006_l1_c1",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef blockPrimeFactors (n : Nat) (k : Nat) : Finset Nat :=\n  (Finset.prod (Finset.Icc (1 : Nat) k) (fun i : Nat => n + i)).primeFactors\n\ndef samePrimeBlockFactors (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  blockPrimeFactors n₁ k₁ = blockPrimeFactors n₂ k₂\n\ndef residueCheckPass (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∀ p : Nat, Nat.Prime p → (2 : Nat) ≤ p → p ≤ k₁ →\n    ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧ p ∣ n₂ + j\n\ndef sharedPrimeAcrossGap (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∃ p : Nat, Nat.Prime p ∧ (2 : Nat) ≤ p ∧ p ≤ k₁ ∧\n    ∃ i : Nat, i ∈ Finset.Icc (1 : Nat) k₁ ∧\n      ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧\n        p ∣ n₁ + i ∧ p ∣ n₁ + (n₂ - n₁) + j\n\n",
+      "lean_signature": "theorem msl_erdos931_lem_r006_l1_c1 (k : Nat) : (3 : Nat) ≤ k → ∃ p : Nat, Nat.Prime p ∧ (2 : Nat) ≤ p ∧ p ≤ k",
+      "lean_statement_line": "theorem msl_erdos931_lem_r006_l1_c1 (k : Nat) : (3 : Nat) ≤ k → ∃ p : Nat, Nat.Prime p ∧ (2 : Nat) ≤ p ∧ p ≤ k := by sorry",
+      "lean_file_sha256": "f583a3e9cd50f34c9e00ec30698b1bee6d54a004c3ab6796efc4dace3320cebf",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "For k ≥ 3 the finite set of primes ≤ k is nonempty, so the residue check has a concrete prime to instantiate.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos931/receipts/erdos931_LEM_R006_L1_D1.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos931/lean/erdos931_LEM_R006_L1_D1.lean"
+    },
+    {
+      "id": "erdos931:LEM:R006:L1#D2",
+      "statement": "Nat.Prime p → p ≤ k → ∃ i : Nat, i ∈ Finset.Icc (1 : Nat) k ∧ p ∣ n + i",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos931",
+      "decomposed_from": "erdos931:LEM:R006:L1",
+      "imports": "Mathlib",
+      "definitions": "def blockPrimeFactors (n : Nat) (k : Nat) : Finset Nat :=\n  (Finset.prod (Finset.Icc (1 : Nat) k) (fun i : Nat => n + i)).primeFactors\n\ndef samePrimeBlockFactors (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  blockPrimeFactors n₁ k₁ = blockPrimeFactors n₂ k₂\n\ndef residueCheckPass (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∀ p : Nat, Nat.Prime p → (2 : Nat) ≤ p → p ≤ k₁ →\n    ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧ p ∣ n₂ + j\n\ndef sharedPrimeAcrossGap (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∃ p : Nat, Nat.Prime p ∧ (2 : Nat) ≤ p ∧ p ≤ k₁ ∧\n    ∃ i : Nat, i ∈ Finset.Icc (1 : Nat) k₁ ∧\n      ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧\n        p ∣ n₁ + i ∧ p ∣ n₁ + (n₂ - n₁) + j",
+      "type_context": "Mathlib\ndef blockPrimeFactors (n : Nat) (k : Nat) : Finset Nat :=\n  (Finset.prod (Finset.Icc (1 : Nat) k) (fun i : Nat => n + i)).primeFactors\n\ndef samePrimeBlockFactors (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  blockPrimeFactors n₁ k₁ = blockPrimeFactors n₂ k₂\n\ndef residueCheckPass (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∀ p : Nat, Nat.Prime p → (2 : Nat) ≤ p → p ≤ k₁ →\n    ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧ p ∣ n₂ + j\n\ndef sharedPrimeAcrossGap (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∃ p : Nat, Nat.Prime p ∧ (2 : Nat) ≤ p ∧ p ≤ k₁ ∧\n    ∃ i : Nat, i ∈ Finset.Icc (1 : Nat) k₁ ∧\n      ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧\n        p ∣ n₁ + i ∧ p ∣ n₁ + (n₂ - n₁) + j",
+      "lean_binders": [
+        "(n : Nat)",
+        "(k : Nat)",
+        "(p : Nat)"
+      ],
+      "lean_theorem_name": "msl_erdos931_lem_r006_l1_c2",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef blockPrimeFactors (n : Nat) (k : Nat) : Finset Nat :=\n  (Finset.prod (Finset.Icc (1 : Nat) k) (fun i : Nat => n + i)).primeFactors\n\ndef samePrimeBlockFactors (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  blockPrimeFactors n₁ k₁ = blockPrimeFactors n₂ k₂\n\ndef residueCheckPass (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∀ p : Nat, Nat.Prime p → (2 : Nat) ≤ p → p ≤ k₁ →\n    ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧ p ∣ n₂ + j\n\ndef sharedPrimeAcrossGap (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∃ p : Nat, Nat.Prime p ∧ (2 : Nat) ≤ p ∧ p ≤ k₁ ∧\n    ∃ i : Nat, i ∈ Finset.Icc (1 : Nat) k₁ ∧\n      ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧\n        p ∣ n₁ + i ∧ p ∣ n₁ + (n₂ - n₁) + j\n\n",
+      "lean_signature": "theorem msl_erdos931_lem_r006_l1_c2 (n : Nat) (k : Nat) (p : Nat) : Nat.Prime p → p ≤ k → ∃ i : Nat, i ∈ Finset.Icc (1 : Nat) k ∧ p ∣ n + i",
+      "lean_statement_line": "theorem msl_erdos931_lem_r006_l1_c2 (n : Nat) (k : Nat) (p : Nat) : Nat.Prime p → p ≤ k → ∃ i : Nat, i ∈ Finset.Icc (1 : Nat) k ∧ p ∣ n + i := by sorry",
+      "lean_file_sha256": "1edce99a717127dd1bad9894a3cbe915557b5e26ec9c83e8368396b428facd1a",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "Every prime p ≤ k divides one of the k consecutive integers n+1,…,n+k, a factor of the first block on the near side of the gap.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos931/receipts/erdos931_LEM_R006_L1_D2.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos931/lean/erdos931_LEM_R006_L1_D2.lean"
+    },
+    {
+      "id": "erdos931:LEM:R006:L1#D3",
+      "statement": "n₁ ≤ n₂ → p ∣ n₂ + j → p ∣ n₁ + (n₂ - n₁) + j",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos931",
+      "decomposed_from": "erdos931:LEM:R006:L1",
+      "imports": "Mathlib",
+      "definitions": "def blockPrimeFactors (n : Nat) (k : Nat) : Finset Nat :=\n  (Finset.prod (Finset.Icc (1 : Nat) k) (fun i : Nat => n + i)).primeFactors\n\ndef samePrimeBlockFactors (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  blockPrimeFactors n₁ k₁ = blockPrimeFactors n₂ k₂\n\ndef residueCheckPass (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∀ p : Nat, Nat.Prime p → (2 : Nat) ≤ p → p ≤ k₁ →\n    ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧ p ∣ n₂ + j\n\ndef sharedPrimeAcrossGap (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∃ p : Nat, Nat.Prime p ∧ (2 : Nat) ≤ p ∧ p ≤ k₁ ∧\n    ∃ i : Nat, i ∈ Finset.Icc (1 : Nat) k₁ ∧\n      ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧\n        p ∣ n₁ + i ∧ p ∣ n₁ + (n₂ - n₁) + j",
+      "type_context": "Mathlib\ndef blockPrimeFactors (n : Nat) (k : Nat) : Finset Nat :=\n  (Finset.prod (Finset.Icc (1 : Nat) k) (fun i : Nat => n + i)).primeFactors\n\ndef samePrimeBlockFactors (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  blockPrimeFactors n₁ k₁ = blockPrimeFactors n₂ k₂\n\ndef residueCheckPass (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∀ p : Nat, Nat.Prime p → (2 : Nat) ≤ p → p ≤ k₁ →\n    ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧ p ∣ n₂ + j\n\ndef sharedPrimeAcrossGap (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∃ p : Nat, Nat.Prime p ∧ (2 : Nat) ≤ p ∧ p ≤ k₁ ∧\n    ∃ i : Nat, i ∈ Finset.Icc (1 : Nat) k₁ ∧\n      ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧\n        p ∣ n₁ + i ∧ p ∣ n₁ + (n₂ - n₁) + j",
+      "lean_binders": [
+        "(n₁ : Nat)",
+        "(n₂ : Nat)",
+        "(j : Nat)",
+        "(p : Nat)"
+      ],
+      "lean_theorem_name": "msl_erdos931_lem_r006_l1_c3",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef blockPrimeFactors (n : Nat) (k : Nat) : Finset Nat :=\n  (Finset.prod (Finset.Icc (1 : Nat) k) (fun i : Nat => n + i)).primeFactors\n\ndef samePrimeBlockFactors (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  blockPrimeFactors n₁ k₁ = blockPrimeFactors n₂ k₂\n\ndef residueCheckPass (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∀ p : Nat, Nat.Prime p → (2 : Nat) ≤ p → p ≤ k₁ →\n    ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧ p ∣ n₂ + j\n\ndef sharedPrimeAcrossGap (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∃ p : Nat, Nat.Prime p ∧ (2 : Nat) ≤ p ∧ p ≤ k₁ ∧\n    ∃ i : Nat, i ∈ Finset.Icc (1 : Nat) k₁ ∧\n      ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧\n        p ∣ n₁ + i ∧ p ∣ n₁ + (n₂ - n₁) + j\n\n",
+      "lean_signature": "theorem msl_erdos931_lem_r006_l1_c3 (n₁ : Nat) (n₂ : Nat) (j : Nat) (p : Nat) : n₁ ≤ n₂ → p ∣ n₂ + j → p ∣ n₁ + (n₂ - n₁) + j",
+      "lean_statement_line": "theorem msl_erdos931_lem_r006_l1_c3 (n₁ : Nat) (n₂ : Nat) (j : Nat) (p : Nat) : n₁ ≤ n₂ → p ∣ n₂ + j → p ∣ n₁ + (n₂ - n₁) + j := by sorry",
+      "lean_file_sha256": "029222da52197f79d3a82436fd980015b88cfe23131ed7e43e0be01008a7de74",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "Across the gap g = n₂ − n₁, divisibility of the far factor n₂ + j is divisibility of the gap-shifted quantity n₁ + g + j.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos931/receipts/erdos931_LEM_R006_L1_D3.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos931/lean/erdos931_LEM_R006_L1_D3.lean"
+    },
+    {
+      "id": "erdos931:LEM:R006:L1#D4",
+      "statement": "samePrimeBlockFactors k₁ k₂ n₁ n₂ → residueCheckPass k₁ k₂ n₁ n₂",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos931",
+      "decomposed_from": "erdos931:LEM:R006:L1",
+      "imports": "Mathlib",
+      "definitions": "def blockPrimeFactors (n : Nat) (k : Nat) : Finset Nat :=\n  (Finset.prod (Finset.Icc (1 : Nat) k) (fun i : Nat => n + i)).primeFactors\n\ndef samePrimeBlockFactors (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  blockPrimeFactors n₁ k₁ = blockPrimeFactors n₂ k₂\n\ndef residueCheckPass (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∀ p : Nat, Nat.Prime p → (2 : Nat) ≤ p → p ≤ k₁ →\n    ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧ p ∣ n₂ + j\n\ndef sharedPrimeAcrossGap (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∃ p : Nat, Nat.Prime p ∧ (2 : Nat) ≤ p ∧ p ≤ k₁ ∧\n    ∃ i : Nat, i ∈ Finset.Icc (1 : Nat) k₁ ∧\n      ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧\n        p ∣ n₁ + i ∧ p ∣ n₁ + (n₂ - n₁) + j",
+      "type_context": "Mathlib\ndef blockPrimeFactors (n : Nat) (k : Nat) : Finset Nat :=\n  (Finset.prod (Finset.Icc (1 : Nat) k) (fun i : Nat => n + i)).primeFactors\n\ndef samePrimeBlockFactors (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  blockPrimeFactors n₁ k₁ = blockPrimeFactors n₂ k₂\n\ndef residueCheckPass (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∀ p : Nat, Nat.Prime p → (2 : Nat) ≤ p → p ≤ k₁ →\n    ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧ p ∣ n₂ + j\n\ndef sharedPrimeAcrossGap (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∃ p : Nat, Nat.Prime p ∧ (2 : Nat) ≤ p ∧ p ≤ k₁ ∧\n    ∃ i : Nat, i ∈ Finset.Icc (1 : Nat) k₁ ∧\n      ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧\n        p ∣ n₁ + i ∧ p ∣ n₁ + (n₂ - n₁) + j",
+      "lean_binders": [
+        "(k₁ : Nat)",
+        "(k₂ : Nat)",
+        "(n₁ : Nat)",
+        "(n₂ : Nat)"
+      ],
+      "lean_theorem_name": "msl_erdos931_lem_r006_l1_c4",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef blockPrimeFactors (n : Nat) (k : Nat) : Finset Nat :=\n  (Finset.prod (Finset.Icc (1 : Nat) k) (fun i : Nat => n + i)).primeFactors\n\ndef samePrimeBlockFactors (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  blockPrimeFactors n₁ k₁ = blockPrimeFactors n₂ k₂\n\ndef residueCheckPass (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∀ p : Nat, Nat.Prime p → (2 : Nat) ≤ p → p ≤ k₁ →\n    ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧ p ∣ n₂ + j\n\ndef sharedPrimeAcrossGap (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∃ p : Nat, Nat.Prime p ∧ (2 : Nat) ≤ p ∧ p ≤ k₁ ∧\n    ∃ i : Nat, i ∈ Finset.Icc (1 : Nat) k₁ ∧\n      ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧\n        p ∣ n₁ + i ∧ p ∣ n₁ + (n₂ - n₁) + j\n\n",
+      "lean_signature": "theorem msl_erdos931_lem_r006_l1_c4 (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : samePrimeBlockFactors k₁ k₂ n₁ n₂ → residueCheckPass k₁ k₂ n₁ n₂",
+      "lean_statement_line": "theorem msl_erdos931_lem_r006_l1_c4 (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : samePrimeBlockFactors k₁ k₂ n₁ n₂ → residueCheckPass k₁ k₂ n₁ n₂ := by sorry",
+      "lean_file_sha256": "d9a9041ba7c23fab17bc0cd73d15c96876424d43a797d0fca563d43d1daaf9af",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "If the two block products have equal prime factors, every prime p ≤ k₁ divides some n₂ + j: the root condition supplies the residue-check input that was missing.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos931/receipts/erdos931_LEM_R006_L1_D4.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos931/lean/erdos931_LEM_R006_L1_D4.lean"
+    }
+  ],
+  "composition": {
+    "id": "erdos931:LEM:R006:L1#COMPOSE",
+    "statement": "((∀ (k : Nat), (3 : Nat) ≤ k → ∃ p : Nat, Nat.Prime p ∧ (2 : Nat) ≤ p ∧ p ≤ k) ∧ (∀ (n : Nat) (k : Nat) (p : Nat), Nat.Prime p → p ≤ k → ∃ i : Nat, i ∈ Finset.Icc (1 : Nat) k ∧ p ∣ n + i) ∧ (∀ (j : Nat) (p : Nat), n₁ ≤ n₂ → p ∣ n₂ + j → p ∣ n₁ + (n₂ - n₁) + j) ∧ (samePrimeBlockFactors k₁ k₂ n₁ n₂ → residueCheckPass k₁ k₂ n₁ n₂)) → ((3 : Nat) ≤ k₂ → k₂ ≤ k₁ → n₁ + k₁ ≤ n₂ → residueCheckPass k₁ k₂ n₁ n₂ → sharedPrimeAcrossGap k₁ k₂ n₁ n₂)",
+    "kind": "COMPOSITION",
+    "depends_on": [
+      "erdos931:LEM:R006:L1#D1",
+      "erdos931:LEM:R006:L1#D2",
+      "erdos931:LEM:R006:L1#D3",
+      "erdos931:LEM:R006:L1#D4"
+    ],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "OPEN",
+    "problem": "erdos931",
+    "decomposed_from": "erdos931:LEM:R006:L1",
+    "imports": "Mathlib",
+    "definitions": "def blockPrimeFactors (n : Nat) (k : Nat) : Finset Nat :=\n  (Finset.prod (Finset.Icc (1 : Nat) k) (fun i : Nat => n + i)).primeFactors\n\ndef samePrimeBlockFactors (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  blockPrimeFactors n₁ k₁ = blockPrimeFactors n₂ k₂\n\ndef residueCheckPass (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∀ p : Nat, Nat.Prime p → (2 : Nat) ≤ p → p ≤ k₁ →\n    ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧ p ∣ n₂ + j\n\ndef sharedPrimeAcrossGap (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∃ p : Nat, Nat.Prime p ∧ (2 : Nat) ≤ p ∧ p ≤ k₁ ∧\n    ∃ i : Nat, i ∈ Finset.Icc (1 : Nat) k₁ ∧\n      ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧\n        p ∣ n₁ + i ∧ p ∣ n₁ + (n₂ - n₁) + j",
+    "type_context": "Mathlib\ndef blockPrimeFactors (n : Nat) (k : Nat) : Finset Nat :=\n  (Finset.prod (Finset.Icc (1 : Nat) k) (fun i : Nat => n + i)).primeFactors\n\ndef samePrimeBlockFactors (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  blockPrimeFactors n₁ k₁ = blockPrimeFactors n₂ k₂\n\ndef residueCheckPass (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∀ p : Nat, Nat.Prime p → (2 : Nat) ≤ p → p ≤ k₁ →\n    ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧ p ∣ n₂ + j\n\ndef sharedPrimeAcrossGap (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∃ p : Nat, Nat.Prime p ∧ (2 : Nat) ≤ p ∧ p ≤ k₁ ∧\n    ∃ i : Nat, i ∈ Finset.Icc (1 : Nat) k₁ ∧\n      ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧\n        p ∣ n₁ + i ∧ p ∣ n₁ + (n₂ - n₁) + j",
+    "parent_typed": {
+      "statement": "(3 : Nat) ≤ k₂ → k₂ ≤ k₁ → n₁ + k₁ ≤ n₂ → residueCheckPass k₁ k₂ n₁ n₂ → sharedPrimeAcrossGap k₁ k₂ n₁ n₂",
+      "binders": [
+        "(k₁ : Nat)",
+        "(k₂ : Nat)",
+        "(n₁ : Nat)",
+        "(n₂ : Nat)"
+      ],
+      "reading": "Repaired L1 arrow: for k₁ ≥ k₂ ≥ 3 with gap g = n₂ − n₁ ≥ k₁, the finite residue check (every prime p ≤ k₁ divides some n₂ + j) forces a prime p ≤ k₁ dividing a factor on each side of the gap, i.e. the finite witness (n₁, n₂, p, i, j) that Kind One lacked.",
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": null,
+        "prose_contract_root_report": {
+          "ok": true,
+          "missing": [],
+          "reason": "",
+          "blocking": false,
+          "why_not_blocking": "tokens mined from ENGLISH prose are not Lean tokens; `Fin k` carries `1 <= i <= k` structurally"
+        }
+      }
+    },
+    "composition_claim": {
+      "text": "Since 3 ≤ k₂ ≤ k₁ forces k₁ ≥ 3, child 1 yields a concrete prime p with 2 ≤ p ≤ k₁; instantiating the parent's residue-check hypothesis at p gives j ∈ Icc 1 k₂ with p ∣ n₂ + j, child 2 gives i ∈ Icc 1 k₁ with p ∣ n₁ + i, and child 3 (using n₁ ≤ n₂ from n₁ + k₁ ≤ n₂) rewrites p ∣ n₂ + j as p ∣ n₁ + (n₂ − n₁) + j, which is exactly the existential sharedPrimeAcrossGap k₁ k₂ n₁ n₂, so children 1–3 together with the parent's own hypothesis prove the parent. Child 4 derives that hypothesis from the root's equal-prime-factors condition, so the repaired L1 chain root-condition ⇒ finite residue check ⇒ divisibility at the gap n₂ − n₁ with finite witness (n₁, n₂, p, i, j) is assembled entirely from bounded, decidable pieces.",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "COMPOSITION_OPEN",
+      "rc": 1,
+      "kernel_error": "/root/peer/decomp/b20260902_094551_3/erdos931_LEM_R006_L1_comp.lean:25:535: error: unsolved goals",
+      "counts_toward_parent": 0
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "source": "oracle/evidence/msl-machine/dag/decomp/erdos931/lean/erdos931_LEM_R006_L1_COMPOSE.lean",
+    "lean_theorem_name": "msl_erdos931_lem_r006_l1_composition",
+    "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxHeartbeats 400000\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef blockPrimeFactors (n : Nat) (k : Nat) : Finset Nat :=\n  (Finset.prod (Finset.Icc (1 : Nat) k) (fun i : Nat => n + i)).primeFactors\n\ndef samePrimeBlockFactors (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  blockPrimeFactors n₁ k₁ = blockPrimeFactors n₂ k₂\n\ndef residueCheckPass (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∀ p : Nat, Nat.Prime p → (2 : Nat) ≤ p → p ≤ k₁ →\n    ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧ p ∣ n₂ + j\n\ndef sharedPrimeAcrossGap (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∃ p : Nat, Nat.Prime p ∧ (2 : Nat) ≤ p ∧ p ≤ k₁ ∧\n    ∃ i : Nat, i ∈ Finset.Icc (1 : Nat) k₁ ∧\n      ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧\n        p ∣ n₁ + i ∧ p ∣ n₁ + (n₂ - n₁) + j\n\n",
+    "lean_signature": "theorem msl_erdos931_lem_r006_l1_composition (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : ((∀ (k : Nat), (3 : Nat) ≤ k → ∃ p : Nat, Nat.Prime p ∧ (2 : Nat) ≤ p ∧ p ≤ k) ∧ (∀ (n : Nat) (k : Nat) (p : Nat), Nat.Prime p → p ≤ k → ∃ i : Nat, i ∈ Finset.Icc (1 : Nat) k ∧ p ∣ n + i) ∧ (∀ (j : Nat) (p : Nat), n₁ ≤ n₂ → p ∣ n₂ + j → p ∣ n₁ + (n₂ - n₁) + j) ∧ (samePrimeBlockFactors k₁ k₂ n₁ n₂ → residueCheckPass k₁ k₂ n₁ n₂)) → ((3 : Nat) ≤ k₂ → k₂ ≤ k₁ → n₁ + k₁ ≤ n₂ → residueCheckPass k₁ k₂ n₁ n₂ → sharedPrimeAcrossGap k₁ k₂ n₁ n₂)",
+    "lean_statement_line": "theorem msl_erdos931_lem_r006_l1_composition (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : ((∀ (k : Nat), (3 : Nat) ≤ k → ∃ p : Nat, Nat.Prime p ∧ (2 : Nat) ≤ p ∧ p ≤ k) ∧ (∀ (n : Nat) (k : Nat) (p : Nat), Nat.Prime p → p ≤ k → ∃ i : Nat, i ∈ Finset.Icc (1 : Nat) k ∧ p ∣ n + i) ∧ (∀ (j : Nat) (p : Nat), n₁ ≤ n₂ → p ∣ n₂ + j → p ∣ n₁ + (n₂ - n₁) + j) ∧ (samePrimeBlockFactors k₁ k₂ n₁ n₂ → residueCheckPass k₁ k₂ n₁ n₂)) → ((3 : Nat) ≤ k₂ → k₂ ≤ k₁ → n₁ + k₁ ≤ n₂ → residueCheckPass k₁ k₂ n₁ n₂ → sharedPrimeAcrossGap k₁ k₂ n₁ n₂) := by\n  first\n  | tauto\n  | (intro h; exact h.1)\n  | (intro h; simp_all)\n  | (intro h; omega)\n  | (intro h; norm_num at h ⊢ <;> tauto)\n  | aesop\n  | decide",
+    "lean_trailer": "\n#print axioms msl_erdos931_lem_r006_l1_composition\n",
+    "lean_binders": [
+      "(k₁ : Nat)",
+      "(k₂ : Nat)",
+      "(n₁ : Nat)",
+      "(n₂ : Nat)"
+    ],
+    "lean_file_sha256": "5ee9cb16975c90687902e0d6da9e758519af656b460c74f4ac842bbe138f7b94",
+    "lean_file_contract": "TO REPRODUCE GATE 4: compile `lean_preamble + lean_statement_line + \"\\n\" + lean_trailer` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text the deterministic ladder ran on. TO ATTEMPT A DIFFERENT PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\" + lean_trailer` -- keep the trailer, it is the `#print axioms` line the footprint is read from. Do NOT rebuild a header from `definitions` and do NOT drop the binders.",
+    "composition_receipt": "oracle/evidence/msl-machine/dag/decomp/erdos931/receipts/erdos931_LEM_R006_L1_COMPOSE.composition.json"
+  },
+  "parent_new_depends_on": [
+    "erdos931:LEM:R006:L1#COMPOSE"
+  ],
+  "rejected": [],
+  "counts": {
+    "proposed": 4,
+    "elaborated": 4,
+    "bound": 4,
+    "non_circular": 4,
+    "non_trivial": 4,
+    "surviving": 4,
+    "composition_kernel_checked": 0,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 0,
+    "counts_toward_parent_note": "composition OPEN: these children contribute ZERO toward the parent until it closes; they remain formal leaves for the rung loop"
+  },
+  "definitions": {
+    "block": "def blockPrimeFactors (n : Nat) (k : Nat) : Finset Nat :=\n  (Finset.prod (Finset.Icc (1 : Nat) k) (fun i : Nat => n + i)).primeFactors\n\ndef samePrimeBlockFactors (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  blockPrimeFactors n₁ k₁ = blockPrimeFactors n₂ k₂\n\ndef residueCheckPass (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∀ p : Nat, Nat.Prime p → (2 : Nat) ≤ p → p ≤ k₁ →\n    ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧ p ∣ n₂ + j\n\ndef sharedPrimeAcrossGap (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∃ p : Nat, Nat.Prime p ∧ (2 : Nat) ≤ p ∧ p ≤ k₁ ∧\n    ∃ i : Nat, i ∈ Finset.Icc (1 : Nat) k₁ ∧\n      ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧\n        p ∣ n₁ + i ∧ p ∣ n₁ + (n₂ - n₁) + j",
+    "gate0": {
+      "verdict": "DEFS_ELABORATE"
+    },
+    "campaign_vocabulary_prepended": [],
+    "normalization": {
+      "body": "def blockPrimeFactors (n : Nat) (k : Nat) : Finset Nat :=\n  (Finset.prod (Finset.Icc (1 : Nat) k) (fun i : Nat => n + i)).primeFactors\n\ndef samePrimeBlockFactors (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  blockPrimeFactors n₁ k₁ = blockPrimeFactors n₂ k₂\n\ndef residueCheckPass (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∀ p : Nat, Nat.Prime p → (2 : Nat) ≤ p → p ≤ k₁ →\n    ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧ p ∣ n₂ + j\n\ndef sharedPrimeAcrossGap (k₁ : Nat) (k₂ : Nat) (n₁ : Nat) (n₂ : Nat) : Prop :=\n  ∃ p : Nat, Nat.Prime p ∧ (2 : Nat) ≤ p ∧ p ≤ k₁ ∧\n    ∃ i : Nat, i ∈ Finset.Icc (1 : Nat) k₁ ∧\n      ∃ j : Nat, j ∈ Finset.Icc (1 : Nat) k₂ ∧\n        p ∣ n₁ + i ∧ p ∣ n₁ + (n₂ - n₁) + j",
+      "opens": [],
+      "dropped_imports": []
+    }
+  }
+}

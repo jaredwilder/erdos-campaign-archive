@@ -1,0 +1,12 @@
+import Mathlib
+
+set_option autoImplicit false
+set_option maxRecDepth 4000
+
+open Finset BigOperators
+
+def sylv : Nat → Nat
+  | 0 => 2
+  | n+1 => sylv n * (sylv n - 1) + 1
+
+theorem msl_erdos1101_lem_r003_l2_parent : (∀ (C : ℕ), ∃ (n : ℕ), sylv n > n ^ C) ∧ (∀ (c : ℝ), 0 < c → ∃ (n : ℕ), (sylv n : ℝ) > Real.exp (c * (n : ℝ))) := by sorry

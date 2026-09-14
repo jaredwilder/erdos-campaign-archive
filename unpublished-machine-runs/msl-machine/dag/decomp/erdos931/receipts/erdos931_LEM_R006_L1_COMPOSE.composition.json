@@ -1,0 +1,22 @@
+{
+  "kind": "COMPOSITION_KERNEL_CHECK",
+  "node": "erdos931:LEM:R006:L1#COMPOSE",
+  "verdict": {
+    "verdict": "COMPOSITION_OPEN",
+    "rc": 1,
+    "kernel_error": "/root/peer/decomp/b20260902_094551_3/erdos931_LEM_R006_L1_comp.lean:25:535: error: unsolved goals",
+    "counts_toward_parent": 0
+  },
+  "lean_source": "oracle/evidence/msl-machine/dag/decomp/erdos931/lean/erdos931_LEM_R006_L1_COMPOSE.lean",
+  "ladder": [
+    "tauto",
+    "(intro h; exact h.1)",
+    "(intro h; simp_all)",
+    "(intro h; omega)",
+    "(intro h; norm_num at h ⊢ <;> tauto)",
+    "aesop",
+    "decide"
+  ],
+  "kernel_log": "/root/peer/decomp/b20260902_094551_3/erdos931_LEM_R006_L1_comp.lean:15:44: warning: Variable name `n₁` is not explicitly referenced.\n\nThe binding can be removed (if unused) or named `_` (if used implicitly).\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/root/peer/decomp/b20260902_094551_3/erdos931_LEM_R006_L1_comp.lean:25:535: error: unsolved goals\nk₁ k₂ n₁ n₂ : ℕ\nh :\n  (∀ (k : ℕ), 3 ≤ k → ∃ p, Nat.Prime p ∧ 2 ≤ p ∧ p ≤ k) ∧\n    (∀ (n k p : ℕ), Nat.Prime p → p ≤ k → ∃ i, (1 ≤ i ∧ i ≤ k) ∧ p ∣ n + i) ∧\n      (samePrimeBlockFactors k₁ k₂ n₁ n₂ → residueCheckPass k₁ k₂ n₁ n₂)\n⊢ 3 ≤ k₂ → k₂ ≤ k₁ → n₁ + k₁ ≤ n₂ → residueCheckPass k₁ k₂ n₁ n₂ → sharedPrimeAcrossGap k₁ k₂ n₁ n₂\n'msl_erdos931_lem_r006_l1_composition' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]",
+  "utc": "2026-09-02T16:46:03Z"
+}

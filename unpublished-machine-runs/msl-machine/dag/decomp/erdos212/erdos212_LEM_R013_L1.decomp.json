@@ -1,0 +1,246 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos212",
+  "generated_utc": "2026-09-02T16:41:01Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos212:LEM:R013:L1",
+    "statement": "Candidate is Ulam's dense rational distance set problem; both closes reduce to it, no valid attack or proof available.",
+    "statement_sha256": "d55dc81036c714d8f8b4d5e24149a8e62520910ddf357e79bb22c5f7fc51a60a",
+    "kind": "LEMMA",
+    "binding": "UNBOUND",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "Is there a dense subset of $\\mathbb{R}^2$ such that all pairwise distances are rational?",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos212-campaign-001/contract.json",
+    "sha256": "1fdade323acbb938f12df97970ab21f44dc79a56ed73cf4f8750a5ff7d90b147"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos212:LEM:R013:L1",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "ecb4daece35a209187b9e97bc7145ebee847ab20cf1899aadf0795478cab4f67",
+    "prompt_chars": 4199,
+    "response_sha256": "7c9651c1722bcfc813f040fc4969e0bad7c3075022fde391ed793232108ba3d3",
+    "usage": {
+      "prompt_tokens": 1085,
+      "completion_tokens": 1365,
+      "total_tokens": 2450,
+      "cost": 0.000422625,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.000422625,
+        "upstream_inference_prompt_cost": 8.1375e-05,
+        "upstream_inference_completions_cost": 0.00034125
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 881,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.000422625,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 35.91,
+    "utc": "2026-09-02T16:40:28Z"
+  },
+  "children": [
+    {
+      "id": "erdos212:LEM:R013:L1#D1",
+      "statement": "∀ u : Set ℂ, (Dense u ∧ u.Pairwise (fun c₁ c₂ : ℂ => dist c₁ c₂ ∈ Set.range (Rat.cast : Rat → ℝ))) ↔ ∃ v : Set (EuclideanSpace ℝ (Fin 2)), Dense v ∧ v.Pairwise (fun p q : EuclideanSpace ℝ (Fin 2) => dist p q ∈ Set.range (Rat.cast : Rat → ℝ))",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos212",
+      "decomposed_from": "erdos212:LEM:R013:L1",
+      "imports": "Mathlib",
+      "definitions": "",
+      "type_context": "Mathlib",
+      "lean_binders": [],
+      "lean_theorem_name": "msl_erdos212_lem_r013_l1_c1",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\n",
+      "lean_signature": "theorem msl_erdos212_lem_r013_l1_c1 : ∀ u : Set ℂ, (Dense u ∧ u.Pairwise (fun c₁ c₂ : ℂ => dist c₁ c₂ ∈ Set.range (Rat.cast : Rat → ℝ))) ↔ ∃ v : Set (EuclideanSpace ℝ (Fin 2)), Dense v ∧ v.Pairwise (fun p q : EuclideanSpace ℝ (Fin 2) => dist p q ∈ Set.range (Rat.cast : Rat → ℝ))",
+      "lean_statement_line": "theorem msl_erdos212_lem_r013_l1_c1 : ∀ u : Set ℂ, (Dense u ∧ u.Pairwise (fun c₁ c₂ : ℂ => dist c₁ c₂ ∈ Set.range (Rat.cast : Rat → ℝ))) ↔ ∃ v : Set (EuclideanSpace ℝ (Fin 2)), Dense v ∧ v.Pairwise (fun p q : EuclideanSpace ℝ (Fin 2) => dist p q ∈ Set.range (Rat.cast : Rat → ℝ)) := by sorry",
+      "lean_file_sha256": "0187e5e015560d929a95fa16994e5d94c1fc8f81b41af70d35876218dcbf0229",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "The dense rational-distance-set property transports across the isometry ℂ ≅ EuclideanSpace ℝ (Fin 2).",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos212/receipts/erdos212_LEM_R013_L1_D1.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos212/lean/erdos212_LEM_R013_L1_D1.lean"
+    },
+    {
+      "id": "erdos212:LEM:R013:L1#D2",
+      "statement": "∃ v : Set (EuclideanSpace ℝ (Fin 2)), Dense v ∧ v.Pairwise (fun p q : EuclideanSpace ℝ (Fin 2) => dist p q ∈ Set.range (Rat.cast : Rat → ℝ))",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos212",
+      "decomposed_from": "erdos212:LEM:R013:L1",
+      "imports": "Mathlib",
+      "definitions": "",
+      "type_context": "Mathlib",
+      "lean_binders": [],
+      "lean_theorem_name": "msl_erdos212_lem_r013_l1_c2",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\n",
+      "lean_signature": "theorem msl_erdos212_lem_r013_l1_c2 : ∃ v : Set (EuclideanSpace ℝ (Fin 2)), Dense v ∧ v.Pairwise (fun p q : EuclideanSpace ℝ (Fin 2) => dist p q ∈ Set.range (Rat.cast : Rat → ℝ))",
+      "lean_statement_line": "theorem msl_erdos212_lem_r013_l1_c2 : ∃ v : Set (EuclideanSpace ℝ (Fin 2)), Dense v ∧ v.Pairwise (fun p q : EuclideanSpace ℝ (Fin 2) => dist p q ∈ Set.range (Rat.cast : Rat → ℝ)) := by sorry",
+      "lean_file_sha256": "f9b5d215dc6ac9d8ca435dbe9072b6934afc238d1c3b4731dca5dc13f8e4613d",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "There is a dense subset of the Euclidean plane ℝ² all of whose pairwise distances are rational.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos212/receipts/erdos212_LEM_R013_L1_D2.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos212/lean/erdos212_LEM_R013_L1_D2.lean"
+    }
+  ],
+  "composition": {
+    "id": "erdos212:LEM:R013:L1#COMPOSE",
+    "statement": "(composition not constructed)",
+    "kind": "COMPOSITION",
+    "depends_on": [
+      "erdos212:LEM:R013:L1#D1",
+      "erdos212:LEM:R013:L1#D2"
+    ],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "OPEN",
+    "problem": "erdos212",
+    "decomposed_from": "erdos212:LEM:R013:L1",
+    "imports": "Mathlib",
+    "definitions": "",
+    "type_context": "Mathlib",
+    "parent_typed": {
+      "statement": "answer(sorry) ↔ ∃ u : Set ℂ, Dense u ∧ u.Pairwise (fun c₁ c₂ : ℂ => dist c₁ c₂ ∈ Set.range (Rat.cast : Rat → ℝ))",
+      "binders": [],
+      "reading": "There exists a dense subset of ℂ ≅ ℝ² all of whose pairwise distances are rational (Ulam's dense rational distance set problem).",
+      "elaboration": {
+        "verdict": "STATEMENT_DOES_NOT_ELABORATE",
+        "rc": 1,
+        "kernel_error": "/root/peer/decomp/b20260902_094028_1/erdos212_LEM_R013_L1_parent.lean:8:48: error: unexpected token '('; expected ':=', 'where' or '|'"
+      },
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": null,
+        "prose_contract_root_report": {
+          "ok": true,
+          "missing": [],
+          "reason": "",
+          "blocking": false,
+          "why_not_blocking": "tokens mined from ENGLISH prose are not Lean tokens; `Fin k` carries `1 <= i <= k` structurally"
+        }
+      }
+    },
+    "composition_claim": {
+      "text": "Child 1 is the kernel-checkable transport equivalence between the ℂ formulation and the ℝ² (EuclideanSpace ℝ (Fin 2)) formulation; applying its ← direction to the existence statement of child 2 yields exactly the parent's right-hand side, hence the parent. Neither child restates the parent: child 1 is an equivalence between two typed formulations, child 2 lives in a different type.",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "COMPOSITION_NOT_RUN",
+      "counts_toward_parent": 0,
+      "reason": "parent typed rendering failed GATE 1/GATE 2 -- a composition cannot be stated over a parent the kernel will not accept"
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "composition_receipt": "oracle/evidence/msl-machine/dag/decomp/erdos212/receipts/erdos212_LEM_R013_L1_COMPOSE.composition.json"
+  },
+  "parent_new_depends_on": [
+    "erdos212:LEM:R013:L1#COMPOSE"
+  ],
+  "rejected": [],
+  "counts": {
+    "proposed": 2,
+    "elaborated": 2,
+    "bound": 2,
+    "non_circular": 2,
+    "non_trivial": 2,
+    "surviving": 2,
+    "composition_kernel_checked": 0,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 0,
+    "counts_toward_parent_note": "composition OPEN: these children contribute ZERO toward the parent until it closes; they remain formal leaves for the rung loop"
+  },
+  "definitions": {
+    "block": "",
+    "gate0": null,
+    "campaign_vocabulary_prepended": [],
+    "normalization": {
+      "body": "",
+      "opens": [],
+      "dropped_imports": []
+    }
+  }
+}

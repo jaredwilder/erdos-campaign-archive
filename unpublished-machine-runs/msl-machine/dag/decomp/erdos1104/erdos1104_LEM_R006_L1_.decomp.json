@@ -1,0 +1,266 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos1104",
+  "generated_utc": "2026-09-02T17:00:35Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos1104:LEM:R006:L1'",
+    "statement": "R006-L1-partial: An ∃-side exact certificate is buildable now: given any single exact rational extremizer witness, a deterministic fail-closed integer verifier (Fractions only, require-gated, scope = that witness, containment explicitly outside scope per §11 step 6) certifies witness validity without the containment lemma. The full-claim certificate still requires the proved containment reduction ",
+    "statement_sha256": "088125065390d8764870f8c5ac0cafddae6721544a4acc1b12d3ace03b17c139",
+    "kind": "LEMMA",
+    "binding": "UNBOUND",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "Let $f(n)$ be the maximum possible chromatic number of a triangle-free graph on $n$ vertices. Estimate $f(n)$.",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos1104-campaign-001/contract.json",
+    "sha256": "85a96ff726b9db9e53393a9c8c3631904db4164e044589d7520befc03d1a60ad"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos1104:LEM:R006:L1'",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "4676d3501a8d07d4857b78c065437fcbcbee26426f55a2208713bb0d95b0cdcd",
+    "prompt_chars": 4528,
+    "response_sha256": "f6f1ebaff54f9ee897ffa22038cd2ca5c5d141e3dd962e2fd05a865bbc7d2e48",
+    "usage": {
+      "prompt_tokens": 1157,
+      "completion_tokens": 3782,
+      "total_tokens": 4939,
+      "cost": 0.001032275,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.001032275,
+        "upstream_inference_prompt_cost": 8.6775e-05,
+        "upstream_inference_completions_cost": 0.0009455
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 3216,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.001032275,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 110.12,
+    "utc": "2026-09-02T16:59:30Z"
+  },
+  "children": [
+    {
+      "id": "erdos1104:LEM:R006:L1'#D1",
+      "statement": "∃ (chk : Nat → Int → Int → Bool), (∀ (n : Nat) (q : Rat), chk n q.num q.den = true ↔ ValidW n q) ∧ (∀ (n : Nat) (a : Int), chk n a 0 = false)",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos1104",
+      "decomposed_from": "erdos1104:LEM:R006:L1'",
+      "imports": "Mathlib",
+      "definitions": "",
+      "type_context": "Mathlib",
+      "lean_binders": [
+        "(ValidW : Nat → Rat → Prop)"
+      ],
+      "lean_theorem_name": "msl_erdos1104_lem_r006_l1_c1",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\n",
+      "lean_signature": "theorem msl_erdos1104_lem_r006_l1_c1 (ValidW : Nat → Rat → Prop) : ∃ (chk : Nat → Int → Int → Bool), (∀ (n : Nat) (q : Rat), chk n q.num q.den = true ↔ ValidW n q) ∧ (∀ (n : Nat) (a : Int), chk n a 0 = false)",
+      "lean_statement_line": "theorem msl_erdos1104_lem_r006_l1_c1 (ValidW : Nat → Rat → Prop) : ∃ (chk : Nat → Int → Int → Bool), (∀ (n : Nat) (q : Rat), chk n q.num q.den = true ↔ ValidW n q) ∧ (∀ (n : Nat) (a : Int), chk n a 0 = false) := by sorry",
+      "lean_file_sha256": "c49be9094a02de4e549b5f82bccff2a3356545abe72d4799f1a03e845cd3344f",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "There exists an integer-level fail-closed checker chk which, fed the exact numerator and denominator of a rational witness, accepts exactly the valid witnesses and rejects every zero-denominator (malformed) input.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos1104/receipts/erdos1104_LEM_R006_L1_D1.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos1104/lean/erdos1104_LEM_R006_L1_D1.lean"
+    },
+    {
+      "id": "erdos1104:LEM:R006:L1'#D2",
+      "statement": "∃ (V : Nat → Rat → Bool), ∀ (n : Nat) (q : Rat), V n q = chk n q.num q.den",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos1104",
+      "decomposed_from": "erdos1104:LEM:R006:L1'",
+      "imports": "Mathlib",
+      "definitions": "",
+      "type_context": "Mathlib",
+      "lean_binders": [
+        "(chk : Nat → Int → Int → Bool)"
+      ],
+      "lean_theorem_name": "msl_erdos1104_lem_r006_l1_c2",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\n",
+      "lean_signature": "theorem msl_erdos1104_lem_r006_l1_c2 (chk : Nat → Int → Int → Bool) : ∃ (V : Nat → Rat → Bool), ∀ (n : Nat) (q : Rat), V n q = chk n q.num q.den",
+      "lean_statement_line": "theorem msl_erdos1104_lem_r006_l1_c2 (chk : Nat → Int → Int → Bool) : ∃ (V : Nat → Rat → Bool), ∀ (n : Nat) (q : Rat), V n q = chk n q.num q.den := by sorry",
+      "lean_file_sha256": "1ad7cad0587294e387b70fcec36148bd1d1f95b7a357a09851323747783ef636",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "Given any integer-level checker, a rational-level verifier V can be built that acts on a rational q solely via its exact components q.num and q.den.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos1104/receipts/erdos1104_LEM_R006_L1_D2.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos1104/lean/erdos1104_LEM_R006_L1_D2.lean"
+    }
+  ],
+  "composition": {
+    "id": "erdos1104:LEM:R006:L1'#COMPOSE",
+    "statement": "((∃ (chk : Nat → Int → Int → Bool), (∀ (n : Nat) (q : Rat), chk n q.num q.den = true ↔ ValidW n q) ∧ (∀ (n : Nat) (a : Int), chk n a 0 = false)) ∧ (∀ (chk : Nat → Int → Int → Bool), ∃ (V : Nat → Rat → Bool), ∀ (n : Nat) (q : Rat), V n q = chk n q.num q.den)) → (∃ (V : Nat → Rat → Bool) (chk : Nat → Int → Int → Bool), (∀ (n : Nat) (q : Rat), V n q = chk n q.num q.den) ∧ (∀ (n : Nat) (q : Rat), V n q = true ↔ ValidW n q) ∧ (∀ (n : Nat) (a : Int), chk n a 0 = false))",
+    "kind": "COMPOSITION",
+    "depends_on": [
+      "erdos1104:LEM:R006:L1'#D1",
+      "erdos1104:LEM:R006:L1'#D2"
+    ],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "PROVED_KERNEL",
+    "problem": "erdos1104",
+    "decomposed_from": "erdos1104:LEM:R006:L1'",
+    "imports": "Mathlib",
+    "definitions": "",
+    "type_context": "Mathlib",
+    "parent_typed": {
+      "statement": "∃ (V : Nat → Rat → Bool) (chk : Nat → Int → Int → Bool), (∀ (n : Nat) (q : Rat), V n q = chk n q.num q.den) ∧ (∀ (n : Nat) (q : Rat), V n q = true ↔ ValidW n q) ∧ (∀ (n : Nat) (a : Int), chk n a 0 = false)",
+      "binders": [
+        "(ValidW : Nat → Rat → Prop)"
+      ],
+      "reading": "For any witness-validity predicate, there is a deterministic Bool-valued verifier V acting on rationals only through their exact integer num/den components, whose verdict exactly matches validity (fail-closed both ways) and which hard-rejects any malformed witness with zero denominator; the containment reduction itself is deliberately outside this statement's scope.",
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": null,
+        "prose_contract_root_report": {
+          "ok": true,
+          "missing": [],
+          "reason": "",
+          "blocking": false,
+          "why_not_blocking": "tokens mined from ENGLISH prose are not Lean tokens; `Fin k` carries `1 <= i <= k` structurally"
+        }
+      }
+    },
+    "composition_claim": {
+      "text": "Child 1 supplies the fail-closed integer core chk (exact soundness-and-completeness against ValidW, plus the zero-denominator rejection gate); child 2 lifts that chk to a rational-level V via exact num/den projection. Instantiating child 2 at the chk of child 1 makes V n q = chk n q.num q.den, so V n q = true ↔ ValidW n q holds, giving all three conjuncts of the parent; neither child alone yields the parent.",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "KERNEL_CHECKED",
+      "rc": 0,
+      "axioms": [],
+      "counts_toward_parent": 1
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "source": "oracle/evidence/msl-machine/dag/decomp/erdos1104/lean/erdos1104_LEM_R006_L1_COMPOSE.lean",
+    "lean_theorem_name": "msl_erdos1104_lem_r006_l1_composition",
+    "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxHeartbeats 400000\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\n",
+    "lean_signature": "theorem msl_erdos1104_lem_r006_l1_composition (ValidW : Nat → Rat → Prop) : ((∃ (chk : Nat → Int → Int → Bool), (∀ (n : Nat) (q : Rat), chk n q.num q.den = true ↔ ValidW n q) ∧ (∀ (n : Nat) (a : Int), chk n a 0 = false)) ∧ (∀ (chk : Nat → Int → Int → Bool), ∃ (V : Nat → Rat → Bool), ∀ (n : Nat) (q : Rat), V n q = chk n q.num q.den)) → (∃ (V : Nat → Rat → Bool) (chk : Nat → Int → Int → Bool), (∀ (n : Nat) (q : Rat), V n q = chk n q.num q.den) ∧ (∀ (n : Nat) (q : Rat), V n q = true ↔ ValidW n q) ∧ (∀ (n : Nat) (a : Int), chk n a 0 = false))",
+    "lean_statement_line": "theorem msl_erdos1104_lem_r006_l1_composition (ValidW : Nat → Rat → Prop) : ((∃ (chk : Nat → Int → Int → Bool), (∀ (n : Nat) (q : Rat), chk n q.num q.den = true ↔ ValidW n q) ∧ (∀ (n : Nat) (a : Int), chk n a 0 = false)) ∧ (∀ (chk : Nat → Int → Int → Bool), ∃ (V : Nat → Rat → Bool), ∀ (n : Nat) (q : Rat), V n q = chk n q.num q.den)) → (∃ (V : Nat → Rat → Bool) (chk : Nat → Int → Int → Bool), (∀ (n : Nat) (q : Rat), V n q = chk n q.num q.den) ∧ (∀ (n : Nat) (q : Rat), V n q = true ↔ ValidW n q) ∧ (∀ (n : Nat) (a : Int), chk n a 0 = false)) := by\n  first\n  | tauto\n  | (intro h; exact h.1)\n  | (intro h; simp_all)\n  | (intro h; omega)\n  | (intro h; norm_num at h ⊢ <;> tauto)\n  | aesop\n  | decide",
+    "lean_trailer": "\n#print axioms msl_erdos1104_lem_r006_l1_composition\n",
+    "lean_binders": [
+      "(ValidW : Nat → Rat → Prop)"
+    ],
+    "lean_file_sha256": "c7d873c806a37b13efe12377680e5b58791915dc47d66c8cf2283be2539ba387",
+    "lean_file_contract": "TO REPRODUCE GATE 4: compile `lean_preamble + lean_statement_line + \"\\n\" + lean_trailer` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text the deterministic ladder ran on. TO ATTEMPT A DIFFERENT PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\" + lean_trailer` -- keep the trailer, it is the `#print axioms` line the footprint is read from. Do NOT rebuild a header from `definitions` and do NOT drop the binders.",
+    "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos1104/receipts/erdos1104_LEM_R006_L1_COMPOSE.verify.json",
+    "receipt_kind": "VERIFY_JSON"
+  },
+  "parent_new_depends_on": [
+    "erdos1104:LEM:R006:L1'#COMPOSE"
+  ],
+  "rejected": [],
+  "counts": {
+    "proposed": 2,
+    "elaborated": 2,
+    "bound": 2,
+    "non_circular": 2,
+    "non_trivial": 2,
+    "surviving": 2,
+    "composition_kernel_checked": 1,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 2,
+    "counts_toward_parent_note": "composition PROVED_KERNEL: the children are load-bearing"
+  },
+  "definitions": {
+    "block": "",
+    "gate0": null,
+    "campaign_vocabulary_prepended": [],
+    "normalization": {
+      "body": "",
+      "opens": [],
+      "dropped_imports": []
+    }
+  }
+}

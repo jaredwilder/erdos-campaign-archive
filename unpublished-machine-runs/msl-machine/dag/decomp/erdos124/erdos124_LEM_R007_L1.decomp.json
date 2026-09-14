@@ -1,0 +1,382 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos124",
+  "generated_utc": "2026-09-02T16:27:04Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos124:LEM:R007:L1",
+    "statement": "no candidate lemma exists; standing L1 is an inventory claim, killed as circular/equivalent-strength support (route must rename difficulty to use it); both canonical questions remain open on R007",
+    "statement_sha256": "1bee3e6d3b51e1c6042ba4ef6d4ebcec437c3c4ac29fbb87a588085bfa4bb1d4",
+    "kind": "LEMMA",
+    "binding": "UNBOUND",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "For any $d\\geq 1$ and $k\\geq 0$ let $P(d,k)$ be the set of integers which are the sum of distinct powers $d^i$ with $i\\geq k$. Let $3\\leq d_1&#60;d_2&#60;\\cdots &#60;d_r$ be integers such that\\[\\sum_{1\\leq i\\leq r}\\frac{1}{d_r-1}\\geq 1.\\]Can all sufficiently large integers be written as a sum of the shape $\\sum_i c_ia_i$ where $c_i\\in \\{0,1\\}$ and $a_i\\in P(d_i,0)$? If we further have $\\mathrm{gcd}(d_1,\\ldots,d_r)=1$ then, for any $k\\geq 1$, can all sufficiently large integers be written as a sum of the shape $\\sum_i c_ia_i$ where $c_i\\in \\{0,1\\}$ and $a_i\\in P(d_i,k)$?",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos124-campaign-001/contract.json",
+    "sha256": "db66689bfdd11ae93494e89ed266530e6f05e7e57cb8b16baf30afc30058a7f7"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos124:LEM:R007:L1",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "58a6a82572c86a6b97a360f40357451ba38bd30011c1b544fd77100111909e1c",
+    "prompt_chars": 5305,
+    "response_sha256": "aeef16f0e3f7bc3252286513155548f4a399ef6a3f6332a331bf16a685f266e4",
+    "usage": {
+      "prompt_tokens": 1639,
+      "completion_tokens": 3364,
+      "total_tokens": 5003,
+      "cost": 0.000956245,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 128,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.000956245,
+        "upstream_inference_prompt_cost": 0.000115245,
+        "upstream_inference_completions_cost": 0.000841
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 2464,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.000956245,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 91.0,
+    "utc": "2026-09-02T16:25:57Z"
+  },
+  "children": [
+    {
+      "id": "erdos124:LEM:R007:L1#D1",
+      "statement": "InP d k n → InP d 0 n",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos124",
+      "decomposed_from": "erdos124:LEM:R007:L1",
+      "imports": "Mathlib",
+      "definitions": "def InP (d : ℕ) (k : ℕ) (n : ℕ) : Prop :=\n  ∃ (N : ℕ) (s : Finset (Fin N)), (∀ i ∈ s, k ≤ (i : ℕ)) ∧ n = ∑ i ∈ s, d ^ (i : ℕ)\n\ndef Coverable (r : ℕ) (d : Fin r → ℕ) (k : ℕ) (n : ℕ) : Prop :=\n  ∃ (a : Fin r → ℕ), (∀ i : Fin r, InP (d i) k (a i)) ∧ n = ∑ i : Fin r, a i\n\ndef GoodBases (r : ℕ) (d : Fin r → ℕ) : Prop :=\n  (∀ i : Fin r, (3 : ℕ) ≤ d i) ∧\n  (∀ (i j : Fin r), (i : ℕ) < (j : ℕ) → d i < d j) ∧\n  ((1 : ℚ) ≤ ∑ i : Fin r, (((d i : ℚ) - 1)⁻¹))\n\ndef GcdOne (r : ℕ) (d : Fin r → ℕ) : Prop :=\n  ∀ (p : ℕ), Nat.Prime p → ∃ i : Fin r, ¬ (p ∣ d i)",
+      "type_context": "Mathlib\ndef InP (d : ℕ) (k : ℕ) (n : ℕ) : Prop :=\n  ∃ (N : ℕ) (s : Finset (Fin N)), (∀ i ∈ s, k ≤ (i : ℕ)) ∧ n = ∑ i ∈ s, d ^ (i : ℕ)\n\ndef Coverable (r : ℕ) (d : Fin r → ℕ) (k : ℕ) (n : ℕ) : Prop :=\n  ∃ (a : Fin r → ℕ), (∀ i : Fin r, InP (d i) k (a i)) ∧ n = ∑ i : Fin r, a i\n\ndef GoodBases (r : ℕ) (d : Fin r → ℕ) : Prop :=\n  (∀ i : Fin r, (3 : ℕ) ≤ d i) ∧\n  (∀ (i j : Fin r), (i : ℕ) < (j : ℕ) → d i < d j) ∧\n  ((1 : ℚ) ≤ ∑ i : Fin r, (((d i : ℚ) - 1)⁻¹))\n\ndef GcdOne (r : ℕ) (d : Fin r → ℕ) : Prop :=\n  ∀ (p : ℕ), Nat.Prime p → ∃ i : Fin r, ¬ (p ∣ d i)",
+      "lean_binders": [
+        "(d : ℕ)",
+        "(k : ℕ)",
+        "(n : ℕ)"
+      ],
+      "lean_theorem_name": "msl_erdos124_lem_r007_l1_c1",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef InP (d : ℕ) (k : ℕ) (n : ℕ) : Prop :=\n  ∃ (N : ℕ) (s : Finset (Fin N)), (∀ i ∈ s, k ≤ (i : ℕ)) ∧ n = ∑ i ∈ s, d ^ (i : ℕ)\n\ndef Coverable (r : ℕ) (d : Fin r → ℕ) (k : ℕ) (n : ℕ) : Prop :=\n  ∃ (a : Fin r → ℕ), (∀ i : Fin r, InP (d i) k (a i)) ∧ n = ∑ i : Fin r, a i\n\ndef GoodBases (r : ℕ) (d : Fin r → ℕ) : Prop :=\n  (∀ i : Fin r, (3 : ℕ) ≤ d i) ∧\n  (∀ (i j : Fin r), (i : ℕ) < (j : ℕ) → d i < d j) ∧\n  ((1 : ℚ) ≤ ∑ i : Fin r, (((d i : ℚ) - 1)⁻¹))\n\ndef GcdOne (r : ℕ) (d : Fin r → ℕ) : Prop :=\n  ∀ (p : ℕ), Nat.Prime p → ∃ i : Fin r, ¬ (p ∣ d i)\n\n",
+      "lean_signature": "theorem msl_erdos124_lem_r007_l1_c1 (d : ℕ) (k : ℕ) (n : ℕ) : InP d k n → InP d 0 n",
+      "lean_statement_line": "theorem msl_erdos124_lem_r007_l1_c1 (d : ℕ) (k : ℕ) (n : ℕ) : InP d k n → InP d 0 n := by sorry",
+      "lean_file_sha256": "5e1468dcdeb87a0148cce6166776238ac6c9304ebaa4a46f87cdd1cf2abb7871",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "Structural step: a sum of distinct powers d^i with i ≥ k is also a sum of distinct powers d^i with i ≥ 0.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos124/receipts/erdos124_LEM_R007_L1_D1.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos124/lean/erdos124_LEM_R007_L1_D1.lean",
+      "leaf_tactic_hint": "interval_cases",
+      "hint_source": "bounded_forall_over_Q",
+      "leaf_tactic_sketch": "intro i; interval_cases i <;> norm_num",
+      "leaf_tactic_alternatives": [
+        "norm_num",
+        "native_decide",
+        "bounded_search"
+      ]
+    },
+    {
+      "id": "erdos124:LEM:R007:L1#D2",
+      "statement": "GoodBases r d → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → Coverable r d 0 n",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos124",
+      "decomposed_from": "erdos124:LEM:R007:L1",
+      "imports": "Mathlib",
+      "definitions": "def InP (d : ℕ) (k : ℕ) (n : ℕ) : Prop :=\n  ∃ (N : ℕ) (s : Finset (Fin N)), (∀ i ∈ s, k ≤ (i : ℕ)) ∧ n = ∑ i ∈ s, d ^ (i : ℕ)\n\ndef Coverable (r : ℕ) (d : Fin r → ℕ) (k : ℕ) (n : ℕ) : Prop :=\n  ∃ (a : Fin r → ℕ), (∀ i : Fin r, InP (d i) k (a i)) ∧ n = ∑ i : Fin r, a i\n\ndef GoodBases (r : ℕ) (d : Fin r → ℕ) : Prop :=\n  (∀ i : Fin r, (3 : ℕ) ≤ d i) ∧\n  (∀ (i j : Fin r), (i : ℕ) < (j : ℕ) → d i < d j) ∧\n  ((1 : ℚ) ≤ ∑ i : Fin r, (((d i : ℚ) - 1)⁻¹))\n\ndef GcdOne (r : ℕ) (d : Fin r → ℕ) : Prop :=\n  ∀ (p : ℕ), Nat.Prime p → ∃ i : Fin r, ¬ (p ∣ d i)",
+      "type_context": "Mathlib\ndef InP (d : ℕ) (k : ℕ) (n : ℕ) : Prop :=\n  ∃ (N : ℕ) (s : Finset (Fin N)), (∀ i ∈ s, k ≤ (i : ℕ)) ∧ n = ∑ i ∈ s, d ^ (i : ℕ)\n\ndef Coverable (r : ℕ) (d : Fin r → ℕ) (k : ℕ) (n : ℕ) : Prop :=\n  ∃ (a : Fin r → ℕ), (∀ i : Fin r, InP (d i) k (a i)) ∧ n = ∑ i : Fin r, a i\n\ndef GoodBases (r : ℕ) (d : Fin r → ℕ) : Prop :=\n  (∀ i : Fin r, (3 : ℕ) ≤ d i) ∧\n  (∀ (i j : Fin r), (i : ℕ) < (j : ℕ) → d i < d j) ∧\n  ((1 : ℚ) ≤ ∑ i : Fin r, (((d i : ℚ) - 1)⁻¹))\n\ndef GcdOne (r : ℕ) (d : Fin r → ℕ) : Prop :=\n  ∀ (p : ℕ), Nat.Prime p → ∃ i : Fin r, ¬ (p ∣ d i)",
+      "lean_binders": [
+        "(r : ℕ)",
+        "(d : Fin r → ℕ)"
+      ],
+      "lean_theorem_name": "msl_erdos124_lem_r007_l1_c2",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef InP (d : ℕ) (k : ℕ) (n : ℕ) : Prop :=\n  ∃ (N : ℕ) (s : Finset (Fin N)), (∀ i ∈ s, k ≤ (i : ℕ)) ∧ n = ∑ i ∈ s, d ^ (i : ℕ)\n\ndef Coverable (r : ℕ) (d : Fin r → ℕ) (k : ℕ) (n : ℕ) : Prop :=\n  ∃ (a : Fin r → ℕ), (∀ i : Fin r, InP (d i) k (a i)) ∧ n = ∑ i : Fin r, a i\n\ndef GoodBases (r : ℕ) (d : Fin r → ℕ) : Prop :=\n  (∀ i : Fin r, (3 : ℕ) ≤ d i) ∧\n  (∀ (i j : Fin r), (i : ℕ) < (j : ℕ) → d i < d j) ∧\n  ((1 : ℚ) ≤ ∑ i : Fin r, (((d i : ℚ) - 1)⁻¹))\n\ndef GcdOne (r : ℕ) (d : Fin r → ℕ) : Prop :=\n  ∀ (p : ℕ), Nat.Prime p → ∃ i : Fin r, ¬ (p ∣ d i)\n\n",
+      "lean_signature": "theorem msl_erdos124_lem_r007_l1_c2 (r : ℕ) (d : Fin r → ℕ) : GoodBases r d → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → Coverable r d 0 n",
+      "lean_statement_line": "theorem msl_erdos124_lem_r007_l1_c2 (r : ℕ) (d : Fin r → ℕ) : GoodBases r d → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → Coverable r d 0 n := by sorry",
+      "lean_file_sha256": "b09fd2420df9f8e9e1b8007c587f9142bb8105b55af3ba3218874d7d0e230b1a",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "First canonical question: under the chain and reciprocal-sum hypotheses, every sufficiently large integer is a {0,1}-sum of elements of the P(d_i, 0).",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos124/receipts/erdos124_LEM_R007_L1_D2.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos124/lean/erdos124_LEM_R007_L1_D2.lean",
+      "leaf_tactic_hint": "interval_cases",
+      "hint_source": "bounded_forall_over_Q",
+      "leaf_tactic_sketch": "intro i n; interval_cases i <;> interval_cases n <;> norm_num",
+      "leaf_tactic_alternatives": [
+        "norm_num",
+        "native_decide",
+        "bounded_search"
+      ]
+    },
+    {
+      "id": "erdos124:LEM:R007:L1#D3",
+      "statement": "GoodBases r d → GcdOne r d → ∀ k : ℕ, 1 ≤ k → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → Coverable r d k n",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos124",
+      "decomposed_from": "erdos124:LEM:R007:L1",
+      "imports": "Mathlib",
+      "definitions": "def InP (d : ℕ) (k : ℕ) (n : ℕ) : Prop :=\n  ∃ (N : ℕ) (s : Finset (Fin N)), (∀ i ∈ s, k ≤ (i : ℕ)) ∧ n = ∑ i ∈ s, d ^ (i : ℕ)\n\ndef Coverable (r : ℕ) (d : Fin r → ℕ) (k : ℕ) (n : ℕ) : Prop :=\n  ∃ (a : Fin r → ℕ), (∀ i : Fin r, InP (d i) k (a i)) ∧ n = ∑ i : Fin r, a i\n\ndef GoodBases (r : ℕ) (d : Fin r → ℕ) : Prop :=\n  (∀ i : Fin r, (3 : ℕ) ≤ d i) ∧\n  (∀ (i j : Fin r), (i : ℕ) < (j : ℕ) → d i < d j) ∧\n  ((1 : ℚ) ≤ ∑ i : Fin r, (((d i : ℚ) - 1)⁻¹))\n\ndef GcdOne (r : ℕ) (d : Fin r → ℕ) : Prop :=\n  ∀ (p : ℕ), Nat.Prime p → ∃ i : Fin r, ¬ (p ∣ d i)",
+      "type_context": "Mathlib\ndef InP (d : ℕ) (k : ℕ) (n : ℕ) : Prop :=\n  ∃ (N : ℕ) (s : Finset (Fin N)), (∀ i ∈ s, k ≤ (i : ℕ)) ∧ n = ∑ i ∈ s, d ^ (i : ℕ)\n\ndef Coverable (r : ℕ) (d : Fin r → ℕ) (k : ℕ) (n : ℕ) : Prop :=\n  ∃ (a : Fin r → ℕ), (∀ i : Fin r, InP (d i) k (a i)) ∧ n = ∑ i : Fin r, a i\n\ndef GoodBases (r : ℕ) (d : Fin r → ℕ) : Prop :=\n  (∀ i : Fin r, (3 : ℕ) ≤ d i) ∧\n  (∀ (i j : Fin r), (i : ℕ) < (j : ℕ) → d i < d j) ∧\n  ((1 : ℚ) ≤ ∑ i : Fin r, (((d i : ℚ) - 1)⁻¹))\n\ndef GcdOne (r : ℕ) (d : Fin r → ℕ) : Prop :=\n  ∀ (p : ℕ), Nat.Prime p → ∃ i : Fin r, ¬ (p ∣ d i)",
+      "lean_binders": [
+        "(r : ℕ)",
+        "(d : Fin r → ℕ)"
+      ],
+      "lean_theorem_name": "msl_erdos124_lem_r007_l1_c3",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef InP (d : ℕ) (k : ℕ) (n : ℕ) : Prop :=\n  ∃ (N : ℕ) (s : Finset (Fin N)), (∀ i ∈ s, k ≤ (i : ℕ)) ∧ n = ∑ i ∈ s, d ^ (i : ℕ)\n\ndef Coverable (r : ℕ) (d : Fin r → ℕ) (k : ℕ) (n : ℕ) : Prop :=\n  ∃ (a : Fin r → ℕ), (∀ i : Fin r, InP (d i) k (a i)) ∧ n = ∑ i : Fin r, a i\n\ndef GoodBases (r : ℕ) (d : Fin r → ℕ) : Prop :=\n  (∀ i : Fin r, (3 : ℕ) ≤ d i) ∧\n  (∀ (i j : Fin r), (i : ℕ) < (j : ℕ) → d i < d j) ∧\n  ((1 : ℚ) ≤ ∑ i : Fin r, (((d i : ℚ) - 1)⁻¹))\n\ndef GcdOne (r : ℕ) (d : Fin r → ℕ) : Prop :=\n  ∀ (p : ℕ), Nat.Prime p → ∃ i : Fin r, ¬ (p ∣ d i)\n\n",
+      "lean_signature": "theorem msl_erdos124_lem_r007_l1_c3 (r : ℕ) (d : Fin r → ℕ) : GoodBases r d → GcdOne r d → ∀ k : ℕ, 1 ≤ k → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → Coverable r d k n",
+      "lean_statement_line": "theorem msl_erdos124_lem_r007_l1_c3 (r : ℕ) (d : Fin r → ℕ) : GoodBases r d → GcdOne r d → ∀ k : ℕ, 1 ≤ k → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → Coverable r d k n := by sorry",
+      "lean_file_sha256": "2417c8370ed3fc502ec43a3011ba034ef9050d34da6a8223a73769084d31995b",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "Second canonical question: additionally assuming gcd(d_1,…,d_r) = 1, every sufficiently large integer is a {0,1}-sum of elements of the P(d_i, k), for each k ≥ 1.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos124/receipts/erdos124_LEM_R007_L1_D3.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos124/lean/erdos124_LEM_R007_L1_D3.lean",
+      "leaf_tactic_hint": "interval_cases",
+      "hint_source": "bounded_forall_over_N",
+      "leaf_tactic_sketch": "intro k n; interval_cases k <;> interval_cases n <;> decide",
+      "leaf_tactic_alternatives": [
+        "decide",
+        "native_decide",
+        "bounded_search"
+      ]
+    }
+  ],
+  "composition": {
+    "id": "erdos124:LEM:R007:L1#COMPOSE",
+    "statement": "(composition not constructed)",
+    "kind": "COMPOSITION",
+    "depends_on": [
+      "erdos124:LEM:R007:L1#D1",
+      "erdos124:LEM:R007:L1#D2",
+      "erdos124:LEM:R007:L1#D3"
+    ],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "OPEN",
+    "problem": "erdos124",
+    "decomposed_from": "erdos124:LEM:R007:L1",
+    "imports": "Mathlib",
+    "definitions": "def InP (d : ℕ) (k : ℕ) (n : ℕ) : Prop :=\n  ∃ (N : ℕ) (s : Finset (Fin N)), (∀ i ∈ s, k ≤ (i : ℕ)) ∧ n = ∑ i ∈ s, d ^ (i : ℕ)\n\ndef Coverable (r : ℕ) (d : Fin r → ℕ) (k : ℕ) (n : ℕ) : Prop :=\n  ∃ (a : Fin r → ℕ), (∀ i : Fin r, InP (d i) k (a i)) ∧ n = ∑ i : Fin r, a i\n\ndef GoodBases (r : ℕ) (d : Fin r → ℕ) : Prop :=\n  (∀ i : Fin r, (3 : ℕ) ≤ d i) ∧\n  (∀ (i j : Fin r), (i : ℕ) < (j : ℕ) → d i < d j) ∧\n  ((1 : ℚ) ≤ ∑ i : Fin r, (((d i : ℚ) - 1)⁻¹))\n\ndef GcdOne (r : ℕ) (d : Fin r → ℕ) : Prop :=\n  ∀ (p : ℕ), Nat.Prime p → ∃ i : Fin r, ¬ (p ∣ d i)",
+    "type_context": "Mathlib\ndef InP (d : ℕ) (k : ℕ) (n : ℕ) : Prop :=\n  ∃ (N : ℕ) (s : Finset (Fin N)), (∀ i ∈ s, k ≤ (i : ℕ)) ∧ n = ∑ i ∈ s, d ^ (i : ℕ)\n\ndef Coverable (r : ℕ) (d : Fin r → ℕ) (k : ℕ) (n : ℕ) : Prop :=\n  ∃ (a : Fin r → ℕ), (∀ i : Fin r, InP (d i) k (a i)) ∧ n = ∑ i : Fin r, a i\n\ndef GoodBases (r : ℕ) (d : Fin r → ℕ) : Prop :=\n  (∀ i : Fin r, (3 : ℕ) ≤ d i) ∧\n  (∀ (i j : Fin r), (i : ℕ) < (j : ℕ) → d i < d j) ∧\n  ((1 : ℚ) ≤ ∑ i : Fin r, (((d i : ℚ) - 1)⁻¹))\n\ndef GcdOne (r : ℕ) (d : Fin r → ℕ) : Prop :=\n  ∀ (p : ℕ), Nat.Prime p → ∃ i : Fin r, ¬ (p ∣ d i)",
+    "parent_typed": {
+      "statement": "GoodBases r d → ((∃ N : ℕ, ∀ n : ℕ, N ≤ n → Coverable r d 0 n) ∧ (GcdOne r d → ∀ k : ℕ, 1 ≤ k → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → Coverable r d k n))",
+      "binders": [
+        "(r : ℕ)",
+        "(d : Fin r → ℕ)"
+      ],
+      "reading": "For bases 3 ≤ d_1 < … < d_r with ∑ 1/(d_i − 1) ≥ 1, all sufficiently large integers admit a {0,1}-representation from the P(d_i, 0); and if the bases have gcd 1, the same holds from P(d_i, k) for every k ≥ 1.",
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": null,
+        "prose_contract_root_report": {
+          "ok": true,
+          "missing": [],
+          "reason": "",
+          "blocking": false,
+          "why_not_blocking": "tokens mined from ENGLISH prose are not Lean tokens; `Fin k` carries `1 <= i <= k` structurally"
+        }
+      }
+    },
+    "composition_claim": {
+      "text": "The parent is exactly the conjunction of the conclusions of covering_zero_question and covering_shift_question (under the shared GoodBases hypothesis), so children 2 and 3 together give the parent; child 1 (inp_mono_k_to_zero) is the kernel-checkable structural bridge that transfers representations from level k down to level 0 and is the reusable rung toward both questions.",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "COMPOSITION_BINDER_MISMATCH",
+      "lane": "EMITTER_REFUSAL",
+      "counts_toward_parent": 0,
+      "reason": "COMPOSITION_BINDER_MISMATCH: the child binds `d` at type `ℕ`; the parent binds the same name at type `Fin r → ℕ`. A shared NAME is not a shared BINDER. The composition is not stated -- this is an EMITTER refusal, not a mathematical outcome.",
+      "binder_mismatch": {
+        "class": "COMPOSITION_BINDER_MISMATCH",
+        "binder_name": "d",
+        "child_binder": "(d : ℕ)",
+        "parent_binder": "(d : Fin r → ℕ)",
+        "child_type": "ℕ",
+        "parent_type": "Fin r → ℕ",
+        "reason": "COMPOSITION_BINDER_MISMATCH: the child binds `d` at type `ℕ`; the parent binds the same name at type `Fin r → ℕ`. A shared NAME is not a shared BINDER. The composition is not stated -- this is an EMITTER refusal, not a mathematical outcome."
+      },
+      "note": "THIS IS NOT A MATHEMATICAL OUTCOME. No composition is stated and no kernel time is spent. A child binder shares a parent binder's NAME at a DIFFERENT TYPE, so there is no honest implication to state until the proposal is repaired. Do NOT read this as COMPOSITION_OPEN.",
+      "re_emitted_utc": "2026-09-02T20:54:08Z"
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "composition_receipt": "oracle/evidence/msl-machine/dag/decomp/erdos124/receipts/erdos124_LEM_R007_L1_COMPOSE.composition.json",
+    "composition_extra_hypotheses": [],
+    "emitter_defect_supersession": {
+      "class": "EMITTER_DEFECT_SUPERSEDED",
+      "finding": "HUNT3:G5 -- composition_conjunct decided 'shares the parent's binder' by NAME only; the binder's TYPE and, for a hypothesis, its PROPOSITION were never compared. Fixed in oracle/tools/msl_decompose.py 2026-09-02 (COMPOSITION_EXTRA_HYPOTHESIS / COMPOSITION_BINDER_MISMATCH).",
+      "superseded_utc": "2026-09-02T20:54:08Z",
+      "previous_gate4_verdict": {
+        "verdict": "COMPOSITION_OPEN",
+        "rc": 1,
+        "kernel_error": "/root/peer/decomp/b20260902_092652_3/erdos124_LEM_R007_L1_comp.lean:23:96: error: Application type mismatch: The argument\n/root/peer/decomp/b20260902_092652_3/erdos124_LEM_R007_L1_comp.lean:23:108: error: Application type mismatch: The argument",
+        "counts_toward_parent": 0
+      },
+      "previous_statement": "((∀ (k : ℕ) (n : ℕ), InP d k n → InP d 0 n) ∧ (GoodBases r d → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → Coverable r d 0 n) ∧ (GoodBases r d → GcdOne r d → ∀ k : ℕ, 1 ≤ k → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → Coverable r d k n)) → (GoodBases r d → ((∃ N : ℕ, ∀ n : ℕ, N ≤ n → Coverable r d 0 n) ∧ (GcdOne r d → ∀ k : ℕ, 1 ≤ k → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → Coverable r d k n)))",
+      "previous_lean_signature": "theorem msl_erdos124_lem_r007_l1_composition (r : ℕ) (d : Fin r → ℕ) : ((∀ (k : ℕ) (n : ℕ), InP d k n → InP d 0 n) ∧ (GoodBases r d → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → Coverable r d 0 n) ∧ (GoodBases r d → GcdOne r d → ∀ k : ℕ, 1 ≤ k → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → Coverable r d k n)) → (GoodBases r d → ((∃ N : ℕ, ∀ n : ℕ, N ≤ n → Coverable r d 0 n) ∧ (GcdOne r d → ∀ k : ℕ, 1 ≤ k → ∃ N : ℕ, ∀ n : ℕ, N ≤ n → Coverable r d k n)))",
+      "previous_lean_file_sha256": "f6cfea9b9ca01ef8888fb88069ee775bc86551c0b54bcca832488300dc9580c2",
+      "previous_source": "oracle/evidence/msl-machine/dag/decomp/erdos124/lean/erdos124_LEM_R007_L1_COMPOSE.lean",
+      "previous_lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxHeartbeats 400000\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef InP (d : ℕ) (k : ℕ) (n : ℕ) : Prop :=\n  ∃ (N : ℕ) (s : Finset (Fin N)), (∀ i ∈ s, k ≤ (i : ℕ)) ∧ n = ∑ i ∈ s, d ^ (i : ℕ)\n\ndef Coverable (r : ℕ) (d : Fin r → ℕ) (k : ℕ) (n : ℕ) : Prop :=\n  ∃ (a : Fin r → ℕ), (∀ i : Fin r, InP (d i) k (a i)) ∧ n = ∑ i : Fin r, a i\n\ndef GoodBases (r : ℕ) (d : Fin r → ℕ) : Prop :=\n  (∀ i : Fin r, (3 : ℕ) ≤ d i) ∧\n  (∀ (i j : Fin r), (i : ℕ) < (j : ℕ) → d i < d j) ∧\n  ((1 : ℚ) ≤ ∑ i : Fin r, (((d i : ℚ) - 1)⁻¹))\n\ndef GcdOne (r : ℕ) (d : Fin r → ℕ) : Prop :=\n  ∀ (p : ℕ), Nat.Prime p → ∃ i : Fin r, ¬ (p ∣ d i)\n\n",
+      "preamble_also_changed": true,
+      "preamble_note": "the re-emission uses TODAY's lean_preamble. `open scoped Classical` and `noncomputable section` were added on 2026-09-02 and were not in the header these sidecars were written under. Both files are unproved either way; a corrected statement spliced under a stale header would be a file no emitter ever produces.",
+      "why": "the previous verdict was recorded as a MATHEMATICAL outcome (COMPOSITION_OPEN). It was not: the statement the kernel judged had a child binder dropped and the child re-bound at the parent's binder. The row is kept for the record and must not be read as a result about the mathematics.",
+      "previous_lean_file_preserved_at": "oracle/evidence/msl-machine/dag/decomp/erdos124/lean/erdos124_LEM_R007_L1_COMPOSE.lean",
+      "previous_lean_file_note": "left on disk exactly as GATE 4 ran it. It is the artifact of the DEFECTIVE emission and is NOT the composition of this node -- do not compile it as one."
+    }
+  },
+  "parent_new_depends_on": [
+    "erdos124:LEM:R007:L1#COMPOSE"
+  ],
+  "rejected": [],
+  "counts": {
+    "proposed": 3,
+    "elaborated": 3,
+    "bound": 3,
+    "non_circular": 3,
+    "non_trivial": 3,
+    "surviving": 3,
+    "composition_kernel_checked": 0,
+    "fireable_decidable_leaves": 3,
+    "counts_toward_parent": 0,
+    "counts_toward_parent_note": "composition OPEN: these children contribute ZERO toward the parent until it closes; they remain formal leaves for the rung loop"
+  },
+  "definitions": {
+    "block": "def InP (d : ℕ) (k : ℕ) (n : ℕ) : Prop :=\n  ∃ (N : ℕ) (s : Finset (Fin N)), (∀ i ∈ s, k ≤ (i : ℕ)) ∧ n = ∑ i ∈ s, d ^ (i : ℕ)\n\ndef Coverable (r : ℕ) (d : Fin r → ℕ) (k : ℕ) (n : ℕ) : Prop :=\n  ∃ (a : Fin r → ℕ), (∀ i : Fin r, InP (d i) k (a i)) ∧ n = ∑ i : Fin r, a i\n\ndef GoodBases (r : ℕ) (d : Fin r → ℕ) : Prop :=\n  (∀ i : Fin r, (3 : ℕ) ≤ d i) ∧\n  (∀ (i j : Fin r), (i : ℕ) < (j : ℕ) → d i < d j) ∧\n  ((1 : ℚ) ≤ ∑ i : Fin r, (((d i : ℚ) - 1)⁻¹))\n\ndef GcdOne (r : ℕ) (d : Fin r → ℕ) : Prop :=\n  ∀ (p : ℕ), Nat.Prime p → ∃ i : Fin r, ¬ (p ∣ d i)",
+    "gate0": {
+      "verdict": "DEFS_ELABORATE"
+    },
+    "campaign_vocabulary_prepended": [],
+    "normalization": {
+      "body": "def InP (d : ℕ) (k : ℕ) (n : ℕ) : Prop :=\n  ∃ (N : ℕ) (s : Finset (Fin N)), (∀ i ∈ s, k ≤ (i : ℕ)) ∧ n = ∑ i ∈ s, d ^ (i : ℕ)\n\ndef Coverable (r : ℕ) (d : Fin r → ℕ) (k : ℕ) (n : ℕ) : Prop :=\n  ∃ (a : Fin r → ℕ), (∀ i : Fin r, InP (d i) k (a i)) ∧ n = ∑ i : Fin r, a i\n\ndef GoodBases (r : ℕ) (d : Fin r → ℕ) : Prop :=\n  (∀ i : Fin r, (3 : ℕ) ≤ d i) ∧\n  (∀ (i j : Fin r), (i : ℕ) < (j : ℕ) → d i < d j) ∧\n  ((1 : ℚ) ≤ ∑ i : Fin r, (((d i : ℚ) - 1)⁻¹))\n\ndef GcdOne (r : ℕ) (d : Fin r → ℕ) : Prop :=\n  ∀ (p : ℕ), Nat.Prime p → ∃ i : Fin r, ¬ (p ∣ d i)",
+      "opens": [],
+      "dropped_imports": []
+    }
+  },
+  "emitter_defect_supersessions": [
+    {
+      "class": "EMITTER_DEFECT_SUPERSEDED",
+      "node": "erdos124:LEM:R007:L1#COMPOSE",
+      "utc": "2026-09-02T20:54:08Z",
+      "finding": "HUNT3:G5 -- composition_conjunct decided 'shares the parent's binder' by NAME only; the binder's TYPE and, for a hypothesis, its PROPOSITION were never compared. Fixed in oracle/tools/msl_decompose.py 2026-09-02 (COMPOSITION_EXTRA_HYPOTHESIS / COMPOSITION_BINDER_MISMATCH).",
+      "previous_gate4_verdict": "COMPOSITION_OPEN",
+      "new_gate4_verdict": "COMPOSITION_BINDER_MISMATCH"
+    }
+  ]
+}

@@ -1,0 +1,766 @@
+{
+ "schema": "obligation-dag/1.0.0",
+ "problem": "erdos595",
+ "problem_number": "595",
+ "campaign": "erdos595-campaign-001",
+ "root": "erdos595:ROOT",
+ "contract_divergence": {
+  "authoritative": {
+   "role": "campaign",
+   "path": "oracle/evidence/msl-machine/campaigns/erdos595-campaign-001/contract.json",
+   "sha256": "f83bd3328da6143597a9b28c84bdde9753596cd43a0cdd146b0c83502e7773a1",
+   "declared_contract_sha256": "7a511a911acc0ece511b59d5048818b5073983519f93103d6c1dbe79da8eb794"
+  },
+  "others": [
+   {
+    "role": "ingest",
+    "path": "oracle/evidence/msl-machine/contracts/erdos595/contract.json",
+    "sha256": "874f89409eadf17c5f060f093eefed384b506534d128f04dfd559d0460335bba",
+    "declared_contract_sha256": "bd2f7dfbb64212c15cb057636aff62daa2cc75b9258b0c6d58880df1160383f2",
+    "canonical_statement_matches_authoritative": true
+   },
+   {
+    "role": "launch_queue",
+    "path": "oracle/evidence/msl-machine/contracts/LAUNCH-QUEUE/erdos595.json",
+    "sha256": "4c423e18bfb790197585c112976d39a7ffe1e421ad76dbf3b20e33e94734f6d4",
+    "declared_contract_sha256": null,
+    "canonical_statement_matches_authoritative": true
+   }
+  ],
+  "diverges": false
+ },
+ "courts": [
+  "court",
+  "closer",
+  "formalizer",
+  "kernel"
+ ],
+ "summary": {
+  "nodes": 14,
+  "proved_kernel": 0,
+  "proved_speaker": 3,
+  "computed_bounded": 1,
+  "open": 8,
+  "refuted": 2,
+  "orphans": 2,
+  "proof_obligations": 0,
+  "open_leaves_on_dead_routes": 2,
+  "root_kind": "NOT_DECIDABLE",
+  "root_disqualifiers": [
+   "INFINITUDE"
+  ],
+  "formal_root": {
+   "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/595.lean",
+   "category": "category research open, AMS 5",
+   "declaration": "erdos_595",
+   "statement": "answer(sorry) ↔ ∃ (V : Type*) (_ : Infinite V) (G : SimpleGraph V), G.CliqueFree 4 ∧ ¬IsCountableUnionOfTriangleFree G"
+  },
+  "leaf_frontier_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "leaf_frontier_reason": "5 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaf_frontier_deciding_leaf": {
+   "id": "erdos595:DEMAND:R005:L1:1",
+   "kind": "CAPABILITY_DEMAND",
+   "status": "OPEN",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "an explicit uncountable K4-free G with a universal-over-countable-families diagonal non-coverability proof."
+  },
+  "ladder_shape_reason": "the formal root is not decidable: INFINITUDE (oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/595.lean). No leaf set can close it, however clean the leaves are. Leaf frontier, kept for the grind queue: HAS_OPEN_ANALYTIC_LEAF.",
+  "leaves": 10,
+  "open_leaves": 8,
+  "open_technical_leaves": 5,
+  "open_prose_obligations": 2,
+  "open_analytic_leaves": 5,
+  "ladder_shape": "ROOT_NOT_DECIDABLE",
+  "deciding_leaf": {
+   "id": "erdos595:ROOT",
+   "kind": "CANONICAL_ROOT",
+   "status": "OPEN",
+   "binding": "VERBATIM",
+   "leaf_tactic_hint": null,
+   "statement": "answer(sorry) ↔ ∃ (V : Type*) (_ : Infinite V) (G : SimpleGraph V), G.CliqueFree 4 ∧ ¬IsCountableUnionOfTriangleFree G"
+  },
+  "orphan_detail": [
+   {
+    "id": "erdos595:A:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos595:B:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   }
+  ]
+ },
+ "validation": {
+  "acyclic": true,
+  "edges": 14,
+  "root_binds_verbatim": true,
+  "kernel_receipts_checked": 0
+ },
+ "nodes": [
+  {
+   "id": "erdos595:A:M01",
+   "statement": "Verify K4-freeness and prove that every countable family of triangle-free subgraphs fails to cover all edges. Resolve the answer wrapper to true.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos595-campaign-001/contract.json",
+   "contract_sha256": "f83bd3328da6143597a9b28c84bdde9753596cd43a0cdd146b0c83502e7773a1",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos595-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos595",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-595-4a3352a31f-A-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos595:BRANCH_A",
+   "statement": "AFFIRMATIVE CLOSE: construct one infinite K4-free graph that is not a countable union of triangle-free subgraphs on the same vertex set.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos595:A:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos595-campaign-001/contract.json",
+   "contract_sha256": "f83bd3328da6143597a9b28c84bdde9753596cd43a0cdd146b0c83502e7773a1",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos595-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos595",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-595-4a3352a31f-A-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos595:B:M01",
+   "statement": "Quantify universally over the vertex type and graph; constructing one coverable example is not a refutation. Resolve the answer wrapper to false.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos595-campaign-001/contract.json",
+   "contract_sha256": "f83bd3328da6143597a9b28c84bdde9753596cd43a0cdd146b0c83502e7773a1",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos595-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos595",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-595-4a3352a31f-B-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos595:BRANCH_B",
+   "statement": "NEGATIVE CLOSE: prove every infinite K4-free graph on every vertex set is a countable union of triangle-free subgraphs.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos595:B:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos595-campaign-001/contract.json",
+   "contract_sha256": "f83bd3328da6143597a9b28c84bdde9753596cd43a0cdd146b0c83502e7773a1",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos595-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos595",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-595-4a3352a31f-B-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos595:ROOT",
+   "statement": "Is there an infinite graph $G$ which contains no $K_4$ and is not the union of countably many triangle-free graphs?",
+   "kind": "CANONICAL_ROOT",
+   "depends_on": [
+    "erdos595:BRANCH_A",
+    "erdos595:BRANCH_B"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "root_by_construction",
+   "closure_mode": "DISJUNCTIVE",
+   "satisfied_by_any": [
+    "erdos595:BRANCH_A",
+    "erdos595:BRANCH_B"
+   ],
+   "root_kind": "NOT_DECIDABLE",
+   "root_disqualifiers": [
+    "INFINITUDE"
+   ],
+   "formal_root": {
+    "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/595.lean",
+    "category": "category research open, AMS 5",
+    "declaration": "erdos_595",
+    "statement": "answer(sorry) ↔ ∃ (V : Type*) (_ : Infinite V) (G : SimpleGraph V), G.CliqueFree 4 ∧ ¬IsCountableUnionOfTriangleFree G"
+   },
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos595-campaign-001/contract.json",
+   "contract_sha256": "f83bd3328da6143597a9b28c84bdde9753596cd43a0cdd146b0c83502e7773a1",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos595-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos595",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos595:LEM:R001:L1",
+   "statement": "Countable K₄-free graphs are countable unions of triangle-free graphs via edge enumeration; correctly scoped, does not close either branch.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 6,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 3,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:01:29Z"
+    },
+    {
+     "seq": 4,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:01:53Z"
+    },
+    {
+     "seq": 5,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:05:04Z"
+    },
+    {
+     "seq": 6,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:09:24Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos595-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos595:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos595",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos595:LEM:R002:L1",
+   "statement": "exact integer induction check, zero tolerance, certificate scope = ℤ arithmetic on stated identity",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R002",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 8,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 7,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:10:38Z"
+    },
+    {
+     "seq": 8,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:14:16Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos595-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos595:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos595",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos595:LEM:R003:L1",
+   "statement": "Exact-Fraction sign tests always resolve to a boolean or abort (zero denominators raise at construction); no silent tolerance path exists.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 11,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 10,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:16:53Z"
+    },
+    {
+     "seq": 11,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:18:44Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos595-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos595:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos595",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos595:LEM:R004:L1",
+   "statement": "L1 (\"the claim 'per contract' suffices for finite certification without an explicit residual bound or exact/interval verifier\") is false under the contract's fail-closed rules; with no analytic reduction and no explicit bound, no certificate can be issued, so the route is untestable as supplied.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 14,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Machine-verified counterexample falsifies load-bearing lemma L1; packet contains no candidate proof or surviving close, so the not-load-bearing exception is unmet and the route is dead.",
+    "seq": 15
+   },
+   "history": [
+    {
+     "seq": 13,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:21:21Z"
+    },
+    {
+     "seq": 14,
+     "status": "FALSE",
+     "utc": "2026-09-01T19:26:17Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos595-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos595:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos595",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos595:LEM:R005:L1",
+   "statement": "Countably-restricted scope: every countable K4-free graph is trivially a countable union of single-edge triangle-free subgraphs, so L1 cannot witness non-coverability; repair requires an explicit uncountable K4-free G with a universal-over-countable-families diagonal non-coverability proof.",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos595:DEMAND:R005:L1:1"
+   ],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R005",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 23,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Lemma L1 is load-bearing: the countably-restricted cover lemma was the sole support for R005's close on both branches (countable case cannot lift to branch A's uncountable requirement or branch B's universal claim), and with it deleted no surviving argument is on record.",
+    "seq": 24
+   },
+   "history": [
+    {
+     "seq": 17,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:28:39Z"
+    },
+    {
+     "seq": 19,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:41:24Z"
+    },
+    {
+     "seq": 20,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:41:47Z"
+    },
+    {
+     "seq": 21,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:43:17Z"
+    },
+    {
+     "seq": 22,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:44:41Z"
+    },
+    {
+     "seq": 23,
+     "status": "FALSE",
+     "utc": "2026-09-01T19:45:41Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos595-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos595:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos595",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos595:DEMAND:R005:L1:1",
+   "statement": "an explicit uncountable K4-free G with a universal-over-countable-families diagonal non-coverability proof.",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "repair requires",
+   "demand_rank": 0,
+   "demand_strength": "STRONG",
+   "route_status": "DEAD",
+   "demand_source_text": "Countably-restricted scope: every countable K4-free graph is trivially a countable union of single-edge triangle-free subgraphs, so L1 cannot witness non-coverability; repair requires an explicit uncountable K4-free G with a universal-over-countable-families diagonal non-coverability proof.",
+   "route_id": "R005",
+   "lemma_id": "L1",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos595:LEM:R005:L1",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos595-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos595",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos595:LEM:R005:all",
+   "statement": "No exact rational/integer verifier or outward interval arithmetic supplied; analytic reduction \"none\" and residual claim \"per contract\" leave no checkable object — fail closed, no certificate issued.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R005",
+   "lemma_id": "all",
+   "registry_status": "UNTESTED",
+   "registry_seq": 18,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Lemma L1 is load-bearing: the countably-restricted cover lemma was the sole support for R005's close on both branches (countable case cannot lift to branch A's uncountable requirement or branch B's universal claim), and with it deleted no surviving argument is on record.",
+    "seq": 24
+   },
+   "history": [
+    {
+     "seq": 18,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:39:03Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos595-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos595:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "No exact rational/integer verifier or outward interval arithmetic supplied; analytic reduction \"none\" and residual claim \"per contract\" leave no checkable object — fail closed, no certificate issued."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos595",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos595:LEM:R006:L1",
+   "statement": "L1 (\"every K4-free graph on n≤6 is a union of 2 triangle-free spanning subgraphs\") verified by exhaustive exact enumeration; no transfer theorem to the infinite canonical claim.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "COMPUTED_BOUNDED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R006",
+   "lemma_id": "L1",
+   "registry_status": "COMPUTATION_SUPPORTED",
+   "registry_seq": 26,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 26,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:47:11Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos595-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos595:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_COMPUTATION_SUPPORTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "L1 (\"every K4-free graph on n≤6 is a union of 2 triangle-free spanning subgraphs\") verified by exhaustive exact enumeration; no transfer theorem to the infinite canonical claim."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "leaf_tactic_hint": "interval_cases",
+   "hint_source": "bounded_forall_over_N",
+   "leaf_tactic_sketch": "intro a; interval_cases a <;> decide",
+   "leaf_tactic_alternatives": [
+    "decide",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos595",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos595:LEM:R006:all",
+   "statement": "fail-closed: residual claim \"per contract\" not instantiated as an exact rational identity, sign unresolved, no certificate issued",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R006",
+   "lemma_id": "all",
+   "registry_status": "UNTESTED",
+   "registry_seq": 28,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 28,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:54:45Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos595-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos595:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "fail-closed: residual claim \"per contract\" not instantiated as an exact rational identity, sign unresolved, no certificate issued"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos595",
+   "is_leaf": true,
+   "manufacture_target": false
+  }
+ ]
+}

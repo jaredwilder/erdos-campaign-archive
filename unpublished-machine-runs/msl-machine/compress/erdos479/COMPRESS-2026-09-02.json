@@ -1,0 +1,1150 @@
+{
+ "schema": "msl-compress/1.0.0",
+ "consumes_schema": "obligation-dag/1.0.0",
+ "problem": "erdos479",
+ "generated_utc": "2026-09-02T22:51:30Z",
+ "outdir": "oracle/evidence/msl-machine/compress/erdos479",
+ "leaves_proved": 26,
+ "leaves_proved_and_unused": 23,
+ "leaves_ore": 6,
+ "headline_ledger": {
+  "path": "oracle/frontier_formalizer/HEADLINE-LEDGER.jsonl",
+  "exists": true,
+  "lines": 59,
+  "rows": 59,
+  "bad_lines": [],
+  "by_class": {
+   "": 1,
+   "CLOSURE_CLAIM": 2,
+   "KILLED_HEADLINE": 13,
+   "NEAR_CLOSE": 5,
+   "HEADLINE_THEOREM": 26,
+   "EXACT_REDUCTION": 2,
+   "IMPROVED_BOUND": 4,
+   "OBSTRUCTION": 6
+  },
+  "by_status": {
+   "": 1,
+   "CONDITIONAL": 2,
+   "KILLED": 10,
+   "UNRECOVERED": 10,
+   "CERTIFICATE": 5,
+   "KERNEL_VERIFIED": 21,
+   "PROSE_ONLY": 10
+  },
+  "unknown_class": 1,
+  "unknown_status": 1,
+  "for_problem": 0,
+  "law": "NEAR_CLOSE rows outrank every DAG open node; KERNEL_VERIFIED rows are leaves with their artifact as source; KILLED_HEADLINE rows are NEGATIVE constraints enforced by gate G4_KILLED",
+  "near_close_targets": 0,
+  "near_close_skipped_no_obligation": [],
+  "kernel_verified_leaves": 0,
+  "kernel_verified_refused_no_artifact": [],
+  "killed_headlines": 0
+ },
+ "targets": [
+  {
+   "id": "erdos479:BRANCH_A",
+   "kind": "BRANCH_STATEMENT",
+   "depth_from_frontier": 1,
+   "on_root_path": true,
+   "source": null,
+   "headline_class": null,
+   "headline_status": null,
+   "needs_typing": null,
+   "statement": "AFFIRMATIVE CLOSE: prove the exact all-k∈ℤ, k≠1 infinitude proposition with ZMOD (n:ℤ)."
+  },
+  {
+   "id": "erdos479:BRANCH_B",
+   "kind": "BRANCH_STATEMENT",
+   "depth_from_frontier": 1,
+   "on_root_path": false,
+   "source": "FRONTIER_ADJACENT",
+   "headline_class": null,
+   "headline_status": null,
+   "needs_typing": null,
+   "statement": "NEGATIVE CLOSE: exhibit an integer k≠1 for which the exact ZMOD witness set in n∈ℕ is finite."
+  },
+  {
+   "id": "erdos479:FLEAF:2ded7584a23fc4ffed6d:5",
+   "kind": "FORMALIZER_LEAF",
+   "depth_from_frontier": 1,
+   "on_root_path": false,
+   "source": "FRONTIER_ADJACENT",
+   "headline_class": null,
+   "headline_status": null,
+   "needs_typing": null,
+   "statement": "check_l1_fragment 1 = true ∧ check_l1_fragment 2 = true ∧ check_l1_fragment 3 = true ∧ check_l1_fragment 4 = true ∧ check_l1_fragment 5 = true"
+  },
+  {
+   "id": "erdos479:FLEAF:e7a62201333d41ea15ae:30",
+   "kind": "FORMALIZER_LEAF",
+   "depth_from_frontier": 1,
+   "on_root_path": false,
+   "source": "FRONTIER_ADJACENT",
+   "headline_class": null,
+   "headline_status": null,
+   "needs_typing": null,
+   "statement": "check_k0_witnesses = true"
+  },
+  {
+   "id": "erdos479:FLEAF:ee25789b49e71843962d:31",
+   "kind": "FORMALIZER_LEAF",
+   "depth_from_frontier": 1,
+   "on_root_path": false,
+   "source": "FRONTIER_ADJACENT",
+   "headline_class": null,
+   "headline_status": null,
+   "needs_typing": null,
+   "statement": "check_k0_witnesses = true"
+  }
+ ],
+ "harvest": {
+  "chains": {
+   "file": "oracle/evidence/msl-machine/gpt-mine-day2-2026-09-02/chains/erdos479.chains.json",
+   "chains": 136,
+   "premises_all_proved": 0,
+   "premises_not_proved": 136,
+   "bad_shape": 0,
+   "join_rule": "statement content sha256 (msl_promote._statement_key) OR normalized declaration (msl_promote._norm_decl)"
+  },
+  "decomposer": {
+   "dir": null,
+   "sidecars": 0,
+   "children_all_proved": 0,
+   "children_open": 0,
+   "error_count": 0,
+   "unreadable": []
+  },
+  "door_composition_jobs": {
+   "dir": "oracle/evidence/msl-machine/ore/jobs/composition",
+   "scanned": 4000,
+   "for_this_problem": 13,
+   "statement_joins_proved": 0,
+   "capped": true,
+   "error_count": 0,
+   "unreadable": []
+  },
+  "law": "CHAINS FIRST, MODEL SECOND. Not one proposer call is made until this harvest has run."
+ },
+ "lifts": [],
+ "candidates": [
+  {
+   "t_id": "erdos479:COMPRESS:erdos479_k_neg_one_inf",
+   "theorem_name": "erdos479_k_neg_one_inf",
+   "origin": "PROPOSER",
+   "variant": "v1_direct",
+   "statement": "theorem erdos479_k_neg_one_inf (N : ℕ) : ∃ n : ℕ, N ≤ n ∧ (2 : ℤ) ^ n ≡ -1 [ZMOD (n : ℤ)]",
+   "premises": [
+    "erdos479:ORE:2b23edb1fcd33097"
+   ],
+   "discharges": "erdos479:BRANCH_A",
+   "derivation_claim": "erdos479_lte → erdos479_k_neg_one_inf: given N, pick a with 3^a ≥ N and set n := 3^a; erdos479_lte gives (3:ℤ)^(a+1) ∣ 2^(3^a)+1, and since n = 3^a divides 3^(a+1) in ℤ, transitivity of Int.dvd yields (n:ℤ) ∣ 2^n + 1, which unfolds to the ZMOD congruence; unboundedness of a makes n arbitrarily large",
+   "reason": "It converts the pointwise LTE leaf into the infinitude (all-N) form in ZMOD over ℤ, settling k = −1 entirely and shrinking BRANCH_A to k ∉ {0, −1, 1}.",
+   "gates": {
+    "order": [
+     "G1_SCHEMA",
+     "G2_TYPE",
+     "G3_CIRCULAR",
+     "G4_KILLED",
+     "G5_CONJUNCTION",
+     "G6_FALSIFY",
+     "G7_RISE"
+    ],
+    "passed": [
+     "G1_SCHEMA",
+     "G2_TYPE",
+     "G3_CIRCULAR",
+     "G4_KILLED",
+     "G5_CONJUNCTION",
+     "G6_FALSIFY",
+     "G7_RISE"
+    ],
+    "failed_at": null,
+    "detail": {
+     "G1_SCHEMA": {
+      "ok": true,
+      "reason": ""
+     },
+     "G2_TYPE": {
+      "standalone_ok": true,
+      "standalone_missing": [],
+      "referenced_missing": [],
+      "fatal": [],
+      "domain_bounds_dropped": [],
+      "ok": true,
+      "reason": ""
+     },
+     "G3_CIRCULAR": {
+      "ok": true,
+      "reason": ""
+     },
+     "G4_KILLED": {
+      "checked_against": 0,
+      "ok": true,
+      "reason": ""
+     },
+     "G5_CONJUNCTION": {
+      "conjunct_count": 2,
+      "t_len": 48,
+      "conjunction_len": 66,
+      "conjuncts_matching_a_premise": 0,
+      "shorter_than_conjunction": true,
+      "generalizes": false,
+      "generalization_reason": "",
+      "measure": "SHORTER_THAN_CONJUNCTION",
+      "ok": true,
+      "reason": ""
+     },
+     "G6_FALSIFY": {
+      "ok": true,
+      "state": "NOT_APPLICABLE",
+      "reason": "NOT_APPLICABLE: not a ∀ over a natural parameter"
+     },
+     "G7_RISE": {
+      "ok": true,
+      "verdict": "RISE",
+      "reasons": [
+       "DISCHARGES:erdos479:BRANCH_A",
+       "ON_ROOT_PATH"
+      ]
+     }
+    },
+    "rise": "RISE"
+   },
+   "rise": "RISE",
+   "kernel": {
+    "verdict": "KERNEL_NOT_RUN",
+    "reason": "no Lean on this machine tonight; the job is filed, nothing is claimed",
+    "axioms": null,
+    "clean": false
+   },
+   "status": "OPEN",
+   "node_validation": {
+    "binding_after_builder": "PARAPHRASE",
+    "type_gate": {
+     "ok": true,
+     "missing": [],
+     "reason": "",
+     "reference": null,
+     "used_type_context": false
+    },
+    "unbound": false
+   },
+   "jobs": {
+    "jobs_file": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_k_neg_one_inf.jobs.json",
+    "implication_lean": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_k_neg_one_inf.implication.lean",
+    "standalone_lean": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_k_neg_one_inf.standalone.lean",
+    "cable_spec_ok": true
+   }
+  },
+  {
+   "t_id": "erdos479:COMPRESS:erdos479_family_odd_generalized",
+   "theorem_name": "erdos479_family_odd_generalized",
+   "origin": "PROPOSER",
+   "variant": "v2_general",
+   "statement": "theorem erdos479_family_odd_generalized (j m : ℕ) (hm1 : 1 ≤ j) (hodd : Odd m) :\n    (2 ^ (2 ^ j * m) : ℤ) ≡ (2 ^ (2 ^ j) : ℤ) [ZMOD ((2 ^ j * m : ℕ) : ℤ)]",
+   "premises": [
+    "erdos479:ORE:497dc6ba972d1307"
+   ],
+   "discharges": "erdos479:BRANCH_A",
+   "derivation_claim": "erdos479:ORE:497dc6ba972d1307 (the prime case, applied to every odd prime p ∣ m via Fermat/Factorization + CRT on the odd part, together with 2^j ∣ 2^(2^j * m) and 2^j ∣ 2^(2^j) for j ≥ 1) → T: the congruence 2^(2^j·m) ≡ 2^(2^j) (mod 2^j·m) holds for every odd m, not merely odd primes p.",
+   "reason": "It generalizes the literal prime parameter p of the proved family to all odd m and lifts the congruence into ℤ (ZMOD), producing infinitely many composite witnesses n = 2^j·m with 2^n ≡ 2^(2^j) mod n, directly shrinking the all-k≠1 infinitu",
+   "gates": {
+    "order": [
+     "G1_SCHEMA",
+     "G2_TYPE",
+     "G3_CIRCULAR",
+     "G4_KILLED",
+     "G5_CONJUNCTION",
+     "G6_FALSIFY",
+     "G7_RISE"
+    ],
+    "passed": [
+     "G1_SCHEMA",
+     "G2_TYPE",
+     "G3_CIRCULAR",
+     "G4_KILLED",
+     "G5_CONJUNCTION",
+     "G6_FALSIFY",
+     "G7_RISE"
+    ],
+    "failed_at": null,
+    "detail": {
+     "G1_SCHEMA": {
+      "ok": true,
+      "reason": ""
+     },
+     "G2_TYPE": {
+      "standalone_ok": true,
+      "standalone_missing": [],
+      "referenced_missing": [],
+      "fatal": [],
+      "domain_bounds_dropped": [],
+      "ok": true,
+      "reason": ""
+     },
+     "G3_CIRCULAR": {
+      "ok": true,
+      "reason": ""
+     },
+     "G4_KILLED": {
+      "checked_against": 0,
+      "ok": true,
+      "reason": ""
+     },
+     "G5_CONJUNCTION": {
+      "conjunct_count": 1,
+      "t_len": 70,
+      "conjunction_len": 123,
+      "shorter_than_conjunction": true,
+      "generalizes": false,
+      "generalization_reason": "",
+      "measure": "SHORTER_THAN_CONJUNCTION",
+      "ok": true,
+      "reason": ""
+     },
+     "G6_FALSIFY": {
+      "ok": true,
+      "state": "NOT_APPLICABLE",
+      "reason": "NOT_APPLICABLE: not a ∀ over a natural parameter"
+     },
+     "G7_RISE": {
+      "ok": true,
+      "verdict": "RISE",
+      "reasons": [
+       "DISCHARGES:erdos479:BRANCH_A",
+       "ON_ROOT_PATH"
+      ]
+     }
+    },
+    "rise": "RISE"
+   },
+   "rise": "RISE",
+   "kernel": {
+    "verdict": "KERNEL_NOT_RUN",
+    "reason": "no Lean on this machine tonight; the job is filed, nothing is claimed",
+    "axioms": null,
+    "clean": false
+   },
+   "status": "OPEN",
+   "node_validation": {
+    "binding_after_builder": "PARAPHRASE",
+    "type_gate": {
+     "ok": true,
+     "missing": [],
+     "reason": "",
+     "reference": null,
+     "used_type_context": false
+    },
+    "unbound": false
+   },
+   "jobs": {
+    "jobs_file": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_family_odd_generalized.jobs.json",
+    "implication_lean": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_family_odd_generalized.implication.lean",
+    "standalone_lean": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_family_odd_generalized.standalone.lean",
+    "cable_spec_ok": true
+   }
+  },
+  {
+   "t_id": "erdos479:COMPRESS:erdos479_affirmative_bridge",
+   "theorem_name": "erdos479_affirmative_bridge",
+   "origin": "PROPOSER",
+   "variant": "v3_bridge",
+   "statement": "theorem erdos479_affirmative_bridge (k : ℤ) (hk : k = 0 ∨ (∃ j : ℕ, k = (2 : ℤ) ^ (2 ^ j)) ∨ k = -1) : ∀ N : ℕ, ∃ n : ℕ, N < n ∧ (2 : ℤ) ^ n ≡ k [ZMOD n]",
+   "premises": [
+    "erdos479:ORE:e4e7d9dfc598a767",
+    "erdos479:ORE:497dc6ba972d1307"
+   ],
+   "discharges": "erdos479:BRANCH_A",
+   "derivation_claim": "Case k = 0: take n = 2^s with s large; n ∣ 2^n since 2^s ∣ 2^(2^s), hence (2:ℤ)^n ≡ 0 [ZMOD n]. Case k = -1: take n = 3^a with 3^a > N (unbounded since a ↦ 3^a strictly grows); erdos479_k_neg_one gives 3^a ∣ 2^(3^a) + 1, i.e. (2:ℤ)^n ≡ -1 [ZMOD n]. Case k = 2^(2^j): pick an odd prime p with 2^j * p ",
+   "reason": "It converts the discrete proved families into the target's exact ZMOD (n:ℤ) form and quantifies over all k in an infinite class, shrinking BRANCH_A to the residual k not of the form 0, −1, or 2^(2^j).",
+   "gates": {
+    "order": [
+     "G1_SCHEMA",
+     "G2_TYPE",
+     "G3_CIRCULAR",
+     "G4_KILLED",
+     "G5_CONJUNCTION",
+     "G6_FALSIFY",
+     "G7_RISE"
+    ],
+    "passed": [
+     "G1_SCHEMA",
+     "G2_TYPE",
+     "G3_CIRCULAR",
+     "G4_KILLED",
+     "G5_CONJUNCTION",
+     "G6_FALSIFY",
+     "G7_RISE"
+    ],
+    "failed_at": null,
+    "detail": {
+     "G1_SCHEMA": {
+      "ok": true,
+      "reason": ""
+     },
+     "G2_TYPE": {
+      "standalone_ok": true,
+      "standalone_missing": [],
+      "referenced_missing": [],
+      "fatal": [],
+      "domain_bounds_dropped": [],
+      "ok": true,
+      "reason": ""
+     },
+     "G3_CIRCULAR": {
+      "ok": true,
+      "reason": ""
+     },
+     "G4_KILLED": {
+      "checked_against": 0,
+      "ok": true,
+      "reason": ""
+     },
+     "G5_CONJUNCTION": {
+      "conjunct_count": 2,
+      "t_len": 50,
+      "conjunction_len": 192,
+      "conjuncts_matching_a_premise": 0,
+      "shorter_than_conjunction": true,
+      "generalizes": true,
+      "generalization_reason": "BINDER_GENERALIZATION: T quantifies where a premise held the literal(s) 2,2,2,2,2",
+      "measure": "SHORTER_THAN_CONJUNCTION",
+      "ok": true,
+      "reason": ""
+     },
+     "G6_FALSIFY": {
+      "ok": true,
+      "state": "UNDECIDED",
+      "rows": [],
+      "param": "N",
+      "lean": "import Mathlib\nset_option autoImplicit false\nnamespace R008\n/-- Decidable check of the full lemma content at a single s:\n(1) exact valuation v₂(2^(2^s)) = 2^s, encoded as: 2^(2^s) ∣ 2^(2^s) and ¬(2^(2^s + 1) ∣ 2^(2^s));\n(2) 2^s ≥ s;\n(3) divisibility 2^s ∣ 2^(2^s) (witness family n = 2^s for k = 0). --/\ndef check_s (s : ℕ) : Bool :=\n  (2 ^ (2 ^ s) ∣ 2 ^ (2 ^ s))\n  && ¬ (2 ^ (2 ^ s + 1) ∣ 2 ^ (2 ^ s))\n  && (s ≤ 2 ^ s)\n  && ((2 ^ s : ℕ) ∣ 2 ^ (2 ^ s))\n/-- Bounded check over s = 1, …, bound. --/\ndef check (bound : ℕ) : Bool :=\n  (List.range bound).all (fun s => s = 0 || check_s s)\nend R008\n/-!\nErdős 479, second family (adversarial transcript mine, 2026-09-02 — the campaign itself\nmissed this; the auditor derived it): k = −1 is settled. For every a,\n3^(a+1) ∣ 2^(3^a) + 1, so in particular n = 3^a divides 2^n + 1, giving infinitely many\nwitnesses for k = −1 (2^n ≡ −1 mod n). Lifting-the-exponent induction: if\n2^(3^a) = 3^(a+1)·m − 1 then cubing gives (3tm−1)³ + 1 = 9t·(3t²m³ − 3tm² + m) with\nt = 3^a. Stated in ℤ to keep the subtraction honest; ℕ divisibility corollary follows.\n-/\ntheorem erdos479_lte (a : ℕ) : (3 : ℤ) ^ (a + 1) ∣ 2 ^ (3 ^ a) + 1 := by\n  induction a with\n  | zero => norm_num\n  | succ a ih =>\n    obtain ⟨m, hm⟩ := ih\n    set t : ℤ := 3 ^ a with hta\n    have h31 : (3 : ℤ) ^ (a + 1) = 3 * t := by rw [hta, pow_succ, mul_comm]\n    have h32 : (3 : ℤ) ^ (a + 1 + 1) = 9 * t := by rw [pow_succ, h31]; ring\n    have h2 : (2 : ℤ) ^ (3 ^ a) = 3 * t * m - 1 := by\n      rw [← h31]\n      linarith\n    have hcube : (2 : ℤ) ^ (3 ^ (a + 1)) = ((2 : ℤ) ^ (3 ^ a)) ^ 3 := by\n      rw [← pow_mul, pow_succ]\n    refine ⟨3 * t ^ 2 * m ^ 3 - 3 * t * m ^ 2 + m, ?_⟩\n    rw [hcube, h2, h32]\n    ring\nErdős 479, P0 promotion (GPT gold pack rank 2, audited 2026-09-01; kernel round 2026-09-02).\nInfinite parametric witness family: for every j ≥ 0 and every odd prime p, with\nk = 2^(2^j) and n = 2^j · p, we have 2^n ≡ k (mod n). Modulo p by Fermat\n(2^(2^j(p-1)) ≡ 1), modulo 2^j both sides vanish (j ≤ 2^j), and CRT since gcd(2^j, p) = 1.\nAs p varies this gives infinitely many n for each such k.\ndef witness : List Nat := [2, 4, 8, 16, 32, 64]\ndef isWitness (n : Nat) : Bool := (2 ^ n) % n == 0\ndef check : Bool := witness.all isWitness\ndef witnessOk (a : Nat) : Bool := (2^(2^a)) % (2^a) == 0\ndef check_range : Bool := (List.range 7).all (fun a => witnessOk a)\nabbrev erdos479_affirmative_bridge_prop (N : Nat) : Prop := k = (2 : ℤ) ^ (2 ^ j)) ∨ k = -1) : ∀ N : ℕ, ∃ n : ℕ, N < n ∧ (2 : ℤ) ^ n ≡ k [ZMOD n]\n\n#eval (if (decide (erdos479_affirmative_bridge_prop 0)) then \"MSLF 0 TRUE\" else \"MSLF 0 FALSE\")\n#eval (if (decide (erdos479_affirmative_bridge_prop 1)) then \"MSLF 1 TRUE\" else \"MSLF 1 FALSE\")\n#eval (if (decide (erdos479_affirmative_bridge_prop 2)) then \"MSLF 2 TRUE\" else \"MSLF 2 FALSE\")\n",
+      "law": "SILENCE IS UNDECIDED, NEVER A PASS (msl_strengthen S7d)"
+     },
+     "G7_RISE": {
+      "ok": true,
+      "verdict": "RISE",
+      "reasons": [
+       "DISCHARGES:erdos479:BRANCH_A",
+       "ON_ROOT_PATH"
+      ]
+     }
+    },
+    "rise": "RISE"
+   },
+   "rise": "RISE",
+   "kernel": {
+    "verdict": "KERNEL_NOT_RUN",
+    "reason": "no Lean on this machine tonight; the job is filed, nothing is claimed",
+    "axioms": null,
+    "clean": false
+   },
+   "status": "OPEN",
+   "node_validation": {
+    "binding_after_builder": "PARAPHRASE",
+    "type_gate": {
+     "ok": true,
+     "missing": [],
+     "reason": "",
+     "reference": null,
+     "used_type_context": false
+    },
+    "unbound": false
+   },
+   "jobs": {
+    "jobs_file": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_affirmative_bridge.jobs.json",
+    "implication_lean": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_affirmative_bridge.implication.lean",
+    "standalone_lean": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_affirmative_bridge.standalone.lean",
+    "cable_spec_ok": true
+   }
+  },
+  {
+   "t_id": "erdos479:COMPRESS:erdos479_k3_no_witness_range",
+   "theorem_name": "erdos479_k3_no_witness_range",
+   "origin": "PROPOSER",
+   "variant": "v1_direct",
+   "statement": "theorem erdos479_k3_no_witness_range : ∀ n ∈ Finset.Icc (1 : ℕ) 120, (2 ^ n : ℕ) % n ≠ 3",
+   "premises": [
+    "erdos479:ORE:c96696c4aa12506b",
+    "erdos479:ORE:39a300ec8d427fec"
+   ],
+   "discharges": "erdos479:BRANCH_B",
+   "derivation_claim": "The range checks of R003 (kernel-verified Bool sweeps over witness candidates for small k) generalize from a literal bound to a universally quantified Finset.Icc 1 120 range for k = 3; the kernel proves the ∀-statement directly by decide on the finite range, so T is strictly stronger than the litera",
+   "reason": "It gives the first unconditional structural obstruction toward a NEGATIVE CLOSE: for k = 3 every witness n must be odd (even n forces 2^n ≡ 0 mod 2 while 3 is odd), and the theorem certifies the entire odd candidate supply is empty up to 12",
+   "gates": {
+    "order": [
+     "G1_SCHEMA",
+     "G2_TYPE",
+     "G3_CIRCULAR",
+     "G4_KILLED",
+     "G5_CONJUNCTION",
+     "G6_FALSIFY",
+     "G7_RISE"
+    ],
+    "passed": [
+     "G1_SCHEMA",
+     "G2_TYPE",
+     "G3_CIRCULAR",
+     "G4_KILLED",
+     "G5_CONJUNCTION",
+     "G6_FALSIFY",
+     "G7_RISE"
+    ],
+    "failed_at": null,
+    "detail": {
+     "G1_SCHEMA": {
+      "ok": true,
+      "reason": ""
+     },
+     "G2_TYPE": {
+      "standalone_ok": true,
+      "standalone_missing": [],
+      "referenced_missing": [],
+      "fatal": [],
+      "domain_bounds_dropped": [],
+      "ok": true,
+      "reason": ""
+     },
+     "G3_CIRCULAR": {
+      "ok": true,
+      "reason": ""
+     },
+     "G4_KILLED": {
+      "checked_against": 0,
+      "ok": true,
+      "reason": ""
+     },
+     "G5_CONJUNCTION": {
+      "conjunct_count": 1,
+      "t_len": 49,
+      "conjunction_len": 118,
+      "shorter_than_conjunction": true,
+      "generalizes": false,
+      "generalization_reason": "",
+      "measure": "SHORTER_THAN_CONJUNCTION",
+      "ok": true,
+      "reason": ""
+     },
+     "G6_FALSIFY": {
+      "ok": true,
+      "state": "NOT_APPLICABLE",
+      "reason": "NOT_APPLICABLE: not a ∀ over a natural parameter"
+     },
+     "G7_RISE": {
+      "ok": true,
+      "verdict": "RISE",
+      "reasons": [
+       "DISCHARGES:erdos479:BRANCH_B"
+      ]
+     }
+    },
+    "rise": "RISE"
+   },
+   "rise": "RISE",
+   "kernel": {
+    "verdict": "KERNEL_NOT_RUN",
+    "reason": "no Lean on this machine tonight; the job is filed, nothing is claimed",
+    "axioms": null,
+    "clean": false
+   },
+   "status": "OPEN",
+   "node_validation": {
+    "binding_after_builder": "PARAPHRASE",
+    "type_gate": {
+     "ok": true,
+     "missing": [],
+     "reason": "",
+     "reference": null,
+     "used_type_context": false
+    },
+    "unbound": false
+   },
+   "jobs": {
+    "jobs_file": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_k3_no_witness_range.jobs.json",
+    "implication_lean": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_k3_no_witness_range.implication.lean",
+    "standalone_lean": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_k3_no_witness_range.standalone.lean",
+    "cable_spec_ok": true
+   }
+  },
+  {
+   "t_id": "erdos479:COMPRESS:erdos479_witness_structure",
+   "theorem_name": "erdos479_witness_structure",
+   "origin": "PROPOSER",
+   "variant": "v2_general",
+   "statement": "theorem erdos479_witness_structure (j n : ℕ) (hj : 2 ^ j ≤ n)\n    (h : (2 ^ n : ℕ) ≡ 2 ^ (2 ^ j) [MOD n]) :\n    (2 ^ (2 ^ j) : ℕ) * (2 ^ (n - 2 ^ j) - 1) ≡ 0 [MOD n] ∧\n    n.factorization 2 ≤ 2 ^ j",
+   "premises": [
+    "erdos479:ORE:497dc6ba972d1307",
+    "erdos479:ORE:bdad8b1e2f3cabf4"
+   ],
+   "discharges": "erdos479:BRANCH_B",
+   "derivation_claim": "From h, n ∣ 2^n − 2^(2^j) = 2^(2^j)·(2^(n−2^j) − 1) (using hj for honest ℕ subtraction). The first conjunct is exactly this divisibility as a ModEq. For the second, write n = 2^s·m with m odd (s = n.factorization 2); since m ∣ n and gcd(m, 2^(2^j)) = 1, m ∣ 2^(n−2^j) − 1, which is odd when n > 2^j (",
+   "reason": "For fixed k = 2^(2^j), every exact witness n is now forced to have 2-adic valuation ≤ 2^j and odd part dividing 2^(n−2^j) − 1, shrinking the unbounded witness search to a structured odd-part condition — a direct step toward proving finitene",
+   "gates": {
+    "order": [
+     "G1_SCHEMA",
+     "G2_TYPE",
+     "G3_CIRCULAR",
+     "G4_KILLED",
+     "G5_CONJUNCTION",
+     "G6_FALSIFY",
+     "G7_RISE"
+    ],
+    "passed": [
+     "G1_SCHEMA",
+     "G2_TYPE",
+     "G3_CIRCULAR",
+     "G4_KILLED",
+     "G5_CONJUNCTION",
+     "G6_FALSIFY",
+     "G7_RISE"
+    ],
+    "failed_at": null,
+    "detail": {
+     "G1_SCHEMA": {
+      "ok": true,
+      "reason": ""
+     },
+     "G2_TYPE": {
+      "standalone_ok": true,
+      "standalone_missing": [],
+      "referenced_missing": [],
+      "fatal": [],
+      "domain_bounds_dropped": [],
+      "ok": true,
+      "reason": ""
+     },
+     "G3_CIRCULAR": {
+      "ok": true,
+      "reason": ""
+     },
+     "G4_KILLED": {
+      "checked_against": 0,
+      "ok": true,
+      "reason": ""
+     },
+     "G5_CONJUNCTION": {
+      "conjunct_count": 2,
+      "t_len": 81,
+      "conjunction_len": 184,
+      "conjuncts_matching_a_premise": 0,
+      "shorter_than_conjunction": true,
+      "generalizes": false,
+      "generalization_reason": "",
+      "measure": "SHORTER_THAN_CONJUNCTION",
+      "ok": true,
+      "reason": ""
+     },
+     "G6_FALSIFY": {
+      "ok": true,
+      "state": "NOT_APPLICABLE",
+      "reason": "NOT_APPLICABLE: not a ∀ over a natural parameter"
+     },
+     "G7_RISE": {
+      "ok": true,
+      "verdict": "RISE",
+      "reasons": [
+       "DISCHARGES:erdos479:BRANCH_B"
+      ]
+     }
+    },
+    "rise": "RISE"
+   },
+   "rise": "RISE",
+   "kernel": {
+    "verdict": "KERNEL_NOT_RUN",
+    "reason": "no Lean on this machine tonight; the job is filed, nothing is claimed",
+    "axioms": null,
+    "clean": false
+   },
+   "status": "OPEN",
+   "node_validation": {
+    "binding_after_builder": "PARAPHRASE",
+    "type_gate": {
+     "ok": true,
+     "missing": [],
+     "reason": "",
+     "reference": null,
+     "used_type_context": false
+    },
+    "unbound": false
+   },
+   "jobs": {
+    "jobs_file": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_witness_structure.jobs.json",
+    "implication_lean": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_witness_structure.implication.lean",
+    "standalone_lean": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_witness_structure.standalone.lean",
+    "cable_spec_ok": true
+   }
+  },
+  {
+   "t_id": "erdos479:COMPRESS:erdos479_witness_lift",
+   "theorem_name": "erdos479_witness_lift",
+   "origin": "PROPOSER",
+   "variant": "v3_bridge",
+   "statement": "theorem erdos479_witness_lift (k n p : ℕ) (hp : p.Prime) (hgcd : Nat.gcd n p = 1) (hn : (2 ^ n : ℕ) ≡ k [MOD n]) (hp1 : (2 ^ n : ℕ) ≡ k [MOD p]) (hp2 : (k ^ p : ℕ) ≡ k [MOD n]) : (2 ^ (n * p) : ℕ) ≡ k [MOD n * p]",
+   "premises": [
+    "erdos479:ORE:497dc6ba972d1307"
+   ],
+   "discharges": "erdos479:BRANCH_B",
+   "derivation_claim": "A single generalized lifting lemma (not a conjunction): mod n, 2^(n*p) = (2^n)^p ≡ k^p ≡ k by hn and hp2; mod p, p | (p-1+1) scaling gives 2^(n*p) = 2^(n + n*(p-1)) ≡ 2^n ≡ k by Fermat (hp) and hp1; CRT via hgcd. It strictly GENERALIZES erdos479_family (L1): instantiating k = 2^(2^j), n = 2^j, p odd",
+   "reason": "It replaces the infinite-family construction by a closure rule on exact ZMOD witness sets, so BRANCH_B's finite-witness-set search reduces to finding k admitting no (or finitely many) base witnesses satisfying the three congruences — a stri",
+   "gates": {
+    "order": [
+     "G1_SCHEMA",
+     "G2_TYPE",
+     "G3_CIRCULAR",
+     "G4_KILLED",
+     "G5_CONJUNCTION",
+     "G6_FALSIFY",
+     "G7_RISE"
+    ],
+    "passed": [
+     "G1_SCHEMA",
+     "G2_TYPE",
+     "G3_CIRCULAR",
+     "G4_KILLED",
+     "G5_CONJUNCTION",
+     "G6_FALSIFY",
+     "G7_RISE"
+    ],
+    "failed_at": null,
+    "detail": {
+     "G1_SCHEMA": {
+      "ok": true,
+      "reason": ""
+     },
+     "G2_TYPE": {
+      "standalone_ok": true,
+      "standalone_missing": [],
+      "referenced_missing": [],
+      "fatal": [],
+      "domain_bounds_dropped": [],
+      "ok": true,
+      "reason": ""
+     },
+     "G3_CIRCULAR": {
+      "ok": true,
+      "reason": ""
+     },
+     "G4_KILLED": {
+      "checked_against": 0,
+      "ok": true,
+      "reason": ""
+     },
+     "G5_CONJUNCTION": {
+      "conjunct_count": 1,
+      "t_len": 33,
+      "conjunction_len": 123,
+      "shorter_than_conjunction": true,
+      "generalizes": false,
+      "generalization_reason": "",
+      "measure": "SHORTER_THAN_CONJUNCTION",
+      "ok": true,
+      "reason": ""
+     },
+     "G6_FALSIFY": {
+      "ok": true,
+      "state": "NOT_APPLICABLE",
+      "reason": "NOT_APPLICABLE: not a ∀ over a natural parameter"
+     },
+     "G7_RISE": {
+      "ok": true,
+      "verdict": "RISE",
+      "reasons": [
+       "DISCHARGES:erdos479:BRANCH_B"
+      ]
+     }
+    },
+    "rise": "RISE"
+   },
+   "rise": "RISE",
+   "kernel": {
+    "verdict": "KERNEL_NOT_RUN",
+    "reason": "no Lean on this machine tonight; the job is filed, nothing is claimed",
+    "axioms": null,
+    "clean": false
+   },
+   "status": "OPEN",
+   "node_validation": {
+    "binding_after_builder": "PARAPHRASE",
+    "type_gate": {
+     "ok": true,
+     "missing": [],
+     "reason": "",
+     "reference": null,
+     "used_type_context": false
+    },
+    "unbound": false
+   },
+   "jobs": {
+    "jobs_file": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_witness_lift.jobs.json",
+    "implication_lean": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_witness_lift.implication.lean",
+    "standalone_lean": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_witness_lift.standalone.lean",
+    "cable_spec_ok": true
+   }
+  },
+  {
+   "t_id": "erdos479:COMPRESS:check_l1_fragment_range_six",
+   "theorem_name": "check_l1_fragment_range_six",
+   "origin": "PROPOSER",
+   "variant": "v1_direct",
+   "statement": "∀ n ∈ Finset.Icc 1 5, check_l1_fragment n = true",
+   "premises": [
+    "erdos479:FLEAF:2ded7584a23fc4ffed6d:5"
+   ],
+   "discharges": "erdos479:FLEAF:2ded7584a23fc4ffed6d:5",
+   "derivation_claim": "The open leaf is the explicit conjunction check_l1_fragment 1 = true ∧ … ∧ check_l1_fragment 5 = true, which is definitionally (∀ n ∈ Finset.Icc 1 5, check_l1_fragment n = true) with the quantifier unfolded over the five-point Icc; each point is a proved leaf, so the kernel closes the bounded ∀ by d",
+   "reason": "It collapses the five-case conjunction into one bounded universally quantified statement, the minimal compression that discharges the leaf outright and moves toward quantifying check_l1_fragment over all n.",
+   "gates": {
+    "order": [
+     "G1_SCHEMA",
+     "G2_TYPE",
+     "G3_CIRCULAR",
+     "G4_KILLED",
+     "G5_CONJUNCTION",
+     "G6_FALSIFY",
+     "G7_RISE"
+    ],
+    "passed": [],
+    "failed_at": "G1_SCHEMA",
+    "detail": {
+     "G1_SCHEMA": {
+      "ok": false,
+      "reason": "PREMISE_NOT_OFFERED: erdos479:FLEAF:2ded7584a23fc4ffed6d:5 -- a premise whose proved source we do not hold cannot be included by source"
+     }
+    }
+   },
+   "rise": null,
+   "status": "REFUSED"
+  },
+  {
+   "t_id": "erdos479:COMPRESS:erdos479_witness_family_all_s",
+   "theorem_name": "erdos479_witness_family_all_s",
+   "origin": "PROPOSER",
+   "variant": "v2_general",
+   "statement": "∀ (s : ℕ), (2 ^ (2 ^ s) ∣ 2 ^ (2 ^ s)) ∧ ¬(2 ^ (2 ^ s + 1) ∣ 2 ^ (2 ^ s)) ∧ (s ≤ 2 ^ s) ∧ ((2 ^ s : ℕ) ∣ 2 ^ (2 ^ s))",
+   "premises": [
+    "erdos479:ORE:bdad8b1e2f3cabf4",
+    "erdos479:ORE:c96696c4aa12506b",
+    "erdos479:ORE:39a300ec8d427fec"
+   ],
+   "discharges": "erdos479:FLEAF:2ded7584a23fc4ffed6d:5",
+   "derivation_claim": "R008.check 6 = true verifies check_s s for s = 1,…,6, and check_range verifies witnessOk a for a = 0,…,6; the conjunction of these bounded checks is the finite evidence for the per-s lemma content. The proposed theorem quantifies s over ALL of ℕ, turning the verified finite range into a universally ",
+   "reason": "Replaces the bounded/literal fragment checks with a single universally quantified theorem over all s ∈ ℕ, compressing five separate kernel facts into one and eliminating the finite range, hence closer to the root (the full Erdős 479 witness",
+   "gates": {
+    "order": [
+     "G1_SCHEMA",
+     "G2_TYPE",
+     "G3_CIRCULAR",
+     "G4_KILLED",
+     "G5_CONJUNCTION",
+     "G6_FALSIFY",
+     "G7_RISE"
+    ],
+    "passed": [
+     "G1_SCHEMA",
+     "G2_TYPE",
+     "G3_CIRCULAR",
+     "G4_KILLED",
+     "G5_CONJUNCTION",
+     "G6_FALSIFY",
+     "G7_RISE"
+    ],
+    "failed_at": null,
+    "detail": {
+     "G1_SCHEMA": {
+      "ok": true,
+      "reason": ""
+     },
+     "G2_TYPE": {
+      "standalone_ok": true,
+      "standalone_missing": [],
+      "referenced_missing": [],
+      "fatal": [],
+      "domain_bounds_dropped": [],
+      "ok": true,
+      "reason": ""
+     },
+     "G3_CIRCULAR": {
+      "ok": true,
+      "reason": ""
+     },
+     "G4_KILLED": {
+      "checked_against": 0,
+      "ok": true,
+      "reason": ""
+     },
+     "G5_CONJUNCTION": {
+      "conjunct_count": 4,
+      "t_len": 117,
+      "conjunction_len": 179,
+      "conjuncts_matching_a_premise": 0,
+      "shorter_than_conjunction": true,
+      "generalizes": true,
+      "generalization_reason": "BINDER_GENERALIZATION: T quantifies where a premise held the literal(s) 6",
+      "measure": "SHORTER_THAN_CONJUNCTION",
+      "ok": true,
+      "reason": ""
+     },
+     "G6_FALSIFY": {
+      "ok": true,
+      "state": "UNDECIDED",
+      "rows": [],
+      "param": "s",
+      "lean": "import Mathlib\nset_option autoImplicit false\ndef witness : List Nat := [2, 4, 8, 16, 32, 64]\ndef isWitness (n : Nat) : Bool := (2 ^ n) % n == 0\ndef check : Bool := witness.all isWitness\nnamespace R008\n/-- Decidable check of the full lemma content at a single s:\n(1) exact valuation v₂(2^(2^s)) = 2^s, encoded as: 2^(2^s) ∣ 2^(2^s) and ¬(2^(2^s + 1) ∣ 2^(2^s));\n(2) 2^s ≥ s;\n(3) divisibility 2^s ∣ 2^(2^s) (witness family n = 2^s for k = 0). --/\ndef check_s (s : ℕ) : Bool :=\n  (2 ^ (2 ^ s) ∣ 2 ^ (2 ^ s))\n  && ¬ (2 ^ (2 ^ s + 1) ∣ 2 ^ (2 ^ s))\n  && (s ≤ 2 ^ s)\n  && ((2 ^ s : ℕ) ∣ 2 ^ (2 ^ s))\n/-- Bounded check over s = 1, …, bound. --/\ndef check (bound : ℕ) : Bool :=\n  (List.range bound).all (fun s => s = 0 || check_s s)\nend R008\ndef witnessOk (a : Nat) : Bool := (2^(2^a)) % (2^a) == 0\ndef check_range : Bool := (List.range 7).all (fun a => witnessOk a)\n/-!\nErdős 479, P0 promotion (GPT gold pack rank 2, audited 2026-09-01; kernel round 2026-09-02).\nInfinite parametric witness family: for every j ≥ 0 and every odd prime p, with\nk = 2^(2^j) and n = 2^j · p, we have 2^n ≡ k (mod n). Modulo p by Fermat\n(2^(2^j(p-1)) ≡ 1), modulo 2^j both sides vanish (j ≤ 2^j), and CRT since gcd(2^j, p) = 1.\nAs p varies this gives infinitely many n for each such k.\n-/\nErdős 479, second family (adversarial transcript mine, 2026-09-02 — the campaign itself\nmissed this; the auditor derived it): k = −1 is settled. For every a,\n3^(a+1) ∣ 2^(3^a) + 1, so in particular n = 3^a divides 2^n + 1, giving infinitely many\nwitnesses for k = −1 (2^n ≡ −1 mod n). Lifting-the-exponent induction: if\n2^(3^a) = 3^(a+1)·m − 1 then cubing gives (3tm−1)³ + 1 = 9t·(3t²m³ − 3tm² + m) with\nt = 3^a. Stated in ℤ to keep the subtraction honest; ℕ divisibility corollary follows.\ntheorem erdos479_lte (a : ℕ) : (3 : ℤ) ^ (a + 1) ∣ 2 ^ (3 ^ a) + 1 := by\n  induction a with\n  | zero => norm_num\n  | succ a ih =>\n    obtain ⟨m, hm⟩ := ih\n    set t : ℤ := 3 ^ a with hta\n    have h31 : (3 : ℤ) ^ (a + 1) = 3 * t := by rw [hta, pow_succ, mul_comm]\n    have h32 : (3 : ℤ) ^ (a + 1 + 1) = 9 * t := by rw [pow_succ, h31]; ring\n    have h2 : (2 : ℤ) ^ (3 ^ a) = 3 * t * m - 1 := by\n      rw [← h31]\n      linarith\n    have hcube : (2 : ℤ) ^ (3 ^ (a + 1)) = ((2 : ℤ) ^ (3 ^ a)) ^ 3 := by\n      rw [← pow_mul, pow_succ]\n    refine ⟨3 * t ^ 2 * m ^ 3 - 3 * t * m ^ 2 + m, ?_⟩\n    rw [hcube, h2, h32]\n    ring\nabbrev erdos479_witness_family_all_s_prop (s : Nat) : Prop := (2 ^ (2 ^ s) ∣ 2 ^ (2 ^ s)) ∧ ¬(2 ^ (2 ^ s + 1) ∣ 2 ^ (2 ^ s)) ∧ (s ≤ 2 ^ s) ∧ ((2 ^ s : ℕ) ∣ 2 ^ (2 ^ s))\n\n#eval (if (decide (erdos479_witness_family_all_s_prop 0)) then \"MSLF 0 TRUE\" else \"MSLF 0 FALSE\")\n#eval (if (decide (erdos479_witness_family_all_s_prop 1)) then \"MSLF 1 TRUE\" else \"MSLF 1 FALSE\")\n#eval (if (decide (erdos479_witness_family_all_s_prop 2)) then \"MSLF 2 TRUE\" else \"MSLF 2 FALSE\")\n",
+      "law": "SILENCE IS UNDECIDED, NEVER A PASS (msl_strengthen S7d)"
+     },
+     "G7_RISE": {
+      "ok": true,
+      "verdict": "RISE",
+      "reasons": [
+       "DISCHARGES:erdos479:FLEAF:2ded7584a23fc4ffed6d:5"
+      ]
+     }
+    },
+    "rise": "RISE"
+   },
+   "rise": "RISE",
+   "kernel": {
+    "verdict": "KERNEL_NOT_RUN",
+    "reason": "no Lean on this machine tonight; the job is filed, nothing is claimed",
+    "axioms": null,
+    "clean": false
+   },
+   "status": "OPEN",
+   "node_validation": {
+    "binding_after_builder": "PARAPHRASE",
+    "type_gate": {
+     "ok": true,
+     "missing": [],
+     "reason": "",
+     "reference": null,
+     "used_type_context": false
+    },
+    "unbound": false
+   },
+   "jobs": {
+    "jobs_file": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_witness_family_all_s.jobs.json",
+    "implication_lean": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_witness_family_all_s.implication.lean",
+    "standalone_lean": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_witness_family_all_s.standalone.lean",
+    "cable_spec_ok": true
+   }
+  },
+  {
+   "t_id": "erdos479:COMPRESS:check_l1_fragment_bridge",
+   "theorem_name": "check_l1_fragment_bridge",
+   "origin": "PROPOSER",
+   "variant": "v3_bridge",
+   "statement": "∀ s ∈ Finset.Icc (1 : ℕ) 5, check_l1_fragment s = true",
+   "premises": [
+    "erdos479:ORE:39a300ec8d427fec",
+    "erdos479:ORE:bdad8b1e2f3cabf4",
+    "erdos479:ORE:c96696c4aa12506b",
+    "erdos479:ORE:497dc6ba972d1307",
+    "erdos479:ORE:2b23edb1fcd33097",
+    "erdos479:ORE:e4e7d9dfc598a767"
+   ],
+   "discharges": "erdos479:FLEAF:2ded7584a23fc4ffed6d:5",
+   "derivation_claim": "(L1 ∧ L2 ∧ L3 ∧ L4 ∧ L5 : five literal checks check_l1_fragment 1..5 = true) → (∀ s ∈ Finset.Icc 1 5, check_l1_fragment s = true); the target erdos479:FLEAF:2ded7584a23fc4ffed6d:5 is then the Finset.Icc 1 5 instance, obtained by reflecting the bound and deciding on the five literals.",
+   "reason": "Generalizes the five literal fragment checks into one bounded universal (L1), so the leaf's conjunction becomes a single ranged instance one step from the infinite-witness structure needed at the root.",
+   "gates": {
+    "order": [
+     "G1_SCHEMA",
+     "G2_TYPE",
+     "G3_CIRCULAR",
+     "G4_KILLED",
+     "G5_CONJUNCTION",
+     "G6_FALSIFY",
+     "G7_RISE"
+    ],
+    "passed": [
+     "G1_SCHEMA",
+     "G2_TYPE",
+     "G3_CIRCULAR",
+     "G4_KILLED",
+     "G5_CONJUNCTION",
+     "G6_FALSIFY",
+     "G7_RISE"
+    ],
+    "failed_at": null,
+    "detail": {
+     "G1_SCHEMA": {
+      "ok": true,
+      "reason": ""
+     },
+     "G2_TYPE": {
+      "standalone_ok": true,
+      "standalone_missing": [],
+      "referenced_missing": [],
+      "fatal": [],
+      "domain_bounds_dropped": [],
+      "ok": true,
+      "reason": ""
+     },
+     "G3_CIRCULAR": {
+      "ok": true,
+      "reason": ""
+     },
+     "G4_KILLED": {
+      "checked_against": 0,
+      "ok": true,
+      "reason": ""
+     },
+     "G5_CONJUNCTION": {
+      "conjunct_count": 1,
+      "t_len": 54,
+      "conjunction_len": 443,
+      "shorter_than_conjunction": true,
+      "generalizes": true,
+      "generalization_reason": "BINDER_GENERALIZATION: T quantifies where a premise held the literal(s) 1,2,3,3",
+      "measure": "SHORTER_THAN_CONJUNCTION",
+      "ok": true,
+      "reason": ""
+     },
+     "G6_FALSIFY": {
+      "ok": true,
+      "state": "NOT_APPLICABLE",
+      "reason": "NOT_APPLICABLE: not a ∀ over a natural parameter"
+     },
+     "G7_RISE": {
+      "ok": true,
+      "verdict": "RISE",
+      "reasons": [
+       "DISCHARGES:erdos479:FLEAF:2ded7584a23fc4ffed6d:5"
+      ]
+     }
+    },
+    "rise": "RISE"
+   },
+   "rise": "RISE",
+   "kernel": {
+    "verdict": "KERNEL_NOT_RUN",
+    "reason": "no Lean on this machine tonight; the job is filed, nothing is claimed",
+    "axioms": null,
+    "clean": false
+   },
+   "status": "OPEN",
+   "node_validation": {
+    "binding_after_builder": "PARAPHRASE",
+    "type_gate": {
+     "ok": true,
+     "missing": [],
+     "reason": "",
+     "reference": null,
+     "used_type_context": false
+    },
+    "unbound": false
+   },
+   "jobs": {
+    "jobs_file": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__check_l1_fragment_bridge.jobs.json",
+    "implication_lean": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__check_l1_fragment_bridge.implication.lean",
+    "standalone_lean": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__check_l1_fragment_bridge.standalone.lean",
+    "cable_spec_ok": true
+   }
+  }
+ ],
+ "gated_out": {
+  "G1_SCHEMA": 1
+ },
+ "kernel_jobs": 16,
+ "proved_T": 0,
+ "lateral": 0,
+ "rounds": [
+  {
+   "round": 0,
+   "proposals": 9,
+   "new_proved_leaves_for_next_round": 0,
+   "stop": "FIXED_POINT: the pool did not grow"
+  }
+ ],
+ "cost_usd": 0.00549216,
+ "model_calls": 9,
+ "law": "NOTHING HERE IS PROVED. A candidate that clears all six gates is a candidate with a filed kernel job.",
+ "target_mode": "ROOT_PULLED+FRONTIER_ADJACENT",
+ "frontier_adjacent_targets": 4,
+ "distance_to_root_before": 2,
+ "root_path": [
+  "erdos479:ROOT",
+  "erdos479:BRANCH_A",
+  "erdos479:LEM:R003:L1"
+ ],
+ "root_path_detail": {
+  "root": "erdos479:ROOT",
+  "proved_kernel_nodes": 26,
+  "reason": "shortest root-to-proved path",
+  "terminus": "erdos479:LEM:R003:L1",
+  "path_cost": 2
+ },
+ "lift_info": {
+  "erdos479:BRANCH_A": {
+   "liftable": true,
+   "candidates_scanned": 389,
+   "ledger": ""
+  },
+  "erdos479:BRANCH_B": {
+   "liftable": true,
+   "candidates_scanned": 389,
+   "ledger": ""
+  },
+  "erdos479:FLEAF:2ded7584a23fc4ffed6d:5": {
+   "liftable": true,
+   "candidates_scanned": 389,
+   "ledger": ""
+  }
+ },
+ "premise_pool": {
+  "offerable": 6,
+  "prose_proved_not_includable": 17,
+  "examples": [
+   "erdos479:LEM:R003:L1",
+   "erdos479:LEM:R004:L1",
+   "erdos479:LEM:R006:L1",
+   "erdos479:LEM:R007:L1",
+   "erdos479:LEM:R008:L1",
+   "erdos479:LEM:R009:L1",
+   "erdos479:LEM:R011:L1",
+   "erdos479:LEM:R012:L1"
+  ],
+  "law": "A PROVED node with no includable source is PROVED IN NAME. It cannot be a premise in a file re-checked from zero; the fix for it is formalization, not compression."
+ },
+ "vocab_graph": {
+  "nodes": 6,
+  "edges": 11
+ },
+ "metrics": {
+  "leaves_proved": 26,
+  "leaves_proved_and_unused": 23,
+  "targets_found": 5,
+  "target_mode": "ROOT_PULLED+FRONTIER_ADJACENT",
+  "headline_near_close_targets": 0,
+  "headline_kernel_verified_leaves": 0,
+  "headline_killed_constraints": 0,
+  "killed_restatements_refused": 0,
+  "premises_offerable": 6,
+  "proved_but_not_includable": 17,
+  "chain_jobs_filed_free": 0,
+  "decomposer_compositions_free": 0,
+  "directed_lifts_proposed": 0,
+  "model_candidates": 9,
+  "combined_theorems_proposed": 9,
+  "gated_out_by_gate": {
+   "G1_SCHEMA": 1
+  },
+  "kernel_jobs_filed": 16,
+  "proved_T": 0,
+  "lateral_kept": 0,
+  "tower_height": 0,
+  "compression_ratio": 0.0,
+  "tower_detail": {
+   "rise_theorems_proved": 0,
+   "at_height_ge_1": 0,
+   "proved_leaves_denominator": 26,
+   "heights": {},
+   "law": "LATERAL theorems are excluded from height and ratio by construction"
+  },
+  "distance_to_root_before": 2,
+  "distance_to_root_after": 2,
+  "cost_usd": 0.005492,
+  "model_calls": 9
+ }
+}

@@ -1,0 +1,16 @@
+{"definitions": "def p : Nat → Nat := fun n => (Nat.partitions n).card\n\ndef F : Nat → Nat := fun n => (Nat.factors (∏ k ∈ Icc 1 n, p k)).eraseDups.length",
+  "parent_typed": {"name": "erdos1106_R004_L1_certificate", "binders": [],
+    "statement": "∀ (n : Nat), n ∈ Icc 1 60 → F n > n",
+    "reading": "For every n in the finite range 1..60, the number of distinct prime factors of the product of p(1)..p(n) exceeds n, certifiable by exact arithmetic."},
+  "children": [
+    {"name": "erdos1106_R004_cert_band_low", "binders": [],
+      "statement": "∀ (n : Nat), n ∈ Icc 1 20 → F n > n",
+      "reading": "The certificate holds by exact arithmetic for all n in 1..20."},
+    {"name": "erdos1106_R004_cert_band_mid", "binders": [],
+      "statement": "∀ (n : Nat), n ∈ Icc 21 40 → F n > n",
+      "reading": "The certificate holds by exact arithmetic for all n in 21..40."},
+    {"name": "erdos1106_R004_cert_band_high", "binders": [],
+      "statement": "∀ (n : Nat), n ∈ Icc 41 60 → F n > n",
+      "reading": "The certificate holds by exact arithmetic for all n in 41..60."}
+  ],
+  "composition_claim": "The three bands Icc 1 20, Icc 21 40, Icc 41 60 are pairwise disjoint and their union is Icc 1 60, so the three conjuncts together give exactly ∀ n ∈ Icc 1 60, F n > n; each is a bounded decidable statement attacked by mechanical exact arithmetic on the typed definitions p and F."}

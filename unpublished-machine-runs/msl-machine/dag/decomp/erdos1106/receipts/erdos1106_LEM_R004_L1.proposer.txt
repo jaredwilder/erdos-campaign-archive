@@ -1,0 +1,7 @@
+{"definitions": "def p (n : Nat) : Nat := (Nat.partitions n).card\n\ndef F (n : Nat) : Nat :=\n  (Nat.factors ((Finset.Icc 1 n).fold (fun (acc : Nat) (k : Nat) => acc * p k) 1)).toFinset.card",
+  "parent_typed": {"name": "erdos1106_R004_L1", "binders": [], "statement": "∀ (n : Nat), n ∈ Finset.Icc 1 60 → F n > n", "reading": "For every n in the finite range 1..60, the number F(n) of distinct prime factors of the product p(1)·…·p(n) exceeds n (finite-range exact-arithmetic certificate only; no asymptotic claim)."},
+  "children": [
+    {"name": "erdos1106_R004_L1_low", "binders": [], "statement": "∀ (n : Nat), n ∈ Finset.Icc 1 30 → F n > n", "reading": "For 1 ≤ n ≤ 30, F(n) > n, verified by exact arithmetic on the explicit definitions of p and F."},
+    {"name": "erdos1106_R004_L1_high", "binders": [], "statement": "∀ (n : Nat), n ∈ Finset.Icc 31 60 → F n > n", "reading": "For 31 ≤ n ≤ 60, F(n) > n, verified by exact arithmetic on the explicit definitions of p and F."}
+  ],
+  "composition_claim": "The ranges Finset.Icc 1 30 and Finset.Icc 31 60 cover Finset.Icc 1 60, so the two children together give the parent for every n with 1 ≤ n ≤ 60; F is fully defined (exact finite product of the exact partition counts p(k) via Nat.partitions, distinct prime factors via Nat.factors.toFinset), so the quantifier scope is closed and each child is a mechanical bounded check."}

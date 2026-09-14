@@ -1,0 +1,13 @@
+{"definitions": "",
+  "parent_typed": {"name": "R006_L1_partial", "binders": ["(ValidW : Nat → Rat → Prop)"],
+    "statement": "∃ (V : Nat → Rat → Bool) (chk : Nat → Int → Int → Bool), (∀ (n : Nat) (q : Rat), V n q = chk n q.num q.den) ∧ (∀ (n : Nat) (q : Rat), V n q = true ↔ ValidW n q) ∧ (∀ (n : Nat) (a : Int), chk n a 0 = false)",
+    "reading": "For any witness-validity predicate, there is a deterministic Bool-valued verifier V acting on rationals only through their exact integer num/den components, whose verdict exactly matches validity (fail-closed both ways) and which hard-rejects any malformed witness with zero denominator; the containment reduction itself is deliberately outside this statement's scope."},
+  "children": [
+    {"name": "verifier_integer_core_exists", "binders": ["(ValidW : Nat → Rat → Prop)"],
+      "statement": "∃ (chk : Nat → Int → Int → Bool), (∀ (n : Nat) (q : Rat), chk n q.num q.den = true ↔ ValidW n q) ∧ (∀ (n : Nat) (a : Int), chk n a 0 = false)",
+      "reading": "There exists an integer-level fail-closed checker chk which, fed the exact numerator and denominator of a rational witness, accepts exactly the valid witnesses and rejects every zero-denominator (malformed) input."},
+    {"name": "verifier_rational_wrapper_buildable", "binders": ["(chk : Nat → Int → Int → Bool)"],
+      "statement": "∃ (V : Nat → Rat → Bool), ∀ (n : Nat) (q : Rat), V n q = chk n q.num q.den",
+      "reading": "Given any integer-level checker, a rational-level verifier V can be built that acts on a rational q solely via its exact components q.num and q.den."}
+  ],
+  "composition_claim": "Child 1 supplies the fail-closed integer core chk (exact soundness-and-completeness against ValidW, plus the zero-denominator rejection gate); child 2 lifts that chk to a rational-level V via exact num/den projection. Instantiating child 2 at the chk of child 1 makes V n q = chk n q.num q.den, so V n q = true ↔ ValidW n q holds, giving all three conjuncts of the parent; neither child alone yields the parent."}

@@ -1,0 +1,175 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos830",
+  "generated_utc": "2026-09-02T16:32:03Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos830:LEM:R005:L1'",
+    "statement": "the exact integer σ-sieve verifier (ints only, require/raise fail-closed, deterministic, stdlib-only, scope N≤10⁷, no transfer to Part 1/Part 2) is certifying-eligible and is the correct instrument; its A-values 5,13,42,108 and five witness pairs remain COMPUTATION_SUPPORTED pending one actual run emitting PASS, with the tautological check replaced by an independent trial-division recomputation.",
+    "statement_sha256": "28a54a16a64d66eb4d10d788ebe470d9353e34a760a4a6d3a39fee729aa6ab5e",
+    "kind": "LEMMA",
+    "binding": "UNBOUND",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "We say that $a,b\\in \\mathbb{N}$ are an amicable pair if $\\sigma(a)=\\sigma(b)=a+b$. Are there infinitely many amicable pairs? If $A(x)$ counts the number of amicable $1\\leq a\\leq b\\leq x$ then is it true that\\[A(x)>x^{1-o(1)}?\\]",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos830-campaign-001/contract.json",
+    "sha256": "16c29247445147cb382b9b1fe6ee2f17023c28a8106d8957f26d6512bf6aa0ea"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos830:LEM:R005:L1'",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "521ee4d56f7046201a1b6d61df8adbf0d71648baf7c0dfdc9708f6898cc57b8a",
+    "prompt_chars": 4469,
+    "response_sha256": "3e207214dfd0331f778f36e7bd19bb5db4a07e13c092a2f2ace4918b7038d92f",
+    "usage": {
+      "prompt_tokens": 1168,
+      "completion_tokens": 2922,
+      "total_tokens": 4090,
+      "cost": 0.00081042,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 128,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00081042,
+        "upstream_inference_prompt_cost": 7.992e-05,
+        "upstream_inference_completions_cost": 0.0007305
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 1843,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.00081042,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 70.44,
+    "utc": "2026-09-02T16:30:16Z"
+  },
+  "children": [],
+  "composition": {
+    "id": "erdos830:LEM:R005:L1'#COMPOSE",
+    "statement": "(composition not constructed)",
+    "kind": "COMPOSITION",
+    "depends_on": [],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "OPEN",
+    "problem": "erdos830",
+    "decomposed_from": "erdos830:LEM:R005:L1'",
+    "imports": "Mathlib",
+    "definitions": "def sigmaN (n : Nat) : Nat := ∑ d ∈ Nat.divisors n, d\n\ndef trialSigma (n : Nat) : Nat := ∑ d ∈ Finset.Icc 1 n, if n % d = 0 then d else 0\n\ndef isAmicable (a b : Nat) : Prop := sigmaN a = sigmaN b ∧ sigmaN a = a + b\n\ndef Acount (x : Nat) : Nat :=\n  (Finset.filter (fun p : Nat × Nat => p.1 ≤ p.2 ∧ p.2 ≤ x ∧ isAmicable p.1 p.2)\n    (Finset.product (Finset.Icc 1 x) (Finset.Icc 1 x))).card\n\ndef witnessPairs : List (Nat × Nat) :=\n  [(220, 284), (1184, 1210), (2620, 2924), (5020, 5564), (6232, 6368)]\n\ndef verifierAgrees (V : Nat → Nat) : Prop := ∀ x ≤ (10 ^ 7 : Nat), V x = Acount x",
+    "type_context": "Mathlib\ndef sigmaN (n : Nat) : Nat := ∑ d ∈ Nat.divisors n, d\n\ndef trialSigma (n : Nat) : Nat := ∑ d ∈ Finset.Icc 1 n, if n % d = 0 then d else 0\n\ndef isAmicable (a b : Nat) : Prop := sigmaN a = sigmaN b ∧ sigmaN a = a + b\n\ndef Acount (x : Nat) : Nat :=\n  (Finset.filter (fun p : Nat × Nat => p.1 ≤ p.2 ∧ p.2 ≤ x ∧ isAmicable p.1 p.2)\n    (Finset.product (Finset.Icc 1 x) (Finset.Icc 1 x))).card\n\ndef witnessPairs : List (Nat × Nat) :=\n  [(220, 284), (1184, 1210), (2620, 2924), (5020, 5564), (6232, 6368)]\n\ndef verifierAgrees (V : Nat → Nat) : Prop := ∀ x ≤ (10 ^ 7 : Nat), V x = Acount x",
+    "parent_typed": {
+      "statement": "verifierAgrees V ∧ (∀ n ≤ (10 ^ 7 : Nat), sigmaN n = trialSigma n) ∧ (∀ p ∈ witnessPairs, isAmicable p.1 p.2 ∧ p.1 ≤ p.2 ∧ p.2 ≤ (10 ^ 7 : Nat)) ∧ (∃ x₁ x₂ x₃ x₄ : Nat, x₁ ≤ x₂ ∧ x₂ ≤ x₃ ∧ x₃ ≤ x₄ ∧ x₄ ≤ (10 ^ 7 : Nat) ∧ Acount x₁ = (5 : Nat) ∧ Acount x₂ = (13 : Nat) ∧ Acount x₃ = (42 : Nat) ∧ Acount x₄ = (108 : Nat))",
+      "binders": [
+        "(V : Nat → Nat)"
+      ],
+      "reading": "The σ-sieve verifier agrees with the true amicable count A on the whole scope N ≤ 10⁷, its σ values are independently recomputable by trial division, the five witness pairs are amicable in scope, and A takes the tabulated values 5, 13, 42, 108 at four ascending bounds.",
+      "elaboration": {
+        "verdict": "DEFS_DO_NOT_ELABORATE",
+        "kernel_error": "/root/peer/decomp/b20260902_093016_1/erdos830_LEM_R005_L1__defs.lean:15:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun p => p.1 ≤ p.2 ∧ p.2 ≤ x ∧ isAmicable p.1 p.2\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command."
+      },
+      "type_gate_decomp": {
+        "ok": false,
+        "missing": [
+          "domain bound 'n 10'"
+        ],
+        "reason": "inherited type ascription or domain bound dropped",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": "parent",
+        "prose_contract_root_report": null
+      }
+    },
+    "composition_claim": {
+      "text": "The parent is exactly the conjunction of the four children: child 1 gives verifier eligibility/correctness on the bounded scope, child 2 gives the independent trial-division cross-check of σ, child 3 certifies the five witness pairs, and child 4 certifies the tabulated A-values 5, 13, 42, 108; the pending-PASS status is procedural and is discharged by an actual run emitting PASS with the cross-check of child 2 in place.",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "COMPOSITION_NOT_RUN",
+      "counts_toward_parent": 0,
+      "reason": "no surviving child"
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "composition_receipt": "oracle/evidence/msl-machine/dag/decomp/erdos830/receipts/erdos830_LEM_R005_L1_COMPOSE.composition.json"
+  },
+  "parent_new_depends_on": [
+    "erdos830:LEM:R005:L1'#COMPOSE"
+  ],
+  "rejected": [
+    {
+      "proposed_index": 1,
+      "statement": "verifierAgrees V",
+      "binders": [
+        "(V : Nat → Nat)"
+      ],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: /root/peer/decomp/b20260902_093016_1/erdos830_LEM_R005_L1__defs.lean:15:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun p => p.1 ≤ p.2 ∧ p.2 ≤ x ∧ isAmicable p.1 p.2\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.",
+      "kernel_error": "/root/peer/decomp/b20260902_093016_1/erdos830_LEM_R005_L1__defs.lean:15:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun p => p.1 ≤ p.2 ∧ p.2 ≤ x ∧ isAmicable p.1 p.2\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command."
+    },
+    {
+      "proposed_index": 2,
+      "statement": "∀ n ≤ (10 ^ 7 : Nat), sigmaN n = trialSigma n",
+      "binders": [],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: /root/peer/decomp/b20260902_093016_1/erdos830_LEM_R005_L1__defs.lean:15:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun p => p.1 ≤ p.2 ∧ p.2 ≤ x ∧ isAmicable p.1 p.2\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.",
+      "kernel_error": "/root/peer/decomp/b20260902_093016_1/erdos830_LEM_R005_L1__defs.lean:15:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun p => p.1 ≤ p.2 ∧ p.2 ≤ x ∧ isAmicable p.1 p.2\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command."
+    },
+    {
+      "proposed_index": 3,
+      "statement": "∀ p ∈ witnessPairs, isAmicable p.1 p.2 ∧ p.1 ≤ p.2 ∧ p.2 ≤ (10 ^ 7 : Nat)",
+      "binders": [],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: /root/peer/decomp/b20260902_093016_1/erdos830_LEM_R005_L1__defs.lean:15:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun p => p.1 ≤ p.2 ∧ p.2 ≤ x ∧ isAmicable p.1 p.2\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.",
+      "kernel_error": "/root/peer/decomp/b20260902_093016_1/erdos830_LEM_R005_L1__defs.lean:15:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun p => p.1 ≤ p.2 ∧ p.2 ≤ x ∧ isAmicable p.1 p.2\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command."
+    },
+    {
+      "proposed_index": 4,
+      "statement": "∃ x₁ x₂ x₃ x₄ : Nat, x₁ ≤ x₂ ∧ x₂ ≤ x₃ ∧ x₃ ≤ x₄ ∧ x₄ ≤ (10 ^ 7 : Nat) ∧ Acount x₁ = (5 : Nat) ∧ Acount x₂ = (13 : Nat) ∧ Acount x₃ = (42 : Nat) ∧ Acount x₄ = (108 : Nat)",
+      "binders": [],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: /root/peer/decomp/b20260902_093016_1/erdos830_LEM_R005_L1__defs.lean:15:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun p => p.1 ≤ p.2 ∧ p.2 ≤ x ∧ isAmicable p.1 p.2\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.",
+      "kernel_error": "/root/peer/decomp/b20260902_093016_1/erdos830_LEM_R005_L1__defs.lean:15:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun p => p.1 ≤ p.2 ∧ p.2 ≤ x ∧ isAmicable p.1 p.2\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command."
+    }
+  ],
+  "counts": {
+    "proposed": 4,
+    "elaborated": 0,
+    "bound": 0,
+    "non_circular": 0,
+    "non_trivial": 0,
+    "surviving": 0,
+    "composition_kernel_checked": 0,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 0,
+    "counts_toward_parent_note": "composition OPEN: these children contribute ZERO toward the parent until it closes; they remain formal leaves for the rung loop"
+  },
+  "definitions": {
+    "block": "def sigmaN (n : Nat) : Nat := ∑ d ∈ Nat.divisors n, d\n\ndef trialSigma (n : Nat) : Nat := ∑ d ∈ Finset.Icc 1 n, if n % d = 0 then d else 0\n\ndef isAmicable (a b : Nat) : Prop := sigmaN a = sigmaN b ∧ sigmaN a = a + b\n\ndef Acount (x : Nat) : Nat :=\n  (Finset.filter (fun p : Nat × Nat => p.1 ≤ p.2 ∧ p.2 ≤ x ∧ isAmicable p.1 p.2)\n    (Finset.product (Finset.Icc 1 x) (Finset.Icc 1 x))).card\n\ndef witnessPairs : List (Nat × Nat) :=\n  [(220, 284), (1184, 1210), (2620, 2924), (5020, 5564), (6232, 6368)]\n\ndef verifierAgrees (V : Nat → Nat) : Prop := ∀ x ≤ (10 ^ 7 : Nat), V x = Acount x",
+    "gate0": {
+      "verdict": "DEFS_DO_NOT_ELABORATE",
+      "kernel_error": "/root/peer/decomp/b20260902_093016_1/erdos830_LEM_R005_L1__defs.lean:15:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun p => p.1 ≤ p.2 ∧ p.2 ≤ x ∧ isAmicable p.1 p.2\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command."
+    },
+    "campaign_vocabulary_prepended": [],
+    "normalization": {
+      "body": "def sigmaN (n : Nat) : Nat := ∑ d ∈ Nat.divisors n, d\n\ndef trialSigma (n : Nat) : Nat := ∑ d ∈ Finset.Icc 1 n, if n % d = 0 then d else 0\n\ndef isAmicable (a b : Nat) : Prop := sigmaN a = sigmaN b ∧ sigmaN a = a + b\n\ndef Acount (x : Nat) : Nat :=\n  (Finset.filter (fun p : Nat × Nat => p.1 ≤ p.2 ∧ p.2 ≤ x ∧ isAmicable p.1 p.2)\n    (Finset.product (Finset.Icc 1 x) (Finset.Icc 1 x))).card\n\ndef witnessPairs : List (Nat × Nat) :=\n  [(220, 284), (1184, 1210), (2620, 2924), (5020, 5564), (6232, 6368)]\n\ndef verifierAgrees (V : Nat → Nat) : Prop := ∀ x ≤ (10 ^ 7 : Nat), V x = Acount x",
+      "opens": [],
+      "dropped_imports": []
+    }
+  }
+}

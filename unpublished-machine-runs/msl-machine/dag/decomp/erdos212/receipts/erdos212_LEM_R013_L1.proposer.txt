@@ -1,0 +1,13 @@
+{"definitions": "",
+  "parent_typed": {"name": "erdos212_LEM_R013_L1", "binders": [],
+    "statement": "answer(sorry) ↔ ∃ u : Set ℂ, Dense u ∧ u.Pairwise (fun c₁ c₂ : ℂ => dist c₁ c₂ ∈ Set.range (Rat.cast : Rat → ℝ))",
+    "reading": "There exists a dense subset of ℂ ≅ ℝ² all of whose pairwise distances are rational (Ulam's dense rational distance set problem)."},
+  "children": [
+    {"name": "erdos212_LEM_R013_L1_transport", "binders": [],
+      "statement": "∀ u : Set ℂ, (Dense u ∧ u.Pairwise (fun c₁ c₂ : ℂ => dist c₁ c₂ ∈ Set.range (Rat.cast : Rat → ℝ))) ↔ ∃ v : Set (EuclideanSpace ℝ (Fin 2)), Dense v ∧ v.Pairwise (fun p q : EuclideanSpace ℝ (Fin 2) => dist p q ∈ Set.range (Rat.cast : Rat → ℝ))",
+      "reading": "The dense rational-distance-set property transports across the isometry ℂ ≅ EuclideanSpace ℝ (Fin 2)."},
+    {"name": "erdos212_LEM_R013_L1_euclidean", "binders": [],
+      "statement": "∃ v : Set (EuclideanSpace ℝ (Fin 2)), Dense v ∧ v.Pairwise (fun p q : EuclideanSpace ℝ (Fin 2) => dist p q ∈ Set.range (Rat.cast : Rat → ℝ))",
+      "reading": "There is a dense subset of the Euclidean plane ℝ² all of whose pairwise distances are rational."}
+  ],
+  "composition_claim": "Child 1 is the kernel-checkable transport equivalence between the ℂ formulation and the ℝ² (EuclideanSpace ℝ (Fin 2)) formulation; applying its ← direction to the existence statement of child 2 yields exactly the parent's right-hand side, hence the parent. Neither child restates the parent: child 1 is an equivalence between two typed formulations, child 2 lives in a different type."}

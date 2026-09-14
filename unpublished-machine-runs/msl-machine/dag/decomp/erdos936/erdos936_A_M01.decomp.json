@@ -1,0 +1,265 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos936",
+  "generated_utc": "2026-09-02T16:21:35Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos936:A:M01",
+    "statement": "For each sequence separately prove eventual non-powerfulness or prove the exact negation: infinitely many indices with a powerful value.",
+    "statement_sha256": "3faa934edab0b293af2304f1c0a3b9982808dd3b71838cdf1d3a6ebe48c83d98",
+    "kind": "MUST_DETERMINE",
+    "binding": "VERBATIM",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "Are\\[2^n\\pm 1\\]and\\[n!\\pm 1\\]powerful (i.e. if $p\\mid m$ then $p^2\\mid m$) for only finitely many $n$?",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos936-campaign-001/contract.json",
+    "sha256": "6c02ddb90ee3156a0fbed58ac74c32d05f8783de7d0891b979b1be7eecc2f38a"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos936:A:M01",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "cb867edb4bb712304757a12be8829713a16976fb5ad3c9ce73960d27c3bc0b2b",
+    "prompt_chars": 10039,
+    "response_sha256": "b20daa7f85c28d4b6b9494e21019ece3cbb53bfee1866329435016b0374705c4",
+    "usage": {
+      "prompt_tokens": 3248,
+      "completion_tokens": 1287,
+      "total_tokens": 4535,
+      "cost": 0.00056535,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00056535,
+        "upstream_inference_prompt_cost": 0.0002436,
+        "upstream_inference_completions_cost": 0.00032175
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 453,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.00056535,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 29.87,
+    "utc": "2026-09-02T16:16:20Z"
+  },
+  "children": [
+    {
+      "id": "erdos936:A:M01#D1",
+      "statement": "EventuallyNotPowerful (fun (n : Nat) => 2 ^ n + 1) ∨ InfinitelyOftenPowerful (fun (n : Nat) => 2 ^ n + 1)",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos936",
+      "decomposed_from": "erdos936:A:M01",
+      "imports": "Mathlib",
+      "definitions": "def Powerful (m : Nat) : Prop := ∀ (p : Nat), p ∣ m → p ^ 2 ∣ m\n\ndef EventuallyNotPowerful (f : Nat → Nat) : Prop :=\n  ∃ (N : Nat), ∀ (n : Nat), N ≤ n → ¬ Powerful (f n)\n\ndef InfinitelyOftenPowerful (f : Nat → Nat) : Prop :=\n  ∀ (N : Nat), ∃ (n : Nat), N ≤ n ∧ Powerful (f n)",
+      "type_context": "Mathlib\ndef Powerful (m : Nat) : Prop := ∀ (p : Nat), p ∣ m → p ^ 2 ∣ m\n\ndef EventuallyNotPowerful (f : Nat → Nat) : Prop :=\n  ∃ (N : Nat), ∀ (n : Nat), N ≤ n → ¬ Powerful (f n)\n\ndef InfinitelyOftenPowerful (f : Nat → Nat) : Prop :=\n  ∀ (N : Nat), ∃ (n : Nat), N ≤ n ∧ Powerful (f n)",
+      "lean_binders": [],
+      "lean_theorem_name": "msl_erdos936_a_m01_c1",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef Powerful (m : Nat) : Prop := ∀ (p : Nat), p ∣ m → p ^ 2 ∣ m\n\ndef EventuallyNotPowerful (f : Nat → Nat) : Prop :=\n  ∃ (N : Nat), ∀ (n : Nat), N ≤ n → ¬ Powerful (f n)\n\ndef InfinitelyOftenPowerful (f : Nat → Nat) : Prop :=\n  ∀ (N : Nat), ∃ (n : Nat), N ≤ n ∧ Powerful (f n)\n\n",
+      "lean_statement_line": "theorem msl_erdos936_a_m01_c1 : EventuallyNotPowerful (fun (n : Nat) => 2 ^ n + 1) ∨ InfinitelyOftenPowerful (fun (n : Nat) => 2 ^ n + 1) := by sorry",
+      "lean_file_sha256": "874d3411bb42036f29956be6b5199be3e35c160cc1929db70815ad2627189ade",
+      "lean_file_contract": "compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. Do NOT rebuild a header from `definitions`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted) and `set_option autoImplicit false` are part of what was compiled. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block>` (+ lean_trailer if present). THE BINDERS LIVE INSIDE lean_signature -- restating the theorem from `statement` alone drops them and proves a different thing.",
+      "reading": "For 2^n+1: either powerful values stop eventually, or they occur for infinitely many n.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos936/receipts/erdos936_A_M01_D1.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos936/lean/erdos936_A_M01_D1.lean",
+      "lean_signature": "theorem msl_erdos936_a_m01_c1 : EventuallyNotPowerful (fun (n : Nat) => 2 ^ n + 1) ∨ InfinitelyOftenPowerful (fun (n : Nat) => 2 ^ n + 1)"
+    },
+    {
+      "id": "erdos936:A:M01#D2",
+      "statement": "EventuallyNotPowerful (fun (n : Nat) => 2 ^ n - 1) ∨ InfinitelyOftenPowerful (fun (n : Nat) => 2 ^ n - 1)",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos936",
+      "decomposed_from": "erdos936:A:M01",
+      "imports": "Mathlib",
+      "definitions": "def Powerful (m : Nat) : Prop := ∀ (p : Nat), p ∣ m → p ^ 2 ∣ m\n\ndef EventuallyNotPowerful (f : Nat → Nat) : Prop :=\n  ∃ (N : Nat), ∀ (n : Nat), N ≤ n → ¬ Powerful (f n)\n\ndef InfinitelyOftenPowerful (f : Nat → Nat) : Prop :=\n  ∀ (N : Nat), ∃ (n : Nat), N ≤ n ∧ Powerful (f n)",
+      "type_context": "Mathlib\ndef Powerful (m : Nat) : Prop := ∀ (p : Nat), p ∣ m → p ^ 2 ∣ m\n\ndef EventuallyNotPowerful (f : Nat → Nat) : Prop :=\n  ∃ (N : Nat), ∀ (n : Nat), N ≤ n → ¬ Powerful (f n)\n\ndef InfinitelyOftenPowerful (f : Nat → Nat) : Prop :=\n  ∀ (N : Nat), ∃ (n : Nat), N ≤ n ∧ Powerful (f n)",
+      "lean_binders": [],
+      "lean_theorem_name": "msl_erdos936_a_m01_c2",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef Powerful (m : Nat) : Prop := ∀ (p : Nat), p ∣ m → p ^ 2 ∣ m\n\ndef EventuallyNotPowerful (f : Nat → Nat) : Prop :=\n  ∃ (N : Nat), ∀ (n : Nat), N ≤ n → ¬ Powerful (f n)\n\ndef InfinitelyOftenPowerful (f : Nat → Nat) : Prop :=\n  ∀ (N : Nat), ∃ (n : Nat), N ≤ n ∧ Powerful (f n)\n\n",
+      "lean_statement_line": "theorem msl_erdos936_a_m01_c2 : EventuallyNotPowerful (fun (n : Nat) => 2 ^ n - 1) ∨ InfinitelyOftenPowerful (fun (n : Nat) => 2 ^ n - 1) := by sorry",
+      "lean_file_sha256": "240af032b1fc5784ea593a1cf1bf01bcbf925bd8ff0958e8615d2a1ffbfd5682",
+      "lean_file_contract": "compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. Do NOT rebuild a header from `definitions`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted) and `set_option autoImplicit false` are part of what was compiled. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block>` (+ lean_trailer if present). THE BINDERS LIVE INSIDE lean_signature -- restating the theorem from `statement` alone drops them and proves a different thing.",
+      "reading": "For 2^n-1: either powerful values stop eventually, or they occur for infinitely many n.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos936/receipts/erdos936_A_M01_D2.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos936/lean/erdos936_A_M01_D2.lean",
+      "lean_signature": "theorem msl_erdos936_a_m01_c2 : EventuallyNotPowerful (fun (n : Nat) => 2 ^ n - 1) ∨ InfinitelyOftenPowerful (fun (n : Nat) => 2 ^ n - 1)"
+    }
+  ],
+  "composition": {
+    "id": "erdos936:A:M01#COMPOSE",
+    "statement": "(composition not constructed)",
+    "kind": "COMPOSITION",
+    "depends_on": [
+      "erdos936:A:M01#D1",
+      "erdos936:A:M01#D2"
+    ],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "OPEN",
+    "problem": "erdos936",
+    "decomposed_from": "erdos936:A:M01",
+    "imports": "Mathlib",
+    "definitions": "def Powerful (m : Nat) : Prop := ∀ (p : Nat), p ∣ m → p ^ 2 ∣ m\n\ndef EventuallyNotPowerful (f : Nat → Nat) : Prop :=\n  ∃ (N : Nat), ∀ (n : Nat), N ≤ n → ¬ Powerful (f n)\n\ndef InfinitelyOftenPowerful (f : Nat → Nat) : Prop :=\n  ∀ (N : Nat), ∃ (n : Nat), N ≤ n ∧ Powerful (f n)",
+    "type_context": "Mathlib\ndef Powerful (m : Nat) : Prop := ∀ (p : Nat), p ∣ m → p ^ 2 ∣ m\n\ndef EventuallyNotPowerful (f : Nat → Nat) : Prop :=\n  ∃ (N : Nat), ∀ (n : Nat), N ≤ n → ¬ Powerful (f n)\n\ndef InfinitelyOftenPowerful (f : Nat → Nat) : Prop :=\n  ∀ (N : Nat), ∃ (n : Nat), N ≤ n ∧ Powerful (f n)",
+    "parent_typed": {
+      "statement": "(EventuallyNotPowerful (fun (n : Nat) => 2 ^ n + 1) ∨ InfinitelyOftenPowerful (fun (n : Nat) => 2 ^ n + 1)) ∧ (EventuallyNotPowerful (fun (n : Nat) => 2 ^ n - 1) ∨ InfinitelyOftenPowerful (fun (n : Nat) => 2 ^ n - 1)) ∧ (EventuallyNotPowerful (fun (n : Nat) => n ! + 1) ∨ InfinitelyOftenPowerful (fun (n : Nat) => n ! + 1)) ∧ (EventuallyNotPowerful (fun (n : Nat) => n ! - 1) ∨ InfinitelyOftenPowerful (fun (n : Nat) => n ! - 1))",
+      "binders": [],
+      "reading": "Each of the four sequences 2^n+1, 2^n-1, n!+1, n!-1 is either eventually never powerful, or powerful for infinitely many n.",
+      "elaboration": {
+        "verdict": "STATEMENT_DOES_NOT_ELABORATE",
+        "rc": 1,
+        "kernel_error": "/root/peer/decomp/b20260902_092039_1/erdos936_A_M01_parent.lean:16:300: error: unexpected token '+'; expected no space before or term"
+      },
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": null,
+        "prose_contract_root_report": {
+          "ok": true,
+          "missing": [],
+          "reason": "",
+          "blocking": false,
+          "why_not_blocking": "tokens mined from ENGLISH prose are not Lean tokens; `Fin k` carries `1 <= i <= k` structurally"
+        }
+      }
+    },
+    "composition_claim": {
+      "text": "The parent is exactly the conjunction of the four children, one dichotomy per sequence, since Powerful is defined once in the shared definitions block and each child applies the same EventuallyNotPowerful-or-InfinitelyOftenPowerful alternative to one of the four sequences 2^n+1, 2^n-1, n!+1, n!-1; taking ∧ of children 1–4 yields the parent verbatim.",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "COMPOSITION_NOT_RUN",
+      "counts_toward_parent": 0,
+      "reason": "parent typed rendering failed GATE 1/GATE 2 -- a composition cannot be stated over a parent the kernel will not accept"
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "composition_receipt": "oracle/evidence/msl-machine/dag/decomp/erdos936/receipts/erdos936_A_M01_COMPOSE.composition.json"
+  },
+  "parent_new_depends_on": [
+    "erdos936:A:M01#COMPOSE"
+  ],
+  "rejected": [
+    {
+      "proposed_index": 3,
+      "statement": "EventuallyNotPowerful (fun (n : Nat) => n ! + 1) ∨ InfinitelyOftenPowerful (fun (n : Nat) => n ! + 1)",
+      "binders": [],
+      "gate": "GATE1_ELABORATION",
+      "reason": "/root/peer/decomp/b20260902_092039_1/erdos936_A_M01_c3.lean:16:75: error: unexpected token '+'; expected no space before or term",
+      "kernel_error": "/root/peer/decomp/b20260902_092039_1/erdos936_A_M01_c3.lean:16:75: error: unexpected token '+'; expected no space before or term"
+    },
+    {
+      "proposed_index": 4,
+      "statement": "EventuallyNotPowerful (fun (n : Nat) => n ! - 1) ∨ InfinitelyOftenPowerful (fun (n : Nat) => n ! - 1)",
+      "binders": [],
+      "gate": "GATE1_ELABORATION",
+      "reason": "/root/peer/decomp/b20260902_092039_1/erdos936_A_M01_c4.lean:16:72: error: Function expected at\n/root/peer/decomp/b20260902_092039_1/erdos936_A_M01_c4.lean:16:125: error: Function expected at",
+      "kernel_error": "/root/peer/decomp/b20260902_092039_1/erdos936_A_M01_c4.lean:16:72: error: Function expected at\n/root/peer/decomp/b20260902_092039_1/erdos936_A_M01_c4.lean:16:125: error: Function expected at"
+    }
+  ],
+  "counts": {
+    "proposed": 4,
+    "elaborated": 2,
+    "bound": 2,
+    "non_circular": 2,
+    "non_trivial": 2,
+    "surviving": 2,
+    "composition_kernel_checked": 0,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 0,
+    "counts_toward_parent_note": "composition OPEN: these children contribute ZERO toward the parent until it closes; they remain formal leaves for the rung loop"
+  },
+  "definitions": {
+    "block": "def Powerful (m : Nat) : Prop := ∀ (p : Nat), p ∣ m → p ^ 2 ∣ m\n\ndef EventuallyNotPowerful (f : Nat → Nat) : Prop :=\n  ∃ (N : Nat), ∀ (n : Nat), N ≤ n → ¬ Powerful (f n)\n\ndef InfinitelyOftenPowerful (f : Nat → Nat) : Prop :=\n  ∀ (N : Nat), ∃ (n : Nat), N ≤ n ∧ Powerful (f n)",
+    "gate0": {
+      "verdict": "DEFS_ELABORATE"
+    },
+    "campaign_vocabulary_prepended": [],
+    "normalization": {
+      "body": "def Powerful (m : Nat) : Prop := ∀ (p : Nat), p ∣ m → p ^ 2 ∣ m\n\ndef EventuallyNotPowerful (f : Nat → Nat) : Prop :=\n  ∃ (N : Nat), ∀ (n : Nat), N ≤ n → ¬ Powerful (f n)\n\ndef InfinitelyOftenPowerful (f : Nat → Nat) : Prop :=\n  ∀ (N : Nat), ∃ (n : Nat), N ≤ n ∧ Powerful (f n)",
+      "opens": [],
+      "dropped_imports": []
+    }
+  }
+}

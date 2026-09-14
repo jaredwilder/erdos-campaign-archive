@@ -1,0 +1,3731 @@
+{
+ "schema": "obligation-dag/1.0.0",
+ "problem": "erdos479",
+ "problem_number": "479",
+ "campaign": "erdos479-campaign-001",
+ "root": "erdos479:ROOT",
+ "contract_divergence": {
+  "authoritative": {
+   "role": "campaign",
+   "path": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/contract.json",
+   "sha256": "44ba1ab6a51a6e93464e75c363c509eeab3f037f69f62e331e982f6bcaad172c",
+   "declared_contract_sha256": "4b390187a1eed5f27c8412a15b3d5aa0e10d18350186999ee90569a4be2035ad"
+  },
+  "others": [
+   {
+    "role": "ingest",
+    "path": "oracle/evidence/msl-machine/contracts/erdos479/contract.json",
+    "sha256": "fd55cc3862905dec3dc1dae5784390e9b82b1775245c0cd27fd9aa6199f01d20",
+    "declared_contract_sha256": "3c4c4c7395c1a63c2a557ef9451853f8354136dd4f0f0cdd3278570aaf19f403",
+    "canonical_statement_matches_authoritative": true
+   },
+   {
+    "role": "launch_queue",
+    "path": "oracle/evidence/msl-machine/contracts/LAUNCH-QUEUE/erdos479.json",
+    "sha256": "239e8e016006bc8cb74d307ba35a165304faa8b68d92a997898589e3085b946c",
+    "declared_contract_sha256": null,
+    "canonical_statement_matches_authoritative": true
+   }
+  ],
+  "diverges": false
+ },
+ "courts": [
+  "court",
+  "closer",
+  "formalizer",
+  "kernel"
+ ],
+ "summary": {
+  "nodes": 62,
+  "proved_kernel": 20,
+  "proved_speaker": 2,
+  "computed_bounded": 0,
+  "open": 37,
+  "refuted": 3,
+  "orphans": 2,
+  "proof_obligations": 0,
+  "open_leaves_on_dead_routes": 1,
+  "root_kind": "NOT_DECIDABLE",
+  "root_disqualifiers": [
+   "INFINITUDE",
+   "UNBOUNDED_FORALL"
+  ],
+  "formal_root": {
+   "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/479.lean",
+   "category": "category research open, AMS 11",
+   "declaration": "erdos_479",
+   "statement": "answer(sorry) ↔ ∀ᵉ (k > 1), { n | 2 ^ n ≡ k [MOD n]}.Infinite"
+  },
+  "leaf_frontier_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "leaf_frontier_reason": "6 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaf_frontier_deciding_leaf": {
+   "id": "erdos479:DEMAND:R010:L1:1",
+   "kind": "CAPABILITY_DEMAND",
+   "status": "OPEN",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "formalize P(n,k) in ZMOD (n:Z), prove n->np tower lemma, cover negative and zero k explicitly."
+  },
+  "ladder_shape_reason": "the formal root is not decidable: INFINITUDE, UNBOUNDED_FORALL (oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/479.lean). No leaf set can close it, however clean the leaves are. Leaf frontier, kept for the grind queue: HAS_OPEN_ANALYTIC_LEAF.",
+  "leaves": 58,
+  "open_leaves": 36,
+  "open_technical_leaves": 34,
+  "open_prose_obligations": 2,
+  "open_analytic_leaves": 6,
+  "ladder_shape": "ROOT_NOT_DECIDABLE",
+  "deciding_leaf": {
+   "id": "erdos479:ROOT",
+   "kind": "CANONICAL_ROOT",
+   "status": "OPEN",
+   "binding": "VERBATIM",
+   "leaf_tactic_hint": null,
+   "statement": "answer(sorry) ↔ ∀ᵉ (k > 1), { n | 2 ^ n ≡ k [MOD n]}.Infinite"
+  },
+  "orphan_detail": [
+   {
+    "id": "erdos479:A:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos479:B:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   }
+  ]
+ },
+ "validation": {
+  "acyclic": true,
+  "edges": 116,
+  "root_binds_verbatim": true,
+  "kernel_receipts_checked": 20
+ },
+ "nodes": [
+  {
+   "id": "erdos479:A:M01",
+   "statement": "Every negative and zero integer k is covered together with positive k≠1.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/contract.json",
+   "contract_sha256": "44ba1ab6a51a6e93464e75c363c509eeab3f037f69f62e331e982f6bcaad172c",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos479",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-479-7bd011aa4b-A-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos479:BRANCH_A",
+   "statement": "AFFIRMATIVE CLOSE: prove the exact all-k∈ℤ, k≠1 infinitude proposition with ZMOD (n:ℤ).",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos479:A:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/contract.json",
+   "contract_sha256": "44ba1ab6a51a6e93464e75c363c509eeab3f037f69f62e331e982f6bcaad172c",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos479",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-479-7bd011aa4b-A-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:B:M01",
+   "statement": "The witness is not restricted to or normalized into k>1 without an explicit congruence-preserving theorem valid as n varies.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/contract.json",
+   "contract_sha256": "44ba1ab6a51a6e93464e75c363c509eeab3f037f69f62e331e982f6bcaad172c",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos479",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-479-7bd011aa4b-B-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos479:BRANCH_B",
+   "statement": "NEGATIVE CLOSE: exhibit an integer k≠1 for which the exact ZMOD witness set in n∈ℕ is finite.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos479:B:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/contract.json",
+   "contract_sha256": "44ba1ab6a51a6e93464e75c363c509eeab3f037f69f62e331e982f6bcaad172c",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos479",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-479-7bd011aa4b-B-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:ROOT",
+   "statement": "Is it true that, for all $k\\neq 1$, there are infinitely many $n$ such that $2^n\\equiv k\\pmod{n}$?",
+   "kind": "CANONICAL_ROOT",
+   "depends_on": [
+    "erdos479:BRANCH_A",
+    "erdos479:BRANCH_B"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "root_by_construction",
+   "closure_mode": "DISJUNCTIVE",
+   "satisfied_by_any": [
+    "erdos479:BRANCH_A",
+    "erdos479:BRANCH_B"
+   ],
+   "root_kind": "NOT_DECIDABLE",
+   "root_disqualifiers": [
+    "INFINITUDE",
+    "UNBOUNDED_FORALL"
+   ],
+   "formal_root": {
+    "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/479.lean",
+    "category": "category research open, AMS 11",
+    "declaration": "erdos_479",
+    "statement": "answer(sorry) ↔ ∀ᵉ (k > 1), { n | 2 ^ n ≡ k [MOD n]}.Infinite"
+   },
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/contract.json",
+   "contract_sha256": "44ba1ab6a51a6e93464e75c363c509eeab3f037f69f62e331e982f6bcaad172c",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos479",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:KER:Erdos479Family:erdos479_family",
+   "statement": "theorem erdos479_family (j p : ℕ) (hp : p.Prime) (hodd : p ≠ 2) : 2 ^ (2 ^ j * p) ≡ 2 ^ (2 ^ j) [MOD 2 ^ j * p]",
+   "kind": "KERNEL_DECL",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_KERNEL",
+   "receipt": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.verify.json",
+   "receipt_kind": "VERIFY_JSON",
+   "receipt_notes": [
+    "verify.json status=VERIFIED exitCode=0"
+   ],
+   "source": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.lean",
+   "source_sha256": "b36c7078f0af300c515b60ba8321264de54a7b84df0a96e3529340cb19428383",
+   "binding_detail": "no_frozen_match",
+   "declaration": "erdos479_family",
+   "court": [
+    "kernel"
+   ],
+   "type_context": "import Mathlib",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.lean",
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.verify.json"
+   ],
+   "leaf_tactic_hint": "omega",
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "supports": [],
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:KER:Erdos479LTE:erdos479_lte",
+   "statement": "theorem erdos479_lte (a : ℕ) : (3 : ℤ) ^ (a + 1) ∣ 2 ^ (3 ^ a) + 1",
+   "kind": "KERNEL_DECL",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_KERNEL",
+   "receipt": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479LTE.verify.json",
+   "receipt_kind": "VERIFY_JSON",
+   "receipt_notes": [
+    "verify.json status=VERIFIED exitCode=0"
+   ],
+   "source": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479LTE.lean",
+   "source_sha256": "88f7aa08f802d9efefdc0ea9822faef1cdf33af53382b00ed5d242400b358cdd",
+   "binding_detail": "no_frozen_match",
+   "declaration": "erdos479_lte",
+   "court": [
+    "kernel"
+   ],
+   "type_context": "import Mathlib",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479LTE.lean",
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479LTE.verify.json"
+   ],
+   "leaf_tactic_hint": "norm_num",
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "supports": [],
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:KER:Erdos479LTE:erdos479_k_neg_one",
+   "statement": "theorem erdos479_k_neg_one (a : ℕ) : (3 ^ a : ℕ) ∣ 2 ^ (3 ^ a) + 1",
+   "kind": "KERNEL_DECL",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_KERNEL",
+   "receipt": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479LTE.verify.json",
+   "receipt_kind": "VERIFY_JSON",
+   "receipt_notes": [
+    "verify.json status=VERIFIED exitCode=0"
+   ],
+   "source": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479LTE.lean",
+   "source_sha256": "88f7aa08f802d9efefdc0ea9822faef1cdf33af53382b00ed5d242400b358cdd",
+   "binding_detail": "no_frozen_match",
+   "declaration": "erdos479_k_neg_one",
+   "court": [
+    "kernel"
+   ],
+   "type_context": "import Mathlib",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479LTE.lean",
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479LTE.verify.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "supports": [],
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:LEM:R001:L2",
+   "statement": "Exact verifier aborts at divisor 19: 4700063497 = 19 × 247371763 (exact, zero remainder), so the primality half is composite and the unexecuted 'verified spec' claim collapses; fail-closed abort per contract.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R001",
+   "lemma_id": "L2",
+   "registry_status": "FALSE",
+   "registry_seq": 11,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L2 of route R001 carries a machine-verified concrete counterexample (already banked as gold), and no surviving-close argument was provided showing L2 is deletable. Re-derivation confirms the lemma is load-bearing: without it the route's chain does not reach the canonical all-k≠1 infini",
+    "seq": 12
+   },
+   "history": [
+    {
+     "seq": 3,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:10:50Z"
+    },
+    {
+     "seq": 4,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:12:06Z"
+    },
+    {
+     "seq": 5,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:12:43Z"
+    },
+    {
+     "seq": 6,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:12:57Z"
+    },
+    {
+     "seq": 7,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:14:17Z"
+    },
+    {
+     "seq": 8,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:14:40Z"
+    },
+    {
+     "seq": 9,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:18:59Z"
+    },
+    {
+     "seq": 10,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:19:23Z"
+    },
+    {
+     "seq": 11,
+     "status": "FALSE",
+     "utc": "2026-09-01T22:19:55Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos479:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:LEM:R002:F1",
+   "statement": "Exact integer trial-division verifier (deterministic, fail-closed, stdlib-only, Python≥3.8) reproduces counts 2196/1157/681/462 for k=2/4/8/16, q≤1e5; certificate scope = finite counts only, infinitude clause is an unproven Dickson/Sophie-Germain instance (cf. erdos730 R002/L1) and is excluded.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R002",
+   "lemma_id": "F1",
+   "registry_status": "PROVED",
+   "registry_seq": 23,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 14,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:24:04Z"
+    },
+    {
+     "seq": 15,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:24:32Z"
+    },
+    {
+     "seq": 16,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:25:12Z"
+    },
+    {
+     "seq": 17,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:25:24Z"
+    },
+    {
+     "seq": 18,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:25:46Z"
+    },
+    {
+     "seq": 19,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:26:11Z"
+    },
+    {
+     "seq": 20,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:26:26Z"
+    },
+    {
+     "seq": 21,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:26:57Z"
+    },
+    {
+     "seq": 22,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:27:08Z"
+    },
+    {
+     "seq": 23,
+     "status": "PROVED",
+     "utc": "2026-09-01T22:27:47Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos479:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "fragment | For k=2, the exact ZMOD congruence 2^n ≡ 2 (mod n) is verified for each of the eight explicit moduli n ∈ {2,3,5,7,11,13,17,19}; this is only a finite fragment and does not establish infinitude or the universal all-integer-k statement. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "fragment | For k=2, the exact integer congruence 2^n ≡ 2 [ZMOD n] holds at each explicitly checked modulus n=2,3,5,7,11,13,17,19. This finite fragment establishes neither infinitude nor the universal statement. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "fragment | The exact finite fragment is checked: for k=2 and each n in {2, 3, 5, 7, 11, 13, 17, 19}, the proposition (2 : Int)^n ≡ (2 : Int) [ZMOD (n : Int)] evaluates to true. No infinitude or universal-k claim is asserted. | by native_decide"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:LEM:R003:L1",
+   "statement": "Exact integer verifier confirms k=0 witnesses n=2^a for a=1..6 (n∈{2,4,8,16,32,64}); certificate scope = finite verification only — infinitude \"by construction\" not certifiable since the witness predicate is absent from packet (analytic reduction: none), and non-uniform ∀k exclusion is part of the s",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos479:KER:Erdos479Family:erdos479_family",
+    "erdos479:KER:Erdos479LTE:erdos479_k_neg_one",
+    "erdos479:KER:Erdos479LTE:erdos479_lte"
+   ],
+   "binding": "UNBOUND",
+   "status": "PROVED_KERNEL",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 25,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 24,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:29:36Z"
+    },
+    {
+     "seq": 25,
+     "status": "PROVED",
+     "utc": "2026-09-01T22:30:23Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer",
+    "kernel"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/routes/registry.jsonl"
+   ],
+   "kernel_link_evidence": [
+    {
+     "cert_seq": 101,
+     "artifact_file": "kernel/Erdos479Family.lean"
+    },
+    {
+     "cert_seq": 102,
+     "artifact_file": "kernel/Erdos479LTE.lean"
+    }
+   ],
+   "receipt": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.verify.json",
+   "source": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.lean",
+   "receipt_kind": "VERIFY_JSON",
+   "supports": [
+    {
+     "node": "erdos479:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_k0_witnesses = true | This kernel-checks that for k=0, each n in {2,4,8,16,32,64} satisfies the exact integer congruence 2^n ≡ 0 modulo n; it does not establish infinitude or the universal k≠1 statement. | by decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_k0_witnesses = true | The kernel checks the six exact Int.ModEq statements 2^n ≡ 0 [ZMOD n] for n = 2, 4, 8, 16, 32, and 64. This is only a finite k=0 fragment and does not establish infinitude or the universal all-k statement. | by decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_k0_witnesses = true | Kernel-checks the six finite instances 2^n ≡ 0 [ZMOD n] for k=0 and n=2,4,8,16,32,64; it establishes neither infinitude nor the universal statement. | by decide"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:LEM:R003:T1",
+   "statement": "Finite→asymptotic per-slab: certificate (2^n%n=0, n=2^a, a=1..6, k=0) extends by induction via a≤2^a to all a≥1, proving k=0 infinitude; transfer mechanism (v₂ monotone chain) is undefined for k≠0, so branch A still owes the open Zsigmondy supply theorem on remaining slabs — trust boundary: finite k",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "T1",
+   "registry_status": "PROVED",
+   "registry_seq": 68,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 68,
+     "status": "PROVED",
+     "utc": "2026-09-01T23:42:27Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos479:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_k0_witnesses = true | Checks exactly that for k=0, each of the six explicit moduli n∈{2,4,8,16,32,64} satisfies 2^n ≡ 0 (mod n); this is a finite fragment and does not establish infinitude or the universal k≠1 statement. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_k0_witnesses = true | Kernel-checks the six explicit finite cases k=0 and n∈{2,4,8,16,32,64}: each satisfies 2^n ≡ 0 (mod n). It establishes neither infinitude nor any case k≠0. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_k0_witnesses = true | Kernel-checks exactly the finite special case k=0 for n=2,4,8,16,32,64, namely 2^n ≡ 0 (mod n) for each listed modulus; it does not check infinitude or any other k. | by native_decide"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:LEM:R004:L1",
+   "statement": "Certificate: v2(2^n−2^(2^j))=2^j≥j (n=2^j·p≥2^j) plus Fermat 2^(2^j(p−1))≡1 mod p give n|2^n−2^(2^j) for all j≥0, odd primes p; exact pow(2,n,n) verifier confirms 2000+ pairs; scope limited to k=2^(2^j) as stated.",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos479:KER:Erdos479Family:erdos479_family",
+    "erdos479:KER:Erdos479LTE:erdos479_k_neg_one",
+    "erdos479:KER:Erdos479LTE:erdos479_lte"
+   ],
+   "binding": "UNBOUND",
+   "status": "PROVED_KERNEL",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 28,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 27,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:36:15Z"
+    },
+    {
+     "seq": 28,
+     "status": "PROVED",
+     "utc": "2026-09-01T22:36:28Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer",
+    "kernel"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/routes/registry.jsonl"
+   ],
+   "kernel_link_evidence": [
+    {
+     "cert_seq": 101,
+     "artifact_file": "kernel/Erdos479Family.lean"
+    },
+    {
+     "cert_seq": 102,
+     "artifact_file": "kernel/Erdos479LTE.lean"
+    }
+   ],
+   "receipt": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.verify.json",
+   "source": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.lean",
+   "receipt_kind": "VERIFY_JSON",
+   "supports": [
+    {
+     "node": "erdos479:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_k2 = true | This checks the single explicit witness n=3 for the special parameter k=2: (2:ℤ)^3 ≡ 2 [ZMOD (3:ℤ)]. It is only a finite fragment and does not establish infinitude or the universal theorem. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_witness = true | Kernel-checkable fragment: for k=2 and n=3, the exact frozen congruence (2:ℤ)^3 ≡ 2 [ZMOD (3:ℤ)] holds. This verifies one witness only and establishes neither infinitude nor the universal statement. | by native_decide"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:LEM:R005:L1",
+   "statement": "statement \"2^n mod n is even for all n≥3, so odd k have empty W(k)\" refuted by exact hand check n=25: 2^25≡7 mod 25 (pattern adapted from erdos1094 R005/L1, re-derived here).",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos479:KER:Erdos479Family:erdos479_family",
+    "erdos479:KER:Erdos479LTE:erdos479_k_neg_one",
+    "erdos479:KER:Erdos479LTE:erdos479_lte"
+   ],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R005",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 30,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified concrete counterexample and no surviving close can be exhibited without it (candidate proof: \"none\"), so R005 is dead under K8.",
+    "seq": 31
+   },
+   "history": [
+    {
+     "seq": 30,
+     "status": "FALSE",
+     "utc": "2026-09-01T22:40:35Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/routes/registry.jsonl"
+   ],
+   "kernel_link_evidence": [
+    {
+     "cert_seq": 101,
+     "artifact_file": "kernel/Erdos479Family.lean"
+    },
+    {
+     "cert_seq": 102,
+     "artifact_file": "kernel/Erdos479LTE.lean"
+    }
+   ],
+   "supports": [
+    {
+     "node": "erdos479:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:LEM:R006:L1",
+   "statement": "Certificate C1+C2, pure congruence algebra, all odd k, n>=1, both signs s=+-1: even witness => 2|n|2^n+s*k and 2|2^n => 2|k, contra k odd; p|gcd(n,k) => p odd, p|2^n+s*k and p|k => p|2^n => p=2, contra; endpoints n=1, k=+-1 clean (no erdos821-style degenerate exception); exact artifact cert_R006_L1.",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos479:KER:Erdos479Family:erdos479_family",
+    "erdos479:KER:Erdos479LTE:erdos479_k_neg_one",
+    "erdos479:KER:Erdos479LTE:erdos479_lte"
+   ],
+   "binding": "UNBOUND",
+   "status": "PROVED_KERNEL",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R006",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 34,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 33,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:46:36Z"
+    },
+    {
+     "seq": 34,
+     "status": "PROVED",
+     "utc": "2026-09-01T22:51:21Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer",
+    "kernel"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/routes/registry.jsonl"
+   ],
+   "kernel_link_evidence": [
+    {
+     "cert_seq": 101,
+     "artifact_file": "kernel/Erdos479Family.lean"
+    },
+    {
+     "cert_seq": 102,
+     "artifact_file": "kernel/Erdos479LTE.lean"
+    }
+   ],
+   "receipt": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.verify.json",
+   "source": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.lean",
+   "receipt_kind": "VERIFY_JSON",
+   "supports": [
+    {
+     "node": "erdos479:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "∀ k : Int, ∀ n : Nat, odd k = true → n % 2 = 0 → evenWitnessImpossible k n = true | For every odd integer k and every even natural n, the parity obstruction certificate checks exactly that k cannot be even; this certifies only the local parity fragment of L1 and does not establish infinitude of witnesses. | by\n  intro k n hk hn\n  simp [evenWitnessImpossible, odd] at hk ⊢\n  omega"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "evenWitnessImpossible 3 2 = true | The explicit parity instance k = 3 and even witness candidate n = 2 passes the decidable obstruction check: since 3 is odd and 2 is even, the checked conclusion is that 3 is not even. This certifies only this finite local fragment of L1. | by decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "parityObstruction 3 2 = true | The kernel-checkable instance for k = 3 and n = 2 verifies the parity fragment: k is odd, n is even, and therefore the obstruction predicate evaluates to true. This checks only a finite local instance and does not establish the infinitude statement. | by decide"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:LEM:R007:L1",
+   "statement": "k=−1 certified exactly: LTE gives v₃(2^{3^a}+1)=v₃(3)+v₃(3^a)=a+1 (hypotheses 3|3, 3∤2, odd exponent hold exactly; spot-checked a=1,2,3 by integer factorization); k=0 trivial; certificate scope limited to these two branches, remaining k uncertified.",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos479:KER:Erdos479Family:erdos479_family",
+    "erdos479:KER:Erdos479LTE:erdos479_k_neg_one",
+    "erdos479:KER:Erdos479LTE:erdos479_lte"
+   ],
+   "binding": "UNBOUND",
+   "status": "PROVED_KERNEL",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R007",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 38,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 36,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:55:27Z"
+    },
+    {
+     "seq": 37,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:56:18Z"
+    },
+    {
+     "seq": 38,
+     "status": "PROVED",
+     "utc": "2026-09-01T22:56:37Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer",
+    "kernel"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/routes/registry.jsonl"
+   ],
+   "kernel_link_evidence": [
+    {
+     "cert_seq": 101,
+     "artifact_file": "kernel/Erdos479Family.lean"
+    },
+    {
+     "cert_seq": 102,
+     "artifact_file": "kernel/Erdos479LTE.lean"
+    }
+   ],
+   "receipt": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.verify.json",
+   "source": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.lean",
+   "receipt_kind": "VERIFY_JSON",
+   "supports": [
+    {
+     "node": "erdos479:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "checkMinusOne 1 = true ∧ checkMinusOne 2 = true ∧ checkMinusOne 3 = true | This checks exactly the three stated finite spot-checks a=1,2,3 for the proposed witnesses n=3^a in the k=-1 congruence case; it does not establish infinitude. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "checkMinusOne 1 = true ∧ checkMinusOne 2 = true ∧ checkMinusOne 3 = true | The kernel checks the three finite instances a=1, a=2, and a=3: for each n=3^a, 2^n ≡ -1 modulo n. This is only a finite fragment and does not prove infinitude. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "checkMinusOne 1 = true ∧ checkMinusOne 2 = true ∧ checkMinusOne 3 = true | Kernel-checkable finite fragment: for a=1,2,3, the explicit moduli n=3^a satisfy 2^n ≡ -1 [ZMOD n]. This checks neither the LTE assertion nor infinitude. | by native_decide"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:LEM:R008:L1",
+   "statement": "Certificate: v₂(2^(2^s))=2^s and 2^s≥s for all s≥1 (induction: 2·2^s≥2s≥s+1), so 2^s|2^(2^s) unconditionally; exact integer proof, k=0 subfamily only.",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos479:KER:Erdos479Family:erdos479_family",
+    "erdos479:KER:Erdos479LTE:erdos479_k_neg_one",
+    "erdos479:KER:Erdos479LTE:erdos479_lte"
+   ],
+   "binding": "UNBOUND",
+   "status": "PROVED_KERNEL",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R008",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 41,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 40,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:03:09Z"
+    },
+    {
+     "seq": 41,
+     "status": "PROVED",
+     "utc": "2026-09-01T23:03:25Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer",
+    "kernel"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/routes/registry.jsonl"
+   ],
+   "kernel_link_evidence": [
+    {
+     "cert_seq": 101,
+     "artifact_file": "kernel/Erdos479Family.lean"
+    },
+    {
+     "cert_seq": 102,
+     "artifact_file": "kernel/Erdos479LTE.lean"
+    }
+   ],
+   "receipt": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.verify.json",
+   "source": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.lean",
+   "receipt_kind": "VERIFY_JSON",
+   "supports": [
+    {
+     "node": "erdos479:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_l1_fragment 1 = true ∧ check_l1_fragment 2 = true ∧ check_l1_fragment 3 = true ∧ check_l1_fragment 4 = true ∧ check_l1_fragment 5 = true | This checks, for each concrete s in the finite range 1 ≤ s ≤ 5, the inequalities s ≤ 2^s and divisibility 2^s ∣ 2^(2^s); it does not establish the asserted universal 2-adic valuation identity or the original Erdős problem. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_l1_fragment 1 = true ∧ check_l1_fragment 2 = true ∧ check_l1_fragment 3 = true ∧ check_l1_fragment 4 = true ∧ check_l1_fragment 5 = true | For each concrete s ∈ {1,2,3,4,5}, the kernel-checkable computation verifies s ≤ 2^s and 2^s ∣ 2^(2^s); this finite fragment does not establish the universal lemma or the full Erdős 479 statement. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_l1_fragment 1 = true ∧ check_l1_fragment 2 = true ∧ check_l1_fragment 3 = true ∧ check_l1_fragment 4 = true ∧ check_l1_fragment 5 = true | The kernel checks the finite instances s=1,2,3,4,5 of s ≤ 2^s and 2^s ∣ 2^(2^s); no universal quantifier or full Erdős 479 conclusion is established. | by native_decide"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:LEM:R009:L1",
+   "statement": "n=1 is a vacuous mod-1 witness for every k; deleting it preserves infinitude, so the ZMOD (n:ℕ) domain normalizes to n≥2 — domain cleanup only, no branch close.",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos479:KER:Erdos479Family:erdos479_family",
+    "erdos479:KER:Erdos479LTE:erdos479_k_neg_one",
+    "erdos479:KER:Erdos479LTE:erdos479_lte"
+   ],
+   "binding": "UNBOUND",
+   "status": "PROVED_KERNEL",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R009",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 46,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 43,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T23:07:23Z"
+    },
+    {
+     "seq": 44,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T23:08:17Z"
+    },
+    {
+     "seq": 46,
+     "status": "PROVED",
+     "utc": "2026-09-01T23:12:55Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer",
+    "kernel"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/routes/registry.jsonl"
+   ],
+   "kernel_link_evidence": [
+    {
+     "cert_seq": 101,
+     "artifact_file": "kernel/Erdos479Family.lean"
+    },
+    {
+     "cert_seq": 102,
+     "artifact_file": "kernel/Erdos479LTE.lean"
+    }
+   ],
+   "receipt": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.verify.json",
+   "source": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.lean",
+   "receipt_kind": "VERIFY_JSON",
+   "supports": [
+    {
+     "node": "erdos479:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "∀ k : ℤ, modEqAtOne k | Checks the fragment that n=1 is a ZMOD witness for every integer k; this establishes only the universal mod-1 witness, not infinitude. | by\n  intro k\n  simp [modEqAtOne, Int.ModEq]"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "∀ k : ℤ, modEqAtOne k = true | Checks the finite decidable fragment for the fixed modulus n=1: for every integer k, 2^1 ≡ k modulo 1. This is only the universal vacuous n=1 witness and does not establish infinitude. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "∀ k : ℤ, modEqAtOne k = true | Checks the fragment that the fixed modulus n=1 satisfies 2^1 ≡ k [ZMOD 1] for every integer k. This certifies only a single vacuous witness per k, not infinitude or the affirmative close. | by native_decide"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:LEM:R010:L1",
+   "statement": "Standing lemma is a truncated verifier log with no proposition P(n,k), no tower lemma, no Zsigmondy reduction; repair: formalize P(n,k) in ZMOD (n:Z), prove n->np tower lemma, cover negative and zero k explicitly.",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos479:DEMAND:R010:L1:1",
+    "erdos479:KER:Erdos479Family:erdos479_family",
+    "erdos479:KER:Erdos479LTE:erdos479_k_neg_one",
+    "erdos479:KER:Erdos479LTE:erdos479_lte"
+   ],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R010",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 55,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 (witness-log certificate for infinitude) is machine-refuted and load-bearing as the sole finite-to-infinity bridge; no tower/Zsigmondy replacement exists in the record, so no surviving close — revival only on a new construction or repaired lemma with strictly weaker assumptions per ",
+    "seq": 56
+   },
+   "history": [
+    {
+     "seq": 48,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:16:59Z"
+    },
+    {
+     "seq": 49,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:17:48Z"
+    },
+    {
+     "seq": 50,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:18:35Z"
+    },
+    {
+     "seq": 51,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:18:45Z"
+    },
+    {
+     "seq": 52,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:19:07Z"
+    },
+    {
+     "seq": 53,
+     "status": "PROVED",
+     "utc": "2026-09-01T23:19:25Z"
+    },
+    {
+     "seq": 54,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T23:19:33Z"
+    },
+    {
+     "seq": 55,
+     "status": "FALSE",
+     "utc": "2026-09-01T23:19:48Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/routes/registry.jsonl"
+   ],
+   "kernel_link_evidence": [
+    {
+     "cert_seq": 101,
+     "artifact_file": "kernel/Erdos479Family.lean"
+    },
+    {
+     "cert_seq": 102,
+     "artifact_file": "kernel/Erdos479LTE.lean"
+    }
+   ],
+   "supports": [
+    {
+     "node": "erdos479:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos479",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:DEMAND:R010:L1:1",
+   "statement": "formalize P(n,k) in ZMOD (n:Z), prove n->np tower lemma, cover negative and zero k explicitly.",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "repair:",
+   "demand_rank": 2,
+   "demand_strength": "STRONG",
+   "route_status": "DEAD",
+   "demand_source_text": "Standing lemma is a truncated verifier log with no proposition P(n,k), no tower lemma, no Zsigmondy reduction; repair: formalize P(n,k) in ZMOD (n:Z), prove n->np tower lemma, cover negative and zero k explicitly.",
+   "route_id": "R010",
+   "lemma_id": "L1",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos479:LEM:R010:L1",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:LEM:R011:L1",
+   "statement": "Exact integer verifier (sympy 1.12 primerange + pow(2,3p,3p), fail-closed, PASS for p=3..97) plus analytic reduction: mod p via 2^(3p)-8=8(2^(3(p-1))-1) and Fermat, mod 3 via (-1)^(3p)=2; computation certifies finite range exactly, two-line argument covers all odd primes; does NOT certify the ∀k≠1 b",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos479:KER:Erdos479Family:erdos479_family",
+    "erdos479:KER:Erdos479LTE:erdos479_k_neg_one",
+    "erdos479:KER:Erdos479LTE:erdos479_lte"
+   ],
+   "binding": "UNBOUND",
+   "status": "PROVED_KERNEL",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R011",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 59,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 58,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:25:31Z"
+    },
+    {
+     "seq": 59,
+     "status": "PROVED",
+     "utc": "2026-09-01T23:27:21Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer",
+    "kernel"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/routes/registry.jsonl"
+   ],
+   "kernel_link_evidence": [
+    {
+     "cert_seq": 101,
+     "artifact_file": "kernel/Erdos479Family.lean"
+    },
+    {
+     "cert_seq": 102,
+     "artifact_file": "kernel/Erdos479LTE.lean"
+    }
+   ],
+   "receipt": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.verify.json",
+   "source": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.lean",
+   "receipt_kind": "VERIFY_JSON",
+   "supports": [
+    {
+     "node": "erdos479:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_special 3 = true ∧ check_special 5 = true ∧ check_special 7 = true ∧ check_special 11 = true ∧ check_special 13 = true ∧ check_special 17 = true ∧ check_special 19 = true ∧ check_special 23 = true ∧ check_special 29 = true ∧ check_special 31 = true ∧ check_special 37 = true ∧ check_special 41 = true ∧ check_special 43 = true ∧ check_special 47 = true ∧ check_special 53 = true ∧ check_special 59 = true ∧ check_special 61 = true ∧ check_special 67 = true ∧ check_special 71 = true ∧ check_special 73 = true ∧ check_special 79 = true ∧ check_special 83 = true ∧ check_special 89 = true ∧ check_special 97 = true | For every odd prime p in the explicit range 3≤p≤97, the computed congruence (2^ (3p)) mod (3p) = 8 mod (3p) holds; this is only the finite special-modulus fragment and does not establish infinitude or the universal k≠1 statement. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_special 3 = true ∧ check_special 5 = true ∧ check_special 7 = true ∧ check_special 11 = true ∧ check_special 13 = true ∧ check_special 17 = true ∧ check_special 19 = true ∧ check_special 23 = true ∧ check_special 29 = true ∧ check_special 31 = true ∧ check_special 37 = true ∧ check_special 41 = true ∧ check_special 43 = true ∧ check_special 47 = true ∧ check_special 53 = true ∧ check_special 59 = true ∧ check_special 61 = true ∧ check_special 67 = true ∧ check_special 71 = true ∧ check_special 73 = true ∧ check_special 79 = true ∧ check_special 83 = true ∧ check_special 89 = true ∧ check_special 97 = true | For each explicitly listed prime p from 3 through 97, exact computation verifies (2 : Nat)^(3*p) % (3*p) = 8 % (3*p); this finite fragment does not assert infinitude or the universal k≠1 proposition. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_special 3 = true ∧ check_special 5 = true ∧ check_special 7 = true ∧ check_special 11 = true ∧ check_special 13 = true ∧ check_special 17 = true ∧ check_special 19 = true ∧ check_special 23 = true ∧ check_special 29 = true ∧ check_special 31 = true ∧ check_special 37 = true ∧ check_special 41 = true ∧ check_special 43 = true ∧ check_special 47 = true ∧ check_special 53 = true ∧ check_special 59 = true ∧ check_special 61 = true ∧ check_special 67 = true ∧ check_special 71 = true ∧ check_special 73 = true ∧ check_special 79 = true ∧ check_special 83 = true ∧ check_special 89 = true ∧ check_special 97 = true | Exact kernel-replayable computation checks the stated congruence for each listed prime p in the finite range 3≤p≤97; it establishes no universal or infinitary conclusion. | by native_decide"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:LEM:R012:L1",
+   "statement": "Parity certificate: 2^n even, k odd ⇒ 2^n−k odd, so no even n divides it — holds for ALL even n and ALL odd k (stronger than the checked range n≤10^4, k∈{±3,±5,±7}); exact integer verifier fail-closed PASS; scope: divisibility of 2^n±k by even n only, no further branch-A claims certified.",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos479:KER:Erdos479Family:erdos479_family",
+    "erdos479:KER:Erdos479LTE:erdos479_k_neg_one",
+    "erdos479:KER:Erdos479LTE:erdos479_lte"
+   ],
+   "binding": "UNBOUND",
+   "status": "PROVED_KERNEL",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R012",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 62,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 61,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:31:09Z"
+    },
+    {
+     "seq": 62,
+     "status": "PROVED",
+     "utc": "2026-09-01T23:31:34Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer",
+    "kernel"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/routes/registry.jsonl"
+   ],
+   "kernel_link_evidence": [
+    {
+     "cert_seq": 101,
+     "artifact_file": "kernel/Erdos479Family.lean"
+    },
+    {
+     "cert_seq": 102,
+     "artifact_file": "kernel/Erdos479LTE.lean"
+    }
+   ],
+   "receipt": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.verify.json",
+   "source": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.lean",
+   "receipt_kind": "VERIFY_JSON",
+   "supports": [
+    {
+     "node": "erdos479:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "parity_fragment | This fragment checks that for every even positive-natural n and every odd integer k, n does not divide 2^n−k; it establishes only the stated parity obstruction, not infinitude of witnesses. | by\n  intro n k hn hk hdiv\n  rcases hn with ⟨m, rfl⟩\n  have hpow : Even ((2 : ℤ) ^ (2 * m)) := by\n    apply even_pow\n    norm_num\n  have hsub : Odd ((2 : ℤ) ^ (2 * m) - k) := by\n    exact Odd.sub_even hpow hk\n  have hmod : Even ((2 * m : ℕ) : ℤ) := by\n    norm_num\n  have hdiv_even : ((2 * m : ℕ) : ℤ) ∣ ((2 : ℤ) ^ (2 * m) - k) := by\n    simpa using hdiv\n  rcases hdiv_even with ⟨q, hq⟩\n  have : Even ((2 : ℤ) ^ (2 * m) - k) := by\n    rw [hq]\n    exact even_mul_left hmod q\n  exact hsub.not_even this"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "parity_instance = true | For the explicit even modulus n=2 and odd integer k=3, the divisibility statement 2 ∣ 2^2−3 is false. | by decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "parity_instance = true | The explicit parity instance n=2 and k=3 satisfies ¬(2 ∣ 2^2−3), a decidable fragment of L1. | by decide"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "leaf_tactic_hint": "interval_cases",
+   "hint_source": "bounded_forall_over_N",
+   "leaf_tactic_sketch": "intro a; interval_cases a <;> decide",
+   "leaf_tactic_alternatives": [
+    "decide",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:LEM:R013:L1",
+   "statement": "Exact integer verifier (pow(2,p,p)==2 for all 12 primes <=40, fail-closed) + analytic reduction Fermat little theorem (group order p-1) gives 2^p≡2 mod p for ALL primes, p=2 direct; Euclid gives infinitude; scope = containment W(2)⊇primes only, not equality; no floats, CPython stdlib only.",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos479:KER:Erdos479Family:erdos479_family",
+    "erdos479:KER:Erdos479LTE:erdos479_k_neg_one",
+    "erdos479:KER:Erdos479LTE:erdos479_lte"
+   ],
+   "binding": "UNBOUND",
+   "status": "PROVED_KERNEL",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R013",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 65,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 64,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:35:24Z"
+    },
+    {
+     "seq": 65,
+     "status": "PROVED",
+     "utc": "2026-09-01T23:35:49Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer",
+    "kernel"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/routes/registry.jsonl"
+   ],
+   "kernel_link_evidence": [
+    {
+     "cert_seq": 101,
+     "artifact_file": "kernel/Erdos479Family.lean"
+    },
+    {
+     "cert_seq": 102,
+     "artifact_file": "kernel/Erdos479LTE.lean"
+    }
+   ],
+   "receipt": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.verify.json",
+   "source": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.lean",
+   "receipt_kind": "VERIFY_JSON",
+   "supports": [
+    {
+     "node": "erdos479:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "primeWitness 2 | This checks the explicit special-case witness p=2: 2 is prime and (2:ℤ)^2 ≡ 2 [ZMOD (2:ℤ)]. | by\n  constructor\n  · decide\n  · norm_num [Int.ModEq]"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "primeWitness 2 = true | This machine-checks the explicit fragment at p=2: 2 is prime and (2:ℤ)^2 ≡ 2 [ZMOD (2:ℤ)]. | by decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "primeWitness 2 | This kernel-checks the fragment consisting of the explicit modulus p=2 for k=2: 2 is prime and (2:ℤ)^2 ≡ 2 [ZMOD (2:ℤ)]. | by decide"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "leaf_tactic_hint": "interval_cases",
+   "hint_source": "bounded_forall_over_N",
+   "leaf_tactic_sketch": "intro a; interval_cases a <;> decide",
+   "leaf_tactic_alternatives": [
+    "decide",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:LEM:R014:L1",
+   "statement": "for k=0 all n=2^a (a≥1) are distinct witnesses since 2^a|2^a; all twelve attacks hold (endpoint n=1 vacuous, injective family beats finite-cutoff trap, no circularity); WEAKNESS FLAG: proper-subfamily result cannot close branch A — auditor must block any R014 close that rests on L1 alone, per contra",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos479:KER:Erdos479Family:erdos479_family",
+    "erdos479:KER:Erdos479LTE:erdos479_k_neg_one",
+    "erdos479:KER:Erdos479LTE:erdos479_lte"
+   ],
+   "binding": "UNBOUND",
+   "status": "PROVED_KERNEL",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R014",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 71,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 67,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T23:41:50Z"
+    },
+    {
+     "seq": 71,
+     "status": "PROVED",
+     "utc": "2026-09-02T01:10:17Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer",
+    "kernel"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/routes/registry.jsonl"
+   ],
+   "kernel_link_evidence": [
+    {
+     "cert_seq": 101,
+     "artifact_file": "kernel/Erdos479Family.lean"
+    },
+    {
+     "cert_seq": 102,
+     "artifact_file": "kernel/Erdos479LTE.lean"
+    }
+   ],
+   "receipt": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.verify.json",
+   "source": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.lean",
+   "receipt_kind": "VERIFY_JSON",
+   "supports": [
+    {
+     "node": "erdos479:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "∀ a : Nat, isWitness a | For the parameter instance k=0, every modulus n=2^(a+1) with a∈ℕ satisfies the required congruence 2^n ≡ 0 [ZMOD n]. | by\n  intro a\n  simp [isWitness, witness, Int.ModEq]\n"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_witness 0 = true | The decidable fragment checks the concrete k=0 witness n=2: (2:Int)^2 ≡ 0 [ZMOD (2:Int)]. | by decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_k0_n2 = true | The kernel checks the concrete k=0 instance with modulus n=2: (2:ℤ)^2 ≡ 0 [ZMOD (2:ℤ)]. | by decide"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:LEM:R015:L1",
+   "statement": "Exact integer verifier (Python 3.11, fractions/ints only, fail-closed) certifies ord_odd(a)(2) for a=2..5 (=2 for a=3, =4 for a=5), confirms negative attack a=5,p=3 (ord_15(2)=4, condition load-bearing), and spot-witnesses n=25,65 vs k=32; infinitude for general a then follows by Dirichlet (cited an",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos479:KER:Erdos479Family:erdos479_family",
+    "erdos479:KER:Erdos479LTE:erdos479_k_neg_one",
+    "erdos479:KER:Erdos479LTE:erdos479_lte"
+   ],
+   "binding": "UNBOUND",
+   "status": "PROVED_KERNEL",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R015",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 74,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 73,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:17:39Z"
+    },
+    {
+     "seq": 74,
+     "status": "PROVED",
+     "utc": "2026-09-02T01:18:27Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer",
+    "kernel"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/routes/registry.jsonl"
+   ],
+   "kernel_link_evidence": [
+    {
+     "cert_seq": 101,
+     "artifact_file": "kernel/Erdos479Family.lean"
+    },
+    {
+     "cert_seq": 102,
+     "artifact_file": "kernel/Erdos479LTE.lean"
+    }
+   ],
+   "receipt": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.verify.json",
+   "source": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.lean",
+   "receipt_kind": "VERIFY_JSON",
+   "supports": [
+    {
+     "node": "erdos479:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "witness 32 25 = true ∧ witness 32 65 = true | The fragment verifies exactly that 2^25 ≡ 32 (mod 25) and 2^65 ≡ 32 (mod 65), providing two distinct finite witnesses for k = 32; it does not establish infinitude. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "witness 32 25 = true ∧ witness 32 65 = true | The kernel-checkable fragment verifies the two exact congruences 2^25 ≡ 32 [ZMOD 25] and 2^65 ≡ 32 [ZMOD 65]; these are distinct finite witnesses and do not imply infinitude. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "witness 32 25 = true ∧ witness 32 65 = true | The checked fragment is exactly the pair of congruences 2^25 ≡ 32 [ZMOD (25 : ℤ)] and 2^65 ≡ 32 [ZMOD (65 : ℤ)], with 25 ≠ 65; it establishes only two finite witnesses for k = 32, not infinitude. | by native_decide"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:LEM:R016:L1",
+   "statement": "Exact integer verifier (fail-closed, float-free, deterministic) PASSes 3^1..3^5, 341=11*31, 243<341<729, 3^340≡1 mod 341; scope: finite identities only — analytic reduction='none' and P(n,k) undefined mean no universal claim is certified, exactly as the lemma states.",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos479:KER:Erdos479Family:erdos479_family",
+    "erdos479:KER:Erdos479LTE:erdos479_k_neg_one",
+    "erdos479:KER:Erdos479LTE:erdos479_lte"
+   ],
+   "binding": "UNBOUND",
+   "status": "PROVED_KERNEL",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R016",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 83,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 76,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:24:26Z"
+    },
+    {
+     "seq": 77,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:24:48Z"
+    },
+    {
+     "seq": 78,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:25:11Z"
+    },
+    {
+     "seq": 79,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:26:21Z"
+    },
+    {
+     "seq": 80,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:26:52Z"
+    },
+    {
+     "seq": 81,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:27:20Z"
+    },
+    {
+     "seq": 82,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:27:45Z"
+    },
+    {
+     "seq": 83,
+     "status": "PROVED",
+     "utc": "2026-09-02T01:27:56Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer",
+    "kernel"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/routes/registry.jsonl"
+   ],
+   "kernel_link_evidence": [
+    {
+     "cert_seq": 101,
+     "artifact_file": "kernel/Erdos479Family.lean"
+    },
+    {
+     "cert_seq": 102,
+     "artifact_file": "kernel/Erdos479LTE.lean"
+    }
+   ],
+   "receipt": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.verify.json",
+   "source": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.lean",
+   "receipt_kind": "VERIFY_JSON",
+   "supports": [
+    {
+     "node": "erdos479:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_l1 = true | Checks exactly the finite arithmetic identities recorded in L1: the powers 3^1 through 3^5, 341=11·31, 243<341<729, and 3^340 ≡ 1 modulo 341; it establishes no universal or infinitude claim. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_l1 = true | The kernel-checked fragment verifies exactly the finite identities in L1: 3^j for j=1,...,5, 341=11·31, 243<341<729, and 3^340 ≡ 1 (mod 341). It makes no claim about all k or infinitely many n. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_l1 = true | The kernel-checkable fragment verifies the finite identities recorded in L1: 3^1=3, 3^2=9, 3^3=27, 3^4=81, 3^5=243, 341=11·31, 243<341<729, and 3^340 ≡ 1 [ZMOD 341]. It does not establish any universal or infinitude statement. | by native_decide"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:LEM:R017:L1",
+   "statement": "Exact integer verifier (Python pow, fail-closed) certifies 9|2^3+1, 27|2^9+1, 81|2^27+1 (LTE lift to all a analytic), Fermat k=2 witnesses p<200 (all odd primes by theorem), 2^a|2^(2^a) a<=16, and the exact counterexample 2^140≡1≠4 mod 5 refuting the naive k≠1 lift; k≠1 infinitude NOT certified — re",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos479:KER:Erdos479Family:erdos479_family",
+    "erdos479:KER:Erdos479LTE:erdos479_k_neg_one",
+    "erdos479:KER:Erdos479LTE:erdos479_lte"
+   ],
+   "binding": "UNBOUND",
+   "status": "PROVED_KERNEL",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R017",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 86,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 85,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:31:57Z"
+    },
+    {
+     "seq": 86,
+     "status": "PROVED",
+     "utc": "2026-09-02T01:33:10Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer",
+    "kernel"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/routes/registry.jsonl"
+   ],
+   "kernel_link_evidence": [
+    {
+     "cert_seq": 101,
+     "artifact_file": "kernel/Erdos479Family.lean"
+    },
+    {
+     "cert_seq": 102,
+     "artifact_file": "kernel/Erdos479LTE.lean"
+    }
+   ],
+   "receipt": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.verify.json",
+   "source": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.lean",
+   "receipt_kind": "VERIFY_JSON",
+   "supports": [
+    {
+     "node": "erdos479:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check = true | This fragment checks the exact finite arithmetic certificate that 9 divides 2^3+1, 27 divides 2^9+1, 81 divides 2^27+1, and 2^140 is congruent to 1 modulo 5 while 4 is not congruent to 1 modulo 5; it does not establish infinitude for all k. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check = true | Exactly checks the finite arithmetic facts 9 ∣ 2^3+1, 27 ∣ 2^9+1, 81 ∣ 2^27+1, 2^140 ≡ 1 (mod 5), and 4 ≢ 1 (mod 5); this is only a finite fragment and proves no infinitude claim. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check = true | Kernel-checkable finite fragment: 9 divides 2^3+1, 27 divides 2^9+1, 81 divides 2^27+1, 2^140 is congruent to 1 modulo 5, and 4 is not congruent to 1 modulo 5. No infinitude or universal-k conclusion is claimed. | by native_decide"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:LEM:R018:L1",
+   "statement": "Exact integer verifier (Python3.11 pow(2,n,n), require/raise fail-closed, no floats) certifies for all n<=2000: residues computed exactly, k=0 iff n=2^m and k=2 iff n odd prime (both families also proved analytically for all parameters via 2^m|2^{2^m} and Fermat), witnesses (25,7) unique for k=7 and",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos479:KER:Erdos479Family:erdos479_family",
+    "erdos479:KER:Erdos479LTE:erdos479_k_neg_one",
+    "erdos479:KER:Erdos479LTE:erdos479_lte"
+   ],
+   "binding": "UNBOUND",
+   "status": "PROVED_KERNEL",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R018",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 89,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 88,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:37:08Z"
+    },
+    {
+     "seq": 89,
+     "status": "PROVED",
+     "utc": "2026-09-02T01:37:45Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer",
+    "kernel"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/routes/registry.jsonl"
+   ],
+   "kernel_link_evidence": [
+    {
+     "cert_seq": 101,
+     "artifact_file": "kernel/Erdos479Family.lean"
+    },
+    {
+     "cert_seq": 102,
+     "artifact_file": "kernel/Erdos479LTE.lean"
+    }
+   ],
+   "receipt": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.verify.json",
+   "source": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.lean",
+   "receipt_kind": "VERIFY_JSON",
+   "supports": [
+    {
+     "node": "erdos479:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_k0 0 = true ∧ check_k0 1 = true ∧ check_k0 2 = true ∧ check_k2 3 = true ∧ check_k2 5 = true ∧ check_k2 7 = true | This checks the explicit finite fragment consisting of the k=0 witnesses n=1,2,4 and the k=2 witnesses n=3,5,7. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "witness 7 25 | This kernel-checks the explicit witness 25 for k=7: (2 : ℤ)^25 ≡ 7 [ZMOD 25]. | by norm_num [witness, Int.ModEq]"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "witness 0 1 ∧ witness 0 2 ∧ witness 0 4 ∧ witness 2 3 ∧ witness 2 5 ∧ witness 2 7 ∧ witness 7 25 | This kernel-checks the finite explicit fragment of L1 consisting of witnesses n=1,2,4 for k=0, n=3,5,7 for k=2, and n=25 for k=7; it does not establish infinitude or the full universal statement. | by norm_num [witness, Int.ModEq]"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "leaf_tactic_hint": "interval_cases",
+   "hint_source": "bounded_forall_over_N",
+   "leaf_tactic_sketch": "intro n; interval_cases n <;> decide",
+   "leaf_tactic_alternatives": [
+    "decide",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:LEM:R019:L1",
+   "statement": "Exact integer verifier (stdlib, deterministic, fail-closed) proves closure np|2^np+1 from 2^n≡-1 mod n and mod p for odd prime p∤n via (2^n)^p+1 identity; certifies witness chain 1→3→9→171 and falsification 57∉W(-1) by exact modpow; infinitude/fresh-prime step (Zsigmondy) remains analytic, outside c",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos479:KER:Erdos479Family:erdos479_family",
+    "erdos479:KER:Erdos479LTE:erdos479_k_neg_one",
+    "erdos479:KER:Erdos479LTE:erdos479_lte"
+   ],
+   "binding": "UNBOUND",
+   "status": "PROVED_KERNEL",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R019",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 92,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 91,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:42:12Z"
+    },
+    {
+     "seq": 92,
+     "status": "PROVED",
+     "utc": "2026-09-02T01:43:05Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer",
+    "kernel"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/routes/registry.jsonl"
+   ],
+   "kernel_link_evidence": [
+    {
+     "cert_seq": 101,
+     "artifact_file": "kernel/Erdos479Family.lean"
+    },
+    {
+     "cert_seq": 102,
+     "artifact_file": "kernel/Erdos479LTE.lean"
+    }
+   ],
+   "receipt": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.verify.json",
+   "source": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.lean",
+   "receipt_kind": "VERIFY_JSON",
+   "supports": [
+    {
+     "node": "erdos479:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "checkWitnessChain = true | This checks, by exact kernel-replayed computation, that each of the explicit moduli 1, 3, 9, and 171 satisfies (2 : Int)^n ≡ -1 [ZMOD (n : Int)]; it establishes only this finite witness fragment for k = -1, not infinitude. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "checkWitnessChain = true | This kernel-checkable fragment verifies exactly that the four explicit moduli 1, 3, 9, and 171 belong to the witness set for k = -1, i.e. satisfy (2 : Int)^n ≡ -1 [ZMOD (n : Int)]. It does not establish infinitude. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "checkWitnessChain = true | This kernel-checkable fragment verifies exactly that n = 1, 3, 9, and 171 satisfy the frozen ZMOD predicate (2 : Int)^n ≡ -1 [ZMOD (n : Int)]; it is only a finite instance check and does not prove infinitude or the universal k statement. | by native_decide"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:LEM:R020:L1",
+   "statement": "Exact integer verifier (Python 3.11 stdlib, pow(2,n,n) exact, fail-closed require, no floats): checks 2^n mod n ∉ {3,5} for all 2≤n≤63 and parity r even for all even n; parity lemma also proved analytically (n even | 2^n−k ⟹ k even). Scope: n∈[2,63] exclusion + full parity lemma certified; exclusion",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos479:KER:Erdos479Family:erdos479_family",
+    "erdos479:KER:Erdos479LTE:erdos479_k_neg_one",
+    "erdos479:KER:Erdos479LTE:erdos479_lte"
+   ],
+   "binding": "UNBOUND",
+   "status": "PROVED_KERNEL",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R020",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 95,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 94,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:48:42Z"
+    },
+    {
+     "seq": 95,
+     "status": "PROVED",
+     "utc": "2026-09-02T01:49:37Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer",
+    "kernel"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/routes/registry.jsonl"
+   ],
+   "kernel_link_evidence": [
+    {
+     "cert_seq": 101,
+     "artifact_file": "kernel/Erdos479Family.lean"
+    },
+    {
+     "cert_seq": 102,
+     "artifact_file": "kernel/Erdos479LTE.lean"
+    }
+   ],
+   "receipt": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.verify.json",
+   "source": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.lean",
+   "receipt_kind": "VERIFY_JSON",
+   "supports": [
+    {
+     "node": "erdos479:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_exclusion = true | For every natural n with 2 ≤ n ≤ 63, exact natural arithmetic verifies that (2^n mod n) is neither 3 nor 5. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_exclusion = true | The exact finite computation checks, for every natural n with 2 ≤ n ≤ 63, that the natural-number remainder 2^n % n is neither 3 nor 5. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_exclusion = true | For every natural n in the exact range 2 ≤ n ≤ 63, computation verifies that 2^n % n ≠ 3 and 2^n % n ≠ 5. | by native_decide"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "leaf_tactic_hint": "interval_cases",
+   "hint_source": "bounded_forall_over_N",
+   "leaf_tactic_sketch": "intro a; interval_cases a <;> decide",
+   "leaf_tactic_alternatives": [
+    "decide",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:LEM:R021:L1",
+   "statement": "Exact fail-closed integer verifier (modpow, no floats, stdlib-only, Python>=3.8) + three proved reductions certify infinitely many distinct n for k=0 (n=2^a, v2(2^{2^a})=2^a>=a), k=2 (n=p prime, Fermat, Euclid), k=-1 (n=3^a, LTE v3(2^{3^a}+1)=a+1); scope strictly limited to k in {0,2,-1}: the comple",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos479:KER:Erdos479Family:erdos479_family",
+    "erdos479:KER:Erdos479LTE:erdos479_k_neg_one",
+    "erdos479:KER:Erdos479LTE:erdos479_lte"
+   ],
+   "binding": "UNBOUND",
+   "status": "PROVED_KERNEL",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R021",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 100,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 97,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T02:24:37Z"
+    },
+    {
+     "seq": 98,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T02:25:36Z"
+    },
+    {
+     "seq": 99,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T02:26:35Z"
+    },
+    {
+     "seq": 100,
+     "status": "PROVED",
+     "utc": "2026-09-02T02:29:44Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer",
+    "kernel"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/routes/registry.jsonl"
+   ],
+   "kernel_link_evidence": [
+    {
+     "cert_seq": 101,
+     "artifact_file": "kernel/Erdos479Family.lean"
+    },
+    {
+     "cert_seq": 102,
+     "artifact_file": "kernel/Erdos479LTE.lean"
+    }
+   ],
+   "receipt": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.verify.json",
+   "source": "oracle/evidence/msl-machine/campaigns/erdos479-campaign-001/kernel/Erdos479Family.lean",
+   "receipt_kind": "VERIFY_JSON",
+   "supports": [
+    {
+     "node": "erdos479:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "∀ a : ℕ, zeroWitness a | For every a : ℕ, the explicit modulus n = 2^a is a ZMOD witness for k = 0; this checks only the k = 0 construction fragment and does not close the full negative branch. | by\n  intro a\n  simp [zeroWitness, witnessZero, Int.ModEq]\n"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "checkZero 0 = true | This decision procedure checks the explicit k = 0 witness n = 2^a at the concrete instance a = 0, namely n = 1; it covers only a finite decidable fragment, not infinitude or the negative close. | by decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "checkZero 0 = true | The kernel checks the decidable special case k = 0 with exponent parameter a = 0 and modulus n = 2^0 = 1; this is only a finite fragment. | by decide"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:02d3865bea1520060ed9:1",
+   "statement": "checkWitnessChain = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R019",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def witnessNegOne (n : Nat) : Bool := decide (((2 : Int) ^ n) ≡ (-1 : Int) [ZMOD (n : Int)])\ndef checkWitnessChain : Bool := witnessNegOne 1 && witnessNegOne 3 && witnessNegOne 9 && witnessNegOne 171",
+   "type_context": "Mathlib\ndef witnessNegOne (n : Nat) : Bool := decide (((2 : Int) ^ n) ≡ (-1 : Int) [ZMOD (n : Int)])\ndef checkWitnessChain : Bool := witnessNegOne 1 && witnessNegOne 3 && witnessNegOne 9 && witnessNegOne 171",
+   "proof": "by native_decide",
+   "claim": "This checks, by exact kernel-replayed computation, that each of the explicit moduli 1, 3, 9, and 171 satisfies (2 : Int)^n ≡ -1 [ZMOD (n : Int)]; it establishes only this finite witness fragment for k = -1, not infinitude.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 3,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos479:LEM:R019:L1",
+     "evidence": "formalizer obligation route=R019 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:0f6fb07711d57e5bebf0:2",
+   "statement": "check = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R017",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def check : Bool := ((9 : Nat) ∣ (2 ^ 3 + 1)) && ((27 : Nat) ∣ (2 ^ 9 + 1)) && ((81 : Nat) ∣ (2 ^ 27 + 1)) && (((2 : Nat) ^ 140) % 5 == 1) && (((4 : Nat) % 5) != 1)",
+   "type_context": "Mathlib\ndef check : Bool := ((9 : Nat) ∣ (2 ^ 3 + 1)) && ((27 : Nat) ∣ (2 ^ 9 + 1)) && ((81 : Nat) ∣ (2 ^ 27 + 1)) && (((2 : Nat) ^ 140) % 5 == 1) && (((4 : Nat) % 5) != 1)",
+   "proof": "by native_decide",
+   "claim": "This fragment checks the exact finite arithmetic certificate that 9 divides 2^3+1, 27 divides 2^9+1, 81 divides 2^27+1, and 2^140 is congruent to 1 modulo 5 while 4 is not congruent to 1 modulo 5; it does not establish infinitude for all k.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 3,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos479:LEM:R017:L1",
+     "evidence": "formalizer obligation route=R017 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:1d126f8b71172ccb8229:3",
+   "statement": "witness 32 25 = true ∧ witness 32 65 = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R015",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def witness (k n : ℕ) : Bool := decide (((2 : ℤ) ^ n) ≡ (k : ℤ) [ZMOD (n : ℤ)])",
+   "type_context": "Mathlib\ndef witness (k n : ℕ) : Bool := decide (((2 : ℤ) ^ n) ≡ (k : ℤ) [ZMOD (n : ℤ)])",
+   "proof": "by native_decide",
+   "claim": "The fragment verifies exactly that 2^25 ≡ 32 (mod 25) and 2^65 ≡ 32 (mod 65), providing two distinct finite witnesses for k = 32; it does not establish infinitude.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 3,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos479:LEM:R015:L1",
+     "evidence": "formalizer obligation route=R015 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:213d79c348ed977c3664:4",
+   "statement": "check_exclusion = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R020",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def check_exclusion : Bool := List.range 62 |>.all (fun i => let n := i + 2; decide ((2 ^ n) % n ≠ 3 ∧ (2 ^ n) % n ≠ 5))",
+   "type_context": "Mathlib\ndef check_exclusion : Bool := List.range 62 |>.all (fun i => let n := i + 2; decide ((2 ^ n) % n ≠ 3 ∧ (2 ^ n) % n ≠ 5))",
+   "proof": "by native_decide",
+   "claim": "For every natural n with 2 ≤ n ≤ 63, exact natural arithmetic verifies that (2^n mod n) is neither 3 nor 5.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 3,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos479:LEM:R020:L1",
+     "evidence": "formalizer obligation route=R020 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:2ded7584a23fc4ffed6d:5",
+   "statement": "check_l1_fragment 1 = true ∧ check_l1_fragment 2 = true ∧ check_l1_fragment 3 = true ∧ check_l1_fragment 4 = true ∧ check_l1_fragment 5 = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R008",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def check_l1_fragment (s : Nat) : Bool := (s ≥ 1) && (s ≤ 5) && (2 ^ s ≤ 2 ^ (2 ^ s)) && (2 ^ s ∣ 2 ^ (2 ^ s))",
+   "type_context": "Mathlib\ndef check_l1_fragment (s : Nat) : Bool := (s ≥ 1) && (s ≤ 5) && (2 ^ s ≤ 2 ^ (2 ^ s)) && (2 ^ s ∣ 2 ^ (2 ^ s))",
+   "proof": "by native_decide",
+   "claim": "This checks, for each concrete s in the finite range 1 ≤ s ≤ 5, the inequalities s ≤ 2^s and divisibility 2^s ∣ 2^(2^s); it does not establish the asserted universal 2-adic valuation identity or the original Erdős problem.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 3,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos479:LEM:R008:L1",
+     "evidence": "formalizer obligation route=R008 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:3192fc36ee4301f34aca:6",
+   "statement": "∀ a : Nat, isWitness a",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R014",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def witness (a : Nat) : Nat := 2 ^ (a + 1)\ndef isWitness (a : Nat) : Prop := (2 : Int) ^ witness a ≡ 0 [ZMOD (witness a : Int)]",
+   "type_context": "Mathlib\ndef witness (a : Nat) : Nat := 2 ^ (a + 1)\ndef isWitness (a : Nat) : Prop := (2 : Int) ^ witness a ≡ 0 [ZMOD (witness a : Int)]",
+   "proof": "by\n  intro a\n  simp [isWitness, witness, Int.ModEq]\n",
+   "claim": "For the parameter instance k=0, every modulus n=2^(a+1) with a∈ℕ satisfies the required congruence 2^n ≡ 0 [ZMOD n].",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "CLOSURE_SHAPELESS_REFUSED: proof must be a decision procedure (`by decide`, or `by native_decide` when plain decide cannot finish); got 'by\\n  intro a\\n  simp [isWitness, witness, Int.ModEq]'. This pipeline generates from a template and does not accept a free-form Lean proof.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "supports": [
+    {
+     "node": "erdos479:LEM:R014:L1",
+     "evidence": "formalizer obligation route=R014 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:3192fc36ee4301f34aca:7",
+   "statement": "check_witness 0 = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R014",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def check_witness (a : Nat) : Bool := decide ((2 : Int) ^ (2 ^ (a + 1)) ≡ 0 [ZMOD ((2 ^ (a + 1) : Nat) : Int)])",
+   "type_context": "Mathlib\ndef check_witness (a : Nat) : Bool := decide ((2 : Int) ^ (2 ^ (a + 1)) ≡ 0 [ZMOD ((2 ^ (a + 1) : Nat) : Int)])",
+   "proof": "by decide",
+   "claim": "The decidable fragment checks the concrete k=0 witness n=2: (2:Int)^2 ≡ 0 [ZMOD (2:Int)].",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "decide",
+   "supports": [
+    {
+     "node": "erdos479:LEM:R014:L1",
+     "evidence": "formalizer obligation route=R014 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:3192fc36ee4301f34aca:8",
+   "statement": "check_k0_n2 = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R014",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def check_k0_n2 : Bool := decide ((2 : ℤ) ^ 2 ≡ 0 [ZMOD (2 : ℤ)])",
+   "type_context": "Mathlib\ndef check_k0_n2 : Bool := decide ((2 : ℤ) ^ 2 ≡ 0 [ZMOD (2 : ℤ)])",
+   "proof": "by decide",
+   "claim": "The kernel checks the concrete k=0 instance with modulus n=2: (2:ℤ)^2 ≡ 0 [ZMOD (2:ℤ)].",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "decide",
+   "supports": [
+    {
+     "node": "erdos479:LEM:R014:L1",
+     "evidence": "formalizer obligation route=R014 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:5434a45ecf6f071d83fa:9",
+   "statement": "check_special 3 = true ∧ check_special 5 = true ∧ check_special 7 = true ∧ check_special 11 = true ∧ check_special 13 = true ∧ check_special 17 = true ∧ check_special 19 = true ∧ check_special 23 = true ∧ check_special 29 = true ∧ check_special 31 = true ∧ check_special 37 = true ∧ check_special 41 = true ∧ check_special 43 = true ∧ check_special 47 = true ∧ check_special 53 = true ∧ check_special 59 = true ∧ check_special 61 = true ∧ check_special 67 = true ∧ check_special 71 = true ∧ check_special 73 = true ∧ check_special 79 = true ∧ check_special 83 = true ∧ check_special 89 = true ∧ check_special 97 = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R011",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def check_special (p : Nat) : Bool := p ≥ 3 && p ≤ 97 && Nat.Prime p && (((2 : Nat) ^ (3 * p)) % (3 * p) = 8 % (3 * p))",
+   "type_context": "Mathlib\ndef check_special (p : Nat) : Bool := p ≥ 3 && p ≤ 97 && Nat.Prime p && (((2 : Nat) ^ (3 * p)) % (3 * p) = 8 % (3 * p))",
+   "proof": "by native_decide",
+   "claim": "For every odd prime p in the explicit range 3≤p≤97, the computed congruence (2^ (3p)) mod (3p) = 8 mod (3p) holds; this is only the finite special-modulus fragment and does not establish infinitude or the universal k≠1 statement.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 3,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos479:LEM:R011:L1",
+     "evidence": "formalizer obligation route=R011 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:5fedcebcc8ac69b01cc8:10",
+   "statement": "∀ k : ℤ, modEqAtOne k",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R009",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def modEqAtOne (k : ℤ) : Prop := (2 : ℤ) ^ 1 ≡ k [ZMOD (1 : ℤ)]",
+   "type_context": "Mathlib\ndef modEqAtOne (k : ℤ) : Prop := (2 : ℤ) ^ 1 ≡ k [ZMOD (1 : ℤ)]",
+   "proof": "by\n  intro k\n  simp [modEqAtOne, Int.ModEq]",
+   "claim": "Checks the fragment that n=1 is a ZMOD witness for every integer k; this establishes only the universal mod-1 witness, not infinitude.",
+   "covers": "",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "CLOSURE_SHAPELESS_REFUSED: proof must be a decision procedure (`by decide`, or `by native_decide` when plain decide cannot finish); got 'by\\n  intro k\\n  simp [modEqAtOne, Int.ModEq]'. This pipeline generates from a template and does not accept a free-form Lean proof.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "supports": [
+    {
+     "node": "erdos479:LEM:R009:L1",
+     "evidence": "formalizer obligation route=R009 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:5fedcebcc8ac69b01cc8:11",
+   "statement": "∀ k : ℤ, modEqAtOne k = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R009",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def modEqAtOne (k : ℤ) : Bool := decide ((2 : ℤ) ^ 1 ≡ k [ZMOD (1 : ℤ)])",
+   "type_context": "Mathlib\ndef modEqAtOne (k : ℤ) : Bool := decide ((2 : ℤ) ^ 1 ≡ k [ZMOD (1 : ℤ)])",
+   "proof": "by native_decide",
+   "claim": "Checks the finite decidable fragment for the fixed modulus n=1: for every integer k, 2^1 ≡ k modulo 1. This is only the universal vacuous n=1 witness and does not establish infinitude.",
+   "covers": "",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 2,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos479:LEM:R009:L1",
+     "evidence": "formalizer obligation route=R009 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:796c271b13f51ef25217:12",
+   "statement": "check_k2 = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def check_k2 : Bool := ((2 : ℤ) ^ 3 ≡ (2 : ℤ) [ZMOD (3 : ℤ)])",
+   "type_context": "Mathlib\ndef check_k2 : Bool := ((2 : ℤ) ^ 3 ≡ (2 : ℤ) [ZMOD (3 : ℤ)])",
+   "proof": "by native_decide",
+   "claim": "This checks the single explicit witness n=3 for the special parameter k=2: (2:ℤ)^3 ≡ 2 [ZMOD (3:ℤ)]. It is only a finite fragment and does not establish infinitude or the universal theorem.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos479:LEM:R004:L1",
+     "evidence": "formalizer obligation route=R004 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:796c271b13f51ef25217:13",
+   "statement": "check_witness = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def check_witness : Bool := decide ((2 : ℤ) ^ 3 ≡ (2 : ℤ) [ZMOD (3 : ℤ)])",
+   "type_context": "Mathlib\ndef check_witness : Bool := decide ((2 : ℤ) ^ 3 ≡ (2 : ℤ) [ZMOD (3 : ℤ)])",
+   "proof": "by native_decide",
+   "claim": "Kernel-checkable fragment: for k=2 and n=3, the exact frozen congruence (2:ℤ)^3 ≡ 2 [ZMOD (3:ℤ)] holds. This verifies one witness only and establishes neither infinitude nor the universal statement.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos479:LEM:R004:L1",
+     "evidence": "formalizer obligation route=R004 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:79902e0c07139d42373e:14",
+   "statement": "∀ a : ℕ, zeroWitness a",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R021",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def witnessZero (a : ℕ) : ℕ := 2 ^ a\ndef zeroWitness (a : ℕ) : Prop := ((2 : ℤ) ^ witnessZero a) ≡ (0 : ℤ) [ZMOD (witnessZero a : ℤ)]",
+   "type_context": "Mathlib\ndef witnessZero (a : ℕ) : ℕ := 2 ^ a\ndef zeroWitness (a : ℕ) : Prop := ((2 : ℤ) ^ witnessZero a) ≡ (0 : ℤ) [ZMOD (witnessZero a : ℤ)]",
+   "proof": "by\n  intro a\n  simp [zeroWitness, witnessZero, Int.ModEq]\n",
+   "claim": "For every a : ℕ, the explicit modulus n = 2^a is a ZMOD witness for k = 0; this checks only the k = 0 construction fragment and does not close the full negative branch.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "CLOSURE_SHAPELESS_REFUSED: proof must be a decision procedure (`by decide`, or `by native_decide` when plain decide cannot finish); got 'by\\n  intro a\\n  simp [zeroWitness, witnessZero, Int.ModEq]'. This pipeline generates from a template and does not accept a free-form Lean proof.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "supports": [
+    {
+     "node": "erdos479:LEM:R021:L1",
+     "evidence": "formalizer obligation route=R021 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:79902e0c07139d42373e:15",
+   "statement": "checkZero 0 = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R021",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def checkZero (a : Nat) : Bool := decide (((2 : Int) ^ (2 ^ a)) ≡ (0 : Int) [ZMOD ((2 ^ a : Nat) : Int)])",
+   "type_context": "Mathlib\ndef checkZero (a : Nat) : Bool := decide (((2 : Int) ^ (2 ^ a)) ≡ (0 : Int) [ZMOD ((2 ^ a : Nat) : Int)])",
+   "proof": "by decide",
+   "claim": "This decision procedure checks the explicit k = 0 witness n = 2^a at the concrete instance a = 0, namely n = 1; it covers only a finite decidable fragment, not infinitude or the negative close.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 2,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "decide",
+   "supports": [
+    {
+     "node": "erdos479:LEM:R021:L1",
+     "evidence": "formalizer obligation route=R021 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:7a2cbb3c449d1474a40b:16",
+   "statement": "∀ k : Int, ∀ n : Nat, odd k = true → n % 2 = 0 → evenWitnessImpossible k n = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R006",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def odd (k : Int) : Bool := k % 2 != 0\n\ndef evenWitnessImpossible (k : Int) (n : Nat) : Bool :=\n  if odd k && n % 2 == 0 then\n    !((k % 2 == 0))\n  else\n    true",
+   "type_context": "Mathlib\ndef odd (k : Int) : Bool := k % 2 != 0\n\ndef evenWitnessImpossible (k : Int) (n : Nat) : Bool :=\n  if odd k && n % 2 == 0 then\n    !((k % 2 == 0))\n  else\n    true",
+   "proof": "by\n  intro k n hk hn\n  simp [evenWitnessImpossible, odd] at hk ⊢\n  omega",
+   "claim": "For every odd integer k and every even natural n, the parity obstruction certificate checks exactly that k cannot be even; this certifies only the local parity fragment of L1 and does not establish infinitude of witnesses.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "CLOSURE_SHAPELESS_REFUSED: proof must be a decision procedure (`by decide`, or `by native_decide` when plain decide cannot finish); got 'by\\n  intro k n hk hn\\n  simp [evenWitnessImpossible, odd] at '. This pipeline generates from a template and does not accept a free-form Lean proof.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "omega",
+   "supports": [
+    {
+     "node": "erdos479:LEM:R006:L1",
+     "evidence": "formalizer obligation route=R006 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:7a2cbb3c449d1474a40b:17",
+   "statement": "evenWitnessImpossible 3 2 = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R006",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def odd (k : Int) : Bool := k % 2 != 0\n\ndef evenWitnessImpossible (k : Int) (n : Nat) : Bool :=\n  if odd k && n % 2 == 0 then !((k % 2 == 0)) else true",
+   "type_context": "Mathlib\ndef odd (k : Int) : Bool := k % 2 != 0\n\ndef evenWitnessImpossible (k : Int) (n : Nat) : Bool :=\n  if odd k && n % 2 == 0 then !((k % 2 == 0)) else true",
+   "proof": "by decide",
+   "claim": "The explicit parity instance k = 3 and even witness candidate n = 2 passes the decidable obstruction check: since 3 is odd and 2 is even, the checked conclusion is that 3 is not even. This certifies only this finite local fragment of L1.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "decide",
+   "supports": [
+    {
+     "node": "erdos479:LEM:R006:L1",
+     "evidence": "formalizer obligation route=R006 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:7a2cbb3c449d1474a40b:18",
+   "statement": "parityObstruction 3 2 = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R006",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def odd (k : Int) : Bool := k % 2 != 0\n\ndef parityObstruction (k : Int) (n : Nat) : Bool :=\n  if odd k && n % 2 == 0 then\n    k % 2 != 0\n  else\n    true",
+   "type_context": "Mathlib\ndef odd (k : Int) : Bool := k % 2 != 0\n\ndef parityObstruction (k : Int) (n : Nat) : Bool :=\n  if odd k && n % 2 == 0 then\n    k % 2 != 0\n  else\n    true",
+   "proof": "by decide",
+   "claim": "The kernel-checkable instance for k = 3 and n = 2 verifies the parity fragment: k is odd, n is even, and therefore the obstruction predicate evaluates to true. This checks only a finite local instance and does not establish the infinitude statement.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "decide",
+   "supports": [
+    {
+     "node": "erdos479:LEM:R006:L1",
+     "evidence": "formalizer obligation route=R006 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:912de179a76995178848:19",
+   "statement": "parity_fragment",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R012",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def parity_fragment : Prop := ∀ (n : ℕ) (k : ℤ), Even n → Odd k → ¬((n : ℤ) ∣ (2 : ℤ)^n - k)",
+   "type_context": "Mathlib\ndef parity_fragment : Prop := ∀ (n : ℕ) (k : ℤ), Even n → Odd k → ¬((n : ℤ) ∣ (2 : ℤ)^n - k)",
+   "proof": "by\n  intro n k hn hk hdiv\n  rcases hn with ⟨m, rfl⟩\n  have hpow : Even ((2 : ℤ) ^ (2 * m)) := by\n    apply even_pow\n    norm_num\n  have hsub : Odd ((2 : ℤ) ^ (2 * m) - k) := by\n    exact Odd.sub_even hpow hk\n  have hmod : Even ((2 * m : ℕ) : ℤ) := by\n    norm_num\n  have hdiv_even : ((2 * m : ℕ) : ℤ) ∣ ((2 : ℤ) ^ (2 * m) - k) := by\n    simpa using hdiv\n  rcases hdiv_even with ⟨q, hq⟩\n  have : Even ((2 : ℤ) ^ (2 * m) - k) := by\n    rw [hq]\n    exact even_mul_left hmod q\n  exact hsub.not_even this",
+   "claim": "This fragment checks that for every even positive-natural n and every odd integer k, n does not divide 2^n−k; it establishes only the stated parity obstruction, not infinitude of witnesses.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "CLOSURE_SHAPELESS_REFUSED: proof must be a decision procedure (`by decide`, or `by native_decide` when plain decide cannot finish); got 'by\\n  intro n k hn hk hdiv\\n  rcases hn with ⟨m, rfl⟩\\n  have h'. This pipeline generates from a template and does not accept a free-form Lean proof.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "norm_num",
+   "supports": [
+    {
+     "node": "erdos479:LEM:R012:L1",
+     "evidence": "formalizer obligation route=R012 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:912de179a76995178848:20",
+   "statement": "parity_instance = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R012",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def parity_instance : Bool := decide (((2 : ℤ) ∣ (2 : ℤ)^2 - 3) = False)",
+   "type_context": "Mathlib\ndef parity_instance : Bool := decide (((2 : ℤ) ∣ (2 : ℤ)^2 - 3) = False)",
+   "proof": "by decide",
+   "claim": "For the explicit even modulus n=2 and odd integer k=3, the divisibility statement 2 ∣ 2^2−3 is false.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 2,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "decide",
+   "supports": [
+    {
+     "node": "erdos479:LEM:R012:L1",
+     "evidence": "formalizer obligation route=R012 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:bd481301e53360415699:21",
+   "statement": "fragment",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R002",
+   "lemma_id": "F1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def check (k n : Nat) : Bool := decide ((2 : Int) ^ n ≡ (k : Int) [ZMOD (n : Int)])\ndef fragment : Prop := check 2 2 = true ∧ check 2 3 = true ∧ check 2 5 = true ∧ check 2 7 = true ∧ check 2 11 = true ∧ check 2 13 = true ∧ check 2 17 = true ∧ check 2 19 = true",
+   "type_context": "Mathlib\ndef check (k n : Nat) : Bool := decide ((2 : Int) ^ n ≡ (k : Int) [ZMOD (n : Int)])\ndef fragment : Prop := check 2 2 = true ∧ check 2 3 = true ∧ check 2 5 = true ∧ check 2 7 = true ∧ check 2 11 = true ∧ check 2 13 = true ∧ check 2 17 = true ∧ check 2 19 = true",
+   "proof": "by native_decide",
+   "claim": "For k=2, the exact ZMOD congruence 2^n ≡ 2 (mod n) is verified for each of the eight explicit moduli n ∈ {2,3,5,7,11,13,17,19}; this is only a finite fragment and does not establish infinitude or the universal all-integer-k statement.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 3,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos479:LEM:R002:F1",
+     "evidence": "formalizer obligation route=R002 lemma=F1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:c56a1b3c9bbc63ff822e:22",
+   "statement": "primeWitness 2",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R013",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def primeWitness (p : ℕ) : Prop := Nat.Prime p ∧ (2 : ℤ) ^ p ≡ (2 : ℤ) [ZMOD (p : ℤ)]",
+   "type_context": "Mathlib\ndef primeWitness (p : ℕ) : Prop := Nat.Prime p ∧ (2 : ℤ) ^ p ≡ (2 : ℤ) [ZMOD (p : ℤ)]",
+   "proof": "by\n  constructor\n  · decide\n  · norm_num [Int.ModEq]",
+   "claim": "This checks the explicit special-case witness p=2: 2 is prime and (2:ℤ)^2 ≡ 2 [ZMOD (2:ℤ)].",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "CLOSURE_SHAPELESS_REFUSED: proof must be a decision procedure (`by decide`, or `by native_decide` when plain decide cannot finish); got 'by\\n  constructor\\n  · decide\\n  · norm_num [Int.ModEq]'. This pipeline generates from a template and does not accept a free-form Lean proof.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "decide",
+   "supports": [
+    {
+     "node": "erdos479:LEM:R013:L1",
+     "evidence": "formalizer obligation route=R013 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:c56a1b3c9bbc63ff822e:23",
+   "statement": "primeWitness 2 = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R013",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def primeWitness (p : Nat) : Bool := decide (Nat.Prime p) && decide (((2 : Int) ^ p) ≡ (2 : Int) [ZMOD (p : Int)])",
+   "type_context": "Mathlib\ndef primeWitness (p : Nat) : Bool := decide (Nat.Prime p) && decide (((2 : Int) ^ p) ≡ (2 : Int) [ZMOD (p : Int)])",
+   "proof": "by decide",
+   "claim": "This machine-checks the explicit fragment at p=2: 2 is prime and (2:ℤ)^2 ≡ 2 [ZMOD (2:ℤ)].",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "decide",
+   "supports": [
+    {
+     "node": "erdos479:LEM:R013:L1",
+     "evidence": "formalizer obligation route=R013 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:c56a1b3c9bbc63ff822e:24",
+   "statement": "primeWitness 2",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R013",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "LEAN_PROOF",
+   "imports": "Mathlib",
+   "definitions": "def primeWitness (p : ℕ) : Prop := Nat.Prime p ∧ (2 : ℤ) ^ p ≡ (2 : ℤ) [ZMOD (p : ℤ)]",
+   "type_context": "Mathlib\ndef primeWitness (p : ℕ) : Prop := Nat.Prime p ∧ (2 : ℤ) ^ p ≡ (2 : ℤ) [ZMOD (p : ℤ)]",
+   "proof": "by decide",
+   "claim": "This kernel-checks the fragment consisting of the explicit modulus p=2 for k=2: 2 is prime and (2:ℤ)^2 ≡ 2 [ZMOD (2:ℤ)].",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_SCOPE_REFUSED: body.covers must be \"full\" — the theorem agent proves whole statements; a partial scope belongs to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "decide",
+   "supports": [
+    {
+     "node": "erdos479:LEM:R013:L1",
+     "evidence": "formalizer obligation route=R013 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:cd6dd80d928c59deaf7b:25",
+   "statement": "check_k0 0 = true ∧ check_k0 1 = true ∧ check_k0 2 = true ∧ check_k2 3 = true ∧ check_k2 5 = true ∧ check_k2 7 = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R018",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def check_k0 (m : Nat) : Bool := ((2 : Int) ^ (2 ^ m) % (2 ^ m) == 0)\ndef check_k2 (p : Nat) : Bool := (Nat.Prime p && (((2 : Int) ^ p) % p == 2 % p))",
+   "type_context": "Mathlib\ndef check_k0 (m : Nat) : Bool := ((2 : Int) ^ (2 ^ m) % (2 ^ m) == 0)\ndef check_k2 (p : Nat) : Bool := (Nat.Prime p && (((2 : Int) ^ p) % p == 2 % p))",
+   "proof": "by native_decide",
+   "claim": "This checks the explicit finite fragment consisting of the k=0 witnesses n=1,2,4 and the k=2 witnesses n=3,5,7.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos479:LEM:R018:L1",
+     "evidence": "formalizer obligation route=R018 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:cd6dd80d928c59deaf7b:26",
+   "statement": "witness 7 25",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R018",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def witness (k n : Int) : Prop := (2 : Int) ^ n ≡ k [ZMOD n]",
+   "type_context": "Mathlib\ndef witness (k n : Int) : Prop := (2 : Int) ^ n ≡ k [ZMOD n]",
+   "proof": "by norm_num [witness, Int.ModEq]",
+   "claim": "This kernel-checks the explicit witness 25 for k=7: (2 : ℤ)^25 ≡ 7 [ZMOD 25].",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "norm_num",
+   "supports": [
+    {
+     "node": "erdos479:LEM:R018:L1",
+     "evidence": "formalizer obligation route=R018 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:cd6dd80d928c59deaf7b:27",
+   "statement": "witness 0 1 ∧ witness 0 2 ∧ witness 0 4 ∧ witness 2 3 ∧ witness 2 5 ∧ witness 2 7 ∧ witness 7 25",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R018",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def witness (k n : Int) : Prop := (2 : Int) ^ n ≡ k [ZMOD n]",
+   "type_context": "Mathlib\ndef witness (k n : Int) : Prop := (2 : Int) ^ n ≡ k [ZMOD n]",
+   "proof": "by norm_num [witness, Int.ModEq]",
+   "claim": "This kernel-checks the finite explicit fragment of L1 consisting of witnesses n=1,2,4 for k=0, n=3,5,7 for k=2, and n=25 for k=7; it does not establish infinitude or the full universal statement.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "norm_num",
+   "supports": [
+    {
+     "node": "erdos479:LEM:R018:L1",
+     "evidence": "formalizer obligation route=R018 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:e27b818945319dea22c6:28",
+   "statement": "checkMinusOne 1 = true ∧ checkMinusOne 2 = true ∧ checkMinusOne 3 = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R007",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def witnessMinusOne (a : Nat) : Nat := 3 ^ a\n\ndef checkMinusOne (a : Nat) : Bool :=\n  ((2 : Int) ^ witnessMinusOne a + 1) % (witnessMinusOne a) == 0",
+   "type_context": "Mathlib\ndef witnessMinusOne (a : Nat) : Nat := 3 ^ a\n\ndef checkMinusOne (a : Nat) : Bool :=\n  ((2 : Int) ^ witnessMinusOne a + 1) % (witnessMinusOne a) == 0",
+   "proof": "by native_decide",
+   "claim": "This checks exactly the three stated finite spot-checks a=1,2,3 for the proposed witnesses n=3^a in the k=-1 congruence case; it does not establish infinitude.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 3,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos479:LEM:R007:L1",
+     "evidence": "formalizer obligation route=R007 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:e737511cbf5cfd6a000e:29",
+   "statement": "check_l1 = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R016",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def check_l1 : Bool := (decide ((3 : ℕ)^1 = 3 ∧ (3 : ℕ)^2 = 9 ∧ (3 : ℕ)^3 = 27 ∧ (3 : ℕ)^4 = 81 ∧ (3 : ℕ)^5 = 243 ∧ (341 : ℕ) = 11 * 31 ∧ (243 : ℕ) < 341 ∧ (341 : ℕ) < 729 ∧ (3 : ℤ)^340 ≡ 1 [ZMOD (341 : ℤ)]))",
+   "type_context": "Mathlib\ndef check_l1 : Bool := (decide ((3 : ℕ)^1 = 3 ∧ (3 : ℕ)^2 = 9 ∧ (3 : ℕ)^3 = 27 ∧ (3 : ℕ)^4 = 81 ∧ (3 : ℕ)^5 = 243 ∧ (341 : ℕ) = 11 * 31 ∧ (243 : ℕ) < 341 ∧ (341 : ℕ) < 729 ∧ (3 : ℤ)^340 ≡ 1 [ZMOD (341 : ℤ)]))",
+   "proof": "by native_decide",
+   "claim": "Checks exactly the finite arithmetic identities recorded in L1: the powers 3^1 through 3^5, 341=11·31, 243<341<729, and 3^340 ≡ 1 modulo 341; it establishes no universal or infinitude claim.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 3,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos479:LEM:R016:L1",
+     "evidence": "formalizer obligation route=R016 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:e7a62201333d41ea15ae:30",
+   "statement": "check_k0_witnesses = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "T1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def check_k0_witnesses : Bool := (2 : ℤ) ^ 2 % (2 : ℤ) = 0 && (2 : ℤ) ^ 4 % (4 : ℤ) = 0 && (2 : ℤ) ^ 8 % (8 : ℤ) = 0 && (2 : ℤ) ^ 16 % (16 : ℤ) = 0 && (2 : ℤ) ^ 32 % (32 : ℤ) = 0 && (2 : ℤ) ^ 64 % (64 : ℤ) = 0",
+   "type_context": "Mathlib\ndef check_k0_witnesses : Bool := (2 : ℤ) ^ 2 % (2 : ℤ) = 0 && (2 : ℤ) ^ 4 % (4 : ℤ) = 0 && (2 : ℤ) ^ 8 % (8 : ℤ) = 0 && (2 : ℤ) ^ 16 % (16 : ℤ) = 0 && (2 : ℤ) ^ 32 % (32 : ℤ) = 0 && (2 : ℤ) ^ 64 % (64 : ℤ) = 0",
+   "proof": "by native_decide",
+   "claim": "Checks exactly that for k=0, each of the six explicit moduli n∈{2,4,8,16,32,64} satisfies 2^n ≡ 0 (mod n); this is a finite fragment and does not establish infinitude or the universal k≠1 statement.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 3,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos479:LEM:R003:T1",
+     "evidence": "formalizer obligation route=R003 lemma=T1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos479:FLEAF:ee25789b49e71843962d:31",
+   "statement": "check_k0_witnesses = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def check_k0_witnesses : Bool := ((2 : ℤ)^2 % 2 = 0) && ((2 : ℤ)^4 % 4 = 0) && ((2 : ℤ)^8 % 8 = 0) && ((2 : ℤ)^16 % 16 = 0) && ((2 : ℤ)^32 % 32 = 0) && ((2 : ℤ)^64 % 64 = 0)",
+   "type_context": "Mathlib\ndef check_k0_witnesses : Bool := ((2 : ℤ)^2 % 2 = 0) && ((2 : ℤ)^4 % 4 = 0) && ((2 : ℤ)^8 % 8 = 0) && ((2 : ℤ)^16 % 16 = 0) && ((2 : ℤ)^32 % 32 = 0) && ((2 : ℤ)^64 % 64 = 0)",
+   "proof": "by decide",
+   "claim": "This kernel-checks that for k=0, each n in {2,4,8,16,32,64} satisfies the exact integer congruence 2^n ≡ 0 modulo n; it does not establish infinitude or the universal k≠1 statement.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 3,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "decide",
+   "supports": [
+    {
+     "node": "erdos479:LEM:R003:L1",
+     "evidence": "formalizer obligation route=R003 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos479",
+   "is_leaf": true,
+   "manufacture_target": false
+  }
+ ]
+}

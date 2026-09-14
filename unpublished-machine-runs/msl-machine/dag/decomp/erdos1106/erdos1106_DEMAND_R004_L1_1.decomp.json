@@ -1,0 +1,163 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos1106",
+  "generated_utc": "2026-09-02T16:24:15Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos1106:DEMAND:R004:L1:1",
+    "statement": "file F's exact finite definition + quantifier scope, then certificate is mechanical exact-arithmetic for n<=60 with scope \"finite range only, exte",
+    "statement_sha256": "3f90b2e8d5a038d5c28bf0bc734738c42a0512438fc23bb9c776661d025439bb",
+    "kind": "CAPABILITY_DEMAND",
+    "binding": "UNBOUND",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "Let $p(n)$ denote the partition function of $n$ and let $F(n)$ count the number of distinct prime factors of\\[\\prod_{1\\leq k\\leq n}p(k).\\]Does $F(n)\\to \\infty$ with $n$? Is $F(n)>n$ for all sufficiently large $n$?",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos1106-campaign-001/contract.json",
+    "sha256": "6b00b5dbc5eb6487a8abc79396da64e1643f1f4ef691ed8df876983847905a9b"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos1106:DEMAND:R004:L1:1",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "943cbdfbaf0914ac4cb8f6719570b790b2135fc271cbd04c4435f23275eb52c0",
+    "prompt_chars": 4220,
+    "response_sha256": "fd2da82d6c39ac64a1b52a97554b30b84c08253db40517581f24feba45e8fd54",
+    "usage": {
+      "prompt_tokens": 1101,
+      "completion_tokens": 2877,
+      "total_tokens": 3978,
+      "cost": 0.000801825,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.000801825,
+        "upstream_inference_prompt_cost": 8.2575e-05,
+        "upstream_inference_completions_cost": 0.00071925
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 2432,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.000801825,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 79.68,
+    "utc": "2026-09-02T16:23:32Z"
+  },
+  "children": [],
+  "composition": {
+    "id": "erdos1106:DEMAND:R004:L1:1#COMPOSE",
+    "statement": "(composition not constructed)",
+    "kind": "COMPOSITION",
+    "depends_on": [],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "OPEN",
+    "problem": "erdos1106",
+    "decomposed_from": "erdos1106:DEMAND:R004:L1:1",
+    "imports": "Mathlib",
+    "definitions": "def p : Nat → Nat := fun n => (Nat.partitions n).card\n\ndef F : Nat → Nat := fun n => (Nat.factors (∏ k ∈ Icc 1 n, p k)).eraseDups.length",
+    "type_context": "Mathlib\ndef p : Nat → Nat := fun n => (Nat.partitions n).card\n\ndef F : Nat → Nat := fun n => (Nat.factors (∏ k ∈ Icc 1 n, p k)).eraseDups.length",
+    "parent_typed": {
+      "statement": "∀ (n : Nat), n ∈ Icc 1 60 → F n > n",
+      "binders": [],
+      "reading": "For every n in the finite range 1..60, the number of distinct prime factors of the product of p(1)..p(n) exceeds n, certifiable by exact arithmetic.",
+      "elaboration": {
+        "verdict": "DEFS_DO_NOT_ELABORATE",
+        "kernel_error": "/root/peer/decomp/b20260902_092332_1/erdos1106_DEMAND_R004_L1_1_defs.lean:8:31: error(lean.unknownIdentifier): Unknown constant `Nat.partitions`\n/root/peer/decomp/b20260902_092332_1/erdos1106_DEMAND_R004_L1_1_defs.lean:10:31: error(lean.unknownIdentifier): Unknown constant `Nat.factors`"
+      },
+      "type_gate_decomp": {
+        "ok": false,
+        "missing": [
+          "domain bound 'n 60'"
+        ],
+        "reason": "inherited type ascription or domain bound dropped",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": "parent",
+        "prose_contract_root_report": null
+      }
+    },
+    "composition_claim": {
+      "text": "The three bands Icc 1 20, Icc 21 40, Icc 41 60 are pairwise disjoint and their union is Icc 1 60, so the three conjuncts together give exactly ∀ n ∈ Icc 1 60, F n > n; each is a bounded decidable statement attacked by mechanical exact arithmetic on the typed definitions p and F.",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "COMPOSITION_NOT_RUN",
+      "counts_toward_parent": 0,
+      "reason": "no surviving child"
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "composition_receipt": "oracle/evidence/msl-machine/dag/decomp/erdos1106/receipts/erdos1106_DEMAND_R004_L1_1_COMPOSE.composition.json"
+  },
+  "parent_new_depends_on": [
+    "erdos1106:DEMAND:R004:L1:1#COMPOSE"
+  ],
+  "rejected": [
+    {
+      "proposed_index": 1,
+      "statement": "∀ (n : Nat), n ∈ Icc 1 20 → F n > n",
+      "binders": [],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: /root/peer/decomp/b20260902_092332_1/erdos1106_DEMAND_R004_L1_1_defs.lean:8:31: error(lean.unknownIdentifier): Unknown constant `Nat.partitions`\n/root/peer/decomp/b20260902_092332_1/erdos1106_DEMAND_R004_L1_1_defs.lean:10:31: error(lean.unknownIdentifier): Unknown constant `Nat.factors`",
+      "kernel_error": "/root/peer/decomp/b20260902_092332_1/erdos1106_DEMAND_R004_L1_1_defs.lean:8:31: error(lean.unknownIdentifier): Unknown constant `Nat.partitions`\n/root/peer/decomp/b20260902_092332_1/erdos1106_DEMAND_R004_L1_1_defs.lean:10:31: error(lean.unknownIdentifier): Unknown constant `Nat.factors`"
+    },
+    {
+      "proposed_index": 2,
+      "statement": "∀ (n : Nat), n ∈ Icc 21 40 → F n > n",
+      "binders": [],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: /root/peer/decomp/b20260902_092332_1/erdos1106_DEMAND_R004_L1_1_defs.lean:8:31: error(lean.unknownIdentifier): Unknown constant `Nat.partitions`\n/root/peer/decomp/b20260902_092332_1/erdos1106_DEMAND_R004_L1_1_defs.lean:10:31: error(lean.unknownIdentifier): Unknown constant `Nat.factors`",
+      "kernel_error": "/root/peer/decomp/b20260902_092332_1/erdos1106_DEMAND_R004_L1_1_defs.lean:8:31: error(lean.unknownIdentifier): Unknown constant `Nat.partitions`\n/root/peer/decomp/b20260902_092332_1/erdos1106_DEMAND_R004_L1_1_defs.lean:10:31: error(lean.unknownIdentifier): Unknown constant `Nat.factors`"
+    },
+    {
+      "proposed_index": 3,
+      "statement": "∀ (n : Nat), n ∈ Icc 41 60 → F n > n",
+      "binders": [],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: /root/peer/decomp/b20260902_092332_1/erdos1106_DEMAND_R004_L1_1_defs.lean:8:31: error(lean.unknownIdentifier): Unknown constant `Nat.partitions`\n/root/peer/decomp/b20260902_092332_1/erdos1106_DEMAND_R004_L1_1_defs.lean:10:31: error(lean.unknownIdentifier): Unknown constant `Nat.factors`",
+      "kernel_error": "/root/peer/decomp/b20260902_092332_1/erdos1106_DEMAND_R004_L1_1_defs.lean:8:31: error(lean.unknownIdentifier): Unknown constant `Nat.partitions`\n/root/peer/decomp/b20260902_092332_1/erdos1106_DEMAND_R004_L1_1_defs.lean:10:31: error(lean.unknownIdentifier): Unknown constant `Nat.factors`"
+    }
+  ],
+  "counts": {
+    "proposed": 3,
+    "elaborated": 0,
+    "bound": 0,
+    "non_circular": 0,
+    "non_trivial": 0,
+    "surviving": 0,
+    "composition_kernel_checked": 0,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 0,
+    "counts_toward_parent_note": "composition OPEN: these children contribute ZERO toward the parent until it closes; they remain formal leaves for the rung loop"
+  },
+  "definitions": {
+    "block": "def p : Nat → Nat := fun n => (Nat.partitions n).card\n\ndef F : Nat → Nat := fun n => (Nat.factors (∏ k ∈ Icc 1 n, p k)).eraseDups.length",
+    "gate0": {
+      "verdict": "DEFS_DO_NOT_ELABORATE",
+      "kernel_error": "/root/peer/decomp/b20260902_092332_1/erdos1106_DEMAND_R004_L1_1_defs.lean:8:31: error(lean.unknownIdentifier): Unknown constant `Nat.partitions`\n/root/peer/decomp/b20260902_092332_1/erdos1106_DEMAND_R004_L1_1_defs.lean:10:31: error(lean.unknownIdentifier): Unknown constant `Nat.factors`"
+    },
+    "campaign_vocabulary_prepended": [],
+    "normalization": {
+      "body": "def p : Nat → Nat := fun n => (Nat.partitions n).card\n\ndef F : Nat → Nat := fun n => (Nat.factors (∏ k ∈ Icc 1 n, p k)).eraseDups.length",
+      "opens": [],
+      "dropped_imports": []
+    }
+  }
+}

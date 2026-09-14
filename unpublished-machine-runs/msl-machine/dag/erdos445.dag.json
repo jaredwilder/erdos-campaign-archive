@@ -1,0 +1,1401 @@
+{
+ "schema": "obligation-dag/1.0.0",
+ "problem": "erdos445",
+ "problem_number": "445",
+ "campaign": "erdos445-campaign-001",
+ "root": "erdos445:ROOT",
+ "contract_divergence": {
+  "authoritative": {
+   "role": "campaign",
+   "path": "oracle/evidence/msl-machine/campaigns/erdos445-campaign-001/contract.json",
+   "sha256": "ee03d0092c96e6366b76f3ea39b4d071b760c8d5555f3fae49603318c89e4cce",
+   "declared_contract_sha256": "b5d933a3b897afe4ca6f5361e659f7d3601ae6b6b87be9016c8c19f91964f83f"
+  },
+  "others": [
+   {
+    "role": "ingest",
+    "path": "oracle/evidence/msl-machine/contracts/erdos445/contract.json",
+    "sha256": "836782c71dc15ea889053f36fe21983442e87d409b946118b236caf33391c1f6",
+    "declared_contract_sha256": "177f954f1b025985d6dfcb564c88b5cafabed92ebd8e4d0a5d7fda1d96d94068",
+    "canonical_statement_matches_authoritative": true
+   },
+   {
+    "role": "launch_queue",
+    "path": "oracle/evidence/msl-machine/contracts/LAUNCH-QUEUE/erdos445.json",
+    "sha256": "08ef18fb87c2e5b14e1c48398d08aac0319fcaf28a307da9dc9a0e26194c484e",
+    "declared_contract_sha256": null,
+    "canonical_statement_matches_authoritative": true
+   }
+  ],
+  "diverges": false
+ },
+ "courts": [
+  "court",
+  "closer",
+  "formalizer",
+  "kernel"
+ ],
+ "summary": {
+  "nodes": 22,
+  "proved_kernel": 0,
+  "proved_speaker": 7,
+  "computed_bounded": 0,
+  "open": 9,
+  "refuted": 6,
+  "orphans": 2,
+  "proof_obligations": 0,
+  "open_leaves_on_dead_routes": 3,
+  "root_kind": "NOT_DECIDABLE",
+  "root_disqualifiers": [
+   "ASYMPTOTIC",
+   "UNBOUNDED_FORALL_REAL"
+  ],
+  "formal_root": {
+   "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/445.lean",
+   "category": "category research open, AMS 11",
+   "declaration": "erdos_445",
+   "statement": "answer(sorry) ↔ ∀ c : ℝ, c > 1 / 2 → ∀ᶠ p : ℕ in atTop, p.Prime → ∀ n : ℕ, Erdos445Prop c p n"
+  },
+  "leaf_frontier_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "leaf_frontier_reason": "8 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaf_frontier_deciding_leaf": {
+   "id": "erdos445:DEMAND:R011:L1:1",
+   "kind": "CAPABILITY_DEMAND",
+   "status": "OPEN",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "find a second"
+  },
+  "ladder_shape_reason": "the formal root is not decidable: ASYMPTOTIC, UNBOUNDED_FORALL_REAL (oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/445.lean). No leaf set can close it, however clean the leaves are. Leaf frontier, kept for the grind queue: HAS_OPEN_ANALYTIC_LEAF.",
+  "leaves": 16,
+  "open_leaves": 12,
+  "open_technical_leaves": 8,
+  "open_prose_obligations": 2,
+  "open_analytic_leaves": 8,
+  "ladder_shape": "ROOT_NOT_DECIDABLE",
+  "deciding_leaf": {
+   "id": "erdos445:ROOT",
+   "kind": "CANONICAL_ROOT",
+   "status": "OPEN",
+   "binding": "VERBATIM",
+   "leaf_tactic_hint": null,
+   "statement": "answer(sorry) ↔ ∀ c : ℝ, c > 1 / 2 → ∀ᶠ p : ℕ in atTop, p.Prime → ∀ n : ℕ, Erdos445Prop c p n"
+  },
+  "orphan_detail": [
+   {
+    "id": "erdos445:A:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos445:B:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   }
+  ]
+ },
+ "validation": {
+  "acyclic": true,
+  "edges": 24,
+  "root_binds_verbatim": true,
+  "kernel_receipts_checked": 0
+ },
+ "nodes": [
+  {
+   "id": "erdos445:A:M01",
+   "statement": "Fix arbitrary c>1/2, produce P(c), and for every prime p≥P(c) and every n construct a,b in the strict interval satisfying ab≡1 mod p.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "branch": "A",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos445-campaign-001/contract.json",
+   "contract_sha256": "ee03d0092c96e6366b76f3ea39b4d071b760c8d5555f3fae49603318c89e4cce",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos445-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos445",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-445-b68f682897-A-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos445:BRANCH_A",
+   "statement": "AFFIRMATIVE CLOSE: prove the exact all-c>1/2 eventual-prime theorem uniformly for every n≥0.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos445:A:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos445-campaign-001/contract.json",
+   "contract_sha256": "ee03d0092c96e6366b76f3ea39b4d071b760c8d5555f3fae49603318c89e4cce",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos445-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false,
+    "exempt": "structural: frozen prose with children, never a manufacture target"
+   },
+   "problem": "erdos445",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-445-b68f682897-A-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos445:B:M01",
+   "statement": "Exhibit one fixed real c>1/2 such that for every threshold P there is a natural prime p≥P and an n∈ℕ for which no a,b in the strict interval satisfy ab≡1 mod p.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos445-campaign-001/contract.json",
+   "contract_sha256": "ee03d0092c96e6366b76f3ea39b4d071b760c8d5555f3fae49603318c89e4cce",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos445-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos445",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-445-b68f682897-B-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos445:BRANCH_B",
+   "statement": "NEGATIVE CLOSE: prove the literal negation of the all-c theorem.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos445:B:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos445-campaign-001/contract.json",
+   "contract_sha256": "ee03d0092c96e6366b76f3ea39b4d071b760c8d5555f3fae49603318c89e4cce",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos445-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos445",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-445-b68f682897-B-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos445:ROOT",
+   "statement": "Is it true that, for any $c>1/2$, if $p$ is a sufficiently large prime then, for any $n\\geq 0$, there exist $a,b\\in(n,n+p^c)$ such that $ab\\equiv 1\\pmod{p}$?",
+   "kind": "CANONICAL_ROOT",
+   "depends_on": [
+    "erdos445:BRANCH_A",
+    "erdos445:BRANCH_B"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "root_by_construction",
+   "closure_mode": "DISJUNCTIVE",
+   "satisfied_by_any": [
+    "erdos445:BRANCH_A",
+    "erdos445:BRANCH_B"
+   ],
+   "root_kind": "NOT_DECIDABLE",
+   "root_disqualifiers": [
+    "ASYMPTOTIC",
+    "UNBOUNDED_FORALL_REAL"
+   ],
+   "formal_root": {
+    "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/445.lean",
+    "category": "category research open, AMS 11",
+    "declaration": "erdos_445",
+    "statement": "answer(sorry) ↔ ∀ c : ℝ, c > 1 / 2 → ∀ᶠ p : ℕ in atTop, p.Prime → ∀ n : ℕ, Erdos445Prop c p n"
+   },
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos445-campaign-001/contract.json",
+   "contract_sha256": "ee03d0092c96e6366b76f3ea39b4d071b760c8d5555f3fae49603318c89e4cce",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos445-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false,
+    "exempt": "structural: frozen prose with children, never a manufacture target"
+   },
+   "problem": "erdos445",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos445:LEM:R001:L1",
+   "statement": "Small-case probe true (p=3,n=2: only candidate 3·3≡0) but non-refuting; \"sufficiently large\" threshold legitimately excludes it, per adapted erdos680 import.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 6,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 3,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:10:04Z"
+    },
+    {
+     "seq": 4,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T22:10:34Z"
+    },
+    {
+     "seq": 5,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T22:16:10Z"
+    },
+    {
+     "seq": 6,
+     "status": "PROVED",
+     "utc": "2026-09-01T22:24:22Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos445-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos445:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos445",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos445:LEM:R002:L2",
+   "statement": "Certificate: contract b5d933a3b897afe4 has analytic reduction literally \"none\" (empty predicate set); the empty verifier discharges zero comparisons, so fail-closed withholding is proved by structural inspection; scope limited to this contract revision — any reduction field change voids this certifi",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R002",
+   "lemma_id": "L2",
+   "registry_status": "PROVED",
+   "registry_seq": 18,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 7,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:27:15Z"
+    },
+    {
+     "seq": 8,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:27:31Z"
+    },
+    {
+     "seq": 9,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:28:08Z"
+    },
+    {
+     "seq": 10,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:28:30Z"
+    },
+    {
+     "seq": 11,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:28:46Z"
+    },
+    {
+     "seq": 12,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:29:08Z"
+    },
+    {
+     "seq": 13,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:29:43Z"
+    },
+    {
+     "seq": 14,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:30:02Z"
+    },
+    {
+     "seq": 15,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:31:27Z"
+    },
+    {
+     "seq": 16,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:31:35Z"
+    },
+    {
+     "seq": 17,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:32:06Z"
+    },
+    {
+     "seq": 18,
+     "status": "PROVED",
+     "utc": "2026-09-01T22:32:28Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos445-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos445:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos445",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos445:LEM:R003:L1",
+   "statement": "Finite fragment certified exactly: 4·5·6=120≡10≢1 (mod 11), pure-integer fail-closed verifier; asymptotic uniform-in-n clause explicitly out of scope (reduction \"none\"); erdos1113 import recorded as UNTESTED hypothesis, not certified.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R003",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 22,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 20,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:34:51Z"
+    },
+    {
+     "seq": 21,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:35:48Z"
+    },
+    {
+     "seq": 22,
+     "status": "PROVED",
+     "utc": "2026-09-01T22:36:17Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos445-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos445:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos445",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos445:LEM:R004:L1",
+   "statement": "p=7 is one finite instance of a ∀p≥P(c)∀n claim — quantifier-layer failure (SAMPLED-TO-UNIVERSAL), ∀n elimination open, imported erdos680 exceptional-set refutation (n=7,13,31) shows the unproved residual is the problem's core; repair requirement: uniform-in-n construction or proved finite reduction",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 56,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 was load-bearing: its certificate covered only p=7 and the ∀n exceptional-set elimination depended on it; with L1 refuted by machine-verified counterexample no residual entails branch A.",
+    "seq": 57
+   },
+   "history": [
+    {
+     "seq": 24,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:39:25Z"
+    },
+    {
+     "seq": 25,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:40:01Z"
+    },
+    {
+     "seq": 26,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:40:30Z"
+    },
+    {
+     "seq": 27,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:40:58Z"
+    },
+    {
+     "seq": 28,
+     "status": "PROVED",
+     "utc": "2026-09-01T22:41:24Z"
+    },
+    {
+     "seq": 56,
+     "status": "FALSE",
+     "utc": "2026-09-02T01:01:07Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos445-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos445:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos445",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos445:LEM:R004:T1",
+   "statement": "Hypothesis: the certified object establishes only ord₇(2)=3 with the stated mod-7 reduction and the exhaustive p=5, c=51/100, n∈[0,5] scan, which finds witnesses for every scanned n; conclusion required: for every c>1/2 there is P(c) such that every prime p≥P(c) and every n≥0 has a,b∈(n,n+p^c) with ",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R004",
+   "lemma_id": "T1",
+   "registry_status": "UNTESTED",
+   "registry_seq": 55,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 was load-bearing: its certificate covered only p=7 and the ∀n exceptional-set elimination depended on it; with L1 refuted by machine-verified counterexample no residual entails branch A.",
+    "seq": 57
+   },
+   "history": [
+    {
+     "seq": 55,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T01:00:25Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos445-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos445:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "Hypothesis: the certified object establishes only ord₇(2)=3 with the stated mod-7 reduction and the exhaustive p=5, c=51/100, n∈[0,5] scan, which finds witnesses for every scanned n; conclusion required: for every c>1/2 there is P(c) such that every prime p≥P(c) and every n≥0 has a,b∈(n,n+p^c) with "
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos445",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos445:LEM:R005:L1",
+   "statement": "Exact integer certificate (all bounds reduce to p³-vs-a⁴ and (kp+1)⁴-vs-a⁴p³ comparisons): witnesses (5,2,1),(7,2,1),(11,2,1),(101,6,1); p=13 exhaustively fails n=0 for k=1,2,3 — scope limited to enumerated primes, \"sufficiently large\" clause remains open.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R005",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 31,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 30,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:56:51Z"
+    },
+    {
+     "seq": 31,
+     "status": "PROVED",
+     "utc": "2026-09-01T22:57:49Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos445-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos445:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos445",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos445:LEM:R006:L1",
+   "statement": "Weil-box count gives N(I)=p^{2c-1}+O(p^{1/2}log²p), which dominates only for c>3/4; L1 cannot close the all-c>1/2 statement.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R006",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 34,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 is R006's central lemma converting averaged p^{2c-1} excess into per-interval witness existence for the ∀c,∀p,∀n close; a concrete counterexample is banked against it, no surviving-close argument is exhibitable (candidate proof: none), so the downgrade exception fails and the route is dead.",
+    "seq": 35
+   },
+   "history": [
+    {
+     "seq": 33,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T22:59:21Z"
+    },
+    {
+     "seq": 34,
+     "status": "FALSE",
+     "utc": "2026-09-01T23:01:27Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos445-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos445:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos445",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos445:LEM:R007:L1",
+   "statement": "Exact integer verifier (Python 3.11, sympy 1.12; ceil(p^(a/b)) via integer bisection on m^b>=p^a, zero floats) fail-closed over primes 3<=p<=43, c in {3/5,3/4,1,3/2}, 0<=n<=p+ceil(p^c): zero counterexamples, PASS; scope = finite enumerated domain only, general-p scaling stays analytic; companion L2 ",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R007",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 40,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 38,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:28:49Z"
+    },
+    {
+     "seq": 39,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:29:38Z"
+    },
+    {
+     "seq": 40,
+     "status": "PROVED",
+     "utc": "2026-09-01T23:30:01Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos445-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos445:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos445",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos445:LEM:R008:L1",
+   "statement": "fail-closed integer verifier certifies finite core exactly at n∈{7,13} (scope machine-checked, hash-pinned witnesses, no float, abort on any violation); full L1 remains COMPUTATION_SUPPORTED pending O1 proved iff-reduction and O2 tail/exceptional-set bound, consistent with erdos680 import (n=7,13,31",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos445:DEMAND:R008:L1:1"
+   ],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R008",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 51,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 42,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:33:40Z"
+    },
+    {
+     "seq": 43,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:34:13Z"
+    },
+    {
+     "seq": 44,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:34:39Z"
+    },
+    {
+     "seq": 45,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:35:02Z"
+    },
+    {
+     "seq": 46,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:35:24Z"
+    },
+    {
+     "seq": 47,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:35:50Z"
+    },
+    {
+     "seq": 48,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:36:18Z"
+    },
+    {
+     "seq": 49,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:36:44Z"
+    },
+    {
+     "seq": 50,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:37:10Z"
+    },
+    {
+     "seq": 51,
+     "status": "PROVED",
+     "utc": "2026-09-01T23:37:35Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos445-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos445:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos445",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos445:DEMAND:R008:L1:1",
+   "statement": "O1 proved iff-reduction and O2 tail/exceptional-set bound, consistent with erdos680 import (n=7,13,31",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "pending ",
+   "demand_rank": 5,
+   "demand_strength": "WEAK",
+   "route_status": "LIVE",
+   "demand_source_text": "fail-closed integer verifier certifies finite core exactly at n∈{7,13} (scope machine-checked, hash-pinned witnesses, no float, abort on any violation); full L1 remains COMPUTATION_SUPPORTED pending O1 proved iff-reduction and O2 tail/exceptional-set bound, consistent with erdos680 import (n=7,13,31",
+   "route_id": "R008",
+   "lemma_id": "L1",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos445:LEM:R008:L1",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos445-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos445",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos445:LEM:R009:L1",
+   "statement": "WLOG a=b is false: p=11,c=0.6,n=5 gives interval (5,9.216)={6,7,8,9} with no ±1 mod 11 yet 7·8=56≡1 mod 11 (same at p=5,n=1 with {2,3}); repair: must count general pairs (r,r^-1) both in the window, diagonal contributes at most 2 residues",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos445:DEMAND:R009:L1:1"
+   ],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R009",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 59,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 (interval contains an invertible residue whose inverse stays in the strict interval) is machine-refuted and load-bearing for the arbitrary-n witness construction; no surviving close exists with L1 deleted, so R009 is dead pending a strictly weaker repaired lemma plus transference.",
+    "seq": 60
+   },
+   "history": [
+    {
+     "seq": 53,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:39:21Z"
+    },
+    {
+     "seq": 54,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:54:38Z"
+    },
+    {
+     "seq": 58,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T01:02:15Z"
+    },
+    {
+     "seq": 59,
+     "status": "FALSE",
+     "utc": "2026-09-02T01:13:04Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos445-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos445:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos445",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos445:DEMAND:R009:L1:1",
+   "statement": "must count general pairs (r,r^-1) both in the window, diagonal contributes at most 2 residues",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "repair:",
+   "demand_rank": 2,
+   "demand_strength": "STRONG",
+   "route_status": "DEAD",
+   "demand_source_text": "WLOG a=b is false: p=11,c=0.6,n=5 gives interval (5,9.216)={6,7,8,9} with no ±1 mod 11 yet 7·8=56≡1 mod 11 (same at p=5,n=1 with {2,3}); repair: must count general pairs (r,r^-1) both in the window, diagonal contributes at most 2 residues",
+   "route_id": "R009",
+   "lemma_id": "L1",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos445:LEM:R009:L1",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos445-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos445",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos445:LEM:R010:L1",
+   "statement": "exact counterexample (p,c,n)=(11,0.51,4): window (4,7.39) contains {5,6,7} (or {4..7} inclusive) and all pairwise products mod 11 lie in {2,3,5,6,8,9}, never 1; exponent bracket 3<11^0.51<4 verified by rational bounds on ln 11; packet's \"zero counterexamples\" contradicts its own listed failing insta",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R010",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 63,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 is the central witness-interval lemma; machine-verified counterexample stands and no proof that the close survives without it was produced.",
+    "seq": 64
+   },
+   "history": [
+    {
+     "seq": 62,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:21:43Z"
+    },
+    {
+     "seq": 63,
+     "status": "FALSE",
+     "utc": "2026-09-02T01:22:35Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos445-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos445:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos445",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos445:LEM:R011:L1",
+   "statement": "claimed AP-free values (2,3) at p=5,7 are false: 2 invertible mod odd p makes every 2-subset {a,(a+b)/2,b} a nondegenerate 3-AP, so max AP-free = 1 at both p; Sidon does give exactly (2,3) (counting bound + witnesses {0,1},{0,1,3}); underdetermination claim unproven as stated, repair = find a second",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos445:DEMAND:R011:L1:1"
+   ],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R011",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 72,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Machine-verified counterexample to central lemma L1; no candidate close exists to test non-load-bearing status, so no downgrade is provable and the route is dead.",
+    "seq": 73
+   },
+   "history": [
+    {
+     "seq": 66,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:26:15Z"
+    },
+    {
+     "seq": 67,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:27:04Z"
+    },
+    {
+     "seq": 68,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:27:26Z"
+    },
+    {
+     "seq": 69,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:27:51Z"
+    },
+    {
+     "seq": 70,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:28:13Z"
+    },
+    {
+     "seq": 71,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:34:51Z"
+    },
+    {
+     "seq": 72,
+     "status": "FALSE",
+     "utc": "2026-09-02T01:35:52Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos445-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos445:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos445",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos445:DEMAND:R011:L1:1",
+   "statement": "find a second",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "repair =",
+   "demand_rank": 1,
+   "demand_strength": "STRONG",
+   "route_status": "DEAD",
+   "demand_source_text": "claimed AP-free values (2,3) at p=5,7 are false: 2 invertible mod odd p makes every 2-subset {a,(a+b)/2,b} a nondegenerate 3-AP, so max AP-free = 1 at both p; Sidon does give exactly (2,3) (counting bound + witnesses {0,1},{0,1,3}); underdetermination claim unproven as stated, repair = find a second",
+   "route_id": "R011",
+   "lemma_id": "L1",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos445:LEM:R011:L1",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos445-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos445",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos445:LEM:R012:L1",
+   "statement": "Exact integer verifier certifies: {2,3,4,5,6} mod 13 is pair-free (no x+y≡0, x,y in set, incl. self-pair 0+0) and maximal (each outside z∈{0,1,7,8,9,10,11,12} forms a zero-sum pair, exhaustive over 13 elements, pure Z/13 arithmetic, fail-closed, deterministic); SCOPE: this single window only — the '",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R012",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 76,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 75,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:41:12Z"
+    },
+    {
+     "seq": 76,
+     "status": "PROVED",
+     "utc": "2026-09-02T01:42:20Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos445-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos445:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos445",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos445:LEM:R013:L4",
+   "statement": "meta-record PROVED over an empty predicate retracted — vacuous attacks on CANDIDATE=none license nothing; D0 repair (concrete uniform-in-n lemma, erdos680 exceptional-set import L5 filed UNTESTED) is the named unmet requirement; no concrete candidate exists this round",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R013",
+   "lemma_id": "L4",
+   "registry_status": "FALSE",
+   "registry_seq": 93,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L4 was the route's sole candidate-bearing node and its PROVED status is vacuous (no predicate, parameters, or quantifiers), so the retraction kills the only load-bearing item; no surviving close exists with L4 deleted, D0 concrete uniform-in-n lemma remains the named revival requirement",
+    "seq": 94
+   },
+   "history": [
+    {
+     "seq": 78,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:46:58Z"
+    },
+    {
+     "seq": 79,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:47:37Z"
+    },
+    {
+     "seq": 80,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:48:17Z"
+    },
+    {
+     "seq": 81,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T01:48:32Z"
+    },
+    {
+     "seq": 82,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:22:04Z"
+    },
+    {
+     "seq": 83,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:22:36Z"
+    },
+    {
+     "seq": 84,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:23:49Z"
+    },
+    {
+     "seq": 85,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:24:49Z"
+    },
+    {
+     "seq": 86,
+     "status": "PROVED",
+     "utc": "2026-09-02T02:25:13Z"
+    },
+    {
+     "seq": 87,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:25:41Z"
+    },
+    {
+     "seq": 88,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:26:07Z"
+    },
+    {
+     "seq": 89,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:26:34Z"
+    },
+    {
+     "seq": 90,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:27:04Z"
+    },
+    {
+     "seq": 91,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:28:10Z"
+    },
+    {
+     "seq": 92,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:28:40Z"
+    },
+    {
+     "seq": 93,
+     "status": "FALSE",
+     "utc": "2026-09-02T02:29:28Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos445-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos445:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos445",
+   "is_leaf": true,
+   "manufacture_target": false
+  }
+ ]
+}

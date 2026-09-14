@@ -1,0 +1,13 @@
+{"definitions": "def GoodPair (p : Fin 2 → ℕ+ × ℕ+) : Prop :=\n  ∀ j : Fin 2, (p j).1 ≤ (p j).2 ∧\n    ∃ n : ℕ+, (∑ j : Fin 2, ∑ nⱼ ∈ Set.Icc (p j).1 (p j).2, (nⱼ⁻¹ : ℚ)) = n",
+  "parent_typed": {"name": "erdos288_negative_close", "binders": [],
+    "statement": "∃ f : ℕ → (Fin 2 → ℕ+ × ℕ+), Function.Injective f ∧ ∀ (k : ℕ), GoodPair (f k)",
+    "reading": "For the negative close: there exists an injective sequence of pairs of intervals, every one of which has integral reciprocal sum, so the good pairs are pairwise distinct and infinite in number."},
+  "children": [
+    {"name": "good_pair_above_bound", "binders": ["(k : Nat)"],
+      "statement": "∃ p : Fin 2 → ℕ+ × ℕ+, GoodPair p ∧ ∀ j : Fin 2, (k : ℕ) < ((p j).1 : ℕ)",
+      "reading": "Escape step: above every bound k there is a pair of intervals, both starting beyond k, whose reciprocal sum is an integer."},
+    {"name": "distinct_of_lt_start", "binders": ["(p : Fin 2 → ℕ+ × ℕ+)", "(q : Fin 2 → ℕ+ × ℕ+)"],
+      "statement": "(p (0 : Fin 2)).1 < (q (0 : Fin 2)).1 → p ≠ q",
+      "reading": "Distinctness lemma: two pairs whose first intervals have different left endpoints are distinct pairs."}
+  ],
+  "composition_claim": "Child 1 applied successively (each time with k larger than the previous left endpoints) builds a sequence f of good pairs whose first-interval left endpoints are strictly increasing; child 2 then certifies f is injective, i.e. the pairs are pairwise distinct. Hence the children together yield the parent: an injective family of pairs with integral reciprocal sum, which is exactly the required infinite distinct collection for the negative close."}

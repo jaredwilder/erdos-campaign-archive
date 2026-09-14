@@ -1,0 +1,326 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos400",
+  "generated_utc": "2026-09-02T16:24:53Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos400:LEM:R008:L1_g2_small_range",
+    "statement": "RETRACTED by author boundary audit: \"no counterexample to g_2(n)≥1 on the computed range\" was read as \"exact extremal table certified\" — the universal lower bound (true, witness (n,1)) was conflated with exact maxima, and the extremal-guard rule (witness + optimality proof) was never discharged; the spike values and witnesses contain concrete arithmetic errors.",
+    "statement_sha256": "9c721264e4a4b4c3b0f018962fd601a94fedcd2866d817a7e80f9715a1b75332",
+    "kind": "LEMMA",
+    "binding": "UNBOUND",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "For any $k\\geq 2$ let $g_k(n)$ denote the maximum value of\\[(a_1+\\cdots+a_k)-n\\]where $a_1,\\ldots,a_k$ are integers such that $a_1!\\cdots a_k! \\mid n!$. Can one show that\\[\\sum_{n\\leq x}g_k(n) \\sim c_k x\\log x\\]for some constant $c_k$? Is it true that there is a constant $c_k$ such that for almost all $n<x$ we have\\[g_k(n)=c_k\\log x+o(\\log x)?\\]",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos400-campaign-001/contract.json",
+    "sha256": "a9f0fe4572ca5259eafb8c9c51297749aaf5ca826d7752e19b697f870c817459"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos400:LEM:R008:L1_g2_small_range",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "c807ad864222727f3fa75d2b9994d0c773dca4d1b4755477a528ec2355aa283c",
+    "prompt_chars": 6872,
+    "response_sha256": "14997d2bde313127f4c33b1806c8538f6a476c589ffcb18d8755003886a84926",
+    "usage": {
+      "prompt_tokens": 2003,
+      "completion_tokens": 1465,
+      "total_tokens": 3468,
+      "cost": 0.000516475,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.000516475,
+        "upstream_inference_prompt_cost": 0.000150225,
+        "upstream_inference_completions_cost": 0.00036625
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 823,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.000516475,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 45.35,
+    "utc": "2026-09-02T16:22:58Z"
+  },
+  "children": [
+    {
+      "id": "erdos400:LEM:R008:L1_g2_small_range#D1",
+      "statement": "2 ≤ n → feasiblePair n (witnessPair n).1 (witnessPair n).2",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos400",
+      "decomposed_from": "erdos400:LEM:R008:L1_g2_small_range",
+      "imports": "Mathlib",
+      "definitions": "def feasiblePair (n a b : Nat) : Prop := a.factorial * b.factorial ∣ n.factorial\n\ndef excessAtLeast1 (n a b : Nat) : Prop := a + b ≥ n + 1\n\ndef witnessPair (n : Nat) : Nat × Nat := (n, 1)\n\ndef smallRange : Finset Nat := Finset.Icc (2 : Nat) (200 : Nat)",
+      "type_context": "Mathlib\ndef feasiblePair (n a b : Nat) : Prop := a.factorial * b.factorial ∣ n.factorial\n\ndef excessAtLeast1 (n a b : Nat) : Prop := a + b ≥ n + 1\n\ndef witnessPair (n : Nat) : Nat × Nat := (n, 1)\n\ndef smallRange : Finset Nat := Finset.Icc (2 : Nat) (200 : Nat)",
+      "lean_binders": [
+        "(n : Nat)"
+      ],
+      "lean_theorem_name": "msl_erdos400_lem_r008_l1_g2_small_range_c1",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef feasiblePair (n a b : Nat) : Prop := a.factorial * b.factorial ∣ n.factorial\n\ndef excessAtLeast1 (n a b : Nat) : Prop := a + b ≥ n + 1\n\ndef witnessPair (n : Nat) : Nat × Nat := (n, 1)\n\ndef smallRange : Finset Nat := Finset.Icc (2 : Nat) (200 : Nat)\n\n",
+      "lean_signature": "theorem msl_erdos400_lem_r008_l1_g2_small_range_c1 (n : Nat) : 2 ≤ n → feasiblePair n (witnessPair n).1 (witnessPair n).2",
+      "lean_statement_line": "theorem msl_erdos400_lem_r008_l1_g2_small_range_c1 (n : Nat) : 2 ≤ n → feasiblePair n (witnessPair n).1 (witnessPair n).2 := by sorry",
+      "lean_file_sha256": "9edee97ea9cb73816aa96c02c51482b31d7f75f6e88290f1e5e7169241630d8c",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "For every n ≥ 2 the universal witness pair (n, 1) is feasible: n! · 1! = n! divides n!.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos400/receipts/erdos400_LEM_R008_L1_g2_small_range_D1.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos400/lean/erdos400_LEM_R008_L1_g2_small_range_D1.lean"
+    },
+    {
+      "id": "erdos400:LEM:R008:L1_g2_small_range#D2",
+      "statement": "2 ≤ n → excessAtLeast1 n (witnessPair n).1 (witnessPair n).2",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos400",
+      "decomposed_from": "erdos400:LEM:R008:L1_g2_small_range",
+      "imports": "Mathlib",
+      "definitions": "def feasiblePair (n a b : Nat) : Prop := a.factorial * b.factorial ∣ n.factorial\n\ndef excessAtLeast1 (n a b : Nat) : Prop := a + b ≥ n + 1\n\ndef witnessPair (n : Nat) : Nat × Nat := (n, 1)\n\ndef smallRange : Finset Nat := Finset.Icc (2 : Nat) (200 : Nat)",
+      "type_context": "Mathlib\ndef feasiblePair (n a b : Nat) : Prop := a.factorial * b.factorial ∣ n.factorial\n\ndef excessAtLeast1 (n a b : Nat) : Prop := a + b ≥ n + 1\n\ndef witnessPair (n : Nat) : Nat × Nat := (n, 1)\n\ndef smallRange : Finset Nat := Finset.Icc (2 : Nat) (200 : Nat)",
+      "lean_binders": [
+        "(n : Nat)"
+      ],
+      "lean_theorem_name": "msl_erdos400_lem_r008_l1_g2_small_range_c2",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef feasiblePair (n a b : Nat) : Prop := a.factorial * b.factorial ∣ n.factorial\n\ndef excessAtLeast1 (n a b : Nat) : Prop := a + b ≥ n + 1\n\ndef witnessPair (n : Nat) : Nat × Nat := (n, 1)\n\ndef smallRange : Finset Nat := Finset.Icc (2 : Nat) (200 : Nat)\n\n",
+      "lean_signature": "theorem msl_erdos400_lem_r008_l1_g2_small_range_c2 (n : Nat) : 2 ≤ n → excessAtLeast1 n (witnessPair n).1 (witnessPair n).2",
+      "lean_statement_line": "theorem msl_erdos400_lem_r008_l1_g2_small_range_c2 (n : Nat) : 2 ≤ n → excessAtLeast1 n (witnessPair n).1 (witnessPair n).2 := by sorry",
+      "lean_file_sha256": "f294063ec08f5464e1094073a7e06a5ef4432a5d568e1b24911798cea4ecf342",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "For every n ≥ 2 the witness pair (n, 1) yields excess (n + 1) - n ≥ 1.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos400/receipts/erdos400_LEM_R008_L1_g2_small_range_D2.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos400/lean/erdos400_LEM_R008_L1_g2_small_range_D2.lean"
+    },
+    {
+      "id": "erdos400:LEM:R008:L1_g2_small_range#D3",
+      "statement": "n ∈ smallRange → 2 ≤ n",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos400",
+      "decomposed_from": "erdos400:LEM:R008:L1_g2_small_range",
+      "imports": "Mathlib",
+      "definitions": "def feasiblePair (n a b : Nat) : Prop := a.factorial * b.factorial ∣ n.factorial\n\ndef excessAtLeast1 (n a b : Nat) : Prop := a + b ≥ n + 1\n\ndef witnessPair (n : Nat) : Nat × Nat := (n, 1)\n\ndef smallRange : Finset Nat := Finset.Icc (2 : Nat) (200 : Nat)",
+      "type_context": "Mathlib\ndef feasiblePair (n a b : Nat) : Prop := a.factorial * b.factorial ∣ n.factorial\n\ndef excessAtLeast1 (n a b : Nat) : Prop := a + b ≥ n + 1\n\ndef witnessPair (n : Nat) : Nat × Nat := (n, 1)\n\ndef smallRange : Finset Nat := Finset.Icc (2 : Nat) (200 : Nat)",
+      "lean_binders": [
+        "(n : Nat)"
+      ],
+      "lean_theorem_name": "msl_erdos400_lem_r008_l1_g2_small_range_c3",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef feasiblePair (n a b : Nat) : Prop := a.factorial * b.factorial ∣ n.factorial\n\ndef excessAtLeast1 (n a b : Nat) : Prop := a + b ≥ n + 1\n\ndef witnessPair (n : Nat) : Nat × Nat := (n, 1)\n\ndef smallRange : Finset Nat := Finset.Icc (2 : Nat) (200 : Nat)\n\n",
+      "lean_signature": "theorem msl_erdos400_lem_r008_l1_g2_small_range_c3 (n : Nat) : n ∈ smallRange → 2 ≤ n",
+      "lean_statement_line": "theorem msl_erdos400_lem_r008_l1_g2_small_range_c3 (n : Nat) : n ∈ smallRange → 2 ≤ n := by sorry",
+      "lean_file_sha256": "5129d55539e8ece35cb3f2823d0eb9cc89ddd3b67f8e078a7c69d75f9c244a47",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "Every n in the computed bounded range [2, 200] satisfies n ≥ 2, so the range check is decidable and non-vacuous.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos400/receipts/erdos400_LEM_R008_L1_g2_small_range_D3.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos400/lean/erdos400_LEM_R008_L1_g2_small_range_D3.lean"
+    }
+  ],
+  "composition": {
+    "id": "erdos400:LEM:R008:L1_g2_small_range#COMPOSE",
+    "statement": "((2 ≤ n → feasiblePair n (witnessPair n).1 (witnessPair n).2) ∧ (2 ≤ n → excessAtLeast1 n (witnessPair n).1 (witnessPair n).2) ∧ (n ∈ smallRange → 2 ≤ n)) → (n ∈ smallRange → ∃ (a b : Nat), feasiblePair n a b ∧ excessAtLeast1 n a b)",
+    "kind": "COMPOSITION",
+    "depends_on": [
+      "erdos400:LEM:R008:L1_g2_small_range#D1",
+      "erdos400:LEM:R008:L1_g2_small_range#D2",
+      "erdos400:LEM:R008:L1_g2_small_range#D3"
+    ],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "PROVED_KERNEL",
+    "problem": "erdos400",
+    "decomposed_from": "erdos400:LEM:R008:L1_g2_small_range",
+    "imports": "Mathlib",
+    "definitions": "def feasiblePair (n a b : Nat) : Prop := a.factorial * b.factorial ∣ n.factorial\n\ndef excessAtLeast1 (n a b : Nat) : Prop := a + b ≥ n + 1\n\ndef witnessPair (n : Nat) : Nat × Nat := (n, 1)\n\ndef smallRange : Finset Nat := Finset.Icc (2 : Nat) (200 : Nat)",
+    "type_context": "Mathlib\ndef feasiblePair (n a b : Nat) : Prop := a.factorial * b.factorial ∣ n.factorial\n\ndef excessAtLeast1 (n a b : Nat) : Prop := a + b ≥ n + 1\n\ndef witnessPair (n : Nat) : Nat × Nat := (n, 1)\n\ndef smallRange : Finset Nat := Finset.Icc (2 : Nat) (200 : Nat)",
+    "parent_typed": {
+      "statement": "n ∈ smallRange → ∃ (a b : Nat), feasiblePair n a b ∧ excessAtLeast1 n a b",
+      "binders": [
+        "(n : Nat)"
+      ],
+      "reading": "For every n in the computed range [2, 200] there exists a feasible pair (a,b) with a!·b! ∣ n! and a+b-n ≥ 1, i.e. g_2(n) ≥ 1 on the small range (lower bound only, not exact maxima).",
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": null,
+        "prose_contract_root_report": {
+          "ok": true,
+          "missing": [],
+          "reason": "",
+          "blocking": false,
+          "why_not_blocking": "tokens mined from ENGLISH prose are not Lean tokens; `Fin k` carries `1 <= i <= k` structurally"
+        }
+      }
+    },
+    "composition_claim": {
+      "text": "Children 1 and 2 together give, for every n ≥ 2, a feasible witness pair (n, 1) with excess at least 1; child 3 licenses instantiating this on the bounded range smallRange. Hence for each n ∈ smallRange there exists (a, b) = (n, 1) with feasiblePair n a b ∧ excessAtLeast1 n a b, which is exactly the parent. Note the parent is deliberately only the g_2(n) ≥ 1 lower bound on the range — no extremal-maxima or exact-table clause, per the retraction audit.",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "KERNEL_CHECKED",
+      "rc": 0,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "counts_toward_parent": 1
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "source": "oracle/evidence/msl-machine/dag/decomp/erdos400/lean/erdos400_LEM_R008_L1_g2_small_range_COMPOSE.lean",
+    "lean_theorem_name": "msl_erdos400_lem_r008_l1_g2_small_range_composition",
+    "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxHeartbeats 400000\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef feasiblePair (n a b : Nat) : Prop := a.factorial * b.factorial ∣ n.factorial\n\ndef excessAtLeast1 (n a b : Nat) : Prop := a + b ≥ n + 1\n\ndef witnessPair (n : Nat) : Nat × Nat := (n, 1)\n\ndef smallRange : Finset Nat := Finset.Icc (2 : Nat) (200 : Nat)\n\n",
+    "lean_signature": "theorem msl_erdos400_lem_r008_l1_g2_small_range_composition (n : Nat) : ((2 ≤ n → feasiblePair n (witnessPair n).1 (witnessPair n).2) ∧ (2 ≤ n → excessAtLeast1 n (witnessPair n).1 (witnessPair n).2) ∧ (n ∈ smallRange → 2 ≤ n)) → (n ∈ smallRange → ∃ (a b : Nat), feasiblePair n a b ∧ excessAtLeast1 n a b)",
+    "lean_statement_line": "theorem msl_erdos400_lem_r008_l1_g2_small_range_composition (n : Nat) : ((2 ≤ n → feasiblePair n (witnessPair n).1 (witnessPair n).2) ∧ (2 ≤ n → excessAtLeast1 n (witnessPair n).1 (witnessPair n).2) ∧ (n ∈ smallRange → 2 ≤ n)) → (n ∈ smallRange → ∃ (a b : Nat), feasiblePair n a b ∧ excessAtLeast1 n a b) := by\n  first\n  | tauto\n  | (intro h; exact h.1)\n  | (intro h; simp_all)\n  | (intro h; omega)\n  | (intro h; norm_num at h ⊢ <;> tauto)\n  | aesop\n  | decide",
+    "lean_trailer": "\n#print axioms msl_erdos400_lem_r008_l1_g2_small_range_composition\n",
+    "lean_binders": [
+      "(n : Nat)"
+    ],
+    "lean_file_sha256": "a51a9404fd70957541fa6c28f20916d4be4a4db7520fa77ab27101b258c81c5e",
+    "lean_file_contract": "TO REPRODUCE GATE 4: compile `lean_preamble + lean_statement_line + \"\\n\" + lean_trailer` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text the deterministic ladder ran on. TO ATTEMPT A DIFFERENT PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\" + lean_trailer` -- keep the trailer, it is the `#print axioms` line the footprint is read from. Do NOT rebuild a header from `definitions` and do NOT drop the binders.",
+    "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos400/receipts/erdos400_LEM_R008_L1_g2_small_range_COMPOSE.verify.json",
+    "receipt_kind": "VERIFY_JSON"
+  },
+  "parent_new_depends_on": [
+    "erdos400:LEM:R008:L1_g2_small_range#COMPOSE"
+  ],
+  "rejected": [],
+  "counts": {
+    "proposed": 3,
+    "elaborated": 3,
+    "bound": 3,
+    "non_circular": 3,
+    "non_trivial": 3,
+    "surviving": 3,
+    "composition_kernel_checked": 1,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 3,
+    "counts_toward_parent_note": "composition PROVED_KERNEL: the children are load-bearing"
+  },
+  "definitions": {
+    "block": "def feasiblePair (n a b : Nat) : Prop := a.factorial * b.factorial ∣ n.factorial\n\ndef excessAtLeast1 (n a b : Nat) : Prop := a + b ≥ n + 1\n\ndef witnessPair (n : Nat) : Nat × Nat := (n, 1)\n\ndef smallRange : Finset Nat := Finset.Icc (2 : Nat) (200 : Nat)",
+    "gate0": {
+      "verdict": "DEFS_ELABORATE"
+    },
+    "campaign_vocabulary_prepended": [],
+    "normalization": {
+      "body": "def feasiblePair (n a b : Nat) : Prop := a.factorial * b.factorial ∣ n.factorial\n\ndef excessAtLeast1 (n a b : Nat) : Prop := a + b ≥ n + 1\n\ndef witnessPair (n : Nat) : Nat × Nat := (n, 1)\n\ndef smallRange : Finset Nat := Finset.Icc (2 : Nat) (200 : Nat)",
+      "opens": [],
+      "dropped_imports": []
+    }
+  }
+}

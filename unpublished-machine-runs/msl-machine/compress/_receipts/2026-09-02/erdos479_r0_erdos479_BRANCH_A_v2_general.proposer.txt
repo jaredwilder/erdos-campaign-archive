@@ -1,0 +1,8 @@
+{"theorem_name": "erdos479_family_odd_generalized",
+ "binders": ["(j : ℕ)", "(m : ℕ)", "(hm1 : 1 ≤ j)", "(hodd : Odd m)"],
+ "definitions": "",
+ "statement": "theorem erdos479_family_odd_generalized (j m : ℕ) (hm1 : 1 ≤ j) (hodd : Odd m) :\n    (2 ^ (2 ^ j * m) : ℤ) ≡ (2 ^ (2 ^ j) : ℤ) [ZMOD ((2 ^ j * m : ℕ) : ℤ)]",
+ "premises": ["erdos479:ORE:497dc6ba972d1307"],
+ "derivation_claim": "erdos479:ORE:497dc6ba972d1307 (the prime case, applied to every odd prime p ∣ m via Fermat/Factorization + CRT on the odd part, together with 2^j ∣ 2^(2^j * m) and 2^j ∣ 2^(2^j) for j ≥ 1) → T: the congruence 2^(2^j·m) ≡ 2^(2^j) (mod 2^j·m) holds for every odd m, not merely odd primes p.",
+ "discharges": "erdos479:BRANCH_A",
+ "reason": "It generalizes the literal prime parameter p of the proved family to all odd m and lifts the congruence into ℤ (ZMOD), producing infinitely many composite witnesses n = 2^j·m with 2^n ≡ 2^(2^j) mod n, directly shrinking the all-k≠1 infinitude obligation."}

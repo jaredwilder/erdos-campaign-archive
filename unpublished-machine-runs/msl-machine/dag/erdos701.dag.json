@@ -1,0 +1,1487 @@
+{
+ "schema": "obligation-dag/1.0.0",
+ "problem": "erdos701",
+ "problem_number": "701",
+ "campaign": "erdos701-campaign-001",
+ "root": "erdos701:ROOT",
+ "contract_divergence": {
+  "authoritative": {
+   "role": "campaign",
+   "path": "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/contract.json",
+   "sha256": "e082c4c9da6cc785a2c67a948b12a07863d3080b83e7d3903ea862762eb65c7b",
+   "declared_contract_sha256": "b45e721987a04ac9033bd5a8b5307ac5ae2e9157fa0c0d8988a289fb67561121"
+  },
+  "others": [
+   {
+    "role": "ingest",
+    "path": "oracle/evidence/msl-machine/contracts/erdos701/contract.json",
+    "sha256": "2bb72bd40492ea784e50e0d877a48e41710c09aaec80bbe829c3bc7127486adb",
+    "declared_contract_sha256": "2e406ebb3c0d1a75928bcea1682b482794ff8db31c3bda1fe8af8f9d4c984385",
+    "canonical_statement_matches_authoritative": true
+   },
+   {
+    "role": "launch_queue",
+    "path": "oracle/evidence/msl-machine/contracts/LAUNCH-QUEUE/erdos701.json",
+    "sha256": "6c0f1228e48611c4d08b4de708fcc0af73a806b1398d8120a28b3cf115b85285",
+    "declared_contract_sha256": null,
+    "canonical_statement_matches_authoritative": true
+   }
+  ],
+  "diverges": false
+ },
+ "courts": [
+  "court",
+  "closer",
+  "formalizer",
+  "kernel"
+ ],
+ "summary": {
+  "nodes": 24,
+  "proved_kernel": 0,
+  "proved_speaker": 13,
+  "computed_bounded": 0,
+  "open": 9,
+  "refuted": 2,
+  "orphans": 4,
+  "proof_obligations": 0,
+  "open_leaves_on_dead_routes": 0,
+  "root_kind": "NOT_DECIDABLE",
+  "root_disqualifiers": [
+   "UNBOUNDED_FORALL"
+  ],
+  "formal_root": {
+   "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/701.lean",
+   "category": "category research open, AMS 5",
+   "declaration": "erdos_701",
+   "statement": "answer(sorry) ↔ ∀ {X : Type} [Nonempty X] [Fintype X], ∀ (F : Set (Set X)), IsLowerSet F → ∃ x : X, ∀ᵉ (F' ⊆ F), F'.Intersecting → (#F' ≤ #{ A : Set X | A ∈ F ∧ x ∈ A })"
+  },
+  "leaf_frontier_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "leaf_frontier_reason": "10 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaf_frontier_deciding_leaf": {
+   "id": "erdos701:DEMAND:R016:L1:1",
+   "kind": "CAPABILITY_DEMAND",
+   "status": "OPEN",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "re-issue L1 with proved iff-reduction and exact rational predicate,"
+  },
+  "ladder_shape_reason": "the formal root is not decidable: UNBOUNDED_FORALL (oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/701.lean). No leaf set can close it, however clean the leaves are. Leaf frontier, kept for the grind queue: HAS_OPEN_ANALYTIC_LEAF.",
+  "leaves": 20,
+  "open_leaves": 18,
+  "open_technical_leaves": 14,
+  "open_prose_obligations": 4,
+  "open_analytic_leaves": 10,
+  "ladder_shape": "ROOT_NOT_DECIDABLE",
+  "deciding_leaf": {
+   "id": "erdos701:ROOT",
+   "kind": "CANONICAL_ROOT",
+   "status": "OPEN",
+   "binding": "VERBATIM",
+   "leaf_tactic_hint": null,
+   "statement": "answer(sorry) ↔ ∀ {X : Type} [Nonempty X] [Fintype X], ∀ (F : Set (Set X)), IsLowerSet F → ∃ x : X, ∀ᵉ (F' ⊆ F), F'.Intersecting → (#F' ≤ #{ A : Set X | A ∈ F ∧ x ∈ A })"
+  },
+  "orphan_detail": [
+   {
+    "id": "erdos701:A:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos701:A:M02",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos701:B:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos701:B:M02",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   }
+  ]
+ },
+ "validation": {
+  "acyclic": true,
+  "edges": 24,
+  "root_binds_verbatim": true,
+  "kernel_receipts_checked": 0
+ },
+ "nodes": [
+  {
+   "id": "erdos701:A:M01",
+   "statement": "Given arbitrary X and hereditary 𝓕, produce x=x(𝓕) and prove the inequality for every pairwise-intersecting subfamily.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/contract.json",
+   "contract_sha256": "e082c4c9da6cc785a2c67a948b12a07863d3080b83e7d3903ea862762eb65c7b",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos701",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-701-17bac957e7-A-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos701:A:M02",
+   "statement": "Use Mathlib Set.Intersecting exactly as frozen: the predicate ranges over all pairs in the family, including A=B, so a family containing ∅ is not intersecting. The same convention controls both branches.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 2,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/contract.json",
+   "contract_sha256": "e082c4c9da6cc785a2c67a948b12a07863d3080b83e7d3903ea862762eb65c7b",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos701",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-701-17bac957e7-A-M02"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos701:BRANCH_A",
+   "statement": "AFFIRMATIVE CLOSE: prove the Chvátal star bound for every hereditary family on every finite nonempty ground set.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos701:A:M01",
+    "erdos701:A:M02"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/contract.json",
+   "contract_sha256": "e082c4c9da6cc785a2c67a948b12a07863d3080b83e7d3903ea862762eb65c7b",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos701",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-701-17bac957e7-A-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos701:B:M01",
+   "statement": "Verify downward closure and the exact pairwise-intersection convention.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/contract.json",
+   "contract_sha256": "e082c4c9da6cc785a2c67a948b12a07863d3080b83e7d3903ea862762eb65c7b",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos701",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-701-17bac957e7-B-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos701:B:M02",
+   "statement": "Any counterexample is checked with the all-pairs Set.Intersecting predicate; {∅} is not an intersecting subfamily under this convention.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 2,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/contract.json",
+   "contract_sha256": "e082c4c9da6cc785a2c67a948b12a07863d3080b83e7d3903ea862762eb65c7b",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos701",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-701-17bac957e7-B-M02"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos701:BRANCH_B",
+   "statement": "NEGATIVE CLOSE: exhibit a finite nonempty X and hereditary 𝓕 for which every x∈X has some pairwise-intersecting 𝓕' larger than the x-star.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos701:B:M01",
+    "erdos701:B:M02"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/contract.json",
+   "contract_sha256": "e082c4c9da6cc785a2c67a948b12a07863d3080b83e7d3903ea862762eb65c7b",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos701",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-701-17bac957e7-B-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos701:ROOT",
+   "statement": "Let $\\mathcal{F}$ be a family of sets closed under taking subsets (i.e. if $B\\subseteq A\\in\\mathcal{F}$ then $B\\in \\mathcal{F}$). There exists some element $x$ such that whenever $\\mathcal{F}'\\subseteq \\mathcal{F}$ is an intersecting subfamily we have\\[\\lvert \\mathcal{F}'\\rvert \\leq \\lvert \\{ A\\in \\mathcal{F} : x\\in A\\}\\rvert.\\]",
+   "kind": "CANONICAL_ROOT",
+   "depends_on": [
+    "erdos701:BRANCH_A",
+    "erdos701:BRANCH_B"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "root_by_construction",
+   "closure_mode": "DISJUNCTIVE",
+   "satisfied_by_any": [
+    "erdos701:BRANCH_A",
+    "erdos701:BRANCH_B"
+   ],
+   "root_kind": "NOT_DECIDABLE",
+   "root_disqualifiers": [
+    "UNBOUNDED_FORALL"
+   ],
+   "formal_root": {
+    "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/701.lean",
+    "category": "category research open, AMS 5",
+    "declaration": "erdos_701",
+    "statement": "answer(sorry) ↔ ∀ {X : Type} [Nonempty X] [Fintype X], ∀ (F : Set (Set X)), IsLowerSet F → ∃ x : X, ∀ᵉ (F' ⊆ F), F'.Intersecting → (#F' ≤ #{ A : Set X | A ∈ F ∧ x ∈ A })"
+   },
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/contract.json",
+   "contract_sha256": "e082c4c9da6cc785a2c67a948b12a07863d3080b83e7d3903ea862762eb65c7b",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos701",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos701:LEM:R001:L1",
+   "statement": "n=4 core certified: exact integer sweep of all 64 edge-bitmask graphs shows closure=K4 iff Hamiltonian (10 Hamiltonian: K4, six K4−e, three C4; all 54 others fail to fire the degree-sum rule); scope limited to n=4, uniform claim still open.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 6,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 3,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:41:47Z"
+    },
+    {
+     "seq": 4,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:56:25Z"
+    },
+    {
+     "seq": 5,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:56:56Z"
+    },
+    {
+     "seq": 6,
+     "status": "PROVED",
+     "utc": "2026-09-01T22:58:30Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos701:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos701",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos701:LEM:R002:L1",
+   "statement": "Exact integer kernel (Venn-atom bitmasks, AND=0 disjointness, exhaustive fail-closed MIS, bignum-only arithmetic) reproduces 174 families at n≤2 and 65536 patterns at n≤4; n=5 freeze is an exact-integer scope boundary (2^32 patterns, M(32)≈10^32 exact), so the scope statement is certified with no ov",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R002",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 10,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 7,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:59:59Z"
+    },
+    {
+     "seq": 8,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:01:44Z"
+    },
+    {
+     "seq": 9,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:02:08Z"
+    },
+    {
+     "seq": 10,
+     "status": "PROVED",
+     "utc": "2026-09-01T23:02:29Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos701:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "leaf_tactic_hint": "interval_cases",
+   "hint_source": "bounded_forall_over_N",
+   "leaf_tactic_sketch": "intro a; interval_cases a <;> decide",
+   "leaf_tactic_alternatives": [
+    "decide",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos701",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos701:LEM:R003:L1",
+   "statement": "Certified scope n≤5 via exact integer/Fraction exhaustive enumeration (stdlib-only verifier, fail-closed, abort-on-unresolved-sign, deterministic, contract SHA b45e721987a04ac9); n=6 residual (2·10^19 instances, 5·10^-14 sampled, no analytic reduction supplied) remains explicitly uncertifiable and i",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R003",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 16,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 12,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:04:00Z"
+    },
+    {
+     "seq": 13,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:04:16Z"
+    },
+    {
+     "seq": 14,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:04:29Z"
+    },
+    {
+     "seq": 15,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:04:55Z"
+    },
+    {
+     "seq": 16,
+     "status": "PROVED",
+     "utc": "2026-09-01T23:05:20Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos701:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos701",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos701:LEM:R004:L1",
+   "statement": "Counterexample: F=𝒫({1,2,3}), G={{1,2},{1,3},{2,3}} is pairwise-intersecting, maximal, and contained in no star; also stated count 65812 is irreproducible (exact Dedekind total = 199 hereditary families on |X|≤4).",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 19,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 has a machine-recorded concrete counterexample and no proof was given that the route's close survives without it, so the lemma is load-bearing and R004 is dead.",
+    "seq": 20
+   },
+   "history": [
+    {
+     "seq": 18,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:07:05Z"
+    },
+    {
+     "seq": 19,
+     "status": "FALSE",
+     "utc": "2026-09-01T23:08:27Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos701:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos701",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos701:LEM:R005:L1",
+   "statement": "Finite component |F|≤2^(n−1) certified exactly by fixed-point-free complement pairing (≤1 per 2-element orbit, integer arithmetic, tight via star); uniform close is Chvátal's conjecture, open, uncertifiable as stated.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R005",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 24,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 22,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:09:45Z"
+    },
+    {
+     "seq": 23,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:10:15Z"
+    },
+    {
+     "seq": 24,
+     "status": "PROVED",
+     "utc": "2026-09-01T23:11:27Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos701:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos701",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos701:LEM:R006:L1",
+   "statement": "Certificate: exhaustive enumeration of all M(4)=168 downsets of B4 with brute-force check of all ≤2^16 subfamilies per downset, exact integer arithmetic, no floats, fail-closed; tight cases (triangle downsets, equality) included; supersedes 5000-sample evidence; scope strictly |X|≤4 under the frozen",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R006",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 27,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 26,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:12:50Z"
+    },
+    {
+     "seq": 27,
+     "status": "PROVED",
+     "utc": "2026-09-01T23:14:20Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos701:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "leaf_tactic_hint": "interval_cases",
+   "hint_source": "bounded_forall_over_N",
+   "leaf_tactic_sketch": "intro a; interval_cases a <;> decide",
+   "leaf_tactic_alternatives": [
+    "decide",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos701",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos701:LEM:R007:L1",
+   "statement": "Exact integer verifier: exhaustive enumeration of all 168 hereditary families of 2^[4] (Dedekind count enforced by require) with per-family exhaustive max-intersecting vs max-star integer check, fail-closed single PASS exit; certifies max-intersecting=max-star for all hereditary families on [n], n<=",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R007",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 30,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 29,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:16:44Z"
+    },
+    {
+     "seq": 30,
+     "status": "PROVED",
+     "utc": "2026-09-01T23:17:24Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos701:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos701",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos701:LEM:R008:L1",
+   "statement": "finite core: contract holds vacuously at F={∅} and tightly at F={∅,{1}} and the 4-set lattice on X={1,2} (max intersecting subfamily = max star = 2); Set.Intersecting all-pairs convention makes {∅} non-intersecting, confirming the frozen EMPTY SET trap; no counterexample found at minimal parameters.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R008",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 64,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 32,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:19:33Z"
+    },
+    {
+     "seq": 33,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:20:24Z"
+    },
+    {
+     "seq": 34,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:20:43Z"
+    },
+    {
+     "seq": 35,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:20:57Z"
+    },
+    {
+     "seq": 36,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:21:15Z"
+    },
+    {
+     "seq": 37,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:21:32Z"
+    },
+    {
+     "seq": 38,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:21:53Z"
+    },
+    {
+     "seq": 39,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:22:09Z"
+    },
+    {
+     "seq": 40,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:22:32Z"
+    },
+    {
+     "seq": 41,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:22:47Z"
+    },
+    {
+     "seq": 42,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:23:03Z"
+    },
+    {
+     "seq": 43,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:23:17Z"
+    },
+    {
+     "seq": 44,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:23:35Z"
+    },
+    {
+     "seq": 45,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:23:51Z"
+    },
+    {
+     "seq": 46,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:24:10Z"
+    },
+    {
+     "seq": 47,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:24:29Z"
+    },
+    {
+     "seq": 48,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:24:40Z"
+    },
+    {
+     "seq": 49,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:24:53Z"
+    },
+    {
+     "seq": 50,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:25:07Z"
+    },
+    {
+     "seq": 51,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:25:27Z"
+    },
+    {
+     "seq": 52,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:27:11Z"
+    },
+    {
+     "seq": 53,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:27:27Z"
+    },
+    {
+     "seq": 54,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:27:41Z"
+    },
+    {
+     "seq": 55,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:27:52Z"
+    },
+    {
+     "seq": 56,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:28:03Z"
+    },
+    {
+     "seq": 57,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:28:12Z"
+    },
+    {
+     "seq": 58,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:28:23Z"
+    },
+    {
+     "seq": 59,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:28:38Z"
+    },
+    {
+     "seq": 60,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:28:52Z"
+    },
+    {
+     "seq": 61,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:29:04Z"
+    },
+    {
+     "seq": 62,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:29:31Z"
+    },
+    {
+     "seq": 63,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T23:29:41Z"
+    },
+    {
+     "seq": 64,
+     "status": "PROVED",
+     "utc": "2026-09-01T23:41:11Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos701:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos701",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos701:LEM:R009:L1_star_bound_n_leq_4",
+   "statement": "analytic reduction certifies for ALL n: hereditary+intersecting D' (nonempty members, |D'|>=2) has {x} in D' for x in any maximal member, so every m in D' meets {x} hence contains x, giving D' subseteq star(x) and |D'| <= max star; n<=4 enumeration is corroboration only; caveat: recorded witness {{1",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R009",
+   "lemma_id": "L1_star_bound_n_leq_4",
+   "registry_status": "PROVED",
+   "registry_seq": 67,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 66,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:43:14Z"
+    },
+    {
+     "seq": 67,
+     "status": "PROVED",
+     "utc": "2026-09-01T23:45:08Z"
+    }
+   ],
+   "court": [
+    "court"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos701:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "leaf_tactic_hint": "interval_cases",
+   "hint_source": "bounded_forall_over_N",
+   "leaf_tactic_sketch": "intro a; interval_cases a <;> decide",
+   "leaf_tactic_alternatives": [
+    "decide",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos701",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos701:LEM:R010:L1",
+   "statement": "Exact integer verifier certifies the finite claim completely: all 7810 hereditary families on 1<=n<=5 (complete antichain-generator enumeration with exact downward closure) plus 2^[6] satisfy max-intersecting-subfamily=max-star under the weaker distinct-pairs definition; fail-closed, no floats, Pyth",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R010",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 70,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 69,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:48:02Z"
+    },
+    {
+     "seq": 70,
+     "status": "PROVED",
+     "utc": "2026-09-01T23:49:02Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos701:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos701",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos701:LEM:R011:L1",
+   "statement": "Exact fail-closed integer/bitset enumerator over all 65535 nonempty hereditary families on [4] (heredity checked exactly, exact clique-in-overlap-graph search vs exact max star count, raise-on-violation, Python>=3.10 stdlib, deterministic); scope: certifies L1 verbatim for n<=4 only — no transferenc",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R011",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 73,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 72,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:50:41Z"
+    },
+    {
+     "seq": 73,
+     "status": "PROVED",
+     "utc": "2026-09-01T23:51:27Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos701:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos701",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos701:LEM:R012:L1",
+   "statement": "exact integer verifier (above): exhaustive 16-family enumeration finds exactly the 6 downsets of B2 (Dedekind M(2)=6), m(F)=maxfreq ≤ max star holds on all 6, extremizers exactly {down({1}),down({2}),full lattice,{empty}} = stars+empty; scope n=2 ONLY, contingent on reading m(F)=max element-frequenc",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R012",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 77,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 75,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:53:02Z"
+    },
+    {
+     "seq": 76,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:53:26Z"
+    },
+    {
+     "seq": 77,
+     "status": "PROVED",
+     "utc": "2026-09-01T23:55:54Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos701:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos701",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos701:LEM:R013:L1",
+   "statement": "stated Dedekind-count anchor 2,5,20,168,7581 fails exact check at n=1 (3 families, not 5) and n=2 (6 antichains, not 20); correct anchors are 2,3,6,20,168,7581 for n=0..5; self-contained exact integer verifier (bitmask antichain enumeration, require-or-raise, no floats, deterministic) supplied and c",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R013",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 81,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "central lemma L1 has a machine-verified concrete counterexample and no proof was given that R013's close survives with L1 deleted, so the lemma is load-bearing and the route is dead; revival only via a repaired lemma with strictly weaker assumptions or a new exact reduction.",
+    "seq": 82
+   },
+   "history": [
+    {
+     "seq": 79,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:58:06Z"
+    },
+    {
+     "seq": 80,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:58:43Z"
+    },
+    {
+     "seq": 81,
+     "status": "FALSE",
+     "utc": "2026-09-02T00:00:23Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos701:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos701",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos701:LEM:R014:L1",
+   "statement": "Exact integer verifier (stdlib-only, deterministic, fail-closed, last-line-PASS) exhaustively checks all 65536 families over a 4-element ground set, confirming m(F)=Delta(F) for every hereditary F with n<=4 under the frozen all-pairs convention (empty set excluded from intersecting subfamilies); the",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R014",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 86,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 84,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:07:38Z"
+    },
+    {
+     "seq": 85,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:33:30Z"
+    },
+    {
+     "seq": 86,
+     "status": "PROVED",
+     "utc": "2026-09-02T01:35:45Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos701:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "leaf_tactic_hint": "interval_cases",
+   "hint_source": "bounded_forall_over_N",
+   "leaf_tactic_sketch": "intro a; interval_cases a <;> decide",
+   "leaf_tactic_alternatives": [
+    "decide",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos701",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos701:LEM:R015:L1",
+   "statement": "Exact integer verifier over all 6 downsets of 2^{0,1} (|X|=1 included), exhaustive over all subfamilies, strict pairwise-intersection, fail-closed require, PASS; certifies |F'|<=max-star-degree for all hereditary F with 1<=|X|<=2, tight at full lattice; n>=3 scaling explicitly outside scope (unprove",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R015",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 89,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 88,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:40:13Z"
+    },
+    {
+     "seq": 89,
+     "status": "PROVED",
+     "utc": "2026-09-02T01:41:51Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos701:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos701",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos701:LEM:R016:L1",
+   "statement": "Uncertifiable as issued: reduction=\"none\" supplies no proved bridge (so even exact enumeration stays EVIDENCE per §7.2) and the §16.1 payload (witness, star(x) predicate, exact inequality, D(n) theorem statement) is absent; repair = re-issue L1 with proved iff-reduction and exact rational predicate,",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos701:DEMAND:R016:L1:1"
+   ],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R016",
+   "lemma_id": "L1",
+   "registry_status": "UNTESTED",
+   "registry_seq": 97,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 91,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:45:23Z"
+    },
+    {
+     "seq": 92,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:46:05Z"
+    },
+    {
+     "seq": 93,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:46:58Z"
+    },
+    {
+     "seq": 94,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:47:13Z"
+    },
+    {
+     "seq": 95,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:47:35Z"
+    },
+    {
+     "seq": 96,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:48:02Z"
+    },
+    {
+     "seq": 97,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T01:48:26Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos701:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "Uncertifiable as issued: reduction=\"none\" supplies no proved bridge (so even exact enumeration stays EVIDENCE per §7.2) and the §16.1 payload (witness, star(x) predicate, exact inequality, D(n) theorem statement) is absent; repair = re-issue L1 with proved iff-reduction and exact rational predicate,"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos701",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos701:DEMAND:R016:L1:1",
+   "statement": "re-issue L1 with proved iff-reduction and exact rational predicate,",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "repair =",
+   "demand_rank": 1,
+   "demand_strength": "STRONG",
+   "route_status": "LIVE",
+   "demand_source_text": "Uncertifiable as issued: reduction=\"none\" supplies no proved bridge (so even exact enumeration stays EVIDENCE per §7.2) and the §16.1 payload (witness, star(x) predicate, exact inequality, D(n) theorem statement) is absent; repair = re-issue L1 with proved iff-reduction and exact rational predicate,",
+   "route_id": "R016",
+   "lemma_id": "L1",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos701:LEM:R016:L1",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos701-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos701",
+   "is_leaf": true,
+   "manufacture_target": false
+  }
+ ]
+}

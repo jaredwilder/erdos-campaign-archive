@@ -1,0 +1,115 @@
+{
+ "schema": "msl-compress/1.0.0",
+ "problem": "erdos289",
+ "rows": [
+  {
+   "fingerprint": "6ded6bc670470862376aed17c4a041b69dc20deacbe0ddea071b12c8f6165a38",
+   "normal_form": "($b0 $b1 : ℕ) ($b2 : $b0 < $b1) ($b3 : runSum $b0 $b1 = (1 : ℚ) / 6) : $b0 ≤ 4 ∨ 60 < $b1",
+   "problem": "erdos289",
+   "node": "erdos289:COMPRESS:erdos289_one_sixth_interval_reaches_beyond_sixty",
+   "declaration": "erdos289_one_sixth_interval_reaches_beyond_sixty",
+   "statement": "theorem erdos289_one_sixth_interval_reaches_beyond_sixty (a b : ℕ) (hab : a < b) (h : runSum a b = (1 : ℚ) / 6) : a ≤ 4 ∨ 60 < b",
+   "origin": "PROPOSER",
+   "status": "OPEN",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__erdos289_one_sixth_interval_reaches_beyond_sixty.jobs.json",
+   "law": "OFFERED ONLY WHEN status == PROVED_KERNEL; a candidate lifts nothing."
+  },
+  {
+   "fingerprint": "cedd2bb4532ad3b30d44de6b4365eedbbec124c1f00abd3ea8b096b68a005c28",
+   "normal_form": ": ∀ a ∈ Finset.Icc 5 60, ∀ b ∈ Finset.Icc (a + 1) 60, ∀ c ∈ Finset.Icc (b + 2) 60, ∀ d ∈ Finset.Icc (c + 1) 60, runSum a b + runSum c d ≠ (1 : ℚ) / 6",
+   "problem": "erdos289",
+   "node": "erdos289:COMPRESS:W4_two_interval_fragment",
+   "declaration": "W4_two_interval_fragment",
+   "statement": "theorem W4_two_interval_fragment : ∀ a ∈ Finset.Icc 5 60, ∀ b ∈ Finset.Icc (a + 1) 60, ∀ c ∈ Finset.Icc (b + 2) 60, ∀ d ∈ Finset.Icc (c + 1) 60, runSum a b + runSum c d ≠ (1 : ℚ) / 6",
+   "origin": "PROPOSER",
+   "status": "OPEN",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__W4_two_interval_fragment.jobs.json",
+   "law": "OFFERED ONLY WHEN status == PROVED_KERNEL; a candidate lifts nothing."
+  },
+  {
+   "fingerprint": "979e1ae055cc462e47e0d00f984cd378f1b445fee7015371a01da5a6fc4db2f1",
+   "normal_form": ": ((∃ ($b0 : ℕ) ($b1 $b2 : Fin $b0 → ℕ), (∀ $b3, 5 ≤ $b1 $b3 ∧ $b1 $b3 + 1 ≤ $b2 $b3) ∧ (∀ $b3 $b4, $b3 ≠ $b4 → $b2 $b3 + 1 < $b1 $b4 ∨ $b2 $b4 + 1 < $b1 $b3) ∧ (∑ $b3, runSum ($b1 $b3) ($b2 $b3) = (1:ℚ) / 6)) ↔ (∃ ($b5 : ℕ) ($b1 $b2 : Fin $b5 → ℕ), (∀ $b3, 2 ≤ $b1 $b3 ∧ $b1 $b3 + 1 ≤ $b2 $b3) ∧ (∀ $b3 $b4, $b3 ≠ $b4 → $b2 $b3 + 1 < $b1 $b4 ∨ $b2 $b4 + 1 < $b1 $b3) ∧ (∑ $b3, runSum ($b1 $b3) ($b2 $b3) = (1:ℚ)))",
+   "problem": "erdos289",
+   "node": "erdos289:COMPRESS:erdos289_bridge_head_tail",
+   "declaration": "erdos289_bridge_head_tail",
+   "statement": "theorem erdos289_bridge_head_tail :\n  ((∃ (m : ℕ) (as bs : Fin m → ℕ),\n      (∀ i, 5 ≤ as i ∧ as i + 1 ≤ bs i) ∧\n      (∀ i j, i ≠ j → bs i + 1 < as j ∨ bs j + 1 < as i) ∧\n      (∑ i, runSum (as i) (bs i) = (1:ℚ) / 6)) ↔\n   (∃ (k : ℕ) (as bs : Fin k → ℕ),\n      (∀ i, 2 ≤ as i ∧ as i + 1 ≤ bs i) ∧\n      (∀ i j, i ≠ j → bs i + 1 < as j ∨ bs j + 1 < as i) ∧\n      (∑ i, runSum (as i) (bs i) = (1:ℚ)))",
+   "origin": "PROPOSER",
+   "status": "OPEN",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__erdos289_bridge_head_tail.jobs.json",
+   "law": "OFFERED ONLY WHEN status == PROVED_KERNEL; a candidate lifts nothing."
+  },
+  {
+   "fingerprint": "477a87325e2ad513c940e6ddeaaf394672a5998c3e95f9f11e806e786bc07fd5",
+   "normal_form": "0 ≤ B → (R ^ 2 ≤ B ^ 2 ↔ |R| ≤ B)",
+   "problem": "erdos289",
+   "node": "erdos289:COMPRESS:sq_le_sq_iff_abs_le_of_nonneg",
+   "declaration": "sq_le_sq_iff_abs_le_of_nonneg",
+   "statement": "0 ≤ B → (R ^ 2 ≤ B ^ 2 ↔ |R| ≤ B)",
+   "origin": "PROPOSER",
+   "status": "OPEN",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__sq_le_sq_iff_abs_le_of_nonneg.jobs.json",
+   "law": "OFFERED ONLY WHEN status == PROVED_KERNEL; a candidate lifts nothing."
+  },
+  {
+   "fingerprint": "52c32789279f126c17fef9a8cdf17a8c227ef5bc026dd4132053661e83b95145",
+   "normal_form": "∀ ($b0 $b1 : ℕ) ($b2 : ℚ), 1 ≤ $b0 → $b0 ≤ $b1 → (runSum $b0 $b1 = $b2 ↔ ($b2 * ($b3 $b0 $b1 : ℚ) = ($b4 $b0 $b1 : ℚ)))",
+   "problem": "erdos289",
+   "node": "erdos289:COMPRESS:runSum_eq_iff_nat_eq",
+   "declaration": "runSum_eq_iff_nat_eq",
+   "statement": "∀ (a b : ℕ) (q : ℚ), 1 ≤ a → a ≤ b → (runSum a b = q ↔ (q * (runProd a b : ℚ) = (runNum a b : ℚ)))",
+   "origin": "PROPOSER",
+   "status": "OPEN",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__runSum_eq_iff_nat_eq.jobs.json",
+   "law": "OFFERED ONLY WHEN status == PROVED_KERNEL; a candidate lifts nothing."
+  },
+  {
+   "fingerprint": "0687622ba218817f267a5017656f93dc88d0e9569d81552dba55f4bae52d9c06",
+   "normal_form": "∀ ($b0 $b1 : ℚ), (0 : ℚ) ≤ $b1 → (($b0 ^ 2 ≤ $b1 ^ 2 ∧ (0 : ℚ) ≤ $b1) ↔ |$b0| ≤ $b1) → ($b0 ^ 2 ≤ $b1 ^ 2 ↔ |$b0| ≤ $b1)",
+   "problem": "erdos289",
+   "node": "erdos289:COMPRESS:l1_bridge_curry",
+   "declaration": "l1_bridge_curry",
+   "statement": "∀ (R B : ℚ), (0 : ℚ) ≤ B → ((R ^ 2 ≤ B ^ 2 ∧ (0 : ℚ) ≤ B) ↔ |R| ≤ B) → (R ^ 2 ≤ B ^ 2 ↔ |R| ≤ B)",
+   "origin": "PROPOSER",
+   "status": "OPEN",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__l1_bridge_curry.jobs.json",
+   "law": "OFFERED ONLY WHEN status == PROVED_KERNEL; a candidate lifts nothing."
+  },
+  {
+   "fingerprint": "ac442910e8107e7fcbfeb78f4d2c2f1004a6361478c8998d3ae00ac68659b6a8",
+   "normal_form": ": ∀ a ∈ Finset.Icc 2 60, ∀ b ∈ Finset.Icc (a + 1) 60, runSum a b ≠ (1 : ℚ) / 6",
+   "problem": "erdos289",
+   "node": "erdos289:COMPRESS:L1_no_sixth_from_two",
+   "declaration": "L1_no_sixth_from_two",
+   "statement": "theorem L1_no_sixth_from_two :\n    ∀ a ∈ Finset.Icc 2 60, ∀ b ∈ Finset.Icc (a + 1) 60,\n      runSum a b ≠ (1 : ℚ) / 6",
+   "origin": "PROPOSER",
+   "status": "OPEN",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__L1_no_sixth_from_two.jobs.json",
+   "law": "OFFERED ONLY WHEN status == PROVED_KERNEL; a candidate lifts nothing."
+  },
+  {
+   "fingerprint": "58a6d8c9d635bd095342eebdb5552d6f48a4fffe0384144af66c39f0a70082c1",
+   "normal_form": ": runSum 2 4 > (1 : ℚ)",
+   "problem": "erdos289",
+   "node": "erdos289:COMPRESS:runSum_2_4_exceeds_one",
+   "declaration": "runSum_2_4_exceeds_one",
+   "statement": "theorem runSum_2_4_exceeds_one : runSum 2 4 > (1 : ℚ)",
+   "origin": "PROPOSER",
+   "status": "OPEN",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__runSum_2_4_exceeds_one.jobs.json",
+   "law": "OFFERED ONLY WHEN status == PROVED_KERNEL; a candidate lifts nothing."
+  },
+  {
+   "fingerprint": "fd662bf69b5f5f7b8b93026ef50eeb216cdbcfa0beb38afb5b720c82e924aa7d",
+   "normal_form": "∀ m ∈ Finset.Icc 2 6, ∀ a ∈ Finset.Icc 5 60, ∀ b ∈ Finset.Icc (a + 1) 60, m * runNum a b ≠ runProd a b",
+   "problem": "erdos289",
+   "node": "erdos289:COMPRESS:W4_nat_fragment_gen",
+   "declaration": "W4_nat_fragment_gen",
+   "statement": "∀ m ∈ Finset.Icc 2 6, ∀ a ∈ Finset.Icc 5 60, ∀ b ∈ Finset.Icc (a + 1) 60, m * runNum a b ≠ runProd a b",
+   "origin": "PROPOSER",
+   "status": "OPEN",
+   "certificate": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__W4_nat_fragment_gen.jobs.json",
+   "law": "OFFERED ONLY WHEN status == PROVED_KERNEL; a candidate lifts nothing."
+  }
+ ],
+ "law": "BESIDE the sweeper's state, never into it. A row is offered to other problems only at PROVED_KERNEL."
+}

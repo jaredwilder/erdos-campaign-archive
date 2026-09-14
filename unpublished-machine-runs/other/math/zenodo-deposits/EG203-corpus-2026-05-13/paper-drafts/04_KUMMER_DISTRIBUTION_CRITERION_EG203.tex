@@ -1,0 +1,234 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{hypothesis}{Hypothesis}
+\newtheorem{remark}{Remark}
+\newtheorem{warning}{Warning}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{problem}{Problem}
+
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\F}{\mathbb F}
+\newcommand{\C}{\mathbb C}
+\newcommand{\G}{\Gamma}
+\newcommand{\E}{\mathbb E}
+\newcommand{\1}{\mathbf 1}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\Gal}{\operatorname{Gal}}
+
+\title{A Kummer Distribution Criterion for Erd\H{o}s--Graham Problem \#203}
+\author{Jared Wilder}
+\date{Draft 0.1 --- 2026-05-12}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We formulate a precise Kummer distribution criterion sufficient for the negative resolution of Erd\H{o}s--Graham Problem \#203.  The criterion, called prime Hecke non-concentration (PHNC), asserts that fixed-radical Kummer characters do not concentrate almost entirely at the identity among primes \(q\le Q\), \(q\equiv1\bmod\ell\), uniformly for \(\ell\le(\log Q)^B\).  This note separates the exact algebraic reductions from the currently open analytic high-\(\ell\) seam.  It is a conditional criterion, not an unconditional solution of \#203.
+\end{abstract}
+
+\section{The problem}
+
+For \((m,6)=1\), define
+\[
+A(m)=\{(k,\ell)\in\Z_{\ge0}^2:m2^k3^\ell+1\in\mathbb P\}.
+\]
+The desired negative resolution of Erd\H{o}s--Graham Problem \#203 is
+\[
+\forall m,\ (m,6)=1,\qquad |A(m)|=\infty.
+\]
+
+\section{Kummer vectors}
+
+Let \(\ell\) be prime and \(q\equiv1\pmod\ell\).  Choose a primitive root \(g_q\bmod q\), and write
+\[
+2=g_q^{u_q},\qquad 3=g_q^{v_q}.
+\]
+Define
+\[
+x_\ell(q)=(u_q,v_q)\in\F_\ell^2.
+\]
+
+For \((r,s)\in\F_\ell^2\), define the Kummer character condition
+\[
+r u_q+s v_q\equiv0\pmod\ell,
+\]
+equivalently
+\[
+2^r3^s\in(\F_q^*)^\ell.
+\]
+
+\section{Prime Hecke non-concentration}
+
+\begin{hypothesis}[PHNC]\label{H:phnc}
+For every fixed \(B>0\), there exists \(C=C(B)>0\) such that, for every prime
+\[
+\ell\le(\log Q)^B
+\]
+and every nonzero \((r,s)\in\F_\ell^2\),
+\[
+\#\{q\le Q:q\equiv1\bmod\ell,\ 2^r3^s\in(\F_q^*)^\ell\}
+\le
+(1-\ell^{-C})\pi(Q;\ell,1)
+\]
+for all sufficiently large \(Q\).
+\end{hypothesis}
+
+\begin{remark}
+PHNC is a non-concentration statement, not an equidistribution statement.  Equidistribution would predict relative density \(1/\ell\).  PHNC only forbids relative density \(1-o(\ell^{-C})\).
+\end{remark}
+
+\section{Kummer-BV criterion}
+
+A stronger but more analytic form is a Kummer Bombieri--Vinogradov type variance theorem.
+
+\begin{hypothesis}[Kummer-BV]\label{H:kbv}
+For every \(A,B>0\), a suitable prime weight \(\omega_q\), and all \(Q\),
+\[
+\sum_{\ell\le(\log Q)^B}\ell^{\alpha-2}
+\sum_{(r,s)\ne(0,0)}
+\left|
+\sum_{\substack{q\le Q\\ q\equiv1\bmod\ell}}
+\omega_q e_\ell(r\log_q2+s\log_q3)
+\right|^2
+\ll_A(\log Q)^{-A}.
+\]
+\end{hypothesis}
+
+\begin{remark}
+The precise weight and exponent \(\alpha\) must be matched to the sieve application.  This draft records the structural role of the criterion.
+\end{remark}
+
+\section{PHNC to smoothing}
+
+\begin{hypothesis}[Random-walk smoothing bridge]\label{H:krws}
+PHNC implies a polynomial spectral gap for the Kummer-vector measures \(x_\ell(q)\), and after sufficiently many convolutions yields collision probability
+\[
+\ell^{-2}+O_A((\log Q)^{-A})
+\]
+uniformly in the required \(\ell\)-range.
+\end{hypothesis}
+
+\begin{remark}
+This finite-field smoothing bridge is an explicit auxiliary lemma to prove.  One possible formulation is: if a measure on \(\F_\ell^2\) assigns at most \(1-\delta\) mass to every hyperplane, then its nontrivial Fourier coefficients are bounded away from \(1\) by a polynomial in \(\delta\), possibly under an anti-atom condition.
+\end{remark}
+
+\section{Conditional closure theorem}
+
+\begin{theorem}[Conditional Erd\H{o}s--Graham \#203 criterion]\label{T:conditional}
+Assume PHNC together with the random-walk smoothing bridge and the Kummer-BV-to-sieve implication.  Then for every \(m\in\Z_{>0}\) with \((m,6)=1\),
+\[
+|A(m)|=\infty.
+\]
+\end{theorem}
+
+\begin{proof}[Proof architecture]
+The implication chain is
+\[
+\mathrm{PHNC}
+\Rightarrow
+\mathrm{KRWS}
+\Rightarrow
+\mathrm{Kummer\ residue\ collision\ control}
+\Rightarrow
+\mathrm{rank\text{-}two\ Hecke\ large\ sieve}
+\Rightarrow
+\mathrm{Kummer\text{-}BV}
+\Rightarrow
+\mathrm{BVK\ sieve}
+\Rightarrow
+\mathrm{NEG\text{-}203}.
+\]
+The first arrow is Hypothesis \ref{H:krws}.  The Kummer residue collision control converts smoothed vector distribution into pair-collision bounds for the projective slopes.  The rank-two Hecke large sieve converts those collision bounds into the Kummer-BV variance estimate.  The BVK sieve then supplies infinitely many primes of the form \(m2^k3^\ell+1\).  Each arrow must be formalized as a separate proposition in a complete conditional paper.
+\end{proof}
+
+\section{Low-\(\ell\) range}
+
+For a fixed nonzero \((r,s)\), let
+\[
+K_\ell=\Q(\zeta_\ell),
+\qquad
+L_{\ell,r,s}=K_\ell((2^r3^s)^{1/\ell}).
+\]
+By valuation at primes over \(2\) and \(3\), \(2^r3^s\) is not an \(\ell\)-th power in \(K_\ell\) when \((r,s)\ne0\).  Thus
+\[
+[L_{\ell,r,s}:K_\ell]=\ell.
+\]
+Effective Chebotarev/log-free Hecke estimates give PHNC in ranges where the field/conductor parameter is sufficiently small relative to \(Q\), heuristically
+\[
+\ell\log\ell\ll\log Q.
+\]
+A safe statement should cite the exact effective theorem and its field-invariant dependence.
+
+\section{The high-\(\ell\) seam}
+
+The open seam is
+\[
+(\log Q)^{1-\varepsilon}<\ell\le(\log Q)^B.
+\]
+Fixed-field ineffective Chebotarev is not enough to prove PHNC uniformly in this growing family.  The required theorem is the following.
+
+\begin{problem}[Uniform fixed-radical Kummer non-concentration]
+For every \(B>0\), prove that there exists \(C=C(B)>0\) such that PHNC holds for all
+\[
+\ell\le(\log Q)^B
+\]
+and all nonzero \((r,s)\in\F_\ell^2\).
+\end{problem}
+
+\section{GRH conditional variant}
+
+\begin{hypothesis}[Kummer GRH]
+Assume GRH for the Hecke/Artin \(L\)-functions attached to the fields
+\[
+\Q(\zeta_\ell,(2^r3^s)^{1/\ell})
+\]
+uniformly for \(\ell\le(\log Q)^B\) and nonzero \((r,s)\).
+\end{hypothesis}
+
+\begin{corollary}[GRH-conditional route]
+Under a sufficiently uniform Kummer-GRH Chebotarev estimate, the PHNC criterion holds, and hence Theorem \ref{T:conditional} applies.
+\end{corollary}
+
+\begin{proof}
+Uniform GRH Chebotarev gives strong splitting estimates in each cyclic Kummer layer.  These imply non-concentration at the identity value.  The conditional closure theorem then applies.
+\end{proof}
+
+\section{Conclusion}
+
+This paper identifies a precise analytic target.  It does not claim that the target is currently proved in the high-\(\ell\) seam.  Its value is to make the route to \#203 exact.
+
+\bibliographystyle{alpha}
+\begin{thebibliography}{9}
+
+\bibitem{LO}
+J. C. Lagarias and A. M. Odlyzko.
+\newblock Effective versions of the Chebotarev density theorem.
+\newblock \emph{Algebraic Number Fields}, 1977.
+
+\bibitem{TZ}
+J. Thorner and A. Zaman.
+\newblock A unified and improved Chebotarev density theorem.
+\newblock \emph{Algebra \& Number Theory}, 13(5):1039--1068, 2019.
+
+\bibitem{Washington}
+L. Washington.
+\newblock \emph{Introduction to Cyclotomic Fields}.
+\newblock Springer.
+
+\end{thebibliography}
+
+\end{document}

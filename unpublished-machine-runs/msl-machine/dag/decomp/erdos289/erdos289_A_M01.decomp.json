@@ -1,0 +1,328 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos289",
+  "generated_utc": "2026-09-02T15:06:02Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos289:A:M01",
+    "statement": "a construction scheme valid for every sufficiently large k",
+    "statement_sha256": "a738afa311209d55e41fd483574bb14c94db03e1c57cb00c66c10afdf4a267ed",
+    "kind": "MUST_DETERMINE",
+    "binding": "VERBATIM",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "Erdos problem 289 (erdosproblems.com/289, OPEN): Is it true that, for all sufficiently large k, there exist finite intervals I_1, ..., I_k of consecutive integers in N, pairwise distinct, not overlapping or adjacent, with |I_i| >= 2 for 1 <= i <= k, such that 1 = sum over i of sum over n in I_i of 1/n?",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos289-campaign-001/contract.json",
+    "sha256": "300c94a111d4ff43771f4872392d304ec72703ec9550e1ea1a867442faee2e7f"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos289:A:M01",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "1896efa3f25c4eb9524c21d58df34dd8cd12478bc5505eaf9592f6dce5e3ed64",
+    "prompt_chars": 9506,
+    "response_sha256": "dde2554374ef53c509a457c2a46d8b88ec586479992f22374fa0976b337a5014",
+    "usage": {
+      "prompt_tokens": 3235,
+      "completion_tokens": 4535,
+      "total_tokens": 7770,
+      "cost": 0.00275275,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00275275,
+        "upstream_inference_prompt_cost": 0.00048525,
+        "upstream_inference_completions_cost": 0.0022675
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 3810,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.00275275,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 77.94,
+    "utc": "2026-09-02T15:01:04Z"
+  },
+  "children": [
+    {
+      "id": "erdos289:A:M01#D1",
+      "statement": "2 ≤ n → ((1 : ℚ) / n = (1 : ℚ) / (n + 1) + (1 : ℚ) / (n * (n + 1)))",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos289",
+      "decomposed_from": "erdos289:A:M01",
+      "imports": "Mathlib",
+      "definitions": "-- campaign vocabulary, already kernel-checked (msl_decompose)\ndef runSum (a b : ℕ) : ℚ := ∑ n ∈ Icc a b, (1 : ℚ) / n\n\ndef runProd (a b : ℕ) : ℕ := ∏ n ∈ Icc a b, n\n\ndef runNum (a b : ℕ) : ℕ := ∑ n ∈ Icc a b, runProd a b / n\n\n-- proposed definitions\n",
+      "type_context": "Mathlib\n-- campaign vocabulary, already kernel-checked (msl_decompose)\ndef runSum (a b : ℕ) : ℚ := ∑ n ∈ Icc a b, (1 : ℚ) / n\n\ndef runProd (a b : ℕ) : ℕ := ∏ n ∈ Icc a b, n\n\ndef runNum (a b : ℕ) : ℕ := ∑ n ∈ Icc a b, runProd a b / n\n\n-- proposed definitions",
+      "lean_binders": [
+        "(n : Nat)"
+      ],
+      "lean_theorem_name": "msl_erdos289_a_m01_c1",
+      "reading": "The splitting identity 1/n = 1/(n+1) + 1/(n(n+1)) in ℚ, the engine for growing the number of runs by one.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos289/receipts/erdos289_A_M01_D1.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos289/lean/erdos289_A_M01_D1.lean",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset\n\n-- campaign vocabulary, already kernel-checked (msl_decompose)\ndef runSum (a b : ℕ) : ℚ := ∑ n ∈ Icc a b, (1 : ℚ) / n\n\ndef runProd (a b : ℕ) : ℕ := ∏ n ∈ Icc a b, n\n\ndef runNum (a b : ℕ) : ℕ := ∑ n ∈ Icc a b, runProd a b / n\n\n-- proposed definitions\n\n",
+      "lean_statement_line": "theorem msl_erdos289_a_m01_c1 (n : Nat) : 2 ≤ n → ((1 : ℚ) / n = (1 : ℚ) / (n + 1) + (1 : ℚ) / (n * (n + 1))) := by sorry",
+      "lean_file_sha256": "ee065ce937788c106357a99cca191f35fce3444126d4a13923205c63e7edd441",
+      "lean_file_contract": "compile `lean_preamble + lean_statement_line + \"\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text the kernel elaborated. Do NOT rebuild a header from `definitions`: the imports, the opens and `set_option autoImplicit false` are part of what was compiled. BACKFILLED from the compiled .lean, not re-synthesised. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block>` (+ lean_trailer if present). THE BINDERS LIVE INSIDE lean_signature -- restating the theorem from `statement` alone drops them and proves a different thing.",
+      "lean_signature": "theorem msl_erdos289_a_m01_c1 (n : Nat) : 2 ≤ n → ((1 : ℚ) / n = (1 : ℚ) / (n + 1) + (1 : ℚ) / (n * (n + 1)))"
+    },
+    {
+      "id": "erdos289:A:M01#D2",
+      "statement": "2 ≤ n → (n + 1) + 1 < n * (n + 1)",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos289",
+      "decomposed_from": "erdos289:A:M01",
+      "imports": "Mathlib",
+      "definitions": "-- campaign vocabulary, already kernel-checked (msl_decompose)\ndef runSum (a b : ℕ) : ℚ := ∑ n ∈ Icc a b, (1 : ℚ) / n\n\ndef runProd (a b : ℕ) : ℕ := ∏ n ∈ Icc a b, n\n\ndef runNum (a b : ℕ) : ℕ := ∑ n ∈ Icc a b, runProd a b / n\n\n-- proposed definitions\n",
+      "type_context": "Mathlib\n-- campaign vocabulary, already kernel-checked (msl_decompose)\ndef runSum (a b : ℕ) : ℚ := ∑ n ∈ Icc a b, (1 : ℚ) / n\n\ndef runProd (a b : ℕ) : ℕ := ∏ n ∈ Icc a b, n\n\ndef runNum (a b : ℕ) : ℕ := ∑ n ∈ Icc a b, runProd a b / n\n\n-- proposed definitions",
+      "lean_binders": [
+        "(n : Nat)"
+      ],
+      "lean_theorem_name": "msl_erdos289_a_m01_c2",
+      "reading": "The two pieces [n+1] and [n(n+1)] produced by the split are ordered and non-adjacent (strictly more than one integer apart).",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos289/receipts/erdos289_A_M01_D2.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos289/lean/erdos289_A_M01_D2.lean",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset\n\n-- campaign vocabulary, already kernel-checked (msl_decompose)\ndef runSum (a b : ℕ) : ℚ := ∑ n ∈ Icc a b, (1 : ℚ) / n\n\ndef runProd (a b : ℕ) : ℕ := ∏ n ∈ Icc a b, n\n\ndef runNum (a b : ℕ) : ℕ := ∑ n ∈ Icc a b, runProd a b / n\n\n-- proposed definitions\n\n",
+      "lean_statement_line": "theorem msl_erdos289_a_m01_c2 (n : Nat) : 2 ≤ n → (n + 1) + 1 < n * (n + 1) := by sorry",
+      "lean_file_sha256": "e4503186644fa191f7b6e88fccc38209f5bdace142a30264709acb0bfbbe3381",
+      "lean_file_contract": "compile `lean_preamble + lean_statement_line + \"\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text the kernel elaborated. Do NOT rebuild a header from `definitions`: the imports, the opens and `set_option autoImplicit false` are part of what was compiled. BACKFILLED from the compiled .lean, not re-synthesised. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block>` (+ lean_trailer if present). THE BINDERS LIVE INSIDE lean_signature -- restating the theorem from `statement` alone drops them and proves a different thing.",
+      "lean_signature": "theorem msl_erdos289_a_m01_c2 (n : Nat) : 2 ≤ n → (n + 1) + 1 < n * (n + 1)"
+    },
+    {
+      "id": "erdos289:A:M01#D3",
+      "statement": "∀ᶠ k : ℕ in Filter.atTop, ∃ J : Fin k → ℕ × ℕ, (∀ (i : Fin k), 5 ≤ (J i).1 ∧ (J i).1 < (J i).2) ∧ (∀ (i j : Fin k), i ≠ j → (J i).2 < (J j).1 ∨ (J j).2 < (J i).1) ∧ ∑ i, ∑ n ∈ Icc (J i).1 (J i).2, ((n : ℚ)⁻¹) = (1 : ℚ) / 6",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos289",
+      "decomposed_from": "erdos289:A:M01",
+      "imports": "Mathlib",
+      "definitions": "-- campaign vocabulary, already kernel-checked (msl_decompose)\ndef runSum (a b : ℕ) : ℚ := ∑ n ∈ Icc a b, (1 : ℚ) / n\n\ndef runProd (a b : ℕ) : ℕ := ∏ n ∈ Icc a b, n\n\ndef runNum (a b : ℕ) : ℕ := ∑ n ∈ Icc a b, runProd a b / n\n\n-- proposed definitions\n",
+      "type_context": "Mathlib\n-- campaign vocabulary, already kernel-checked (msl_decompose)\ndef runSum (a b : ℕ) : ℚ := ∑ n ∈ Icc a b, (1 : ℚ) / n\n\ndef runProd (a b : ℕ) : ℕ := ∏ n ∈ Icc a b, n\n\ndef runNum (a b : ℕ) : ℕ := ∑ n ∈ Icc a b, runProd a b / n\n\n-- proposed definitions",
+      "lean_binders": [],
+      "lean_theorem_name": "msl_erdos289_a_m01_c3",
+      "reading": "For all sufficiently large k there are k pairwise non-adjacent runs, each starting at 5 or more with length at least 2, whose reciprocal sums total exactly 1/6.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos289/receipts/erdos289_A_M01_D3.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos289/lean/erdos289_A_M01_D3.lean",
+      "leaf_tactic_hint": "interval_cases",
+      "hint_source": "bounded_forall_over_Q",
+      "leaf_tactic_sketch": "intro a; interval_cases a <;> norm_num",
+      "leaf_tactic_alternatives": [
+        "norm_num",
+        "native_decide",
+        "bounded_search"
+      ],
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset\n\n-- campaign vocabulary, already kernel-checked (msl_decompose)\ndef runSum (a b : ℕ) : ℚ := ∑ n ∈ Icc a b, (1 : ℚ) / n\n\ndef runProd (a b : ℕ) : ℕ := ∏ n ∈ Icc a b, n\n\ndef runNum (a b : ℕ) : ℕ := ∑ n ∈ Icc a b, runProd a b / n\n\n-- proposed definitions\n\n",
+      "lean_statement_line": "theorem msl_erdos289_a_m01_c3 : ∀ᶠ k : ℕ in Filter.atTop, ∃ J : Fin k → ℕ × ℕ, (∀ (i : Fin k), 5 ≤ (J i).1 ∧ (J i).1 < (J i).2) ∧ (∀ (i j : Fin k), i ≠ j → (J i).2 < (J j).1 ∨ (J j).2 < (J i).1) ∧ ∑ i, ∑ n ∈ Icc (J i).1 (J i).2, ((n : ℚ)⁻¹) = (1 : ℚ) / 6 := by sorry",
+      "lean_file_sha256": "cbfae4f3d79fba853a6d7383f2e6a7e830391751a4d54e158fe3e9a74b737a82",
+      "lean_file_contract": "compile `lean_preamble + lean_statement_line + \"\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text the kernel elaborated. Do NOT rebuild a header from `definitions`: the imports, the opens and `set_option autoImplicit false` are part of what was compiled. BACKFILLED from the compiled .lean, not re-synthesised. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block>` (+ lean_trailer if present). THE BINDERS LIVE INSIDE lean_signature -- restating the theorem from `statement` alone drops them and proves a different thing.",
+      "lean_signature": "theorem msl_erdos289_a_m01_c3 : ∀ᶠ k : ℕ in Filter.atTop, ∃ J : Fin k → ℕ × ℕ, (∀ (i : Fin k), 5 ≤ (J i).1 ∧ (J i).1 < (J i).2) ∧ (∀ (i j : Fin k), i ≠ j → (J i).2 < (J j).1 ∨ (J j).2 < (J i).1) ∧ ∑ i, ∑ n ∈ Icc (J i).1 (J i).2, ((n : ℚ)⁻¹) = (1 : ℚ) / 6"
+    }
+  ],
+  "composition": {
+    "id": "erdos289:A:M01#COMPOSE",
+    "statement": "((∀ (n : Nat), 2 ≤ n → ((1 : ℚ) / n = (1 : ℚ) / (n + 1) + (1 : ℚ) / (n * (n + 1)))) ∧ (∀ (n : Nat), 2 ≤ n → (n + 1) + 1 < n * (n + 1)) ∧ (∀ᶠ k : ℕ in Filter.atTop, ∃ J : Fin k → ℕ × ℕ, (∀ (i : Fin k), 5 ≤ (J i).1 ∧ (J i).1 < (J i).2) ∧ (∀ (i j : Fin k), i ≠ j → (J i).2 < (J j).1 ∨ (J j).2 < (J i).1) ∧ ∑ i, ∑ n ∈ Icc (J i).1 (J i).2, ((n : ℚ)⁻¹) = (1 : ℚ) / 6)) → (∀ᶠ k : ℕ in Filter.atTop, ∃ I : Fin k → ℕ × ℕ, (∀ (i : Fin k), (I i).1 < (I i).2) ∧ (∀ (i j : Fin k), i ≠ j → (I i).2 < (I j).1 ∨ (I j).2 < (I i).1) ∧ ∑ i, ∑ n ∈ Icc (I i).1 (I i).2, ((n : ℚ)⁻¹) = (1 : ℚ))",
+    "kind": "COMPOSITION",
+    "depends_on": [
+      "erdos289:A:M01#D1",
+      "erdos289:A:M01#D2",
+      "erdos289:A:M01#D3"
+    ],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "OPEN",
+    "problem": "erdos289",
+    "decomposed_from": "erdos289:A:M01",
+    "imports": "Mathlib",
+    "definitions": "-- campaign vocabulary, already kernel-checked (msl_decompose)\ndef runSum (a b : ℕ) : ℚ := ∑ n ∈ Icc a b, (1 : ℚ) / n\n\ndef runProd (a b : ℕ) : ℕ := ∏ n ∈ Icc a b, n\n\ndef runNum (a b : ℕ) : ℕ := ∑ n ∈ Icc a b, runProd a b / n\n\n-- proposed definitions\n",
+    "type_context": "Mathlib\n-- campaign vocabulary, already kernel-checked (msl_decompose)\ndef runSum (a b : ℕ) : ℚ := ∑ n ∈ Icc a b, (1 : ℚ) / n\n\ndef runProd (a b : ℕ) : ℕ := ∏ n ∈ Icc a b, n\n\ndef runNum (a b : ℕ) : ℕ := ∑ n ∈ Icc a b, runProd a b / n\n\n-- proposed definitions",
+    "parent_typed": {
+      "statement": "∀ᶠ k : ℕ in Filter.atTop, ∃ I : Fin k → ℕ × ℕ, (∀ (i : Fin k), (I i).1 < (I i).2) ∧ (∀ (i j : Fin k), i ≠ j → (I i).2 < (I j).1 ∨ (I j).2 < (I i).1) ∧ ∑ i, ∑ n ∈ Icc (I i).1 (I i).2, ((n : ℚ)⁻¹) = (1 : ℚ)",
+      "binders": [],
+      "reading": "For all sufficiently large k there are k pairwise distinct, pairwise non-overlapping and non-adjacent finite intervals of consecutive integers, each of length at least 2, whose reciprocal sums add up to exactly 1.",
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": null,
+        "prose_contract_root_report": {
+          "ok": false,
+          "missing": [
+            "domain bound '1 i'"
+          ],
+          "reason": "inherited type ascription or domain bound dropped",
+          "blocking": false,
+          "why_not_blocking": "tokens mined from ENGLISH prose are not Lean tokens; `Fin k` carries `1 <= i <= k` structurally"
+        }
+      }
+    },
+    "composition_claim": {
+      "text": "By the kernel-checked head reduction, any admissible decomposition of 1 containing 2 forces the run containing 2 to be exactly [2,3] with the remaining runs summing to exactly 1/6 and starting at 5 or more; hence the parent is equivalent to tail_runs_exist. split_identity and split_separation supply the concrete refinement step (replacing a run by two separated runs preserving the reciprocal sum) that a construction of tail_runs_exist for arbitrarily large k must rely on, so children 1–3 together determine the parent.",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "COMPOSITION_OPEN",
+      "rc": 1,
+      "kernel_error": "/root/peer/decomp/b20260902_080540_3/erdos289_A_M01_comp.lean:18:616: error: unsolved goals",
+      "counts_toward_parent": 0
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "source": "oracle/evidence/msl-machine/dag/decomp/erdos289/lean/erdos289_A_M01_COMPOSE.lean",
+    "lean_theorem_name": "msl_erdos289_a_m01_composition",
+    "composition_receipt": "oracle/evidence/msl-machine/dag/decomp/erdos289/receipts/erdos289_A_M01_COMPOSE.composition.json",
+    "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxHeartbeats 400000\nset_option maxRecDepth 4000\n\nopen Finset\n\n-- campaign vocabulary, already kernel-checked (msl_decompose)\ndef runSum (a b : ℕ) : ℚ := ∑ n ∈ Icc a b, (1 : ℚ) / n\n\ndef runProd (a b : ℕ) : ℕ := ∏ n ∈ Icc a b, n\n\ndef runNum (a b : ℕ) : ℕ := ∑ n ∈ Icc a b, runProd a b / n\n\n-- proposed definitions\n\n",
+    "lean_statement_line": "theorem msl_erdos289_a_m01_composition : ((∀ (n : Nat), 2 ≤ n → ((1 : ℚ) / n = (1 : ℚ) / (n + 1) + (1 : ℚ) / (n * (n + 1)))) ∧ (∀ (n : Nat), 2 ≤ n → (n + 1) + 1 < n * (n + 1)) ∧ (∀ᶠ k : ℕ in Filter.atTop, ∃ J : Fin k → ℕ × ℕ, (∀ (i : Fin k), 5 ≤ (J i).1 ∧ (J i).1 < (J i).2) ∧ (∀ (i j : Fin k), i ≠ j → (J i).2 < (J j).1 ∨ (J j).2 < (J i).1) ∧ ∑ i, ∑ n ∈ Icc (J i).1 (J i).2, ((n : ℚ)⁻¹) = (1 : ℚ) / 6)) → (∀ᶠ k : ℕ in Filter.atTop, ∃ I : Fin k → ℕ × ℕ, (∀ (i : Fin k), (I i).1 < (I i).2) ∧ (∀ (i j : Fin k), i ≠ j → (I i).2 < (I j).1 ∨ (I j).2 < (I i).1) ∧ ∑ i, ∑ n ∈ Icc (I i).1 (I i).2, ((n : ℚ)⁻¹) = (1 : ℚ)) := by\n  first\n  | tauto\n  | (intro h; exact h.1)\n  | (intro h; simp_all)\n  | (intro h; omega)\n  | (intro h; norm_num at h ⊢ <;> tauto)\n  | aesop\n  | decide",
+    "lean_trailer": "\n#print axioms msl_erdos289_a_m01_composition\n",
+    "lean_file_sha256": "54d02f10214946a93748e934baaae7113dc86f792abef173d21ae986e3fb3474",
+    "lean_file_contract": "compile `lean_preamble + lean_statement_line + \"\n\" + lean_trailer` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text the kernel elaborated. Do NOT rebuild a header from `definitions`: the imports, the opens and `set_option autoImplicit false` are part of what was compiled. BACKFILLED from the compiled .lean, not re-synthesised. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block>` (+ lean_trailer if present). THE BINDERS LIVE INSIDE lean_signature -- restating the theorem from `statement` alone drops them and proves a different thing.",
+    "lean_signature": "theorem msl_erdos289_a_m01_composition : ((∀ (n : Nat), 2 ≤ n → ((1 : ℚ) / n = (1 : ℚ) / (n + 1) + (1 : ℚ) / (n * (n + 1)))) ∧ (∀ (n : Nat), 2 ≤ n → (n + 1) + 1 < n * (n + 1)) ∧ (∀ᶠ k : ℕ in Filter.atTop, ∃ J : Fin k → ℕ × ℕ, (∀ (i : Fin k), 5 ≤ (J i).1 ∧ (J i).1 < (J i).2) ∧ (∀ (i j : Fin k), i ≠ j → (J i).2 < (J j).1 ∨ (J j).2 < (J i).1) ∧ ∑ i, ∑ n ∈ Icc (J i).1 (J i).2, ((n : ℚ)⁻¹) = (1 : ℚ) / 6)) → (∀ᶠ k : ℕ in Filter.atTop, ∃ I : Fin k → ℕ × ℕ, (∀ (i : Fin k), (I i).1 < (I i).2) ∧ (∀ (i j : Fin k), i ≠ j → (I i).2 < (I j).1 ∨ (I j).2 < (I i).1) ∧ ∑ i, ∑ n ∈ Icc (I i).1 (I i).2, ((n : ℚ)⁻¹) = (1 : ℚ))"
+  },
+  "parent_new_depends_on": [
+    "erdos289:A:M01#COMPOSE"
+  ],
+  "rejected": [],
+  "counts": {
+    "proposed": 3,
+    "elaborated": 3,
+    "bound": 3,
+    "non_circular": 3,
+    "non_trivial": 3,
+    "surviving": 3,
+    "composition_kernel_checked": 0,
+    "fireable_decidable_leaves": 1,
+    "counts_toward_parent": 0,
+    "counts_toward_parent_note": "composition OPEN: these children contribute ZERO toward the parent until it closes; they remain formal leaves for the rung loop"
+  },
+  "definitions": {
+    "block": "-- campaign vocabulary, already kernel-checked (msl_decompose)\ndef runSum (a b : ℕ) : ℚ := ∑ n ∈ Icc a b, (1 : ℚ) / n\n\ndef runProd (a b : ℕ) : ℕ := ∏ n ∈ Icc a b, n\n\ndef runNum (a b : ℕ) : ℕ := ∑ n ∈ Icc a b, runProd a b / n\n\n-- proposed definitions\n",
+    "gate0": {
+      "verdict": "DEFS_ELABORATE"
+    },
+    "campaign_vocabulary_prepended": [
+      "runSum",
+      "runProd",
+      "runNum"
+    ],
+    "normalization": {
+      "body": "-- campaign vocabulary, already kernel-checked (msl_decompose)\ndef runSum (a b : ℕ) : ℚ := ∑ n ∈ Icc a b, (1 : ℚ) / n\n\ndef runProd (a b : ℕ) : ℕ := ∏ n ∈ Icc a b, n\n\ndef runNum (a b : ℕ) : ℕ := ∑ n ∈ Icc a b, runProd a b / n\n\n-- proposed definitions",
+      "opens": [],
+      "dropped_imports": []
+    }
+  }
+}

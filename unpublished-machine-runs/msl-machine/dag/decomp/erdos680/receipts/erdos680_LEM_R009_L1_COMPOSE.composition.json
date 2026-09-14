@@ -1,0 +1,22 @@
+{
+  "kind": "COMPOSITION_KERNEL_CHECK",
+  "node": "erdos680:LEM:R009:L1#COMPOSE",
+  "verdict": {
+    "verdict": "COMPOSITION_OPEN",
+    "rc": 1,
+    "kernel_error": "/root/peer/decomp/b20260902_100442_3/erdos680_LEM_R009_L1_comp.lean:11:780: error: unsolved goals",
+    "counts_toward_parent": 0
+  },
+  "lean_source": "oracle/evidence/msl-machine/dag/decomp/erdos680/lean/erdos680_LEM_R009_L1_COMPOSE.lean",
+  "ladder": [
+    "tauto",
+    "(intro h; exact h.1)",
+    "(intro h; simp_all)",
+    "(intro h; omega)",
+    "(intro h; norm_num at h ⊢ <;> tauto)",
+    "aesop",
+    "decide"
+  ],
+  "kernel_log": "/root/peer/decomp/b20260902_100442_3/erdos680_LEM_R009_L1_comp.lean:11:780: error: unsolved goals\nh :\n  (∀ (n k : ℕ), Nat.Prime (n + k) → k ^ 2 + 1 < n + k → k ^ 2 + 1 < leastPrimeFactor (n + k)) ∧\n    (∀ (n : ℕ), 2 ≤ n → Even n → 2 < leastPrimeFactor (n + 1)) ∧\n      (∀ (n : ℕ), 2 ≤ n → Odd n → ¬3 ∣ n + 2 → ¬5 ∣ n + 2 → 5 < leastPrimeFactor (n + 2)) ∧\n        ∃ N, ∀ (n : ℕ), N ≤ n → Odd n → 3 ∣ n + 2 ∨ 5 ∣ n + 2 → ∃ k, 0 < k ∧ Nat.Prime (n + k) ∧ k ^ 2 + 1 < n + k\n⊢ ∃ N, ∀ (n : ℕ), N ≤ n → ∃ k, 0 < k ∧ k ^ 2 + 1 < leastPrimeFactor (n + k)\n'msl_erdos680_lem_r009_l1_composition' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]",
+  "utc": "2026-09-02T17:04:53Z"
+}

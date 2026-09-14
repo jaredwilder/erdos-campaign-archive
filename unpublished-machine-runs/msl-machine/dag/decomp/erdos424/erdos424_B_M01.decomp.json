@@ -1,0 +1,176 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos424",
+  "generated_utc": "2026-09-02T16:24:19Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos424:B:M01",
+    "statement": "Resolve the answer value to false by proving the literal negation of HasPosDensity for the same closure set.",
+    "statement_sha256": "c253e9040f5babdaf85b249965e7077cb8fb2b6268180107e585ad0680dd2566",
+    "kind": "MUST_DETERMINE",
+    "binding": "VERBATIM",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "Let $a_1=2$ and $a_2=3$ and continue the sequence by appending to $a_1,\\ldots,a_n$ all possible values of $a_ia_j-1$ with $i\\neq j$. Is it true that the set of integers which eventually appear has positive density?",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos424-campaign-001/contract.json",
+    "sha256": "aef3c850ef872efd4454445327a8d0a982fc9c740db2bc72af3a7a110a94a3b2"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos424:B:M01",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "4254a11120cb65a97bc512f7349df1dfa4526ad16a87d4e3742a2edfd5be216b",
+    "prompt_chars": 4369,
+    "response_sha256": "2644654bc74a96a83302125d9388911b898319801ff8510f2afc3da5ac91442a",
+    "usage": {
+      "prompt_tokens": 1144,
+      "completion_tokens": 3593,
+      "total_tokens": 4737,
+      "cost": 0.00098405,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00098405,
+        "upstream_inference_prompt_cost": 8.58e-05,
+        "upstream_inference_completions_cost": 0.00089825
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 2818,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.00098405,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 93.96,
+    "utc": "2026-09-02T16:23:46Z"
+  },
+  "children": [],
+  "composition": {
+    "id": "erdos424:B:M01#COMPOSE",
+    "statement": "(composition not constructed)",
+    "kind": "COMPOSITION",
+    "depends_on": [],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "OPEN",
+    "problem": "erdos424",
+    "decomposed_from": "erdos424:B:M01",
+    "imports": "Mathlib",
+    "definitions": "def genNext (s : Finset Nat) : Finset Nat :=\n  s ∪ Finset.image (fun p : Nat × Nat => p.1 * p.2 - 1)\n      (Finset.filter (fun p : Nat × Nat => p.1 ≠ p.2) (s ×ˢ s))\n\ndef genSeq : Nat → Finset Nat\n  | 0 => {2, 3}\n  | (n + 1) => genNext (genSeq n)\n\ndef generatedSet : Set Nat := ⋃ (n : Nat), (genSeq n : Set Nat)\n\ndef countIn (S : Set Nat) (n : Nat) : Nat :=\n  (Finset.filter (fun m : Nat => m ∈ S) (Finset.Icc 1 n)).card\n\ndef HasPosDensity (S : Set Nat) : Prop :=\n  ∃ (c : Q), 0 < c ∧ ∃ (N : Nat), ∀ (n : Nat), N ≤ n → (c : Q) * (n : Q) ≤ (countIn S n : Q)",
+    "type_context": "Mathlib\ndef genNext (s : Finset Nat) : Finset Nat :=\n  s ∪ Finset.image (fun p : Nat × Nat => p.1 * p.2 - 1)\n      (Finset.filter (fun p : Nat × Nat => p.1 ≠ p.2) (s ×ˢ s))\n\ndef genSeq : Nat → Finset Nat\n  | 0 => {2, 3}\n  | (n + 1) => genNext (genSeq n)\n\ndef generatedSet : Set Nat := ⋃ (n : Nat), (genSeq n : Set Nat)\n\ndef countIn (S : Set Nat) (n : Nat) : Nat :=\n  (Finset.filter (fun m : Nat => m ∈ S) (Finset.Icc 1 n)).card\n\ndef HasPosDensity (S : Set Nat) : Prop :=\n  ∃ (c : Q), 0 < c ∧ ∃ (N : Nat), ∀ (n : Nat), N ≤ n → (c : Q) * (n : Q) ≤ (countIn S n : Q)",
+    "parent_typed": {
+      "statement": "¬ HasPosDensity generatedSet",
+      "binders": [],
+      "reading": "The closure set generated from 2, 3 by appending a·b−1 (a ≠ b) does not have positive asymptotic density.",
+      "elaboration": {
+        "verdict": "DEFS_DO_NOT_ELABORATE",
+        "kernel_error": "/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:19:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun m => m ∈ S\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:9: error(lean.unknownIdentifier): Unknown identifier `Q`\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:60: error(lean.unknownIdentifier): Unknown identifier `Q`\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:70: error(lean.unknownIdentifier): Unknown identifier `Q`\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:90: error(lean.unknownIdentifier): Unknown identifier `Q`"
+      },
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": null,
+        "prose_contract_root_report": {
+          "ok": true,
+          "missing": [],
+          "reason": "",
+          "blocking": false,
+          "why_not_blocking": "tokens mined from ENGLISH prose are not Lean tokens; `Fin k` carries `1 <= i <= k` structurally"
+        }
+      }
+    },
+    "composition_claim": {
+      "text": "Children 2 and 3 convert each dip of child 1 (count ≤ n/k) into count < c·n for an arbitrary fixed c > 0, at indices n arbitrarily far out (child 1's ∀ N). Hence for every c > 0 and every N there is n ≥ N with count < c·n, which refutes the defining ∃ c, ∃ N, ∀ n of HasPosDensity generatedSet, giving the parent ¬ HasPosDensity generatedSet.",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "COMPOSITION_NOT_RUN",
+      "counts_toward_parent": 0,
+      "reason": "no surviving child"
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "composition_receipt": "oracle/evidence/msl-machine/dag/decomp/erdos424/receipts/erdos424_B_M01_COMPOSE.composition.json"
+  },
+  "parent_new_depends_on": [
+    "erdos424:B:M01#COMPOSE"
+  ],
+  "rejected": [
+    {
+      "proposed_index": 1,
+      "statement": "0 < k → ∃ (n : Nat), N ≤ n ∧ (countIn generatedSet n : Q) * (k : Q) ≤ (n : Q)",
+      "binders": [
+        "(k : Nat)",
+        "(N : Nat)"
+      ],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: /root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:19:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun m => m ∈ S\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:9: error(lean.unknownIdentifier): Unknown identifier `Q`\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:60: error(lean.unknownIdentifier): Unknown identifier `Q`\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:70: error(lean.unknownIdentifier): Unknown identifier `Q`\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:90: error(lean.unknownIdentifier): Unknown identifier `Q`",
+      "kernel_error": "/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:19:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun m => m ∈ S\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:9: error(lean.unknownIdentifier): Unknown identifier `Q`\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:60: error(lean.unknownIdentifier): Unknown identifier `Q`\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:70: error(lean.unknownIdentifier): Unknown identifier `Q`\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:90: error(lean.unknownIdentifier): Unknown identifier `Q`"
+    },
+    {
+      "proposed_index": 2,
+      "statement": "0 < c → ∃ (k : Nat), 0 < k ∧ (k : Q)⁻¹ ≤ c",
+      "binders": [
+        "(c : Q)"
+      ],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: /root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:19:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun m => m ∈ S\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:9: error(lean.unknownIdentifier): Unknown identifier `Q`\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:60: error(lean.unknownIdentifier): Unknown identifier `Q`\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:70: error(lean.unknownIdentifier): Unknown identifier `Q`\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:90: error(lean.unknownIdentifier): Unknown identifier `Q`",
+      "kernel_error": "/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:19:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun m => m ∈ S\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:9: error(lean.unknownIdentifier): Unknown identifier `Q`\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:60: error(lean.unknownIdentifier): Unknown identifier `Q`\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:70: error(lean.unknownIdentifier): Unknown identifier `Q`\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:90: error(lean.unknownIdentifier): Unknown identifier `Q`"
+    },
+    {
+      "proposed_index": 3,
+      "statement": "0 < k → (k : Q)⁻¹ ≤ c → 0 < n → (countIn generatedSet n : Q) * (k : Q) ≤ (n : Q) → (countIn generatedSet n : Q) < c * (n : Q)",
+      "binders": [
+        "(k : Nat)",
+        "(c : Q)",
+        "(n : Nat)"
+      ],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: /root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:19:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun m => m ∈ S\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:9: error(lean.unknownIdentifier): Unknown identifier `Q`\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:60: error(lean.unknownIdentifier): Unknown identifier `Q`\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:70: error(lean.unknownIdentifier): Unknown identifier `Q`\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:90: error(lean.unknownIdentifier): Unknown identifier `Q`",
+      "kernel_error": "/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:19:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun m => m ∈ S\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:9: error(lean.unknownIdentifier): Unknown identifier `Q`\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:60: error(lean.unknownIdentifier): Unknown identifier `Q`\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:70: error(lean.unknownIdentifier): Unknown identifier `Q`\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:90: error(lean.unknownIdentifier): Unknown identifier `Q`"
+    }
+  ],
+  "counts": {
+    "proposed": 3,
+    "elaborated": 0,
+    "bound": 0,
+    "non_circular": 0,
+    "non_trivial": 0,
+    "surviving": 0,
+    "composition_kernel_checked": 0,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 0,
+    "counts_toward_parent_note": "composition OPEN: these children contribute ZERO toward the parent until it closes; they remain formal leaves for the rung loop"
+  },
+  "definitions": {
+    "block": "def genNext (s : Finset Nat) : Finset Nat :=\n  s ∪ Finset.image (fun p : Nat × Nat => p.1 * p.2 - 1)\n      (Finset.filter (fun p : Nat × Nat => p.1 ≠ p.2) (s ×ˢ s))\n\ndef genSeq : Nat → Finset Nat\n  | 0 => {2, 3}\n  | (n + 1) => genNext (genSeq n)\n\ndef generatedSet : Set Nat := ⋃ (n : Nat), (genSeq n : Set Nat)\n\ndef countIn (S : Set Nat) (n : Nat) : Nat :=\n  (Finset.filter (fun m : Nat => m ∈ S) (Finset.Icc 1 n)).card\n\ndef HasPosDensity (S : Set Nat) : Prop :=\n  ∃ (c : Q), 0 < c ∧ ∃ (N : Nat), ∀ (n : Nat), N ≤ n → (c : Q) * (n : Q) ≤ (countIn S n : Q)",
+    "gate0": {
+      "verdict": "DEFS_DO_NOT_ELABORATE",
+      "kernel_error": "/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:19:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun m => m ∈ S\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:9: error(lean.unknownIdentifier): Unknown identifier `Q`\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:60: error(lean.unknownIdentifier): Unknown identifier `Q`\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:70: error(lean.unknownIdentifier): Unknown identifier `Q`\n/root/peer/decomp/b20260902_092346_1/erdos424_B_M01_defs.lean:22:90: error(lean.unknownIdentifier): Unknown identifier `Q`"
+    },
+    "campaign_vocabulary_prepended": [],
+    "normalization": {
+      "body": "def genNext (s : Finset Nat) : Finset Nat :=\n  s ∪ Finset.image (fun p : Nat × Nat => p.1 * p.2 - 1)\n      (Finset.filter (fun p : Nat × Nat => p.1 ≠ p.2) (s ×ˢ s))\n\ndef genSeq : Nat → Finset Nat\n  | 0 => {2, 3}\n  | (n + 1) => genNext (genSeq n)\n\ndef generatedSet : Set Nat := ⋃ (n : Nat), (genSeq n : Set Nat)\n\ndef countIn (S : Set Nat) (n : Nat) : Nat :=\n  (Finset.filter (fun m : Nat => m ∈ S) (Finset.Icc 1 n)).card\n\ndef HasPosDensity (S : Set Nat) : Prop :=\n  ∃ (c : Q), 0 < c ∧ ∃ (N : Nat), ∀ (n : Nat), N ≤ n → (c : Q) * (n : Q) ≤ (countIn S n : Q)",
+      "opens": [],
+      "dropped_imports": []
+    }
+  }
+}

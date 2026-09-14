@@ -1,0 +1,23 @@
+{"definitions": "",
+"candidates": [
+  {"name": "P'_closed",
+   "statement": "(2 ≤ n) → (n * (n + 1) : Nat) = (n + 2) + (n * n - 2)",
+   "kind": "closed_form",
+   "skeleton": "Base at n=2 gives 6 = 4 + 2; step rewrites n*(n+1) = n*n + n and uses the exact identity at the predecessor.",
+   "reading": "The gap in the target inequality is exactly n*n - 2, an equality with a live inductive step."},
+  {"name": "P'_invariant",
+   "statement": "(2 ≤ n) → ((n + 2 : Nat) < n * (n + 1) ∧ 4 ≤ n * n)",
+   "kind": "extra_invariant",
+   "skeleton": "Base n=2: 4 < 6 and 4 ≤ 4 by decide; step: from 4 ≤ n*n derive 4 ≤ (n+1)*(n+1), and push n+2 < n*(n+1) to n+3 < (n+1)*(n+2).",
+   "reading": "The target inequality conjoined with the invariant n*n ≥ 4 that pins n away from the degenerate small cases."},
+  {"name": "P'_bounded_all",
+   "statement": "∀ m : Nat, m ≤ n → (2 ≤ m) → (m + 2 : Nat) < m * (m + 1)",
+   "kind": "generalized_hypothesis",
+   "skeleton": "Base n=0 and n=1 are vacuously true; step instantiates the hypothesis at m = n+1 and at every smaller m it is already available, giving strong induction.",
+   "reading": "The inequality holds for every m up to n, so the induction hypothesis is available exactly where the step needs it."},
+  {"name": "P'_no_hyp",
+   "statement": "(n + 2 : Nat) ≤ n * (n + 1) ∨ n < 2",
+   "kind": "generalized_hypothesis",
+   "skeleton": "Base n=0,1: right disjunct by decide; step: when n+1 ≥ 2 then n ≥ 1, so 1 ≤ n and (n+2) ≤ n*(n+1) lifts to (n+3) ≤ (n+1)*(n+2) since n*(n+1) ≥ n+2 gives (n+1)*(n+2) = n*(n+1)+2n+2 ≥ n+2+2n+2 ≥ n+3.",
+   "reading": "The non-strict bound n+2 ≤ n*(n+1) holds for all n ≥ 2 with no hypothesis, removing the guard that blocked applying the hypothesis at the successor."}
+]}

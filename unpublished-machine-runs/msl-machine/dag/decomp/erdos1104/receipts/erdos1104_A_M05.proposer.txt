@@ -1,0 +1,31 @@
+{"definitions": "open Filter\n\ndef TriangleFree {α : Type*} (G : SimpleGraph α) : Prop :=\n  ∀ a b c : α, ¬ (G.Adj a b ∧ G.Adj b c ∧ G.Adj c a)\n\nnoncomputable def f (n : ℕ) : ℕ :=\n  sSup {k : ℕ | ∃ (G : SimpleGraph (Fin n)), TriangleFree G ∧ k = G.chromaticNumber}",
+
+  "parent_typed": {
+    "name": "erdos1104_A_M05",
+    "binders": [],
+    "statement": "∃ (c₁ c₂ : ℝ), 0 < c₁ ∧ c₁ ≤ 1 ∧ 2 ≤ c₂ ∧ ∀ᶠ (n : ℕ) in Filter.atTop,\n  ((c₁ : ℝ) * Real.sqrt ((n : ℝ) / Real.log (n : ℝ)) ≤ ((f n : ℕ) : ℝ) ∧\n   ((f n : ℕ) : ℝ) ≤ c₂ * Real.sqrt ((n : ℝ) / Real.log (n : ℝ)))",
+    "reading": "Eventually every n, the maximum chromatic number of a triangle-free graph on n vertices is sandwiched between c1·√(n/log n) and c2·√(n/log n) with 0 < c1 ≤ 1 and c2 ≥ 2, as a full-sequence eventually-everywhere statement (not merely infinitely many n)."
+  },
+
+  "children": [
+    {
+      "name": "f_max_attained",
+      "binders": [],
+      "statement": "∀ (n : ℕ), ∃ (G : SimpleGraph (Fin n)), TriangleFree G ∧ (f n : ℕ) = G.chromaticNumber",
+      "reading": "For every n the supremum defining f n is attained: f n is the chromatic number of an actual triangle-free graph on n vertices (f is a genuine maximum)."
+    },
+    {
+      "name": "f_lower_two_sided_left",
+      "binders": [],
+      "statement": "∃ (c₁ : ℝ), 0 < c₁ ∧ c₁ ≤ 1 ∧ ∀ᶠ (n : ℕ) in Filter.atTop,\n  (c₁ : ℝ) * Real.sqrt ((n : ℝ) / Real.log (n : ℝ)) ≤ ((f n : ℕ) : ℝ)",
+      "reading": "Lower-bound variant (Hefty–Horn–King–Pfender): some constant c1 in (0,1] has c1·√(n/log n) ≤ f(n) for all sufficiently large n (eventually everywhere, full sequence)."
+    },
+    {
+      "name": "f_upper_two_sided_right",
+      "binders": [],
+      "statement": "∃ (c₂ : ℝ), 2 ≤ c₂ ∧ ∀ᶠ (n : ℕ) in Filter.atTop,\n  ((f n : ℕ) : ℝ) ≤ c₂ * Real.sqrt ((n : ℝ) / Real.log (n : ℝ))",
+      "reading": "Upper-bound variant (Davies–Illingworth): some constant c2 ≥ 2 has f(n) ≤ c2·√(n/log n) for all sufficiently large n (eventually everywhere, full sequence)."
+    }
+  ],
+
+  "composition_claim": "The parent is literally the conjunction of children 2 and 3 (existential constants c1 ≤ 1 and c2 ≥ 2 with the same eventually-everywhere inequalities, combined into one ∀ᶠ statement), and child 1 certifies that f is the true maximum, so f(n) in the parent means the maximal chromatic number over triangle-free graphs on n vertices. Both inequalities are stated with Filter.atTop over the full sequence of n, which by construction excludes the merely infinitely-many-n / subsequence readings."}

@@ -1,0 +1,263 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos288",
+  "generated_utc": "2026-09-02T16:35:22Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos288:LEM:R003:certification",
+    "statement": "no finite residual instantiated; fail-closed, certificate refused on unresolved sign",
+    "statement_sha256": "74e13222bef575e9d5eb304cd2ff0557612cbd656c7fffec48a688d71c29cba9",
+    "kind": "LEMMA",
+    "binding": "UNBOUND",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "Is it true that there are only finitely many pairs of intervals $I_1,I_2$ such that\\[\\sum_{n_1\\in I_1}\\frac{1}{n_1}+\\sum_{n_2\\in I_2}\\frac{1}{n_2}\\in \\mathbb{N}?\\]",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos288-campaign-001/contract.json",
+    "sha256": "835b06f57a68cf5e37453159e253cc61b32a388cd2c49b4f9e441368a0d6e341"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos288:LEM:R003:certification",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "2a4a9ffd401927f6fe6f7dcddbda2d066ead9f79a0ef0c1462e8305aa0620ae5",
+    "prompt_chars": 4224,
+    "response_sha256": "35c1fca4788dcf4c2ac15e8d7412749e9f7683cf52a8e1c62e18175ba4f9fdc9",
+    "usage": {
+      "prompt_tokens": 1160,
+      "completion_tokens": 2899,
+      "total_tokens": 4059,
+      "cost": 0.00081175,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00081175,
+        "upstream_inference_prompt_cost": 8.7e-05,
+        "upstream_inference_completions_cost": 0.00072475
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 2289,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.00081175,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 84.49,
+    "utc": "2026-09-02T16:27:25Z"
+  },
+  "children": [
+    {
+      "id": "erdos288:LEM:R003:certification#D1",
+      "statement": "∃ n : ℕ+, ∑ j : Fin 2, IntervalSum (I j) = (n : ℚ) ↔ ∃ m : ℕ, m ≤ ((∑ j : Fin 2, IntervalSum (I j) : ℚ).num + 1) ∧ ((∑ j : Fin 2, IntervalSum (I j) : ℚ) = ((m : ℤ) : ℚ))",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos288",
+      "decomposed_from": "erdos288:LEM:R003:certification",
+      "imports": "Mathlib",
+      "definitions": "noncomputable def IntervalSum (p : ℕ+ × ℕ+) : ℚ := ∑ x ∈ Set.Icc p.1 p.2, ((x : ℚ)⁻¹)\n\ndef Good (I : Fin 2 → ℕ+ × ℕ+) : Prop :=\n  ∀ j, (I j).1 ≤ (I j).2 ∧ ∃ n : ℕ+, ∑ j : Fin 2, IntervalSum (I j) = (n : ℚ)",
+      "type_context": "Mathlib\nnoncomputable def IntervalSum (p : ℕ+ × ℕ+) : ℚ := ∑ x ∈ Set.Icc p.1 p.2, ((x : ℚ)⁻¹)\n\ndef Good (I : Fin 2 → ℕ+ × ℕ+) : Prop :=\n  ∀ j, (I j).1 ≤ (I j).2 ∧ ∃ n : ℕ+, ∑ j : Fin 2, IntervalSum (I j) = (n : ℚ)",
+      "lean_binders": [
+        "(I : Fin 2 → ℕ+ × ℕ+)"
+      ],
+      "lean_theorem_name": "msl_erdos288_lem_r003_certification_c1",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\nnoncomputable def IntervalSum (p : ℕ+ × ℕ+) : ℚ := ∑ x ∈ Set.Icc p.1 p.2, ((x : ℚ)⁻¹)\n\ndef Good (I : Fin 2 → ℕ+ × ℕ+) : Prop :=\n  ∀ j, (I j).1 ≤ (I j).2 ∧ ∃ n : ℕ+, ∑ j : Fin 2, IntervalSum (I j) = (n : ℚ)\n\n",
+      "lean_signature": "theorem msl_erdos288_lem_r003_certification_c1 (I : Fin 2 → ℕ+ × ℕ+) : ∃ n : ℕ+, ∑ j : Fin 2, IntervalSum (I j) = (n : ℚ) ↔ ∃ m : ℕ, m ≤ ((∑ j : Fin 2, IntervalSum (I j) : ℚ).num + 1) ∧ ((∑ j : Fin 2, IntervalSum (I j) : ℚ) = ((m : ℤ) : ℚ))",
+      "lean_statement_line": "theorem msl_erdos288_lem_r003_certification_c1 (I : Fin 2 → ℕ+ × ℕ+) : ∃ n : ℕ+, ∑ j : Fin 2, IntervalSum (I j) = (n : ℚ) ↔ ∃ m : ℕ, m ≤ ((∑ j : Fin 2, IntervalSum (I j) : ℚ).num + 1) ∧ ((∑ j : Fin 2, IntervalSum (I j) : ℚ) = ((m : ℤ) : ℚ)) := by sorry",
+      "lean_file_sha256": "5f2336610a6c65a2dacf7a107d0ad79ec93faabc25ce8edf1f29fc22f1148cf4",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "A witness n for the interval pair I exists iff it can be found in the explicitly bounded range m ≤ (numerator of the sum) + 1, making membership a bounded, decidable check with no unbounded residual.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos288/receipts/erdos288_LEM_R003_certification_D1.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos288/lean/erdos288_LEM_R003_certification_D1.lean"
+    },
+    {
+      "id": "erdos288:LEM:R003:certification#D2",
+      "statement": "0 < ∑ j : Fin 2, IntervalSum (I j)",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos288",
+      "decomposed_from": "erdos288:LEM:R003:certification",
+      "imports": "Mathlib",
+      "definitions": "noncomputable def IntervalSum (p : ℕ+ × ℕ+) : ℚ := ∑ x ∈ Set.Icc p.1 p.2, ((x : ℚ)⁻¹)\n\ndef Good (I : Fin 2 → ℕ+ × ℕ+) : Prop :=\n  ∀ j, (I j).1 ≤ (I j).2 ∧ ∃ n : ℕ+, ∑ j : Fin 2, IntervalSum (I j) = (n : ℚ)",
+      "type_context": "Mathlib\nnoncomputable def IntervalSum (p : ℕ+ × ℕ+) : ℚ := ∑ x ∈ Set.Icc p.1 p.2, ((x : ℚ)⁻¹)\n\ndef Good (I : Fin 2 → ℕ+ × ℕ+) : Prop :=\n  ∀ j, (I j).1 ≤ (I j).2 ∧ ∃ n : ℕ+, ∑ j : Fin 2, IntervalSum (I j) = (n : ℚ)",
+      "lean_binders": [
+        "(I : Fin 2 → ℕ+ × ℕ+)"
+      ],
+      "lean_theorem_name": "msl_erdos288_lem_r003_certification_c2",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\nnoncomputable def IntervalSum (p : ℕ+ × ℕ+) : ℚ := ∑ x ∈ Set.Icc p.1 p.2, ((x : ℚ)⁻¹)\n\ndef Good (I : Fin 2 → ℕ+ × ℕ+) : Prop :=\n  ∀ j, (I j).1 ≤ (I j).2 ∧ ∃ n : ℕ+, ∑ j : Fin 2, IntervalSum (I j) = (n : ℚ)\n\n",
+      "lean_signature": "theorem msl_erdos288_lem_r003_certification_c2 (I : Fin 2 → ℕ+ × ℕ+) : 0 < ∑ j : Fin 2, IntervalSum (I j)",
+      "lean_statement_line": "theorem msl_erdos288_lem_r003_certification_c2 (I : Fin 2 → ℕ+ × ℕ+) : 0 < ∑ j : Fin 2, IntervalSum (I j) := by sorry",
+      "lean_file_sha256": "cb5e75c4847039e1d8087635b548b80a94c8561d0ed45c2d642a6f3e3d195930",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "The combined harmonic sum over the interval pair I is strictly positive, so the integer-certificate test never passes on an unresolved or negative sign.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos288/receipts/erdos288_LEM_R003_certification_D2.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos288/lean/erdos288_LEM_R003_certification_D2.lean"
+    }
+  ],
+  "composition": {
+    "id": "erdos288:LEM:R003:certification#COMPOSE",
+    "statement": "((∀ (I : Fin 2 → ℕ+ × ℕ+), ∃ n : ℕ+, ∑ j : Fin 2, IntervalSum (I j) = (n : ℚ) ↔ ∃ m : ℕ, m ≤ ((∑ j : Fin 2, IntervalSum (I j) : ℚ).num + 1) ∧ ((∑ j : Fin 2, IntervalSum (I j) : ℚ) = ((m : ℤ) : ℚ))) ∧ (∀ (I : Fin 2 → ℕ+ × ℕ+), 0 < ∑ j : Fin 2, IntervalSum (I j))) → (Set.Finite { I : Fin 2 → ℕ+ × ℕ+ | Good I })",
+    "kind": "COMPOSITION",
+    "depends_on": [
+      "erdos288:LEM:R003:certification#D1",
+      "erdos288:LEM:R003:certification#D2"
+    ],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "OPEN",
+    "problem": "erdos288",
+    "decomposed_from": "erdos288:LEM:R003:certification",
+    "imports": "Mathlib",
+    "definitions": "noncomputable def IntervalSum (p : ℕ+ × ℕ+) : ℚ := ∑ x ∈ Set.Icc p.1 p.2, ((x : ℚ)⁻¹)\n\ndef Good (I : Fin 2 → ℕ+ × ℕ+) : Prop :=\n  ∀ j, (I j).1 ≤ (I j).2 ∧ ∃ n : ℕ+, ∑ j : Fin 2, IntervalSum (I j) = (n : ℚ)",
+    "type_context": "Mathlib\nnoncomputable def IntervalSum (p : ℕ+ × ℕ+) : ℚ := ∑ x ∈ Set.Icc p.1 p.2, ((x : ℚ)⁻¹)\n\ndef Good (I : Fin 2 → ℕ+ × ℕ+) : Prop :=\n  ∀ j, (I j).1 ≤ (I j).2 ∧ ∃ n : ℕ+, ∑ j : Fin 2, IntervalSum (I j) = (n : ℚ)",
+    "parent_typed": {
+      "statement": "Set.Finite { I : Fin 2 → ℕ+ × ℕ+ | Good I }",
+      "binders": [],
+      "reading": "There are only finitely many pairs of intervals (I₁, I₂) of positive integers whose combined harmonic sums add up to a natural number.",
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": null,
+        "prose_contract_root_report": {
+          "ok": true,
+          "missing": [],
+          "reason": "",
+          "blocking": false,
+          "why_not_blocking": "tokens mined from ENGLISH prose are not Lean tokens; `Fin k` carries `1 <= i <= k` structurally"
+        }
+      }
+    },
+    "composition_claim": {
+      "text": "Child 1 reduces the existential certificate for any interval pair to a bounded, explicitly quantified search (m ≤ numerator of the sum plus 1), so membership in the solution set is checked by a finite decision procedure rather than an unbounded existential; child 2 pins the sign of the sum to be strictly positive, so the certificate is fail-closed and refused on any unresolved sign. Together they characterize the set in the parent as a decidable, sign-guarded finite-test property; certifying its finiteness then reduces to the bound on interval endpoints forced by any integer witness, which is exactly the Set.Finite assertion of the parent.",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "COMPOSITION_OPEN",
+      "rc": 1,
+      "kernel_error": "/root/peer/decomp/b20260902_093511_3/erdos288_LEM_R003_certification_comp.lean:14:372: error: unsolved goals",
+      "counts_toward_parent": 0
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "source": "oracle/evidence/msl-machine/dag/decomp/erdos288/lean/erdos288_LEM_R003_certification_COMPOSE.lean",
+    "lean_theorem_name": "msl_erdos288_lem_r003_certification_composition",
+    "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxHeartbeats 400000\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\nnoncomputable def IntervalSum (p : ℕ+ × ℕ+) : ℚ := ∑ x ∈ Set.Icc p.1 p.2, ((x : ℚ)⁻¹)\n\ndef Good (I : Fin 2 → ℕ+ × ℕ+) : Prop :=\n  ∀ j, (I j).1 ≤ (I j).2 ∧ ∃ n : ℕ+, ∑ j : Fin 2, IntervalSum (I j) = (n : ℚ)\n\n",
+    "lean_signature": "theorem msl_erdos288_lem_r003_certification_composition : ((∀ (I : Fin 2 → ℕ+ × ℕ+), ∃ n : ℕ+, ∑ j : Fin 2, IntervalSum (I j) = (n : ℚ) ↔ ∃ m : ℕ, m ≤ ((∑ j : Fin 2, IntervalSum (I j) : ℚ).num + 1) ∧ ((∑ j : Fin 2, IntervalSum (I j) : ℚ) = ((m : ℤ) : ℚ))) ∧ (∀ (I : Fin 2 → ℕ+ × ℕ+), 0 < ∑ j : Fin 2, IntervalSum (I j))) → (Set.Finite { I : Fin 2 → ℕ+ × ℕ+ | Good I })",
+    "lean_statement_line": "theorem msl_erdos288_lem_r003_certification_composition : ((∀ (I : Fin 2 → ℕ+ × ℕ+), ∃ n : ℕ+, ∑ j : Fin 2, IntervalSum (I j) = (n : ℚ) ↔ ∃ m : ℕ, m ≤ ((∑ j : Fin 2, IntervalSum (I j) : ℚ).num + 1) ∧ ((∑ j : Fin 2, IntervalSum (I j) : ℚ) = ((m : ℤ) : ℚ))) ∧ (∀ (I : Fin 2 → ℕ+ × ℕ+), 0 < ∑ j : Fin 2, IntervalSum (I j))) → (Set.Finite { I : Fin 2 → ℕ+ × ℕ+ | Good I }) := by\n  first\n  | tauto\n  | (intro h; exact h.1)\n  | (intro h; simp_all)\n  | (intro h; omega)\n  | (intro h; norm_num at h ⊢ <;> tauto)\n  | aesop\n  | decide",
+    "lean_trailer": "\n#print axioms msl_erdos288_lem_r003_certification_composition\n",
+    "lean_binders": [],
+    "lean_file_sha256": "2c19848854570ba38653a9fd54d9638db89c710addc388c966a8ce1b6ae810f2",
+    "lean_file_contract": "TO REPRODUCE GATE 4: compile `lean_preamble + lean_statement_line + \"\\n\" + lean_trailer` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text the deterministic ladder ran on. TO ATTEMPT A DIFFERENT PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\" + lean_trailer` -- keep the trailer, it is the `#print axioms` line the footprint is read from. Do NOT rebuild a header from `definitions` and do NOT drop the binders.",
+    "composition_receipt": "oracle/evidence/msl-machine/dag/decomp/erdos288/receipts/erdos288_LEM_R003_certification_COMPOSE.composition.json"
+  },
+  "parent_new_depends_on": [
+    "erdos288:LEM:R003:certification#COMPOSE"
+  ],
+  "rejected": [],
+  "counts": {
+    "proposed": 2,
+    "elaborated": 2,
+    "bound": 2,
+    "non_circular": 2,
+    "non_trivial": 2,
+    "surviving": 2,
+    "composition_kernel_checked": 0,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 0,
+    "counts_toward_parent_note": "composition OPEN: these children contribute ZERO toward the parent until it closes; they remain formal leaves for the rung loop"
+  },
+  "definitions": {
+    "block": "noncomputable def IntervalSum (p : ℕ+ × ℕ+) : ℚ := ∑ x ∈ Set.Icc p.1 p.2, ((x : ℚ)⁻¹)\n\ndef Good (I : Fin 2 → ℕ+ × ℕ+) : Prop :=\n  ∀ j, (I j).1 ≤ (I j).2 ∧ ∃ n : ℕ+, ∑ j : Fin 2, IntervalSum (I j) = (n : ℚ)",
+    "gate0": {
+      "verdict": "DEFS_ELABORATE"
+    },
+    "campaign_vocabulary_prepended": [],
+    "normalization": {
+      "body": "noncomputable def IntervalSum (p : ℕ+ × ℕ+) : ℚ := ∑ x ∈ Set.Icc p.1 p.2, ((x : ℚ)⁻¹)\n\ndef Good (I : Fin 2 → ℕ+ × ℕ+) : Prop :=\n  ∀ j, (I j).1 ≤ (I j).2 ∧ ∃ n : ℕ+, ∑ j : Fin 2, IntervalSum (I j) = (n : ℚ)",
+      "opens": [],
+      "dropped_imports": []
+    }
+  }
+}

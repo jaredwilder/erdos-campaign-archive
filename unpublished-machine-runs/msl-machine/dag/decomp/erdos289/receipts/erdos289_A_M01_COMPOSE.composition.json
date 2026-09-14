@@ -1,0 +1,22 @@
+{
+  "kind": "COMPOSITION_KERNEL_CHECK",
+  "node": "erdos289:A:M01#COMPOSE",
+  "verdict": {
+    "verdict": "COMPOSITION_OPEN",
+    "rc": 1,
+    "kernel_error": "/root/peer/decomp/b20260902_080540_3/erdos289_A_M01_comp.lean:18:616: error: unsolved goals",
+    "counts_toward_parent": 0
+  },
+  "lean_source": "oracle/evidence/msl-machine/dag/decomp/erdos289/lean/erdos289_A_M01_COMPOSE.lean",
+  "ladder": [
+    "tauto",
+    "(intro h; exact h.1)",
+    "(intro h; simp_all)",
+    "(intro h; omega)",
+    "(intro h; norm_num at h ⊢ <;> tauto)",
+    "aesop",
+    "decide"
+  ],
+  "kernel_log": "/root/peer/decomp/b20260902_080540_3/erdos289_A_M01_comp.lean:18:616: error: unsolved goals\nh :\n  (∀ (n : ℕ), 2 ≤ n → (↑n)⁻¹ = (↑n + 1)⁻¹ + (↑n + 1)⁻¹ * (↑n)⁻¹) ∧\n    (∀ (n : ℕ), 2 ≤ n → n + 1 + 1 < n * (n + 1)) ∧\n      ∃ a,\n        ∀ (b : ℕ),\n          a ≤ b →\n            ∃ J,\n              (∀ (i : Fin b), 5 ≤ (J i).1 ∧ (J i).1 < (J i).2) ∧\n                (∀ (i j : Fin b), ¬i = j → (J i).2 < (J j).1 ∨ (J j).2 < (J i).1) ∧\n                  ∑ i, ∑ n ∈ Icc (J i).1 (J i).2, (↑n)⁻¹ = 6⁻¹\n⊢ ∃ a,\n    ∀ (b : ℕ),\n      a ≤ b →\n        ∃ I,\n          (∀ (i : Fin b), (I i).1 < (I i).2) ∧\n            (∀ (i j : Fin b), ¬i = j → (I i).2 < (I j).1 ∨ (I j).2 < (I i).1) ∧\n              ∑ i, ∑ n ∈ Icc (I i).1 (I i).2, (↑n)⁻¹ = 1\n'msl_erdos289_a_m01_composition' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]",
+  "utc": "2026-09-02T15:06:02Z"
+}

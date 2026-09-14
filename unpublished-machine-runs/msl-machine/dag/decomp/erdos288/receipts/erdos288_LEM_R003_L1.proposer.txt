@@ -1,0 +1,19 @@
+{"definitions": "def harmonicSum (I : Fin 2 → ℕ+ × ℕ+) : ℚ :=\n  ∑ j : Fin 2, ∑ nⱼ ∈ Set.Icc (I j).1 (I j).2, (nⱼ⁻¹ : ℚ)\n\ndef IsGood (I : Fin 2 → ℕ+ × ℕ+) : Prop :=\n  (∀ j : Fin 2, (I j).1 ≤ (I j).2) ∧ ∃ n : ℕ+, harmonicSum I = (n : ℚ)\n\ndef SinglePairs : Set (Fin 2 → ℕ+ × ℕ+) :=\n  {I | IsGood I ∧ ∃ j : Fin 2, (I j).1 = (I j).2}\n\ndef ProperPairs : Set (Fin 2 → ℕ+ × ℕ+) :=\n  {I | IsGood I ∧ ∀ j : Fin 2, (I j).1 < (I j).2}",
+
+  "parent_typed": {"name": "erdos288_answer", "binders": [],
+    "statement": "Set.Finite { I : Fin 2 → ℕ+ × ℕ+ | IsGood I }",
+    "reading": "There are only finitely many pairs of intervals (I1, I2) whose reciprocal sums add up to a natural number."},
+
+  "children": [
+    {"name": "erdos288_single_interval_classification", "binders": ["(a b : ℕ+)", "(k : ℕ+)"],
+      "statement": "a ≤ b → (∑ n ∈ Set.Icc a b, (n⁻¹ : ℚ)) = (k : ℚ) → a = 1 ∧ b = 1 ∧ k = 1",
+      "reading": "Parity obstruction: the only interval of positive integers whose reciprocal sum is a natural number is the trivial interval [1,1] with sum 1."},
+    {"name": "erdos288_degenerate_finite", "binders": [],
+      "statement": "Set.Finite SinglePairs",
+      "reading": "Only finitely many good interval pairs involve an interval with equal endpoints (each such interval is forced to be [1,1], and then the other is too)."},
+    {"name": "erdos288_proper_finite", "binders": [],
+      "statement": "Set.Finite ProperPairs",
+      "reading": "The hard open core: only finitely many good interval pairs have both intervals of length at least 2."}
+  ],
+
+  "composition_claim": "Every good pair either has some interval j with (I j).1 = (I j).2 — putting it in SinglePairs — or satisfies (I j).1 < (I j).2 for all j — putting it in ProperPairs. So {I | IsGood I} ⊆ SinglePairs ∪ ProperPairs, and since both are finite by children 2 and 3 (child 1 supplying the parity classification behind child 2), Set.Finite.union and Set.Finite.subset yield the parent."}

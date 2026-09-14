@@ -1,0 +1,13 @@
+{"definitions": "open Filter\n\ndef CoprimeSeq (u : ℕ → ℕ) : Prop :=\n  ∀ i j : ℕ, i ≠ j → Nat.gcd (u i) (u j) = 1\n\ndef Avoids (u : ℕ → ℕ) : Set ℕ :=\n  {n : ℕ | ∀ i : ℕ, ¬ (u i ∣ n)}\n\ndef Aseq (u : ℕ → ℕ) : ℕ → ℕ := Nat.nth (Avoids u)\n\ndef Tux (u : ℕ → ℕ) (x : ℕ) : ℕ :=\n  Nat.findGreatest (fun t : ℕ => (Finset.range t).prod (fun i : ℕ => u i) ≤ x) x\n\ndef GapMax (u : ℕ → ℕ) (x : ℕ) : ℕ :=\n  (Finset.range x).sup\n    (fun k : ℕ => if Aseq u k < x then Aseq u (k + 1) - Aseq u k else 0)\n\ndef RecipProd (u : ℕ → ℕ) : ℝ :=\n  ∏' i : ℕ, ((1 : ℝ) - 1 / (u i : ℝ))⁻¹\n\ndef SeqHyps (u : ℕ → ℕ) : Prop :=\n  (∀ n : ℕ, u n < u (n + 1)) ∧ CoprimeSeq u ∧\n    Summable (fun i : ℕ => (1 : ℝ) / (u i : ℝ))\n\ndef SubexpGrowth (u : ℕ → ℕ) : Prop :=\n  ∀ ε > 0, ∃ N : ℕ, ∀ n ≥ N, (u n : ℝ) ≤ Real.exp (ε * (n : ℝ))\n\ndef GapBound (u : ℕ → ℕ) : Prop :=\n  ∀ ε > 0, ∃ N : ℕ, ∀ x ≥ N,\n    (GapMax u x : ℝ) < (1 + ε) * (Tux u x : ℝ) * RecipProd u",
+  "parent_typed": {"name": "erdos1101_good_subexp_exists", "binders": [],
+    "statement": "∃ u : ℕ → ℕ, SeqHyps u ∧ SubexpGrowth u ∧ GapBound u",
+    "reading": "There exists a good sequence of pairwise coprime integers with summable reciprocals, of subexponential growth u_n ≤ e^{o(n)}, whose avoided-integer gaps satisfy the Erdős gap bound."},
+  "children": [
+    {"name": "erdos1101_seq_exists_subexp", "binders": [],
+      "statement": "∃ u : ℕ → ℕ, SeqHyps u ∧ SubexpGrowth u",
+      "reading": "There is a strictly increasing, pairwise coprime integer sequence with summable reciprocals and subexponential growth."},
+    {"name": "erdos1101_hyps_imply_gapbound", "binders": ["(u : ℕ → ℕ)"],
+      "statement": "SeqHyps u → GapBound u",
+      "reading": "Any strictly increasing pairwise coprime sequence with summable reciprocals satisfies the Erdős gap bound, i.e. is good."}
+  ],
+  "composition_claim": "Child 2 applied to the witness u supplied by child 1 yields SeqHyps u ∧ SubexpGrowth u ∧ GapBound u, which is exactly the parent existential; hence children 1 and 2 together imply the parent."}

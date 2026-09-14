@@ -1,0 +1,16 @@
+{"definitions": "open Filter\n\ndef isEventuallyLowerBound (g h : ℕ → ℝ) : Prop :=\n  ∃ (c : ℝ), (0 : ℝ) < c ∧ ∃ (N : ℕ), ∀ (n : ℕ), N ≤ n → c * h n ≤ g n",
+  "parent_typed": {"name": "erdos1085_A_M03_parent",
+    "binders": ["(g : ℕ → ℝ)", "(h : ℕ → ℝ)"],
+    "statement": "(∃ (c : ℝ), (0 : ℝ) < c ∧ ∀ᶠ n in Filter.atTop, c * h n ≤ g n) ↔ isEventuallyLowerBound g h",
+    "reading": "A source lower bound of the form 'for some constant c > 0, eventually c·h(n) ≤ g(n)' holds exactly when there is a single fixed constant c > 0, chosen once independently of n, together with a threshold N : ℕ such that c·h(n) ≤ g(n) for every n ≥ N."},
+  "children": [
+    {"name": "erdos1085_A_M03_c1",
+      "binders": ["(g : ℕ → ℝ)", "(h : ℕ → ℝ)", "(c : ℝ)"],
+      "statement": "(∀ᶠ n in Filter.atTop, c * h n ≤ g n) → ∃ (N : ℕ), ∀ (n : ℕ), N ≤ n → c * h n ≤ g n",
+      "reading": "For a fixed constant c, 'eventually' means: some threshold N exists such that the bound c·h(n) ≤ g(n) holds for every n ≥ N (all sufficiently large n)."},
+    {"name": "erdos1085_A_M03_c2",
+      "binders": ["(g : ℕ → ℝ)", "(h : ℕ → ℝ)", "(c : ℝ)"],
+      "statement": "(∃ (N : ℕ), ∀ (n : ℕ), N ≤ n → c * h n ≤ g n) → ∀ᶠ n in Filter.atTop, c * h n ≤ g n",
+      "reading": "Conversely, if for a fixed constant c some threshold N makes c·h(n) ≤ g(n) hold for every n ≥ N, then the bound is eventual in the sense of Filter.atTop."}
+  ],
+  "composition_claim": "Children 1 and 2 are, for each fixed c : ℝ, the two directions of the expansion of '∀ᶠ n in Filter.atTop, c·h n ≤ g n' into '∃ N, ∀ n ≥ N, c·h n ≤ g n' (an instance of Filter.eventually_atTop for ℕ). The parent wraps this fixed-c equivalence in the single existential '∃ c : ℝ, 0 < c': applying child 1 to the constant supplied by the source yields isEventuallyLowerBound g h, and applying child 2 to the constant and threshold extracted from isEventuallyLowerBound g h returns the source form. Since c is bound by one existential before n ever appears, c is fixed independently of n; hence children 1 and 2 together prove the parent biconditional."}

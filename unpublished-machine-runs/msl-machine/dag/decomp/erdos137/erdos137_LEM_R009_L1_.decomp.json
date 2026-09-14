@@ -1,0 +1,168 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos137",
+  "generated_utc": "2026-09-02T16:37:30Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos137:LEM:R009:L1'",
+    "statement": "R009/L2 exact fail-closed verifier certifies the finite core only: (F1) no 3 consecutive powerful integers with first element in [1,999]; (F2) the per-n finite disjunction on [1,999] as a finite fact; (F2') no powerful product n(n+1)(n+2) for 1<=n<=999; (F3) no powerful product of 4 consecutive integers with first element in [1,6]; corrected even-case reduction and unrestricted k≥3 claim carried U",
+    "statement_sha256": "f0d60f63c4fe074ecad16023435296e53474f94b17586d71e4188f234cdffbb2",
+    "kind": "LEMMA",
+    "binding": "UNBOUND",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "We say that $N$ is powerful if whenever $p\\mid N$ we also have $p^2\\mid N$. Let $k\\geq 3$. Can the product of any $k$ consecutive positive integers ever be powerful?",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos137-campaign-001/contract.json",
+    "sha256": "11da2e8b7de1c1e49b87776f67631f25b9087f9f8ca2c3a7248d277b30036d9c"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos137:LEM:R009:L1'",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "5481f3460e9df368bfeba697f960ae3e6eead623676f6c9709ae2604a6941e77",
+    "prompt_chars": 4746,
+    "response_sha256": "db84c42120fc897956e1b8c3f9ebee1f1ae5d30415b8850a5d50f20fb3ba29d0",
+    "usage": {
+      "prompt_tokens": 1287,
+      "completion_tokens": 1121,
+      "total_tokens": 2408,
+      "cost": 0.000369095,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 128,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.000369095,
+        "upstream_inference_prompt_cost": 8.8845e-05,
+        "upstream_inference_completions_cost": 0.00028025
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 468,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.000369095,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 31.84,
+    "utc": "2026-09-02T16:36:53Z"
+  },
+  "children": [],
+  "composition": {
+    "id": "erdos137:LEM:R009:L1'#COMPOSE",
+    "statement": "(composition not constructed)",
+    "kind": "COMPOSITION",
+    "depends_on": [],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "OPEN",
+    "problem": "erdos137",
+    "decomposed_from": "erdos137:LEM:R009:L1'",
+    "imports": "Mathlib",
+    "definitions": "",
+    "type_context": "Mathlib",
+    "parent_typed": {
+      "statement": "(∀ (n : Nat), n ∈ Finset.Icc (1 : Nat) (999 : Nat) → ¬ powerful (blockProduct n (3 : Nat))) ∧ (∀ (n : Nat), n ∈ Finset.Icc (1 : Nat) (999 : Nat) → ¬ (powerful n ∧ powerful (n + 1) ∧ powerful (n + 2))) ∧ (∀ (n : Nat), n ∈ Finset.Icc (1 : Nat) (6 : Nat) → ¬ powerful (blockProduct n (4 : Nat)))",
+      "binders": [],
+      "reading": "The finite certified core: no powerful product of 3 consecutive integers with first factor in [1,999] (F2/F2'), no 3 consecutive powerful integers starting in [1,999] (F1), and no powerful product of 4 consecutive integers with first factor in [1,6] (F3); the unrestricted k ≥ 3 claim is carried unproven (U).",
+      "elaboration": {
+        "verdict": "STATEMENT_DOES_NOT_ELABORATE",
+        "rc": 1,
+        "kernel_error": "/root/peer/decomp/b20260902_093658_1/erdos137_LEM_R009_L1__parent.lean:8:97: error(lean.unknownIdentifier): Unknown identifier `powerful`\n\nNote: It is not possible to treat `powerful` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.\n/root/peer/decomp/b20260902_093658_1/erdos137_LEM_R009_L1__parent.lean:8:192: error(lean.unknownIdentifier): Unknown identifier `powerful`\n\nNote: It is not possible to treat `powerful` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.\n/root/peer/decomp/b20260902_093658_1/erdos137_LEM_R009_L1__parent.lean:8:205: error(lean.unknownIdentifier): Unknown identifier `powerful`\n\nNote: It is not possible to treat `powerful` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.\n/root/peer/decomp/b20260902_093658_1/erdos137_LEM_R009_L1__parent.lean:8:224: error(lean.unknownIdentifier): Unknown identifier `powerful`\n\nNote: It is not possible to treat `powerful` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.\n/root/peer/decomp/b20260902_093658_1/erdos137_LEM_R009_L1__parent.lean:8:298: error(lean.unknownIdentifier): Unknown identifier `powerful`\n\nNote: It is not possible to treat `powerful` as an implicitly bound variable here because the `autoImplicit` option is set to `false`."
+      },
+      "type_gate_decomp": {
+        "ok": false,
+        "missing": [
+          "domain bound '1 n'",
+          "domain bound 'k 3'"
+        ],
+        "reason": "inherited type ascription or domain bound dropped",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": "parent",
+        "prose_contract_root_report": null
+      }
+    },
+    "composition_claim": {
+      "text": "The parent is exactly the conjunction of the three children: child 1 is the F2/F2' finite disjunction on [1,999] for blocks of 3, child 2 is the F1 no-three-consecutive-powerful fact on [1,999], and child 3 is the F3 four-consecutive fact on [1,6]; their conjunction (via And.intro) yields the parent verbatim. The unrestricted k ≥ 3 claim and the even-case reduction are explicitly outside the certified core and carried unproven, as the obligation states.",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "COMPOSITION_NOT_RUN",
+      "counts_toward_parent": 0,
+      "reason": "no surviving child"
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "composition_receipt": "oracle/evidence/msl-machine/dag/decomp/erdos137/receipts/erdos137_LEM_R009_L1_COMPOSE.composition.json"
+  },
+  "parent_new_depends_on": [
+    "erdos137:LEM:R009:L1'#COMPOSE"
+  ],
+  "rejected": [
+    {
+      "proposed_index": 1,
+      "statement": "n ∈ Finset.Icc (1 : Nat) (999 : Nat) → ¬ powerful (blockProduct n (3 : Nat))",
+      "binders": [
+        "(n : Nat)"
+      ],
+      "gate": "GATE1_ELABORATION",
+      "reason": "/root/peer/decomp/b20260902_093658_1/erdos137_LEM_R009_L1__c1.lean:8:89: error(lean.unknownIdentifier): Unknown identifier `powerful`\n\nNote: It is not possible to treat `powerful` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.",
+      "kernel_error": "/root/peer/decomp/b20260902_093658_1/erdos137_LEM_R009_L1__c1.lean:8:89: error(lean.unknownIdentifier): Unknown identifier `powerful`\n\nNote: It is not possible to treat `powerful` as an implicitly bound variable here because the `autoImplicit` option is set to `false`."
+    },
+    {
+      "proposed_index": 2,
+      "statement": "n ∈ Finset.Icc (1 : Nat) (999 : Nat) → ¬ (powerful n ∧ powerful (n + 1) ∧ powerful (n + 2))",
+      "binders": [
+        "(n : Nat)"
+      ],
+      "gate": "GATE1_ELABORATION",
+      "reason": "/root/peer/decomp/b20260902_093658_1/erdos137_LEM_R009_L1__c2.lean:8:90: error(lean.unknownIdentifier): Unknown identifier `powerful`\n\nNote: It is not possible to treat `powerful` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.\n/root/peer/decomp/b20260902_093658_1/erdos137_LEM_R009_L1__c2.lean:8:103: error(lean.unknownIdentifier): Unknown identifier `powerful`\n\nNote: It is not possible to treat `powerful` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.\n/root/peer/decomp/b20260902_093658_1/erdos137_LEM_R009_L1__c2.lean:8:122: error(lean.unknownIdentifier): Unknown identifier `powerful`\n\nNote: It is not possible to treat `powerful` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.",
+      "kernel_error": "/root/peer/decomp/b20260902_093658_1/erdos137_LEM_R009_L1__c2.lean:8:90: error(lean.unknownIdentifier): Unknown identifier `powerful`\n\nNote: It is not possible to treat `powerful` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.\n/root/peer/decomp/b20260902_093658_1/erdos137_LEM_R009_L1__c2.lean:8:103: error(lean.unknownIdentifier): Unknown identifier `powerful`\n\nNote: It is not possible to treat `powerful` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.\n/root/peer/decomp/b20260902_093658_1/erdos137_LEM_R009_L1__c2.lean:8:122: error(lean.unknownIdentifier): Unknown identifier `powerful`\n\nNote: It is not possible to treat `powerful` as an implicitly bound variable here because the `autoImplicit` option is set to `false`."
+    },
+    {
+      "proposed_index": 3,
+      "statement": "n ∈ Finset.Icc (1 : Nat) (6 : Nat) → ¬ powerful (blockProduct n (4 : Nat))",
+      "binders": [
+        "(n : Nat)"
+      ],
+      "gate": "GATE1_ELABORATION",
+      "reason": "/root/peer/decomp/b20260902_093658_1/erdos137_LEM_R009_L1__c3.lean:8:87: error(lean.unknownIdentifier): Unknown identifier `powerful`\n\nNote: It is not possible to treat `powerful` as an implicitly bound variable here because the `autoImplicit` option is set to `false`.",
+      "kernel_error": "/root/peer/decomp/b20260902_093658_1/erdos137_LEM_R009_L1__c3.lean:8:87: error(lean.unknownIdentifier): Unknown identifier `powerful`\n\nNote: It is not possible to treat `powerful` as an implicitly bound variable here because the `autoImplicit` option is set to `false`."
+    }
+  ],
+  "counts": {
+    "proposed": 3,
+    "elaborated": 0,
+    "bound": 0,
+    "non_circular": 0,
+    "non_trivial": 0,
+    "surviving": 0,
+    "composition_kernel_checked": 0,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 0,
+    "counts_toward_parent_note": "composition OPEN: these children contribute ZERO toward the parent until it closes; they remain formal leaves for the rung loop"
+  },
+  "definitions": {
+    "block": "",
+    "gate0": null,
+    "campaign_vocabulary_prepended": [],
+    "normalization": {
+      "body": "",
+      "opens": [],
+      "dropped_imports": []
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{"theorem_name": "runSum_2_4_exceeds_one",
+ "binders": [],
+ "definitions": "",
+ "statement": "theorem runSum_2_4_exceeds_one : runSum 2 4 > (1 : ℚ)",
+ "premises": ["erdos289:ORE:6e6df53936815f45", "erdos289:ORE:377845d942ddb89d", "erdos289:ORE:25d89c30bf1b00a0"],
+ "derivation_claim": "F1_head_forced ∧ W4_bridge ∧ runProd_pos → runSum 2 4 > 1: unfold runSum 2 4 = ∑ n ∈ Icc 2 4, 1/n = 1/2 + 1/3 + 1/4 (a two-point Finset.Icc reduction), which F1_head_forced proves exceeds 1.",
+ "discharges": "erdos289:FLEAF:987cb071355b04164228:8",
+ "reason": "This lifts the literal arithmetic 1/2 + 1/3 + 1/4 > 1 out of numerals into the quantified runSum/runNum/runProd formalism (generalizing literal sums to the parametrized Finset.Icc machinery shared with W4_bridge and W4_nat_fragment), so the 'run containing 2 is forced to be [2,3]' step of the Erdős 289 head analysis is now expressed in the same language as the open obligation check_l1_fragment, moving the head-forcing argument directly toward the root."}

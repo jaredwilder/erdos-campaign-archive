@@ -1,0 +1,521 @@
+{
+ "schema": "obligation-dag/1.0.0",
+ "problem": "erdos962",
+ "problem_number": "962",
+ "campaign": "erdos962-campaign-001",
+ "root": "erdos962:ROOT",
+ "contract_divergence": {
+  "authoritative": {
+   "role": "campaign",
+   "path": "oracle/evidence/msl-machine/campaigns/erdos962-campaign-001/contract.json",
+   "sha256": "ef76297872ce3a06b6effbf362570d98da631d2565b6bb34b2f36643ff2eb0d3",
+   "declared_contract_sha256": "96b5f59ee1ddba2b396e9758575b93c922544da83bfdfa679d6534fa0e7de583"
+  },
+  "others": [
+   {
+    "role": "ingest",
+    "path": "oracle/evidence/msl-machine/contracts/erdos962/contract.json",
+    "sha256": "7b5a6dfe496cd81d2cf79ee94e60a42ec7305b8bac9cdcac4fe79ad31d1d2149",
+    "declared_contract_sha256": "fb84b1f77082cffcab5439fd402d093d4ac77436b3b76004844df81f0e4be96f",
+    "canonical_statement_matches_authoritative": true
+   },
+   {
+    "role": "launch_queue",
+    "path": "oracle/evidence/msl-machine/contracts/LAUNCH-QUEUE/erdos962.json",
+    "sha256": "3985a363e085f21485b3124b5390803824cd2fb5b47c221f613f2104e09869ea",
+    "declared_contract_sha256": null,
+    "canonical_statement_matches_authoritative": true
+   }
+  ],
+  "diverges": false
+ },
+ "courts": [
+  "court",
+  "closer",
+  "formalizer",
+  "kernel"
+ ],
+ "summary": {
+  "nodes": 9,
+  "proved_kernel": 0,
+  "proved_speaker": 1,
+  "computed_bounded": 0,
+  "open": 7,
+  "refuted": 1,
+  "orphans": 3,
+  "proof_obligations": 0,
+  "open_leaves_on_dead_routes": 0,
+  "root_kind": "NOT_DECIDABLE",
+  "root_disqualifiers": [
+   "ASYMPTOTIC",
+   "UNBOUNDED_FORALL"
+  ],
+  "formal_root": {
+   "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/962.lean",
+   "category": "category research open, AMS 11",
+   "declaration": "erdos_962",
+   "statement": "answer(sorry) ↔ ∃ ε : ℕ → ℝ, (∀ δ > 0, ∀ᶠ n in atTop, |ε n| < δ) ∧ ∀ᶠ n : ℕ in atTop, log (k n : ℝ) ≤ rpow (log n) ((1 : ℝ) / 2 + ε n)"
+  },
+  "leaf_frontier_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "leaf_frontier_reason": "2 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaf_frontier_deciding_leaf": {
+   "id": "erdos962:LEM:R002:L1",
+   "kind": "LEMMA",
+   "status": "PROVED_SPEAKER",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "imported from erdos821 R004/L1, adapted: k(n)≥1 for all n≥2 (m=1,k=1, block {2} has prime divisor 2>1), only n=1 has k(1)=0; threshold N₀≥3 is safe; survives degenerate-endpoint attack."
+  },
+  "ladder_shape_reason": "the formal root is not decidable: ASYMPTOTIC, UNBOUNDED_FORALL (oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/962.lean). No leaf set can close it, however clean the leaves are. Leaf frontier, kept for the grind queue: HAS_OPEN_ANALYTIC_LEAF.",
+  "leaves": 6,
+  "open_leaves": 5,
+  "open_technical_leaves": 2,
+  "open_prose_obligations": 3,
+  "open_analytic_leaves": 2,
+  "ladder_shape": "ROOT_NOT_DECIDABLE",
+  "deciding_leaf": {
+   "id": "erdos962:ROOT",
+   "kind": "CANONICAL_ROOT",
+   "status": "OPEN",
+   "binding": "VERBATIM",
+   "leaf_tactic_hint": null,
+   "statement": "answer(sorry) ↔ ∃ ε : ℕ → ℝ, (∀ δ > 0, ∀ᶠ n in atTop, |ε n| < δ) ∧ ∀ᶠ n : ℕ in atTop, log (k n : ℝ) ≤ rpow (log n) ((1 : ℝ) / 2 + ε n)"
+  },
+  "orphan_detail": [
+   {
+    "id": "erdos962:A:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos962:A:M02",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos962:B:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   }
+  ]
+ },
+ "validation": {
+  "acyclic": true,
+  "edges": 8,
+  "root_binds_verbatim": true,
+  "kernel_receipts_checked": 0
+ },
+ "nodes": [
+  {
+   "id": "erdos962:A:M01",
+   "statement": "Produce a single ε:ℕ→ℝ with ε(n)→0 and prove the eventual inequality for the exact k(n).",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos962-campaign-001/contract.json",
+   "contract_sha256": "ef76297872ce3a06b6effbf362570d98da631d2565b6bb34b2f36643ff2eb0d3",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos962-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos962",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-962-39ef14c46f-A-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos962:A:M02",
+   "statement": "Instantiate the answer wrapper with the affirmative truth value.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 2,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos962-campaign-001/contract.json",
+   "contract_sha256": "ef76297872ce3a06b6effbf362570d98da631d2565b6bb34b2f36643ff2eb0d3",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos962-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos962",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-962-39ef14c46f-A-M02"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos962:BRANCH_A",
+   "statement": "AFFIRMATIVE CLOSE: prove the exact logged upper-bound question, or a stronger exact asymptotic theorem that implies it.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos962:A:M01",
+    "erdos962:A:M02"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos962-campaign-001/contract.json",
+   "contract_sha256": "ef76297872ce3a06b6effbf362570d98da631d2565b6bb34b2f36643ff2eb0d3",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos962-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos962",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-962-39ef14c46f-A-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos962:B:M01",
+   "statement": "Prove that no single ε(n)→0 makes log k(n)≤(log n)^(1/2+ε(n)) eventually, and instantiate the answer wrapper negatively.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "branch": "B",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos962-campaign-001/contract.json",
+   "contract_sha256": "ef76297872ce3a06b6effbf362570d98da631d2565b6bb34b2f36643ff2eb0d3",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos962-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos962",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-962-39ef14c46f-B-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos962:BRANCH_B",
+   "statement": "NEGATIVE CLOSE: prove the literal failure of the logged o(1)-exponent upper bound; genuine independence is also a complete metamathematical alternative only if both consistency directions are proved.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos962:B:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos962-campaign-001/contract.json",
+   "contract_sha256": "ef76297872ce3a06b6effbf362570d98da631d2565b6bb34b2f36643ff2eb0d3",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos962-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos962",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-962-39ef14c46f-B-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos962:ROOT",
+   "statement": "Let $k(n)$ be the maximal $k$ such that there exists $m\\leq n$ such that each of the integers\\[m+1,\\ldots,m+k\\]are divisible by at least one prime $>k$. Estimate $k(n)$ - in particular, is it true that\\[\\log k(n) \\leq (\\log n)^{1/2+o(1)}?\\]",
+   "kind": "CANONICAL_ROOT",
+   "depends_on": [
+    "erdos962:BRANCH_A",
+    "erdos962:BRANCH_B"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "root_by_construction",
+   "closure_mode": "DISJUNCTIVE",
+   "satisfied_by_any": [
+    "erdos962:BRANCH_A",
+    "erdos962:BRANCH_B"
+   ],
+   "root_kind": "NOT_DECIDABLE",
+   "root_disqualifiers": [
+    "ASYMPTOTIC",
+    "UNBOUNDED_FORALL"
+   ],
+   "formal_root": {
+    "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/962.lean",
+    "category": "category research open, AMS 11",
+    "declaration": "erdos_962",
+    "statement": "answer(sorry) ↔ ∃ ε : ℕ → ℝ, (∀ δ > 0, ∀ᶠ n in atTop, |ε n| < δ) ∧ ∀ᶠ n : ℕ in atTop, log (k n : ℝ) ≤ rpow (log n) ((1 : ℝ) / 2 + ε n)"
+   },
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos962-campaign-001/contract.json",
+   "contract_sha256": "ef76297872ce3a06b6effbf362570d98da631d2565b6bb34b2f36643ff2eb0d3",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos962-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false,
+    "exempt": "structural: frozen prose with children, never a manufacture target"
+   },
+   "problem": "erdos962",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos962:LEM:R001:L1",
+   "statement": "k(n) achieved at m=n is refuted: k(13)=3 has unique witness m=12 (exact model, n≤200 sweep).",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 3,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified concrete counterexample and was load-bearing: R001's close required it to bridge from available scale-separated bounds to the exact exponent-o(1) log k(n) inequality; no surviving substitute argument exists within the route.",
+    "seq": 4
+   },
+   "history": [
+    {
+     "seq": 3,
+     "status": "FALSE",
+     "utc": "2026-09-01T22:14:25Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos962-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos962:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos962",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos962:LEM:R002:L1",
+   "statement": "imported from erdos821 R004/L1, adapted: k(n)≥1 for all n≥2 (m=1,k=1, block {2} has prime divisor 2>1), only n=1 has k(1)=0; threshold N₀≥3 is safe; survives degenerate-endpoint attack.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R002",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 11,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 6,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:16:26Z"
+    },
+    {
+     "seq": 7,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:16:41Z"
+    },
+    {
+     "seq": 8,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:16:55Z"
+    },
+    {
+     "seq": 9,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:17:02Z"
+    },
+    {
+     "seq": 10,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T22:17:14Z"
+    },
+    {
+     "seq": 11,
+     "status": "PROVED",
+     "utc": "2026-09-01T22:21:01Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos962-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos962:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos962",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos962:LEM:R003:L1",
+   "statement": "imported from erdos821 R004/L1 (via erdos1137 R002/L1), adapted: concrete repair requirement that any close handle m=1,2 and k=0/1 block conventions explicitly; truth-apt only against an actual candidate close, none exists in this packet.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R003",
+   "lemma_id": "L1",
+   "registry_status": "UNTESTED",
+   "registry_seq": 16,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 12,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T22:30:16Z"
+    },
+    {
+     "seq": 13,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T22:32:50Z"
+    },
+    {
+     "seq": 14,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T22:34:31Z"
+    },
+    {
+     "seq": 16,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T23:00:11Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos962-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos962:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "imported from erdos821 R004/L1 (via erdos1137 R002/L1), adapted: concrete repair requirement that any close handle m=1,2 and k=0/1 block conventions explicitly; truth-apt only against an actual candidate close, none exists in this packet."
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos962",
+   "is_leaf": true,
+   "manufacture_target": false
+  }
+ ]
+}

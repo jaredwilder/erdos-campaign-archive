@@ -1,0 +1,85 @@
+{
+ "schema": "msl-compress/1.0.0",
+ "consumes": "msl-ladder/1.0.0",
+ "problem": "erdos479",
+ "theorem": "erdos479_affirmative_bridge",
+ "law": "A JOB IS A DEMAND, NEVER A RESULT. No kernel has seen either file. T is PROVED_KERNEL only when the IMPLICATION file returns rc 0, error-free, with an axiom footprint inside the allowed three.",
+ "jobs": {
+  "compress_erdos479__erdos479_affirmative_bridge_implication": {
+   "kind": "IMPLICATION_BY_SOURCE_INCLUSION",
+   "decl": "erdos479_affirmative_bridge",
+   "composition_decl": "erdos479_affirmative_bridge_composition",
+   "lean_path": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_affirmative_bridge.implication.lean",
+   "lean_sha256": "a0c0874fa74838b54c6d1b125e5c7738521eb3862aa7f5c0f1bcdf7119c3b860",
+   "promotes_T_on_clean_verdict": true,
+   "builder": "msl_ladder.composed_file"
+  },
+  "compress_erdos479__erdos479_affirmative_bridge_standalone": {
+   "kind": "T_STANDALONE_BY_DETERMINISTIC_LADDER",
+   "decl": "erdos479_affirmative_bridge",
+   "lean_path": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_affirmative_bridge.standalone.lean",
+   "lean_sha256": "081cefe1d7c3071916cf3e0a4e5b8c033aeee7f8741784ded74d871d54c24ca1",
+   "shape": "ARITHMETIC",
+   "arms": [
+    "decide",
+    "omega",
+    "norm_num",
+    "ring_nf",
+    "ring",
+    "linarith",
+    "nlinarith",
+    "positivity",
+    "gcongr",
+    "simp_all",
+    "aesop",
+    "prelude-alone",
+    "prelude+omega",
+    "prelude+norm_num",
+    "prelude+linarith",
+    "prelude+nlinarith",
+    "prelude+ring_nf",
+    "prelude+ring",
+    "prelude+decide",
+    "prelude+simp_all",
+    "prelude+aesop",
+    "prelude+field_simp",
+    "prelude+field_simp+ring",
+    "prelude+qify+omega"
+   ],
+   "promotes_T_on_clean_verdict": false,
+   "builder": "msl_ladder.leaf_file"
+  }
+ },
+ "included_sources": [
+  {
+   "leaf": "erdos479:ORE:497dc6ba972d1307",
+   "declaration": "erdos479_family",
+   "included_via": "LEAN_STATEMENT_LINE",
+   "sha256": "cb7bb955a51b367b7f96fdb360ce893117e9502f61149464d779b087765983bd",
+   "receipt": "oracle/evidence/msl-machine/gpt-mine-day2-2026-09-02/kernel-verified/erdos479/Erdos479Family__b36c7078f0af.verify.json",
+   "source": null
+  },
+  {
+   "leaf": "erdos479:ORE:e4e7d9dfc598a767",
+   "declaration": "erdos479_k_neg_one",
+   "included_via": "LEAN_STATEMENT_LINE",
+   "sha256": "2bca88905690e1151a1753d460c07dd8505ee2fc0ffec9e228b8ced09ae3a829",
+   "receipt": "oracle/evidence/msl-machine/gpt-mine-day2-2026-09-02/kernel-verified/erdos479/Erdos479LTE__88f7aa08f802.verify.json",
+   "source": null
+  }
+ ],
+ "cable_spec": {
+  "id": "compress_erdos479__erdos479_affirmative_bridge",
+  "imports": "Mathlib",
+  "definitions": "/-!\nErdős 479, P0 promotion (GPT gold pack rank 2, audited 2026-09-01; kernel round 2026-09-02).\nInfinite parametric witness family: for every j ≥ 0 and every odd prime p, with\nk = 2^(2^j) and n = 2^j · p, we have 2^n ≡ k (mod n). Modulo p by Fermat\n(2^(2^j(p-1)) ≡ 1), modulo 2^j both sides vanish (j ≤ 2^j), and CRT since gcd(2^j, p) = 1.\nAs p varies this gives infinitely many n for each such k.\n-/\nErdős 479, second family (adversarial transcript mine, 2026-09-02 — the campaign itself\nmissed this; the auditor derived it): k = −1 is settled. For every a,\n3^(a+1) ∣ 2^(3^a) + 1, so in particular n = 3^a divides 2^n + 1, giving infinitely many\nwitnesses for k = −1 (2^n ≡ −1 mod n). Lifting-the-exponent induction: if\n2^(3^a) = 3^(a+1)·m − 1 then cubing gives (3tm−1)³ + 1 = 9t·(3t²m³ − 3tm² + m) with\nt = 3^a. Stated in ℤ to keep the subtraction honest; ℕ divisibility corollary follows.\ntheorem erdos479_lte (a : ℕ) : (3 : ℤ) ^ (a + 1) ∣ 2 ^ (3 ^ a) + 1 := by\n  induction a with\n  | zero => norm_num\n  | succ a ih =>\n    obtain ⟨m, hm⟩ := ih\n    set t : ℤ := 3 ^ a with hta\n    have h31 : (3 : ℤ) ^ (a + 1) = 3 * t := by rw [hta, pow_succ, mul_comm]\n    have h32 : (3 : ℤ) ^ (a + 1 + 1) = 9 * t := by rw [pow_succ, h31]; ring\n    have h2 : (2 : ℤ) ^ (3 ^ a) = 3 * t * m - 1 := by\n      rw [← h31]\n      linarith\n    have hcube : (2 : ℤ) ^ (3 ^ (a + 1)) = ((2 : ℤ) ^ (3 ^ a)) ^ 3 := by\n      rw [← pow_mul, pow_succ]\n    refine ⟨3 * t ^ 2 * m ^ 3 - 3 * t * m ^ 2 + m, ?_⟩\n    rw [hcube, h2, h32]\n    ring\n\n-- THE NORMALIZATION PRELUDE (msl_ladder, deterministic, $0).\n-- The claim it tests: most leaf failures on an arithmetic DAG are SIDE-CONDITIONS\n-- (an un-introduced hypothesis, a numeric coercion, a nonnegativity obligation),\n-- not mathematics.  Each step is `try`, so the prelude never fails and never\n-- changes what a tactic after it is allowed to prove.\nmacro \"msl_prelude\" : tactic =>\n  `(tactic| ((try intros); (try push_cast); (try positivity)))\n\n-- ---- children, INCLUDED BY SOURCE (each already PROVED_KERNEL alone)\ntheorem erdos479_family (j p : ℕ) (hp : p.Prime) (hodd : p ≠ 2) : 2 ^ (2 ^ j * p) ≡ 2 ^ (2 ^ j) [MOD 2 ^ j * p] := by\n  first\n  | decide\n  | norm_num\n  | simp\n\ntheorem erdos479_k_neg_one (a : ℕ) : (3 ^ a : ℕ) ∣ 2 ^ (3 ^ a) + 1 := by\n  first\n  | decide\n  | norm_num\n  | simp\n\n-- ---- the composition: children -> parent\ntheorem erdos479_affirmative_bridge_composition (k : ℤ) (hk : k = 0 ∨ (∃ j : ℕ, k = (2 : ℤ) ^ (2 ^ j)) ∨ k = -1) : ((erdos479_family : ($v0 $v1 : ℕ) (hp : $v1.Prime) (hodd : $v1 ≠ 2) : 2 ^ (2 ^ $v0 * $v1) ≡ 2 ^ (2 ^ $v0) [MOD 2 ^ $v0 * $v1]) ∧ (erdos479_k_neg_one : ($v0 : ℕ) : (3 ^ $v0 : ℕ) ∣ 2 ^ (3 ^ $v0) + 1)) → (theorem erdos479_affirmative_bridge (k : ℤ) (hk : k = 0 ∨ (∃ j : ℕ, k = (2 : ℤ) ^ (2 ^ j)) ∨ k = -1) : ∀ N : ℕ, ∃ n : ℕ, N < n ∧ (2 : ℤ) ^ n ≡ k [ZMOD n]) := by\n  first\n  | (decide; done)\n  | (omega; done)\n  | (norm_num; done)\n  | (ring_nf; done)\n  | (ring_nf; ring; done)\n  | (linarith; done)\n  | (nlinarith; done)\n  | (positivity; done)\n  | (gcongr; done)\n  | (simp_all; done)\n  | (aesop; done)\n  | (msl_prelude; done)\n  | (msl_prelude; omega; done)\n  | (msl_prelude; norm_num; done)\n  | (msl_prelude; linarith; done)\n  | (msl_prelude; nlinarith; done)\n  | (msl_prelude; ring_nf; done)\n  | (msl_prelude; ring_nf; ring; done)\n  | (msl_prelude; decide; done)\n  | (msl_prelude; simp_all; done)\n  | (msl_prelude; aesop; done)\n  | (msl_prelude; field_simp; done)\n  | (msl_prelude; field_simp; ring; done)\n  | (msl_prelude; qify; omega; done)\n",
+  "hypotheses": [
+   "(k : ℤ)",
+   "(hk : k = 0 ∨ (∃ j : ℕ, k = (2 : ℤ) ^ (2 ^ j)) ∨ k = -1)"
+  ],
+  "conclusion": "theorem erdos479_affirmative_bridge (k : ℤ) (hk : k = 0 ∨ (∃ j : ℕ, k = (2 : ℤ) ^ (2 ^ j)) ∨ k = -1) : ∀ N : ℕ, ∃ n : ℕ, N < n ∧ (2 : ℤ) ^ n ≡ k [ZMOD n]",
+  "set_options": [
+   "set_option maxHeartbeats 400000"
+  ]
+ },
+ "cable_note": ""
+}

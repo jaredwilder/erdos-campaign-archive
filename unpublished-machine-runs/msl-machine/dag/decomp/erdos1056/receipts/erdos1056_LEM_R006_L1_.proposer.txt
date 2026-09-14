@@ -1,0 +1,19 @@
+{"definitions": "",
+  "parent_typed": {"name": "erdos1056LEM_R006_L1'", "binders": [],
+                   "statement": "((3 : Nat) * (4 : Nat) ≡ 1 [MOD 11] ∧ (7 : Nat) * (8 : Nat) ≡ 1 [MOD 11]) ∧ ((4 : Nat) * (5 : Nat) * (6 : Nat) ≡ 1 [MOD 17] ∧ (12 : Nat) * (13 : Nat) * (14 : Nat) * (15 : Nat) ≡ 1 [MOD 17])",
+                   "reading": "The interval products 3·4 and 7·8 are congruent to 1 mod 11, and the interval products 4·5·6 and 12·13·14·15 are congruent to 1 mod 17."},
+  "children": [
+    {"name": "erdos1056LEM_R006_L1'_p11mono", "binders": [],
+     "statement": "StrictMono (![(3 : Nat), 5, 7] : Fin 3 → Nat) ∧ StrictMono (![(4 : Nat), 7, 12] : Fin 3 → Nat)",
+     "reading": "The candidate boundary tuples (3,5,7) for p = 11 and (4,7,12) for p = 17 are strictly increasing, so the intervals they cut out are ordered and nonempty."},
+    {"name": "erdos1056LEM_R006_L1'_p11", "binders": [],
+     "statement": "(3 : Nat) * (4 : Nat) ≡ 1 [MOD 11] ∧ (7 : Nat) * (8 : Nat) ≡ 1 [MOD 11]",
+     "reading": "For p = 11: 3·4 = 12 ≡ 1 (mod 11) and 7·8 = 56 ≡ 1 (mod 11)."},
+    {"name": "erdos1056LEM_R006_L1'_p17a", "binders": [],
+     "statement": "(4 : Nat) * (5 : Nat) * (6 : Nat) ≡ 1 [MOD 17]",
+     "reading": "For p = 17: 4·5·6 = 120 ≡ 1 (mod 17)."},
+    {"name": "erdos1056LEM_R006_L1'_p17b", "binders": [],
+     "statement": "(12 : Nat) * (13 : Nat) * (14 : Nat) * (15 : Nat) ≡ 1 [MOD 17]",
+     "reading": "For p = 17: 12·13·14·15 = 32760 ≡ 1 (mod 17)."}
+  ],
+  "composition_claim": "Child 1 supplies the strict monotonicity (hence nonemptiness and ordering) of both boundary tuples; children 2, 3, 4 supply exactly the four congruence facts asserted in the parent, so the conjunction of children 1–4 is literally the parent conjunction, which `And.intro` reassembles."}

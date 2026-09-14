@@ -1,0 +1,64 @@
+{
+ "schema": "msl-compress/1.0.0",
+ "problem": "erdos479",
+ "candidate": {
+  "t_id": "erdos479:COMPRESS:erdos479_branchA_reduce_to_nat",
+  "theorem_name": "erdos479_branchA_reduce_to_nat",
+  "origin": "PROPOSER",
+  "variant": "v1_direct",
+  "statement": "∀ k : ℤ, 0 ≤ k → k ≠ 1 → Set.Infinite {n : ℕ | (2 : ℤ) ^ n ≡ k [ZMOD (n : ℤ)]}",
+  "premises": [
+   "erdos479:LEM:R021:L1",
+   "erdos479:LEM:R013:L1",
+   "erdos479:LEM:R009:L1"
+  ],
+  "discharges": "erdos479:BRANCH_A",
+  "derivation_claim": "L_R009 (domain normalization n≥2, vacuous n=1 removed) ∧ L_R013 ∧ L_R021 (concrete ℕ-witness infinitude infrastructure for k ∈ {0,2,−1}) → T, where T is the reduction: the ℤ-quanted branch close follows from its ℕ-restriction for all k : ℕ, k ≠ 1, since every k : ℤ with 0 ≤ k equals (k.toNat : ℤ), k",
+  "reason": "It shrinks BRANCH_A from 'all k ∈ ℤ, k ≠ 1' to exactly the open residual 'all k : ℕ, k ≠ 1', eliminating the integer-vs-natural typing gap with an explicit 0 ≤ k case split the kernel verifies, so only the genuinely open nonneg-integer infi",
+  "gates": {
+   "order": [
+    "G1_SCHEMA",
+    "G2_TYPE",
+    "G3_CIRCULAR",
+    "G4_KILLED",
+    "G5_CONJUNCTION",
+    "G6_FALSIFY",
+    "G7_RISE"
+   ],
+   "passed": [
+    "G1_SCHEMA"
+   ],
+   "failed_at": "G2_TYPE",
+   "detail": {
+    "G1_SCHEMA": {
+     "ok": true,
+     "reason": ""
+    },
+    "G2_TYPE": {
+     "standalone_ok": true,
+     "standalone_missing": [],
+     "referenced_missing": [
+      "ascription (... : ℕ)",
+      "domain bound 'n 2'",
+      "domain bound 'n 3'",
+      "domain bound 's 40'"
+     ],
+     "fatal": [
+      "ascription (... : ℕ)"
+     ],
+     "domain_bounds_dropped": [
+      "domain bound 'n 2'",
+      "domain bound 'n 3'",
+      "domain bound 's 40'"
+     ],
+     "ok": false,
+     "reason": "TYPE_OR_ASCRIPTION_DROPPED: ascription (... : ℕ)"
+    }
+   }
+  },
+  "rise": null,
+  "status": "REFUSED"
+ },
+ "node": null,
+ "law": "REFUSED AT A GATE; no job filed."
+}

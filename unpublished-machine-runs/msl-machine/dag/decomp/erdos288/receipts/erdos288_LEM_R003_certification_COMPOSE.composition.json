@@ -1,0 +1,22 @@
+{
+  "kind": "COMPOSITION_KERNEL_CHECK",
+  "node": "erdos288:LEM:R003:certification#COMPOSE",
+  "verdict": {
+    "verdict": "COMPOSITION_OPEN",
+    "rc": 1,
+    "kernel_error": "/root/peer/decomp/b20260902_093511_3/erdos288_LEM_R003_certification_comp.lean:14:372: error: unsolved goals",
+    "counts_toward_parent": 0
+  },
+  "lean_source": "oracle/evidence/msl-machine/dag/decomp/erdos288/lean/erdos288_LEM_R003_certification_COMPOSE.lean",
+  "ladder": [
+    "tauto",
+    "(intro h; exact h.1)",
+    "(intro h; simp_all)",
+    "(intro h; omega)",
+    "(intro h; norm_num at h ⊢ <;> tauto)",
+    "aesop",
+    "decide"
+  ],
+  "kernel_log": "/root/peer/decomp/b20260902_093511_3/erdos288_LEM_R003_certification_comp.lean:14:372: error: unsolved goals\nh :\n  (∀ (I : Fin 2 → ℕ+ × ℕ+),\n      ∃ n,\n        IntervalSum (I 0) + IntervalSum (I 1) = ↑↑n ↔\n          ∃ m, ↑m ≤ (IntervalSum (I 0) + IntervalSum (I 1)).num + 1 ∧ IntervalSum (I 0) + IntervalSum (I 1) = ↑m) ∧\n    ∀ (I : Fin 2 → ℕ+ × ℕ+), 0 < IntervalSum (I 0) + IntervalSum (I 1)\n⊢ {I | Good I}.Finite\n'msl_erdos288_lem_r003_certification_composition' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]",
+  "utc": "2026-09-02T16:35:22Z"
+}

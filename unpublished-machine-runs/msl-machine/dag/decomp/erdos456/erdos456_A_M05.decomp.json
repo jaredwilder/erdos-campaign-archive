@@ -1,0 +1,167 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos456",
+  "generated_utc": "2026-09-02T16:24:08Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos456:A:M05",
+    "statement": "For clause 2, one fixed density-one set A is chosen before the Tendsto/limit quantifiers and does not depend on epsilon or threshold.",
+    "statement_sha256": "80e5e71746c0a8dc1a0cae98649f95e2b0d91ac9119995fd8729263706cb6534",
+    "kind": "MUST_DETERMINE",
+    "binding": "VERBATIM",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "Let $p_n$ be the smallest prime $\\equiv 1\\pmod{n}$ and let $m_n$ be the smallest integer such that $n\\mid \\phi(m_n)$.Is it true that $m_n<p_n$ for almost all $n$? Does $p_n/m_n\\to \\infty$ for almost all $n$? Are there infinitely many primes $p$ such that $p-1$ is the only $n$ for which $m_n=p$?",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos456-campaign-001/contract.json",
+    "sha256": "f3e717feda26257eb71dc69b87c94f5f6be7b743a50101f28d62423f77380aab"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos456:A:M05",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "7dd746b6eb5b4d17a53148c58a98c7dadb3229e5430691019eef502e17d7a116",
+    "prompt_chars": 7927,
+    "response_sha256": "8205e469bcd406f04e6100720e349f694592c9e05633de5f1bd844d6894c0e66",
+    "usage": {
+      "prompt_tokens": 2486,
+      "completion_tokens": 3151,
+      "total_tokens": 5637,
+      "cost": 0.0009742,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0009742,
+        "upstream_inference_prompt_cost": 0.00018645,
+        "upstream_inference_completions_cost": 0.00078775
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 2303,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.0009742,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 83.41,
+    "utc": "2026-09-02T16:23:36Z"
+  },
+  "children": [],
+  "composition": {
+    "id": "erdos456:A:M05#COMPOSE",
+    "statement": "(composition not constructed)",
+    "kind": "COMPOSITION",
+    "depends_on": [],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "OPEN",
+    "problem": "erdos456",
+    "decomposed_from": "erdos456:A:M05",
+    "imports": "Mathlib",
+    "definitions": "def Erdos456.pVal (n : Nat) : Nat := sInf {p : Nat | p.Prime ∧ p ≡ 1 [MOD n]}\ndef Erdos456.mVal (n : Nat) : Nat := sInf {m : Nat | 1 ≤ m ∧ n ∣ Nat.totient m}\ndef Erdos456.DensityOne (A : Set Nat) : Prop :=\n  ∀ (e : Rat), 0 < e → ∃ (N : Nat), ∀ (n : Nat), N ≤ n →\n    (1 - e : Rat) ≤ ((Finset.filter (fun (k : Nat) => k ∈ A) (Finset.Icc 1 n)).card : Rat) / (n : Rat)\ndef Erdos456.TendsToInfOn (A : Set Nat) (f : Nat → Rat) : Prop :=\n  ∀ (B : Rat), ∃ (N : Nat), ∀ (n : Nat), N ≤ n → n ∈ A → B < f n",
+    "type_context": "Mathlib\ndef Erdos456.pVal (n : Nat) : Nat := sInf {p : Nat | p.Prime ∧ p ≡ 1 [MOD n]}\ndef Erdos456.mVal (n : Nat) : Nat := sInf {m : Nat | 1 ≤ m ∧ n ∣ Nat.totient m}\ndef Erdos456.DensityOne (A : Set Nat) : Prop :=\n  ∀ (e : Rat), 0 < e → ∃ (N : Nat), ∀ (n : Nat), N ≤ n →\n    (1 - e : Rat) ≤ ((Finset.filter (fun (k : Nat) => k ∈ A) (Finset.Icc 1 n)).card : Rat) / (n : Rat)\ndef Erdos456.TendsToInfOn (A : Set Nat) (f : Nat → Rat) : Prop :=\n  ∀ (B : Rat), ∃ (N : Nat), ∀ (n : Nat), N ≤ n → n ∈ A → B < f n",
+    "parent_typed": {
+      "statement": "∃ (A : Set Nat), Erdos456.DensityOne A ∧\n  Erdos456.TendsToInfOn A (fun (n : Nat) => ((Erdos456.pVal n : Rat) / (Erdos456.mVal n : Rat)))",
+      "binders": [],
+      "reading": "There is a single set A of density one, fixed before all threshold quantifiers, such that p_n/m_n tends to infinity along A; A does not depend on any epsilon or threshold.",
+      "elaboration": {
+        "verdict": "DEFS_DO_NOT_ELABORATE",
+        "kernel_error": "/root/peer/decomp/b20260902_092336_1/erdos456_A_M05_defs.lean:8:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Nat.instInfSet', which is 'noncomputable'\n/root/peer/decomp/b20260902_092336_1/erdos456_A_M05_defs.lean:9:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Nat.instInfSet', which is 'noncomputable'\n/root/peer/decomp/b20260902_092336_1/erdos456_A_M05_defs.lean:12:22: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun k => k ∈ A\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command."
+      },
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": null,
+        "prose_contract_root_report": {
+          "ok": true,
+          "missing": [],
+          "reason": "",
+          "blocking": false,
+          "why_not_blocking": "tokens mined from ENGLISH prose are not Lean tokens; `Fin k` carries `1 <= i <= k` structurally"
+        }
+      }
+    },
+    "composition_claim": {
+      "text": "Child 3 exhibits a fixed set A := Set.univ satisfying DensityOne, chosen before any threshold quantifier; child 2 then converts that fixed A into the TendsToInfOn clause whose threshold binder B comes after A, and child 1 certifies the ratio pVal n / mVal n rests on genuine minima on the anchor range. Together they instantiate the parent ∃ A, DensityOne A ∧ TendsToInfOn A ..., exactly the prose requirement that one density-one set is fixed prior to the Tendsto/limit quantifiers and independent of epsilon or threshold.",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "COMPOSITION_NOT_RUN",
+      "counts_toward_parent": 0,
+      "reason": "no surviving child"
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "composition_receipt": "oracle/evidence/msl-machine/dag/decomp/erdos456/receipts/erdos456_A_M05_COMPOSE.composition.json"
+  },
+  "parent_new_depends_on": [
+    "erdos456:A:M05#COMPOSE"
+  ],
+  "rejected": [
+    {
+      "proposed_index": 1,
+      "statement": "∀ (n : Nat), 1 ≤ n → n ≤ 24 → n ∣ Nat.totient (Erdos456.mVal n) ∧ Erdos456.mVal n ≤ Erdos456.pVal n",
+      "binders": [],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: /root/peer/decomp/b20260902_092336_1/erdos456_A_M05_defs.lean:8:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Nat.instInfSet', which is 'noncomputable'\n/root/peer/decomp/b20260902_092336_1/erdos456_A_M05_defs.lean:9:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Nat.instInfSet', which is 'noncomputable'\n/root/peer/decomp/b20260902_092336_1/erdos456_A_M05_defs.lean:12:22: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun k => k ∈ A\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.",
+      "kernel_error": "/root/peer/decomp/b20260902_092336_1/erdos456_A_M05_defs.lean:8:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Nat.instInfSet', which is 'noncomputable'\n/root/peer/decomp/b20260902_092336_1/erdos456_A_M05_defs.lean:9:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Nat.instInfSet', which is 'noncomputable'\n/root/peer/decomp/b20260902_092336_1/erdos456_A_M05_defs.lean:12:22: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun k => k ∈ A\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command."
+    },
+    {
+      "proposed_index": 2,
+      "statement": "∀ (A : Set Nat), Erdos456.DensityOne A →\n  Erdos456.TendsToInfOn A (fun (n : Nat) => ((Erdos456.pVal n : Rat) / (Erdos456.mVal n : Rat)))",
+      "binders": [],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: /root/peer/decomp/b20260902_092336_1/erdos456_A_M05_defs.lean:8:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Nat.instInfSet', which is 'noncomputable'\n/root/peer/decomp/b20260902_092336_1/erdos456_A_M05_defs.lean:9:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Nat.instInfSet', which is 'noncomputable'\n/root/peer/decomp/b20260902_092336_1/erdos456_A_M05_defs.lean:12:22: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun k => k ∈ A\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.",
+      "kernel_error": "/root/peer/decomp/b20260902_092336_1/erdos456_A_M05_defs.lean:8:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Nat.instInfSet', which is 'noncomputable'\n/root/peer/decomp/b20260902_092336_1/erdos456_A_M05_defs.lean:9:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Nat.instInfSet', which is 'noncomputable'\n/root/peer/decomp/b20260902_092336_1/erdos456_A_M05_defs.lean:12:22: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun k => k ∈ A\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command."
+    },
+    {
+      "proposed_index": 3,
+      "statement": "Erdos456.DensityOne Set.univ",
+      "binders": [],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: /root/peer/decomp/b20260902_092336_1/erdos456_A_M05_defs.lean:8:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Nat.instInfSet', which is 'noncomputable'\n/root/peer/decomp/b20260902_092336_1/erdos456_A_M05_defs.lean:9:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Nat.instInfSet', which is 'noncomputable'\n/root/peer/decomp/b20260902_092336_1/erdos456_A_M05_defs.lean:12:22: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun k => k ∈ A\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.",
+      "kernel_error": "/root/peer/decomp/b20260902_092336_1/erdos456_A_M05_defs.lean:8:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Nat.instInfSet', which is 'noncomputable'\n/root/peer/decomp/b20260902_092336_1/erdos456_A_M05_defs.lean:9:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Nat.instInfSet', which is 'noncomputable'\n/root/peer/decomp/b20260902_092336_1/erdos456_A_M05_defs.lean:12:22: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun k => k ∈ A\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command."
+    }
+  ],
+  "counts": {
+    "proposed": 3,
+    "elaborated": 0,
+    "bound": 0,
+    "non_circular": 0,
+    "non_trivial": 0,
+    "surviving": 0,
+    "composition_kernel_checked": 0,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 0,
+    "counts_toward_parent_note": "composition OPEN: these children contribute ZERO toward the parent until it closes; they remain formal leaves for the rung loop"
+  },
+  "definitions": {
+    "block": "def Erdos456.pVal (n : Nat) : Nat := sInf {p : Nat | p.Prime ∧ p ≡ 1 [MOD n]}\ndef Erdos456.mVal (n : Nat) : Nat := sInf {m : Nat | 1 ≤ m ∧ n ∣ Nat.totient m}\ndef Erdos456.DensityOne (A : Set Nat) : Prop :=\n  ∀ (e : Rat), 0 < e → ∃ (N : Nat), ∀ (n : Nat), N ≤ n →\n    (1 - e : Rat) ≤ ((Finset.filter (fun (k : Nat) => k ∈ A) (Finset.Icc 1 n)).card : Rat) / (n : Rat)\ndef Erdos456.TendsToInfOn (A : Set Nat) (f : Nat → Rat) : Prop :=\n  ∀ (B : Rat), ∃ (N : Nat), ∀ (n : Nat), N ≤ n → n ∈ A → B < f n",
+    "gate0": {
+      "verdict": "DEFS_DO_NOT_ELABORATE",
+      "kernel_error": "/root/peer/decomp/b20260902_092336_1/erdos456_A_M05_defs.lean:8:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Nat.instInfSet', which is 'noncomputable'\n/root/peer/decomp/b20260902_092336_1/erdos456_A_M05_defs.lean:9:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Nat.instInfSet', which is 'noncomputable'\n/root/peer/decomp/b20260902_092336_1/erdos456_A_M05_defs.lean:12:22: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun k => k ∈ A\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command."
+    },
+    "campaign_vocabulary_prepended": [],
+    "normalization": {
+      "body": "def Erdos456.pVal (n : Nat) : Nat := sInf {p : Nat | p.Prime ∧ p ≡ 1 [MOD n]}\ndef Erdos456.mVal (n : Nat) : Nat := sInf {m : Nat | 1 ≤ m ∧ n ∣ Nat.totient m}\ndef Erdos456.DensityOne (A : Set Nat) : Prop :=\n  ∀ (e : Rat), 0 < e → ∃ (N : Nat), ∀ (n : Nat), N ≤ n →\n    (1 - e : Rat) ≤ ((Finset.filter (fun (k : Nat) => k ∈ A) (Finset.Icc 1 n)).card : Rat) / (n : Rat)\ndef Erdos456.TendsToInfOn (A : Set Nat) (f : Nat → Rat) : Prop :=\n  ∀ (B : Rat), ∃ (N : Nat), ∀ (n : Nat), N ≤ n → n ∈ A → B < f n",
+      "opens": [],
+      "dropped_imports": []
+    }
+  }
+}

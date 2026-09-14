@@ -1,0 +1,1 @@
+{"tactics": "intro k h\nrcases Nat.lt_or_ge k 2 with hk | hk\n· interval_cases k <;> omega\n· obtain ⟨ha, hb⟩ := h hk\n  constructor\n  · nlinarith\n  · nlinarith", "reading": "For k<2 the goal holds by omega on the two literal cases; for k≥2, ha : k+2 < k*(k+1) linear-combines to k+3 < (k+1)*(k+2) and hb : 4 ≤ k*k gives 4 ≤ (k+1)^2 via nlinarith."}

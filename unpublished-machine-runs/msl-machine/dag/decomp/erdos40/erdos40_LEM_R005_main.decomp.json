@@ -1,0 +1,180 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos40",
+  "generated_utc": "2026-09-02T16:47:50Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos40:LEM:R005:main",
+    "statement": "Residual claim is a placeholder (\"per contract\") with no analytic reduction; fail-closed, no certificate issued.",
+    "statement_sha256": "77a8f79d45290d01ab544ec352e22aa2a9fe18981ac36ab98ebc5ccf89f25395",
+    "kind": "LEMMA",
+    "binding": "UNBOUND",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "For what functions $g(N)\\to \\infty$ is it true that\\[\\lvert A\\cap \\{1,\\ldots,N\\}\\rvert \\gg \\frac{N^{1/2}}{g(N)}\\]implies $\\limsup 1_A\\ast 1_A(n)=\\infty$?",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos40-campaign-001/contract.json",
+    "sha256": "ae683543cb8744fc0163aa987e8fa5b03162b84763ea372670bf8e07d3c74862"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos40:LEM:R005:main",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "a17bdc03c6c6ee864726c26f022cd721b66237425f15f0223a62bfaab0787e66",
+    "prompt_chars": 4110,
+    "response_sha256": "09c62b0fbf7cdfb8da372f66f18e551ed51d95f8bcb00d602295bdba2cd4af45",
+    "usage": {
+      "prompt_tokens": 1087,
+      "completion_tokens": 3041,
+      "total_tokens": 4128,
+      "cost": 0.000834095,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 128,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.000834095,
+        "upstream_inference_prompt_cost": 7.3845e-05,
+        "upstream_inference_completions_cost": 0.00076025
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 2161,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.000834095,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 85.02,
+    "utc": "2026-09-02T16:47:28Z"
+  },
+  "children": [],
+  "composition": {
+    "id": "erdos40:LEM:R005:main#COMPOSE",
+    "statement": "(composition not constructed)",
+    "kind": "COMPOSITION",
+    "depends_on": [],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "OPEN",
+    "problem": "erdos40",
+    "decomposed_from": "erdos40:LEM:R005:main",
+    "imports": "Mathlib",
+    "definitions": "def countA (A : Set Nat) (N : Nat) : Nat :=\n  (Finset.Icc 1 N |>.filter (fun k => k ∈ A)).card\n\ndef convA (A : Set Nat) (n : Nat) : Nat :=\n  (Finset.Icc 1 n |>.filter (fun k => k ∈ A ∧ n - k ∈ A)).card\n\ndef DensCond (A : Set Nat) (g : Nat → Real) : Prop :=\n  ∃ (c : Real), 0 < c ∧ ∀ (N : Nat), 1 ≤ N →\n    ((countA A N : Real) ≥ c * (N : Real) ^ ((1 : Real) / 2) / g N)\n\ndef GrowsUnbounded (g : Nat → Real) : Prop :=\n  ∀ (B : Real), ∃ (N₀ : Nat), ∀ (N : Nat), N₀ ≤ N → g N ≥ B",
+    "type_context": "Mathlib\ndef countA (A : Set Nat) (N : Nat) : Nat :=\n  (Finset.Icc 1 N |>.filter (fun k => k ∈ A)).card\n\ndef convA (A : Set Nat) (n : Nat) : Nat :=\n  (Finset.Icc 1 n |>.filter (fun k => k ∈ A ∧ n - k ∈ A)).card\n\ndef DensCond (A : Set Nat) (g : Nat → Real) : Prop :=\n  ∃ (c : Real), 0 < c ∧ ∀ (N : Nat), 1 ≤ N →\n    ((countA A N : Real) ≥ c * (N : Real) ^ ((1 : Real) / 2) / g N)\n\ndef GrowsUnbounded (g : Nat → Real) : Prop :=\n  ∀ (B : Real), ∃ (N₀ : Nat), ∀ (N : Nat), N₀ ≤ N → g N ≥ B",
+    "parent_typed": {
+      "statement": "GrowsUnbounded g → DensCond A g → ∀ (M : Nat), ∃ (n : Nat), convA A n ≥ M",
+      "binders": [
+        "(A : Set Nat)",
+        "(g : Nat → Real)"
+      ],
+      "reading": "If g(N) tends to infinity and A has density ≫ N^(1/2)/g(N) in [1,N], then the additive convolution 1_A * 1_A is unbounded (limsup = ∞).",
+      "elaboration": {
+        "verdict": "DEFS_DO_NOT_ELABORATE",
+        "kernel_error": "/root/peer/decomp/b20260902_094728_1/erdos40_LEM_R005_main_defs.lean:9:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun k => k ∈ A\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_094728_1/erdos40_LEM_R005_main_defs.lean:12:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun k => k ∈ A ∧ n - k ∈ A\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command."
+      },
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": null,
+        "prose_contract_root_report": {
+          "ok": true,
+          "missing": [],
+          "reason": "",
+          "blocking": false,
+          "why_not_blocking": "tokens mined from ENGLISH prose are not Lean tokens; `Fin k` carries `1 <= i <= k` structurally"
+        }
+      }
+    },
+    "composition_claim": {
+      "text": "Children 1 and 2 are the bounded convolution-counting rungs (window identity and max ≥ average); child 3 is the amplification step they yield. Given the parent's hypotheses, for each M the growth of g together with DensCond gives |A∩[1,N]| ≥ 2M·√N for arbitrarily large N, and child 3 then produces n ≤ 2N with convA A n ≥ M and n → ∞, which is exactly the parent's conclusion; per the placeholder contract (id erdos40:LEM:R005:main) the residual analytic step remains fail-closed and no certificate is issued.",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "COMPOSITION_NOT_RUN",
+      "counts_toward_parent": 0,
+      "reason": "no surviving child"
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "composition_receipt": "oracle/evidence/msl-machine/dag/decomp/erdos40/receipts/erdos40_LEM_R005_main_COMPOSE.composition.json"
+  },
+  "parent_new_depends_on": [
+    "erdos40:LEM:R005:main#COMPOSE"
+  ],
+  "rejected": [
+    {
+      "proposed_index": 1,
+      "statement": "1 ≤ N → ∑ n in Finset.Icc 2 (2 * N), (convA A n : Nat) = (countA A N : Nat) ^ 2",
+      "binders": [
+        "(A : Set Nat)",
+        "(N : Nat)"
+      ],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: /root/peer/decomp/b20260902_094728_1/erdos40_LEM_R005_main_defs.lean:9:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun k => k ∈ A\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_094728_1/erdos40_LEM_R005_main_defs.lean:12:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun k => k ∈ A ∧ n - k ∈ A\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.",
+      "kernel_error": "/root/peer/decomp/b20260902_094728_1/erdos40_LEM_R005_main_defs.lean:9:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun k => k ∈ A\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_094728_1/erdos40_LEM_R005_main_defs.lean:12:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun k => k ∈ A ∧ n - k ∈ A\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command."
+    },
+    {
+      "proposed_index": 2,
+      "statement": "1 ≤ N → ∃ n ∈ Finset.Icc 2 (2 * N), (convA A n : Real) * (2 * (N : Real) - 1) ≥ ((countA A N : Real) ^ 2)",
+      "binders": [
+        "(A : Set Nat)",
+        "(N : Nat)"
+      ],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: /root/peer/decomp/b20260902_094728_1/erdos40_LEM_R005_main_defs.lean:9:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun k => k ∈ A\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_094728_1/erdos40_LEM_R005_main_defs.lean:12:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun k => k ∈ A ∧ n - k ∈ A\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.",
+      "kernel_error": "/root/peer/decomp/b20260902_094728_1/erdos40_LEM_R005_main_defs.lean:9:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun k => k ∈ A\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_094728_1/erdos40_LEM_R005_main_defs.lean:12:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun k => k ∈ A ∧ n - k ∈ A\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command."
+    },
+    {
+      "proposed_index": 3,
+      "statement": "1 ≤ N → ((countA A N : Real) ≥ 2 * (M : Real) * (N : Real) ^ ((1 : Real) / 2)) → ∃ n ∈ Finset.Icc 2 (2 * N), convA A n ≥ M",
+      "binders": [
+        "(A : Set Nat)",
+        "(M : Nat)",
+        "(N : Nat)"
+      ],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: /root/peer/decomp/b20260902_094728_1/erdos40_LEM_R005_main_defs.lean:9:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun k => k ∈ A\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_094728_1/erdos40_LEM_R005_main_defs.lean:12:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun k => k ∈ A ∧ n - k ∈ A\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.",
+      "kernel_error": "/root/peer/decomp/b20260902_094728_1/erdos40_LEM_R005_main_defs.lean:9:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun k => k ∈ A\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_094728_1/erdos40_LEM_R005_main_defs.lean:12:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun k => k ∈ A ∧ n - k ∈ A\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command."
+    }
+  ],
+  "counts": {
+    "proposed": 3,
+    "elaborated": 0,
+    "bound": 0,
+    "non_circular": 0,
+    "non_trivial": 0,
+    "surviving": 0,
+    "composition_kernel_checked": 0,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 0,
+    "counts_toward_parent_note": "composition OPEN: these children contribute ZERO toward the parent until it closes; they remain formal leaves for the rung loop"
+  },
+  "definitions": {
+    "block": "def countA (A : Set Nat) (N : Nat) : Nat :=\n  (Finset.Icc 1 N |>.filter (fun k => k ∈ A)).card\n\ndef convA (A : Set Nat) (n : Nat) : Nat :=\n  (Finset.Icc 1 n |>.filter (fun k => k ∈ A ∧ n - k ∈ A)).card\n\ndef DensCond (A : Set Nat) (g : Nat → Real) : Prop :=\n  ∃ (c : Real), 0 < c ∧ ∀ (N : Nat), 1 ≤ N →\n    ((countA A N : Real) ≥ c * (N : Real) ^ ((1 : Real) / 2) / g N)\n\ndef GrowsUnbounded (g : Nat → Real) : Prop :=\n  ∀ (B : Real), ∃ (N₀ : Nat), ∀ (N : Nat), N₀ ≤ N → g N ≥ B",
+    "gate0": {
+      "verdict": "DEFS_DO_NOT_ELABORATE",
+      "kernel_error": "/root/peer/decomp/b20260902_094728_1/erdos40_LEM_R005_main_defs.lean:9:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun k => k ∈ A\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.\n/root/peer/decomp/b20260902_094728_1/erdos40_LEM_R005_main_defs.lean:12:3: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun k => k ∈ A ∧ n - k ∈ A\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command."
+    },
+    "campaign_vocabulary_prepended": [],
+    "normalization": {
+      "body": "def countA (A : Set Nat) (N : Nat) : Nat :=\n  (Finset.Icc 1 N |>.filter (fun k => k ∈ A)).card\n\ndef convA (A : Set Nat) (n : Nat) : Nat :=\n  (Finset.Icc 1 n |>.filter (fun k => k ∈ A ∧ n - k ∈ A)).card\n\ndef DensCond (A : Set Nat) (g : Nat → Real) : Prop :=\n  ∃ (c : Real), 0 < c ∧ ∀ (N : Nat), 1 ≤ N →\n    ((countA A N : Real) ≥ c * (N : Real) ^ ((1 : Real) / 2) / g N)\n\ndef GrowsUnbounded (g : Nat → Real) : Prop :=\n  ∀ (B : Real), ∃ (N₀ : Nat), ∀ (N : Nat), N₀ ≤ N → g N ≥ B",
+      "opens": [],
+      "dropped_imports": []
+    }
+  }
+}

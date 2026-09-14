@@ -1,0 +1,155 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos1106",
+  "generated_utc": "2026-09-02T16:24:15Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos1106:LEM:R004:L1",
+    "statement": "Certification blocked: F undefined (no recurrence/enumeration/witness on file), so no fail-closed exact or interval verifier can be constructed; repair = file F's exact finite definition + quantifier scope, then certificate is mechanical exact-arithmetic for n<=60 with scope \"finite range only, exte",
+    "statement_sha256": "6ea4ac10b9b93ddc337aa96254f971db6c31485e6e402919025dcfb1bdaa93ce",
+    "kind": "LEMMA",
+    "binding": "UNBOUND",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "Let $p(n)$ denote the partition function of $n$ and let $F(n)$ count the number of distinct prime factors of\\[\\prod_{1\\leq k\\leq n}p(k).\\]Does $F(n)\\to \\infty$ with $n$? Is $F(n)>n$ for all sufficiently large $n$?",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos1106-campaign-001/contract.json",
+    "sha256": "6b00b5dbc5eb6487a8abc79396da64e1643f1f4ef691ed8df876983847905a9b"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos1106:LEM:R004:L1",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "fbd92b0ca78eced4c141dbeba5fe498ed37000840c8c48464412bed907d4ee11",
+    "prompt_chars": 4357,
+    "response_sha256": "4c07aafcc0aed43afdedbf29fd6053f94ec598a03b22c95a99806f30ad532e96",
+    "usage": {
+      "prompt_tokens": 1129,
+      "completion_tokens": 1303,
+      "total_tokens": 2432,
+      "cost": 0.000410425,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.000410425,
+        "upstream_inference_prompt_cost": 8.4675e-05,
+        "upstream_inference_completions_cost": 0.00032575
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 849,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.000410425,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 34.2,
+    "utc": "2026-09-02T16:22:46Z"
+  },
+  "children": [],
+  "composition": {
+    "id": "erdos1106:LEM:R004:L1#COMPOSE",
+    "statement": "(composition not constructed)",
+    "kind": "COMPOSITION",
+    "depends_on": [],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "OPEN",
+    "problem": "erdos1106",
+    "decomposed_from": "erdos1106:LEM:R004:L1",
+    "imports": "Mathlib",
+    "definitions": "def p (n : Nat) : Nat := (Nat.partitions n).card\n\ndef F (n : Nat) : Nat :=\n  (Nat.factors ((Finset.Icc 1 n).fold (fun (acc : Nat) (k : Nat) => acc * p k) 1)).toFinset.card",
+    "type_context": "Mathlib\ndef p (n : Nat) : Nat := (Nat.partitions n).card\n\ndef F (n : Nat) : Nat :=\n  (Nat.factors ((Finset.Icc 1 n).fold (fun (acc : Nat) (k : Nat) => acc * p k) 1)).toFinset.card",
+    "parent_typed": {
+      "statement": "∀ (n : Nat), n ∈ Finset.Icc 1 60 → F n > n",
+      "binders": [],
+      "reading": "For every n in the finite range 1..60, the number F(n) of distinct prime factors of the product p(1)·…·p(n) exceeds n (finite-range exact-arithmetic certificate only; no asymptotic claim).",
+      "elaboration": {
+        "verdict": "DEFS_DO_NOT_ELABORATE",
+        "kernel_error": "/root/peer/decomp/b20260902_092332_1/erdos1106_LEM_R004_L1_defs.lean:8:26: error(lean.unknownIdentifier): Unknown constant `Nat.partitions`\n/root/peer/decomp/b20260902_092332_1/erdos1106_LEM_R004_L1_defs.lean:11:3: error(lean.unknownIdentifier): Unknown constant `Nat.factors`"
+      },
+      "type_gate_decomp": {
+        "ok": false,
+        "missing": [
+          "domain bound 'n 60'"
+        ],
+        "reason": "inherited type ascription or domain bound dropped",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": "parent",
+        "prose_contract_root_report": null
+      }
+    },
+    "composition_claim": {
+      "text": "The ranges Finset.Icc 1 30 and Finset.Icc 31 60 cover Finset.Icc 1 60, so the two children together give the parent for every n with 1 ≤ n ≤ 60; F is fully defined (exact finite product of the exact partition counts p(k) via Nat.partitions, distinct prime factors via Nat.factors.toFinset), so the quantifier scope is closed and each child is a mechanical bounded check.",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "COMPOSITION_NOT_RUN",
+      "counts_toward_parent": 0,
+      "reason": "no surviving child"
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "composition_receipt": "oracle/evidence/msl-machine/dag/decomp/erdos1106/receipts/erdos1106_LEM_R004_L1_COMPOSE.composition.json"
+  },
+  "parent_new_depends_on": [
+    "erdos1106:LEM:R004:L1#COMPOSE"
+  ],
+  "rejected": [
+    {
+      "proposed_index": 1,
+      "statement": "∀ (n : Nat), n ∈ Finset.Icc 1 30 → F n > n",
+      "binders": [],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: /root/peer/decomp/b20260902_092332_1/erdos1106_LEM_R004_L1_defs.lean:8:26: error(lean.unknownIdentifier): Unknown constant `Nat.partitions`\n/root/peer/decomp/b20260902_092332_1/erdos1106_LEM_R004_L1_defs.lean:11:3: error(lean.unknownIdentifier): Unknown constant `Nat.factors`",
+      "kernel_error": "/root/peer/decomp/b20260902_092332_1/erdos1106_LEM_R004_L1_defs.lean:8:26: error(lean.unknownIdentifier): Unknown constant `Nat.partitions`\n/root/peer/decomp/b20260902_092332_1/erdos1106_LEM_R004_L1_defs.lean:11:3: error(lean.unknownIdentifier): Unknown constant `Nat.factors`"
+    },
+    {
+      "proposed_index": 2,
+      "statement": "∀ (n : Nat), n ∈ Finset.Icc 31 60 → F n > n",
+      "binders": [],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: /root/peer/decomp/b20260902_092332_1/erdos1106_LEM_R004_L1_defs.lean:8:26: error(lean.unknownIdentifier): Unknown constant `Nat.partitions`\n/root/peer/decomp/b20260902_092332_1/erdos1106_LEM_R004_L1_defs.lean:11:3: error(lean.unknownIdentifier): Unknown constant `Nat.factors`",
+      "kernel_error": "/root/peer/decomp/b20260902_092332_1/erdos1106_LEM_R004_L1_defs.lean:8:26: error(lean.unknownIdentifier): Unknown constant `Nat.partitions`\n/root/peer/decomp/b20260902_092332_1/erdos1106_LEM_R004_L1_defs.lean:11:3: error(lean.unknownIdentifier): Unknown constant `Nat.factors`"
+    }
+  ],
+  "counts": {
+    "proposed": 2,
+    "elaborated": 0,
+    "bound": 0,
+    "non_circular": 0,
+    "non_trivial": 0,
+    "surviving": 0,
+    "composition_kernel_checked": 0,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 0,
+    "counts_toward_parent_note": "composition OPEN: these children contribute ZERO toward the parent until it closes; they remain formal leaves for the rung loop"
+  },
+  "definitions": {
+    "block": "def p (n : Nat) : Nat := (Nat.partitions n).card\n\ndef F (n : Nat) : Nat :=\n  (Nat.factors ((Finset.Icc 1 n).fold (fun (acc : Nat) (k : Nat) => acc * p k) 1)).toFinset.card",
+    "gate0": {
+      "verdict": "DEFS_DO_NOT_ELABORATE",
+      "kernel_error": "/root/peer/decomp/b20260902_092332_1/erdos1106_LEM_R004_L1_defs.lean:8:26: error(lean.unknownIdentifier): Unknown constant `Nat.partitions`\n/root/peer/decomp/b20260902_092332_1/erdos1106_LEM_R004_L1_defs.lean:11:3: error(lean.unknownIdentifier): Unknown constant `Nat.factors`"
+    },
+    "campaign_vocabulary_prepended": [],
+    "normalization": {
+      "body": "def p (n : Nat) : Nat := (Nat.partitions n).card\n\ndef F (n : Nat) : Nat :=\n  (Nat.factors ((Finset.Icc 1 n).fold (fun (acc : Nat) (k : Nat) => acc * p k) 1)).toFinset.card",
+      "opens": [],
+      "dropped_imports": []
+    }
+  }
+}

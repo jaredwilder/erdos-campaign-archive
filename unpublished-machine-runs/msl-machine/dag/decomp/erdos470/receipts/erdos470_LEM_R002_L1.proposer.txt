@@ -1,0 +1,17 @@
+{"definitions": "def sigma (n : Nat) : Nat := ∑ d ∈ n.divisors, d\n\ndef pseudoperfect (n : Nat) : Prop :=\n  ∃ s : Finset Nat, (∀ d ∈ s, d ∣ n ∧ d < n) ∧ ∑ d ∈ s, d = n\n\ndef weird (n : Nat) : Prop := 2 * n ≤ sigma n ∧ ¬ pseudoperfect n\n\ndef primWeird (n : Nat) : Prop :=\n  weird n ∧ ∀ (m : Nat), m ∣ n → m < n → ¬ weird m",
+  "parent_typed": {
+    "name": "erdos470_L002_L1",
+    "binders": [],
+    "statement": "∀ (k : Nat), ∃ (n : Nat), k < n ∧ Odd n ∧ weird n",
+    "reading": "There are infinitely many odd weird numbers: past any bound k there is an odd n with sigma(n) ≥ 2n that is not the sum of any set of its proper divisors."},
+  "children": [
+    {"name": "erdos470_L002_L1_children_infinitude_primitive",
+     "binders": [],
+     "statement": "∀ (k : Nat), ∃ (n : Nat), k < n ∧ Odd n ∧ primWeird n",
+     "reading": "Infinitely many odd primitive weird numbers: past any bound k there is an odd n that is weird and none of whose proper divisors is weird."},
+    {"name": "erdos470_L002_L1_children_primitive_is_weird",
+     "binders": ["(n : Nat)"],
+     "statement": "primWeird n → weird n",
+     "reading": "Every primitive weird number is weird (a trivial unpacking of the primitive definition)."}
+  ],
+  "composition_claim": "Child 1 produces, past any bound k, an odd number n that is primitive weird; child 2 converts primitivity into weirdness, so each such n witnesses the parent's existential, giving the parent for every k."}

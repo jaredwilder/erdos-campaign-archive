@@ -1,0 +1,993 @@
+{
+ "schema": "obligation-dag/1.0.0",
+ "problem": "erdos539",
+ "problem_number": "539",
+ "campaign": "erdos539-campaign-001",
+ "root": "erdos539:ROOT",
+ "contract_divergence": {
+  "authoritative": {
+   "role": "campaign",
+   "path": "oracle/evidence/msl-machine/campaigns/erdos539-campaign-001/contract.json",
+   "sha256": "1cbc8106052449a27680516a611266bf52d6fe902a1c5092aa67fd0fb432ac27",
+   "declared_contract_sha256": "17122adce115ac49c0e02653298cb808f841b5083747f953c5998d396de67eaa"
+  },
+  "others": [
+   {
+    "role": "ingest",
+    "path": "oracle/evidence/msl-machine/contracts/erdos539/contract.json",
+    "sha256": "a17ef06555b100214c1149b27f2aefd8b07147893e327f8167d26beefcf556cb",
+    "declared_contract_sha256": "03a2e497ab818926b77287514d6cf6ac94882c3f668df8c2a03f59ca4b104ed9",
+    "canonical_statement_matches_authoritative": true
+   },
+   {
+    "role": "launch_queue",
+    "path": "oracle/evidence/msl-machine/contracts/LAUNCH-QUEUE/erdos539.json",
+    "sha256": "582998a51a9a68ab3d7fc397f0db2d3b91efcbe16aa30c23943940acf6625702",
+    "declared_contract_sha256": null,
+    "canonical_statement_matches_authoritative": true
+   }
+  ],
+  "diverges": false
+ },
+ "courts": [
+  "court",
+  "closer",
+  "formalizer",
+  "kernel"
+ ],
+ "summary": {
+  "nodes": 17,
+  "proved_kernel": 0,
+  "proved_speaker": 3,
+  "computed_bounded": 0,
+  "open": 10,
+  "refuted": 4,
+  "orphans": 2,
+  "proof_obligations": 0,
+  "open_leaves_on_dead_routes": 4,
+  "root_kind": "NOT_DECIDABLE",
+  "root_disqualifiers": [
+   "ASYMPTOTIC"
+  ],
+  "formal_root": {
+   "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/539.lean",
+   "category": "category research open, AMS 5 11",
+   "declaration": "erdos_539",
+   "statement": "(fun n ↦ (cofactorThreshold n : ℝ)) =Θ[atTop] (answer(sorry) : ℕ → ℝ)"
+  },
+  "leaf_frontier_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "leaf_frontier_reason": "5 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaf_frontier_deciding_leaf": {
+   "id": "erdos539:DEMAND:R006:L1:1",
+   "kind": "CAPABILITY_DEMAND",
+   "status": "OPEN",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "a divisor-structure lower-bound argument valid for every n-set A plus an explicit family whose quotient-value set is O(n log n)."
+  },
+  "ladder_shape_reason": "the formal root is not decidable: ASYMPTOTIC (oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/539.lean). No leaf set can close it, however clean the leaves are. Leaf frontier, kept for the grind queue: HAS_OPEN_ANALYTIC_LEAF.",
+  "leaves": 13,
+  "open_leaves": 10,
+  "open_technical_leaves": 5,
+  "open_prose_obligations": 2,
+  "open_analytic_leaves": 5,
+  "ladder_shape": "ROOT_NOT_DECIDABLE",
+  "deciding_leaf": {
+   "id": "erdos539:ROOT",
+   "kind": "CANONICAL_ROOT",
+   "status": "OPEN",
+   "binding": "VERBATIM",
+   "leaf_tactic_hint": null,
+   "statement": "(fun n ↦ (cofactorThreshold n : ℝ)) =Θ[atTop] (answer(sorry) : ℕ → ℝ)"
+  },
+  "orphan_detail": [
+   {
+    "id": "erdos539:A:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos539:B:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   }
+  ]
+ },
+ "validation": {
+  "acyclic": true,
+  "edges": 17,
+  "root_binds_verbatim": true,
+  "kernel_receipts_checked": 0
+ },
+ "nodes": [
+  {
+   "id": "erdos539:A:M01",
+   "statement": "For lower bounds quantify over every n-set A; for upper bounds construct n-sets whose quotient-value set meets the claimed scale.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos539-campaign-001/contract.json",
+   "contract_sha256": "1cbc8106052449a27680516a611266bf52d6fe902a1c5092aa67fd0fb432ac27",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos539-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos539",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-539-465900423a-A-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos539:BRANCH_A",
+   "statement": "GROWTH DETERMINATION CLOSE: give an explicit two-sided asymptotic order for h(n), with matching upper and lower bounds uniform over all n-element positive-natural sets.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos539:A:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos539-campaign-001/contract.json",
+   "contract_sha256": "1cbc8106052449a27680516a611266bf52d6fe902a1c5092aa67fd0fb432ac27",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos539-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos539",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-539-465900423a-A-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos539:B:M01",
+   "statement": "One favorable set or one universal lower bound does not by itself estimate h.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos539-campaign-001/contract.json",
+   "contract_sha256": "1cbc8106052449a27680516a611266bf52d6fe902a1c5092aa67fd0fb432ac27",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos539-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos539",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-539-465900423a-B-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos539:BRANCH_B",
+   "statement": "INDEPENDENCE CLOSE: only a genuine exhaustive independence theorem for the exact extremal growth problem is an alternative to determination.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos539:B:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos539-campaign-001/contract.json",
+   "contract_sha256": "1cbc8106052449a27680516a611266bf52d6fe902a1c5092aa67fd0fb432ac27",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos539-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos539",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-539-465900423a-B-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos539:ROOT",
+   "statement": "Let $h(n)$ be such that, for any set $A\\subseteq \\mathbb{N}$ of size $n$, the set\\[\\left\\{ \\frac{a}{(a,b)}: a,b\\in A\\right\\}\\]has size at least $h(n)$. Estimate $h(n)$.",
+   "kind": "CANONICAL_ROOT",
+   "depends_on": [
+    "erdos539:BRANCH_A",
+    "erdos539:BRANCH_B"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "root_by_construction",
+   "closure_mode": "DISJUNCTIVE",
+   "satisfied_by_any": [
+    "erdos539:BRANCH_A",
+    "erdos539:BRANCH_B"
+   ],
+   "root_kind": "NOT_DECIDABLE",
+   "root_disqualifiers": [
+    "ASYMPTOTIC"
+   ],
+   "formal_root": {
+    "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/539.lean",
+    "category": "category research open, AMS 5 11",
+    "declaration": "erdos_539",
+    "statement": "(fun n ↦ (cofactorThreshold n : ℝ)) =Θ[atTop] (answer(sorry) : ℕ → ℝ)"
+   },
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos539-campaign-001/contract.json",
+   "contract_sha256": "1cbc8106052449a27680516a611266bf52d6fe902a1c5092aa67fd0fb432ac27",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos539-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos539",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos539:LEM:R001:L1",
+   "statement": "h(3)=4>3 and h(2)=3>2 by exhaustive enumeration refute h(n)=n universally.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R001",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 3,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified counterexample and the uniform lower-bound close does not survive its deletion; no substitute mechanism is on record, so R001 is dead.",
+    "seq": 4
+   },
+   "history": [
+    {
+     "seq": 3,
+     "status": "FALSE",
+     "utc": "2026-09-01T19:08:29Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos539-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos539:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos539",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos539:LEM:R002:L1",
+   "statement": "powers-of-two set A={1,2,…,2^(n−1)} yields quotient-value set of size exactly n, refuting the claimed n(n+1)/2 universal lower bound.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R002",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 8,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 has a machine-verified concrete counterexample and was load-bearing: with L1 deleted, R002 has no remaining bridge to a matching two-sided Θ-order for h(n), so the close cannot survive; no downgrade argument was provided.",
+    "seq": 9
+   },
+   "history": [
+    {
+     "seq": 6,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:26:38Z"
+    },
+    {
+     "seq": 8,
+     "status": "FALSE",
+     "utc": "2026-09-01T19:28:19Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos539-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos539:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos539",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos539:LEM:R002:primary",
+   "statement": "contract hash present but no certificate artifacts supplied; exact verification cannot proceed, fail-closed abort.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R002",
+   "lemma_id": "primary",
+   "registry_status": "UNTESTED",
+   "registry_seq": 7,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 has a machine-verified concrete counterexample and was load-bearing: with L1 deleted, R002 has no remaining bridge to a matching two-sided Θ-order for h(n), so the close cannot survive; no downgrade argument was provided.",
+    "seq": 9
+   },
+   "history": [
+    {
+     "seq": 7,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:27:25Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos539-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos539:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "contract hash present but no certificate artifacts supplied; exact verification cannot proceed, fail-closed abort."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos539",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos539:LEM:R003:L1",
+   "statement": "Counterexample A={2,3,4,5}: value set {1,2,3,4,5} has size 5>4, so h(n)=n fails; repair to correct two-sided growth scale.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R003",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 13,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified counterexample; no proof of non-load-bearing status was given, so R003's close is dead.",
+    "seq": 14
+   },
+   "history": [
+    {
+     "seq": 11,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:35:44Z"
+    },
+    {
+     "seq": 13,
+     "status": "FALSE",
+     "utc": "2026-09-01T19:48:22Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos539-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos539:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos539",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos539:LEM:R003:primary",
+   "statement": "No analytic reduction delivered; verifier aborts fail-closed on unresolved sign — certificate cannot be issued.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "primary",
+   "registry_status": "UNTESTED",
+   "registry_seq": 12,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified counterexample; no proof of non-load-bearing status was given, so R003's close is dead.",
+    "seq": 14
+   },
+   "history": [
+    {
+     "seq": 12,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:45:40Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos539-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos539:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "No analytic reduction delivered; verifier aborts fail-closed on unresolved sign — certificate cannot be issued."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos539",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos539:LEM:R004:L1",
+   "statement": "As written h(n)=n exactly: diagonal gives A⊆quotient set, and A={1,…,n} caps values at n; packet must restate with a≠b if nontrivial regime intended.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 19,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 16,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:52:00Z"
+    },
+    {
+     "seq": 17,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:52:36Z"
+    },
+    {
+     "seq": 18,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:56:11Z"
+    },
+    {
+     "seq": 19,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:57:51Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos539-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos539:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos539",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos539:LEM:R005:L1",
+   "statement": "h(1)=1 and h(2)=2 hold for all A; base case exact, but the asymptotic Θ-order remains undetermined.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R005",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 22,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 20,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:00:16Z"
+    },
+    {
+     "seq": 21,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:01:07Z"
+    },
+    {
+     "seq": 22,
+     "status": "PROVED",
+     "utc": "2026-09-01T20:02:19Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos539-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos539:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos539",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos539:LEM:R006:L1",
+   "statement": "Trivial h(n)≤n² pair-counting upper bound supplies neither the universal c·n·log n lower bound nor a matching O(n log n) construction; repair requires a divisor-structure lower-bound argument valid for every n-set A plus an explicit family whose quotient-value set is O(n log n).",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos539:DEMAND:R006:L1:1"
+   ],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R006",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 41,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 (sole lemma support, only trivial n² upper bound) is refuted by a banked counterexample, and the branch-A Θ(n log n) close was already missing both the universal c·n·log n lower bound and a matching construction, so no L1-free close survives; route is dead.",
+    "seq": 42
+   },
+   "history": [
+    {
+     "seq": 24,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T20:05:16Z"
+    },
+    {
+     "seq": 26,
+     "status": "PROVED",
+     "utc": "2026-09-01T20:09:39Z"
+    },
+    {
+     "seq": 27,
+     "status": "PROVED",
+     "utc": "2026-09-01T20:10:07Z"
+    },
+    {
+     "seq": 28,
+     "status": "PROVED",
+     "utc": "2026-09-01T20:11:36Z"
+    },
+    {
+     "seq": 29,
+     "status": "PROVED",
+     "utc": "2026-09-01T20:11:53Z"
+    },
+    {
+     "seq": 30,
+     "status": "PROVED",
+     "utc": "2026-09-01T20:12:10Z"
+    },
+    {
+     "seq": 31,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:13:15Z"
+    },
+    {
+     "seq": 32,
+     "status": "PROVED",
+     "utc": "2026-09-01T20:13:46Z"
+    },
+    {
+     "seq": 33,
+     "status": "PROVED",
+     "utc": "2026-09-01T20:14:11Z"
+    },
+    {
+     "seq": 34,
+     "status": "PROVED",
+     "utc": "2026-09-01T20:14:56Z"
+    },
+    {
+     "seq": 35,
+     "status": "PROVED",
+     "utc": "2026-09-01T20:15:25Z"
+    },
+    {
+     "seq": 36,
+     "status": "PROVED",
+     "utc": "2026-09-01T20:16:47Z"
+    },
+    {
+     "seq": 37,
+     "status": "PROVED",
+     "utc": "2026-09-01T20:17:18Z"
+    },
+    {
+     "seq": 38,
+     "status": "PROVED",
+     "utc": "2026-09-01T20:18:15Z"
+    },
+    {
+     "seq": 39,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:18:37Z"
+    },
+    {
+     "seq": 40,
+     "status": "PROVED",
+     "utc": "2026-09-01T20:18:52Z"
+    },
+    {
+     "seq": 41,
+     "status": "FALSE",
+     "utc": "2026-09-01T20:19:55Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos539-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos539:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos539",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos539:DEMAND:R006:L1:1",
+   "statement": "a divisor-structure lower-bound argument valid for every n-set A plus an explicit family whose quotient-value set is O(n log n).",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "repair requires",
+   "demand_rank": 0,
+   "demand_strength": "STRONG",
+   "route_status": "DEAD",
+   "demand_source_text": "Trivial h(n)≤n² pair-counting upper bound supplies neither the universal c·n·log n lower bound nor a matching O(n log n) construction; repair requires a divisor-structure lower-bound argument valid for every n-set A plus an explicit family whose quotient-value set is O(n log n).",
+   "route_id": "R006",
+   "lemma_id": "L1",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos539:LEM:R006:L1",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos539-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos539",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos539:LEM:R006:all",
+   "statement": "no concrete residual claim supplied; certifier fails closed, nothing certified",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R006",
+   "lemma_id": "all",
+   "registry_status": "UNTESTED",
+   "registry_seq": 25,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 (sole lemma support, only trivial n² upper bound) is refuted by a banked counterexample, and the branch-A Θ(n log n) close was already missing both the universal c·n·log n lower bound and a matching construction, so no L1-free close survives; route is dead.",
+    "seq": 42
+   },
+   "history": [
+    {
+     "seq": 25,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:07:11Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos539-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos539:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "no concrete residual claim supplied; certifier fails closed, nothing certified"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos539",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos539:LEM:R007:L1",
+   "statement": "diagonal a/(a,a)=a injects A into the quotient-value set so h(n)≥n uniformly (smallest params n=1,2 verified); no counterexample exists to bank, and with banked R004's cap A={1,…,n} the two-sided estimate collapses to h(n)=n, voiding D0's kill demand.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R007",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 50,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 45,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T20:23:26Z"
+    },
+    {
+     "seq": 49,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T01:04:11Z"
+    },
+    {
+     "seq": 50,
+     "status": "PROVED",
+     "utc": "2026-09-02T02:30:24Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos539-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos539:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos539",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos539:LEM:R007:core",
+   "statement": "No exact verifier output or outward interval certificate attached; fail-closed abort, no claim certified.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R007",
+   "lemma_id": "core",
+   "registry_status": "UNTESTED",
+   "registry_seq": 46,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 46,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:27:42Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos539-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos539:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "No exact verifier output or outward interval certificate attached; fail-closed abort, no claim certified."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos539",
+   "is_leaf": true,
+   "manufacture_target": false
+  }
+ ]
+}

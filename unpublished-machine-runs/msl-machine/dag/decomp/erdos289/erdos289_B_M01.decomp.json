@@ -1,0 +1,286 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos289",
+  "generated_utc": "2026-09-02T15:06:02Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos289:B:M01",
+    "statement": "an obstruction argument (parity/valuation/measure) ruling out infinitely many k",
+    "statement_sha256": "8722ec28703f43d0f14ac281f90fce96dc0b1aa7b918f19a030db47fcc30b4ee",
+    "kind": "MUST_DETERMINE",
+    "binding": "VERBATIM",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "Erdos problem 289 (erdosproblems.com/289, OPEN): Is it true that, for all sufficiently large k, there exist finite intervals I_1, ..., I_k of consecutive integers in N, pairwise distinct, not overlapping or adjacent, with |I_i| >= 2 for 1 <= i <= k, such that 1 = sum over i of sum over n in I_i of 1/n?",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos289-campaign-001/contract.json",
+    "sha256": "300c94a111d4ff43771f4872392d304ec72703ec9550e1ea1a867442faee2e7f"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos289:B:M01",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "fb079dce3f8f9c83cb26a0635ef5d7d48df46cd7eaa8175b4ca96c98e2ed99b0",
+    "prompt_chars": 9527,
+    "response_sha256": "3743a66a166409f96ae15d3d97745fac908bfcaf98f60a699449e1a8851b665a",
+    "usage": {
+      "prompt_tokens": 3241,
+      "completion_tokens": 2011,
+      "total_tokens": 5252,
+      "cost": 0.00149165,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00149165,
+        "upstream_inference_prompt_cost": 0.00048615,
+        "upstream_inference_completions_cost": 0.0010055
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 1498,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.00149165,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 131.16,
+    "utc": "2026-09-02T15:04:23Z"
+  },
+  "children": [
+    {
+      "id": "erdos289:B:M01#D1",
+      "statement": "HasDecomp k → k % 6 ≠ 2",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos289",
+      "decomposed_from": "erdos289:B:M01",
+      "imports": "Mathlib",
+      "definitions": "-- campaign vocabulary, already kernel-checked (msl_decompose)\ndef runSum (a b : ℕ) : ℚ := ∑ n ∈ Icc a b, (1 : ℚ) / n\n\ndef runProd (a b : ℕ) : ℕ := ∏ n ∈ Icc a b, n\n\ndef runNum (a b : ℕ) : ℕ := ∑ n ∈ Icc a b, runProd a b / n\n\n-- proposed definitions\nopen Filter\n\ndef HasDecomp (k : Nat) : Prop :=\n  ∃ I : Fin k → Nat × Nat,\n    (∀ i : Fin k, (I i).1 < (I i).2) ∧\n    (∀ (i j : Fin k), i ≠ j → (I i).2 < (I j).1 ∨ (I j).2 < (I i).1) ∧\n    ∑ i : Fin k, ∑ n ∈ Icc (I i).1 (I i).2, ((n : Nat)⁻¹ : Rat) = 1\n\ndef blockedResidue (k : Nat) : Prop := k % 6 = 2",
+      "type_context": "Mathlib\n-- campaign vocabulary, already kernel-checked (msl_decompose)\ndef runSum (a b : ℕ) : ℚ := ∑ n ∈ Icc a b, (1 : ℚ) / n\n\ndef runProd (a b : ℕ) : ℕ := ∏ n ∈ Icc a b, n\n\ndef runNum (a b : ℕ) : ℕ := ∑ n ∈ Icc a b, runProd a b / n\n\n-- proposed definitions\nopen Filter\n\ndef HasDecomp (k : Nat) : Prop :=\n  ∃ I : Fin k → Nat × Nat,\n    (∀ i : Fin k, (I i).1 < (I i).2) ∧\n    (∀ (i j : Fin k), i ≠ j → (I i).2 < (I j).1 ∨ (I j).2 < (I i).1) ∧\n    ∑ i : Fin k, ∑ n ∈ Icc (I i).1 (I i).2, ((n : Nat)⁻¹ : Rat) = 1\n\ndef blockedResidue (k : Nat) : Prop := k % 6 = 2",
+      "lean_binders": [
+        "(k : Nat)"
+      ],
+      "lean_theorem_name": "msl_erdos289_b_m01_c1",
+      "reading": "Valuation/parity obstruction: any k admitting a valid decomposition avoids the residue class 2 mod 6.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos289/receipts/erdos289_B_M01_D1.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos289/lean/erdos289_B_M01_D1.lean",
+      "leaf_tactic_hint": "interval_cases",
+      "hint_source": "bounded_forall_over_Q",
+      "leaf_tactic_sketch": "intro i; interval_cases i <;> norm_num",
+      "leaf_tactic_alternatives": [
+        "norm_num",
+        "native_decide",
+        "bounded_search"
+      ],
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset\nopen Filter\n\n-- campaign vocabulary, already kernel-checked (msl_decompose)\ndef runSum (a b : ℕ) : ℚ := ∑ n ∈ Icc a b, (1 : ℚ) / n\n\ndef runProd (a b : ℕ) : ℕ := ∏ n ∈ Icc a b, n\n\ndef runNum (a b : ℕ) : ℕ := ∑ n ∈ Icc a b, runProd a b / n\n\n-- proposed definitions\n\ndef HasDecomp (k : Nat) : Prop :=\n  ∃ I : Fin k → Nat × Nat,\n    (∀ i : Fin k, (I i).1 < (I i).2) ∧\n    (∀ (i j : Fin k), i ≠ j → (I i).2 < (I j).1 ∨ (I j).2 < (I i).1) ∧\n    ∑ i : Fin k, ∑ n ∈ Icc (I i).1 (I i).2, ((n : Nat)⁻¹ : Rat) = 1\n\ndef blockedResidue (k : Nat) : Prop := k % 6 = 2\n\n",
+      "lean_statement_line": "theorem msl_erdos289_b_m01_c1 (k : Nat) : HasDecomp k → k % 6 ≠ 2 := by sorry",
+      "lean_file_sha256": "39467166850db9bc248d9dbd2a9b98e963ce53598373e8af67d29ab0c691be42",
+      "lean_file_contract": "compile `lean_preamble + lean_statement_line + \"\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text the kernel elaborated. Do NOT rebuild a header from `definitions`: the imports, the opens and `set_option autoImplicit false` are part of what was compiled. BACKFILLED from the compiled .lean, not re-synthesised. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block>` (+ lean_trailer if present). THE BINDERS LIVE INSIDE lean_signature -- restating the theorem from `statement` alone drops them and proves a different thing.",
+      "lean_signature": "theorem msl_erdos289_b_m01_c1 (k : Nat) : HasDecomp k → k % 6 ≠ 2"
+    },
+    {
+      "id": "erdos289:B:M01#D2",
+      "statement": "∃ k ∈ Icc N (N + 5), blockedResidue k",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos289",
+      "decomposed_from": "erdos289:B:M01",
+      "imports": "Mathlib",
+      "definitions": "-- campaign vocabulary, already kernel-checked (msl_decompose)\ndef runSum (a b : ℕ) : ℚ := ∑ n ∈ Icc a b, (1 : ℚ) / n\n\ndef runProd (a b : ℕ) : ℕ := ∏ n ∈ Icc a b, n\n\ndef runNum (a b : ℕ) : ℕ := ∑ n ∈ Icc a b, runProd a b / n\n\n-- proposed definitions\nopen Filter\n\ndef HasDecomp (k : Nat) : Prop :=\n  ∃ I : Fin k → Nat × Nat,\n    (∀ i : Fin k, (I i).1 < (I i).2) ∧\n    (∀ (i j : Fin k), i ≠ j → (I i).2 < (I j).1 ∨ (I j).2 < (I i).1) ∧\n    ∑ i : Fin k, ∑ n ∈ Icc (I i).1 (I i).2, ((n : Nat)⁻¹ : Rat) = 1\n\ndef blockedResidue (k : Nat) : Prop := k % 6 = 2",
+      "type_context": "Mathlib\n-- campaign vocabulary, already kernel-checked (msl_decompose)\ndef runSum (a b : ℕ) : ℚ := ∑ n ∈ Icc a b, (1 : ℚ) / n\n\ndef runProd (a b : ℕ) : ℕ := ∏ n ∈ Icc a b, n\n\ndef runNum (a b : ℕ) : ℕ := ∑ n ∈ Icc a b, runProd a b / n\n\n-- proposed definitions\nopen Filter\n\ndef HasDecomp (k : Nat) : Prop :=\n  ∃ I : Fin k → Nat × Nat,\n    (∀ i : Fin k, (I i).1 < (I i).2) ∧\n    (∀ (i j : Fin k), i ≠ j → (I i).2 < (I j).1 ∨ (I j).2 < (I i).1) ∧\n    ∑ i : Fin k, ∑ n ∈ Icc (I i).1 (I i).2, ((n : Nat)⁻¹ : Rat) = 1\n\ndef blockedResidue (k : Nat) : Prop := k % 6 = 2",
+      "lean_binders": [
+        "(N : Nat)"
+      ],
+      "lean_theorem_name": "msl_erdos289_b_m01_c2",
+      "reading": "Every window of 6 consecutive integers contains a k congruent to 2 mod 6, so the obstructed residue class occurs infinitely often, in bounded decidable form.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos289/receipts/erdos289_B_M01_D2.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos289/lean/erdos289_B_M01_D2.lean",
+      "leaf_tactic_hint": "interval_cases",
+      "hint_source": "bounded_forall_over_Q",
+      "leaf_tactic_sketch": "intro i; interval_cases i <;> norm_num",
+      "leaf_tactic_alternatives": [
+        "norm_num",
+        "native_decide",
+        "bounded_search"
+      ],
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset\nopen Filter\n\n-- campaign vocabulary, already kernel-checked (msl_decompose)\ndef runSum (a b : ℕ) : ℚ := ∑ n ∈ Icc a b, (1 : ℚ) / n\n\ndef runProd (a b : ℕ) : ℕ := ∏ n ∈ Icc a b, n\n\ndef runNum (a b : ℕ) : ℕ := ∑ n ∈ Icc a b, runProd a b / n\n\n-- proposed definitions\n\ndef HasDecomp (k : Nat) : Prop :=\n  ∃ I : Fin k → Nat × Nat,\n    (∀ i : Fin k, (I i).1 < (I i).2) ∧\n    (∀ (i j : Fin k), i ≠ j → (I i).2 < (I j).1 ∨ (I j).2 < (I i).1) ∧\n    ∑ i : Fin k, ∑ n ∈ Icc (I i).1 (I i).2, ((n : Nat)⁻¹ : Rat) = 1\n\ndef blockedResidue (k : Nat) : Prop := k % 6 = 2\n\n",
+      "lean_statement_line": "theorem msl_erdos289_b_m01_c2 (N : Nat) : ∃ k ∈ Icc N (N + 5), blockedResidue k := by sorry",
+      "lean_file_sha256": "d4de0850d260562c389db7e651403b6188393c0c49189f8083a402b49e29d59c",
+      "lean_file_contract": "compile `lean_preamble + lean_statement_line + \"\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text the kernel elaborated. Do NOT rebuild a header from `definitions`: the imports, the opens and `set_option autoImplicit false` are part of what was compiled. BACKFILLED from the compiled .lean, not re-synthesised. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block>` (+ lean_trailer if present). THE BINDERS LIVE INSIDE lean_signature -- restating the theorem from `statement` alone drops them and proves a different thing.",
+      "lean_signature": "theorem msl_erdos289_b_m01_c2 (N : Nat) : ∃ k ∈ Icc N (N + 5), blockedResidue k"
+    }
+  ],
+  "composition": {
+    "id": "erdos289:B:M01#COMPOSE",
+    "statement": "((∀ (k : Nat), HasDecomp k → k % 6 ≠ 2) ∧ (∀ (N : Nat), ∃ k ∈ Icc N (N + 5), blockedResidue k)) → (¬ ∀ᶠ (k : Nat) in atTop, HasDecomp k)",
+    "kind": "COMPOSITION",
+    "depends_on": [
+      "erdos289:B:M01#D1",
+      "erdos289:B:M01#D2"
+    ],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "OPEN",
+    "problem": "erdos289",
+    "decomposed_from": "erdos289:B:M01",
+    "imports": "Mathlib",
+    "definitions": "-- campaign vocabulary, already kernel-checked (msl_decompose)\ndef runSum (a b : ℕ) : ℚ := ∑ n ∈ Icc a b, (1 : ℚ) / n\n\ndef runProd (a b : ℕ) : ℕ := ∏ n ∈ Icc a b, n\n\ndef runNum (a b : ℕ) : ℕ := ∑ n ∈ Icc a b, runProd a b / n\n\n-- proposed definitions\nopen Filter\n\ndef HasDecomp (k : Nat) : Prop :=\n  ∃ I : Fin k → Nat × Nat,\n    (∀ i : Fin k, (I i).1 < (I i).2) ∧\n    (∀ (i j : Fin k), i ≠ j → (I i).2 < (I j).1 ∨ (I j).2 < (I i).1) ∧\n    ∑ i : Fin k, ∑ n ∈ Icc (I i).1 (I i).2, ((n : Nat)⁻¹ : Rat) = 1\n\ndef blockedResidue (k : Nat) : Prop := k % 6 = 2",
+    "type_context": "Mathlib\n-- campaign vocabulary, already kernel-checked (msl_decompose)\ndef runSum (a b : ℕ) : ℚ := ∑ n ∈ Icc a b, (1 : ℚ) / n\n\ndef runProd (a b : ℕ) : ℕ := ∏ n ∈ Icc a b, n\n\ndef runNum (a b : ℕ) : ℕ := ∑ n ∈ Icc a b, runProd a b / n\n\n-- proposed definitions\nopen Filter\n\ndef HasDecomp (k : Nat) : Prop :=\n  ∃ I : Fin k → Nat × Nat,\n    (∀ i : Fin k, (I i).1 < (I i).2) ∧\n    (∀ (i j : Fin k), i ≠ j → (I i).2 < (I j).1 ∨ (I j).2 < (I i).1) ∧\n    ∑ i : Fin k, ∑ n ∈ Icc (I i).1 (I i).2, ((n : Nat)⁻¹ : Rat) = 1\n\ndef blockedResidue (k : Nat) : Prop := k % 6 = 2",
+    "parent_typed": {
+      "statement": "¬ ∀ᶠ (k : Nat) in atTop, HasDecomp k",
+      "binders": [],
+      "reading": "It is not the case that all sufficiently large k admit a decomposition of 1 into pairwise disjoint, non-adjacent integer intervals of length at least 2 with reciprocal sum exactly 1; i.e. infinitely many k are obstructed.",
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": null,
+        "prose_contract_root_report": {
+          "ok": false,
+          "missing": [
+            "domain bound '1 i'"
+          ],
+          "reason": "inherited type ascription or domain bound dropped",
+          "blocking": false,
+          "why_not_blocking": "tokens mined from ENGLISH prose are not Lean tokens; `Fin k` carries `1 <= i <= k` structurally"
+        }
+      }
+    },
+    "composition_claim": {
+      "text": "Child 2 supplies, for every bound N, a k in [N, N+5] with k ≡ 2 (mod 6), yielding infinitely many such k tending to infinity; child 1 rules out HasDecomp at each of them. Hence HasDecomp k fails for arbitrarily large k, which is exactly ¬∀ᶠ k in atTop, HasDecomp k, the parent.",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "COMPOSITION_OPEN",
+      "rc": 1,
+      "kernel_error": "/root/peer/decomp/b20260902_080540_3/erdos289_B_M01_comp.lean:27:181: error: unsolved goals",
+      "counts_toward_parent": 0
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "source": "oracle/evidence/msl-machine/dag/decomp/erdos289/lean/erdos289_B_M01_COMPOSE.lean",
+    "lean_theorem_name": "msl_erdos289_b_m01_composition",
+    "composition_receipt": "oracle/evidence/msl-machine/dag/decomp/erdos289/receipts/erdos289_B_M01_COMPOSE.composition.json",
+    "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxHeartbeats 400000\nset_option maxRecDepth 4000\n\nopen Finset\nopen Filter\n\n-- campaign vocabulary, already kernel-checked (msl_decompose)\ndef runSum (a b : ℕ) : ℚ := ∑ n ∈ Icc a b, (1 : ℚ) / n\n\ndef runProd (a b : ℕ) : ℕ := ∏ n ∈ Icc a b, n\n\ndef runNum (a b : ℕ) : ℕ := ∑ n ∈ Icc a b, runProd a b / n\n\n-- proposed definitions\n\ndef HasDecomp (k : Nat) : Prop :=\n  ∃ I : Fin k → Nat × Nat,\n    (∀ i : Fin k, (I i).1 < (I i).2) ∧\n    (∀ (i j : Fin k), i ≠ j → (I i).2 < (I j).1 ∨ (I j).2 < (I i).1) ∧\n    ∑ i : Fin k, ∑ n ∈ Icc (I i).1 (I i).2, ((n : Nat)⁻¹ : Rat) = 1\n\ndef blockedResidue (k : Nat) : Prop := k % 6 = 2\n\n",
+    "lean_statement_line": "theorem msl_erdos289_b_m01_composition : ((∀ (k : Nat), HasDecomp k → k % 6 ≠ 2) ∧ (∀ (N : Nat), ∃ k ∈ Icc N (N + 5), blockedResidue k)) → (¬ ∀ᶠ (k : Nat) in atTop, HasDecomp k) := by\n  first\n  | tauto\n  | (intro h; exact h.1)\n  | (intro h; simp_all)\n  | (intro h; omega)\n  | (intro h; norm_num at h ⊢ <;> tauto)\n  | aesop\n  | decide",
+    "lean_trailer": "\n#print axioms msl_erdos289_b_m01_composition\n",
+    "lean_file_sha256": "fde3487abd002ebbda0afb89e6f3bcf4afe32ebbae442a76075f3492eb083058",
+    "lean_file_contract": "compile `lean_preamble + lean_statement_line + \"\n\" + lean_trailer` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text the kernel elaborated. Do NOT rebuild a header from `definitions`: the imports, the opens and `set_option autoImplicit false` are part of what was compiled. BACKFILLED from the compiled .lean, not re-synthesised. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block>` (+ lean_trailer if present). THE BINDERS LIVE INSIDE lean_signature -- restating the theorem from `statement` alone drops them and proves a different thing.",
+    "lean_signature": "theorem msl_erdos289_b_m01_composition : ((∀ (k : Nat), HasDecomp k → k % 6 ≠ 2) ∧ (∀ (N : Nat), ∃ k ∈ Icc N (N + 5), blockedResidue k)) → (¬ ∀ᶠ (k : Nat) in atTop, HasDecomp k)"
+  },
+  "parent_new_depends_on": [
+    "erdos289:B:M01#COMPOSE"
+  ],
+  "rejected": [],
+  "counts": {
+    "proposed": 2,
+    "elaborated": 2,
+    "bound": 2,
+    "non_circular": 2,
+    "non_trivial": 2,
+    "surviving": 2,
+    "composition_kernel_checked": 0,
+    "fireable_decidable_leaves": 2,
+    "counts_toward_parent": 0,
+    "counts_toward_parent_note": "composition OPEN: these children contribute ZERO toward the parent until it closes; they remain formal leaves for the rung loop"
+  },
+  "definitions": {
+    "block": "-- campaign vocabulary, already kernel-checked (msl_decompose)\ndef runSum (a b : ℕ) : ℚ := ∑ n ∈ Icc a b, (1 : ℚ) / n\n\ndef runProd (a b : ℕ) : ℕ := ∏ n ∈ Icc a b, n\n\ndef runNum (a b : ℕ) : ℕ := ∑ n ∈ Icc a b, runProd a b / n\n\n-- proposed definitions\nopen Filter\n\ndef HasDecomp (k : Nat) : Prop :=\n  ∃ I : Fin k → Nat × Nat,\n    (∀ i : Fin k, (I i).1 < (I i).2) ∧\n    (∀ (i j : Fin k), i ≠ j → (I i).2 < (I j).1 ∨ (I j).2 < (I i).1) ∧\n    ∑ i : Fin k, ∑ n ∈ Icc (I i).1 (I i).2, ((n : Nat)⁻¹ : Rat) = 1\n\ndef blockedResidue (k : Nat) : Prop := k % 6 = 2",
+    "gate0": {
+      "verdict": "DEFS_ELABORATE"
+    },
+    "campaign_vocabulary_prepended": [
+      "runSum",
+      "runProd",
+      "runNum"
+    ],
+    "normalization": {
+      "body": "-- campaign vocabulary, already kernel-checked (msl_decompose)\ndef runSum (a b : ℕ) : ℚ := ∑ n ∈ Icc a b, (1 : ℚ) / n\n\ndef runProd (a b : ℕ) : ℕ := ∏ n ∈ Icc a b, n\n\ndef runNum (a b : ℕ) : ℕ := ∑ n ∈ Icc a b, runProd a b / n\n\n-- proposed definitions\n\ndef HasDecomp (k : Nat) : Prop :=\n  ∃ I : Fin k → Nat × Nat,\n    (∀ i : Fin k, (I i).1 < (I i).2) ∧\n    (∀ (i j : Fin k), i ≠ j → (I i).2 < (I j).1 ∨ (I j).2 < (I i).1) ∧\n    ∑ i : Fin k, ∑ n ∈ Icc (I i).1 (I i).2, ((n : Nat)⁻¹ : Rat) = 1\n\ndef blockedResidue (k : Nat) : Prop := k % 6 = 2",
+      "opens": [
+        "open Filter"
+      ],
+      "dropped_imports": []
+    }
+  }
+}

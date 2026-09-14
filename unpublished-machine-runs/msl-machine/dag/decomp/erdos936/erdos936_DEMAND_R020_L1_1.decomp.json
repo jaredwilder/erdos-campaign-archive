@@ -1,0 +1,322 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos936",
+  "generated_utc": "2026-09-02T16:21:35Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos936:DEMAND:R020:L1:1",
+    "statement": "an analytic reduction (n≡2 mod 6 case a",
+    "statement_sha256": "41aadc243948d9393aadbdf500fb39aa7aa9d9cdb9838a6c38fbf44113d8ede2",
+    "kind": "CAPABILITY_DEMAND",
+    "binding": "UNBOUND",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "Are\\[2^n\\pm 1\\]and\\[n!\\pm 1\\]powerful (i.e. if $p\\mid m$ then $p^2\\mid m$) for only finitely many $n$?",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos936-campaign-001/contract.json",
+    "sha256": "6c02ddb90ee3156a0fbed58ac74c32d05f8783de7d0891b979b1be7eecc2f38a"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos936:DEMAND:R020:L1:1",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "70bf1a1dc045b2e441386cb6523524c2da6eb17d4f5eed74c4c3a1bd3bde21f3",
+    "prompt_chars": 9956,
+    "response_sha256": "59bee39ba0c368c7a62a6c3e9f8dda3816a222ed8d2bfe761f69dae89c5dd17e",
+    "usage": {
+      "prompt_tokens": 3245,
+      "completion_tokens": 1091,
+      "total_tokens": 4336,
+      "cost": 0.000516125,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.000516125,
+        "upstream_inference_prompt_cost": 0.000243375,
+        "upstream_inference_completions_cost": 0.00027275
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 580,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.000516125,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 39.08,
+    "utc": "2026-09-02T16:20:39Z"
+  },
+  "children": [
+    {
+      "id": "erdos936:DEMAND:R020:L1:1#D1",
+      "statement": "3 ∣ (2 ^ (6 * k + 2) + 1)",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos936",
+      "decomposed_from": "erdos936:DEMAND:R020:L1:1",
+      "imports": "Mathlib",
+      "definitions": "def Powerful (m : Nat) : Prop := ∀ (p : Nat), p ∣ m → p ^ 2 ∣ m",
+      "type_context": "Mathlib\ndef Powerful (m : Nat) : Prop := ∀ (p : Nat), p ∣ m → p ^ 2 ∣ m",
+      "lean_binders": [
+        "(k : Nat)"
+      ],
+      "lean_theorem_name": "msl_erdos936_demand_r020_l1_1_c1",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef Powerful (m : Nat) : Prop := ∀ (p : Nat), p ∣ m → p ^ 2 ∣ m\n\n",
+      "lean_statement_line": "theorem msl_erdos936_demand_r020_l1_1_c1 (k : Nat) : 3 ∣ (2 ^ (6 * k + 2) + 1) := by sorry",
+      "lean_file_sha256": "6c84ec48e0d10a25e24884518d98c1fc661565f1188136450ebccf6b756d8785",
+      "lean_file_contract": "compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. Do NOT rebuild a header from `definitions`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted) and `set_option autoImplicit false` are part of what was compiled. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block>` (+ lean_trailer if present). THE BINDERS LIVE INSIDE lean_signature -- restating the theorem from `statement` alone drops them and proves a different thing.",
+      "reading": "If n ≡ 2 (mod 6), then 3 divides 2^n + 1, since 2^2 ≡ 1 (mod 3).",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos936/receipts/erdos936_DEMAND_R020_L1_1_D1.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos936/lean/erdos936_DEMAND_R020_L1_1_D1.lean",
+      "lean_signature": "theorem msl_erdos936_demand_r020_l1_1_c1 (k : Nat) : 3 ∣ (2 ^ (6 * k + 2) + 1)"
+    },
+    {
+      "id": "erdos936:DEMAND:R020:L1:1#D2",
+      "statement": "¬ (9 ∣ (2 ^ (6 * k + 2) + 1))",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos936",
+      "decomposed_from": "erdos936:DEMAND:R020:L1:1",
+      "imports": "Mathlib",
+      "definitions": "def Powerful (m : Nat) : Prop := ∀ (p : Nat), p ∣ m → p ^ 2 ∣ m",
+      "type_context": "Mathlib\ndef Powerful (m : Nat) : Prop := ∀ (p : Nat), p ∣ m → p ^ 2 ∣ m",
+      "lean_binders": [
+        "(k : Nat)"
+      ],
+      "lean_theorem_name": "msl_erdos936_demand_r020_l1_1_c2",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef Powerful (m : Nat) : Prop := ∀ (p : Nat), p ∣ m → p ^ 2 ∣ m\n\n",
+      "lean_statement_line": "theorem msl_erdos936_demand_r020_l1_1_c2 (k : Nat) : ¬ (9 ∣ (2 ^ (6 * k + 2) + 1)) := by sorry",
+      "lean_file_sha256": "2b9f6485b2f4b6d49caa93343703ee8f8684ede3d42bd25ccf604d2a35da5dfa",
+      "lean_file_contract": "compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. Do NOT rebuild a header from `definitions`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted) and `set_option autoImplicit false` are part of what was compiled. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block>` (+ lean_trailer if present). THE BINDERS LIVE INSIDE lean_signature -- restating the theorem from `statement` alone drops them and proves a different thing.",
+      "reading": "If n ≡ 2 (mod 6), then 9 does not divide 2^n + 1, by the campaign lemma 9 ∣ 2^n + 1 ↔ n ≡ 3 (mod 6).",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos936/receipts/erdos936_DEMAND_R020_L1_1_D2.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos936/lean/erdos936_DEMAND_R020_L1_1_D2.lean",
+      "lean_signature": "theorem msl_erdos936_demand_r020_l1_1_c2 (k : Nat) : ¬ (9 ∣ (2 ^ (6 * k + 2) + 1))"
+    },
+    {
+      "id": "erdos936:DEMAND:R020:L1:1#D3",
+      "statement": "∀ (m : Nat), Powerful m → 3 ∣ m → 9 ∣ m",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos936",
+      "decomposed_from": "erdos936:DEMAND:R020:L1:1",
+      "imports": "Mathlib",
+      "definitions": "def Powerful (m : Nat) : Prop := ∀ (p : Nat), p ∣ m → p ^ 2 ∣ m",
+      "type_context": "Mathlib\ndef Powerful (m : Nat) : Prop := ∀ (p : Nat), p ∣ m → p ^ 2 ∣ m",
+      "lean_binders": [],
+      "lean_theorem_name": "msl_erdos936_demand_r020_l1_1_c3",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef Powerful (m : Nat) : Prop := ∀ (p : Nat), p ∣ m → p ^ 2 ∣ m\n\n",
+      "lean_statement_line": "theorem msl_erdos936_demand_r020_l1_1_c3 : ∀ (m : Nat), Powerful m → 3 ∣ m → 9 ∣ m := by sorry",
+      "lean_file_sha256": "fdc41766558efaf0d8e900d04f17aac06c288f5183f3d66d279596c19130cfc9",
+      "lean_file_contract": "compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. Do NOT rebuild a header from `definitions`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted) and `set_option autoImplicit false` are part of what was compiled. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block>` (+ lean_trailer if present). THE BINDERS LIVE INSIDE lean_signature -- restating the theorem from `statement` alone drops them and proves a different thing.",
+      "reading": "A powerful number divisible by 3 is divisible by 9 (instantiating the powerfulness condition at p = 3).",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos936/receipts/erdos936_DEMAND_R020_L1_1_D3.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos936/lean/erdos936_DEMAND_R020_L1_1_D3.lean",
+      "lean_signature": "theorem msl_erdos936_demand_r020_l1_1_c3 : ∀ (m : Nat), Powerful m → 3 ∣ m → 9 ∣ m"
+    }
+  ],
+  "composition": {
+    "id": "erdos936:DEMAND:R020:L1:1#COMPOSE",
+    "statement": "((3 ∣ (2 ^ (6 * k + 2) + 1)) ∧ (¬ (9 ∣ (2 ^ (6 * k + 2) + 1))) ∧ (∀ (m : Nat), Powerful m → 3 ∣ m → 9 ∣ m)) → (¬ Powerful (2 ^ (6 * k + 2) + 1))",
+    "kind": "COMPOSITION",
+    "depends_on": [
+      "erdos936:DEMAND:R020:L1:1#D1",
+      "erdos936:DEMAND:R020:L1:1#D2",
+      "erdos936:DEMAND:R020:L1:1#D3"
+    ],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "PROVED_KERNEL",
+    "problem": "erdos936",
+    "decomposed_from": "erdos936:DEMAND:R020:L1:1",
+    "imports": "Mathlib",
+    "definitions": "def Powerful (m : Nat) : Prop := ∀ (p : Nat), p ∣ m → p ^ 2 ∣ m",
+    "type_context": "Mathlib\ndef Powerful (m : Nat) : Prop := ∀ (p : Nat), p ∣ m → p ^ 2 ∣ m",
+    "parent_typed": {
+      "statement": "¬ Powerful (2 ^ (6 * k + 2) + 1)",
+      "binders": [
+        "(k : Nat)"
+      ],
+      "reading": "For every n ≡ 2 (mod 6), the number 2^n + 1 is not powerful (the prime 3 divides it exactly once).",
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": null,
+        "prose_contract_root_report": {
+          "ok": true,
+          "missing": [],
+          "reason": "",
+          "blocking": false,
+          "why_not_blocking": "tokens mined from ENGLISH prose are not Lean tokens; `Fin k` carries `1 <= i <= k` structurally"
+        }
+      }
+    },
+    "composition_claim": {
+      "text": "Apply child 3 with m := 2 ^ (6 * k + 2) + 1: child 1 supplies 3 ∣ m, so child 3 yields 9 ∣ m, which contradicts child 2; hence 2 ^ (6 * k + 2) + 1 is not powerful, which is the parent for every k (i.e. every n ≡ 2 mod 6).",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "KERNEL_CHECKED",
+      "rc": 0,
+      "axioms": [
+        "propext"
+      ],
+      "counts_toward_parent": 1
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "source": "oracle/evidence/msl-machine/dag/decomp/erdos936/lean/erdos936_DEMAND_R020_L1_1_COMPOSE.lean",
+    "lean_theorem_name": "msl_erdos936_demand_r020_l1_1_composition",
+    "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxHeartbeats 400000\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef Powerful (m : Nat) : Prop := ∀ (p : Nat), p ∣ m → p ^ 2 ∣ m\n\n",
+    "lean_statement_line": "theorem msl_erdos936_demand_r020_l1_1_composition (k : Nat) : ((3 ∣ (2 ^ (6 * k + 2) + 1)) ∧ (¬ (9 ∣ (2 ^ (6 * k + 2) + 1))) ∧ (∀ (m : Nat), Powerful m → 3 ∣ m → 9 ∣ m)) → (¬ Powerful (2 ^ (6 * k + 2) + 1)) := by\n  first\n  | tauto\n  | (intro h; exact h.1)\n  | (intro h; simp_all)\n  | (intro h; omega)\n  | (intro h; norm_num at h ⊢ <;> tauto)\n  | aesop\n  | decide",
+    "lean_trailer": "\n#print axioms msl_erdos936_demand_r020_l1_1_composition\n",
+    "lean_binders": [
+      "(k : Nat)"
+    ],
+    "lean_file_sha256": "918e7ce369319cb7492cffb8afba859541fe00db162e72da2fbd45894bfc21f4",
+    "lean_file_contract": "compile `lean_preamble + lean_statement_line + \"\\n\" + lean_trailer` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 4 ran the deterministic ladder on. Do NOT rebuild a header from `definitions`. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block>` (+ lean_trailer if present). THE BINDERS LIVE INSIDE lean_signature -- restating the theorem from `statement` alone drops them and proves a different thing.",
+    "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos936/receipts/erdos936_DEMAND_R020_L1_1_COMPOSE.verify.json",
+    "receipt_kind": "VERIFY_JSON",
+    "lean_signature": "theorem msl_erdos936_demand_r020_l1_1_composition (k : Nat) : ((3 ∣ (2 ^ (6 * k + 2) + 1)) ∧ (¬ (9 ∣ (2 ^ (6 * k + 2) + 1))) ∧ (∀ (m : Nat), Powerful m → 3 ∣ m → 9 ∣ m)) → (¬ Powerful (2 ^ (6 * k + 2) + 1))"
+  },
+  "parent_new_depends_on": [
+    "erdos936:DEMAND:R020:L1:1#COMPOSE"
+  ],
+  "rejected": [],
+  "counts": {
+    "proposed": 3,
+    "elaborated": 3,
+    "bound": 3,
+    "non_circular": 3,
+    "non_trivial": 3,
+    "surviving": 3,
+    "composition_kernel_checked": 1,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 3,
+    "counts_toward_parent_note": "composition PROVED_KERNEL: the children are load-bearing"
+  },
+  "definitions": {
+    "block": "def Powerful (m : Nat) : Prop := ∀ (p : Nat), p ∣ m → p ^ 2 ∣ m",
+    "gate0": {
+      "verdict": "DEFS_ELABORATE"
+    },
+    "campaign_vocabulary_prepended": [],
+    "normalization": {
+      "body": "def Powerful (m : Nat) : Prop := ∀ (p : Nat), p ∣ m → p ^ 2 ∣ m",
+      "opens": [],
+      "dropped_imports": []
+    }
+  }
+}

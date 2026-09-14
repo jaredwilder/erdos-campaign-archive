@@ -1,0 +1,16 @@
+{"definitions": "def Refutes (A : Prop) : Prop := A → False\n\ndef IndependenceAboutAlpha (A : Prop) : Prop :=\n  Refutes A ∧ ¬ Refutes A\n\ndef EvidenceForReplacement (A : Prop) : Prop :=\n  ¬ A → Refutes A",
+  "parent_typed": {"name": "inconsistency_evidence_not_independence", "binders": ["(A : Prop)"],
+    "statement": "¬ A → Refutes A ∧ EvidenceForReplacement A ∧ ¬ IndependenceAboutAlpha A",
+    "reading": "An inconsistency in an auxiliary proposition A is evidence for replacing A, and does not itself constitute an independence result about the canonical α."},
+  "children": [
+    {"name": "negation_yields_refutation", "binders": ["(A : Prop)"],
+      "statement": "∀ (hA : ¬ A), Refutes A",
+      "reading": "If A fails, then A refutes itself: a derivation of False from A exists."},
+    {"name": "refutation_is_replacement_evidence", "binders": ["(A : Prop)"],
+      "statement": "∀ (hA : ¬ A), EvidenceForReplacement A",
+      "reading": "Inconsistency of A is exactly the evidence warranting replacement of the helper A."},
+    {"name": "refutation_not_independence", "binders": ["(A : Prop)"],
+      "statement": "∀ (hA : ¬ A), ¬ IndependenceAboutAlpha A",
+      "reading": "A refutation of A cannot be an independence result about α, since independence would require both refuting and not refuting A."}
+  ],
+  "composition_claim": "Children 1 and 2 supply the first two conjuncts of the parent by their conclusions under the same hypothesis ¬ A, and child 3 supplies the third conjunct; and-introduction (tauto) assembles the parent. No child is the parent or an implication into it: each is a single conjunct of the conjunction."}

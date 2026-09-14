@@ -1,0 +1,1 @@
+-- No corrected file exists: `witness_pos` is false as stated. For moduli `2, 3, 6`, one residue class modulo each cannot cover all residues modulo `6`: the classes have sizes `3`, `2`, and `1`, while the modulo-2 and modulo-3 classes necessarily overlap, so their union contains at most `5` of the `6` residues.

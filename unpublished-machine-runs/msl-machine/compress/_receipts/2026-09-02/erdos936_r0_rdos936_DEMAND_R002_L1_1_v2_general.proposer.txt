@@ -1,0 +1,8 @@
+{"theorem_name": "erdos936_period_divisor_of_63",
+ "binders": ["(n : ℕ)", "(m : ℕ)"],
+ "definitions": "",
+ "statement": "∀ (n m : ℕ), m ∣ (2 ^ 6 - 1) → ((2 ^ (n + 6) + 1) % m = (2 ^ n + 1) % m)",
+ "premises": ["erdos936:ORE:92a0f9bc5b8e550c", "erdos936:ORE:1f33adb59737ddbd"],
+ "derivation_claim": "The kernel proves 2^(n+6) + 1 - (2^n + 1) = 2^n * (2^6 - 1), so any m dividing 63 = 2^6 - 1 divides the difference, giving congruence of 2^(n+6)+1 and 2^n+1 mod m. Instantiating m = 9 (since 9 ∣ 63) recovers erdos936_period; instantiating with any other divisor of 63 (1, 3, 7, 21, 63) extends it, so erdos936_period is the special case m = 9 of the new theorem, itself derived from the same congruence identity the leaf's proof uses.",
+ "discharges": "erdos936:DEMAND:R002:L1:1",
+ "reason": "It replaces the fixed modulus 9 with a universally quantified divisor of 2^6-1, upgrading a pointwise periodicity fact into the general congruence engine needed to certify prime-power (squared-exponent) divisibility of 2^n+1 across all moduli, one level closer to the root powerfulness question."}

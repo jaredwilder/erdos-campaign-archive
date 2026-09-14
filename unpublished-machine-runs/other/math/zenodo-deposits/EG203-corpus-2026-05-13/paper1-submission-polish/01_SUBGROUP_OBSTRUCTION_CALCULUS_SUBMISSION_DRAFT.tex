@@ -1,0 +1,542 @@
+
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage[nameinlink,capitalize]{cleveref}
+
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\F}{\mathbb F}
+\newcommand{\E}{\mathbb E}
+\newcommand{\G}{\Gamma}
+\newcommand{\1}{\mathbf 1}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\TV}{\operatorname{TV}}
+\newcommand{\KL}{D_{\operatorname{KL}}}
+
+\title{A Subgroup Obstruction Calculus for Two-Generator Exponential Congruences}
+\author{Jared Wilder}
+\date{Draft for submission --- Oracle-polished version --- 2026-05-13}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We develop an elementary finite-group calculus for local congruence obstructions in two-generator exponential problems of the form
+\[
+m a^k b^\ell+1.
+\]
+If \(a,b,m\) are units modulo \(d\), local solvability is governed exactly by membership of \(-m^{-1}\) in the subgroup
+\[
+\Gamma_d(a,b)=\langle a,b\rangle\subset(\Z/d\Z)^*.
+\]
+This gives an exact local density, a complete two-point distribution law for the local obstruction random variable, all raw moments, exact information-theoretic distances from uniformity, a finite Fourier expansion through the character annihilator of \(\Gamma_d(a,b)\), exact centered moment laws, and CRT orthogonality for weighted prime-level sums.  The motivating example is the Erd\H{o}s--Graham Problem \#203 sequence \(m2^k3^\ell+1\), but all results in this paper are elementary finite algebra and probability.  No prime-distribution theorem and no resolution of Erd\H{o}s--Graham Problem \#203 is claimed.
+\end{abstract}
+
+\section{Introduction}
+
+Let \(a,b\in\Q^*\), and consider the congruence
+\[
+m a^k b^\ell+1\equiv0\pmod d.
+\]
+When \(a,b,m\) are units modulo \(d\), this is equivalent to
+\[
+a^k b^\ell\equiv -m^{-1}\pmod d.
+\]
+Thus local solvability is not mysterious: it is exactly a subgroup-membership question in the finite abelian group \((\Z/d\Z)^*\).
+
+For Erd\H{o}s--Graham Problem \#203, the bases are \(a=2\), \(b=3\), and \((m,6)=1\).  At a modulus \(d\) coprime to \(6m\), the local subgroup is
+\[
+\Gamma_d=\langle2,3\rangle\subset(\Z/d\Z)^*.
+\]
+The exact local density is
+\[
+\rho_m(d)=\frac{\1_{\Gamma_d}(-m^{-1})}{|\Gamma_d|}.
+\]
+This paper records the finite algebra behind that formula and its consequences.
+
+The central point is that a normalized subgroup indicator carries an entire obstruction calculus: exact distribution, all moments, character expansion, centered variance, and CRT orthogonality.  These statements are elementary, but they create a clean interface between local algebra and later analytic or sieve questions.
+
+\subsection*{Main theorem package}
+
+The paper proves the following finite statements.
+
+\begin{enumerate}[leftmargin=1.5em]
+\item A finite abelian subgroup obstruction lemma: normalized subgroup indicators have exact mean, variance, and character expansion.
+\item A complete two-point distribution law for the local obstruction random variable.
+\item Exact raw moments and exact information-theoretic distances from uniformity.
+\item A multiplication-fiber theorem for the map \(H_1\times H_2\to H_1H_2\).
+\item An exact local density formula for \(m a^k b^\ell+1\) modulo \(d\).
+\item Exact moment and weighted-variance identities over the parameter \(m\).
+\end{enumerate}
+
+No analytic number theory is required for any of these results.
+
+\section{Finite abelian subgroup obstruction calculus}
+
+\begin{definition}
+Let \(G\) be a finite abelian group and \(\Gamma\le G\).  Define
+\[
+\Delta_\Gamma(c)=\frac{\1_\Gamma(c)}{|\Gamma|}-\frac1{|G|},\qquad c\in G.
+\]
+We call \(\Delta_\Gamma\) the centered subgroup obstruction attached to \(\Gamma\).
+\end{definition}
+
+\begin{theorem}[Finite abelian subgroup obstruction lemma]\label{T:finite}
+For a finite abelian group \(G\) and subgroup \(\Gamma\le G\),
+\[
+\sum_{c\in G}\Delta_\Gamma(c)=0,
+\]
+and
+\[
+\sum_{c\in G}|\Delta_\Gamma(c)|^2=\frac1{|\Gamma|}-\frac1{|G|}.
+\]
+Moreover, if \(\widehat G\) is the character group and
+\[
+\Gamma^\perp=\{\chi\in\widehat G:\chi(\gamma)=1\ \forall \gamma\in\Gamma\},
+\]
+then
+\[
+\Delta_\Gamma(c)=
+\frac1{|G|}
+\sum_{\substack{\chi\in\Gamma^\perp\\ \chi\ne1}}\chi(c).
+\]
+\end{theorem}
+
+\begin{proof}
+The mean-zero identity follows from
+\[
+\sum_{c\in G}\frac{\1_\Gamma(c)}{|\Gamma|}=1
+\qquad\text{and}\qquad
+\sum_{c\in G}\frac1{|G|}=1.
+\]
+For the second moment,
+\[
+\sum_{c\in G}\left(\frac{\1_\Gamma(c)}{|\Gamma|}-\frac1{|G|}\right)^2
+=
+|\Gamma|\left(\frac1{|\Gamma|}-\frac1{|G|}\right)^2
++(|G|-|\Gamma|)\frac1{|G|^2},
+\]
+which simplifies to \(1/|\Gamma|-1/|G|\).
+
+For the character expansion, finite Fourier inversion gives
+\[
+\frac{\1_\Gamma(c)}{|\Gamma|}
+=
+\frac1{|G|}\sum_{\chi\in\Gamma^\perp}\chi(c).
+\]
+Subtracting \(1/|G|\), the contribution of the trivial character, gives the claimed formula.
+\end{proof}
+
+\begin{definition}[Annihilator index and obstruction energy]
+Define the annihilator index
+\[
+\kappa_\Gamma=\frac{|G|}{|\Gamma|}=|\Gamma^\perp|
+\]
+and the obstruction energy
+\[
+\mathcal E(\Gamma)=\frac1{|\Gamma|}-\frac1{|G|}
+=
+\frac{\kappa_\Gamma-1}{|G|}.
+\]
+\end{definition}
+
+\begin{corollary}[Energy monotonicity]\label{C:energy-monotone}
+If \(\Gamma_1\le\Gamma_2\le G\), then
+\[
+\mathcal E(\Gamma_2)\le \mathcal E(\Gamma_1).
+\]
+\end{corollary}
+
+\begin{proof}
+This is immediate from \(|\Gamma_1|\le|\Gamma_2|\).
+\end{proof}
+
+\section{Complete distribution law}
+
+The variance identity in \cref{T:finite} is the second-order shadow of a complete elementary distribution law.
+
+\begin{theorem}[Scaled Bernoulli law]\label{T:scaled-bernoulli}
+Let \(G\) be a finite abelian group, \(\Gamma\le G\), and let \(c\) be uniformly distributed on \(G\).  Define
+\[
+X_\Gamma(c)=\frac{\1_\Gamma(c)}{|\Gamma|}.
+\]
+Then
+\[
+X_\Gamma=
+\begin{cases}
+|\Gamma|^{-1},&\text{with probability }|\Gamma|/|G|,\\
+0,&\text{with probability }1-|\Gamma|/|G|.
+\end{cases}
+\]
+Consequently, for every integer \(r\ge1\),
+\[
+\E X_\Gamma^r
+=
+\frac1{|G|\,|\Gamma|^{r-1}}.
+\]
+\end{theorem}
+
+\begin{proof}
+The random variable \(X_\Gamma\) equals \(|\Gamma|^{-1}\) exactly on the subgroup \(\Gamma\), which has probability \(|\Gamma|/|G|\), and equals \(0\) elsewhere.  The moment formula follows immediately.
+\end{proof}
+
+\begin{corollary}[Information-theoretic obstruction profile]\label{C:info}
+Let
+\[
+U_\Gamma(c)=\frac{\1_\Gamma(c)}{|\Gamma|},
+\qquad
+U_G(c)=\frac1{|G|}.
+\]
+Then
+\[
+\|U_\Gamma-U_G\|_{\TV}
+=
+1-\frac{|\Gamma|}{|G|},
+\]
+\[
+\chi^2(U_\Gamma\|U_G)
+=
+\frac{|G|}{|\Gamma|}-1,
+\]
+and
+\[
+\KL(U_\Gamma\|U_G)
+=
+\log\frac{|G|}{|\Gamma|}.
+\]
+\end{corollary}
+
+\begin{proof}
+For total variation,
+\[
+\frac12\sum_{c\in G}\left|U_\Gamma(c)-U_G(c)\right|
+=
+\frac12\left[
+|\Gamma|\left(\frac1{|\Gamma|}-\frac1{|G|}\right)
++
+(|G|-|\Gamma|)\frac1{|G|}
+\right]
+=
+1-\frac{|\Gamma|}{|G|}.
+\]
+For chi-square divergence,
+\[
+\chi^2(U_\Gamma\|U_G)
+=
+\sum_{c\in G}\frac{(U_\Gamma(c)-U_G(c))^2}{U_G(c)}
+=
+|G|\left(\frac1{|\Gamma|}-\frac1{|G|}\right)
+=
+\frac{|G|}{|\Gamma|}-1.
+\]
+For KL divergence,
+\[
+\KL(U_\Gamma\|U_G)
+=
+\sum_{c\in\Gamma}\frac1{|\Gamma|}
+\log\left(\frac{1/|\Gamma|}{1/|G|}\right)
+=
+\log\frac{|G|}{|\Gamma|}.
+\]
+\end{proof}
+
+\begin{remark}
+The obstruction strength is therefore measured exactly by the subgroup index \(|G|/|\Gamma|\).  Larger generated subgroups are closer to uniform in every metric above.
+\end{remark}
+
+\section{Multiplication fibers}
+
+\begin{lemma}[Multiplication fiber theorem]\label{L:fiber}
+Let \(G\) be an abelian group, and let \(H_1,H_2\le G\).  For \(c\in G\),
+\[
+|\{(x,y)\in H_1\times H_2:xy=c\}|
+=
+|H_1\cap H_2|\ \1_{H_1H_2}(c).
+\]
+\end{lemma}
+
+\begin{proof}
+The multiplication map
+\[
+\mu:H_1\times H_2\to H_1H_2,\qquad (x,y)\mapsto xy
+\]
+is surjective.  Its kernel is
+\[
+\{(u,u^{-1}):u\in H_1\cap H_2\},
+\]
+which has size \(|H_1\cap H_2|\).  Hence every element of \(H_1H_2\) has exactly \(|H_1\cap H_2|\) preimages, and elements outside \(H_1H_2\) have none.
+\end{proof}
+
+\section{Two-generator exponential congruences}
+
+Let \(d\ge1\), and suppose \(a,b,m\in(\Z/d\Z)^*\).  Define
+\[
+G_d=(\Z/d\Z)^*,\qquad \Gamma_d(a,b)=\langle a,b\rangle\subset G_d.
+\]
+
+\begin{proposition}[Exact local density]\label{P:localdensity}
+The proportion of exponent pairs in the finite orbit \(\langle a\rangle\times\langle b\rangle\) satisfying
+\[
+m a^k b^\ell+1\equiv0\pmod d
+\]
+is
+\[
+\rho_{m,a,b}(d)=
+\frac{\1_{\Gamma_d(a,b)}(-m^{-1})}{|\Gamma_d(a,b)|}.
+\]
+\end{proposition}
+
+\begin{proof}
+The congruence is equivalent to \(a^k b^\ell\equiv -m^{-1}\pmod d\).  Apply \cref{L:fiber} to
+\[
+H_1=\langle a\rangle,\qquad H_2=\langle b\rangle.
+\]
+The number of pairs mapping to a target \(c\) is \(|H_1\cap H_2|\1_{\Gamma_d(a,b)}(c)\).  Dividing by \(|H_1||H_2|\) and using
+\[
+|\Gamma_d(a,b)|=\frac{|H_1||H_2|}{|H_1\cap H_2|}
+\]
+gives the formula.
+\end{proof}
+
+\section{Moments over \texorpdfstring{\(m\)}{m}}
+
+For \(m\in G_d\), define
+\[
+\Delta_m(d;a,b)=
+\frac{\1_{\Gamma_d(a,b)}(-m^{-1})}{|\Gamma_d(a,b)|}
+-
+\frac1{\varphi(d)}.
+\]
+
+\begin{theorem}[Exact moment laws]\label{T:moments}
+For every \(d\) with \(a,b\in G_d\),
+\[
+\sum_{m\in G_d}\Delta_m(d;a,b)=0,
+\]
+and
+\[
+\sum_{m\in G_d}|\Delta_m(d;a,b)|^2
+=
+\frac1{|\Gamma_d(a,b)|}-\frac1{\varphi(d)}.
+\]
+\end{theorem}
+
+\begin{proof}
+The map \(m\mapsto -m^{-1}\) is a bijection of \(G_d\).  The result is therefore \cref{T:finite} with \(G=G_d\) and \(\Gamma=\Gamma_d(a,b)\).
+\end{proof}
+
+\section{Character expansion}
+
+\begin{theorem}[Character-annihilator expansion]\label{T:char}
+For \(G_d=(\Z/d\Z)^*\) and \(\Gamma_d(a,b)=\langle a,b\rangle\),
+\[
+\Delta_m(d;a,b)=
+\frac1{\varphi(d)}
+\sum_{\substack{\chi\bmod d\\ \chi\ne\chi_0\\ \chi(a)=\chi(b)=1}}
+\chi(-m^{-1}).
+\]
+\end{theorem}
+
+\begin{proof}
+Characters \(\chi\bmod d\) are the character group of \(G_d\).  The annihilator of \(\Gamma_d(a,b)\) is exactly the set of characters satisfying \(\chi(a)=\chi(b)=1\).  Apply \cref{T:finite}.
+\end{proof}
+
+\section{CRT orthogonality and weighted variance}
+
+\begin{lemma}[CRT orthogonality]\label{L:crt}
+Let \(d=d_1d_2\) with \((d_1,d_2)=1\).  If \(F_i\) has mean zero on \((\Z/d_i\Z)^*\), then
+\[
+\E_{m\in(\Z/d\Z)^*}F_1(m\bmod d_1)F_2(m\bmod d_2)=0.
+\]
+\end{lemma}
+
+\begin{proof}
+By the Chinese remainder theorem,
+\[
+(\Z/d\Z)^*\simeq(\Z/d_1\Z)^*\times(\Z/d_2\Z)^*,
+\]
+and the expectation factors into the product of the two means.
+\end{proof}
+
+\begin{theorem}[Prime-level weighted variance]\label{T:weighted}
+Let \(\mathcal Q\) be a finite set of primes not dividing \(ab\), and put \(P=\prod_{q\in\mathcal Q}q\).  Then
+\[
+\E_{m\in(\Z/P\Z)^*}
+\left|
+\sum_{q\in\mathcal Q}\lambda_q\Delta_m(q;a,b)
+\right|^2
+=
+\sum_{q\in\mathcal Q}
+|\lambda_q|^2
+\frac1{q-1}
+\left(
+\frac1{|\Gamma_q(a,b)|}-\frac1{q-1}
+\right).
+\]
+\end{theorem}
+
+\begin{proof}
+Expand the square.  The cross terms vanish by \cref{L:crt} and the mean-zero identity.  The diagonal terms are the normalized versions of \cref{T:moments} at prime modulus \(q\).
+\end{proof}
+
+\section{Specialization to \texorpdfstring{\(a=2,b=3\)}{a=2, b=3}}
+
+For \(q\nmid6\), write
+\[
+\Gamma_q=\langle2,3\rangle\subset\F_q^*,
+\qquad
+a_q=\ord_q(2),\quad b_q=\ord_q(3).
+\]
+Since \(\F_q^*\) is cyclic,
+\[
+|\Gamma_q|=\lcm(a_q,b_q).
+\]
+For \(c\in\F_q^*\),
+\[
+|\{(x,y)\in\langle2\rangle\times\langle3\rangle:xy=c\}|
+=
+\gcd(a_q,b_q)\1_{\Gamma_q}(c).
+\]
+Thus for \((m,6q)=1\),
+\[
+\rho_m(q)=\frac{\1_{\Gamma_q}(-m^{-1})}{|\Gamma_q|},
+\]
+and
+\[
+\sum_{m\in\F_q^*}\left|
+\rho_m(q)-\frac1{q-1}
+\right|^2
+=
+\frac1{|\Gamma_q|}-\frac1{q-1}.
+\]
+
+\section{RMS obstruction law}
+
+At prime modulus \(q\nmid ab\), \cref{T:moments} gives the normalized RMS size
+\[
+\mathrm{RMS}_m(\Delta_m(q;a,b))
+=
+\left[
+\frac1{q-1}\left(
+\frac1{|\Gamma_q(a,b)|}-\frac1{q-1}
+\right)
+\right]^{1/2}.
+\]
+Thus the local obstruction is governed exactly by the subgroup index
+\[
+[\F_q^*:\Gamma_q(a,b)].
+\]
+If \(|\Gamma_q(a,b)|\asymp q\), then the RMS size is \(O(q^{-1})\).  If the subgroup is smaller, the RMS size is amplified by
+\[
+\left(\frac{q-1}{|\Gamma_q(a,b)|}\right)^{1/2}.
+\]
+
+\section{Multi-generator extension}
+
+The same formalism applies to \(t\)-generator exponential congruences.  Let
+\[
+a_1,\dots,a_t\in(\Z/d\Z)^*
+\]
+and put
+\[
+\Gamma_d(a_1,\dots,a_t)=\langle a_1,\dots,a_t\rangle\subset(\Z/d\Z)^*.
+\]
+For congruences
+\[
+m a_1^{n_1}\cdots a_t^{n_t}+1\equiv0\pmod d,
+\]
+the exact local density is
+\[
+\rho_{m,a_1,\dots,a_t}(d)
+=
+\frac{\1_{\Gamma_d(a_1,\dots,a_t)}(-m^{-1})}{|\Gamma_d(a_1,\dots,a_t)|},
+\]
+and all moment and character-expansion identities above remain valid with \(\Gamma_d(a,b)\) replaced by \(\Gamma_d(a_1,\dots,a_t)\).
+
+\section{Concrete examples}
+
+These examples are finite checks and are included to make the obstruction calculus tangible.
+
+\subsection{No obstruction when \texorpdfstring{\(\Gamma_q=\F_q^*\)}{Gamma\_q = F\_q\^{}*}}
+
+For \(q=5\),
+\[
+\F_5^*=\{1,2,3,4\},\qquad \langle2,3\rangle=\F_5^*.
+\]
+Thus
+\[
+\rho_m(5)=\frac1{4}
+\]
+for every \(m\in\F_5^*\), and
+\[
+\Delta_m(5)=0.
+\]
+The moment identity gives
+\[
+\frac1{|\Gamma_5|}-\frac1{5-1}
+=
+\frac14-\frac14
+=
+0.
+\]
+
+\subsection{A proper subgroup obstruction}
+
+For \(q=23\), direct computation gives
+\[
+|\langle2,3\rangle\bmod23|=11.
+\]
+Thus the local density is
+\[
+\rho_m(23)=
+\begin{cases}
+1/11,& -m^{-1}\in\langle2,3\rangle,\\
+0,& -m^{-1}\notin\langle2,3\rangle.
+\end{cases}
+\]
+The second moment is exactly
+\[
+\frac1{11}-\frac1{22}
+=
+\frac1{22}.
+\]
+This example shows the obstruction energy directly: the subgroup has index \(2\), and the centered variance records that index.
+
+\section{Further directions}
+
+The calculus above is elementary, but it supplies a reusable foundation for density-zero and conditional Kummer-distribution results in problems involving \(m a^k b^\ell+1\).  The analytic problem of proving strong enough prime distribution in Kummer families is deliberately not claimed here.
+
+\begin{thebibliography}{9}
+
+\bibitem{Apostol}
+T. M. Apostol.
+\newblock \emph{Introduction to Analytic Number Theory}.
+\newblock Springer, 1976.
+
+\bibitem{DF}
+D. S. Dummit and R. M. Foote.
+\newblock \emph{Abstract Algebra}.
+\newblock Wiley, 3rd edition, 2004.
+
+\bibitem{IK}
+H. Iwaniec and E. Kowalski.
+\newblock \emph{Analytic Number Theory}.
+\newblock American Mathematical Society Colloquium Publications, 2004.
+
+\end{thebibliography}
+
+\end{document}

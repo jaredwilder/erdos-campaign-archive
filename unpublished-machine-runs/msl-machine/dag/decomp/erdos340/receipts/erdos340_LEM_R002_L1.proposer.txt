@@ -1,0 +1,22 @@
+{"definitions": "def SidonProp (s : Finset ℕ) : Prop :=\n  ∀ (a b c d : ℕ), a ∈ s → b ∈ s → c ∈ s → d ∈ s →\n    a + b = c + d → (a = c ∧ b = d) ∨ (a = d ∧ b = c)\n\ndef sidonGood (s : Finset ℕ) (m : ℕ) : Prop := SidonProp (insert m s)\n\ndef nextGreedy (s : Finset ℕ) : ℕ :=\n  s.sup + 1 +\n    Nat.findGreatest\n      (fun (j : ℕ) => ∀ (i : ℕ), i ∈ Finset.Icc 1 j → sidonGood s (s.sup + 1 + i))\n      ((s.sup + 3) ^ 3)\n  + 1\n\ndef greedySet : ℕ → Finset ℕ\n  | 0 => {1}\n  | (n + 1) => insert (nextGreedy (greedySet n)) (greedySet n)\n\ndef memSidon (n : ℕ) : Prop := ∃ (k : Fin (n + 1)), n ∈ greedySet (k : ℕ)\n\ndef sidonCount (N : ℕ) : ℕ :=\n  (Finset.Icc 1 N).filter (fun (n : ℕ) => memSidon n) |>.card",
+  "parent_typed": {"name": "erdos340_LEM_R002_L1", "binders": ["(ε : ℝ)"],
+    "statement": "0 < ε → ∃ (N₀ : ℕ), ∀ (N : ℕ), N₀ ≤ N → ∃ (c : ℝ), 0 < c ∧ ((sidonCount N : ℝ) ≥ c * (N : ℝ) ^ ((1:ℝ) / 2 - ε))",
+    "reading": "For every ε > 0 and all large N, the greedy Sidon set A has |A ∩ [1,N]| ≥ c(ε) · N^{1/2−ε} with c(ε) > 0 depending only on ε."},
+  "children": [
+    {"name": "greedyStageSidon", "binders": ["(k : Nat)"],
+      "statement": "SidonProp (greedySet k)",
+      "reading": "Every stage of the greedy construction is a Sidon set (no non-trivial a+b=c+d)."},
+    {"name": "greedyStageCard", "binders": ["(k : Nat)"],
+      "statement": "(greedySet k).card = k + 1 ∧ ∀ (n : ℕ), n ∈ greedySet k → 1 ≤ n",
+      "reading": "Stage k of the greedy construction contains exactly k+1 elements, all at least 1, so its elements are distinct and lie in [1, ∞)."},
+    {"name": "greedyStepGap", "binders": ["(k : Nat)"],
+      "statement": "nextGreedy (greedySet k) ≤ (greedySet k).sup + 1 + ((greedySet k).card + 2) ^ 3",
+      "reading": "Greedy minimality gap: the next chosen element exceeds the current maximum by at most (card+2)³, since only that many candidate values are blocked by sums of existing elements."},
+    {"name": "memSidonBounded", "binders": ["(n : Nat)", "(k : Nat)"],
+      "statement": "k ≤ n → (n ∈ greedySet k → memSidon n)",
+      "reading": "Bounded membership: if n appears by stage k ≤ n then n is counted as a member of A in the decidable bounded-stage predicate memSidon."},
+    {"name": "greedyCountingCore", "binders": [],
+      "statement": "∃ (K : ℕ), ∃ (c : ℝ), 0 < c ∧ ∀ (N : ℕ), 2 ≤ N → ((sidonCount N : ℝ) ≥ c * (N : ℝ) ^ ((1:ℝ) / 2) / (Real.log (N : ℝ)) ^ (K : ℕ))",
+      "reading": "Parametric counting core: the greedy Sidon set has |A ∩ [1,N]| ≥ c · N^{1/2} / (log N)^K for some fixed c > 0 and integer K, which dominates N^{1/2−ε} for large N at each fixed ε."}
+  ],
+  "composition_claim": "Children 1–3 fix the greedy-Sidon convention (Sidon preservation, one distinct positive element per stage) and control each greedy step through the gap bound of child 4, which feeds a stage-wise recursion on the maximum; child 3 converts stages into the decidable count sidonCount N, and child 5 (the counting core derived from the gap recursion) gives |A∩[1,N]| ≥ c N^{1/2}/(log N)^K with constants depending only on the construction. Since for each fixed ε > 0 the bound c N^{1/2}/(log N)^K ≥ c' N^{1/2−ε} holds for all N ≥ N₀(ε), the children together yield the parent's ∀ ε > 0, ∃ N₀, ∀ N ≥ N₀ lower bound with ε-only constant dependence."}

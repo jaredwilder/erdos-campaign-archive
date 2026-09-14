@@ -1,0 +1,213 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos9",
+  "generated_utc": "2026-09-02T16:32:50Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos9:B:M01",
+    "statement": "Prove limsup_{N→∞} |A ∩ {1,…,N}|/N = 0 for the exact A fixed in definitions.",
+    "statement_sha256": "f5743653c968c8b25b92e40dbc782b635571149ebaee5482a1ad2629e415e07f",
+    "kind": "MUST_DETERMINE",
+    "binding": "VERBATIM",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "Let $A$ be the set of all odd integers $\\geq 1$ not of the form $p+2^{k}+2^l$ (where $k,l\\geq 0$ and $p$ is prime). Is the upper density of $A$ positive?",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos9-campaign-001/contract.json",
+    "sha256": "b389c8fdb4a9bdaaab694a7b2c836c7b42126754d0b10dea2d49713c631000a7"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos9:B:M01",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "147b4056f5f819298518290838fdae93d57d0216bf9ccc8a64e7e592235a37c6",
+    "prompt_chars": 4058,
+    "response_sha256": "70da2d70d1970a67376f117a313781cb5dd64def14b2a60c6f0b582f570a9ab1",
+    "usage": {
+      "prompt_tokens": 1079,
+      "completion_tokens": 1375,
+      "total_tokens": 2454,
+      "cost": 0.000416995,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 128,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.000416995,
+        "upstream_inference_prompt_cost": 7.3245e-05,
+        "upstream_inference_completions_cost": 0.00034375
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 789,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.000416995,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 34.83,
+    "utc": "2026-09-02T16:31:37Z"
+  },
+  "children": [
+    {
+      "id": "erdos9:B:M01#D1",
+      "statement": "∀ (n : ℕ), n ∈ erdos9A ↔\n  (Odd n ∧ 1 ≤ n ∧ ∀ (p : ℕ), Nat.Prime p → ∀ (k l : ℕ), p + 2 ^ k + 2 ^ l ≠ n)",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos9",
+      "decomposed_from": "erdos9:B:M01",
+      "imports": "Mathlib",
+      "definitions": "def erdos9A : Set ℕ :=\n  {n : ℕ | Odd n ∧ 1 ≤ n ∧ ∀ (p : ℕ), Nat.Prime p → ∀ (k l : ℕ), p + 2 ^ k + 2 ^ l ≠ n}",
+      "type_context": "Mathlib\ndef erdos9A : Set ℕ :=\n  {n : ℕ | Odd n ∧ 1 ≤ n ∧ ∀ (p : ℕ), Nat.Prime p → ∀ (k l : ℕ), p + 2 ^ k + 2 ^ l ≠ n}",
+      "lean_binders": [],
+      "lean_theorem_name": "msl_erdos9_b_m01_c1",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef erdos9A : Set ℕ :=\n  {n : ℕ | Odd n ∧ 1 ≤ n ∧ ∀ (p : ℕ), Nat.Prime p → ∀ (k l : ℕ), p + 2 ^ k + 2 ^ l ≠ n}\n\n",
+      "lean_signature": "theorem msl_erdos9_b_m01_c1 : ∀ (n : ℕ), n ∈ erdos9A ↔\n (Odd n ∧ 1 ≤ n ∧ ∀ (p : ℕ), Nat.Prime p → ∀ (k l : ℕ), p + 2 ^ k + 2 ^ l ≠ n)",
+      "lean_statement_line": "theorem msl_erdos9_b_m01_c1 : ∀ (n : ℕ), n ∈ erdos9A ↔\n (Odd n ∧ 1 ≤ n ∧ ∀ (p : ℕ), Nat.Prime p → ∀ (k l : ℕ), p + 2 ^ k + 2 ^ l ≠ n) := by sorry",
+      "lean_file_sha256": "b446eab8d9054cafd1222536b5b28e9532afd0002a5b78725377de4172410a5b",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "Membership in A is exactly: n is odd, n ≥ 1, and n is not p + 2^k + 2^l for any prime p and k, l ≥ 0.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos9/receipts/erdos9_B_M01_D1.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos9/lean/erdos9_B_M01_D1.lean",
+      "leaf_tactic_hint": "interval_cases",
+      "hint_source": "bounded_forall_over_N",
+      "leaf_tactic_sketch": "intro a; interval_cases a <;> decide",
+      "leaf_tactic_alternatives": [
+        "decide",
+        "native_decide",
+        "bounded_search"
+      ]
+    }
+  ],
+  "composition": {
+    "id": "erdos9:B:M01#COMPOSE",
+    "statement": "(composition not constructed)",
+    "kind": "COMPOSITION",
+    "depends_on": [
+      "erdos9:B:M01#D1"
+    ],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "OPEN",
+    "problem": "erdos9",
+    "decomposed_from": "erdos9:B:M01",
+    "imports": "Mathlib",
+    "definitions": "def erdos9A : Set ℕ :=\n  {n : ℕ | Odd n ∧ 1 ≤ n ∧ ∀ (p : ℕ), Nat.Prime p → ∀ (k l : ℕ), p + 2 ^ k + 2 ^ l ≠ n}",
+    "type_context": "Mathlib\ndef erdos9A : Set ℕ :=\n  {n : ℕ | Odd n ∧ 1 ≤ n ∧ ∀ (p : ℕ), Nat.Prime p → ∀ (k l : ℕ), p + 2 ^ k + 2 ^ l ≠ n}",
+    "parent_typed": {
+      "statement": "Filter.limsup (fun (N : ℕ) =>\n    ((Finset.card (Finset.filter (fun (m : ℕ) => m ∈ erdos9A) (Finset.Icc 1 N) : Finset ℕ) : ℝ)\n      / (N : ℝ))) Filter.atTop = 0",
+      "binders": [],
+      "reading": "The upper density of the set A of odd integers ≥ 1 not of the form p + 2^k + 2^l is zero, i.e. limsup_{N→∞} |A ∩ {1,…,N}| / N = 0.",
+      "elaboration": {
+        "verdict": "STATEMENT_DOES_NOT_ELABORATE",
+        "rc": 1,
+        "kernel_error": "/root/peer/decomp/b20260902_093217_1/erdos9_B_M01_parent.lean:12:17: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun m => m ∈ erdos9A\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command."
+      },
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": null,
+        "prose_contract_root_report": {
+          "ok": true,
+          "missing": [],
+          "reason": "",
+          "blocking": false,
+          "why_not_blocking": "tokens mined from ENGLISH prose are not Lean tokens; `Fin k` carries `1 <= i <= k` structurally"
+        }
+      }
+    },
+    "composition_claim": {
+      "text": "Child 1 pins down that erdos9A is exactly the set of odd integers ≥ 1 not of the form p + 2^k + 2^l, fixing the set the parent talks about. Child 2 gives an eventual upper bound on the counting density of erdos9A; since the counting function is nonnegative, this eventual bound forces the limsup at atTop to equal 0, which is the parent statement.",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "COMPOSITION_NOT_RUN",
+      "counts_toward_parent": 0,
+      "reason": "parent typed rendering failed GATE 1/GATE 2 -- a composition cannot be stated over a parent the kernel will not accept"
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "composition_receipt": "oracle/evidence/msl-machine/dag/decomp/erdos9/receipts/erdos9_B_M01_COMPOSE.composition.json"
+  },
+  "parent_new_depends_on": [
+    "erdos9:B:M01#COMPOSE"
+  ],
+  "rejected": [
+    {
+      "proposed_index": 2,
+      "statement": "∀ (ε : ℝ), 0 < ε → ∃ (N₀ : ℕ), ∀ (N : ℕ), N₀ ≤ N →\n  ((Finset.card (Finset.filter (fun (m : ℕ) => m ∈ erdos9A) (Finset.Icc 1 N) : Finset ℕ) : ℝ)\n    / (N : ℝ)) < ε",
+      "binders": [],
+      "gate": "GATE1_ELABORATION",
+      "reason": "/root/peer/decomp/b20260902_093217_1/erdos9_B_M01_c2.lean:12:16: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun m => m ∈ erdos9A\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.",
+      "kernel_error": "/root/peer/decomp/b20260902_093217_1/erdos9_B_M01_c2.lean:12:16: error(lean.synthInstanceFailed): failed to synthesize instance of type class\n  DecidablePred fun m => m ∈ erdos9A\n\nHint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command."
+    }
+  ],
+  "counts": {
+    "proposed": 2,
+    "elaborated": 1,
+    "bound": 1,
+    "non_circular": 1,
+    "non_trivial": 1,
+    "surviving": 1,
+    "composition_kernel_checked": 0,
+    "fireable_decidable_leaves": 1,
+    "counts_toward_parent": 0,
+    "counts_toward_parent_note": "composition OPEN: these children contribute ZERO toward the parent until it closes; they remain formal leaves for the rung loop"
+  },
+  "definitions": {
+    "block": "def erdos9A : Set ℕ :=\n  {n : ℕ | Odd n ∧ 1 ≤ n ∧ ∀ (p : ℕ), Nat.Prime p → ∀ (k l : ℕ), p + 2 ^ k + 2 ^ l ≠ n}",
+    "gate0": {
+      "verdict": "DEFS_ELABORATE"
+    },
+    "campaign_vocabulary_prepended": [],
+    "normalization": {
+      "body": "def erdos9A : Set ℕ :=\n  {n : ℕ | Odd n ∧ 1 ≤ n ∧ ∀ (p : ℕ), Nat.Prime p → ∀ (k l : ℕ), p + 2 ^ k + 2 ^ l ≠ n}",
+      "opens": [],
+      "dropped_imports": []
+    }
+  }
+}

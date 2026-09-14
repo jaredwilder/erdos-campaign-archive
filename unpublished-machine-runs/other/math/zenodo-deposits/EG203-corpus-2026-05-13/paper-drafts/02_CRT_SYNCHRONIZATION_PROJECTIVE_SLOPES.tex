@@ -1,0 +1,293 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{hypothesis}{Hypothesis}
+\newtheorem{remark}{Remark}
+\newtheorem{warning}{Warning}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{problem}{Problem}
+
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\F}{\mathbb F}
+\newcommand{\C}{\mathbb C}
+\newcommand{\G}{\Gamma}
+\newcommand{\E}{\mathbb E}
+\newcommand{\1}{\mathbf 1}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\Gal}{\operatorname{Gal}}
+
+\title{CRT Synchronization and Projective Kummer Slopes in Two-Generator Subgroups}
+\author{Jared Wilder}
+\date{Draft 0.1 --- 2026-05-12}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For squarefree \(d\), membership in the subgroup \(\langle a,b\rangle\subset(\Z/d\Z)^*\) is not determined solely by membership in each prime component.  The same exponent vector must synchronize across all Chinese-remainder factors.  We formulate this obstruction as a lattice-image condition, define the synchronization defect, and show that the two-prime \(\ell\)-primary defect is exactly a rank defect.  In the motivating case \(a=2,b=3\), this rank defect is equivalent to a collision of projective Kummer slopes
+\[
+[\log_q2:\log_q3]\in\mathbb P^1(\F_\ell).
+\]
+\end{abstract}
+
+\section{Introduction}
+
+Let
+\[
+d=q_1\cdots q_r
+\]
+be squarefree.  A common mistake in two-generator congruence problems is to assume that local membership
+\[
+c\bmod q_i\in\langle a,b\rangle\subset\F_{q_i}^*
+\]
+for every \(i\) implies global membership
+\[
+c\bmod d\in\langle a,b\rangle\subset(\Z/d\Z)^*.
+\]
+This is false in general.  The same pair of exponents must work in every CRT component.
+
+This paper records the algebraic obstruction.
+
+\section{The lattice-image criterion}
+
+Let \(d=q_1\cdots q_r\) be squarefree, and assume \(a,b,c\) are units modulo \(d\).  Choose primitive roots \(g_i\bmod q_i\) and write
+\[
+a=g_i^{u_i},\qquad b=g_i^{v_i},\qquad c=g_i^{w_i}.
+\]
+
+\begin{theorem}[Squarefree lattice membership]\label{T:lattice}
+One has
+\[
+c\in\langle a,b\rangle\subset(\Z/d\Z)^*
+\]
+if and only if
+\[
+(w_1,\dots,w_r)\in
+\im\left(
+\Z^2\to\bigoplus_{i=1}^r\Z/(q_i-1)\Z
+\right),
+\]
+where
+\[
+(k,\ell)\mapsto(ku_i+\ell v_i)_i.
+\]
+\end{theorem}
+
+\begin{proof}
+By CRT, the congruence \(a^k b^\ell\equiv c\pmod d\) is equivalent to the system
+\[
+a^k b^\ell\equiv c\pmod {q_i},\qquad i=1,\dots,r.
+\]
+In exponent coordinates this is
+\[
+ku_i+\ell v_i\equiv w_i\pmod {q_i-1}.
+\]
+The same pair \((k,\ell)\) must solve all congruences simultaneously, which is precisely the stated image condition.
+\end{proof}
+
+\section{Synchronization defect}
+
+\begin{definition}[Synchronization defect size]
+Let
+\[
+\Gamma_{q_i}(a,b)=\langle a,b\rangle\subset\F_{q_i}^*
+\]
+and
+\[
+\Gamma_d(a,b)=\langle a,b\rangle\subset(\Z/d\Z)^*.
+\]
+Define the synchronization defect size by
+\[
+|\mathcal S_d(a,b)|
+=
+\frac{\prod_i|\Gamma_{q_i}(a,b)|}{|\Gamma_d(a,b)|}.
+\]
+\end{definition}
+
+\begin{remark}
+The notation \(\mathcal S_d(a,b)\) may be made into an actual quotient group by viewing \(\Gamma_d(a,b)\) as the diagonal image of the exponent lattice inside \(\prod_i\Gamma_{q_i}(a,b)\).  The size formula above is the invariant needed for obstruction-energy accounting.
+\end{remark}
+
+\begin{proposition}
+The subgroup size satisfies
+\[
+|\Gamma_d(a,b)|=
+\frac{\prod_i|\Gamma_{q_i}(a,b)|}{|\mathcal S_d(a,b)|}.
+\]
+\end{proposition}
+
+\begin{proof}
+This is the definition rearranged.
+\end{proof}
+
+\section{The two-prime rank criterion}
+
+Now let \(d=pq\), and fix a prime \(\ell\mid\gcd(p-1,q-1)\).  Choose primitive roots and write
+\[
+a=g_p^{u_p}=g_q^{u_q},\qquad b=g_p^{v_p}=g_q^{v_q}.
+\]
+Modulo \(\ell\), form
+\[
+M_\ell(p,q)=
+\begin{pmatrix}
+u_p&v_p\\
+u_q&v_q
+\end{pmatrix}.
+\]
+
+\begin{theorem}[Pair rank defect]\label{T:rank}
+The \(\ell\)-primary two-prime synchronization map has rank \(<2\) if and only if
+\[
+\det M_\ell(p,q)=u_pv_q-u_qv_p\equiv0\pmod\ell.
+\]
+\end{theorem}
+
+\begin{proof}
+This is the determinant criterion for a \(2\times2\) matrix over the field \(\F_\ell\).
+\end{proof}
+
+\section{Projective Kummer slopes}
+
+Specialize now to \(a=2,b=3\).  For \(q\equiv1\pmod\ell\), choose a primitive root \(g_q\) and write
+\[
+2=g_q^{u_q},\qquad 3=g_q^{v_q}.
+\]
+Define the Kummer vector
+\[
+x_\ell(q)=(u_q,v_q)\in\F_\ell^2
+\]
+and, when nonzero, the projective Kummer slope
+\[
+\sigma_\ell(q)=[u_q:v_q]\in\mathbb P^1(\F_\ell).
+\]
+
+\begin{corollary}[Projective slope collision]\label{C:slope}
+For primes \(p,q\equiv1\pmod\ell\), the rank defect in Theorem \ref{T:rank} occurs if and only if
+\[
+\sigma_\ell(p)=\sigma_\ell(q)
+\]
+in \(\mathbb P^1(\F_\ell)\), apart from the star atom where the vector is \((0,0)\).
+\end{corollary}
+
+\begin{proof}
+The determinant
+\[
+u_pv_q-u_qv_p
+\]
+vanishes exactly when the two nonzero vectors \((u_p,v_p)\) and \((u_q,v_q)\) span the same line in \(\F_\ell^2\).
+\end{proof}
+
+\section{Slope classes and Kummer ratio fields}
+
+\begin{proposition}[Projective ratio field]\label{P:ratio}
+For \([A:B]\in\mathbb P^1(\F_\ell)\), the condition
+\[
+[\log_q2:\log_q3]=[A:B]
+\]
+is equivalent, outside the star atom, to
+\[
+2^B3^{-A}\in(\F_q^*)^\ell.
+\]
+Thus slope classes are controlled by one-dimensional Kummer fields
+\[
+\Q(\zeta_\ell,(2^B3^{-A})^{1/\ell}).
+\]
+\end{proposition}
+
+\begin{proof}
+The equality of projective slopes is equivalent to
+\[
+B\log_q2-A\log_q3\equiv0\pmod\ell,
+\]
+which is equivalent to
+\[
+\log_q(2^B3^{-A})\equiv0\pmod\ell.
+\]
+That is exactly the condition that \(2^B3^{-A}\) is an \(\ell\)-th power modulo \(q\).
+\end{proof}
+
+\section{The star atom}
+
+\begin{definition}
+The star atom is the condition
+\[
+(\log_q2,\log_q3)=(0,0)\in\F_\ell^2.
+\]
+Equivalently, both \(2\) and \(3\) are \(\ell\)-th powers modulo \(q\).
+\end{definition}
+
+\begin{lemma}[Rational Kummer independence]\label{L:indep}
+If
+\[
+2^a3^b\in(\Q(\zeta_\ell)^*)^\ell,\qquad 0\le a,b<\ell,
+\]
+then \(a=b=0\).
+\end{lemma}
+
+\begin{proof}
+Suppose \(2^a3^b=\alpha^\ell\) in \(\Q(\zeta_\ell)\).  Take valuations at prime ideals above \(2\).  The right-hand side has valuations divisible by \(\ell\), so \(a\equiv0\pmod\ell\).  Since \(0\le a<\ell\), \(a=0\).  Similarly, valuations at prime ideals above \(3\) force \(b=0\).
+\end{proof}
+
+\begin{corollary}
+The extension
+\[
+\Q(\zeta_\ell,2^{1/\ell},3^{1/\ell})/\Q(\zeta_\ell)
+\]
+has degree \(\ell^2\), and the expected relative Chebotarev density of the star atom among \(q\equiv1\pmod\ell\) is \(\ell^{-2}\).
+\end{corollary}
+
+\begin{proof}
+The independence lemma shows that the classes of \(2\) and \(3\) span a two-dimensional subspace of \(K^*/(K^*)^\ell\), where \(K=\Q(\zeta_\ell)\).  Kummer theory gives relative degree \(\ell^2\).  The expected density statement is the Chebotarev density for complete splitting in this rank-two Kummer layer.
+\end{proof}
+
+\section{Collision graph}
+
+\begin{definition}
+For fixed \(\ell,Q\), define the Kummer slope collision graph \(G_\ell(Q)\) as follows.  Vertices are primes
+\[
+q\le Q,\qquad q\equiv1\pmod\ell.
+\]
+Two vertices are adjacent if their projective Kummer slopes agree, with the star atom counted separately.
+\end{definition}
+
+If \(N_s\) counts primes of slope \(s\in\mathbb P^1(\F_\ell)\), and \(N_\star\) counts the star atom, then
+\[
+|E(G_\ell(Q))|=
+\sum_{s\in\mathbb P^1(\F_\ell)}\binom{N_s}{2}
++
+\binom{N_\star}{2}.
+\]
+
+\section{Conclusion}
+
+The synchronization obstruction is algebraic.  Analytic number theory enters only when one asks how often the projective Kummer slopes collide among primes.  That analytic question is separated from the algebraic content here.
+
+\bibliographystyle{alpha}
+\begin{thebibliography}{9}
+
+\bibitem{Lang}
+S. Lang.
+\newblock \emph{Algebra}.
+\newblock Springer.
+
+\bibitem{Washington}
+L. Washington.
+\newblock \emph{Introduction to Cyclotomic Fields}.
+\newblock Springer.
+
+\end{thebibliography}
+
+\end{document}

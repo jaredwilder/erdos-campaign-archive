@@ -1,0 +1,16 @@
+{"definitions": "noncomputable def unitPairs {d : Nat} (s : Finset (EuclideanSpace ℝ (Fin d))) : Nat :=\n  ((s ×ˢ s).filter (fun p : EuclideanSpace ℝ (Fin d) × EuclideanSpace ℝ (Fin d) =>\n      p.1 ≠ p.2 ∧ dist p.1 p.2 = (1 : ℝ))).card / 2\n\nnoncomputable def fd (d : Nat) (n : Nat) : Nat :=\n  sSup {m : Nat | ∃ s : Finset (EuclideanSpace ℝ (Fin d)), s.card = n ∧ unitPairs s = m}",
+  "parent_typed": {"name": "erdos1085_A_M02_order_of_growth",
+    "binders": ["(d : Nat)", "(g : Nat → ℝ)"],
+    "statement": "∃ (c : ℝ) (C : ℝ), 0 < c ∧ 0 < C ∧ ∀ (n : Nat), 1 ≤ n → c * g n ≤ (↑(fd d n) : ℝ) ∧ (↑(fd d n) : ℝ) ≤ C * g n",
+    "reading": "The function g is a correct order-of-growth estimate of f_d(n): there are positive constants c, C with c·g(n) ≤ f_d(n) ≤ C·g(n) for all n ≥ 1."},
+  "children": [
+    {"name": "erdos1085_A_M02_lower_bound",
+      "binders": ["(d : Nat)", "(g : Nat → ℝ)"],
+      "statement": "∃ (c : ℝ), 0 < c ∧ ∀ (n : Nat), 1 ≤ n → c * g n ≤ (↑(fd d n) : ℝ)",
+      "reading": "Lower bound: some positive constant c witnesses f_d(n) ≥ c·g(n) for all n ≥ 1."},
+    {"name": "erdos1085_A_M02_upper_bound",
+      "binders": ["(d : Nat)", "(g : Nat → ℝ)"],
+      "statement": "∃ (C : ℝ), 0 < C ∧ ∀ (n : Nat), 1 ≤ n → (↑(fd d n) : ℝ) ≤ C * g n",
+      "reading": "Upper bound: some positive constant C witnesses f_d(n) ≤ C·g(n) for all n ≥ 1."}
+  ],
+  "composition_claim": "The parent asserts the existence of two positive constants c and C; child 1 supplies exactly such a c for the lower inequality and child 2 supplies exactly such a C for the upper inequality, so their conjunction (with the same d and g) yields the parent's existential statement verbatim."}

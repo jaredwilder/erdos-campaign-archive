@@ -1,0 +1,22 @@
+{
+  "kind": "COMPOSITION_KERNEL_CHECK",
+  "node": "erdos830:DEMAND:R005:L1':1#COMPOSE",
+  "verdict": {
+    "verdict": "COMPOSITION_OPEN",
+    "rc": 1,
+    "kernel_error": "/root/peer/decomp/b20260902_093141_3/erdos830_DEMAND_R005_L1_1_comp.lean:12:278: error: unsolved goals",
+    "counts_toward_parent": 0
+  },
+  "lean_source": "oracle/evidence/msl-machine/dag/decomp/erdos830/lean/erdos830_DEMAND_R005_L1_1_COMPOSE.lean",
+  "ladder": [
+    "tauto",
+    "(intro h; exact h.1)",
+    "(intro h; simp_all)",
+    "(intro h; omega)",
+    "(intro h; norm_num at h ⊢ <;> tauto)",
+    "aesop",
+    "decide"
+  ],
+  "kernel_log": "/root/peer/decomp/b20260902_093141_3/erdos830_DEMAND_R005_L1_1_comp.lean:12:278: error: unsolved goals\nh : ∀ n ≤ 300, sigmaTrial n = ∑ d ∈ n.divisors, d\n⊢ ∃ a,\n    1 ≤ a ∧\n      ∃ x,\n        a ≤ x ∧\n          sigmaTrial a = a + x ∧\n            sigmaTrial x = a + x ∧ sigmaTrial a = ∑ d ∈ a.divisors, d ∧ sigmaTrial x = ∑ d ∈ x.divisors, d\n'msl_erdos830_demand_r005_l1_1_composition' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]",
+  "utc": "2026-09-02T16:32:03Z"
+}

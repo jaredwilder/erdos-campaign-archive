@@ -1,0 +1,900 @@
+{
+ "schema": "obligation-dag/1.0.0",
+ "problem": "erdos424",
+ "problem_number": "424",
+ "campaign": "erdos424-campaign-001",
+ "root": "erdos424:ROOT",
+ "contract_divergence": {
+  "authoritative": {
+   "role": "campaign",
+   "path": "oracle/evidence/msl-machine/campaigns/erdos424-campaign-001/contract.json",
+   "sha256": "aef3c850ef872efd4454445327a8d0a982fc9c740db2bc72af3a7a110a94a3b2",
+   "declared_contract_sha256": "0b93114325f426d94bbea34ff6d688d29a2e89685900c4f6876d8025f09efe3a"
+  },
+  "others": [
+   {
+    "role": "ingest",
+    "path": "oracle/evidence/msl-machine/contracts/erdos424/contract.json",
+    "sha256": "c0fbe553c6677c40788127f6905b234101c9ad19378d704d96e7b32b7521796c",
+    "declared_contract_sha256": "461e04060050ba282fbc2d2815014d9ce8621fecc268bd237271d5f6833ef6ec",
+    "canonical_statement_matches_authoritative": true
+   },
+   {
+    "role": "launch_queue",
+    "path": "oracle/evidence/msl-machine/contracts/LAUNCH-QUEUE/erdos424.json",
+    "sha256": "49578fce268a0061e6b0d5c2696dfe4069b855720481987653f1e042ea187d66",
+    "declared_contract_sha256": null,
+    "canonical_statement_matches_authoritative": true
+   }
+  ],
+  "diverges": false
+ },
+ "courts": [
+  "court",
+  "closer",
+  "formalizer",
+  "kernel"
+ ],
+ "summary": {
+  "nodes": 17,
+  "proved_kernel": 0,
+  "proved_speaker": 0,
+  "computed_bounded": 1,
+  "open": 9,
+  "refuted": 7,
+  "orphans": 2,
+  "proof_obligations": 0,
+  "open_leaves_on_dead_routes": 4,
+  "root_kind": "ROOT_UNCLASSIFIED",
+  "root_disqualifiers": [],
+  "formal_root": {
+   "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/424.lean",
+   "category": "category research open, AMS 11",
+   "declaration": "erdos_424",
+   "statement": "answer(sorry) ↔ generatedSet.HasPosDensity"
+  },
+  "leaf_frontier_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "leaf_frontier_reason": "1 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaf_frontier_deciding_leaf": {
+   "id": "erdos424:DEMAND:R007:L1:1",
+   "kind": "CAPABILITY_DEMAND",
+   "status": "OPEN",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "restrict all density lemmas to the i≠j closure exactly."
+  },
+  "ladder_shape_reason": "1 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaves": 13,
+  "open_leaves": 6,
+  "open_technical_leaves": 1,
+  "open_prose_obligations": 2,
+  "open_analytic_leaves": 1,
+  "ladder_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "deciding_leaf": {
+   "id": "erdos424:DEMAND:R007:L1:1",
+   "kind": "CAPABILITY_DEMAND",
+   "status": "OPEN",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "restrict all density lemmas to the i≠j closure exactly."
+  },
+  "orphan_detail": [
+   {
+    "id": "erdos424:A:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos424:B:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   }
+  ]
+ },
+ "validation": {
+  "acyclic": true,
+  "edges": 17,
+  "root_binds_verbatim": true,
+  "kernel_receipts_checked": 0
+ },
+ "nodes": [
+  {
+   "id": "erdos424:A:M01",
+   "statement": "Resolve the Lean answer value to true by proving the exact right-hand HasPosDensity proposition for A_∞.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos424-campaign-001/contract.json",
+   "contract_sha256": "aef3c850ef872efd4454445327a8d0a982fc9c740db2bc72af3a7a110a94a3b2",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos424-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos424",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-424-4bc83117f1-A-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos424:BRANCH_A",
+   "statement": "AFFIRMATIVE CLOSE: prove the exact generated set from seeds {2,3} has positive natural density.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos424:A:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos424-campaign-001/contract.json",
+   "contract_sha256": "aef3c850ef872efd4454445327a8d0a982fc9c740db2bc72af3a7a110a94a3b2",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos424-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos424",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-424-4bc83117f1-A-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos424:B:M01",
+   "statement": "Resolve the answer value to false by proving the literal negation of HasPosDensity for the same closure set.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos424-campaign-001/contract.json",
+   "contract_sha256": "aef3c850ef872efd4454445327a8d0a982fc9c740db2bc72af3a7a110a94a3b2",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos424-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos424",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-424-4bc83117f1-B-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos424:BRANCH_B",
+   "statement": "NEGATIVE CLOSE: prove the exact generated set fails positive natural density.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos424:B:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos424-campaign-001/contract.json",
+   "contract_sha256": "aef3c850ef872efd4454445327a8d0a982fc9c740db2bc72af3a7a110a94a3b2",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos424-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos424",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-424-4bc83117f1-B-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos424:ROOT",
+   "statement": "Let $a_1=2$ and $a_2=3$ and continue the sequence by appending to $a_1,\\ldots,a_n$ all possible values of $a_ia_j-1$ with $i\\neq j$. Is it true that the set of integers which eventually appear has positive density?",
+   "kind": "CANONICAL_ROOT",
+   "depends_on": [
+    "erdos424:BRANCH_A",
+    "erdos424:BRANCH_B"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "root_by_construction",
+   "closure_mode": "DISJUNCTIVE",
+   "satisfied_by_any": [
+    "erdos424:BRANCH_A",
+    "erdos424:BRANCH_B"
+   ],
+   "root_kind": "ROOT_UNCLASSIFIED",
+   "root_disqualifiers": [],
+   "formal_root": {
+    "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/424.lean",
+    "category": "category research open, AMS 11",
+    "declaration": "erdos_424",
+    "statement": "answer(sorry) ↔ generatedSet.HasPosDensity"
+   },
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos424-campaign-001/contract.json",
+   "contract_sha256": "aef3c850ef872efd4454445327a8d0a982fc9c740db2bc72af3a7a110a94a3b2",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos424-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false,
+    "exempt": "structural: frozen prose with children, never a manufacture target"
+   },
+   "problem": "erdos424",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos424:LEM:R001:L1",
+   "statement": "\"A_∞ ∩ 7ℕ = ∅\" is refuted by 84 = 17·5−1 ∈ A_∞ via 5=2·3−1, 9=2·5−1, 17=2·9−1; modular-exclusion obstructions cannot support the negative close, and no lemma bounding m(x) exists, so the standing refusal stands.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 6,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 (finite membership of 5,14,41) was the only PROVED support of R001 and is load-bearing: it is strictly weaker than any density bound needed for either close, all analytic reduction lemmas are UNTESTED, and with L1 machine-refuted the route retains no certified content — close cannot survive its d",
+    "seq": 7
+   },
+   "history": [
+    {
+     "seq": 3,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:56:31Z"
+    },
+    {
+     "seq": 5,
+     "status": "PROVED",
+     "utc": "2026-09-01T20:05:31Z"
+    },
+    {
+     "seq": 6,
+     "status": "FALSE",
+     "utc": "2026-09-01T20:11:51Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos424-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos424:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos424",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos424:LEM:R001:all",
+   "statement": "No analytic reduction supplied; certifier fails closed with no resolvable sign or finite residual to verify.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "all",
+   "registry_status": "UNTESTED",
+   "registry_seq": 4,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 (finite membership of 5,14,41) was the only PROVED support of R001 and is load-bearing: it is strictly weaker than any density bound needed for either close, all analytic reduction lemmas are UNTESTED, and with L1 machine-refuted the route retains no certified content — close cannot survive its d",
+    "seq": 7
+   },
+   "history": [
+    {
+     "seq": 4,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:02:12Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos424-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos424:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "No analytic reduction supplied; certifier fails closed with no resolvable sign or finite residual to verify."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos424",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos424:LEM:R002:L2",
+   "statement": "44=5·9−1∈A_∞ is ≡0 mod 4, killing the parity-obstruction lemma.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R002",
+   "lemma_id": "L2",
+   "registry_status": "FALSE",
+   "registry_seq": 9,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L2 carries a machine-verified concrete counterexample and no proof exists that the route's close survives its deletion, so R002 is dead per Wang 4.1.",
+    "seq": 10
+   },
+   "history": [
+    {
+     "seq": 9,
+     "status": "FALSE",
+     "utc": "2026-09-01T21:04:15Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos424-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos424:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos424",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos424:LEM:R003:L1",
+   "statement": "7∉A_∞ via finite certificate: 8 requires distinct product 9, only 3·3, forbidden by i≠j.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 14,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified concrete counterexample (banked as gold); no candidate proof or artifact exists to show L1 non-load-bearing, so R003's close cannot survive and the route is dead.",
+    "seq": 15
+   },
+   "history": [
+    {
+     "seq": 12,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T21:06:32Z"
+    },
+    {
+     "seq": 14,
+     "status": "FALSE",
+     "utc": "2026-09-01T21:08:33Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos424-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos424:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos424",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos424:LEM:R003:cert",
+   "statement": "No concrete verifier target or numerical claim supplied; fail-closed, certificate not issued.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "cert",
+   "registry_status": "UNTESTED",
+   "registry_seq": 13,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified concrete counterexample (banked as gold); no candidate proof or artifact exists to show L1 non-load-bearing, so R003's close cannot survive and the route is dead.",
+    "seq": 15
+   },
+   "history": [
+    {
+     "seq": 13,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T21:06:42Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos424-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos424:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "No concrete verifier target or numerical claim supplied; fail-closed, certificate not issued."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos424",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos424:LEM:R004:L1",
+   "statement": "Lemma L1: \"S contains every n ≡ 2 (mod 3)\". Counterexamples: 8 ∉ S (n+1=9=3·3 only, 1·9 has 1∉S) and 35 ∉ S (n+1=36=2·18, 3·12, 4·9, 6·6 — no distinct in-S pair), since a factor pair (x,y)∈S² with xy−1=n requires x,y≥2 and xy=n+1.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 17,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified concrete counterexample; no candidate proof or artifacts exist to demonstrate the close survives verbatim without L1, so the not-load-bearing exception fails and the route is dead.",
+    "seq": 18
+   },
+   "history": [
+    {
+     "seq": 17,
+     "status": "FALSE",
+     "utc": "2026-09-01T21:11:26Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos424-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos424:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos424",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos424:LEM:R005:L1",
+   "statement": "no exact verifier can certify a self-referential \"per contract\" residual claim with no arithmetic data; verifier aborts fail-closed",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R005",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 21,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified counterexample; R005's close (finite-stage structure → positive density of A_∞) passes through L1 with no substitute, so it is load-bearing and the route is dead.",
+    "seq": 22
+   },
+   "history": [
+    {
+     "seq": 20,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T21:14:09Z"
+    },
+    {
+     "seq": 21,
+     "status": "FALSE",
+     "utc": "2026-09-01T21:22:30Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos424-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos424:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos424",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos424:LEM:R006:L1",
+   "statement": "L1 (\"R006 as supplied contains a finite, sign-resolved residual claim amenable to an exact rational/interval verifier\") is false: the packet states analytic reduction \"none\" and residual \"per contract\" with no explicit bound, witness, or dependency scope; certifier fails closed.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R006",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 25,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified concrete counterexample and no proof was given that R006's close survives without it, so the route is load-bearing-dead.",
+    "seq": 26
+   },
+   "history": [
+    {
+     "seq": 24,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T21:29:22Z"
+    },
+    {
+     "seq": 25,
+     "status": "FALSE",
+     "utc": "2026-09-01T21:34:52Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos424-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos424:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos424",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos424:LEM:R007:L1",
+   "statement": "distinctness-trap counterexample: relaxed closure B⊇A_∞ gains {8,24} at stage 2 from pairs (3,3),(5,5); positive density of superset B cannot imply positive density of A_∞ (downward density fails, e.g. evens⊃squares); repair: restrict all density lemmas to the i≠j closure exactly.",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos424:DEMAND:R007:L1:1"
+   ],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R007",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 29,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 has a machine-recorded concrete counterexample; no proof exists that R007's close survives with L1 deleted (candidate proof is none), so the lemma was load-bearing and the route is dead; revival only via a repaired lemma with strictly weaker assumptions or a new decomposition not ro",
+    "seq": 30
+   },
+   "history": [
+    {
+     "seq": 27,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T21:36:31Z"
+    },
+    {
+     "seq": 29,
+     "status": "FALSE",
+     "utc": "2026-09-02T02:23:57Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos424-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos424:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos424",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos424:DEMAND:R007:L1:1",
+   "statement": "restrict all density lemmas to the i≠j closure exactly.",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "repair:",
+   "demand_rank": 2,
+   "demand_strength": "STRONG",
+   "route_status": "DEAD",
+   "demand_source_text": "distinctness-trap counterexample: relaxed closure B⊇A_∞ gains {8,24} at stage 2 from pairs (3,3),(5,5); positive density of superset B cannot imply positive density of A_∞ (downward density fails, e.g. evens⊃squares); repair: restrict all density lemmas to the i≠j closure exactly.",
+   "route_id": "R007",
+   "lemma_id": "L1",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos424:LEM:R007:L1",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos424-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos424",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos424:LEM:R007:R007",
+   "statement": "No analytic reduction or explicit residual claim supplied; sign unresolved, verifier not constructible — fail closed.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R007",
+   "lemma_id": "R007",
+   "registry_status": "UNTESTED",
+   "registry_seq": 28,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 has a machine-recorded concrete counterexample; no proof exists that R007's close survives with L1 deleted (candidate proof is none), so the lemma was load-bearing and the route is dead; revival only via a repaired lemma with strictly weaker assumptions or a new decomposition not ro",
+    "seq": 30
+   },
+   "history": [
+    {
+     "seq": 28,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T21:41:53Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos424-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos424:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "No analytic reduction or explicit residual claim supplied; sign unresolved, verifier not constructible — fail closed."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos424",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos424:LEM:R008:L1",
+   "statement": "Exact: A_s∩{n≡1 mod 3}=∅ for all s (closed residue table on {0,2}, seeds 2,3), hence upper density of A_∞ ≤ 2/3; positive-density claim itself UNTESTED by the finite model.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "COMPUTED_BOUNDED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R008",
+   "lemma_id": "L1",
+   "registry_status": "COMPUTATION_SUPPORTED",
+   "registry_seq": 32,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 32,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T02:27:24Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos424-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos424:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_COMPUTATION_SUPPORTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "Exact: A_s∩{n≡1 mod 3}=∅ for all s (closed residue table on {0,2}, seeds 2,3), hence upper density of A_∞ ≤ 2/3; positive-density claim itself UNTESTED by the finite model."
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos424",
+   "is_leaf": true,
+   "manufacture_target": false
+  }
+ ]
+}

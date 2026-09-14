@@ -1,0 +1,22 @@
+{
+  "kind": "COMPOSITION_KERNEL_CHECK",
+  "node": "erdos289:B:M01#COMPOSE",
+  "verdict": {
+    "verdict": "COMPOSITION_OPEN",
+    "rc": 1,
+    "kernel_error": "/root/peer/decomp/b20260902_080540_3/erdos289_B_M01_comp.lean:27:181: error: unsolved goals",
+    "counts_toward_parent": 0
+  },
+  "lean_source": "oracle/evidence/msl-machine/dag/decomp/erdos289/lean/erdos289_B_M01_COMPOSE.lean",
+  "ladder": [
+    "tauto",
+    "(intro h; exact h.1)",
+    "(intro h; simp_all)",
+    "(intro h; omega)",
+    "(intro h; norm_num at h ⊢ <;> tauto)",
+    "aesop",
+    "decide"
+  ],
+  "kernel_log": "/root/peer/decomp/b20260902_080540_3/erdos289_B_M01_comp.lean:27:181: error: unsolved goals\nh : (∀ (k : ℕ), HasDecomp k → ¬k % 6 = 2) ∧ ∀ (N : ℕ), ∃ k, (N ≤ k ∧ k ≤ N + 5) ∧ blockedResidue k\n⊢ ∀ (x : ℕ), ∃ x_1, x ≤ x_1 ∧ ¬HasDecomp x_1\n'msl_erdos289_b_m01_composition' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]",
+  "utc": "2026-09-02T15:06:02Z"
+}

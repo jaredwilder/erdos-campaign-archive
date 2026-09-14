@@ -1,0 +1,204 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{hypothesis}{Hypothesis}
+\newtheorem{remark}{Remark}
+\newtheorem{warning}{Warning}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{problem}{Problem}
+
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\F}{\mathbb F}
+\newcommand{\C}{\mathbb C}
+\newcommand{\G}{\Gamma}
+\newcommand{\E}{\mathbb E}
+\newcommand{\1}{\mathbf 1}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\Gal}{\operatorname{Gal}}
+
+\title{On Some Tempting but Insufficient Routes to Fixed-Radical Kummer Non-Concentration}
+\author{Jared Wilder}
+\date{Draft 0.1 --- 2026-05-12}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We record several plausible but insufficient routes to a fixed-radical Kummer non-concentration theorem arising in a conditional approach to Erd\H{o}s--Graham Problem \#203.  The purpose is defensive and clarifying: to separate correct structural lemmas from missing analytic distribution estimates.  The note identifies the high-\(\ell\) prime Hecke non-concentration seam as the precise remaining analytic problem.
+\end{abstract}
+
+\section{The target theorem}
+
+For \(\ell\le(\log Q)^B\) and \((r,s)\ne(0,0)\in\F_\ell^2\), define
+\[
+\theta=2^r3^s.
+\]
+The desired non-concentration bound is
+\[
+\#\{q\le Q:q\equiv1\bmod\ell,\ \theta\in(\F_q^*)^\ell\}
+\le
+(1-\ell^{-C})\pi(Q;\ell,1).
+\]
+This is PHNC.
+
+\section{Correct structural facts}
+
+\subsection{Kummer independence}
+
+For \((r,s)\ne0\), the element \(2^r3^s\) is not an \(\ell\)-th power in \(\Q(\zeta_\ell)\).  This follows from valuations at primes above \(2\) and \(3\).  Therefore the Kummer layer
+\[
+\Q(\zeta_\ell,(2^r3^s)^{1/\ell})/\Q(\zeta_\ell)
+\]
+has degree \(\ell\).
+
+\subsection{Order and non-real character}
+
+The corresponding Kummer character has order exactly \(\ell\).  If \(\ell\ge3\), it is non-real.
+
+\subsection{Power-stability of small deficit}
+
+Let \(f:X\to S^1\) and
+\[
+\delta(f)=1-|\E f|.
+\]
+Then
+\[
+\delta(f^m)\le m^2\delta(f).
+\]
+Consequently, if an order-\(\ell\) character has deficit \(\le\ell^{-C}\), \(C\ge3\), then its entire nontrivial cyclic line has deficit \(\le1/2\) for large \(\ell\).
+
+\section{Tempting route 1: BFI as a bad-set bound}
+
+A tempting claim is that Bombieri--Friedlander--Iwaniec type results imply a bound of the shape
+\[
+|B_{1/2}|\ll \frac{\log Q}{\ell}
+\]
+for the set of Kummer characters with deficit at most \(1/2\).
+
+\begin{warning}
+This is not a valid plug-in citation.  The BFI theorem concerns primes in arithmetic progressions with well-factorable weights.  It does not directly supply this fixed-radical Hecke/Kummer bad-character bound uniformly in \(\ell\).
+\end{warning}
+
+\subsection{What the bound would imply if true}
+
+\begin{proposition}
+Suppose one had
+\[
+|B_{1/2}|\le C_0\frac{\log Q}{\ell}.
+\]
+Then in the regime
+\[
+\ell^2>C_0\log Q\cdot\frac{\ell}{\ell-1},
+\]
+PHNC would follow.
+\end{proposition}
+
+\begin{proof}
+If PHNC failed, there would be a character \(\chi\) with \(\delta(\chi)\le\ell^{-C}\).  The power-stability lemma implies that the \(\ell-1\) nontrivial powers \(\chi,\dots,\chi^{\ell-1}\) all lie in \(B_{1/2}\).  Hence \(|B_{1/2}|\ge\ell-1\).  The assumed bound gives \(|B_{1/2}|<\ell-1\), contradiction.
+\end{proof}
+
+The structural part is correct.  The missing part is the analytic bad-set bound.
+
+\section{Tempting route 2: Pl\"unnecke--Ruzsa}
+
+Another tempting route is to use additive combinatorics on the set of bad characters.
+
+\begin{warning}
+Pl\"unnecke--Ruzsa does not by itself provide prime distribution.  In this setting, the one-character cyclic-line implication is already obtained by the elementary \(L^2\) power-stability lemma.  The hard part is still the analytic bound on how many medium-deficit characters exist.
+\end{warning}
+
+\section{Tempting route 3: fixed-field ineffective Chebotarev}
+
+For each fixed \(\ell,r,s\), Chebotarev gives eventual equidistribution:
+\[
+\#\{q\le Q:q\equiv1\bmod\ell,\ \theta\in(\F_q^*)^\ell\}
+\sim
+\frac1\ell\pi(Q;\ell,1).
+\]
+
+\begin{warning}
+This does not imply PHNC uniformly for the growing family
+\[
+\ell\le(\log Q)^B.
+\]
+An ineffective threshold depending on the individual field does not automatically yield a single \(Q_0(B,C)\) valid for all \(\ell\le(\log Q)^B\).
+\end{warning}
+
+\section{Tempting route 4: multiplicative-order lower bounds}
+
+One might try to use lower bounds on \(\ord_q(2^r3^s)\).
+
+\begin{warning}
+The condition that \(2^r3^s\) is an \(\ell\)-th power modulo \(q\) is equivalent to
+\[
+\ord_q(2^r3^s)\mid\frac{q-1}{\ell}.
+\]
+For polylogarithmic \(\ell\), the upper bound \((q-1)/\ell\) is still very large.  General lower bounds for multiplicative order do not rule out this divisibility for almost all \(q\equiv1\bmod\ell\).
+\end{warning}
+
+\section{Tempting route 5: generic Chebotarev--Brun--Titchmarsh}
+
+Chebotarev--Brun--Titchmarsh type estimates are often useful for upper bounds on splitting primes.
+
+\begin{warning}
+Known forms carry field-invariant dependencies.  In the present growing cyclotomic/Kummer family, those dependencies again restrict the usable range.  They do not automatically prove the full high-\(\ell\) seam
+\[
+(\log Q)^{1-\varepsilon}<\ell\le(\log Q)^B.
+\]
+\end{warning}
+
+\section{The actual open seam}
+
+The remaining analytic problem is:
+
+\begin{problem}[High-seam fixed-radical Kummer non-concentration]
+For every fixed \(B>0\), prove that there exists \(C=C(B)>0\) such that, uniformly for all primes
+\[
+\ell\le(\log Q)^B
+\]
+and all nonzero \((r,s)\in\F_\ell^2\),
+\[
+\#\{q\le Q:q\equiv1\bmod\ell,\ 2^r3^s\in(\F_q^*)^\ell\}
+\le
+(1-\ell^{-C})\pi(Q;\ell,1).
+\]
+\end{problem}
+
+\section{Conclusion}
+
+The failed routes are useful because they isolate the exact gap.  The structural algebra is real; the high-\(\ell\) analytic distribution theorem remains open.
+
+\bibliographystyle{alpha}
+\begin{thebibliography}{9}
+
+\bibitem{BFI}
+E. Bombieri, J. Friedlander, and H. Iwaniec.
+\newblock Primes in arithmetic progressions to large moduli.
+\newblock \emph{Acta Mathematica}, 156:203--251, 1986.
+
+\bibitem{LO}
+J. C. Lagarias and A. M. Odlyzko.
+\newblock Effective versions of the Chebotarev density theorem.
+\newblock \emph{Algebraic Number Fields}, 1977.
+
+\bibitem{TZ}
+J. Thorner and A. Zaman.
+\newblock A unified and improved Chebotarev density theorem.
+\newblock \emph{Algebra \& Number Theory}, 13(5):1039--1068, 2019.
+
+\end{thebibliography}
+
+\end{document}

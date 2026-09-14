@@ -1,0 +1,8 @@
+{"theorem_name": "check_l1_fragment_range_six",
+ "binders": ["(n : ℕ)"],
+ "definitions": "",
+ "statement": "∀ n ∈ Finset.Icc 1 5, check_l1_fragment n = true",
+ "premises": ["erdos479:FLEAF:2ded7584a23fc4ffed6d:5"],
+ "derivation_claim": "The open leaf is the explicit conjunction check_l1_fragment 1 = true ∧ … ∧ check_l1_fragment 5 = true, which is definitionally (∀ n ∈ Finset.Icc 1 5, check_l1_fragment n = true) with the quantifier unfolded over the five-point Icc; each point is a proved leaf, so the kernel closes the bounded ∀ by decide/simp over the five components. The theorem is strictly shorter than the conjunction and generalizes the five literals into one quantified variable (L1).",
+ "discharges": "erdos479:FLEAF:2ded7584a23fc4ffed6d:5",
+ "reason": "It collapses the five-case conjunction into one bounded universally quantified statement, the minimal compression that discharges the leaf outright and moves toward quantifying check_l1_fragment over all n."}

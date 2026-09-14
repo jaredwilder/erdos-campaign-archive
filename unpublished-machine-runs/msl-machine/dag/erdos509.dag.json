@@ -1,0 +1,1126 @@
+{
+ "schema": "obligation-dag/1.0.0",
+ "problem": "erdos509",
+ "problem_number": "509",
+ "campaign": "erdos509-campaign-001",
+ "root": "erdos509:ROOT",
+ "contract_divergence": {
+  "authoritative": {
+   "role": "campaign",
+   "path": "oracle/evidence/msl-machine/campaigns/erdos509-campaign-001/contract.json",
+   "sha256": "8c1b556577d745c127e551441263cd99bdcb766d341089e0662e2e638e2be5fe",
+   "declared_contract_sha256": "fb1e09d3e590a73d98ef9f0d02365cc08661cd4d834675a4715f20820d23ac25"
+  },
+  "others": [
+   {
+    "role": "ingest",
+    "path": "oracle/evidence/msl-machine/contracts/erdos509/contract.json",
+    "sha256": "aa796814329ab62d5c5936563a43c7b515b738bef687631deca0e9eebb5a442e",
+    "declared_contract_sha256": "0fd52d88578c3596725c808528331527fe0f9c318c9b425b79b736f03d674dff",
+    "canonical_statement_matches_authoritative": true
+   },
+   {
+    "role": "launch_queue",
+    "path": "oracle/evidence/msl-machine/contracts/LAUNCH-QUEUE/erdos509.json",
+    "sha256": "b12520d20abbbe6584f0d58dd04bde21d268992b07d0917804938810b3e16538",
+    "declared_contract_sha256": null,
+    "canonical_statement_matches_authoritative": true
+   }
+  ],
+  "diverges": false
+ },
+ "courts": [
+  "court",
+  "closer",
+  "formalizer",
+  "kernel"
+ ],
+ "summary": {
+  "nodes": 19,
+  "proved_kernel": 0,
+  "proved_speaker": 4,
+  "computed_bounded": 0,
+  "open": 8,
+  "refuted": 7,
+  "orphans": 2,
+  "proof_obligations": 0,
+  "open_leaves_on_dead_routes": 2,
+  "root_kind": "DECIDABLE_BOUNDED",
+  "root_disqualifiers": [],
+  "formal_root": {
+   "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/509.lean",
+   "category": "category research open, AMS 30",
+   "declaration": "erdos_509",
+   "statement": "answer(sorry) ↔ ∀ (f : ℂ[X]), f.Monic → f.natDegree ≠ 0 → ∃ (ι : Type), Nonempty (BoundedDiscCover {z | ‖f.eval z‖ ≤ 1} 2 ι)"
+  },
+  "leaf_frontier_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "leaf_frontier_reason": "5 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaf_frontier_deciding_leaf": {
+   "id": "erdos509:DEMAND:R005:AA1:1",
+   "kind": "CAPABILITY_DEMAND",
+   "status": "OPEN",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "exact-once covering plus global inequality Σ_k∏_{j≠k}|a_k−a_j|^{-1/n}≤2 (adapted methodology from"
+  },
+  "ladder_shape_reason": "5 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaves": 15,
+  "open_leaves": 8,
+  "open_technical_leaves": 5,
+  "open_prose_obligations": 2,
+  "open_analytic_leaves": 5,
+  "ladder_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "deciding_leaf": {
+   "id": "erdos509:DEMAND:R005:AA1:1",
+   "kind": "CAPABILITY_DEMAND",
+   "status": "OPEN",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "exact-once covering plus global inequality Σ_k∏_{j≠k}|a_k−a_j|^{-1/n}≤2 (adapted methodology from"
+  },
+  "orphan_detail": [
+   {
+    "id": "erdos509:A:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos509:B:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   }
+  ]
+ },
+ "validation": {
+  "acyclic": true,
+  "edges": 19,
+  "root_binds_verbatim": true,
+  "kernel_receipts_checked": 0
+ },
+ "nodes": [
+  {
+   "id": "erdos509:A:M01",
+   "statement": "Resolve the formal answer value to true and provide the exact disc-cover theorem with constant 2.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos509-campaign-001/contract.json",
+   "contract_sha256": "8c1b556577d745c127e551441263cd99bdcb766d341089e0662e2e638e2be5fe",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos509-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos509",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-509-a6bf2043be-A-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos509:BRANCH_A",
+   "statement": "AFFIRMATIVE CLOSE: prove every monic nonconstant f∈ℂ[z] has a closed-disc cover of L_f with strictly positive summable radii totaling at most 2.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos509:A:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos509-campaign-001/contract.json",
+   "contract_sha256": "8c1b556577d745c127e551441263cd99bdcb766d341089e0662e2e638e2be5fe",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos509-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos509",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-509-a6bf2043be-A-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos509:B:M01",
+   "statement": "Resolve the formal answer value to false and prove every admissible positive-radius cover of that exact lemniscate has total radius>2.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos509-campaign-001/contract.json",
+   "contract_sha256": "8c1b556577d745c127e551441263cd99bdcb766d341089e0662e2e638e2be5fe",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos509-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos509",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-509-a6bf2043be-B-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos509:BRANCH_B",
+   "statement": "NEGATIVE CLOSE: exhibit a monic nonconstant complex polynomial whose lemniscate admits no such closed-disc cover with total radius≤2.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos509:B:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos509-campaign-001/contract.json",
+   "contract_sha256": "8c1b556577d745c127e551441263cd99bdcb766d341089e0662e2e638e2be5fe",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos509-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "leaf_tactic_hint": "interval_cases",
+   "hint_source": "bounded_forall_over_N",
+   "leaf_tactic_sketch": "intro a; interval_cases a <;> decide",
+   "leaf_tactic_alternatives": [
+    "decide",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos509",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-509-a6bf2043be-B-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos509:ROOT",
+   "statement": "Let $f(z)\\in\\mathbb{C}[z]$ be a monic non-constant polynomial. Can the set\\[\\{ z\\in \\mathbb{C} : \\lvert f(z)\\rvert \\leq 1\\}\\]be covered by a set of circles the sum of whose radii is $\\leq 2$?",
+   "kind": "CANONICAL_ROOT",
+   "depends_on": [
+    "erdos509:BRANCH_A",
+    "erdos509:BRANCH_B"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "root_by_construction",
+   "closure_mode": "DISJUNCTIVE",
+   "satisfied_by_any": [
+    "erdos509:BRANCH_A",
+    "erdos509:BRANCH_B"
+   ],
+   "root_kind": "DECIDABLE_BOUNDED",
+   "root_disqualifiers": [],
+   "formal_root": {
+    "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/509.lean",
+    "category": "category research open, AMS 30",
+    "declaration": "erdos_509",
+    "statement": "answer(sorry) ↔ ∀ (f : ℂ[X]), f.Monic → f.natDegree ≠ 0 → ∃ (ι : Type), Nonempty (BoundedDiscCover {z | ‖f.eval z‖ ≤ 1} 2 ι)"
+   },
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos509-campaign-001/contract.json",
+   "contract_sha256": "8c1b556577d745c127e551441263cd99bdcb766d341089e0662e2e638e2be5fe",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos509-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos509",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos509:LEM:R001:L1",
+   "statement": "Imported/adapted from Eremenko–Hayman 1995 lemniscate lower bound. L1: \"There exists a monic nonconstant polynomial f ∈ ℂ[z] such that every cover of {z : |f(z)| ≤ 1} by closed discs with positive radii has total radius > 2.\" Concretely: for each n there are monic degree-n polynomials whose lemnisca",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 7,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 has a machine-verified concrete counterexample; no surviving close without it was demonstrated, so the route is dead.",
+    "seq": 8
+   },
+   "history": [
+    {
+     "seq": 3,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:10:34Z"
+    },
+    {
+     "seq": 4,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:11:30Z"
+    },
+    {
+     "seq": 5,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:11:44Z"
+    },
+    {
+     "seq": 6,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T22:11:58Z"
+    },
+    {
+     "seq": 7,
+     "status": "FALSE",
+     "utc": "2026-09-01T22:13:36Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos509-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos509:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos509",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos509:LEM:R002:L1",
+   "statement": "[REFUTED-BY-ADVERSARIAL-MINE-2026-09-02: opus ranked-claims auditor, exact computation/derivation, receipt scratchpad/mine/agent-ranked.jsonl] {z : |z^2-2| <= 2} is NOT [-2,2]. z = 1 + i/2 gives |z^2-2| = |-1.25+i| ~ 1.60 <= 2. In u=Re^2, v=Im^2 the set is (u+v)^2 <= 4(u-v), a genuine 2-dimensional region.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R002",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 58,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 10,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:15:14Z"
+    },
+    {
+     "seq": 11,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:15:52Z"
+    },
+    {
+     "seq": 12,
+     "status": "PROVED",
+     "utc": "2026-09-01T22:16:16Z"
+    },
+    {
+     "seq": 58,
+     "status": "FALSE",
+     "utc": "2026-09-02T09:22:24Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos509-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos509:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos509",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos509:LEM:R003:L1",
+   "statement": "Exact rational counterexample: n=2, z=1/5+i·19/√1000 gives |z²−1/2|²=731801/10⁶<1 while |z−1|²=1001/1000>1, |z+1|²=1801/1000>1; all arithmetic exact, fail-closed.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R003",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 14,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Lemma L1 is load-bearing: with no candidate proof on file and no demonstrated surviving close upon its deletion, the recorded concrete counterexample kills the route per Wang 4.1/K8.",
+    "seq": 15
+   },
+   "history": [
+    {
+     "seq": 13,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:19:12Z"
+    },
+    {
+     "seq": 14,
+     "status": "FALSE",
+     "utc": "2026-09-01T22:22:59Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos509-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos509:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos509",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos509:LEM:R004:L1",
+   "statement": "Circles have empty interior/measure zero; countable union cannot cover the positive-area unit disc (f(z)=z), so the frozen circle-worded contract is false as written.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 23,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 17,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:24:52Z"
+    },
+    {
+     "seq": 18,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:24:57Z"
+    },
+    {
+     "seq": 19,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:25:25Z"
+    },
+    {
+     "seq": 20,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:25:40Z"
+    },
+    {
+     "seq": 21,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T22:26:05Z"
+    },
+    {
+     "seq": 23,
+     "status": "PROVED",
+     "utc": "2026-09-01T22:45:45Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos509-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos509:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos509",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos509:LEM:R005:AA1",
+   "statement": "Greedy-annulus mechanism double-counts at degenerate endpoint f=z−M (band sum ~2π>2, optimum 1) and its per-scale invariant Σr≤2·t^{1/n} fails for n≥3 spread roots; conclusion unrefuted, repair requires exact-once covering plus global inequality Σ_k∏_{j≠k}|a_k−a_j|^{-1/n}≤2 (adapted methodology from",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos509:DEMAND:R005:AA1:1"
+   ],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R005",
+   "lemma_id": "AA1",
+   "registry_status": "UNTESTED",
+   "registry_seq": 26,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Machine-verified counterexample to central lemma L1; no candidate close exists that survives with L1 deleted, so the not-load-bearing exception cannot be proved; revival requires a strictly weaker repaired lemma or new decomposition per Wang 4.2.",
+    "seq": 29
+   },
+   "history": [
+    {
+     "seq": 26,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T22:59:52Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos509-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos509:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "Greedy-annulus mechanism double-counts at degenerate endpoint f=z−M (band sum ~2π>2, optimum 1) and its per-scale invariant Σr≤2·t^{1/n} fails for n≥3 spread roots; conclusion unrefuted, repair requires exact-once covering plus global inequality Σ_k∏_{j≠k}|a_k−a_j|^{-1/n}≤2 (adapted methodology from"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos509",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos509:DEMAND:R005:AA1:1",
+   "statement": "exact-once covering plus global inequality Σ_k∏_{j≠k}|a_k−a_j|^{-1/n}≤2 (adapted methodology from",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "repair requires",
+   "demand_rank": 0,
+   "demand_strength": "STRONG",
+   "route_status": "DEAD",
+   "demand_source_text": "Greedy-annulus mechanism double-counts at degenerate endpoint f=z−M (band sum ~2π>2, optimum 1) and its per-scale invariant Σr≤2·t^{1/n} fails for n≥3 spread roots; conclusion unrefuted, repair requires exact-once covering plus global inequality Σ_k∏_{j≠k}|a_k−a_j|^{-1/n}≤2 (adapted methodology from",
+   "route_id": "R005",
+   "lemma_id": "AA1",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos509:LEM:R005:AA1",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos509-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos509",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos509:LEM:R005:L1",
+   "statement": "imported from erdos513-campaign-001 R005/L1, adapted; disconnected-lemniscate counterexample class (f=z^2−c at splitting parameter) drives minimal cover total radius below 1/2, and the lower bound is structurally insufficient for both branch A (needs universal upper bound 2) and branch B (needs sing",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R005",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 28,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Machine-verified counterexample to central lemma L1; no candidate close exists that survives with L1 deleted, so the not-load-bearing exception cannot be proved; revival requires a strictly weaker repaired lemma or new decomposition per Wang 4.2.",
+    "seq": 29
+   },
+   "history": [
+    {
+     "seq": 25,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T22:47:40Z"
+    },
+    {
+     "seq": 27,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T23:24:53Z"
+    },
+    {
+     "seq": 28,
+     "status": "FALSE",
+     "utc": "2026-09-01T23:32:57Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos509-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos509:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos509",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos509:LEM:R006:L1",
+   "statement": "Universal lower bound Q(f)>=1/2 refuted by admissible witness f=e^z (transcendental entire): Robbins rational-error Stirling bounds (fail-closed, sign-directed, no float) give max_n r^n/n! = e^r/sqrt(2*pi*r)(1+o(1)) hence Q(e^z)=0<1/2 exactly; analytic reduction is only the elementary liminf 1/sqrt(",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R006",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 33,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Lemma L1, the local-to-global radius-sum estimate underpinning R006's entire close, has a machine-verified concrete counterexample; no step of the close survives its deletion, so the route is dead pending a new §4.2 item.",
+    "seq": 34
+   },
+   "history": [
+    {
+     "seq": 31,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:40:48Z"
+    },
+    {
+     "seq": 32,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:41:23Z"
+    },
+    {
+     "seq": 33,
+     "status": "FALSE",
+     "utc": "2026-09-01T23:41:51Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos509-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos509:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos509",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos509:LEM:R007:L1",
+   "statement": "Exact certificate: |z^2-1|=|z-1||z+1| (exact factorization) gives product<=1 => |z-1|<=1 or |z+1|<=1, so E ⊆ D(1,1)∪D(-1,1) analytically with zero numerics; fixed-center total-2 optimality certified by exact rational obstruction z=0 (|f(0)|=1, both distances exactly 1); scope: centers fixed at ±1 on",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R007",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 37,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 36,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:44:43Z"
+    },
+    {
+     "seq": 37,
+     "status": "PROVED",
+     "utc": "2026-09-01T23:45:55Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos509-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos509:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos509",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos509:LEM:R008:L1",
+   "statement": "Stated split-case cover B(±√c,√(c+1)−√c) refuted exactly (c=2, z=√(c−1)=1 in lemniscate, √2−1>√3−√2 via 49>48); headline repaired and certified: optimal total radius √(c+1) for c≤1, (√(c+1)−√(c−1)) for c>1 via exact Chebyshev analysis of K₊=√D, sup √2 attained at c=1 Bernoulli — constant √2 stands, ",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R008",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 40,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified concrete counterexample; no candidate proof exists so the not-load-bearing downgrade exception cannot be shown, and no Wang 4.2 new item (repaired lemma, certificate, invariant) is present to justify revival.",
+    "seq": 41
+   },
+   "history": [
+    {
+     "seq": 39,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:49:22Z"
+    },
+    {
+     "seq": 40,
+     "status": "FALSE",
+     "utc": "2026-09-01T23:54:48Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos509-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos509:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos509",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos509:LEM:R009:L1",
+   "statement": "Exact-rational verifier PASS: A=4 linearized bound refuted by 961>960 (i.e. (√5−√3)²>1/4 exactly); root isolation r(4)∈(0.53,0.54), r(100)∈(0.22,0.23) unique by strictly directed endpoint signs of decreasing cubic; scope: computation certifies the integer inequality and rational brackets, upper cove",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R009",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 45,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 43,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T00:03:06Z"
+    },
+    {
+     "seq": 44,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:04:21Z"
+    },
+    {
+     "seq": 45,
+     "status": "PROVED",
+     "utc": "2026-09-02T01:05:03Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos509-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos509:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos509",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos509:LEM:R010:L1",
+   "statement": "exact-integer verifier (CPython>=3.8 stdlib-only, fail-closed require, no floats/network, deterministic) certifies L(z^2-1) subset D(-a,a) U D(+a,a) with a = 9sqrt2/16, rho^2 = a^2 = 81/128: machine-checked Z[x,y] identities |z^2-1|^2 = (|z|^2-1)^2 + 4y^2 (instance reduction L subset {|z|<=sqrt2}) a",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R010",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 50,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 47,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:09:17Z"
+    },
+    {
+     "seq": 48,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:09:54Z"
+    },
+    {
+     "seq": 49,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:11:09Z"
+    },
+    {
+     "seq": 50,
+     "status": "PROVED",
+     "utc": "2026-09-02T01:36:35Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos509-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos509:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos509",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos509:LEM:R011:L1",
+   "statement": "minimal counterexample n=1, f_1=z, |f_1(2)|=2>1 so 2∉L_{f_1}; conflation was |f|≥1 pointwise vs |f|≤1 on the set; surviving weaker objects re-filed as L1'' (PROVED), R011 dead per K8 absent a new upper-side anchor; note nonvacuity datapoint g=z²−3 with optimal cover total exactly 2.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R011",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 56,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 was load-bearing as R011's only bridge from the Chebyshev family identities to an on-set covering obstruction; deleting it leaves only L1'(i)-(iii), and NODE L1-IMPOSSIBLE proves the antecedent of (iii) unsatisfiable since the real part of a monic complex polynomial is monic real and 2T_n(z/2) al",
+    "seq": 57
+   },
+   "history": [
+    {
+     "seq": 52,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:40:38Z"
+    },
+    {
+     "seq": 53,
+     "status": "PROVED",
+     "utc": "2026-09-02T02:27:20Z"
+    },
+    {
+     "seq": 54,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:28:02Z"
+    },
+    {
+     "seq": 56,
+     "status": "FALSE",
+     "utc": "2026-09-02T02:29:12Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos509-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos509:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos509",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos509:LEM:R011:L1'",
+   "statement": "the only statements the derivation actually controls: (i) exact identities f_n monic with T_n(±1)=(±1)^n, n=1..64; (ii) exact inequality |D(c,ρ)∩ℝ|≤2ρ for every closed disc; (iii) exact conditional: IF [−2,2]⊂L_g for a monic g THEN every closed-disc cover of L_g has Σρ≥2. Whether [−2,2]⊂L_{f_n} holds for ANY monic Chebyshev-scaled family (e.g. the correctly scaled 2^{-?} normalization or the true ",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R011",
+   "lemma_id": "L1'",
+   "registry_status": "UNTESTED",
+   "registry_seq": 55,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 was load-bearing as R011's only bridge from the Chebyshev family identities to an on-set covering obstruction; deleting it leaves only L1'(i)-(iii), and NODE L1-IMPOSSIBLE proves the antecedent of (iii) unsatisfiable since the real part of a monic complex polynomial is monic real and 2T_n(z/2) al",
+    "seq": 57
+   },
+   "history": [
+    {
+     "seq": 55,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:28:02Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos509-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos509:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "the only statements the derivation actually controls: (i) exact identities f_n monic with T_n(±1)=(±1)^n, n=1..64; (ii) exact inequality |D(c,ρ)∩ℝ|≤2ρ for every closed disc; (iii) exact conditional: IF [−2,2]⊂L_g for a monic g THEN every closed-disc cover of L_g has Σρ≥2. Whether [−2,2]⊂L_{f_n} holds for ANY monic Chebyshev-scaled family (e.g. the correctly scaled 2^{-?} normalization or the true "
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos509",
+   "is_leaf": true,
+   "manufacture_target": false
+  }
+ ]
+}

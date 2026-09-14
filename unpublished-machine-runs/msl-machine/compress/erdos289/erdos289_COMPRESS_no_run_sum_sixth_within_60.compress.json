@@ -1,0 +1,213 @@
+{
+ "schema": "msl-compress/1.0.0",
+ "consumes_schema": "obligation-dag/1.0.0",
+ "problem": "erdos289",
+ "generated_utc": "2026-09-02T22:19:05Z",
+ "node": {
+  "id": "erdos289:COMPRESS:no_run_sum_sixth_within_60",
+  "statement": "theorem no_run_sum_sixth_within_60 (a b : ℕ) (ha : 5 ≤ a) (hab : a < b) (hb : b ≤ 60) : (runSum a b : ℚ) ≠ (1 : ℚ) / 6",
+  "kind": "COMBINED_THEOREM",
+  "depends_on": [
+   "erdos289:ORE:377845d942ddb89d",
+   "erdos289:ORE:6a4f2b9be6f30310",
+   "erdos289:ORE:25d89c30bf1b00a0",
+   "erdos289:ORE:a15080a025550157"
+  ],
+  "binding": "PARAPHRASE",
+  "binding_detail": "PARAPHRASE: proposed one level up from proved premises by msl_compress; the composed file re-checks it from zero",
+  "status": "OPEN",
+  "problem": "erdos289",
+  "declaration": "no_run_sum_sixth_within_60",
+  "type_context": "",
+  "lean_statement_line": "theorem no_run_sum_sixth_within_60 (a : ℕ) (b : ℕ) : theorem no_run_sum_sixth_within_60 (a b : ℕ) (ha : 5 ≤ a) (hab : a < b) (hb : b ≤ 60) : (runSum a b : ℚ) ≠ (1 : ℚ) / 6 := by sorry",
+  "lean_binders": [
+   "(a : ℕ)",
+   "(b : ℕ)"
+  ],
+  "lean_preamble": "import Mathlib\nopen Finset\nset_option autoImplicit false\n/-!\nErdős 289, MSL round 2026-09-01.  Kernel targets, each an exact fragment.\n  F1  : 1/2 + 1/3 + 1/4 > 1        (the run containing 2 is forced to be [2,3])\n  F1' : 1 - (1/2 + 1/3) = 1/6       (the tail must sum to exactly 1/6)\n  W4n : pure-ℕ form of \"no run [a,b], 5 ≤ a < b ≤ 60, has reciprocal sum 1/6\":\n        with P = ∏ n and N = ∑ P/n over the run, 6·N ≠ P.   Kernel `decide`, Nat only.\n  W4b : the bridge  runSum a b = N / P  in ℚ, so W4n is the ℚ statement.\n-/\ndef runSum (a b : ℕ) : ℚ := ∑ n ∈ Icc a b, (1 : ℚ) / n\ndef runProd (a b : ℕ) : ℕ := ∏ n ∈ Icc a b, n\ndef runNum (a b : ℕ) : ℕ := ∑ n ∈ Icc a b, runProd a b / n\ntheorem F1_head_forced : (1 : ℚ) / 2 + 1 / 3 + 1 / 4 > 1 := by norm_num\ntheorem F1_tail_value : (1 : ℚ) - (1 / 2 + 1 / 3) = 1 / 6 := by norm_num\ntheorem W4_nat_fragment :\n    ∀ a ∈ Icc 5 60, ∀ b ∈ Icc (a + 1) 60, 6 * runNum a b ≠ runProd a b := by\n  decide +kernel\ntheorem runProd_pos (a b : ℕ) (ha : 1 ≤ a) : 0 < runProd a b := by\n  unfold runProd\n  apply Finset.prod_pos\n  intro n hn\n  have := (Finset.mem_Icc.mp hn).1\n  omega\ntheorem dvd_runProd (a b n : ℕ) (hn : n ∈ Icc a b) : n ∣ runProd a b :=\n  Finset.dvd_prod_of_mem _ hn\ntheorem W4_bridge (a b : ℕ) (ha : 1 ≤ a) :\n    runSum a b = (runNum a b : ℚ) / (runProd a b : ℚ) := by\n  have hP : (runProd a b : ℚ) ≠ 0 := by\n    exact_mod_cast (runProd_pos a b ha).ne'\n  unfold runSum runNum\n  rw [Nat.cast_sum, Finset.sum_div]\n  apply Finset.sum_congr rfl\n  have hd := dvd_runProd a b n hn\n  have hn0 : (n : ℚ) ≠ 0 := by\n    exact_mod_cast (show n ≠ 0 by omega)\n  rw [Nat.cast_div hd hn0]\n  field_simp\n",
+  "derivation_claim": "W4_nat_fragment (a,b in Icc 5 60 via ha,hab,hb) gives 6 * runNum a b ≠ runProd a b; W4_bridge rewrites runSum a b = runNum a b / runProd a b (runProd a b > 0 by runProd_pos); equality with 1/6 would force 6 * runNum a b = runProd a b after clearing denominators, a contradiction. W4_fragment is the same fact stated in ℚ form and corroborates the derivation.",
+  "rise": "RISE",
+  "origin": "PROPOSER",
+  "court": [],
+  "supports": [
+   "erdos289:BRANCH_A"
+  ],
+  "sources": [
+   "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__no_run_sum_sixth_within_60.implication.lean",
+   "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__no_run_sum_sixth_within_60.standalone.lean"
+  ],
+  "type_gate": {
+   "ok": true,
+   "missing": [],
+   "reason": "",
+   "reference": null,
+   "used_type_context": false
+  }
+ },
+ "candidate": {
+  "t_id": "erdos289:COMPRESS:no_run_sum_sixth_within_60",
+  "theorem_name": "no_run_sum_sixth_within_60",
+  "origin": "PROPOSER",
+  "variant": "v2_general",
+  "statement": "theorem no_run_sum_sixth_within_60 (a b : ℕ) (ha : 5 ≤ a) (hab : a < b) (hb : b ≤ 60) : (runSum a b : ℚ) ≠ (1 : ℚ) / 6",
+  "premises": [
+   "erdos289:ORE:377845d942ddb89d",
+   "erdos289:ORE:6a4f2b9be6f30310",
+   "erdos289:ORE:25d89c30bf1b00a0",
+   "erdos289:ORE:a15080a025550157"
+  ],
+  "discharges": "erdos289:BRANCH_A",
+  "derivation_claim": "W4_nat_fragment (a,b in Icc 5 60 via ha,hab,hb) gives 6 * runNum a b ≠ runProd a b; W4_bridge rewrites runSum a b = runNum a b / runProd a b (runProd a b > 0 by runProd_pos); equality with 1/6 would force 6 * runNum a b = runProd a b after clearing denominators, a contradiction. W4_fragment is the s",
+  "reason": "Combined with F1, it shows every decomposition of 1 containing 2 must have a tail run extending past 60, shrinking BRANCH_A to constructing 1/6 decompositions with elements > 60 (a genuinely new, unbounded search region).",
+  "gates": {
+   "order": [
+    "G1_SCHEMA",
+    "G2_TYPE",
+    "G3_CIRCULAR",
+    "G4_KILLED",
+    "G5_CONJUNCTION",
+    "G6_FALSIFY",
+    "G7_RISE"
+   ],
+   "passed": [
+    "G1_SCHEMA",
+    "G2_TYPE",
+    "G3_CIRCULAR",
+    "G4_KILLED",
+    "G5_CONJUNCTION",
+    "G6_FALSIFY",
+    "G7_RISE"
+   ],
+   "failed_at": null,
+   "detail": {
+    "G1_SCHEMA": {
+     "ok": true,
+     "reason": ""
+    },
+    "G2_TYPE": {
+     "standalone_ok": true,
+     "standalone_missing": [],
+     "referenced_missing": [],
+     "fatal": [],
+     "domain_bounds_dropped": [],
+     "ok": true,
+     "reason": ""
+    },
+    "G3_CIRCULAR": {
+     "ok": true,
+     "reason": ""
+    },
+    "G4_KILLED": {
+     "checked_against": 0,
+     "ok": true,
+     "reason": ""
+    },
+    "G5_CONJUNCTION": {
+     "conjunct_count": 1,
+     "t_len": 30,
+     "conjunction_len": 355,
+     "shorter_than_conjunction": true,
+     "generalizes": true,
+     "generalization_reason": "BOUND_EXTENSION: T's numeric bound exceeds a premise's",
+     "measure": "SHORTER_THAN_CONJUNCTION",
+     "ok": true,
+     "reason": ""
+    },
+    "G6_FALSIFY": {
+     "ok": true,
+     "state": "NOT_APPLICABLE",
+     "reason": "NOT_APPLICABLE: not a ∀ over a natural parameter"
+    },
+    "G7_RISE": {
+     "ok": true,
+     "verdict": "RISE",
+     "reasons": [
+      "DISCHARGES:erdos289:BRANCH_A",
+      "ON_ROOT_PATH"
+     ]
+    }
+   },
+   "rise": "RISE"
+  },
+  "rise": "RISE",
+  "kernel": {
+   "verdict": "KERNEL_NOT_RUN",
+   "reason": "no Lean on this machine tonight; the job is filed, nothing is claimed",
+   "axioms": null,
+   "clean": false
+  },
+  "status": "OPEN",
+  "node_validation": {
+   "binding_after_builder": "PARAPHRASE",
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "unbound": false
+  },
+  "jobs": {
+   "jobs_file": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__no_run_sum_sixth_within_60.jobs.json",
+   "implication_lean": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__no_run_sum_sixth_within_60.implication.lean",
+   "standalone_lean": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__no_run_sum_sixth_within_60.standalone.lean",
+   "cable_spec_ok": true
+  }
+ },
+ "included_sources": [
+  {
+   "leaf": "erdos289:ORE:25d89c30bf1b00a0",
+   "declaration": "runProd_pos",
+   "included_via": "LEAN_STATEMENT_LINE",
+   "sha256": "c2079af663cd8e86fb3cb65de095c819878876264406356fedefdfbbe9fb6f0c",
+   "receipt": "oracle/evidence/msl-machine/gpt-mine-day2-2026-09-02/kernel-verified/erdos289/Erdos289Head__5da8b478fba0.verify.json",
+   "source": null
+  },
+  {
+   "leaf": "erdos289:ORE:377845d942ddb89d",
+   "declaration": "W4_bridge",
+   "included_via": "LEAN_STATEMENT_LINE",
+   "sha256": "6bdc0d252adf3ca8456c1e0ce0428bcdcba5792d61e2c215debd3b6c0a43ae85",
+   "receipt": "oracle/evidence/msl-machine/gpt-mine-day2-2026-09-02/kernel-verified/erdos289/Erdos289Head__5da8b478fba0.verify.json",
+   "source": null
+  },
+  {
+   "leaf": "erdos289:ORE:6a4f2b9be6f30310",
+   "declaration": "W4_nat_fragment",
+   "included_via": "LEAN_STATEMENT_LINE",
+   "sha256": "ec7f36b42213c4fd6ddcaf0f8b3219eb0cc81eb4cd017b42f6c15717edeaf084",
+   "receipt": "oracle/evidence/msl-machine/gpt-mine-day2-2026-09-02/kernel-verified/erdos289/Erdos289Head__5da8b478fba0.verify.json",
+   "source": null
+  },
+  {
+   "leaf": "erdos289:ORE:a15080a025550157",
+   "declaration": "W4_fragment",
+   "included_via": "LEAN_STATEMENT_LINE",
+   "sha256": "f53a43a3fba43e3d41bef34ec0b595a1f1782d8aa725c506a3154d743fb751a9",
+   "receipt": "oracle/evidence/msl-machine/gpt-mine-day2-2026-09-02/kernel-verified/erdos289/Erdos289Head__5da8b478fba0.verify.json",
+   "source": null
+  }
+ ],
+ "derivation_claim": "W4_nat_fragment (a,b in Icc 5 60 via ha,hab,hb) gives 6 * runNum a b ≠ runProd a b; W4_bridge rewrites runSum a b = runNum a b / runProd a b (runProd a b > 0 by runProd_pos); equality with 1/6 would force 6 * runNum a b = runProd a b after clearing denominators, a contradiction. W4_fragment is the same fact stated in ℚ form and corroborates the derivation.",
+ "provenance": {
+  "proposer_receipt": "445a8382474dbd0cccb2f421a0dffc7aa65149c3488d8179d6189e50e17d0d71",
+  "selection": {
+   "method": "GREEDY_CONNECTED_TOWARD_TARGET",
+   "seed": "erdos289:LEM:R008:F1",
+   "seed_overlap": 2,
+   "overlap": {
+    "erdos289:LEM:R008:F1": 2,
+    "erdos289:LEM:R008:W4f": 2,
+    "erdos289:ORE:377845d942ddb89d": 1,
+    "erdos289:ORE:a15080a025550157": 1,
+    "erdos289:ORE:79ef5c1ef0bf7a61": 1,
+    "erdos289:ORE:25d89c30bf1b00a0": 1,
+    "erdos289:ORE:6a4f2b9be6f30310": 1,
+    "erdos289:ORE:561a62aee809bbc8": 1
+   },
+   "internal_weight": 1051
+  }
+ },
+ "law": "status is OPEN until a kernel row lands; the node schema was validated by msl_obligation_dag.DagBuilder.add"
+}

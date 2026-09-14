@@ -1,0 +1,13 @@
+{"definitions": "",
+  "parent_typed": {"name": "erdos1210_A_M01", "binders": [],
+    "statement": "((∃ C : ℝ, ∀ n : ℕ, ∀ A : Finset ℕ, (∀ a ∈ A, 1 ≤ a ∧ a < n) → (∀ a ∈ A, ∀ b ∈ A, a ≠ b → a.Coprime b) → ∑ a ∈ A, (1 / ((n : ℝ) - a)) ≤ (∑ p ∈ (range n).filter Prime, (1 / (p : ℝ))) + C) ∨ ¬ (∃ C : ℝ, ∀ n : ℕ, ∀ A : Finset ℕ, (∀ a ∈ A, 1 ≤ a ∧ a < n) → (∀ a ∈ A, ∀ b ∈ A, a ≠ b → a.Coprime b) → ∑ a ∈ A, (1 / ((n : ℝ) - a)) ≤ (∑ p ∈ (range n).filter Prime, (1 / (p : ℝ))) + C))",
+    "reading": "Either the uniform-C inequality holds for all n and all admissible pairwise-coprime A, or its literal negation holds."},
+  "children": [
+    {"name": "erdos1210_A_pos", "binders": [],
+      "statement": "∃ C : ℝ, ∀ n : ℕ, ∀ A : Finset ℕ, (∀ a ∈ A, 1 ≤ a ∧ a < n) → (∀ a ∈ A, ∀ b ∈ A, a ≠ b → a.Coprime b) → ∑ a ∈ A, (1 / ((n : ℝ) - a)) ≤ (∑ p ∈ (range n).filter Prime, (1 / (p : ℝ))) + C",
+      "reading": "Positive case: there is a uniform constant C bounding the reciprocal sum by the prime harmonic sum plus C for every n and every admissible A."},
+    {"name": "erdos1210_A_neg", "binders": [],
+      "statement": "∀ C : ℝ, ∃ n : ℕ, ∃ A : Finset ℕ, (∀ a ∈ A, 1 ≤ a ∧ a < n) ∧ (∀ a ∈ A, ∀ b ∈ A, a ≠ b → a.Coprime b) ∧ ¬ (∑ a ∈ A, (1 / ((n : ℝ) - a)) ≤ (∑ p ∈ (range n).filter Prime, (1 / (p : ℝ))) + C)",
+      "reading": "Negative case: for every C there exist n and an admissible pairwise-coprime A strictly violating the ≤ bound."}
+  ],
+  "composition_claim": "The parent is exactly the disjunction of the two children: erdos1210_A_pos is the uniform-C inequality, erdos1210_A_neg is its literal negation. Since classical logic gives P ∨ ¬P for the proposition P underlying both children, the two children together yield the parent immediately (by Classical.em and or_comm)."}

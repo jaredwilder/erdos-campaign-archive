@@ -1,0 +1,174 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos887",
+  "generated_utc": "2026-09-02T16:36:20Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos887:A:M01",
+    "statement": "Provide K and prove the full divisor-count bound in the canonical open real window.",
+    "statement_sha256": "24baa52cfec6f38c740c049d597e4634db0a745a456fe89f066c0ffa2ce14edb",
+    "kind": "MUST_DETERMINE",
+    "binding": "VERBATIM",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "Is there an absolute constant $K$ such that, for every $C>0$, if $n$ is sufficiently large then $n$ has at most $K$ divisors in $(n^{1/2},n^{1/2}+C n^{1/4})$.",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos887-campaign-001/contract.json",
+    "sha256": "968e5e91d8f1a675059ae51ce5d03877d8e4ddf07159ae97269b61f62822587e"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos887:A:M01",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "0ae786c392bb63af71389dfce86f08ca961878c1037f1379d8a551c25ef14244",
+    "prompt_chars": 4252,
+    "response_sha256": "bb7be3c70539a46cc7063e27b612db447d93c7023852069af737b2cfd8f9bf97",
+    "usage": {
+      "prompt_tokens": 1116,
+      "completion_tokens": 5319,
+      "total_tokens": 6435,
+      "cost": 0.00140577,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 128,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00140577,
+        "upstream_inference_prompt_cost": 7.602e-05,
+        "upstream_inference_completions_cost": 0.00132975
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 4683,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.00140577,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 161.32,
+    "utc": "2026-09-02T16:32:25Z"
+  },
+  "children": [],
+  "composition": {
+    "id": "erdos887:A:M01#COMPOSE",
+    "statement": "(composition not constructed)",
+    "kind": "COMPOSITION",
+    "depends_on": [],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "OPEN",
+    "problem": "erdos887",
+    "decomposed_from": "erdos887:A:M01",
+    "imports": "Mathlib",
+    "definitions": "def windowDivisors (n : ℕ) (C : ℝ) : Finset ℕ :=\n  (Finset.Icc 1 n).filter fun (d : ℕ) =>\n    ((n : ℝ) ^ ((1 : ℝ) / 2) < (d : ℝ)) ∧\n    ((d : ℝ) < (n : ℝ) ^ ((1 : ℝ) / 2) + C * (n : ℝ) ^ ((1 : ℝ) / 4)) ∧\n    (d ∣ n)\n\ndef countWindow (n : ℕ) (C : ℝ) : ℕ := (windowDivisors n C).card",
+    "type_context": "Mathlib\ndef windowDivisors (n : ℕ) (C : ℝ) : Finset ℕ :=\n  (Finset.Icc 1 n).filter fun (d : ℕ) =>\n    ((n : ℝ) ^ ((1 : ℝ) / 2) < (d : ℝ)) ∧\n    ((d : ℝ) < (n : ℝ) ^ ((1 : ℝ) / 2) + C * (n : ℝ) ^ ((1 : ℝ) / 4)) ∧\n    (d ∣ n)\n\ndef countWindow (n : ℕ) (C : ℝ) : ℕ := (windowDivisors n C).card",
+    "parent_typed": {
+      "statement": "∃ (K : ℕ), ∀ (C : ℝ), 0 < C → ∃ (N : ℕ), ∀ (n : ℕ), n ≥ N → countWindow n C ≤ K",
+      "binders": [],
+      "reading": "There is an absolute constant K such that for every C > 0, all sufficiently large n have at most K divisors in the open window (n^(1/2), n^(1/2) + C·n^(1/4)).",
+      "elaboration": {
+        "verdict": "DEFS_DO_NOT_ELABORATE",
+        "kernel_error": "/root/peer/decomp/b20260902_093454_1/erdos887_A_M01_defs.lean:8:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Real.decidableLT', which is 'noncomputable'\n/root/peer/decomp/b20260902_093454_1/erdos887_A_M01_defs.lean:14:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'windowDivisors', which is 'noncomputable'"
+      },
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": null,
+        "prose_contract_root_report": {
+          "ok": false,
+          "missing": [
+            "domain bound 'c 0'"
+          ],
+          "reason": "inherited type ascription or domain bound dropped",
+          "blocking": false,
+          "why_not_blocking": "tokens mined from ENGLISH prose are not Lean tokens; `Fin k` carries `1 <= i <= k` structurally"
+        }
+      }
+    },
+    "composition_claim": {
+      "text": "Given C > 0, rational_dominance supplies a rational q with C < q, so q > 0; rational_core gives absolute K and N with countWindow n (q : ℝ) ≤ K for all n ≥ N; window_mono then bounds countWindow n C ≤ countWindow n (q : ℝ) ≤ K for all n ≥ N, which is exactly the parent with this K and N.",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "COMPOSITION_NOT_RUN",
+      "counts_toward_parent": 0,
+      "reason": "no surviving child"
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "composition_receipt": "oracle/evidence/msl-machine/dag/decomp/erdos887/receipts/erdos887_A_M01_COMPOSE.composition.json"
+  },
+  "parent_new_depends_on": [
+    "erdos887:A:M01#COMPOSE"
+  ],
+  "rejected": [
+    {
+      "proposed_index": 1,
+      "statement": "0 < C₁ → C₁ ≤ C₂ → countWindow n C₁ ≤ countWindow n C₂",
+      "binders": [
+        "(n : ℕ)",
+        "(C₁ C₂ : ℝ)"
+      ],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: /root/peer/decomp/b20260902_093454_1/erdos887_A_M01_defs.lean:8:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Real.decidableLT', which is 'noncomputable'\n/root/peer/decomp/b20260902_093454_1/erdos887_A_M01_defs.lean:14:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'windowDivisors', which is 'noncomputable'",
+      "kernel_error": "/root/peer/decomp/b20260902_093454_1/erdos887_A_M01_defs.lean:8:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Real.decidableLT', which is 'noncomputable'\n/root/peer/decomp/b20260902_093454_1/erdos887_A_M01_defs.lean:14:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'windowDivisors', which is 'noncomputable'"
+    },
+    {
+      "proposed_index": 2,
+      "statement": "0 < C → ∃ (q : ℚ), (C : ℝ) < (q : ℝ)",
+      "binders": [
+        "(C : ℝ)"
+      ],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: /root/peer/decomp/b20260902_093454_1/erdos887_A_M01_defs.lean:8:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Real.decidableLT', which is 'noncomputable'\n/root/peer/decomp/b20260902_093454_1/erdos887_A_M01_defs.lean:14:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'windowDivisors', which is 'noncomputable'",
+      "kernel_error": "/root/peer/decomp/b20260902_093454_1/erdos887_A_M01_defs.lean:8:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Real.decidableLT', which is 'noncomputable'\n/root/peer/decomp/b20260902_093454_1/erdos887_A_M01_defs.lean:14:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'windowDivisors', which is 'noncomputable'"
+    },
+    {
+      "proposed_index": 3,
+      "statement": "∃ (K : ℕ), ∃ (N : ℕ), ∀ (q : ℚ), 0 < q → ∀ (n : ℕ), n ≥ N → countWindow n (q : ℝ) ≤ K",
+      "binders": [],
+      "gate": "GATE0_DEFINITIONS",
+      "reason": "the shared definitions block does not compile, so this statement was never judged on its own: /root/peer/decomp/b20260902_093454_1/erdos887_A_M01_defs.lean:8:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Real.decidableLT', which is 'noncomputable'\n/root/peer/decomp/b20260902_093454_1/erdos887_A_M01_defs.lean:14:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'windowDivisors', which is 'noncomputable'",
+      "kernel_error": "/root/peer/decomp/b20260902_093454_1/erdos887_A_M01_defs.lean:8:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Real.decidableLT', which is 'noncomputable'\n/root/peer/decomp/b20260902_093454_1/erdos887_A_M01_defs.lean:14:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'windowDivisors', which is 'noncomputable'"
+    }
+  ],
+  "counts": {
+    "proposed": 3,
+    "elaborated": 0,
+    "bound": 0,
+    "non_circular": 0,
+    "non_trivial": 0,
+    "surviving": 0,
+    "composition_kernel_checked": 0,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 0,
+    "counts_toward_parent_note": "composition OPEN: these children contribute ZERO toward the parent until it closes; they remain formal leaves for the rung loop"
+  },
+  "definitions": {
+    "block": "def windowDivisors (n : ℕ) (C : ℝ) : Finset ℕ :=\n  (Finset.Icc 1 n).filter fun (d : ℕ) =>\n    ((n : ℝ) ^ ((1 : ℝ) / 2) < (d : ℝ)) ∧\n    ((d : ℝ) < (n : ℝ) ^ ((1 : ℝ) / 2) + C * (n : ℝ) ^ ((1 : ℝ) / 4)) ∧\n    (d ∣ n)\n\ndef countWindow (n : ℕ) (C : ℝ) : ℕ := (windowDivisors n C).card",
+    "gate0": {
+      "verdict": "DEFS_DO_NOT_ELABORATE",
+      "kernel_error": "/root/peer/decomp/b20260902_093454_1/erdos887_A_M01_defs.lean:8:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'Real.decidableLT', which is 'noncomputable'\n/root/peer/decomp/b20260902_093454_1/erdos887_A_M01_defs.lean:14:4: error(lean.dependsOnNoncomputable): failed to compile definition, consider marking it as 'noncomputable' because it depends on 'windowDivisors', which is 'noncomputable'"
+    },
+    "campaign_vocabulary_prepended": [],
+    "normalization": {
+      "body": "def windowDivisors (n : ℕ) (C : ℝ) : Finset ℕ :=\n  (Finset.Icc 1 n).filter fun (d : ℕ) =>\n    ((n : ℝ) ^ ((1 : ℝ) / 2) < (d : ℝ)) ∧\n    ((d : ℝ) < (n : ℝ) ^ ((1 : ℝ) / 2) + C * (n : ℝ) ^ ((1 : ℝ) / 4)) ∧\n    (d ∣ n)\n\ndef countWindow (n : ℕ) (C : ℝ) : ℕ := (windowDivisors n C).card",
+      "opens": [],
+      "dropped_imports": []
+    }
+  }
+}

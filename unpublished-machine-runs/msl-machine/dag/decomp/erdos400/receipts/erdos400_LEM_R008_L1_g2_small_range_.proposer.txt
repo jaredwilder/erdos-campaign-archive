@@ -1,0 +1,8 @@
+{"definitions": "def g2 (n : Nat) : Nat :=\n  ((Finset.product (Finset.Icc (0 : Nat) n) (Finset.Icc (0 : Nat) n)).filter\n      (fun p : Nat × Nat => p.1.factorial * p.2.factorial ∣ n.factorial)).image\n      (fun p : Nat × Nat => p.1 + p.2 - n) |>.sup (fun x : Nat => x)",
+  "parent_typed": {"name": "erdos400_g2_lower_bound", "binders": ["(n : Nat)"], "statement": "2 ≤ n → 1 ≤ g2 n", "reading": "For every n ≥ 2, g_2(n) is at least 1."},
+  "children": [
+    {"name": "erdos400_witness_pair_divides", "binders": ["(n : Nat)"], "statement": "n.factorial * 1.factorial ∣ n.factorial", "reading": "The witness pair (n, 1) is admissible: n!·1! divides n!."},
+    {"name": "erdos400_witness_pair_value", "binders": ["(n : Nat)"], "statement": "2 ≤ n → (n + 1) - n = (1 : Nat)", "reading": "The witness pair (n, 1) has excess value (n+1) − n = 1 when n ≥ 2."},
+    {"name": "erdos400_g2_sup_mem", "binders": ["(n a b : Nat)"], "statement": "a ≤ n → b ≤ n → a.factorial * b.factorial ∣ n.factorial → a + b - n ≤ g2 n", "reading": "Any admissible pair (a, b) with a, b ≤ n contributes its excess a+b−n to g2(n), so g2(n) dominates it."}
+  ],
+  "composition_claim": "Children 1 and 3 with a = n, b = 1 give g2 n ≥ (n+1) − n for every n, and child 2 evaluates that excess to 1 when 2 ≤ n; together they yield the parent statement ∀ n ≥ 2, 1 ≤ g2 n."}

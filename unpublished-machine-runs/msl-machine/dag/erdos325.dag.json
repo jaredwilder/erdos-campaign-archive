@@ -1,0 +1,882 @@
+{
+ "schema": "obligation-dag/1.0.0",
+ "problem": "erdos325",
+ "problem_number": "325",
+ "campaign": "erdos325-campaign-001",
+ "root": "erdos325:ROOT",
+ "contract_divergence": {
+  "authoritative": {
+   "role": "campaign",
+   "path": "oracle/evidence/msl-machine/campaigns/erdos325-campaign-001/contract.json",
+   "sha256": "8f7ec126116b925ea809525acfa3823e02a1bf0578389dc860a9a63deb99da97",
+   "declared_contract_sha256": "2a90f2fdfc007a9a1bd10ec4463e09a3bcbbe93d782f15a409e6753745db1334"
+  },
+  "others": [
+   {
+    "role": "ingest",
+    "path": "oracle/evidence/msl-machine/contracts/erdos325/contract.json",
+    "sha256": "e045bdbd35bb93354f1a065aa7d211a9dd4b1cfe78cf676671dab51c5695e326",
+    "declared_contract_sha256": "8761de1467383296c8cfd7a9af8ca316b31f39a3d0684d2c18885c7ceb1435c9",
+    "canonical_statement_matches_authoritative": true
+   },
+   {
+    "role": "launch_queue",
+    "path": "oracle/evidence/msl-machine/contracts/LAUNCH-QUEUE/erdos325.json",
+    "sha256": "351e02101eb0cc887592347507f67fe6ae3d5f868cf82dcc519d6968988aabc0",
+    "declared_contract_sha256": null,
+    "canonical_statement_matches_authoritative": true
+   }
+  ],
+  "diverges": false
+ },
+ "courts": [
+  "court",
+  "closer",
+  "formalizer",
+  "kernel"
+ ],
+ "summary": {
+  "nodes": 15,
+  "proved_kernel": 0,
+  "proved_speaker": 1,
+  "computed_bounded": 0,
+  "open": 11,
+  "refuted": 3,
+  "orphans": 2,
+  "proof_obligations": 0,
+  "open_leaves_on_dead_routes": 6,
+  "root_kind": "NOT_DECIDABLE",
+  "root_disqualifiers": [
+   "ASYMPTOTIC"
+  ],
+  "formal_root": {
+   "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/325.lean",
+   "category": "category research open, AMS 11",
+   "declaration": "erdos_325",
+   "statement": "answer(sorry) ↔ ∀ k : ℕ, 3 ≤ k → (fun x : ℕ => (x : ℝ) ^ (3 / k : ℝ)) =O[atTop] (fun x : ℕ => (cardIsSumThreePowerBelow k x : ℝ))"
+  },
+  "leaf_frontier_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "leaf_frontier_reason": "1 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaf_frontier_deciding_leaf": {
+   "id": "erdos325:LEM:R004:L1",
+   "kind": "LEMMA",
+   "status": "OPEN",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "exact finite model computed (f_{3,3}(30)=18, f_{4,4}(100)=19, tables above); EVIDENCE not CERTIFICATE; both target clauses remain open; no candidate central lemma displayed this round"
+  },
+  "ladder_shape_reason": "the formal root is not decidable: ASYMPTOTIC (oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/325.lean). No leaf set can close it, however clean the leaves are. Leaf frontier, kept for the grind queue: HAS_OPEN_ANALYTIC_LEAF.",
+  "leaves": 12,
+  "open_leaves": 9,
+  "open_technical_leaves": 1,
+  "open_prose_obligations": 2,
+  "open_analytic_leaves": 1,
+  "ladder_shape": "ROOT_NOT_DECIDABLE",
+  "deciding_leaf": {
+   "id": "erdos325:ROOT",
+   "kind": "CANONICAL_ROOT",
+   "status": "OPEN",
+   "binding": "VERBATIM",
+   "leaf_tactic_hint": null,
+   "statement": "answer(sorry) ↔ ∀ k : ℕ, 3 ≤ k → (fun x : ℕ => (x : ℝ) ^ (3 / k : ℝ)) =O[atTop] (fun x : ℕ => (cardIsSumThreePowerBelow k x : ℝ))"
+  },
+  "orphan_detail": [
+   {
+    "id": "erdos325:A:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos325:B:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   }
+  ]
+ },
+ "validation": {
+  "acyclic": true,
+  "edges": 14,
+  "root_binds_verbatim": true,
+  "kernel_receipts_checked": 0
+ },
+ "nodes": [
+  {
+   "id": "erdos325:A:M01",
+   "statement": "If the strong bound is proved, record and prove its implication to the weaker all-ε clause. If the strong bound is false but the weaker clause is true, state that mixed verdict explicitly.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos325-campaign-001/contract.json",
+   "contract_sha256": "8f7ec126116b925ea809525acfa3823e02a1bf0578389dc860a9a63deb99da97",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos325-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos325",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-325-ffb2676c28-A-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos325:BRANCH_A",
+   "statement": "COMPLETE TWO-STRENGTH CLOSE: determine the truth of both the exponent-3/k bound and the all-ε exponent-(3/k−ε) bound for every k≥3.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos325:A:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos325-campaign-001/contract.json",
+   "contract_sha256": "8f7ec126116b925ea809525acfa3823e02a1bf0578389dc860a9a63deb99da97",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos325-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos325",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-325-ffb2676c28-A-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos325:B:M01",
+   "statement": "A counterexample for one k or one ε does not settle a universally quantified clause beyond the exact quantifier reversal it witnesses.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos325-campaign-001/contract.json",
+   "contract_sha256": "8f7ec126116b925ea809525acfa3823e02a1bf0578389dc860a9a63deb99da97",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos325-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos325",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-325-ffb2676c28-B-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos325:BRANCH_B",
+   "statement": "COMPLETE NEGATIVE/MIXED CLOSE: every negative component is the exact quantifier negation of its displayed lower bound; all k and ε ranges remain in scope.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos325:B:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos325-campaign-001/contract.json",
+   "contract_sha256": "8f7ec126116b925ea809525acfa3823e02a1bf0578389dc860a9a63deb99da97",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos325-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos325",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-325-ffb2676c28-B-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos325:ROOT",
+   "statement": "Let $k\\geq 3$ and $f_{k,3}(x)$ denote the number of integers $\\leq x$ which are the sum of three nonnegative $k$th powers. Is it true that\\[f_{k,3}(x) \\gg x^{3/k}\\]or even $\\gg_\\epsilon x^{3/k-\\epsilon}$?",
+   "kind": "CANONICAL_ROOT",
+   "depends_on": [
+    "erdos325:BRANCH_A",
+    "erdos325:BRANCH_B"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "root_by_construction",
+   "closure_mode": "DISJUNCTIVE",
+   "satisfied_by_any": [
+    "erdos325:BRANCH_A",
+    "erdos325:BRANCH_B"
+   ],
+   "root_kind": "NOT_DECIDABLE",
+   "root_disqualifiers": [
+    "ASYMPTOTIC"
+   ],
+   "formal_root": {
+    "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/325.lean",
+    "category": "category research open, AMS 11",
+    "declaration": "erdos_325",
+    "statement": "answer(sorry) ↔ ∀ k : ℕ, 3 ≤ k → (fun x : ℕ => (x : ℝ) ^ (3 / k : ℝ)) =O[atTop] (fun x : ℕ => (cardIsSumThreePowerBelow k x : ℝ))"
+   },
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos325-campaign-001/contract.json",
+   "contract_sha256": "8f7ec126116b925ea809525acfa3823e02a1bf0578389dc860a9a63deb99da97",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos325-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos325",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos325:LEM:R001:ALL",
+   "statement": "No analytic reduction and no specified residual/tolerance/scope; both exact and interval verifier builds fail closed, sign unresolved.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "ALL",
+   "registry_status": "UNTESTED",
+   "registry_seq": 4,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified concrete counterexample and no surviving argument shows the route's close goes through without it, so L1 is load-bearing and R001 is dead.",
+    "seq": 11
+   },
+   "history": [
+    {
+     "seq": 4,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:08:22Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos325-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos325:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "No analytic reduction and no specified residual/tolerance/scope; both exact and interval verifier builds fail closed, sign unresolved."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos325",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos325:LEM:R001:L1",
+   "statement": "4 ≡ 4 mod 9 is not a sum of three cubes (cubes are 0,±1 mod 9); only the pointwise ∀n claim dies — the canonical counting bounds are untouched and remain open.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 10,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified concrete counterexample and no surviving argument shows the route's close goes through without it, so L1 is load-bearing and R001 is dead.",
+    "seq": 11
+   },
+   "history": [
+    {
+     "seq": 3,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:04:07Z"
+    },
+    {
+     "seq": 5,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:15:57Z"
+    },
+    {
+     "seq": 6,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:17:34Z"
+    },
+    {
+     "seq": 7,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:19:06Z"
+    },
+    {
+     "seq": 8,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:36:13Z"
+    },
+    {
+     "seq": 9,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:39:12Z"
+    },
+    {
+     "seq": 10,
+     "status": "FALSE",
+     "utc": "2026-09-01T19:42:51Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos325-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos325:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos325",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos325:LEM:R002:L1",
+   "statement": "REFUTED by external audit (GPT gold-mine audit + R4, 2026-09-01), each item re-verified by the operator's session against the frozen contract or by exact computation on 2026-09-02 | FALSE as a verdict: sums of three nonnegative cubes miss residues 4,5 mod 9, so f_{3,3}(x) <= (7/9)x + O(1); but (7/9)x is still >> x^{3/3} = x, so the mod-9 gap bounds the implied constant and does NOT refute the strong clause f_{k,3}(x) >> x^{3/k} at k=3. 'strong FALSE' is wrong.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R002",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 34,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Lemma L1 (mod-9 upper bound refutes strong bound at k=3) is machine-refuted — an upper bound of density 7/9 is compatible with f_{3,3}(x)≫x — and it was the sole load-bearing support for R002's negative close at k=3; no surviving close exists with L1 deleted.",
+    "seq": 18
+   },
+   "history": [
+    {
+     "seq": 13,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T20:00:04Z"
+    },
+    {
+     "seq": 15,
+     "status": "PROVED",
+     "utc": "2026-09-01T20:08:52Z"
+    },
+    {
+     "seq": 16,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:09:14Z"
+    },
+    {
+     "seq": 17,
+     "status": "FALSE",
+     "utc": "2026-09-01T20:09:34Z"
+    },
+    {
+     "seq": 34,
+     "status": "FALSE",
+     "utc": "2026-09-02T08:06:34Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos325-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos325:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos325",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos325:LEM:R002:cert",
+   "statement": "no concrete residual claim or verifier artifact supplied; fail-closed, no certificate issued.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R002",
+   "lemma_id": "cert",
+   "registry_status": "UNTESTED",
+   "registry_seq": 14,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Lemma L1 (mod-9 upper bound refutes strong bound at k=3) is machine-refuted — an upper bound of density 7/9 is compatible with f_{3,3}(x)≫x — and it was the sole load-bearing support for R002's negative close at k=3; no surviving close exists with L1 deleted.",
+    "seq": 18
+   },
+   "history": [
+    {
+     "seq": 14,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:03:21Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos325-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos325:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "no concrete residual claim or verifier artifact supplied; fail-closed, no certificate issued."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos325",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos325:LEM:R003:L1",
+   "statement": "twelve attacks ran against zero-content candidate \"none\"; settled nothing; the audited prior lemma R002/L1 (\"mod-9 upper bound refutes strong bound at k=3\") is confirmed FALSE by density-7/9 vs Ω(x) compatibility, so R003 must display a concrete noncircular central lemma before any further falsifier",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R003",
+   "lemma_id": "L1",
+   "registry_status": "UNTESTED",
+   "registry_seq": 26,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "refuted lemma L5 (candidate C1) was R003's sole concrete central lemma; deleting it reverts the route to CANDIDATE=\"none\" whose close fails the CLOSER_CHALLENGE record verbatim, so the downgrade exception does not apply",
+    "seq": 31
+   },
+   "history": [
+    {
+     "seq": 20,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T20:10:57Z"
+    },
+    {
+     "seq": 21,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:13:52Z"
+    },
+    {
+     "seq": 22,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:14:31Z"
+    },
+    {
+     "seq": 23,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:12:15Z"
+    },
+    {
+     "seq": 24,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:12:59Z"
+    },
+    {
+     "seq": 25,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:13:21Z"
+    },
+    {
+     "seq": 26,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:14:27Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos325-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos325:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "twelve attacks ran against zero-content candidate \"none\"; settled nothing; the audited prior lemma R002/L1 (\"mod-9 upper bound refutes strong bound at k=3\") is confirmed FALSE by density-7/9 vs Ω(x) compatibility, so R003 must display a concrete noncircular central lemma before any further falsifier"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos325",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos325:LEM:R003:L2",
+   "statement": "twelve attacks against empty candidate all VACUOUS; falsifier cannot run until R003 displays a concrete central lemma; prior kill record (R001/R002 dead via L1 counterexample) unchanged; prior-round density-7/9 compatibility at k=3 re-verified concretely",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R003",
+   "lemma_id": "L2",
+   "registry_status": "PROVED",
+   "registry_seq": 27,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "refuted lemma L5 (candidate C1) was R003's sole concrete central lemma; deleting it reverts the route to CANDIDATE=\"none\" whose close fails the CLOSER_CHALLENGE record verbatim, so the downgrade exception does not apply",
+    "seq": 31
+   },
+   "history": [
+    {
+     "seq": 27,
+     "status": "PROVED",
+     "utc": "2026-09-02T02:15:05Z"
+    }
+   ],
+   "court": [
+    "court"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos325-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos325:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos325",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos325:LEM:R003:L3",
+   "statement": "falsifier ran all twelve attacks against CANDIDATE=\"none\": every attack vacuous, no PASS and no counterexample extractable; R003 is blocked until it displays a concrete central lemma about f_{k,3}(x) as CANDIDATE; prior kills R001/R002 unchanged; both target clauses open",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "L3",
+   "registry_status": "UNTESTED",
+   "registry_seq": 28,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "refuted lemma L5 (candidate C1) was R003's sole concrete central lemma; deleting it reverts the route to CANDIDATE=\"none\" whose close fails the CLOSER_CHALLENGE record verbatim, so the downgrade exception does not apply",
+    "seq": 31
+   },
+   "history": [
+    {
+     "seq": 28,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:16:18Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos325-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos325:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "falsifier ran all twelve attacks against CANDIDATE=\"none\": every attack vacuous, no PASS and no counterexample extractable; R003 is blocked until it displays a concrete central lemma about f_{k,3}(x) as CANDIDATE; prior kills R001/R002 unchanged; both target clauses open"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos325",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos325:LEM:R003:L4",
+   "statement": "twelve attacks vs CANDIDATE=\"none\" all vacuous; closer challenge stands: R003 must display a concrete central lemma about f_{k,3}(x) (lower bound, obstruction, construction, finite core, or tail) before the falsifier can return PASS or a counterexample; target clauses open",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "L4",
+   "registry_status": "UNTESTED",
+   "registry_seq": 29,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "refuted lemma L5 (candidate C1) was R003's sole concrete central lemma; deleting it reverts the route to CANDIDATE=\"none\" whose close fails the CLOSER_CHALLENGE record verbatim, so the downgrade exception does not apply",
+    "seq": 31
+   },
+   "history": [
+    {
+     "seq": 29,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:16:47Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos325-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos325:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "twelve attacks vs CANDIDATE=\"none\" all vacuous; closer challenge stands: R003 must display a concrete central lemma about f_{k,3}(x) (lower bound, obstruction, construction, finite core, or tail) before the falsifier can return PASS or a counterexample; target clauses open"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos325",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos325:LEM:R003:L5",
+   "statement": "extracted concrete candidate C1 (large admissible n are sums of three cubes ⟹ strong clause at k=3) killed by equivalent-strength reduction (K9 class); \"none\" attacks all vacuous; R003 blocked until it displays a strictly weaker counting lemma; both target clauses remain open",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "L5",
+   "registry_status": "FALSE",
+   "registry_seq": 30,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "refuted lemma L5 (candidate C1) was R003's sole concrete central lemma; deleting it reverts the route to CANDIDATE=\"none\" whose close fails the CLOSER_CHALLENGE record verbatim, so the downgrade exception does not apply",
+    "seq": 31
+   },
+   "history": [
+    {
+     "seq": 30,
+     "status": "FALSE",
+     "utc": "2026-09-02T02:18:32Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos325-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos325:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos325",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos325:LEM:R004:L1",
+   "statement": "exact finite model computed (f_{3,3}(30)=18, f_{4,4}(100)=19, tables above); EVIDENCE not CERTIFICATE; both target clauses remain open; no candidate central lemma displayed this round",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "registry_status": "UNTESTED",
+   "registry_seq": 33,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 33,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:25:04Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos325-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos325:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "exact finite model computed (f_{3,3}(30)=18, f_{4,4}(100)=19, tables above); EVIDENCE not CERTIFICATE; both target clauses remain open; no candidate central lemma displayed this round"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos325",
+   "is_leaf": true,
+   "manufacture_target": false
+  }
+ ]
+}

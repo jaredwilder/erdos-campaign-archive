@@ -1,0 +1,10 @@
+```json
+{"theorem_name": "L1_no_sixth_from_two",
+ "binders": ["∀ a ∈ Finset.Icc 2 60", "∀ b ∈ Finset.Icc (a + 1) 60"],
+ "definitions": "",
+ "statement": "theorem L1_no_sixth_from_two :\n    ∀ a ∈ Finset.Icc 2 60, ∀ b ∈ Finset.Icc (a + 1) 60,\n      runSum a b ≠ (1 : ℚ) / 6",
+ "premises": ["erdos289:ORE:a15080a025550157", "erdos289:ORE:377845d942ddb89d"],
+ "derivation_claim": "W4_fragment handles a ∈ Icc 5 60 directly; for a = 2, 3, 4 the lower bound runSum a b ≥ 1/a + 1/(a+1) ≥ 1/4 + 1/5 > 1/6 (monotonicity of runSum in b) rules out 1/6, so the ℚ statement follows; W4_bridge supplies the ℚ reading of the ℕ-level fragment.",
+ "discharges": "erdos289:FLEAF:987cb071355b04164228:8 (check_l1_fragment = true)",
+ "reason": "It extends the no-run-sums-to-1/6 range from a ≥ 5 down to a ≥ 2, closing the L1 check outright instead of leaving the a ∈ {2,3,4} gap to a separate obligation."}
+```

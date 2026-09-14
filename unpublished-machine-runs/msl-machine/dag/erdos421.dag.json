@@ -1,0 +1,798 @@
+{
+ "schema": "obligation-dag/1.0.0",
+ "problem": "erdos421",
+ "problem_number": "421",
+ "campaign": "erdos421-campaign-001",
+ "root": "erdos421:ROOT",
+ "contract_divergence": {
+  "authoritative": {
+   "role": "campaign",
+   "path": "oracle/evidence/msl-machine/campaigns/erdos421-campaign-001/contract.json",
+   "sha256": "074e919d39a6df37b59f7a2bd4ffed97bd05af71967435c4131e3976465f6641",
+   "declared_contract_sha256": "b8e3e332a6a187102a7403a6e8ecdc0d0e1e35661b95fb7e69a3c59854f8e6dd"
+  },
+  "others": [
+   {
+    "role": "ingest",
+    "path": "oracle/evidence/msl-machine/contracts/erdos421/contract.json",
+    "sha256": "25e4b6e3defd0010b31caa38a54ed158ec05e4f7e8fce32d8d4b9163cf212557",
+    "declared_contract_sha256": "d8b009629568f2f91033b2a1da586bf21dcebc7786133860bc69eafcb03959e1",
+    "canonical_statement_matches_authoritative": true
+   },
+   {
+    "role": "launch_queue",
+    "path": "oracle/evidence/msl-machine/contracts/LAUNCH-QUEUE/erdos421.json",
+    "sha256": "70a86562adbd97ee41f42dc6d17a5a3f931b4685cd41de53c42270c4116d7766",
+    "declared_contract_sha256": null,
+    "canonical_statement_matches_authoritative": true
+   }
+  ],
+  "diverges": false
+ },
+ "courts": [
+  "court",
+  "closer",
+  "formalizer",
+  "kernel"
+ ],
+ "summary": {
+  "nodes": 15,
+  "proved_kernel": 0,
+  "proved_speaker": 1,
+  "computed_bounded": 1,
+  "open": 9,
+  "refuted": 4,
+  "orphans": 2,
+  "proof_obligations": 0,
+  "open_leaves_on_dead_routes": 4,
+  "root_kind": "EXISTENTIAL_FINITE",
+  "root_disqualifiers": [],
+  "formal_root": {
+   "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/421.lean",
+   "category": "category research open, AMS 11",
+   "declaration": "erdos_421",
+   "statement": "answer(sorry) ↔ ∃ (d : ℕ → ℕ), StrictMono d ∧ 1 ≤ d 0 ∧ HasDensity (Set.range d) 1 ∧ {(u, v) : ℕ × ℕ | u ≤ v}.InjOn fun (u, v) => ∏ i ∈ Finset.Icc u v, d i"
+  },
+  "leaf_frontier_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "leaf_frontier_reason": "2 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaf_frontier_deciding_leaf": {
+   "id": "erdos421:DEMAND:R001:L1:1",
+   "kind": "CAPABILITY_DEMAND",
+   "status": "OPEN",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "require d₁ ≥ 2."
+  },
+  "ladder_shape_reason": "2 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaves": 11,
+  "open_leaves": 7,
+  "open_technical_leaves": 2,
+  "open_prose_obligations": 2,
+  "open_analytic_leaves": 2,
+  "ladder_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "deciding_leaf": {
+   "id": "erdos421:DEMAND:R001:L1:1",
+   "kind": "CAPABILITY_DEMAND",
+   "status": "OPEN",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "require d₁ ≥ 2."
+  },
+  "orphan_detail": [
+   {
+    "id": "erdos421:A:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos421:B:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   }
+  ]
+ },
+ "validation": {
+  "acyclic": true,
+  "edges": 15,
+  "root_binds_verbatim": true,
+  "kernel_receipts_checked": 0
+ },
+ "nodes": [
+  {
+   "id": "erdos421:A:M01",
+   "statement": "Prove density 1 of the range and InjOn of the consecutive-product map on all u≤v.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos421-campaign-001/contract.json",
+   "contract_sha256": "074e919d39a6df37b59f7a2bd4ffed97bd05af71967435c4131e3976465f6641",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos421-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos421",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-421-df75a7c204-A-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos421:BRANCH_A",
+   "statement": "AFFIRMATIVE CLOSE: construct a strictly increasing positive sequence of natural density 1 whose every nonempty consecutive block product is distinct.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos421:A:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos421-campaign-001/contract.json",
+   "contract_sha256": "074e919d39a6df37b59f7a2bd4ffed97bd05af71967435c4131e3976465f6641",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos421-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos421",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-421-df75a7c204-A-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos421:B:M01",
+   "statement": "Quantify over every in-domain sequence and prove existence of two distinct index intervals with equal product.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos421-campaign-001/contract.json",
+   "contract_sha256": "074e919d39a6df37b59f7a2bd4ffed97bd05af71967435c4131e3976465f6641",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos421-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos421",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-421-df75a7c204-B-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos421:BRANCH_B",
+   "statement": "NEGATIVE CLOSE: prove no strictly increasing density-1 sequence can have injective consecutive block products.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos421:B:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos421-campaign-001/contract.json",
+   "contract_sha256": "074e919d39a6df37b59f7a2bd4ffed97bd05af71967435c4131e3976465f6641",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos421-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos421",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-421-df75a7c204-B-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos421:ROOT",
+   "statement": "Is there a sequence $1\\leq d_1<d_2<\\cdots$ with density $1$ such that all products $\\prod_{u\\leq i\\leq v}d_i$ are distinct?",
+   "kind": "CANONICAL_ROOT",
+   "depends_on": [
+    "erdos421:BRANCH_A",
+    "erdos421:BRANCH_B"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "root_by_construction",
+   "closure_mode": "DISJUNCTIVE",
+   "satisfied_by_any": [
+    "erdos421:BRANCH_A",
+    "erdos421:BRANCH_B"
+   ],
+   "root_kind": "EXISTENTIAL_FINITE",
+   "root_disqualifiers": [],
+   "formal_root": {
+    "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/421.lean",
+    "category": "category research open, AMS 11",
+    "declaration": "erdos_421",
+    "statement": "answer(sorry) ↔ ∃ (d : ℕ → ℕ), StrictMono d ∧ 1 ≤ d 0 ∧ HasDensity (Set.range d) 1 ∧ {(u, v) : ℕ × ℕ | u ≤ v}.InjOn fun (u, v) => ∏ i ∈ Finset.Icc u v, d i"
+   },
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos421-campaign-001/contract.json",
+   "contract_sha256": "074e919d39a6df37b59f7a2bd4ffed97bd05af71967435c4131e3976465f6641",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos421-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos421",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos421:LEM:R001:ALL",
+   "statement": "no checkable statement or witness supplied; fail-closed abort, no certificate issued",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "ALL",
+   "registry_status": "UNTESTED",
+   "registry_seq": 4,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Lemma L1, the load-bearing injectivity/survival step of R001's close, has a banked machine-verified counterexample; no surviving argument exists with L1 deleted, so the route is dead.",
+    "seq": 6
+   },
+   "history": [
+    {
+     "seq": 4,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:01:20Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos421-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos421:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "no checkable statement or witness supplied; fail-closed abort, no certificate issued"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos421",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos421:LEM:R001:L1",
+   "statement": "d₁=1 gives immediate collision: block (1,2) product 1·d₂ equals block (2,2) product d₂; repair: require d₁ ≥ 2.",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos421:DEMAND:R001:L1:1"
+   ],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 5,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Lemma L1, the load-bearing injectivity/survival step of R001's close, has a banked machine-verified counterexample; no surviving argument exists with L1 deleted, so the route is dead.",
+    "seq": 6
+   },
+   "history": [
+    {
+     "seq": 3,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T18:55:33Z"
+    },
+    {
+     "seq": 5,
+     "status": "FALSE",
+     "utc": "2026-09-01T19:02:57Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos421-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos421:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos421",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos421:DEMAND:R001:L1:1",
+   "statement": "require d₁ ≥ 2.",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "repair:",
+   "demand_rank": 2,
+   "demand_strength": "STRONG",
+   "route_status": "DEAD",
+   "demand_source_text": "d₁=1 gives immediate collision: block (1,2) product 1·d₂ equals block (2,2) product d₂; repair: require d₁ ≥ 2.",
+   "route_id": "R001",
+   "lemma_id": "L1",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos421:LEM:R001:L1",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos421-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos421",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos421:LEM:R002:L1",
+   "statement": "Identity sequences collide at smallest parameters: 1·2·3·4=2·3·4=24 and 2·3·4·5·6=8·9·10=720; repair must control all consecutive runs of length ≥5.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R002",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 10,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 has a machine-verified concrete counterexample and no argument shows R002's close survives without it, so the route is dead.",
+    "seq": 11
+   },
+   "history": [
+    {
+     "seq": 8,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:06:07Z"
+    },
+    {
+     "seq": 10,
+     "status": "FALSE",
+     "utc": "2026-09-01T19:26:45Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos421-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos421:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos421",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos421:LEM:R002:all",
+   "statement": "Analytic reduction \"none\" and residual claim \"per contract\" provide no finite certificate; exact/interval verifier cannot be instantiated — fail closed, no float comparison performed, no tolerance accepted.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R002",
+   "lemma_id": "all",
+   "registry_status": "UNTESTED",
+   "registry_seq": 9,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 has a machine-verified concrete counterexample and no argument shows R002's close survives without it, so the route is dead.",
+    "seq": 11
+   },
+   "history": [
+    {
+     "seq": 9,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:16:58Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos421-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos421:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "Analytic reduction \"none\" and residual claim \"per contract\" provide no finite certificate; exact/interval verifier cannot be instantiated — fail closed, no float comparison performed, no tolerance accepted."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos421",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos421:LEM:R003:L1",
+   "statement": "minimal counterexample d=(2,3,4,5,6): P(1,4)=P(3,5)=120 with (1,4)≠(3,5); injectivity of consecutive-block products fails at the smallest colliding prefix N=5; route R003's close does not survive deletion of this lemma (kill_repair_record confirmed)",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 17,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "lemma L1 (greedy witness d=(2,3,4,5,6) with P(1,4)=P(3,5)=120) is machine-refuted and load-bearing: it is the route's only injectivity-survival step, no replacement admission rule or transfer proof is on file, so R003's close does not survive its deletion.",
+    "seq": 18
+   },
+   "history": [
+    {
+     "seq": 14,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:33:07Z"
+    },
+    {
+     "seq": 15,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:33:49Z"
+    },
+    {
+     "seq": 17,
+     "status": "FALSE",
+     "utc": "2026-09-02T02:20:52Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos421-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos421:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos421",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos421:LEM:R003:L2",
+   "statement": "greedy admission rule verified exhaustively for N≤8 and consistently up to N=200; injectivity failures in full sequences confirmed (d=(2,3,4,5,6) collides).",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "COMPUTED_BOUNDED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "L2",
+   "registry_status": "COMPUTATION_SUPPORTED",
+   "registry_seq": 13,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "lemma L1 (greedy witness d=(2,3,4,5,6) with P(1,4)=P(3,5)=120) is machine-refuted and load-bearing: it is the route's only injectivity-survival step, no replacement admission rule or transfer proof is on file, so R003's close does not survive its deletion.",
+    "seq": 18
+   },
+   "history": [
+    {
+     "seq": 13,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:32:27Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos421-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos421:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_COMPUTATION_SUPPORTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "greedy admission rule verified exhaustively for N≤8 and consistently up to N=200; injectivity failures in full sequences confirmed (d=(2,3,4,5,6) collides)."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "leaf_tactic_hint": "interval_cases",
+   "hint_source": "bounded_forall_over_N",
+   "leaf_tactic_sketch": "intro a; interval_cases a <;> decide",
+   "leaf_tactic_alternatives": [
+    "decide",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos421",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos421:LEM:R003:analytic_residual",
+   "statement": "No analytic reduction or outward interval enclosure supplied; residual sign unresolved; certificate refused (fail closed).",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "analytic_residual",
+   "registry_status": "UNTESTED",
+   "registry_seq": 16,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "lemma L1 (greedy witness d=(2,3,4,5,6) with P(1,4)=P(3,5)=120) is machine-refuted and load-bearing: it is the route's only injectivity-survival step, no replacement admission rule or transfer proof is on file, so R003's close does not survive its deletion.",
+    "seq": 18
+   },
+   "history": [
+    {
+     "seq": 16,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:36:40Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos421-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos421:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "No analytic reduction or outward interval enclosure supplied; residual sign unresolved; certificate refused (fail closed)."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos421",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos421:LEM:R004:L1",
+   "statement": "witness d=(2,3,4,5,6), P(1,4)=P(3,5)=120 exact; confirms R003 kill record, no ambient-family claim",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 20,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "lemma L1 (d=(2,3,4,5,6), P(1,4)=P(3,5)=120) is machine-refuted at an exact in-domain instance and is the route's only injectivity-survival step; no replacement admission rule or transfer proof is on file, so the close does not survive deletion.",
+    "seq": 21
+   },
+   "history": [
+    {
+     "seq": 20,
+     "status": "FALSE",
+     "utc": "2026-09-02T02:24:40Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos421-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos421:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos421",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos421:LEM:R005:L1",
+   "statement": "exact integer verifier (66 prefix-ratio blocks, Fraction/ℤ only, fail-closed) certifies injectivity of consecutive-block products on the full triangle for d=(2,3,4,5,7,8,9,10,11,13,14) with skip-set {6,12}; SCOPE: finite triangle u≤v≤11 only — density-1 of the infinite greedy extension and global in",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R005",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 24,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 23,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T02:31:03Z"
+    },
+    {
+     "seq": 24,
+     "status": "PROVED",
+     "utc": "2026-09-02T02:41:53Z"
+    }
+   ],
+   "court": [
+    "court"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos421-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos421:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos421",
+   "is_leaf": true,
+   "manufacture_target": false
+  }
+ ]
+}

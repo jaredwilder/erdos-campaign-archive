@@ -1,0 +1,22 @@
+{
+  "kind": "COMPOSITION_KERNEL_CHECK",
+  "node": "erdos289:P4:C-289-2f5e6a0a3b-A-ROOT#COMPOSE",
+  "verdict": {
+    "verdict": "COMPOSITION_OPEN",
+    "rc": 1,
+    "kernel_error": "/root/peer/decomp/b20260902_081031_3/erdos289_P4_C-289-2f5e6a0a3b-A-ROOT_comp.lean:27:339: error: unsolved goals",
+    "counts_toward_parent": 0
+  },
+  "lean_source": "oracle/evidence/msl-machine/dag/decomp/erdos289/lean/erdos289_P4_C-289-2f5e6a0a3b-A-ROOT_COMPOSE.lean",
+  "ladder": [
+    "tauto",
+    "(intro h; exact h.1)",
+    "(intro h; simp_all)",
+    "(intro h; omega)",
+    "(intro h; norm_num at h ⊢ <;> tauto)",
+    "aesop",
+    "decide"
+  ],
+  "kernel_log": "/root/peer/decomp/b20260902_081031_3/erdos289_P4_C-289-2f5e6a0a3b-A-ROOT_comp.lean:27:339: error: unsolved goals\nh : ∃ K, ∀ (k : ℕ), K ≤ k → familyPredicate k\n⊢ ∃ a,\n    ∀ (b : ℕ),\n      a ≤ b →\n        ∃ I,\n          (∀ (i : Fin b), (I i).1 < (I i).2) ∧\n            (∀ (i j : Fin b), ¬i = j → (I i).2 < (I j).1 ∨ (I j).2 < (I i).1) ∧\n              ∑ i, ∑ n ∈ Icc (I i).1 (I i).2, (↑n)⁻¹ = 1\n'msl_erdos289_p4_c_289_2f5e6a0a3b_a_root_composition' depends on axioms: [propext,\n sorryAx,\n Classical.choice,\n Quot.sound]",
+  "utc": "2026-09-02T15:10:53Z"
+}

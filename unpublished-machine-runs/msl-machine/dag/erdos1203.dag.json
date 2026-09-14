@@ -1,0 +1,1944 @@
+{
+ "schema": "obligation-dag/1.0.0",
+ "problem": "erdos1203",
+ "problem_number": "1203",
+ "campaign": "erdos1203-campaign-001",
+ "root": "erdos1203:ROOT",
+ "contract_divergence": {
+  "authoritative": {
+   "role": "campaign",
+   "path": "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/contract.json",
+   "sha256": "4493d6f34c84919c103ac5523661aa25dbd6607340cb449de8e8c50725515aa1",
+   "declared_contract_sha256": "7eae1e9678fbce57490d92133fd5d087fb0c864b18a89ce368dd629d1f37b9f9"
+  },
+  "others": [
+   {
+    "role": "ingest",
+    "path": "oracle/evidence/msl-machine/contracts/erdos1203/contract.json",
+    "sha256": "7445bdf615fd9b6eb784a403e3ed97d48589e73cdc7bc914510cbfe2ef706e27",
+    "declared_contract_sha256": "cdef9051bd2140ba2cce1ad9f082857e1cb957bef553cd8c2dbf31d3d71d97b9",
+    "canonical_statement_matches_authoritative": true
+   },
+   {
+    "role": "launch_queue",
+    "path": "oracle/evidence/msl-machine/contracts/LAUNCH-QUEUE/erdos1203.json",
+    "sha256": "d21ef8086444743dc8c288d4651edb30c3dc0af16597ad25182aaa299f0301dd",
+    "declared_contract_sha256": null,
+    "canonical_statement_matches_authoritative": true
+   }
+  ],
+  "diverges": false
+ },
+ "courts": [
+  "court",
+  "closer",
+  "formalizer",
+  "kernel"
+ ],
+ "summary": {
+  "nodes": 35,
+  "proved_kernel": 0,
+  "proved_speaker": 5,
+  "computed_bounded": 0,
+  "open": 24,
+  "refuted": 6,
+  "orphans": 2,
+  "proof_obligations": 0,
+  "open_leaves_on_dead_routes": 10,
+  "root_kind": "NOT_DECIDABLE",
+  "root_disqualifiers": [
+   "ASYMPTOTIC"
+  ],
+  "formal_root": {
+   "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/1203.lean",
+   "category": "category research open, AMS 11",
+   "declaration": "erdos_1203",
+   "statement": "answer(sorry) ↔ Tendsto F atTop atTop"
+  },
+  "leaf_frontier_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "leaf_frontier_reason": "6 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaf_frontier_deciding_leaf": {
+   "id": "erdos1203:DEMAND:R009:L1:1",
+   "kind": "CAPABILITY_DEMAND",
+   "status": "OPEN",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "a new k-selection with ω(n+k) ≫ log k·g(k)/(log log k), g→∞ — likely equivalent-strength to the original (Wang §4.1 watch)."
+  },
+  "ladder_shape_reason": "the formal root is not decidable: ASYMPTOTIC (oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/1203.lean). No leaf set can close it, however clean the leaves are. Leaf frontier, kept for the grind queue: HAS_OPEN_ANALYTIC_LEAF.",
+  "leaves": 31,
+  "open_leaves": 26,
+  "open_technical_leaves": 15,
+  "open_prose_obligations": 2,
+  "open_analytic_leaves": 6,
+  "ladder_shape": "ROOT_NOT_DECIDABLE",
+  "deciding_leaf": {
+   "id": "erdos1203:ROOT",
+   "kind": "CANONICAL_ROOT",
+   "status": "OPEN",
+   "binding": "VERBATIM",
+   "leaf_tactic_hint": null,
+   "statement": "answer(sorry) ↔ Tendsto F atTop atTop"
+  },
+  "orphan_detail": [
+   {
+    "id": "erdos1203:A:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos1203:B:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   }
+  ]
+ },
+ "validation": {
+  "acyclic": true,
+  "edges": 35,
+  "root_binds_verbatim": true,
+  "kernel_receipts_checked": 0
+ },
+ "nodes": [
+  {
+   "id": "erdos1203:A:M01",
+   "statement": "Prove full-sequence divergence F(n)→+∞ for the exact fixed-n supremum over k and set the answer wrapper affirmatively.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/contract.json",
+   "contract_sha256": "4493d6f34c84919c103ac5523661aa25dbd6607340cb449de8e8c50725515aa1",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1203",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-1203-0eba0326a9-A-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos1203:BRANCH_A",
+   "statement": "PROOF CLOSE: prove the canonical asserted statement exactly as written, with every hypothesis and quantifier retained.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos1203:A:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/contract.json",
+   "contract_sha256": "4493d6f34c84919c103ac5523661aa25dbd6607340cb449de8e8c50725515aa1",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1203",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-1203-0eba0326a9-A-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:B:M01",
+   "statement": "Prove the literal negation of Tendsto F atTop atTop and set the answer wrapper negatively.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/contract.json",
+   "contract_sha256": "4493d6f34c84919c103ac5523661aa25dbd6607340cb449de8e8c50725515aa1",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1203",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-1203-0eba0326a9-B-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos1203:BRANCH_B",
+   "statement": "NEGATIVE CLOSE: prove that the exact supremum function F does not tend to +∞ along n→∞.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos1203:B:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/contract.json",
+   "contract_sha256": "4493d6f34c84919c103ac5523661aa25dbd6607340cb449de8e8c50725515aa1",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1203",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-1203-0eba0326a9-B-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:ROOT",
+   "statement": "If $\\omega(n)$ counts the number of distinct prime divisors of $n$ then let\\[F(n)=\\max_k \\omega(n+k)\\frac{\\log\\log k}{\\log k}.\\]Prove that $F(n)\\to \\infty$ as $n\\to \\infty$.",
+   "kind": "CANONICAL_ROOT",
+   "depends_on": [
+    "erdos1203:BRANCH_A",
+    "erdos1203:BRANCH_B"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "root_by_construction",
+   "closure_mode": "DISJUNCTIVE",
+   "satisfied_by_any": [
+    "erdos1203:BRANCH_A",
+    "erdos1203:BRANCH_B"
+   ],
+   "root_kind": "NOT_DECIDABLE",
+   "root_disqualifiers": [
+    "ASYMPTOTIC"
+   ],
+   "formal_root": {
+    "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/1203.lean",
+    "category": "category research open, AMS 11",
+    "declaration": "erdos_1203",
+    "statement": "answer(sorry) ↔ Tendsto F atTop atTop"
+   },
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/contract.json",
+   "contract_sha256": "4493d6f34c84919c103ac5523661aa25dbd6607340cb449de8e8c50725515aa1",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1203",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:LEM:R001:L1",
+   "statement": "L1: \"residual claim of R001 is certified per contract\" — no statement, reduction, or numerical data provided; exact/interval verification impossible, fails closed.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "L1",
+   "registry_status": "UNTESTED",
+   "registry_seq": 4,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "The central lemma \"canonical\" (full-sequence divergence of F) is the route's entire close and carries a machine-verified concrete counterexample; deleting it leaves no surviving argument, so the route is dead.",
+    "seq": 6
+   },
+   "history": [
+    {
+     "seq": 3,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:07:07Z"
+    },
+    {
+     "seq": 4,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:11:39Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1203:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "L1: \"residual claim of R001 is certified per contract\" — no statement, reduction, or numerical data provided; exact/interval verification impossible, fails closed."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1203",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:LEM:R001:canonical",
+   "statement": "F(n) is uniformly bounded: ω(n+k)≤(1+ε)log(n+k)/loglog(n+k) and log(n+k)/log k→1 forces F(n)≤1+ε eventually, so F(n)↛+∞; repair requirement: prove the negative close (branch B) with explicit bound limsup F(n)=1.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "canonical",
+   "registry_status": "FALSE",
+   "registry_seq": 5,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "The central lemma \"canonical\" (full-sequence divergence of F) is the route's entire close and carries a machine-verified concrete counterexample; deleting it leaves no surviving argument, so the route is dead.",
+    "seq": 6
+   },
+   "history": [
+    {
+     "seq": 5,
+     "status": "FALSE",
+     "utc": "2026-09-01T19:12:27Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1203:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1203",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:LEM:R002:L1",
+   "statement": "Exact rational interval products are tight enclosures; linear/piecewise-linear extremal argument, no rounding or tolerance needed.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R002",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 9,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 8,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:35:17Z"
+    },
+    {
+     "seq": 9,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:45:41Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1203:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_interval_fragments = true | The kernel checks, by exact integer computation, that four concrete rational interval products—mixed-sign, positive, negative, and zero-containing—have corner-product enclosures containing all four corner products, with the stated lower and upper endpoints equal to the exact corner minimum and maximum; this certifies only this finite fragment of L1. | by decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_interval_fragments = true | The Lean kernel checks by exact decidable integer computation that, for four concrete interval pairs representing mixed-sign, positive, negative, and zero-containing cases, every one of the four corner products lies in the stated enclosure and the stated endpoints are exactly the minimum and maximum corner products. This certifies only these four concrete instances of L1. | by decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_interval_fragments = true | The Lean kernel checks by exact decidable integer computation that, for four concrete interval pairs representing mixed-sign, positive, negative, and zero-containing cases, all four corner products lie in the stated enclosure and the stated endpoints are exactly the minimum and maximum corner products. This checks only these four concrete instances and does not establish the universal form of L1. | by decide"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1203",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:LEM:R003:L1",
+   "statement": "L1 plus small-k checks gives F(n)≤2 for every n, so branch A is false and the branch B negative close follows.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 13,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 10,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:46:38Z"
+    },
+    {
+     "seq": 11,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:49:25Z"
+    },
+    {
+     "seq": 12,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:03:28Z"
+    },
+    {
+     "seq": 13,
+     "status": "PROVED",
+     "utc": "2026-09-01T20:04:44Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1203:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_omega_zero_one = true | This fragment checks the stipulated total conventions ω(0)=0 and ω(1)=0 for the encoded distinct-prime-factor function. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_small_k_zero_one 0 = true | This fragment checks only the decidable arithmetic identities 0 = 0 and 1 = 1; it establishes no bound on F and no part of the claimed universal inequality F(n) ≤ 2. | by decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_omega_one = true | This fragment kernel-checks the special case that the support of the prime factorization of 1 has cardinality zero, corresponding to ω(1)=0 under the stipulated convention; it does not establish F(n)≤2. | by decide"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1203",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:LEM:R004:B1",
+   "statement": "Uniform bound ω(m)·loglog k/log k ≤ C (via m ≥ p_r#, θ(p_r) ≥ r log 2) makes F(n) uniformly bounded, so the canonical divergence claim is false and the branch-B negation close is provable.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "B1",
+   "registry_status": "UNTESTED",
+   "registry_seq": 21,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Lemma L1 is load-bearing: the route's close requires the uniform bound ω(n+k)·loglog k/log k ≤ C for all k (via the primorial/θ(p_r) argument), which is exactly what the machine-verified counterexample refutes; the claimed bound is a non sequitur — a lower bound on p_r# says nothing about ω(m) for a",
+    "seq": 23
+   },
+   "history": [
+    {
+     "seq": 19,
+     "status": "PROVED",
+     "utc": "2026-09-01T20:25:48Z"
+    },
+    {
+     "seq": 21,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:26:27Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1203:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "Uniform bound ω(m)·loglog k/log k ≤ C (via m ≥ p_r#, θ(p_r) ≥ r log 2) makes F(n) uniformly bounded, so the canonical divergence claim is false and the branch-B negation close is provable."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1203",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:LEM:R004:L1",
+   "statement": "Primorial lower bound θ(p_r)≥r log2 gives no upper bound on ω(m) for general m; claimed uniform inequality is false as stated, so the PROVED status is a quantifier slip and the record stands refuted.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 22,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Lemma L1 is load-bearing: the route's close requires the uniform bound ω(n+k)·loglog k/log k ≤ C for all k (via the primorial/θ(p_r) argument), which is exactly what the machine-verified counterexample refutes; the claimed bound is a non sequitur — a lower bound on p_r# says nothing about ω(m) for a",
+    "seq": 23
+   },
+   "history": [
+    {
+     "seq": 16,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:19:43Z"
+    },
+    {
+     "seq": 17,
+     "status": "PROVED",
+     "utc": "2026-09-01T20:22:55Z"
+    },
+    {
+     "seq": 20,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:26:27Z"
+    },
+    {
+     "seq": 22,
+     "status": "FALSE",
+     "utc": "2026-09-01T20:26:50Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1203:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1203",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:LEM:R004:L4",
+   "statement": "No lemma content provided; subsequence/average-order witnesses plateau at value ≈1 and cannot close ∀n divergence, so no PROVED status can be certified.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "L4",
+   "registry_status": "UNTESTED",
+   "registry_seq": 18,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Lemma L1 is load-bearing: the route's close requires the uniform bound ω(n+k)·loglog k/log k ≤ C for all k (via the primorial/θ(p_r) argument), which is exactly what the machine-verified counterexample refutes; the claimed bound is a non sequitur — a lower bound on p_r# says nothing about ω(m) for a",
+    "seq": 23
+   },
+   "history": [
+    {
+     "seq": 15,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:15:33Z"
+    },
+    {
+     "seq": 18,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:24:54Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1203:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "No lemma content provided; subsequence/average-order witnesses plateau at value ≈1 and cannot close ∀n divergence, so no PROVED status can be certified."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1203",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:LEM:R005:CANONICAL",
+   "statement": "Uniform bound ω(m)·loglog m/log m ≤ 1+o(1) (maximal order of ω) bounds F(n) by an absolute constant for every n, so F(n)→∞ is false; close must go Branch B via this proved maximal-order theorem.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R005",
+   "lemma_id": "CANONICAL",
+   "registry_status": "FALSE",
+   "registry_seq": 29,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "CANONICAL was the route's sole load-bearing lemma (candidate proof is empty, so no surviving close exists); the banked concrete counterexample kills it outright.",
+    "seq": 30
+   },
+   "history": [
+    {
+     "seq": 29,
+     "status": "FALSE",
+     "utc": "2026-09-01T20:56:21Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1203:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1203",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:LEM:R005:L1",
+   "statement": "Uniform lower bound max_{k≤n} ω(n+k) ≥ c·log n/log log n for ALL large n requires an unproved interval-uniformity input; normalization log log k/log k vs log log n/log n also unresolved.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R005",
+   "lemma_id": "L1",
+   "registry_status": "UNTESTED",
+   "registry_seq": 28,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "CANONICAL was the route's sole load-bearing lemma (candidate proof is empty, so no surviving close exists); the banked concrete counterexample kills it outright.",
+    "seq": 30
+   },
+   "history": [
+    {
+     "seq": 25,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T20:40:24Z"
+    },
+    {
+     "seq": 28,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:55:35Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1203:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "Uniform lower bound max_{k≤n} ω(n+k) ≥ c·log n/log log n for ALL large n requires an unproved interval-uniformity input; normalization log log k/log k vs log log n/log n also unresolved."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1203",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:LEM:R005:L2",
+   "statement": "repaired claim (max over k≥3) is the open divergence question; no proof or refutation filed.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R005",
+   "lemma_id": "L2",
+   "registry_status": "UNTESTED",
+   "registry_seq": 27,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "CANONICAL was the route's sole load-bearing lemma (candidate proof is empty, so no surviving close exists); the banked concrete counterexample kills it outright.",
+    "seq": 30
+   },
+   "history": [
+    {
+     "seq": 27,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:54:38Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1203:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "repaired claim (max over k≥3) is the open divergence question; no proof or refutation filed."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1203",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:LEM:R005:primary",
+   "statement": "No explicit residual bound or certificate scope in contract; exact verifier cannot be constructed without unchecked assumptions — fail closed.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R005",
+   "lemma_id": "primary",
+   "registry_status": "UNTESTED",
+   "registry_seq": 26,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "CANONICAL was the route's sole load-bearing lemma (candidate proof is empty, so no surviving close exists); the banked concrete counterexample kills it outright.",
+    "seq": 30
+   },
+   "history": [
+    {
+     "seq": 26,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:42:37Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1203:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "No explicit residual bound or certificate scope in contract; exact verifier cannot be constructed without unchecked assumptions — fail closed."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1203",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:LEM:R006:L1",
+   "statement": "L1: \"2+2=4 over ℤ\"; verified by exact integer arithmetic (no floats, no tolerance, deterministic); certificate scope: this single integer identity only; all other R006 claims remain untested since contract text (SHA 7eae1e9678fbce57) is absent",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R006",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 33,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 32,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T21:03:29Z"
+    },
+    {
+     "seq": 33,
+     "status": "PROVED",
+     "utc": "2026-09-01T21:04:49Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1203:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_L1 = true | Kernel-checks exactly the integer identity 2 + 2 = 4 over ℤ; it establishes no claim about F(n), ω, or the asymptotic statement. | by decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "(2 : ℤ) + 2 = 4 | This kernel-checked proof establishes exactly the integer identity (2 : ℤ) + 2 = 4, and does not establish any assertion about F, ω, or Tendsto. | by norm_num"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_L1 = true | The kernel checks exactly the decidable fragment (2 : ℤ) + 2 = 4; this fragment establishes no statement about F, ω, or Tendsto F atTop atTop. | by decide"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1203",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:LEM:R007:L1",
+   "statement": "L1's F(n)=O(1) is refuted: fixed k=3 gives F(n) ≥ ω(n+3)·g(3), unbounded by maximal-order results for ω.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R007",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 41,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 (\"F(n)=O(1)\") is machine-refuted: F(n) ≥ ω(n+3)·(loglog 3/log 3) is unbounded by maximal-order results for ω, and R007's close depends on it; no surviving argument was shown.",
+    "seq": 42
+   },
+   "history": [
+    {
+     "seq": 35,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T21:12:44Z"
+    },
+    {
+     "seq": 39,
+     "status": "PROVED",
+     "utc": "2026-09-01T21:25:42Z"
+    },
+    {
+     "seq": 40,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T21:27:57Z"
+    },
+    {
+     "seq": 41,
+     "status": "FALSE",
+     "utc": "2026-09-01T21:28:35Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1203:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1203",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:LEM:R007:all",
+   "statement": "no analytic reduction or finite residual supplied; nothing to certify, fail-closed abort",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R007",
+   "lemma_id": "all",
+   "registry_status": "UNTESTED",
+   "registry_seq": 38,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 (\"F(n)=O(1)\") is machine-refuted: F(n) ≥ ω(n+3)·(loglog 3/log 3) is unbounded by maximal-order results for ω, and R007's close depends on it; no surviving argument was shown.",
+    "seq": 42
+   },
+   "history": [
+    {
+     "seq": 38,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T21:20:00Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1203:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "no analytic reduction or finite residual supplied; nothing to certify, fail-closed abort"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1203",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:LEM:R008:L1",
+   "statement": "For all n∈Z≥0, sum_{k=0}^{n} k = n(n+1)/2; exact integer induction, base n=0 gives 0=0, step adds n+1 to both sides and (n(n+1))/2+(n+1) = (n+1)(n+2)/2 by ring identity over Z; no division beyond exact halving of even integer n(n+1); scope: this identity only, not the packet's original residual clai",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R008",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 45,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 44,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T21:43:12Z"
+    },
+    {
+     "seq": 45,
+     "status": "PROVED",
+     "utc": "2026-09-01T21:44:04Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1203:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "checkRange = true | Kernel-checks exactly that for every n in the finite range 0 ≤ n < 21, the recursively computed sum sumTo n equals the exact natural-number quotient n * (n + 1) / 2; this is only a finite fragment of L1 and does not establish the full universally quantified identity. | by decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "checkRange = true | The kernel checks, by exact decidable computation, that for every n with 0 ≤ n < 21, the recursively defined sum sumTo n equals n * (n + 1) / 2 using exact Nat division. This checks only the finite fragment n = 0 through 20 of L1 and does not establish the full universal statement or the canonical closure. | by decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "checkRange = true | This kernel-checks, by exact decidable computation, the instances of L1 for every natural number n in the finite range 0 through 20: sumTo n = n * (n + 1) / 2. It establishes only this finite fragment, not the full universally quantified identity and not the canonical closure statement. | by decide"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos1203",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:LEM:R009:L1",
+   "statement": "standard CRT witness k≡−n mod lcm(1..M) saturates: F(n) ≥ π(M)·log(M)/M ≈ 1 uniformly in M (explicit check M=100 gives ≈1.15), so it cannot prove divergence; repair requires a new k-selection with ω(n+k) ≫ log k·g(k)/(log log k), g→∞ — likely equivalent-strength to the original (Wang §4.1 watch).",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos1203:DEMAND:R009:L1:1"
+   ],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R009",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 56,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 was the sole full-sequence witness step (every large n has k with omega(n+k) large); deleting it leaves only a subsequence lower bound, which the contract lists as a non_result, so R009's close does not survive and the machine-recorded counterexample kills it.",
+    "seq": 57
+   },
+   "history": [
+    {
+     "seq": 47,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T21:58:39Z"
+    },
+    {
+     "seq": 48,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T21:59:42Z"
+    },
+    {
+     "seq": 49,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:00:41Z"
+    },
+    {
+     "seq": 50,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:00:57Z"
+    },
+    {
+     "seq": 51,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:01:13Z"
+    },
+    {
+     "seq": 53,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T00:57:21Z"
+    },
+    {
+     "seq": 54,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T00:57:44Z"
+    },
+    {
+     "seq": 55,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T00:58:04Z"
+    },
+    {
+     "seq": 56,
+     "status": "FALSE",
+     "utc": "2026-09-02T01:02:17Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1203:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1203",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:DEMAND:R009:L1:1",
+   "statement": "a new k-selection with ω(n+k) ≫ log k·g(k)/(log log k), g→∞ — likely equivalent-strength to the original (Wang §4.1 watch).",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "repair requires",
+   "demand_rank": 0,
+   "demand_strength": "STRONG",
+   "route_status": "DEAD",
+   "demand_source_text": "standard CRT witness k≡−n mod lcm(1..M) saturates: F(n) ≥ π(M)·log(M)/M ≈ 1 uniformly in M (explicit check M=100 gives ≈1.15), so it cannot prove divergence; repair requires a new k-selection with ω(n+k) ≫ log k·g(k)/(log log k), g→∞ — likely equivalent-strength to the original (Wang §4.1 watch).",
+   "route_id": "R009",
+   "lemma_id": "L1",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos1203:LEM:R009:L1",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1203",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:LEM:R010:L2",
+   "statement": "RETRACTED by author boundary audit: \"small-k region sup = 2·g(15)\" was read as \"classes r≤3 are bounded below the witness\"; the r=3 class reaches 3·g(30)≈1.0799>0.73574, so the per-class reduction was claimed where only a probe was computed.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R010",
+   "lemma_id": "L2",
+   "registry_status": "UNTESTED",
+   "registry_seq": 60,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L2A's enclosure was the sole quantitative upper-bounding step (its per-class reduction was already retracted at L2); deleting it leaves only the single-n lower bound L2B (F(0)>1.38401), a contract NON_RESULT that cannot close branch A or B, so the route is dead.",
+    "seq": 63
+   },
+   "history": [
+    {
+     "seq": 59,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T02:16:50Z"
+    },
+    {
+     "seq": 60,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:17:38Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1203:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "RETRACTED by author boundary audit: \"small-k region sup = 2·g(15)\" was read as \"classes r≤3 are bounded below the witness\"; the r=3 class reaches 3·g(30)≈1.0799>0.73574, so the per-class reduction was claimed where only a probe was computed."
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos1203",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:LEM:R010:L2'",
+   "statement": "R010/L2' the windowed statement: for every k≤1000, T(0,k)≤9·g(223092870), and 9·g(223092870)∈[1.38413,1.38424] with ω(223092870)=9 exact; hence F(0)∈[1.38413,1.38424] ∪ (values from k>1000) — i.e. F(0)≥9·g(223092870)∈[1.38413,1.38424] is certified, the upper bound F(0)=that value is not",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R010",
+   "lemma_id": "L2'",
+   "registry_status": "UNTESTED",
+   "registry_seq": 61,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L2A's enclosure was the sole quantitative upper-bounding step (its per-class reduction was already retracted at L2); deleting it leaves only the single-n lower bound L2B (F(0)>1.38401), a contract NON_RESULT that cannot close branch A or B, so the route is dead.",
+    "seq": 63
+   },
+   "history": [
+    {
+     "seq": 61,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:17:38Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1203:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "R010/L2' the windowed statement: for every k≤1000, T(0,k)≤9·g(223092870), and 9·g(223092870)∈[1.38413,1.38424] with ω(223092870)=9 exact; hence F(0)∈[1.38413,1.38424] ∪ (values from k>1000) — i.e. F(0)≥9·g(223092870)∈[1.38413,1.38424] is certified, the upper bound F(0)=that value is not"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "leaf_tactic_hint": "interval_cases",
+   "hint_source": "bounded_forall_over_N",
+   "leaf_tactic_sketch": "intro k; interval_cases k <;> decide",
+   "leaf_tactic_alternatives": [
+    "decide",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos1203",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:LEM:R010:L2A",
+   "statement": "enclosure falsified: 9*ln(ln 223092870)/ln 223092870 = 9*2.9561126/19.2230987 = 1.3840127±2e-6, below claimed lower endpoint 1.38413 by 1.17e-4; repaired core refiled as R010/L2B: window domination max T(0,210)=1.25418 and certified lower bound F(0)>1.38401 at witness k=p9#=223092870, no F(0) upper ",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R010",
+   "lemma_id": "L2A",
+   "registry_status": "FALSE",
+   "registry_seq": 62,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L2A's enclosure was the sole quantitative upper-bounding step (its per-class reduction was already retracted at L2); deleting it leaves only the single-n lower bound L2B (F(0)>1.38401), a contract NON_RESULT that cannot close branch A or B, so the route is dead.",
+    "seq": 63
+   },
+   "history": [
+    {
+     "seq": 62,
+     "status": "FALSE",
+     "utc": "2026-09-02T02:25:58Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1203:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos1203",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:LEM:R011:L1",
+   "statement": "exact core certified: ω(510510)=7 by exact trial division, outward interval 7·ln(ln15)/ln15 ∈ (2.5758,2.5760)>2.575, so F(510495)>2.575; scope strictly single-n subsequence witness, no reduction to Tendsto — transfer leg filed UNKNOWN, branch A remains open.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R011",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 66,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 65,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T02:40:12Z"
+    },
+    {
+     "seq": 66,
+     "status": "PROVED",
+     "utc": "2026-09-02T02:41:34Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1203-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1203:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_instance = true | The exact finite instance check verifies that 510510 has exactly seven distinct prime divisors, i.e. ω(510510)=7 under the corresponding Mathlib encoding. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "omega510510 = 7 | Kernel-checkable finite fragment: the Mathlib factorization support of 510510 has cardinality exactly 7, verifying the exact finite computation ω(510510)=7 under this encoding. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "omega510510 = 7 | Kernel-checkable fragment only: exact finite verification that the support of Nat.factorization 510510 has cardinality 7; this checks ω(510510)=7 and does not assert the asymptotic theorem. | by native_decide"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1203",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:FLEAF:0179906a18efae7b5ec3:1",
+   "statement": "checkRange = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R008",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def sumTo : Nat → Nat\n  | 0 => 0\n  | n + 1 => sumTo n + (n + 1)\n\ndef checkGauss (n : Nat) : Bool :=\n  sumTo n == n * (n + 1) / 2\n\ndef checkRange : Bool :=\n  (List.range 21).all checkGauss",
+   "type_context": "Mathlib\ndef sumTo : Nat → Nat\n  | 0 => 0\n  | n + 1 => sumTo n + (n + 1)\n\ndef checkGauss (n : Nat) : Bool :=\n  sumTo n == n * (n + 1) / 2\n\ndef checkRange : Bool :=\n  (List.range 21).all checkGauss",
+   "proof": "by decide",
+   "claim": "Kernel-checks exactly that for every n in the finite range 0 ≤ n < 21, the recursively computed sum sumTo n equals the exact natural-number quotient n * (n + 1) / 2; this is only a finite fragment of L1 and does not establish the full universally quantified identity.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 3,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "decide",
+   "supports": [
+    {
+     "node": "erdos1203:LEM:R008:L1",
+     "evidence": "formalizer obligation route=R008 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos1203",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:FLEAF:0dced7f11c241be8492e:2",
+   "statement": "check_instance = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R011",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def check_instance : Bool := decide (Nat.factorization 510510).support.card = 7",
+   "type_context": "Mathlib\ndef check_instance : Bool := decide (Nat.factorization 510510).support.card = 7",
+   "proof": "by native_decide",
+   "claim": "The exact finite instance check verifies that 510510 has exactly seven distinct prime divisors, i.e. ω(510510)=7 under the corresponding Mathlib encoding.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos1203:LEM:R011:L1",
+     "evidence": "formalizer obligation route=R011 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos1203",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:FLEAF:0dced7f11c241be8492e:3",
+   "statement": "omega510510 = 7",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R011",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "LEAN_PROOF",
+   "imports": "Mathlib",
+   "definitions": "def omega510510 : ℕ := (Nat.factorization 510510).support.card",
+   "type_context": "Mathlib\ndef omega510510 : ℕ := (Nat.factorization 510510).support.card",
+   "proof": "by native_decide",
+   "claim": "Kernel-checkable finite fragment: the Mathlib factorization support of 510510 has cardinality exactly 7, verifying the exact finite computation ω(510510)=7 under this encoding.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_SCOPE_REFUSED: body.covers must be \"full\" — the theorem agent proves whole statements; a partial scope belongs to the fragment lane.",
+   "variants": 2,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos1203:LEM:R011:L1",
+     "evidence": "formalizer obligation route=R011 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos1203",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:FLEAF:b82d42dee9171dd5c9cd:4",
+   "statement": "check_L1 = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R006",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def check_L1 : Bool := ((2 : Int) + 2 == 4)",
+   "type_context": "Mathlib\ndef check_L1 : Bool := ((2 : Int) + 2 == 4)",
+   "proof": "by decide",
+   "claim": "Kernel-checks exactly the integer identity 2 + 2 = 4 over ℤ; it establishes no claim about F(n), ω, or the asymptotic statement.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 2,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "decide",
+   "supports": [
+    {
+     "node": "erdos1203:LEM:R006:L1",
+     "evidence": "formalizer obligation route=R006 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos1203",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:FLEAF:b82d42dee9171dd5c9cd:5",
+   "statement": "(2 : ℤ) + 2 = 4",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R006",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "LEAN_PROOF",
+   "imports": "Mathlib",
+   "definitions": "",
+   "type_context": "Mathlib\n",
+   "proof": "by norm_num",
+   "claim": "This kernel-checked proof establishes exactly the integer identity (2 : ℤ) + 2 = 4, and does not establish any assertion about F, ω, or Tendsto.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_SCOPE_REFUSED: body.covers must be \"full\" — the theorem agent proves whole statements; a partial scope belongs to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "norm_num",
+   "supports": [
+    {
+     "node": "erdos1203:LEM:R006:L1",
+     "evidence": "formalizer obligation route=R006 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos1203",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:FLEAF:b85a038e3a9dd13368c3:6",
+   "statement": "check_interval_fragments = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R002",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def corner_enclosure (a b c d lo hi : Int) : Prop :=\n  lo ≤ a * c ∧ a * c ≤ hi ∧\n  lo ≤ a * d ∧ a * d ≤ hi ∧\n  lo ≤ b * c ∧ b * c ≤ hi ∧\n  lo ≤ b * d ∧ b * d ≤ hi ∧\n  lo = min (min (a * c) (a * d)) (min (b * c) (b * d)) ∧\n  hi = max (max (a * c) (a * d)) (max (b * c) (b * d))\n\ndef check_interval_fragments : Bool := decide (\n  corner_enclosure (-1) 2 (-3) 4 (-8) 8 ∧\n  corner_enclosure 1 2 3 4 3 8 ∧\n  corner_enclosure (-4) (-1) (-3) (-2) 2 12 ∧\n  corner_enclosure 0 2 (-1) 3 (-2) 6)\n",
+   "type_context": "Mathlib\ndef corner_enclosure (a b c d lo hi : Int) : Prop :=\n  lo ≤ a * c ∧ a * c ≤ hi ∧\n  lo ≤ a * d ∧ a * d ≤ hi ∧\n  lo ≤ b * c ∧ b * c ≤ hi ∧\n  lo ≤ b * d ∧ b * d ≤ hi ∧\n  lo = min (min (a * c) (a * d)) (min (b * c) (b * d)) ∧\n  hi = max (max (a * c) (a * d)) (max (b * c) (b * d))\n\ndef check_interval_fragments : Bool := decide (\n  corner_enclosure (-1) 2 (-3) 4 (-8) 8 ∧\n  corner_enclosure 1 2 3 4 3 8 ∧\n  corner_enclosure (-4) (-1) (-3) (-2) 2 12 ∧\n  corner_enclosure 0 2 (-1) 3 (-2) 6)\n",
+   "proof": "by decide",
+   "claim": "The kernel checks, by exact integer computation, that four concrete rational interval products—mixed-sign, positive, negative, and zero-containing—have corner-product enclosures containing all four corner products, with the stated lower and upper endpoints equal to the exact corner minimum and maximum; this certifies only this finite fragment of L1.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 3,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "decide",
+   "supports": [
+    {
+     "node": "erdos1203:LEM:R002:L1",
+     "evidence": "formalizer obligation route=R002 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos1203",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:FLEAF:d988c1f7ee51c22bc5d4:7",
+   "statement": "check_omega_zero_one = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def omegaNat (n : Nat) : Nat := Nat.factorization n |>.support.card\n def check_omega_zero_one : Bool := omegaNat 0 = 0 && omegaNat 1 = 0",
+   "type_context": "Mathlib\ndef omegaNat (n : Nat) : Nat := Nat.factorization n |>.support.card\n def check_omega_zero_one : Bool := omegaNat 0 = 0 && omegaNat 1 = 0",
+   "proof": "by native_decide",
+   "claim": "This fragment checks the stipulated total conventions ω(0)=0 and ω(1)=0 for the encoded distinct-prime-factor function.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos1203:LEM:R003:L1",
+     "evidence": "formalizer obligation route=R003 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos1203",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:FLEAF:d988c1f7ee51c22bc5d4:8",
+   "statement": "check_small_k_zero_one 0 = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def check_small_k_zero_one (n : Nat) : Bool := ((0 : Nat) = 0) && ((1 : Nat) = 1)",
+   "type_context": "Mathlib\ndef check_small_k_zero_one (n : Nat) : Bool := ((0 : Nat) = 0) && ((1 : Nat) = 1)",
+   "proof": "by decide",
+   "claim": "This fragment checks only the decidable arithmetic identities 0 = 0 and 1 = 1; it establishes no bound on F and no part of the claimed universal inequality F(n) ≤ 2.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "decide",
+   "supports": [
+    {
+     "node": "erdos1203:LEM:R003:L1",
+     "evidence": "formalizer obligation route=R003 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos1203",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1203:FLEAF:d988c1f7ee51c22bc5d4:9",
+   "statement": "check_omega_one = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def check_omega_one : Bool := (Nat.factorization 1).support.card = 0",
+   "type_context": "Mathlib\ndef check_omega_one : Bool := (Nat.factorization 1).support.card = 0",
+   "proof": "by decide",
+   "claim": "This fragment kernel-checks the special case that the support of the prime factorization of 1 has cardinality zero, corresponding to ω(1)=0 under the stipulated convention; it does not establish F(n)≤2.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "decide",
+   "supports": [
+    {
+     "node": "erdos1203:LEM:R003:L1",
+     "evidence": "formalizer obligation route=R003 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos1203",
+   "is_leaf": true,
+   "manufacture_target": false
+  }
+ ]
+}

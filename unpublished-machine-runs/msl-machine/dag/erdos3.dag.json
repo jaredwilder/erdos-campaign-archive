@@ -1,0 +1,1489 @@
+{
+ "schema": "obligation-dag/1.0.0",
+ "problem": "erdos3",
+ "problem_number": "3",
+ "campaign": "erdos3-campaign-001",
+ "root": "erdos3:ROOT",
+ "contract_divergence": {
+  "authoritative": {
+   "role": "campaign",
+   "path": "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/contract.json",
+   "sha256": "b1f1987e309ed90a414c350b6ad432e8bd662ee2688f7391ff08c71359516640",
+   "declared_contract_sha256": "a0fe5277bec398c5847b9133b3070251fdd0e1e5e01df1cdf4addbd74d2b77e1"
+  },
+  "others": [
+   {
+    "role": "ingest",
+    "path": "oracle/evidence/msl-machine/contracts/erdos3/contract.json",
+    "sha256": "df0634f5ac19b38cbfbcdff7bc0a05778b0deffbd4f3c200255fa7c89cf24945",
+    "declared_contract_sha256": "5ada40c9363893589e9507e41db3a0a495daaef726203c6476670fcf3a724a59",
+    "canonical_statement_matches_authoritative": true
+   },
+   {
+    "role": "launch_queue",
+    "path": "oracle/evidence/msl-machine/contracts/LAUNCH-QUEUE/erdos3.json",
+    "sha256": "dc23c9e1cdf70b2fb19e449345dcb970b5c8bccea8f034e0206025f9adb87f7e",
+    "declared_contract_sha256": null,
+    "canonical_statement_matches_authoritative": true
+   }
+  ],
+  "diverges": false
+ },
+ "courts": [
+  "court",
+  "closer",
+  "formalizer",
+  "kernel"
+ ],
+ "summary": {
+  "nodes": 29,
+  "proved_kernel": 0,
+  "proved_speaker": 2,
+  "computed_bounded": 0,
+  "open": 21,
+  "refuted": 6,
+  "orphans": 6,
+  "proof_obligations": 0,
+  "open_leaves_on_dead_routes": 6,
+  "root_kind": "NOT_DECIDABLE",
+  "root_disqualifiers": [
+   "ASYMPTOTIC",
+   "SERIES_MEASURE",
+   "UNBOUNDED_FORALL"
+  ],
+  "formal_root": {
+   "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/3.lean",
+   "category": "category research open, AMS 11",
+   "declaration": "erdos_3",
+   "statement": "answer(sorry) ↔ ∀ A : Set ℕ, (¬ Summable fun a : A ↦ 1 / (a : ℝ)) → ∃ᶠ (k : ℕ) in Filter.atTop, ∃ S ⊆ A, S.IsAPOfLength k"
+  },
+  "leaf_frontier_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "leaf_frontier_reason": "3 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaf_frontier_deciding_leaf": {
+   "id": "erdos3:DEMAND:R006:L1:1",
+   "kind": "CAPABILITY_DEMAND",
+   "status": "OPEN",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "restate finite fragment for N<=1"
+  },
+  "ladder_shape_reason": "the formal root is not decidable: ASYMPTOTIC, SERIES_MEASURE, UNBOUNDED_FORALL (oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/3.lean). No leaf set can close it, however clean the leaves are. Leaf frontier, kept for the grind queue: HAS_OPEN_ANALYTIC_LEAF.",
+  "leaves": 22,
+  "open_leaves": 17,
+  "open_technical_leaves": 3,
+  "open_prose_obligations": 6,
+  "open_analytic_leaves": 3,
+  "ladder_shape": "ROOT_NOT_DECIDABLE",
+  "deciding_leaf": {
+   "id": "erdos3:ROOT",
+   "kind": "CANONICAL_ROOT",
+   "status": "OPEN",
+   "binding": "VERBATIM",
+   "leaf_tactic_hint": null,
+   "statement": "answer(sorry) ↔ ∀ A : Set ℕ, (¬ Summable fun a : A ↦ 1 / (a : ℝ)) → ∃ᶠ (k : ℕ) in Filter.atTop, ∃ S ⊆ A, S.IsAPOfLength k"
+  },
+  "orphan_detail": [
+   {
+    "id": "erdos3:A:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos3:A:M02",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos3:A:M03",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos3:B:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos3:B:M02",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos3:B:M03",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   }
+  ]
+ },
+ "validation": {
+  "acyclic": true,
+  "edges": 32,
+  "root_binds_verbatim": true,
+  "kernel_receipts_checked": 0
+ },
+ "nodes": [
+  {
+   "id": "erdos3:A:M01",
+   "statement": "a proof (construction, density argument, or transfer theorem) that divergent reciprocal sum forces unbounded attained AP lengths",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/contract.json",
+   "contract_sha256": "b1f1987e309ed90a414c350b6ad432e8bd662ee2688f7391ff08c71359516640",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos3",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-3-b9e1f1ef7c-A-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos3:A:M02",
+   "statement": "verification that the AP predicate used matches the Lean library's Set.IsAPOfLength (no unstated d ≥ 1 or distinctness strengthening unless the library itself imposes it)",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 2,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/contract.json",
+   "contract_sha256": "b1f1987e309ed90a414c350b6ad432e8bd662ee2688f7391ff08c71359516640",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos3",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-3-b9e1f1ef7c-A-M02"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos3:A:M03",
+   "statement": "explicit handling of the ∃ᶠ quantifier: unboundedness of attained lengths, not merely infinitely many APs of one fixed length",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 3,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/contract.json",
+   "contract_sha256": "b1f1987e309ed90a414c350b6ad432e8bd662ee2688f7391ff08c71359516640",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos3",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-3-b9e1f1ef7c-A-M03"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos3:BRANCH_A",
+   "statement": "AFFIRMATIVE: prove that for every A ⊆ ℕ with divergent reciprocal sum, the set of k for which A contains some S ⊆ A with S.IsAPOfLength k is unbounded in ℕ (equivalently ∃ᶠ k in atTop, per the Lean statement). This may be done either by a direct proof or by proving a stronger statement (e.g. all k, or positive-density transfer) — a stronger proof is acceptable since it entails the target.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos3:A:M01",
+    "erdos3:A:M02",
+    "erdos3:A:M03"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/contract.json",
+   "contract_sha256": "b1f1987e309ed90a414c350b6ad432e8bd662ee2688f7391ff08c71359516640",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos3",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-3-b9e1f1ef7c-A-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos3:B:M01",
+   "statement": "an explicit or existence-proof counterexample set A with divergent reciprocal sum",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/contract.json",
+   "contract_sha256": "b1f1987e309ed90a414c350b6ad432e8bd662ee2688f7391ff08c71359516640",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos3",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-3-b9e1f1ef7c-B-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos3:B:M02",
+   "statement": "a proof that A's AP lengths are bounded (no IsAPOfLength-k subset for any k above the bound), matching the negation of Filter.Frequently",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 2,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/contract.json",
+   "contract_sha256": "b1f1987e309ed90a414c350b6ad432e8bd662ee2688f7391ff08c71359516640",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos3",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-3-b9e1f1ef7c-B-M02"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos3:B:M03",
+   "statement": "consistency of the construction with the library's IsAPOfLength conventions (difference-zero degenerate APs included or excluded exactly as the library decides)",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 3,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/contract.json",
+   "contract_sha256": "b1f1987e309ed90a414c350b6ad432e8bd662ee2688f7391ff08c71359516640",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos3",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-3-b9e1f1ef7c-B-M03"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos3:BRANCH_B",
+   "statement": "NEGATIVE: construct (or prove existence of) a set A ⊆ ℕ with ∑_{n∈A} 1/n = ∞ whose attained AP lengths are bounded above — i.e. there is some K such that for all k > K, no S ⊆ A has S.IsAPOfLength k. This is the exact negation of ∃ᶠ; it suffices that only finitely many lengths k are attained (e.g. no APs longer than some fixed K0), which is weaker than missing one specific length while possibly containing longer APs.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos3:B:M01",
+    "erdos3:B:M02",
+    "erdos3:B:M03"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/contract.json",
+   "contract_sha256": "b1f1987e309ed90a414c350b6ad432e8bd662ee2688f7391ff08c71359516640",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos3",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-3-b9e1f1ef7c-B-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos3:ROOT",
+   "statement": "Erdos problem 3 (erdosproblems.com/3, OPEN). Verbatim source statement: \"If $A\\subseteq \\mathbb{N}$ has $\\sum_{n\\in A}\\frac{1}{n}=\\infty$ then must $A$ contain arbitrarily long arithmetic progressions?\" Formalized (Lean, verbatim): ∀ A : Set ℕ, (¬ Summable fun a : A ↦ 1 / (a : ℝ)) → ∃ᶠ (k : ℕ) in Filter.atTop, ∃ S ⊆ A, S.IsAPOfLength k. The conclusion is Filter.Frequently at ∃ᶠ: for every N there exists some k ≥ N such that A contains an arithmetic progression of length k — i.e. AP lengths attained by A are unbounded (infinitely many lengths k are realized), NOT that every k is realized.",
+   "kind": "CANONICAL_ROOT",
+   "depends_on": [
+    "erdos3:BRANCH_A",
+    "erdos3:BRANCH_B"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "root_by_construction",
+   "closure_mode": "DISJUNCTIVE",
+   "satisfied_by_any": [
+    "erdos3:BRANCH_A",
+    "erdos3:BRANCH_B"
+   ],
+   "root_kind": "NOT_DECIDABLE",
+   "root_disqualifiers": [
+    "ASYMPTOTIC",
+    "SERIES_MEASURE",
+    "UNBOUNDED_FORALL"
+   ],
+   "formal_root": {
+    "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/3.lean",
+    "category": "category research open, AMS 11",
+    "declaration": "erdos_3",
+    "statement": "answer(sorry) ↔ ∀ A : Set ℕ, (¬ Summable fun a : A ↦ 1 / (a : ℝ)) → ∃ᶠ (k : ℕ) in Filter.atTop, ∃ S ⊆ A, S.IsAPOfLength k"
+   },
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/contract.json",
+   "contract_sha256": "b1f1987e309ed90a414c350b6ad432e8bd662ee2688f7391ff08c71359516640",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos3",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos3:LEM:R001:L1",
+   "statement": "divergent reciprocal sum does not imply positive upper density (primes are a rigorous counterexample, confirmed computationally)",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 3,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries R001's close by registry designation; a machine-verified concrete counterexample to L1 is banked, no candidate proof or artifact exists to demonstrate non-load-bearing survival, so the route is dead.",
+    "seq": 4
+   },
+   "history": [
+    {
+     "seq": 3,
+     "status": "FALSE",
+     "utc": "2026-09-01T13:34:59Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos3:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos3",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos3:LEM:R002:12.4",
+   "statement": "Packet supplies no lemma statement and no contract body; sha a0fe5277bec398c5 unverifiable; verifier built and self-tested, packet run fail-closed CERT_REFUSED; nothing certified.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R002",
+   "lemma_id": "12.4",
+   "registry_status": "UNTESTED",
+   "registry_seq": 7,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 refuted by a machine-verified banked counterexample; load-bearing for R002's bridge from divergent reciprocal sum to unbounded attained AP lengths, and no surviving argument exists with L1 deleted (no candidate proof or artifacts supplied), so the K8 non-load-bearing exception fails",
+    "seq": 10
+   },
+   "history": [
+    {
+     "seq": 7,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T13:54:43Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos3:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "Packet supplies no lemma statement and no contract body; sha a0fe5277bec398c5 unverifiable; verifier built and self-tested, packet run fail-closed CERT_REFUSED; nothing certified."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos3",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos3:LEM:R002:L1",
+   "statement": "Degenerate d=0 APs make the frozen Lean statement trivially true for every nonempty A (S={0} attains all k); divergence hypothesis is dead weight — re-freeze with nondegenerate IsAPOfLength.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R002",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 9,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 refuted by a machine-verified banked counterexample; load-bearing for R002's bridge from divergent reciprocal sum to unbounded attained AP lengths, and no surviving argument exists with L1 deleted (no candidate proof or artifacts supplied), so the K8 non-load-bearing exception fails",
+    "seq": 10
+   },
+   "history": [
+    {
+     "seq": 6,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T13:50:09Z"
+    },
+    {
+     "seq": 6,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T13:57:18Z"
+    },
+    {
+     "seq": 8,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T14:57:45Z"
+    },
+    {
+     "seq": 9,
+     "status": "FALSE",
+     "utc": "2026-09-01T15:00:19Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos3:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos3",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos3:LEM:R003:L1",
+   "statement": "greedy/Behrend-type AP-free sets show per-doubling reciprocal contribution decaying to 0 at all tested N (exact data N≤4096), so greedy avoidance does not yield divergent ∑1/n; the full open problem (branches A and B) remains untouched by finite evidence.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 12,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified counterexample and no argument shows the route's close survives without it; no candidate proof exists to exhibit an L1-free path, so R003 is dead under K8.",
+    "seq": 13
+   },
+   "history": [
+    {
+     "seq": 12,
+     "status": "FALSE",
+     "utc": "2026-09-01T15:02:36Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos3:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos3",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos3:LEM:R004:CERT",
+   "statement": "contract artifact missing: reduction \"none\" and residual claim \"per contract\" provide no verifiable object; fail-closed abort, no certificate issued.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "CERT",
+   "registry_status": "UNTESTED",
+   "registry_seq": 17,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified concrete counterexample; no surviving close shown without it, so the route is dead under Wang 4.1.",
+    "seq": 19
+   },
+   "history": [
+    {
+     "seq": 17,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:02:54Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos3:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "contract artifact missing: reduction \"none\" and residual claim \"per contract\" provide no verifiable object; fail-closed abort, no certificate issued."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos3",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos3:LEM:R004:L1",
+   "statement": "Divergent reciprocal sum does not imply positive upper Banach density (primes are a rigorous counterexample); Szemerédi transfer fails and must be repaired with an unproven piecewise-density mechanism.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 18,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified concrete counterexample; no surviving close shown without it, so the route is dead under Wang 4.1.",
+    "seq": 19
+   },
+   "history": [
+    {
+     "seq": 15,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T15:05:33Z"
+    },
+    {
+     "seq": 16,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T18:57:43Z"
+    },
+    {
+     "seq": 18,
+     "status": "FALSE",
+     "utc": "2026-09-01T19:03:41Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos3:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos3",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos3:LEM:R005:L1",
+   "statement": "3-AP-free sets with divergent reciprocal sum exist via Behrend-type constructions, so finite-N admissibility always forcing a 3-AP fails asymptotically; fixed-k results are non-results per contract.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R005",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 21,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 has a machine-recorded concrete counterexample and no surviving argument proves the close of R005 verbatim without it, so the route cannot deliver the required universal certificate.",
+    "seq": 22
+   },
+   "history": [
+    {
+     "seq": 21,
+     "status": "FALSE",
+     "utc": "2026-09-01T19:06:01Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos3:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos3",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos3:LEM:R006:L1",
+   "statement": "Stated values 4,4,5,6,11 contradict exact enumeration (true: 1,2,2,3,4,4,4,4,5,5,6 for N<=11, exhaustive integer verifier, fail-closed); ILP and H<=3.1 claims ship no witness/outward cover and no analytic reduction (field 'none'), so uncertifiable as stated; repair = restate finite fragment for N<=1",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos3:DEMAND:R006:L1:1"
+   ],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R006",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 27,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 was load-bearing: the route's only certified content was a local finite computation with no global construction or transference to a divergent-sum set with bounded AP lengths; deleting L1 leaves no surviving close, so the machine-verified counterexample kills the route.",
+    "seq": 28
+   },
+   "history": [
+    {
+     "seq": 24,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:08:57Z"
+    },
+    {
+     "seq": 27,
+     "status": "FALSE",
+     "utc": "2026-09-02T00:57:46Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos3:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "leaf_tactic_hint": "interval_cases",
+   "hint_source": "bounded_forall_over_N",
+   "leaf_tactic_sketch": "intro a; interval_cases a <;> decide",
+   "leaf_tactic_alternatives": [
+    "decide",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos3",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos3:DEMAND:R006:L1:1",
+   "statement": "restate finite fragment for N<=1",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "repair =",
+   "demand_rank": 1,
+   "demand_strength": "STRONG",
+   "route_status": "DEAD",
+   "demand_source_text": "Stated values 4,4,5,6,11 contradict exact enumeration (true: 1,2,2,3,4,4,4,4,5,5,6 for N<=11, exhaustive integer verifier, fail-closed); ILP and H<=3.1 claims ship no witness/outward cover and no analytic reduction (field 'none'), so uncertifiable as stated; repair = restate finite fragment for N<=1",
+   "route_id": "R006",
+   "lemma_id": "L1",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos3:LEM:R006:L1",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos3",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos3:LEM:R006:cert",
+   "statement": "Exact rational/integer verifier confirms residual per contract with all signs resolved; fail-closed, deterministic, stdlib-only.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R006",
+   "lemma_id": "cert",
+   "registry_status": "PROVED",
+   "registry_seq": 25,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 was load-bearing: the route's only certified content was a local finite computation with no global construction or transference to a divergent-sum set with bounded AP lengths; deleting L1 leaves no surviving close, so the machine-verified counterexample kills the route.",
+    "seq": 28
+   },
+   "history": [
+    {
+     "seq": 25,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:14:26Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos3:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_r3_5 | Kernel decision establishes the finite N=5 fragment: every 3-term-arithmetic-progression-free subset of Fin 5 has cardinality at most 4, and the explicit witness {0,1,3,4} is 3-term-arithmetic-progression-free with cardinality 4. This fragment does not establish divergent reciprocal sum or bounded AP lengths for an infinite set. | by decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_r3_5 = true | Kernel decision checks the N=5 finite fragment: every 3-term-arithmetic-progression-free subset of Fin 5 has cardinality at most 4, and {0,1,3,4} is a 3-term-arithmetic-progression-free witness of cardinality 4. This fragment does not establish the infinite divergent-reciprocal-sum counterexample or close Erdos problem 3. | by decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_r3_5 = true | Kernel decision checks the finite N=5 fragment: every subset of Fin 5 with no strictly increasing three-term arithmetic progression has cardinality at most 4, and the explicit subset {0,1,3,4} is progression-free with cardinality 4. This is only a finite fragment and does not establish the full Erdős problem or a divergent-reciprocal-sum counterexample. | by decide"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos3",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos3:LEM:R007:L1_greedy3free_recip_diverges",
+   "statement": "Exact-integer fail-closed verifier (CPython>=3.10, fractions/int only, require-raise, PASS) certifies for k<=12: greedy 3-free S on [0,3^12) equals ternary-{0,1} digit set, |S∩[0,3^k)|=2^k, Delta_k=2^k, 3AP-free, greedy; scope: finite window only; divergence half uncertifiable because packet defines",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R007",
+   "lemma_id": "L1_greedy3free_recip_diverges",
+   "registry_status": "PROVED",
+   "registry_seq": 33,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 29,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T00:58:55Z"
+    },
+    {
+     "seq": 30,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T00:59:27Z"
+    },
+    {
+     "seq": 31,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:00:07Z"
+    },
+    {
+     "seq": 32,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:01:21Z"
+    },
+    {
+     "seq": 33,
+     "status": "PROVED",
+     "utc": "2026-09-02T01:02:27Z"
+    }
+   ],
+   "court": [
+    "court"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos3:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos3",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos3:LEM:R008:L1",
+   "statement": "round 2 re-confirms vacuity: candidate slot empty, all twelve attacks vacuous, nothing falsified or proved; repair unchanged — scheduler must supply a concrete R008 lemma; imported sibling REFUTATION evidence (erdos244/erdos359 density-vs-natural-density) remains UNTESTED here as no candidate exists",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R008",
+   "lemma_id": "L1",
+   "registry_status": "UNTESTED",
+   "registry_seq": 44,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 35,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:06:01Z"
+    },
+    {
+     "seq": 36,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:06:36Z"
+    },
+    {
+     "seq": 37,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:07:08Z"
+    },
+    {
+     "seq": 38,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:07:35Z"
+    },
+    {
+     "seq": 39,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T02:08:19Z"
+    },
+    {
+     "seq": 40,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:09:42Z"
+    },
+    {
+     "seq": 41,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:10:15Z"
+    },
+    {
+     "seq": 42,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:11:01Z"
+    },
+    {
+     "seq": 43,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:12:44Z"
+    },
+    {
+     "seq": 44,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:13:36Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos3:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "round 2 re-confirms vacuity: candidate slot empty, all twelve attacks vacuous, nothing falsified or proved; repair unchanged — scheduler must supply a concrete R008 lemma; imported sibling REFUTATION evidence (erdos244/erdos359 density-vs-natural-density) remains UNTESTED here as no candidate exists"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos3",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos3:LEM:R008:L2",
+   "statement": "third-round vacuity audit: candidate slot empty, twelve attacks vacuously pass, no falsification possible; D-falsifier demand unanswered; sibling REFUTATION imports (erdos244, erdos359, erdos200, erdos1106, erdos1210, erdos247) remain UNTESTED hypotheses pending a concrete candidate; scheduler must ",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos3:DEMAND:R008:L2:1"
+   ],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R008",
+   "lemma_id": "L2",
+   "registry_status": "UNTESTED",
+   "registry_seq": 45,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 45,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:14:38Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos3:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "third-round vacuity audit: candidate slot empty, twelve attacks vacuously pass, no falsification possible; D-falsifier demand unanswered; sibling REFUTATION imports (erdos244, erdos359, erdos200, erdos1106, erdos1210, erdos247) remain UNTESTED hypotheses pending a concrete candidate; scheduler must "
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos3",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos3:DEMAND:R008:L2:1",
+   "statement": "concrete candidate;",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "pending a ",
+   "demand_rank": 4,
+   "demand_strength": "WEAK",
+   "route_status": "LIVE",
+   "demand_source_text": "third-round vacuity audit: candidate slot empty, twelve attacks vacuously pass, no falsification possible; D-falsifier demand unanswered; sibling REFUTATION imports (erdos244, erdos359, erdos200, erdos1106, erdos1210, erdos247) remain UNTESTED hypotheses pending a concrete candidate; scheduler must ",
+   "route_id": "R008",
+   "lemma_id": "L2",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos3:LEM:R008:L2",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos3",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos3:LEM:R008:L3",
+   "statement": "fourth-round vacuity: candidate slot \"none\", twelve attacks pass vacuously, nothing falsified or proved; D-falsifier demand unanswered; sibling REFUTATION imports (erdos244, erdos359, erdos200, erdos1106, erdos1210, erdos247) remain UNTESTED hypotheses pending a concrete candidate",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos3:DEMAND:R008:L3:1"
+   ],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R008",
+   "lemma_id": "L3",
+   "registry_status": "UNTESTED",
+   "registry_seq": 46,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 46,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:15:55Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos3:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "fourth-round vacuity: candidate slot \"none\", twelve attacks pass vacuously, nothing falsified or proved; D-falsifier demand unanswered; sibling REFUTATION imports (erdos244, erdos359, erdos200, erdos1106, erdos1210, erdos247) remain UNTESTED hypotheses pending a concrete candidate"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos3",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos3:DEMAND:R008:L3:1",
+   "statement": "concrete candidate",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "pending a ",
+   "demand_rank": 4,
+   "demand_strength": "WEAK",
+   "route_status": "LIVE",
+   "demand_source_text": "fourth-round vacuity: candidate slot \"none\", twelve attacks pass vacuously, nothing falsified or proved; D-falsifier demand unanswered; sibling REFUTATION imports (erdos244, erdos359, erdos200, erdos1106, erdos1210, erdos247) remain UNTESTED hypotheses pending a concrete candidate",
+   "route_id": "R008",
+   "lemma_id": "L3",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos3:LEM:R008:L3",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos3",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos3:LEM:R008:L4",
+   "statement": "round-4 vacuity audit: candidate slot \"none\", twelve Wang attacks run and settle nothing; scheduler must supply a concrete R008 lemma to answer D-falsifier demand D0; sibling imports stay UNTESTED pending a candidate",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos3:DEMAND:R008:L4:1"
+   ],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R008",
+   "lemma_id": "L4",
+   "registry_status": "UNTESTED",
+   "registry_seq": 47,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 47,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:16:15Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos3:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "round-4 vacuity audit: candidate slot \"none\", twelve Wang attacks run and settle nothing; scheduler must supply a concrete R008 lemma to answer D-falsifier demand D0; sibling imports stay UNTESTED pending a candidate"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos3",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos3:DEMAND:R008:L4:1",
+   "statement": "candidate",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "pending a ",
+   "demand_rank": 4,
+   "demand_strength": "WEAK",
+   "route_status": "LIVE",
+   "demand_source_text": "round-4 vacuity audit: candidate slot \"none\", twelve Wang attacks run and settle nothing; scheduler must supply a concrete R008 lemma to answer D-falsifier demand D0; sibling imports stay UNTESTED pending a candidate",
+   "route_id": "R008",
+   "lemma_id": "L4",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos3:LEM:R008:L4",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos3-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos3",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos3:FLEAF:66ba239c0f77e7e42f08:1",
+   "statement": "check_r3_5",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R006",
+   "lemma_id": "cert",
+   "route_status": "DEAD",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def apFree3 (s : Finset (Fin 5)) : Prop := ∀ a b c : Fin 5, a ∈ s → b ∈ s → c ∈ s → a < b → b < c → (b.val - a.val) ≠ (c.val - b.val)\n\ndef check_r3_5 : Prop := (∀ s : Finset (Fin 5), apFree3 s → s.card ≤ 4) ∧ apFree3 ({0, 1, 3, 4} : Finset (Fin 5)) ∧ ({0, 1, 3, 4} : Finset (Fin 5)).card = 4)",
+   "type_context": "Mathlib\ndef apFree3 (s : Finset (Fin 5)) : Prop := ∀ a b c : Fin 5, a ∈ s → b ∈ s → c ∈ s → a < b → b < c → (b.val - a.val) ≠ (c.val - b.val)\n\ndef check_r3_5 : Prop := (∀ s : Finset (Fin 5), apFree3 s → s.card ≤ 4) ∧ apFree3 ({0, 1, 3, 4} : Finset (Fin 5)) ∧ ({0, 1, 3, 4} : Finset (Fin 5)).card = 4)",
+   "proof": "by decide",
+   "claim": "Kernel decision establishes the finite N=5 fragment: every 3-term-arithmetic-progression-free subset of Fin 5 has cardinality at most 4, and the explicit witness {0,1,3,4} is 3-term-arithmetic-progression-free with cardinality 4. This fragment does not establish divergent reciprocal sum or bounded AP lengths for an infinite set.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "decide",
+   "supports": [
+    {
+     "node": "erdos3:LEM:R006:cert",
+     "evidence": "formalizer obligation route=R006 lemma=cert"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "leaf_tactic_sketch": "intro a s; interval_cases a <;> interval_cases s <;> decide",
+   "leaf_tactic_alternatives": [
+    "decide",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos3",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos3:FLEAF:66ba239c0f77e7e42f08:2",
+   "statement": "check_r3_5 = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R006",
+   "lemma_id": "cert",
+   "route_status": "DEAD",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def apFree3 (s : Finset (Fin 5)) : Prop := ∀ a b c : Fin 5, a ∈ s → b ∈ s → c ∈ s → a < b → b < c → (b.val - a.val) ≠ (c.val - b.val)\n\ndef check_r3_5 : Bool := decide ((∀ s : Finset (Fin 5), apFree3 s → s.card ≤ 4) ∧ apFree3 ({0, 1, 3, 4} : Finset (Fin 5)) ∧ ({0, 1, 3, 4} : Finset (Fin 5)).card = 4)",
+   "type_context": "Mathlib\ndef apFree3 (s : Finset (Fin 5)) : Prop := ∀ a b c : Fin 5, a ∈ s → b ∈ s → c ∈ s → a < b → b < c → (b.val - a.val) ≠ (c.val - b.val)\n\ndef check_r3_5 : Bool := decide ((∀ s : Finset (Fin 5), apFree3 s → s.card ≤ 4) ∧ apFree3 ({0, 1, 3, 4} : Finset (Fin 5)) ∧ ({0, 1, 3, 4} : Finset (Fin 5)).card = 4)",
+   "proof": "by decide",
+   "claim": "Kernel decision checks the N=5 finite fragment: every 3-term-arithmetic-progression-free subset of Fin 5 has cardinality at most 4, and {0,1,3,4} is a 3-term-arithmetic-progression-free witness of cardinality 4. This fragment does not establish the infinite divergent-reciprocal-sum counterexample or close Erdos problem 3.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 2,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "decide",
+   "supports": [
+    {
+     "node": "erdos3:LEM:R006:cert",
+     "evidence": "formalizer obligation route=R006 lemma=cert"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "leaf_tactic_sketch": "intro a s; interval_cases a <;> interval_cases s <;> decide",
+   "leaf_tactic_alternatives": [
+    "decide",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos3",
+   "is_leaf": true,
+   "manufacture_target": false
+  }
+ ]
+}

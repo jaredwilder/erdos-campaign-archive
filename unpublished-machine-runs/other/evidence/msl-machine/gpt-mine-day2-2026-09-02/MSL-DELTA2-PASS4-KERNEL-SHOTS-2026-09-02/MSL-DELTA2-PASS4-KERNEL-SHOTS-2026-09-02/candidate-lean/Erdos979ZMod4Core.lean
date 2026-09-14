@@ -1,0 +1,8 @@
+import Mathlib
+
+set_option autoImplicit false
+
+/-- Modular core: a sum of two squares is never 3 modulo 4. -/
+theorem erdos979_two_squares_ne_three (x y : ZMod 4) :
+    x ^ 2 + y ^ 2 ≠ 3 := by
+  fin_cases x <;> fin_cases y <;> norm_num

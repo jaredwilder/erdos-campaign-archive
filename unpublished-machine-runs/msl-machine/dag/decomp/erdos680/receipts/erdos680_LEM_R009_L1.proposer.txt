@@ -1,0 +1,19 @@
+{"definitions": "def leastPrimeFactor (m : Nat) : Nat := Nat.minFac m",
+  "parent_typed": {"name": "erdos680_clauseA", "binders": [],
+                   "statement": "∃ (N : Nat), ∀ (n : Nat), N ≤ n → ∃ (k : Nat), (0 : Nat) < k ∧ leastPrimeFactor (n + k) > k ^ (2 : Nat) + (1 : Nat)",
+                   "reading": "For all sufficiently large n there is a positive integer k with least prime factor p(n+k) > k²+1 (k is taken positive, which is the reading under which the clause is untested and obstructed by long prime gaps)."},
+  "children": [
+    {"name": "erdos680_prime_bridge", "binders": ["(n : Nat)", "(k : Nat)"],
+      "statement": "Nat.Prime (n + k) → n + k > k ^ (2 : Nat) + (1 : Nat) → leastPrimeFactor (n + k) > k ^ (2 : Nat) + (1 : Nat)",
+      "reading": "Bridge: if n+k is prime and n+k > k²+1, then p(n+k) > k²+1, since a prime is its own least prime factor."},
+    {"name": "erdos680_even_k1", "binders": ["(n : Nat)"],
+      "statement": "(2 : Nat) ≤ n → Even n → leastPrimeFactor (n + (1 : Nat)) > (1 : Nat) ^ (2 : Nat) + (1 : Nat)",
+      "reading": "Even case: every even n ≥ 2 admits the explicit witness k = 1, since n+1 is odd, so p(n+1) ≥ 3 > 1²+1."},
+    {"name": "erdos680_odd_k2", "binders": ["(n : Nat)"],
+      "statement": "(2 : Nat) ≤ n → Odd n → ¬((3 : Nat) ∣ n + (2 : Nat)) → ¬((5 : Nat) ∣ n + (2 : Nat)) → leastPrimeFactor (n + (2 : Nat)) > (2 : Nat) ^ (2 : Nat) + (1 : Nat)",
+      "reading": "Odd case: every odd n ≥ 2 with 3 ∤ n+2 and 5 ∤ n+2 admits the explicit witness k = 2, since n+2 is then coprime to 2·3·5, so p(n+2) ≥ 7 > 2²+1."},
+    {"name": "erdos680_odd_residual", "binders": [],
+      "statement": "∃ (N : Nat), ∀ (n : Nat), N ≤ n → Odd n → (((3 : Nat) ∣ n + (2 : Nat)) ∨ ((5 : Nat) ∣ n + (2 : Nat))) → ∃ (k : Nat), (0 : Nat) < k ∧ Nat.Prime (n + k) ∧ n + k > k ^ (2 : Nat) + (1 : Nat)",
+      "reading": "Residual (untested, hard): every sufficiently large odd n for which k = 2 fails (3 ∣ n+2 or 5 ∣ n+2) has a prime n+k > k²+1 at some positive offset k; this is the piece where the large-prime-gap obstruction lives."}
+  ],
+  "composition_claim": "Every n satisfies Even n ∨ Odd n, so with threshold N := max 2 N4 (N4 from child 4): an even n ≥ N is covered by child 2 with witness k = 1; an odd n ≥ N with 3 ∤ n+2 and 5 ∤ n+2 is covered by child 3 with witness k = 2; an odd n ≥ N with 3 ∣ n+2 ∨ 5 ∣ n+2 is covered by child 4, whose witness k > 0 with Nat.Prime (n+k) and n+k > k²+1 is converted by child 1 into leastPrimeFactor (n+k) > k²+1. These three cases exhaust all n ≥ N, so children 1–4 conjunctively imply the parent."}

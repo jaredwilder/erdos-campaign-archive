@@ -1,0 +1,17 @@
+{"definitions": "def Erdos456.pVal (n : Nat) : Nat := sInf {p : Nat | p.Prime ∧ p ≡ 1 [MOD n]}\ndef Erdos456.mVal (n : Nat) : Nat := sInf {m : Nat | 1 ≤ m ∧ n ∣ Nat.totient m}\ndef Erdos456.DensityOne (A : Set Nat) : Prop :=\n  ∀ (e : Rat), 0 < e → ∃ (N : Nat), ∀ (n : Nat), N ≤ n →\n    (1 - e : Rat) ≤ ((Finset.filter (fun (k : Nat) => k ∈ A) (Finset.Icc 1 n)).card : Rat) / (n : Rat)\ndef Erdos456.TendsToInfOn (A : Set Nat) (f : Nat → Rat) : Prop :=\n  ∀ (B : Rat), ∃ (N : Nat), ∀ (n : Nat), N ≤ n → n ∈ A → B < f n",
+  "parent_typed": {"name": "erdos456_A_M05", "binders": [],
+    "statement": "∃ (A : Set Nat), Erdos456.DensityOne A ∧\n  Erdos456.TendsToInfOn A (fun (n : Nat) => ((Erdos456.pVal n : Rat) / (Erdos456.mVal n : Rat)))",
+    "reading": "There is a single set A of density one, fixed before all threshold quantifiers, such that p_n/m_n tends to infinity along A; A does not depend on any epsilon or threshold."},
+  "children": [
+    {"name": "erdos456_A_M05_c1_minima_bounded", "binders": [],
+      "statement": "∀ (n : Nat), 1 ≤ n → n ≤ 24 → n ∣ Nat.totient (Erdos456.mVal n) ∧ Erdos456.mVal n ≤ Erdos456.pVal n",
+      "reading": "On the bounded anchor range 1 ≤ n ≤ 24, mVal n is a genuine witness for n ∣ φ(m) and does not exceed pVal n, so the ratio term in the limit is built from honest minima."},
+    {"name": "erdos456_A_M05_c2_fixed_set_limit", "binders": [],
+      "statement": "∀ (A : Set Nat), Erdos456.DensityOne A →\n  Erdos456.TendsToInfOn A (fun (n : Nat) => ((Erdos456.pVal n : Rat) / (Erdos456.mVal n : Rat)))",
+      "statement_note": "",
+      "reading": "For any fixed A: density-one of A (with ε quantified inside the definition of DensityOne) implies the threshold clause with A already fixed, thresholds B quantified only after A."},
+    {"name": "erdos456_A_M05_c3_univ_density_one", "binders": [],
+      "statement": "Erdos456.DensityOne Set.univ",
+      "reading": "The full set of naturals has density one, supplying an explicit witness for the existential set A chosen before the limit quantifiers."}
+  ],
+  "composition_claim": "Child 3 exhibits a fixed set A := Set.univ satisfying DensityOne, chosen before any threshold quantifier; child 2 then converts that fixed A into the TendsToInfOn clause whose threshold binder B comes after A, and child 1 certifies the ratio pVal n / mVal n rests on genuine minima on the anchor range. Together they instantiate the parent ∃ A, DensityOne A ∧ TendsToInfOn A ..., exactly the prose requirement that one density-one set is fixed prior to the Tendsto/limit quantifiers and independent of epsilon or threshold."}

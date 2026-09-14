@@ -1,0 +1,1604 @@
+{
+ "schema": "obligation-dag/1.0.0",
+ "problem": "erdos501",
+ "problem_number": "501",
+ "campaign": "erdos501-campaign-001",
+ "root": "erdos501:ROOT",
+ "contract_divergence": {
+  "authoritative": {
+   "role": "campaign",
+   "path": "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/contract.json",
+   "sha256": "ca3ca9c334b383f4e62d8d904eddcf9a4cbcb4ceba8bfc4d5616a2c0d1cdcc1b",
+   "declared_contract_sha256": "c2e77b436de366929a62579429d59d72ab88e8d7c13c3d2952c6764e6d54f044"
+  },
+  "others": [
+   {
+    "role": "ingest",
+    "path": "oracle/evidence/msl-machine/contracts/erdos501/contract.json",
+    "sha256": "43ee193335fd9cd3e2202f7bf9579e3fd41eb66416f380e02554ca69bf9076f3",
+    "declared_contract_sha256": "e8a4e073cf9e4755d8ef5fecc82efeffcd825db213301d356b40bb99684a029a",
+    "canonical_statement_matches_authoritative": true
+   },
+   {
+    "role": "launch_queue",
+    "path": "oracle/evidence/msl-machine/contracts/LAUNCH-QUEUE/erdos501.json",
+    "sha256": "810141589391cf016da705d8823aa6c960f4ecd665e42cbecb1c2db5c63d4c6d",
+    "declared_contract_sha256": null,
+    "canonical_statement_matches_authoritative": true
+   }
+  ],
+  "diverges": false
+ },
+ "courts": [
+  "court",
+  "closer",
+  "formalizer",
+  "kernel"
+ ],
+ "summary": {
+  "nodes": 26,
+  "proved_kernel": 0,
+  "proved_speaker": 6,
+  "computed_bounded": 0,
+  "open": 7,
+  "refuted": 13,
+  "orphans": 4,
+  "proof_obligations": 0,
+  "open_leaves_on_dead_routes": 0,
+  "root_kind": "NOT_DECIDABLE",
+  "root_disqualifiers": [
+   "INFINITUDE",
+   "SERIES_MEASURE",
+   "UNBOUNDED_FORALL_REAL"
+  ],
+  "formal_root": {
+   "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/501.lean",
+   "category": "category research open, AMS 5 28",
+   "declaration": "erdos_501",
+   "statement": "answer(sorry) ↔ ∀ (A : ℝ → Set ℝ), (∀ x, Bornology.IsBounded (A x)) → (∀ x, volume.toOuterMeasure (A x) < 1) → ∃ X : Set ℝ, X.Infinite ∧ X.Pairwise (fun x y => x ∉ A y)"
+  },
+  "leaf_frontier_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "leaf_frontier_reason": "6 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaf_frontier_deciding_leaf": {
+   "id": "erdos501:LEM:R005:L1",
+   "kind": "LEMMA",
+   "status": "PROVED_SPEAKER",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "Greedy deletion certificate: each round removes ≤ Δ+1 vertices, so |I|(Δ+1) ≥ n in ℤ, exact and fail-closed; transfer to canonical infinite statement is disclaimed in the lemma and separately refuted on record (erdos120 R005/L3), so scope is finite windows only."
+  },
+  "ladder_shape_reason": "the formal root is not decidable: INFINITUDE, SERIES_MEASURE, UNBOUNDED_FORALL_REAL (oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/501.lean). No leaf set can close it, however clean the leaves are. Leaf frontier, kept for the grind queue: HAS_OPEN_ANALYTIC_LEAF.",
+  "leaves": 23,
+  "open_leaves": 10,
+  "open_technical_leaves": 6,
+  "open_prose_obligations": 4,
+  "open_analytic_leaves": 6,
+  "ladder_shape": "ROOT_NOT_DECIDABLE",
+  "deciding_leaf": {
+   "id": "erdos501:ROOT",
+   "kind": "CANONICAL_ROOT",
+   "status": "OPEN",
+   "binding": "VERBATIM",
+   "leaf_tactic_hint": null,
+   "statement": "answer(sorry) ↔ ∀ (A : ℝ → Set ℝ), (∀ x, Bornology.IsBounded (A x)) → (∀ x, volume.toOuterMeasure (A x) < 1) → ∃ X : Set ℝ, X.Infinite ∧ X.Pairwise (fun x y => x ∉ A y)"
+  },
+  "orphan_detail": [
+   {
+    "id": "erdos501:A:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos501:A:M02",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos501:B:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos501:B:M02",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   }
+  ]
+ },
+ "validation": {
+  "acyclic": true,
+  "edges": 25,
+  "root_binds_verbatim": true,
+  "kernel_receipts_checked": 0
+ },
+ "nodes": [
+  {
+   "id": "erdos501:A:M01",
+   "statement": "For clause 1 prove either the full ZFC universal independent-set theorem or a full ZFC counterexample family.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/contract.json",
+   "contract_sha256": "ca3ca9c334b383f4e62d8d904eddcf9a4cbcb4ceba8bfc4d5616a2c0d1cdcc1b",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos501",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-501-524084e3b2-A-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos501:A:M02",
+   "statement": "For clause 2 provide/import a verified ZFC proof and the size-3 restriction lemma.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 2,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/contract.json",
+   "contract_sha256": "ca3ca9c334b383f4e62d8d904eddcf9a4cbcb4ceba8bfc4d5616a2c0d1cdcc1b",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos501",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-501-524084e3b2-A-M02"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos501:BRANCH_A",
+   "statement": "DIRECT ZFC DETERMINATION: resolve clause 1 in ZFC and retain the established affirmative ZFC resolution of clause 2.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos501:A:M01",
+    "erdos501:A:M02"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/contract.json",
+   "contract_sha256": "ca3ca9c334b383f4e62d8d904eddcf9a4cbcb4ceba8bfc4d5616a2c0d1cdcc1b",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos501",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-501-524084e3b2-A-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos501:B:M01",
+   "statement": "A CH counterexample is admissible as one side of an independence proof when all canonical hypotheses are checked, but by itself it is a conditional result rather than a complete ZFC verdict.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/contract.json",
+   "contract_sha256": "ca3ca9c334b383f4e62d8d904eddcf9a4cbcb4ceba8bfc4d5616a2c0d1cdcc1b",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos501",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-501-524084e3b2-B-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos501:B:M02",
+   "statement": "Supply the complementary consistency/positive side needed for a genuine independence conclusion.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 2,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/contract.json",
+   "contract_sha256": "ca3ca9c334b383f4e62d8d904eddcf9a4cbcb4ceba8bfc4d5616a2c0d1cdcc1b",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos501",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-501-524084e3b2-B-M02"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos501:BRANCH_B",
+   "statement": "INDEPENDENCE CLOSE: prove clause 1 independent of ZFC by giving the required relative-consistency directions/models for the exact bounded outer-measure family statement; clause 2 remains ZFC-affirmative.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos501:B:M01",
+    "erdos501:B:M02"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/contract.json",
+   "contract_sha256": "ca3ca9c334b383f4e62d8d904eddcf9a4cbcb4ceba8bfc4d5616a2c0d1cdcc1b",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos501",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-501-524084e3b2-B-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos501:ROOT",
+   "statement": "For every $x\\in\\mathbb{R}$ let $A_x\\subset \\mathbb{R}$ be a bounded set with outer measure $<1$. Must there exist an infinite independent set, that is, some infinite $X\\subseteq \\mathbb{R}$ such that $x\\not\\in A_y$ for all $x\\neq y\\in X$?If the sets $A_x$ are closed and have measure $<1$, then must there exist an independent set of size $3$?",
+   "kind": "CANONICAL_ROOT",
+   "depends_on": [
+    "erdos501:BRANCH_A",
+    "erdos501:BRANCH_B"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "root_by_construction",
+   "closure_mode": "DISJUNCTIVE",
+   "satisfied_by_any": [
+    "erdos501:BRANCH_A",
+    "erdos501:BRANCH_B"
+   ],
+   "root_kind": "NOT_DECIDABLE",
+   "root_disqualifiers": [
+    "INFINITUDE",
+    "SERIES_MEASURE",
+    "UNBOUNDED_FORALL_REAL"
+   ],
+   "formal_root": {
+    "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/501.lean",
+    "category": "category research open, AMS 5 28",
+    "declaration": "erdos_501",
+    "statement": "answer(sorry) ↔ ∀ (A : ℝ → Set ℝ), (∀ x, Bornology.IsBounded (A x)) → (∀ x, volume.toOuterMeasure (A x) < 1) → ∃ X : Set ℝ, X.Infinite ∧ X.Pairwise (fun x y => x ∉ A y)"
+   },
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/contract.json",
+   "contract_sha256": "ca3ca9c334b383f4e62d8d904eddcf9a4cbcb4ceba8bfc4d5616a2c0d1cdcc1b",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos501",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos501:LEM:R001:L1",
+   "statement": "Counterexample: n=3, A_x=[3]∖{x} (each of size n−1) realizes K3 with α=1 < ⌈log₂4⌉=2; the correct unconditional finite bound is only α≥1, with α≥1/(4c+1) under |A_x|≤cn, c<1/2 (computationally supported, n≤9).",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R001",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 3,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 has a machine-verified concrete counterexample; no surviving close or proof of non-load-bearing status exists, so the route is dead.",
+    "seq": 4
+   },
+   "history": [
+    {
+     "seq": 3,
+     "status": "FALSE",
+     "utc": "2026-09-01T22:32:48Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos501:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos501",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos501:LEM:R002:L1",
+   "statement": "Canonical universal statement refuted by on-record exact counterexample A=ℝ (erdos120 R002/L1, imported and re-checked: every affine image of ℝ is ℝ, no proper E contains it); no exact verifier possible over the unfrozen adversarial family — re-freeze to a finite decidable instance before recertific",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R002",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 10,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified concrete counterexample and no proof exists showing the close survives without it, so L1 is load-bearing and route R002 is dead.",
+    "seq": 11
+   },
+   "history": [
+    {
+     "seq": 6,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:43:15Z"
+    },
+    {
+     "seq": 7,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:43:37Z"
+    },
+    {
+     "seq": 8,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:56:04Z"
+    },
+    {
+     "seq": 9,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:56:22Z"
+    },
+    {
+     "seq": 10,
+     "status": "FALSE",
+     "utc": "2026-09-01T22:56:36Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos501:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos501",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos501:LEM:R003:L2",
+   "statement": "universal density bound α≥n/(⌊ρn⌋+1) fails exactly at n=8, ρ=1/2 (pairing family, α=2), and the obstruction provably does not lift to ℝ where A_x has bounded outer measure.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "L2",
+   "registry_status": "FALSE",
+   "registry_seq": 13,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L2 carries a machine-verified concrete counterexample; no proof exists that R003's close survives without it, so the route is dead.",
+    "seq": 14
+   },
+   "history": [
+    {
+     "seq": 13,
+     "status": "FALSE",
+     "utc": "2026-09-01T22:59:36Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos501:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos501",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos501:LEM:R004:L_fin",
+   "statement": "Finite density proxy (|A_x|≤(2/3)n) admits blocking families with no independent triple (n=3: A₁={2,3},A₂={1,3},A₃={1,2}; verified exhaustively n≤6), so naive finite-reduction of clause 2 fails — imported analogy to erdos120 R005/L3 non-transfer, re-earned by local brute force.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R004",
+   "lemma_id": "L_fin",
+   "registry_status": "FALSE",
+   "registry_seq": 16,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L_fin was the finite-to-infinite transfer lemma for the arbitrary outer-measure clause; with it concretely refuted, R004's close reduces to a restricted-family result, which the contract lists as a non-result.",
+    "seq": 17
+   },
+   "history": [
+    {
+     "seq": 16,
+     "status": "FALSE",
+     "utc": "2026-09-01T23:05:19Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos501:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "leaf_tactic_hint": "interval_cases",
+   "hint_source": "bounded_forall_over_Q",
+   "leaf_tactic_sketch": "intro a; interval_cases a <;> norm_num",
+   "leaf_tactic_alternatives": [
+    "norm_num",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos501",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos501:LEM:R005:L1",
+   "statement": "Greedy deletion certificate: each round removes ≤ Δ+1 vertices, so |I|(Δ+1) ≥ n in ℤ, exact and fail-closed; transfer to canonical infinite statement is disclaimed in the lemma and separately refuted on record (erdos120 R005/L3), so scope is finite windows only.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R005",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 20,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 19,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:07:22Z"
+    },
+    {
+     "seq": 20,
+     "status": "PROVED",
+     "utc": "2026-09-01T23:07:42Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos501:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos501",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos501:LEM:R006:L1",
+   "statement": "Fidelity of the counting-measure finite model falsified by n=2 cyclic-singleton family (legal in M, measure-trivial in ℝ); finite-window transfer also fails per imported erdos120 R005/L3.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R006",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 21,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 was the central (load-bearing) lemma of R006's close for clause 1; a machine-verified concrete counterexample against it leaves no surviving verbatim argument, and no proof of non-load-bearing status exists.",
+    "seq": 22
+   },
+   "history": [
+    {
+     "seq": 21,
+     "status": "FALSE",
+     "utc": "2026-09-01T23:08:44Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos501:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos501",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos501:LEM:R007:L1",
+   "statement": "Exact fail-closed verifier (Python 3.11, integer-only, exhaustive 2^5/2^3 enumeration, abort on mismatch) certifies α=2 extremizers: C5-complement witness {0,2} and directed-3-cycle witness under size-3-forbidding encoding; scope strictly finite surrogate, no transfer to outer measure claimed or cer",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R007",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 25,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 24,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:11:10Z"
+    },
+    {
+     "seq": 25,
+     "status": "PROVED",
+     "utc": "2026-09-01T23:11:51Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos501:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos501",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos501:LEM:R008:L2",
+   "statement": "certificate: deterministic fail-closed verifier (CPython3 stdlib only, byte-exact string equality, no floats, no network, every gate raises, sole PASS asserts fields match the literals none and per-contract AND each WANG 7.2 certificate line aborts as recorded: line1 at missing proved reduction, lin",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R008",
+   "lemma_id": "L2",
+   "registry_status": "PROVED",
+   "registry_seq": 78,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 27,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:13:33Z"
+    },
+    {
+     "seq": 28,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:14:06Z"
+    },
+    {
+     "seq": 29,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:14:20Z"
+    },
+    {
+     "seq": 30,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:14:39Z"
+    },
+    {
+     "seq": 31,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:14:59Z"
+    },
+    {
+     "seq": 32,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:15:14Z"
+    },
+    {
+     "seq": 33,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:15:59Z"
+    },
+    {
+     "seq": 34,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:16:19Z"
+    },
+    {
+     "seq": 35,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:16:37Z"
+    },
+    {
+     "seq": 36,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:18:11Z"
+    },
+    {
+     "seq": 37,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:18:26Z"
+    },
+    {
+     "seq": 38,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:18:38Z"
+    },
+    {
+     "seq": 39,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:18:54Z"
+    },
+    {
+     "seq": 40,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:19:09Z"
+    },
+    {
+     "seq": 41,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:19:22Z"
+    },
+    {
+     "seq": 42,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:19:38Z"
+    },
+    {
+     "seq": 43,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:19:55Z"
+    },
+    {
+     "seq": 44,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:20:10Z"
+    },
+    {
+     "seq": 45,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:20:28Z"
+    },
+    {
+     "seq": 46,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:20:41Z"
+    },
+    {
+     "seq": 47,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:20:57Z"
+    },
+    {
+     "seq": 48,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:21:11Z"
+    },
+    {
+     "seq": 49,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:21:29Z"
+    },
+    {
+     "seq": 50,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:21:46Z"
+    },
+    {
+     "seq": 51,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:21:59Z"
+    },
+    {
+     "seq": 52,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:22:10Z"
+    },
+    {
+     "seq": 53,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:22:29Z"
+    },
+    {
+     "seq": 54,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:22:41Z"
+    },
+    {
+     "seq": 55,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:22:57Z"
+    },
+    {
+     "seq": 56,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:23:14Z"
+    },
+    {
+     "seq": 57,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:23:24Z"
+    },
+    {
+     "seq": 58,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:23:43Z"
+    },
+    {
+     "seq": 59,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:23:57Z"
+    },
+    {
+     "seq": 60,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:24:09Z"
+    },
+    {
+     "seq": 61,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:24:23Z"
+    },
+    {
+     "seq": 62,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:24:38Z"
+    },
+    {
+     "seq": 63,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:24:53Z"
+    },
+    {
+     "seq": 64,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:25:12Z"
+    },
+    {
+     "seq": 65,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:25:24Z"
+    },
+    {
+     "seq": 66,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:27:15Z"
+    },
+    {
+     "seq": 67,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:27:34Z"
+    },
+    {
+     "seq": 68,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:27:46Z"
+    },
+    {
+     "seq": 69,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:27:59Z"
+    },
+    {
+     "seq": 70,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:28:11Z"
+    },
+    {
+     "seq": 71,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:28:31Z"
+    },
+    {
+     "seq": 72,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:28:43Z"
+    },
+    {
+     "seq": 73,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:29:05Z"
+    },
+    {
+     "seq": 74,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:31:26Z"
+    },
+    {
+     "seq": 75,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:31:42Z"
+    },
+    {
+     "seq": 76,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:31:55Z"
+    },
+    {
+     "seq": 77,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:32:11Z"
+    },
+    {
+     "seq": 78,
+     "status": "PROVED",
+     "utc": "2026-09-01T23:36:43Z"
+    }
+   ],
+   "court": [
+    "court"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos501:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos501",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos501:LEM:R009:L1",
+   "statement": "If every A_x subset of [n] has |A_x|<n/2 then the discretization is faithful to clause 2; refuted exactly at n=3,4,5 by explicit witnesses (A_0={1} at n=3,4 and doubly-oriented C5 at n=5) with alpha=2<3, so finite-window transfer to the real statement fails, adapted from erdos120 R005/L3",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R009",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 80,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 has a machine-verified concrete counterexample and no candidate proof or artifact exists demonstrating the close survives without it, so load-bearing status stands and the route is dead pending a new item per §4.2.",
+    "seq": 81
+   },
+   "history": [
+    {
+     "seq": 80,
+     "status": "FALSE",
+     "utc": "2026-09-01T23:38:44Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos501:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos501",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos501:LEM:R010:L1",
+   "statement": "witness A_i=[n]\\{i} (i=1..n) forces alpha=1 for all n>=2, verified exhaustively n=2..9; companion L2 alpha>=1/(2(1-delta)) supported and tight (alpha constant in n), so no finite-reduction to infinitary clause 1 exists — wall is the absent uniform measure gap; adapted from erdos120 R005/L3, UNTESTED",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R010",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 83,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified concrete counterexample and no surviving argument shows R010's close survives with L1 deleted; revival requires a repaired strictly-weaker lemma or new construction for the non-measurable clause-1 case.",
+    "seq": 84
+   },
+   "history": [
+    {
+     "seq": 83,
+     "status": "FALSE",
+     "utc": "2026-09-01T23:41:25Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos501:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos501",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos501:LEM:R011:L1",
+   "statement": "Lemma L1 (cyclic-family construction forces unbounded finite independence) is false: exact branch-and-bound over all families at N=3,4 and search at N≤18 shows min α=2 for all N≥3 under |A_x|≤N−1, so the finite model cannot carry the infinite-independence clause; import from erdos120-campaign-001 R0",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R011",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 86,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 was R011's central bridge (registry-designated) from its working core to the clause-1 universal independent-set claim; with the close text 'none' and zero artifacts, no surviving argument exists once L1 falls to its machine-verified counterexample — K8 fires; revival only via a repaired lemma wit",
+    "seq": 87
+   },
+   "history": [
+    {
+     "seq": 86,
+     "status": "FALSE",
+     "utc": "2026-09-01T23:44:00Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos501:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos501",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos501:LEM:R012:L7",
+   "statement": "L7 (\"every proper-arc family on C_N, N≥4, admits an independent pair\") is false: exact witness A_x={x+1,x+2 mod 4} on C_4 (all arcs proper, \"measure\" 1/2<1) has no independent pair, verified over all 6 pairs; finite transfer for clause 2 requires a positive-length gap parameter, bare arc incidence i",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R012",
+   "lemma_id": "L7",
+   "registry_status": "FALSE",
+   "registry_seq": 89,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L7 carries a machine-verified concrete counterexample and no surviving candidate proof exists to show L7 non-load-bearing (candidate=\"none\", artifacts=[]), so the route is dead; revival only via §4.2 new item (repaired weaker lemma, new representation, or certificate bypassing L7).",
+    "seq": 90
+   },
+   "history": [
+    {
+     "seq": 89,
+     "status": "FALSE",
+     "utc": "2026-09-01T23:50:42Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos501:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos501",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos501:LEM:R013:L1",
+   "statement": "Exact counterexample at N=10: A_x=Ω_10\\{x} satisfies |A_x|=9<=floor(0.9N) yet alpha=1; same adversary re-enters at every N>=10 so no density-only finite shadow of clause 1 exists; proves the finite-density route to clause 1 is structurally empty (imported refutation erdos120-campaign-001 R005/L3 re-",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R013",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 92,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Machine-verified counterexample falsifies central lemma L1; no surviving L1-free close can be demonstrated (candidate proof is \"none\"), so the lemma is load-bearing and route R013 is dead; revival requires a new item per §4.2, not a retelling.",
+    "seq": 93
+   },
+   "history": [
+    {
+     "seq": 92,
+     "status": "FALSE",
+     "utc": "2026-09-02T00:02:51Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos501:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos501",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos501:LEM:R014:L1",
+   "statement": "Concrete witness: on U_100, family A_i = U_100\\{i+1 mod 100} for i=0..99 — hypothesis |A_i|/100=0.99<1 holds uniformly, yet every pair {x,y} needs both x−y∈[1,1]... wait, k=1 gives x−y≡1 AND y−x≡1 mod 100, impossible; hence alpha=1 exactly — refutes finite lemma \"uniform measure<1 implies independen",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R014",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 95,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified concrete counterexample and no alternative close survives with L1 deleted; R014 is dead, revival only via a new §4.2 item (e.g. repaired lemma with strictly weaker assumptions).",
+    "seq": 96
+   },
+   "history": [
+    {
+     "seq": 95,
+     "status": "FALSE",
+     "utc": "2026-09-02T01:21:05Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos501:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos501",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos501:LEM:R015:L2",
+   "statement": "witness A_x=W\\{x} gives alpha=1 for all n>=3 by exhaustive enumeration, imported from erdos120-campaign-001 R005/L3 adapted",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R015",
+   "lemma_id": "L2",
+   "registry_status": "FALSE",
+   "registry_seq": 98,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L2 is R015's registry-designated central lemma and no close survives its deletion: complete candidate proof is \"none\" and artifacts are empty, so the not-load-bearing exception has no surviving argument to exhibit; banked machine-verified counterexample fires K8; revival only via Sec 4.2 new item, m",
+    "seq": 99
+   },
+   "history": [
+    {
+     "seq": 98,
+     "status": "FALSE",
+     "utc": "2026-09-02T01:25:10Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos501:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos501",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos501:LEM:R016:L1",
+   "statement": "Exact integer verifier (stdlib fractions, fail-closed) certifies for all N=2..8 (indeed all N>=2) that W_N=[N]\\{x} has alpha=1: an independent 2-set must lie in [N]\\W_N={x}, size 1<2; scope = finite statement only, the measure-only/infinite-transfer interpretation stays analytic per erdos120 R005/L3",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R016",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 102,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 101,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:34:44Z"
+    },
+    {
+     "seq": 102,
+     "status": "PROVED",
+     "utc": "2026-09-02T01:35:15Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos501:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos501",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos501:LEM:R017:L1",
+   "statement": "No finite/null family (A_x) on ℝ defeats clause 1: exact lifts of discrete alpha-1 extremizers (A_x={x+1}; interval cover [n,n+0.9]) each admit infinite independent set {n+1/2}/{n+0.95}, so the counting-measure model is domain drift; W1-lift refuted by measure premise.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R017",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 104,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "central lemma L1 has a machine-verified concrete counterexample and no surviving argument exists with L1 deleted (candidate proof = \"none\"), so the route is dead; revival only via a NEW item under Wang §4.2.",
+    "seq": 105
+   },
+   "history": [
+    {
+     "seq": 104,
+     "status": "FALSE",
+     "utc": "2026-09-02T01:42:04Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos501:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos501",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos501:LEM:R018:L1",
+   "statement": "Exact rational verifier (fail-closed, no floats): F=[-63/128,-1/128]∪[1/128,63/128] has exact measure 31/32<1, closed, and X={0,65/128,130/128} has all pairwise differences (65/128,130/128) strictly outside F (in gap (63/128,1) resp. beyond support), so X is F-independent. Scope: certifies the finit",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R018",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 108,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 107,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:48:40Z"
+    },
+    {
+     "seq": 108,
+     "status": "PROVED",
+     "utc": "2026-09-02T01:49:10Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos501:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos501",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos501:LEM:R019:L1",
+   "statement": "exact integer certificate: 2·bad_pairs ≤ mN, killed ≤ (mN/2)(N−2), and 6m<N−1 ⟹ killed < C(N,3), so an independent triple exists for all N≥3; scope strictly finite (no continuum transfer per erdos120 R005/L3), Fano N=7 sharpness subclaim excluded from scope.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R019",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 111,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 110,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:52:25Z"
+    },
+    {
+     "seq": 111,
+     "status": "PROVED",
+     "utc": "2026-09-02T02:26:40Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos501-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos501:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos501",
+   "is_leaf": true,
+   "manufacture_target": false
+  }
+ ]
+}

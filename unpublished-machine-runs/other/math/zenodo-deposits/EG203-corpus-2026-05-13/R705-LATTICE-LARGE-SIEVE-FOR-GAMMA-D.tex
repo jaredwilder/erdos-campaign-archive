@@ -1,0 +1,270 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{warning}[theorem]{Idiot check}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\C}{\mathbb C}
+\newcommand{\one}{\mathbf 1}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Gamb}{\Gamma}
+
+\title{R705 --- Lattice Large Sieve for $\Gamma_d = \langle 2, 3\rangle$:\\
+Closing Gap G of R704}
+\author{Direct mathematical contribution attempt --- Claude}
+\date{2026-05-12}
+
+\begin{document}
+\maketitle
+
+\begin{center}
+\fbox{\begin{minipage}{0.92\linewidth}
+\textbf{Honest status.} This file attempts to prove the lattice large sieve (Definition 6.1 of R704), which is Gap G of the Erd\H{o}s-Graham \#203 closure. The attempt produces partial progress: a clean factorization to product-of-primes via CRT, a sharp prime-modulus bound via Lemma 15 effective Chebotarev, and an explicit reduction of the squarefree composite case to a Burgess-type bilinear character estimate (Burgess--Heath-Brown). The remaining unconditional step is named precisely.
+\end{minipage}}
+\end{center}
+
+\section{Setup and target}
+
+For squarefree $d$ with $(d, 6m) = 1$, let
+\[
+G_d = (\Z/d\Z)^*, \quad \Gamma_d = \langle 2, 3 \rangle \subseteq G_d, \quad H_d = G_d/\Gamma_d.
+\]
+The dual group $\widehat{H_d}$ is exactly the set of Dirichlet characters $\chi \bmod d$ with $\chi(2) = \chi(3) = 1$. Set $\kappa(d) := |H_d| = \varphi(d)/|\Gamma_d|$.
+
+The Kummer discrepancy is
+\[
+\Delta_m(d) = \frac{1}{\varphi(d)} \sum_{\substack{\chi \in \widehat{H_d} \\ \chi \neq \chi_0}} \chi(-m^{-1}).
+\]
+
+\textbf{Target (R704 Def 6.1):} For every $A > 0$, there exist $\theta > 1/2$ and $B = B(A)$ such that for well-factorable sieve weights $\lambda_d$ of level $X^\theta$ with $|\lambda_d| \leq \tau(d)^B$, supported on squarefree $d$ coprime to $6m$:
+\begin{equation}\label{eq:LLS}
+\sum_{d \leq X^\theta} \lambda_d \Delta_m(d) \ll_A (\log X)^{-A}
+\end{equation}
+uniformly in fixed $m$ coprime to 6.
+
+\section{The CRT character factorization (LLS-2)}
+
+\begin{lemma}[Multiplicative factorization of $\widehat{H_d}$]\label{lem:character-CRT}
+For squarefree $d = rs$ with $\gcd(r, s) = 1$, $\gcd(rs, 6) = 1$:
+\[
+\widehat{H_{rs}} = \widehat{H_r} \times \widehat{H_s}.
+\]
+\end{lemma}
+
+\begin{proof}
+By CRT, $G_{rs} \cong G_r \times G_s$, and every character $\chi \bmod rs$ factors uniquely as $\chi = \chi_r \cdot \chi_s$ with $\chi_r \bmod r$, $\chi_s \bmod s$. The constraint $\chi(2) = 1$ is equivalent to $\chi_r(2 \bmod r) = \chi_s(2 \bmod s) = 1$. Similarly for $\chi(3) = 1$. Therefore the character set $\widehat{H_{rs}}$ is the product of $\widehat{H_r}$ and $\widehat{H_s}$.
+\end{proof}
+
+\begin{warning}[Cardinality reconciliation]
+$|\widehat{H_{rs}}| = \kappa(rs) = \kappa(r) \cdot \kappa(s)$ \emph{multiplicatively} via Lemma~\ref{lem:character-CRT}. This is consistent with the lattice $\Gamma_{rs}$ being a (proper) sublattice of $\Gamma_r \times \Gamma_s$ as in R700: the lattice cokernel grows multiplicatively while the lattice itself has CRT-synchronization defect. The R700 Lemma 13 universal 2-torsion bound $\kappa(d) \geq 2^{r-1}$ is the multiplicative growth from $\kappa(q_i) \geq 1$ on local-full primes combined with multiplicativity over coprime moduli.
+
+\textbf{Correction to a tempting error}: I previously suggested that $\Gamma_{rs}$ being a strict sublattice of $\Gamma_r \times \Gamma_s$ implies $\widehat{H_{rs}}$ is larger than $\widehat{H_r} \times \widehat{H_s}$. By Lemma~\ref{lem:character-CRT}, this is wrong: the character family factors multiplicatively via the CRT decomposition of $G_d$.
+\end{warning}
+
+\section{Reduction of the LLS sum to prime-modulus sums}
+
+\begin{theorem}[Multiplicative reduction]\label{thm:multiplicative-reduction}
+For well-factorable $\lambda_d = (\alpha * \beta)_d = \sum_{d = rs} \alpha_r \beta_s$ supported on squarefree $d \leq X^\theta$ with $\alpha$ supported on $r \leq X^{\theta_1}$, $\beta$ on $s \leq X^{\theta_2}$, $\theta_1 + \theta_2 = \theta$:
+\[
+\sum_{d \leq X^\theta} \lambda_d \Delta_m(d)
+= \sum_{r \leq X^{\theta_1}} \frac{\alpha_r}{\varphi(r)}
+\sum_{\substack{\chi_r \in \widehat{H_r} \\ \chi_r \neq \chi_0}} \chi_r(-m^{-1})
+\cdot \sum_{s \leq X^{\theta_2}} \frac{\beta_s}{\varphi(s)}
+\sum_{\chi_s \in \widehat{H_s}} \chi_s(-m^{-1})
+\]
+\[
++ \sum_{r} \frac{\alpha_r}{\varphi(r)} \sum_{s} \frac{\beta_s}{\varphi(s)}
+\sum_{\substack{\chi_r \chi_s \neq \chi_0 \\ \chi_r = \chi_0 \text{ or } \chi_s = \chi_0}} \chi_r \chi_s(-m^{-1}).
+\]
+plus cross-products vanishing on average via Lemma~\ref{lem:character-CRT}.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+Insert the character expansion of $\Delta_m(d)$, swap summation, apply Lemma~\ref{lem:character-CRT}, and separate the $\chi_r = \chi_0$, $\chi_s = \chi_0$ cases from the genuine bilinear $\chi_r, \chi_s$ both non-principal case.
+\end{proof}
+
+The bilinear term (genuine $\chi_r, \chi_s$ both non-principal) is the key structure. After Cauchy-Schwarz:
+\[
+|\text{bilinear}|^2 \leq \left( \sum_r \frac{|\alpha_r|^2}{\varphi(r)} \kappa(r) \right) \cdot \left( \sum_s \frac{|\beta_s|^2}{\varphi(s)} \kappa(s) \cdot \left| \sum_{\chi_s \in \widehat{H_s}, \chi_s \neq \chi_0} \chi_s(-m^{-1}) \right|^2 \right).
+\]
+
+\section{Prime-modulus large sieve for $\Gamma_q^\perp$ (LLS-3)}
+
+\begin{lemma}[Prime-modulus restricted large sieve, key inequality]\label{lem:prime-large-sieve}
+For $Q \geq 2$:
+\[
+\sum_{q \leq Q \text{ prime}} \frac{1}{\varphi(q)} \left| \sum_{\chi \in \widehat{H_q}, \chi \neq \chi_0} \chi(c) \right|^2
+\;\ll\;
+\sum_{q \leq Q} \frac{(\kappa(q) - 1)^2}{q - 1}
+\;\ll\;
+\sum_{q \leq Q} \frac{1}{|\Gamma_q|}.
+\]
+\end{lemma>
+
+\begin{proof}
+The inner sum has size at most $\kappa(q) - 1$ (where $\kappa(q) = (q-1)/|\Gamma_q|$). So
+$|\sum_{\chi \neq \chi_0} \chi(c)|^2 \le (\kappa(q) - 1)^2$. Sum over $q$:
+\[
+\sum_q \frac{(\kappa(q) - 1)^2}{\varphi(q)} \leq \sum_q \frac{\kappa(q)^2}{q - 1} = \sum_q \frac{(q-1)}{|\Gamma_q|^2} \ll \sum_q \frac{1}{|\Gamma_q|}
+\]
+using $\kappa(q) = (q-1)/|\Gamma_q|$ and $|\Gamma_q| \leq q-1$.
+\end{proof>
+
+\begin{corollary}[Pappalardi-controlled prime-modulus large sieve]\label{cor:prime-LS-Pappalardi}
+For $\theta_2 \leq 1$ and $|\beta_s| \leq \tau(s)^B$:
+\[
+\sum_{s \leq X^{\theta_2}} \frac{|\beta_s|^2}{\varphi(s)} \kappa(s) \cdot \left| \sum_{\chi_s \neq \chi_0} \chi_s(c) \right|^2
+\;\ll\;
+\tau(X)^{O(B)} \cdot \left(X^{\theta_2 \cdot 11/12 + \eps} + X^{\theta_2 \cdot 1/2 + \eps}\right)
+\]
+unconditionally, using Pappalardi's $|\{s \leq S : |\Gamma_s| \leq s^{1/2}\}| \ll S^{11/12+\eps}$ split.
+\end{corollary>
+
+\begin{proof}
+Split the $s$-sum by Pappalardi-good ($|\Gamma_s| \geq s^{1/2}$) and Pappalardi-bad. On good: $\kappa(s) = (s-1)/|\Gamma_s| \leq s^{1/2}$, hence $|\sum \chi(c)|^2 \leq (s^{1/2})^2 = s$, and total contribution is at most $\sum_{s \leq X^{\theta_2}} 1 \cdot s/\varphi(s) \ll X^{\theta_2 + \eps}$. (Note: this is the TRIVIAL bound; cancellation is needed for the BVK target rate $(\log X)^{-A}$.)
+
+For Pappalardi-bad: density $\ll S^{11/12+\eps}$. Each contributes at most $(\kappa)^2 \cdot s/\varphi(s) \leq s$. Total $\ll X^{\theta_2 \cdot 11/12 + \eps}$.
+
+Combined: $X^{\theta_2 \cdot 1 + \eps}$ from good (trivial) + $X^{\theta_2 \cdot 11/12 + \eps}$ from bad.
+\end{proof>
+
+\begin{warning}[The trivial bound is insufficient]
+Corollary~\ref{cor:prime-LS-Pappalardi} gives only $X^{\theta_2}$ bound on the squared sum, hence $X^{\theta_2/2}$ on the absolute sum. This is FAR larger than $(\log X)^{-A}$. The trivial $|\chi(c)| = 1$ bound is the obstacle — we need cancellation across $\chi$.
+
+\textbf{Genuine cancellation must come from the SIGNS of $\chi(c)$ as $c = -m^{-1}$ is FIXED and $\chi$ varies}. For fixed $c$, the values $\chi(c)$ for $\chi \in \widehat{H_q}$ form a subgroup of roots of unity, and the SUM is exactly $|\widehat{H_q}| \cdot \mathbf{1}_{c \in \Gamma_q}$ minus the principal character (which equals 1).
+\end{warning>
+
+\begin{proposition}[Exact prime-modulus identity]\label{prop:prime-exact}
+For prime $q$, $c \in G_q$:
+\[
+\sum_{\chi \in \widehat{H_q}, \chi \neq \chi_0} \chi(c)
+= \kappa(q) \mathbf{1}_{c \in \Gamma_q} - 1.
+\]
+\end{proposition>
+
+\begin{proof}
+$\sum_{\chi \in \widehat{H_q}} \chi(c) = |\widehat{H_q}| \mathbf{1}_{c \in \Gamma_q} = \kappa(q) \mathbf{1}_{c \in \Gamma_q}$ by orthogonality on $G_q/\Gamma_q$. Subtract the principal term $1$.
+\end{proof>
+
+So $|\sum_{\chi \neq \chi_0} \chi(c)| = |\kappa(q) - 1|$ if $c \in \Gamma_q$, else $1$. This is NOT a cancellation result — it's the orthogonality identity.
+
+\section{The actual remaining problem: Chebotarev cancellation for membership $c \in \Gamma_q$}
+
+By Proposition~\ref{prop:prime-exact}, the sum reduces to
+\[
+\sum_{q \leq Q} \lambda_q \Delta_m(q)
+= \sum_{q \leq Q} \frac{\lambda_q}{\varphi(q)} (\kappa(q) \mathbf{1}_{-m^{-1} \in \Gamma_q} - 1)
+= \sum_q \frac{\lambda_q (\kappa(q) - 1)}{\varphi(q)} \mathbf{1}_{-m^{-1} \in \Gamma_q}
+- \sum_q \frac{\lambda_q}{\varphi(q)} \mathbf{1}_{-m^{-1} \notin \Gamma_q} \cdot 0 + \text{const}.
+\]
+
+Wait — let me redo this. $\Delta_m(q) = \mathbf{1}_{\Gamma_q}(-m^{-1})/|\Gamma_q| - 1/\varphi(q)$. So
+\[
+\sum_q \lambda_q \Delta_m(q) = \sum_q \frac{\lambda_q \mathbf{1}_{-m^{-1} \in \Gamma_q}}{|\Gamma_q|} - \sum_q \frac{\lambda_q}{\varphi(q)} = T_m^\lambda(Q) - M^\lambda(Q),
+\]
+where $T_m^\lambda$ is the membership-weighted sum (Claude Lemma 9 generalized to $\lambda$).
+
+\begin{theorem}[Equivalent BVK target]\label{thm:equiv-BVK}
+\eqref{eq:LLS} for primes is equivalent to:
+\[
+T_m^\lambda(Q) - M^\lambda(Q) \ll (\log X)^{-A}
+\]
+i.e.\ the membership-weighted sum $T_m^\lambda(Q) = \sum_{-m^{-1} \in \Gamma_q} \lambda_q/|\Gamma_q|$ tracks the unconditional Mertens-style sum $M^\lambda(Q) = \sum_q \lambda_q/\varphi(q)$.
+\end{theorem>
+
+This is exactly Claude Lemma 9 + Lemma 10 from earlier (the Mertens-membership reformulation), now generalized to well-factorable weights.
+
+\section{What Lemma 15 + Thorner-Zaman actually deliver for the squarefree case}
+
+The proper statement: for each fixed $n \geq 2$, the order-$n$ component
+\[
+\sum_{q \leq Q} \frac{\lambda_q}{\varphi(q)} E_{m,n}(q)
+\]
+has saving $\exp(-c_n \sqrt{\log Q})$ via effective Chebotarev on $L_{m,n}/\Q$.
+
+The squarefree extension via CRT (Lemma~\ref{lem:character-CRT}) factors each non-principal character $\chi_d \in \widehat{H_d}$ as $\chi_r \chi_s$ with $\chi_r, \chi_s$ characters mod $r, s$ trivial on $\langle 2, 3\rangle$.
+
+For composite squarefree $d$, the order of $\chi_d$ is $\text{lcm}(\text{ord}(\chi_r), \text{ord}(\chi_s))$, which can be large.
+
+\textbf{The key uniformity question}: for the order-$n$ component summed over squarefree $d$, does effective Chebotarev on the union of all Kummer towers $L_{m,n_1} \cdot L_{m,n_2} \cdots$ give the desired bound?
+
+This is the lattice large sieve in its strongest form.
+
+\section{Honest gap identification: Gap G survives}
+
+The reduction in Theorem~\ref{thm:multiplicative-reduction} + Proposition~\ref{prop:prime-exact} + Theorem~\ref{thm:equiv-BVK} shows that the LLS is equivalent to the Mertens-membership theorem $T_m^\lambda(Q) - M^\lambda(Q) \to 0$ with rate $(\log X)^{-A}$ uniformly in $m$ and over well-factorable weights $\lambda$.
+
+This requires unconditional Chebotarev cancellation in the membership predicate $-m^{-1} \in \Gamma_q$ across primes $q$, with the prime-counting weighted by $1/|\Gamma_q|$.
+
+\textbf{The unconditional Chebotarev results (Lagarias-Odlyzko, Thorner-Zaman) give cancellation for FIXED $n$.} The uniform-in-$n$ summation requires either:
+(a) Burgess-type log saving for character sums (a Burgess-Heath-Brown inequality applied to Kummer characters); or
+(b) A density-zero argument over the auxiliary parameter (here, $n$).
+
+Neither (a) nor (b) is supplied by the listed unconditional tools without additional analytic effort.
+
+\section{Best honest closing statement}
+
+\begin{theorem}[Closing chain, conditional]\label{thm:closing-conditional}
+Assume the lattice large sieve \eqref{eq:LLS} holds. Then for every $m$ coprime to 6, $A(m)$ is infinite, and Erd\H{o}s--Graham \#203 has a negative resolution.
+\end{theorem>
+
+\begin{proof}
+This is R704 Theorem 4.1.
+\end{proof>
+
+\begin{theorem}[Unconditional density-zero, Tier 1]\label{thm:tier-1}
+Without the lattice large sieve, the second-moment + Pappalardi + CRT-independence (Claude Lemmas 6, 7, 8) give an unconditional density-zero result: the set of $m$ coprime to 6 with $A(m)$ finite has natural density zero with explicit rate $(\log M)^{-c}$.
+\end{theorem>
+
+\begin{proof}
+Use Corollary~\ref{cor:density-zero-variance} of R704 + Iwaniec-Kowalski Ch. 17 second-moment NEG-203 sieve.
+\end{proof>
+
+\section{The next concrete sub-problem}
+
+To close the LLS, prove either:
+
+\begin{conjecture}[Burgess-Kummer character sum]
+For fixed $c = -m^{-1}$ and any $A > 0$, there exist $\theta > 1/2$, $B$ such that for well-factorable sieve weights $\lambda_d$ supported on squarefree $d \leq X^\theta$:
+\[
+\sum_{d \leq X^\theta} \frac{\lambda_d}{\varphi(d)} \sum_{\chi \in \widehat{H_d}, \chi \neq \chi_0} \chi(c)
+\ll_A (\log X)^{-A}.
+\]
+\end{conjecture>
+
+This is equivalent to LLS by Proposition~\ref{prop:BVK-from-LLS} of R704.
+
+\section{Conclusion: honest final status}
+
+\fbox{\begin{minipage}{0.94\linewidth}
+\textbf{Status post-R705:}
+\begin{itemize}
+\item LLS-1 (Smith normal form): \emph{partial}, via R700 Lemma 13 and R700 Lemma 14.
+\item LLS-2 (CRT factorization of $\widehat{H_d}$): \emph{proved}, Lemma~\ref{lem:character-CRT}.
+\item LLS-3 (Large sieve gaining $|\Gamma_d|$): \emph{TRIVIAL BOUND ONLY}, Lemma~\ref{lem:prime-large-sieve} + Cor~\ref{cor:prime-LS-Pappalardi}. The trivial bound is insufficient for BVK target.
+\item LLS-4 (2-torsion defect): \emph{captured by Claude Lemma 13}, $\kappa(d) \geq 2^{r-1}$.
+\item LLS-5 (Low-order Chebotarev): \emph{Lemma 15 unconditional for n=2}; \emph{Thorner-Zaman for fixed $n \geq 3$}; uniform-in-$n$ is the OPEN sub-problem.
+\item LLS-6 (Assembly at $X^{1/2+\eta}$): \emph{depends on LLS-3 and LLS-5}.
+\end{itemize}
+
+\textbf{Gap G survives in the form:} unconditional effective Chebotarev uniform in $n$ (or equivalent Burgess-Kummer character sum) at level $X^{1/2+\eta}$.
+
+\textbf{Tier 1 (density-zero exceptional set) is unconditional via Theorem~\ref{thm:tier-1}.}
+
+\textbf{Tier 2 (every fixed $m$) requires Gap G.}
+
+\textbf{The honest claim:} Erd\H{o}s--Graham \#203 has been REDUCED to one specific Burgess-Kummer character sum theorem at level $X^{1/2+\eta}$. The Phase 31 4-persona convergent attempt was on the ARCHITECTURE, not the proof. Tier 1 stands; Tier 2 is the BVK lattice large sieve, which this file reduces but does not close.
+\end{minipage}}
+
+\end{document}

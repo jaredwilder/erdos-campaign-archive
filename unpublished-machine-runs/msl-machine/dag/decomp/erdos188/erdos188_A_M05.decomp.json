@@ -1,0 +1,166 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos188",
+  "generated_utc": "2026-09-02T16:39:52Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos188:A:M05",
+    "statement": "Reviewer-mandated close condition: close_branch_A / must_determine: Branch A never names the actual deliverable for this problem — an explicit numerical value (or exact characterization) of min s, with both a colouring witnessing membership and an impossibility proof for k-1 (matching the known bounds 5 ≤ min s ≤ 10^7 from the frozen variants). It only says 'whatever the canonical statement asks'; for a determination problem with known finite bounds this leaves room for a 'BOUND-AS-ANSWER' close (e.g., reporting min s ≤ 10^7 or ≥ 5) that the non_results list would need to catch explicitly — it lists the trap generically but Branch A does not require the two-sided extremal proof *for min s specifically*.",
+    "statement_sha256": "bd22fc52d6021a81b0a0145170eb71cf32233752384e355aa4923a401b75c10c",
+    "kind": "MUST_DETERMINE",
+    "binding": "UNBOUND",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "What is the smallest $k$ such that $\\mathbb{R}^2$ can be red/blue coloured with no pair of red points unit distance apart, and no $k$-term arithmetic progression of blue points with distance $1$?",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos188-campaign-001/contract.json",
+    "sha256": "b35a7a0df87a0518e42ba0886b2026b4d7d5534d8979a510017bfbafb965649c"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos188:A:M05",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "7ff729ec9460af421eee3105397ecb9f795768276be7fcd8b6b4e9886f14bddd",
+    "prompt_chars": 4750,
+    "response_sha256": "0b409e616a5ad40e1532597bfa16a5a026cf30f4e72f7801983f7f4478507152",
+    "usage": {
+      "prompt_tokens": 1198,
+      "completion_tokens": 1427,
+      "total_tokens": 2625,
+      "cost": 0.00043892,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 128,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.00043892,
+        "upstream_inference_prompt_cost": 8.217e-05,
+        "upstream_inference_completions_cost": 0.00035675
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 808,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.00043892,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 39.95,
+    "utc": "2026-09-02T16:38:11Z"
+  },
+  "children": [],
+  "composition": {
+    "id": "erdos188:A:M05#COMPOSE",
+    "statement": "(composition not constructed)",
+    "kind": "COMPOSITION",
+    "depends_on": [],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "OPEN",
+    "problem": "erdos188",
+    "decomposed_from": "erdos188:A:M05",
+    "imports": "Mathlib",
+    "definitions": "def UnitDist (x y : EuclideanSpace ℝ (Fin 2)) : Prop := dist x y = (1 : ℝ)\n\ndef GoodColoring (c : EuclideanSpace ℝ (Fin 2) → Bool) (k : ℕ) : Prop :=\n  (∀ x y : EuclideanSpace ℝ (Fin 2), UnitDist x y → c x = true → c y = false) ∧\n  (∀ p v : EuclideanSpace ℝ (Fin 2), ‖v‖ = (1 : ℝ) →\n    ¬ ∀ i : Fin k, c (p + (i : ℝ) • v) = true)\n\ndef AdmissibleSet : Set ℕ :=\n  {k : ℕ | ∃ c : EuclideanSpace ℝ (Fin 2) → Bool, GoodColoring c k}",
+    "type_context": "Mathlib\ndef UnitDist (x y : EuclideanSpace ℝ (Fin 2)) : Prop := dist x y = (1 : ℝ)\n\ndef GoodColoring (c : EuclideanSpace ℝ (Fin 2) → Bool) (k : ℕ) : Prop :=\n  (∀ x y : EuclideanSpace ℝ (Fin 2), UnitDist x y → c x = true → c y = false) ∧\n  (∀ p v : EuclideanSpace ℝ (Fin 2), ‖v‖ = (1 : ℝ) →\n    ¬ ∀ i : Fin k, c (p + (i : ℝ) • v) = true)\n\ndef AdmissibleSet : Set ℕ :=\n  {k : ℕ | ∃ c : EuclideanSpace ℝ (Fin 2) → Bool, GoodColoring c k}",
+    "parent_typed": {
+      "statement": "∃ s : ℕ, IsLeast AdmissibleSet s",
+      "binders": [],
+      "reading": "There is a smallest k such that ℝ² admits a red/blue colouring with no red pair at unit distance and no blue k-term arithmetic progression of gap 1.",
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "type_gate_decomp": {
+        "ok": false,
+        "missing": [
+          "domain bound '5 m'",
+          "domain bound 'r 5'",
+          "domain bound 's 10'"
+        ],
+        "reason": "inherited type ascription or domain bound dropped",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": "parent",
+        "prose_contract_root_report": null
+      }
+    },
+    "composition_claim": {
+      "text": "Child 1 puts (4 : ℕ) ∈ AdmissibleSet, hence AdmissibleSet.Nonempty (child 3), and well-ordering of ℕ yields a least element s with IsLeast AdmissibleSet s; child 2 shows (10^7 : ℕ) ∉ AdmissibleSet, so s ≤ 10^7, and child 1 also forces s ≥ 5 — together the children determine the deliverable min s within the known bounds 5 ≤ min s ≤ 10^7, which is exactly the parent obligation.",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "COMPOSITION_NOT_RUN",
+      "counts_toward_parent": 0,
+      "reason": "no surviving child"
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "composition_receipt": "oracle/evidence/msl-machine/dag/decomp/erdos188/receipts/erdos188_A_M05_COMPOSE.composition.json"
+  },
+  "parent_new_depends_on": [
+    "erdos188:A:M05#COMPOSE"
+  ],
+  "rejected": [
+    {
+      "proposed_index": 1,
+      "statement": "∃ c : EuclideanSpace ℝ (Fin 2) → Bool, GoodColoring c (4 : ℕ)",
+      "binders": [],
+      "gate": "GATE2_BINDING",
+      "reason": "domain bound '5 m'; domain bound 'r 5'; domain bound 's 10' -- inherited type ascription or domain bound dropped",
+      "kernel_error": null
+    },
+    {
+      "proposed_index": 2,
+      "statement": "¬ ∃ c : EuclideanSpace ℝ (Fin 2) → Bool, GoodColoring c (10^7 : ℕ)",
+      "binders": [],
+      "gate": "GATE2_BINDING",
+      "reason": "domain bound '5 m'; domain bound 'r 5'; domain bound 's 10' -- inherited type ascription or domain bound dropped",
+      "kernel_error": null
+    },
+    {
+      "proposed_index": 3,
+      "statement": "AdmissibleSet.Nonempty",
+      "binders": [],
+      "gate": "GATE2_BINDING",
+      "reason": "domain bound '5 m'; domain bound 'r 5'; domain bound 's 10' -- inherited type ascription or domain bound dropped",
+      "kernel_error": null
+    }
+  ],
+  "counts": {
+    "proposed": 3,
+    "elaborated": 3,
+    "bound": 0,
+    "non_circular": 0,
+    "non_trivial": 0,
+    "surviving": 0,
+    "composition_kernel_checked": 0,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 0,
+    "counts_toward_parent_note": "composition OPEN: these children contribute ZERO toward the parent until it closes; they remain formal leaves for the rung loop"
+  },
+  "definitions": {
+    "block": "def UnitDist (x y : EuclideanSpace ℝ (Fin 2)) : Prop := dist x y = (1 : ℝ)\n\ndef GoodColoring (c : EuclideanSpace ℝ (Fin 2) → Bool) (k : ℕ) : Prop :=\n  (∀ x y : EuclideanSpace ℝ (Fin 2), UnitDist x y → c x = true → c y = false) ∧\n  (∀ p v : EuclideanSpace ℝ (Fin 2), ‖v‖ = (1 : ℝ) →\n    ¬ ∀ i : Fin k, c (p + (i : ℝ) • v) = true)\n\ndef AdmissibleSet : Set ℕ :=\n  {k : ℕ | ∃ c : EuclideanSpace ℝ (Fin 2) → Bool, GoodColoring c k}",
+    "gate0": {
+      "verdict": "DEFS_ELABORATE"
+    },
+    "campaign_vocabulary_prepended": [],
+    "normalization": {
+      "body": "def UnitDist (x y : EuclideanSpace ℝ (Fin 2)) : Prop := dist x y = (1 : ℝ)\n\ndef GoodColoring (c : EuclideanSpace ℝ (Fin 2) → Bool) (k : ℕ) : Prop :=\n  (∀ x y : EuclideanSpace ℝ (Fin 2), UnitDist x y → c x = true → c y = false) ∧\n  (∀ p v : EuclideanSpace ℝ (Fin 2), ‖v‖ = (1 : ℝ) →\n    ¬ ∀ i : Fin k, c (p + (i : ℝ) • v) = true)\n\ndef AdmissibleSet : Set ℕ :=\n  {k : ℕ | ∃ c : EuclideanSpace ℝ (Fin 2) → Bool, GoodColoring c k}",
+      "opens": [],
+      "dropped_imports": []
+    }
+  }
+}

@@ -1,0 +1,1039 @@
+{
+ "schema": "obligation-dag/1.0.0",
+ "problem": "erdos566",
+ "problem_number": "566",
+ "campaign": "erdos566-campaign-001",
+ "root": "erdos566:ROOT",
+ "contract_divergence": {
+  "authoritative": {
+   "role": "campaign",
+   "path": "oracle/evidence/msl-machine/campaigns/erdos566-campaign-001/contract.json",
+   "sha256": "92738d3832b8554f632f470bed9b9d9385585ed216724bafb49ff9672fdeeb4b",
+   "declared_contract_sha256": "e520f48cc9e45ffaa5f2464f39a630513a9d38362d09f2172202360dc14e5d89"
+  },
+  "others": [
+   {
+    "role": "ingest",
+    "path": "oracle/evidence/msl-machine/contracts/erdos566/contract.json",
+    "sha256": "5fbd4f125a77d397d6c693980286447de4dc951e78012e8c2115ca894e9e511f",
+    "declared_contract_sha256": "97c070e0dd0a3a7f911db67800d7fa8529b0aea77583ea4e3b4349b0dd91d8d2",
+    "canonical_statement_matches_authoritative": true
+   },
+   {
+    "role": "launch_queue",
+    "path": "oracle/evidence/msl-machine/contracts/LAUNCH-QUEUE/erdos566.json",
+    "sha256": "984dd804ccbf42dd691a35e1f8f4e0d3622267a02c60f6668f92edb490a34e24",
+    "declared_contract_sha256": null,
+    "canonical_statement_matches_authoritative": true
+   }
+  ],
+  "diverges": false
+ },
+ "courts": [
+  "court",
+  "closer",
+  "formalizer",
+  "kernel"
+ ],
+ "summary": {
+  "nodes": 19,
+  "proved_kernel": 0,
+  "proved_speaker": 2,
+  "computed_bounded": 1,
+  "open": 12,
+  "refuted": 4,
+  "orphans": 2,
+  "proof_obligations": 0,
+  "open_leaves_on_dead_routes": 6,
+  "root_kind": "DECIDABLE_BOUNDED",
+  "root_disqualifiers": [],
+  "formal_root": {
+   "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/566.lean",
+   "category": "category research open, AMS 5",
+   "declaration": "erdos_566",
+   "statement": "answer(sorry) ↔ ∀ (p : ℕ) (G : SimpleGraph (Fin p)), -- G is sparse: every induced subgraph on k ≥ 2 vertices has ≤ 2k - 3 edges (∀ S : Finset (Fin p), 2 ≤ S.card → (G.induce S).edgeSet.ncard ≤ 2 * S.card - 3) → -- Then G is Ramsey size linear ∃ c > (0 : ℝ), ∀ (n : ℕ) (H : SimpleGraph (Fin n)) [DecidableRel H.Adj], -- H has no isolated vertices (∀ v, 0 < H.degree v) → -- r̂(G,H) ≤ c · m (sizeRamsey G H : ℝ) ≤ c * H.edgeSet.ncard"
+  },
+  "leaf_frontier_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "leaf_frontier_reason": "5 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaf_frontier_deciding_leaf": {
+   "id": "erdos566:DEMAND:R003:LA1:1",
+   "kind": "CAPABILITY_DEMAND",
+   "status": "OPEN",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "a uniform proof of ∀G ∃c(G) ∀H r̂(G,H) ≤ c(G)|E(H)| with a finite reduction for the H-quantifier."
+  },
+  "ladder_shape_reason": "5 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaves": 13,
+  "open_leaves": 10,
+  "open_technical_leaves": 5,
+  "open_prose_obligations": 2,
+  "open_analytic_leaves": 5,
+  "ladder_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "deciding_leaf": {
+   "id": "erdos566:DEMAND:R003:LA1:1",
+   "kind": "CAPABILITY_DEMAND",
+   "status": "OPEN",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "a uniform proof of ∀G ∃c(G) ∀H r̂(G,H) ≤ c(G)|E(H)| with a finite reduction for the H-quantifier."
+  },
+  "orphan_detail": [
+   {
+    "id": "erdos566:A:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos566:B:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   }
+  ]
+ },
+ "validation": {
+  "acyclic": true,
+  "edges": 21,
+  "root_binds_verbatim": true,
+  "kernel_receipts_checked": 0
+ },
+ "nodes": [
+  {
+   "id": "erdos566:A:M01",
+   "statement": "Define the red/blue size-Ramsey parameter exactly and prove ∀ eligible G ∃c(G)>0 ∀ eligible H, r̂(G,H)≤c(G)|E(H)|, including small H such as K2.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos566-campaign-001/contract.json",
+   "contract_sha256": "92738d3832b8554f632f470bed9b9d9385585ed216724bafb49ff9672fdeeb4b",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos566-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos566",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-566-e327fbf94b-A-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos566:BRANCH_A",
+   "statement": "AFFIRMATIVE CLOSE: prove the exact size-Ramsey linear bound for every sparse G and every no-isolated-vertex H, with c depending only on G.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos566:A:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos566-campaign-001/contract.json",
+   "contract_sha256": "92738d3832b8554f632f470bed9b9d9385585ed216724bafb49ff9672fdeeb4b",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos566-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos566",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-566-e327fbf94b-A-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos566:B:M01",
+   "statement": "Give G satisfying the exact sparsity condition and prove ∀c>0 ∃ finite H with no isolated vertices and r̂(G,H)>c|E(H)|.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos566-campaign-001/contract.json",
+   "contract_sha256": "92738d3832b8554f632f470bed9b9d9385585ed216724bafb49ff9672fdeeb4b",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos566-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos566",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-566-e327fbf94b-B-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos566:BRANCH_B",
+   "statement": "NEGATIVE CLOSE: exhibit one eligible sparse G for which no G-dependent linear constant controls all no-isolated-vertex H.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos566:B:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos566-campaign-001/contract.json",
+   "contract_sha256": "92738d3832b8554f632f470bed9b9d9385585ed216724bafb49ff9672fdeeb4b",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos566-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos566",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-566-e327fbf94b-B-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos566:ROOT",
+   "statement": "Let $G$ be such that any subgraph on $k$ vertices has at most $2k-3$ edges. Is it true that, if $H$ has $m$ edges and no isolated vertices, then\\[R(G,H)\\ll m?\\]",
+   "kind": "CANONICAL_ROOT",
+   "depends_on": [
+    "erdos566:BRANCH_A",
+    "erdos566:BRANCH_B"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "root_by_construction",
+   "closure_mode": "DISJUNCTIVE",
+   "satisfied_by_any": [
+    "erdos566:BRANCH_A",
+    "erdos566:BRANCH_B"
+   ],
+   "root_kind": "DECIDABLE_BOUNDED",
+   "root_disqualifiers": [],
+   "formal_root": {
+    "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/566.lean",
+    "category": "category research open, AMS 5",
+    "declaration": "erdos_566",
+    "statement": "answer(sorry) ↔ ∀ (p : ℕ) (G : SimpleGraph (Fin p)), -- G is sparse: every induced subgraph on k ≥ 2 vertices has ≤ 2k - 3 edges (∀ S : Finset (Fin p), 2 ≤ S.card → (G.induce S).edgeSet.ncard ≤ 2 * S.card - 3) → -- Then G is Ramsey size linear ∃ c > (0 : ℝ), ∀ (n : ℕ) (H : SimpleGraph (Fin n)) [DecidableRel H.Adj], -- H has no isolated vertices (∀ v, 0 < H.degree v) → -- r̂(G,H) ≤ c · m (sizeRamsey G H : ℝ) ≤ c * H.edgeSet.ncard"
+   },
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos566-campaign-001/contract.json",
+   "contract_sha256": "92738d3832b8554f632f470bed9b9d9385585ed216724bafb49ff9672fdeeb4b",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos566-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos566",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos566:LEM:R001:L1",
+   "statement": "Constant c(G)=r̂(G,K₂) is definitional, making the lemma equivalent-strength to the open claim (circularity); needs a constant with independent proof.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 5,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 has a machine-verified concrete counterexample; no candidate proof exists demonstrating R001's close survives without L1, so the lemma is load-bearing and the route is dead.",
+    "seq": 6
+   },
+   "history": [
+    {
+     "seq": 3,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:33:45Z"
+    },
+    {
+     "seq": 5,
+     "status": "FALSE",
+     "utc": "2026-09-01T19:40:52Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos566-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos566:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos566",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos566:LEM:R001:cert",
+   "statement": "no instantiated residual or witness supplied; exact verifier cannot be built, fail-closed abort",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "cert",
+   "registry_status": "UNTESTED",
+   "registry_seq": 4,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 has a machine-verified concrete counterexample; no candidate proof exists demonstrating R001's close survives without L1, so the lemma is load-bearing and the route is dead.",
+    "seq": 6
+   },
+   "history": [
+    {
+     "seq": 4,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:39:01Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos566-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos566:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "no instantiated residual or witness supplied; exact verifier cannot be built, fail-closed abort"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos566",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos566:LEM:R002:L1",
+   "statement": "Exact integer pairing proof of n(n+1)/2; sign resolved to zero, no tolerance, deterministic, scope: n ≥ 1.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R002",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 9,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 8,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:45:49Z"
+    },
+    {
+     "seq": 9,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:50:06Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos566-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos566:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos566",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos566:LEM:R003:CANONICAL",
+   "statement": "k=1 endpoint makes eligible class empty (0 ≤ −1 false); repair: restrict sparsity condition to k≥2 before any closure attempt.",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos566:DEMAND:R003:CANONICAL:1"
+   ],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "CANONICAL",
+   "registry_status": "UNTESTED",
+   "registry_seq": 22,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma LA1 has a machine-recorded concrete counterexample and was load-bearing: without it the route has no ∀H transfer (its only bounds had |E(H)|-dependent constants), so branch A cannot close; no surviving argument exists with LA1 deleted, so the route is dead.",
+    "seq": 26
+   },
+   "history": [
+    {
+     "seq": 22,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:46:07Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos566-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos566:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "k=1 endpoint makes eligible class empty (0 ≤ −1 false); repair: restrict sparsity condition to k≥2 before any closure attempt."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos566",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos566:DEMAND:R003:CANONICAL:1",
+   "statement": "restrict sparsity condition to k≥2 before any closure attempt.",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "repair:",
+   "demand_rank": 2,
+   "demand_strength": "STRONG",
+   "route_status": "DEAD",
+   "demand_source_text": "k=1 endpoint makes eligible class empty (0 ≤ −1 false); repair: restrict sparsity condition to k≥2 before any closure attempt.",
+   "route_id": "R003",
+   "lemma_id": "CANONICAL",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos566:LEM:R003:CANONICAL",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos566-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos566",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos566:LEM:R003:L1",
+   "statement": "Exponential bound is correct but constant depends on |E(H)|; no linear ∀∃∀ transfer or finite reduction supplied, so it cannot close branch A — repair needs an explicit linear-in-|E(H)| bound lemma for all no-isolated H with c(G) independent of H.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 20,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma LA1 has a machine-recorded concrete counterexample and was load-bearing: without it the route has no ∀H transfer (its only bounds had |E(H)|-dependent constants), so branch A cannot close; no surviving argument exists with LA1 deleted, so the route is dead.",
+    "seq": 26
+   },
+   "history": [
+    {
+     "seq": 11,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:58:09Z"
+    },
+    {
+     "seq": 12,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:58:45Z"
+    },
+    {
+     "seq": 14,
+     "status": "PROVED",
+     "utc": "2026-09-01T20:01:58Z"
+    },
+    {
+     "seq": 15,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:37:05Z"
+    },
+    {
+     "seq": 16,
+     "status": "PROVED",
+     "utc": "2026-09-01T20:41:06Z"
+    },
+    {
+     "seq": 17,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:41:37Z"
+    },
+    {
+     "seq": 18,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:42:53Z"
+    },
+    {
+     "seq": 19,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:44:01Z"
+    },
+    {
+     "seq": 20,
+     "status": "PROVED",
+     "utc": "2026-09-01T20:45:02Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos566-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos566:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos566",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos566:LEM:R003:LA1",
+   "statement": "Constant depends on |E(H)| (quantifier slip ∀H vs ∃c after H); repair requires a uniform proof of ∀G ∃c(G) ∀H r̂(G,H) ≤ c(G)|E(H)| with a finite reduction for the H-quantifier.",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos566:DEMAND:R003:LA1:1"
+   ],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "LA1",
+   "registry_status": "FALSE",
+   "registry_seq": 25,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma LA1 has a machine-recorded concrete counterexample and was load-bearing: without it the route has no ∀H transfer (its only bounds had |E(H)|-dependent constants), so branch A cannot close; no surviving argument exists with LA1 deleted, so the route is dead.",
+    "seq": 26
+   },
+   "history": [
+    {
+     "seq": 10,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:57:09Z"
+    },
+    {
+     "seq": 13,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:59:07Z"
+    },
+    {
+     "seq": 21,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:45:20Z"
+    },
+    {
+     "seq": 23,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:46:35Z"
+    },
+    {
+     "seq": 24,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:46:54Z"
+    },
+    {
+     "seq": 25,
+     "status": "FALSE",
+     "utc": "2026-09-01T20:47:17Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos566-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos566:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos566",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos566:DEMAND:R003:LA1:1",
+   "statement": "a uniform proof of ∀G ∃c(G) ∀H r̂(G,H) ≤ c(G)|E(H)| with a finite reduction for the H-quantifier.",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "repair requires",
+   "demand_rank": 0,
+   "demand_strength": "STRONG",
+   "route_status": "DEAD",
+   "demand_source_text": "Constant depends on |E(H)| (quantifier slip ∀H vs ∃c after H); repair requires a uniform proof of ∀G ∃c(G) ∀H r̂(G,H) ≤ c(G)|E(H)| with a finite reduction for the H-quantifier.",
+   "route_id": "R003",
+   "lemma_id": "LA1",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos566:LEM:R003:LA1",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos566-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos566",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos566:LEM:R004:L1",
+   "statement": "Universal c fails at endpoint H=K2 since r̂(G,K2)=e(G)+1 is unbounded over eligible G; repair requires ∀G∃c(G)∀H quantifier order.",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos566:DEMAND:R004:L1:1"
+   ],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 31,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified concrete counterexample and no proof exists that R004's close survives with L1 deleted; the load-bearing certificate is broken, so the route is dead under Wang 4.1/K8.",
+    "seq": 32
+   },
+   "history": [
+    {
+     "seq": 30,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T21:40:00Z"
+    },
+    {
+     "seq": 31,
+     "status": "FALSE",
+     "utc": "2026-09-01T21:40:45Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos566-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos566:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos566",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos566:DEMAND:R004:L1:1",
+   "statement": "∀G∃c(G)∀H quantifier order.",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "repair requires",
+   "demand_rank": 0,
+   "demand_strength": "STRONG",
+   "route_status": "DEAD",
+   "demand_source_text": "Universal c fails at endpoint H=K2 since r̂(G,K2)=e(G)+1 is unbounded over eligible G; repair requires ∀G∃c(G)∀H quantifier order.",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos566:LEM:R004:L1",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos566-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos566",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos566:LEM:R004:L3",
+   "statement": "r̂(G,H)≤6|E(H)| with c(G)∈{1,2,6} on all exhaustively computed instances (G∈{K2,P3,C3}, H∈{K2,P3,K3}); full ∀G,∀H claim untested.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "COMPUTED_BOUNDED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "L3",
+   "registry_status": "COMPUTATION_SUPPORTED",
+   "registry_seq": 28,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified concrete counterexample and no proof exists that R004's close survives with L1 deleted; the load-bearing certificate is broken, so the route is dead under Wang 4.1/K8.",
+    "seq": 32
+   },
+   "history": [
+    {
+     "seq": 28,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T21:38:33Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos566-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos566:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_COMPUTATION_SUPPORTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "r̂(G,H)≤6|E(H)| with c(G)∈{1,2,6} on all exhaustively computed instances (G∈{K2,P3,C3}, H∈{K2,P3,K3}); full ∀G,∀H claim untested."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos566",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos566:LEM:R004:cert",
+   "statement": "fail-closed: analytic reduction absent and residual claim is a placeholder (\"per contract\"), so no exact or interval verifier can be instantiated without silent tolerance.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "cert",
+   "registry_status": "UNTESTED",
+   "registry_seq": 29,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified concrete counterexample and no proof exists that R004's close survives with L1 deleted; the load-bearing certificate is broken, so the route is dead under Wang 4.1/K8.",
+    "seq": 32
+   },
+   "history": [
+    {
+     "seq": 29,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T21:39:14Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos566-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos566:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "fail-closed: analytic reduction absent and residual claim is a placeholder (\"per contract\"), so no exact or interval verifier can be instantiated without silent tolerance."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos566",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos566:LEM:R005:L1",
+   "statement": "L1 is a tautological restatement of branch A and conflates vertex-Ramsey R(G,H) with size-Ramsey r̂(G,H); no transfer theorem supplied, so it fails the contract's non_results and known_traps (graph object drift).",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R005",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 36,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified concrete counterexample and no proof of non-load-bearing status was supplied, so the route's close cannot survive with the lemma deleted.",
+    "seq": 37
+   },
+   "history": [
+    {
+     "seq": 34,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T21:44:57Z"
+    },
+    {
+     "seq": 35,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T21:46:38Z"
+    },
+    {
+     "seq": 36,
+     "status": "FALSE",
+     "utc": "2026-09-01T21:48:16Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos566-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos566:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos566",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos566:LEM:R006:L1",
+   "statement": "L1=r̂(G,K_{1,m})≤c(G)m for all sparse G is necessary for Branch A; red-bipartite colouring kills bipartite hosts for odd-cycle G and no linear host construction or superlinear counterexample is certified, so the star sublemma is open and extremal_reduction is dead for it.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R006",
+   "lemma_id": "L1",
+   "registry_status": "UNTESTED",
+   "registry_seq": 40,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 39,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T21:59:58Z"
+    },
+    {
+     "seq": 40,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:32:28Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos566-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos566:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "L1=r̂(G,K_{1,m})≤c(G)m for all sparse G is necessary for Branch A; red-bipartite colouring kills bipartite hosts for odd-cycle G and no linear host construction or superlinear counterexample is certified, so the star sublemma is open and extremal_reduction is dead for it."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos566",
+   "is_leaf": true,
+   "manufacture_target": false
+  }
+ ]
+}

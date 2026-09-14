@@ -1,0 +1,22 @@
+{
+  "kind": "COMPOSITION_KERNEL_CHECK",
+  "node": "erdos1085:LEM:R006:L1#COMPOSE",
+  "verdict": {
+    "verdict": "COMPOSITION_OPEN",
+    "rc": 1,
+    "kernel_error": "/root/peer/decomp/b20260902_100310_3/erdos1085_LEM_R006_L1_comp.lean:25:830: error: unsolved goals",
+    "counts_toward_parent": 0
+  },
+  "lean_source": "oracle/evidence/msl-machine/dag/decomp/erdos1085/lean/erdos1085_LEM_R006_L1_COMPOSE.lean",
+  "ladder": [
+    "tauto",
+    "(intro h; exact h.1)",
+    "(intro h; simp_all)",
+    "(intro h; omega)",
+    "(intro h; norm_num at h ⊢ <;> tauto)",
+    "aesop",
+    "decide"
+  ],
+  "kernel_log": "/root/peer/decomp/b20260902_100310_3/erdos1085_LEM_R006_L1_comp.lean:25:830: error: unsolved goals\nh :\n  (∀ (d : ℕ), 1 ≤ d → IsMaxUnitPairs d 0 0 ∧ IsMaxUnitPairs d 1 0 ∧ IsMaxUnitPairs d 2 1) ∧\n    (∀ (n : ℕ), IsMaxUnitPairs 1 n (n - 1)) ∧\n      (∀ (d n : ℕ) (S : Finset (EuclideanSpace ℝ (Fin d))), #S = n → unitPairCount S ≤ n * (n - 1) / 2) ∧\n        (∃ S, #S = 4 ∧ unitPairCount S = 6) ∧ ∃ S, #S = 4 ∧ unitPairCount S = 6\n⊢ IsMaxUnitPairs 3 4 6 ∧ IsMaxUnitPairs 4 4 6\n'msl_erdos1085_lem_r006_l1_composition' depends on axioms: [propext, sorryAx, choice, Quot.sound]",
+  "utc": "2026-09-02T17:03:32Z"
+}

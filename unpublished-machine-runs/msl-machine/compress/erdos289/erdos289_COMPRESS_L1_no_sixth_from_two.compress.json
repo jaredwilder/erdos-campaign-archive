@@ -1,0 +1,200 @@
+{
+ "schema": "msl-compress/1.0.0",
+ "consumes_schema": "obligation-dag/1.0.0",
+ "problem": "erdos289",
+ "generated_utc": "2026-09-02T22:51:29Z",
+ "node": {
+  "id": "erdos289:COMPRESS:L1_no_sixth_from_two",
+  "statement": "theorem L1_no_sixth_from_two :\n    ∀ a ∈ Finset.Icc 2 60, ∀ b ∈ Finset.Icc (a + 1) 60,\n      runSum a b ≠ (1 : ℚ) / 6",
+  "kind": "COMBINED_THEOREM",
+  "depends_on": [
+   "erdos289:ORE:a15080a025550157",
+   "erdos289:ORE:377845d942ddb89d"
+  ],
+  "binding": "PARAPHRASE",
+  "binding_detail": "PARAPHRASE: proposed one level up from proved premises by msl_compress; the composed file re-checks it from zero",
+  "status": "OPEN",
+  "problem": "erdos289",
+  "declaration": "L1_no_sixth_from_two",
+  "type_context": "",
+  "lean_statement_line": "theorem L1_no_sixth_from_two ∀ a ∈ Finset.Icc 2 60 ∀ b ∈ Finset.Icc (a + 1) 60 : theorem L1_no_sixth_from_two :\n    ∀ a ∈ Finset.Icc 2 60, ∀ b ∈ Finset.Icc (a + 1) 60,\n      runSum a b ≠ (1 : ℚ) / 6 := by sorry",
+  "lean_binders": [
+   "∀ a ∈ Finset.Icc 2 60",
+   "∀ b ∈ Finset.Icc (a + 1) 60"
+  ],
+  "lean_preamble": "import Mathlib\nopen Finset\nset_option autoImplicit false\n/-!\nErdős 289, MSL round 2026-09-01.  Kernel targets, each an exact fragment.\n  F1  : 1/2 + 1/3 + 1/4 > 1        (the run containing 2 is forced to be [2,3])\n  F1' : 1 - (1/2 + 1/3) = 1/6       (the tail must sum to exactly 1/6)\n  W4n : pure-ℕ form of \"no run [a,b], 5 ≤ a < b ≤ 60, has reciprocal sum 1/6\":\n        with P = ∏ n and N = ∑ P/n over the run, 6·N ≠ P.   Kernel `decide`, Nat only.\n  W4b : the bridge  runSum a b = N / P  in ℚ, so W4n is the ℚ statement.\n-/\ndef runSum (a b : ℕ) : ℚ := ∑ n ∈ Icc a b, (1 : ℚ) / n\ndef runProd (a b : ℕ) : ℕ := ∏ n ∈ Icc a b, n\ndef runNum (a b : ℕ) : ℕ := ∑ n ∈ Icc a b, runProd a b / n\ntheorem F1_head_forced : (1 : ℚ) / 2 + 1 / 3 + 1 / 4 > 1 := by norm_num\ntheorem F1_tail_value : (1 : ℚ) - (1 / 2 + 1 / 3) = 1 / 6 := by norm_num\ntheorem W4_nat_fragment :\n    ∀ a ∈ Icc 5 60, ∀ b ∈ Icc (a + 1) 60, 6 * runNum a b ≠ runProd a b := by\n  decide +kernel\ntheorem runProd_pos (a b : ℕ) (ha : 1 ≤ a) : 0 < runProd a b := by\n  unfold runProd\n  apply Finset.prod_pos\n  intro n hn\n  have := (Finset.mem_Icc.mp hn).1\n  omega\ntheorem dvd_runProd (a b n : ℕ) (hn : n ∈ Icc a b) : n ∣ runProd a b :=\n  Finset.dvd_prod_of_mem _ hn\ntheorem W4_bridge (a b : ℕ) (ha : 1 ≤ a) :\n    runSum a b = (runNum a b : ℚ) / (runProd a b : ℚ) := by\n  have hP : (runProd a b : ℚ) ≠ 0 := by\n    exact_mod_cast (runProd_pos a b ha).ne'\n  unfold runSum runNum\n  rw [Nat.cast_sum, Finset.sum_div]\n  apply Finset.sum_congr rfl\n  have hd := dvd_runProd a b n hn\n  have hn0 : (n : ℚ) ≠ 0 := by\n    exact_mod_cast (show n ≠ 0 by omega)\n  rw [Nat.cast_div hd hn0]\n  field_simp\ndef sumScaled (L : Nat) (a b : Nat) : Nat :=\n  (List.range (b - a + 1)).foldl (fun s i => s + L / (a + i)) 0\ndef lcmRange (a b : Nat) : Nat :=\n  (List.range (b - a + 1)).foldl (fun l i => Nat.lcm l (a + i)) 1\n/-- k=1 fragment: no interval [a,b] with 2 <= a, length >= 2, b < B has sum of reciprocals = 1.\n    Exact: sum = 1 iff lcmRange a b = sumScaled (lcmRange a b) a b. --/\ndef checkK1 (B : Nat) : Bool :=\n  (List.range (B - 2)).all fun a =>\n    let start := a + 2\n    (List.range (B - start - 1)).all fun len =>\n      let b := start + len + 1\n      let L := lcmRange start b\n      sumScaled L start b ≠ L\n/-- Kuerschak finite fragment: no run of >= 2 consecutive denominators in [2, B) has\n    integral reciprocal sum: L = lcm of the run does not divide the scaled sum. --/\ndef checkNoIntegerRun (B : Nat) : Bool :=\n      sumScaled L start b % L ≠ 0\n",
+  "derivation_claim": "W4_fragment handles a ∈ Icc 5 60 directly; for a = 2, 3, 4 the lower bound runSum a b ≥ 1/a + 1/(a+1) ≥ 1/4 + 1/5 > 1/6 (monotonicity of runSum in b) rules out 1/6, so the ℚ statement follows; W4_bridge supplies the ℚ reading of the ℕ-level fragment.",
+  "rise": "LATERAL",
+  "origin": "PROPOSER",
+  "court": [],
+  "supports": [
+   "erdos289:FLEAF:987cb071355b04164228:8 (check_l1_fragment = true)"
+  ],
+  "sources": [
+   "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__L1_no_sixth_from_two.implication.lean",
+   "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__L1_no_sixth_from_two.standalone.lean"
+  ],
+  "type_gate": {
+   "ok": true,
+   "missing": [],
+   "reason": "",
+   "reference": null,
+   "used_type_context": false
+  },
+  "leaf_tactic_hint": "interval_cases",
+  "hint_source": "bounded_forall_over_Q",
+  "leaf_tactic_sketch": "intro a b; interval_cases a <;> interval_cases b <;> norm_num",
+  "leaf_tactic_alternatives": [
+   "norm_num",
+   "native_decide",
+   "bounded_search"
+  ]
+ },
+ "candidate": {
+  "t_id": "erdos289:COMPRESS:L1_no_sixth_from_two",
+  "theorem_name": "L1_no_sixth_from_two",
+  "origin": "PROPOSER",
+  "variant": "v1_direct",
+  "statement": "theorem L1_no_sixth_from_two :\n    ∀ a ∈ Finset.Icc 2 60, ∀ b ∈ Finset.Icc (a + 1) 60,\n      runSum a b ≠ (1 : ℚ) / 6",
+  "premises": [
+   "erdos289:ORE:a15080a025550157",
+   "erdos289:ORE:377845d942ddb89d"
+  ],
+  "discharges": "erdos289:FLEAF:987cb071355b04164228:8 (check_l1_fragment = true)",
+  "derivation_claim": "W4_fragment handles a ∈ Icc 5 60 directly; for a = 2, 3, 4 the lower bound runSum a b ≥ 1/a + 1/(a+1) ≥ 1/4 + 1/5 > 1/6 (monotonicity of runSum in b) rules out 1/6, so the ℚ statement follows; W4_bridge supplies the ℚ reading of the ℕ-level fragment.",
+  "reason": "It extends the no-run-sums-to-1/6 range from a ≥ 5 down to a ≥ 2, closing the L1 check outright instead of leaving the a ∈ {2,3,4} gap to a separate obligation.",
+  "gates": {
+   "order": [
+    "G1_SCHEMA",
+    "G2_TYPE",
+    "G3_CIRCULAR",
+    "G4_KILLED",
+    "G5_CONJUNCTION",
+    "G6_FALSIFY",
+    "G7_RISE"
+   ],
+   "passed": [
+    "G1_SCHEMA",
+    "G2_TYPE",
+    "G3_CIRCULAR",
+    "G4_KILLED",
+    "G5_CONJUNCTION",
+    "G6_FALSIFY",
+    "G7_RISE"
+   ],
+   "failed_at": null,
+   "detail": {
+    "G1_SCHEMA": {
+     "ok": true,
+     "reason": ""
+    },
+    "G2_TYPE": {
+     "standalone_ok": true,
+     "standalone_missing": [],
+     "referenced_missing": [],
+     "fatal": [],
+     "domain_bounds_dropped": [],
+     "ok": true,
+     "reason": ""
+    },
+    "G3_CIRCULAR": {
+     "ok": true,
+     "reason": ""
+    },
+    "G4_KILLED": {
+     "checked_against": 0,
+     "ok": true,
+     "reason": ""
+    },
+    "G5_CONJUNCTION": {
+     "conjunct_count": 1,
+     "t_len": 76,
+     "conjunction_len": 187,
+     "shorter_than_conjunction": true,
+     "generalizes": true,
+     "generalization_reason": "BOUND_EXTENSION: T's numeric bound exceeds a premise's",
+     "measure": "SHORTER_THAN_CONJUNCTION",
+     "ok": true,
+     "reason": ""
+    },
+    "G6_FALSIFY": {
+     "ok": true,
+     "state": "NOT_APPLICABLE",
+     "reason": "NOT_APPLICABLE: not a ∀ over a natural parameter"
+    },
+    "G7_RISE": {
+     "ok": true,
+     "verdict": "LATERAL",
+     "reasons": [
+      "NO_OPEN_NODE_DISCHARGED_OR_SHRUNK: kept and registered, excluded from tower height and compression ratio"
+     ]
+    }
+   },
+   "rise": "LATERAL"
+  },
+  "rise": "LATERAL",
+  "kernel": {
+   "verdict": "KERNEL_NOT_RUN",
+   "reason": "no Lean on this machine tonight; the job is filed, nothing is claimed",
+   "axioms": null,
+   "clean": false
+  },
+  "status": "OPEN",
+  "node_validation": {
+   "binding_after_builder": "PARAPHRASE",
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "unbound": false
+  },
+  "jobs": {
+   "jobs_file": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__L1_no_sixth_from_two.jobs.json",
+   "implication_lean": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__L1_no_sixth_from_two.implication.lean",
+   "standalone_lean": "oracle/evidence/msl-machine/compress/erdos289/jobs/erdos289__L1_no_sixth_from_two.standalone.lean",
+   "cable_spec_ok": true
+  }
+ },
+ "included_sources": [
+  {
+   "leaf": "erdos289:ORE:377845d942ddb89d",
+   "declaration": "W4_bridge",
+   "included_via": "LEAN_STATEMENT_LINE",
+   "sha256": "6bdc0d252adf3ca8456c1e0ce0428bcdcba5792d61e2c215debd3b6c0a43ae85",
+   "receipt": "oracle/evidence/msl-machine/gpt-mine-day2-2026-09-02/kernel-verified/erdos289/Erdos289Head__5da8b478fba0.verify.json",
+   "source": null
+  },
+  {
+   "leaf": "erdos289:ORE:a15080a025550157",
+   "declaration": "W4_fragment",
+   "included_via": "LEAN_STATEMENT_LINE",
+   "sha256": "f53a43a3fba43e3d41bef34ec0b595a1f1782d8aa725c506a3154d743fb751a9",
+   "receipt": "oracle/evidence/msl-machine/gpt-mine-day2-2026-09-02/kernel-verified/erdos289/Erdos289Head__5da8b478fba0.verify.json",
+   "source": null
+  }
+ ],
+ "derivation_claim": "W4_fragment handles a ∈ Icc 5 60 directly; for a = 2, 3, 4 the lower bound runSum a b ≥ 1/a + 1/(a+1) ≥ 1/4 + 1/5 > 1/6 (monotonicity of runSum in b) rules out 1/6, so the ℚ statement follows; W4_bridge supplies the ℚ reading of the ℕ-level fragment.",
+ "provenance": {
+  "proposer_receipt": "a8e7f50cbd1b5e51cfc7b3ea98cd742563fe53cf98875bfa4923c0f2453256bc",
+  "selection": {
+   "method": "GREEDY_CONNECTED_TOWARD_TARGET",
+   "seed": "erdos289:ORE:25d89c30bf1b00a0",
+   "seed_overlap": 6,
+   "overlap": {
+    "erdos289:ORE:25d89c30bf1b00a0": 6,
+    "erdos289:ORE:377845d942ddb89d": 6,
+    "erdos289:ORE:a15080a025550157": 6,
+    "erdos289:ORE:79ef5c1ef0bf7a61": 6,
+    "erdos289:ORE:6a4f2b9be6f30310": 5,
+    "erdos289:ORE:561a62aee809bbc8": 5,
+    "erdos289:ORE:6e6df53936815f45": 5,
+    "erdos289:ORE:d565c3b84af74cc4": 5
+   },
+   "internal_weight": 1220
+  }
+ },
+ "law": "status is OPEN until a kernel row lands; the node schema was validated by msl_obligation_dag.DagBuilder.add"
+}

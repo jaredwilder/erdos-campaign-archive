@@ -1,0 +1,1626 @@
+{
+ "schema": "obligation-dag/1.0.0",
+ "problem": "erdos985",
+ "problem_number": "985",
+ "campaign": "erdos985-campaign-001",
+ "root": "erdos985:ROOT",
+ "contract_divergence": {
+  "authoritative": {
+   "role": "campaign",
+   "path": "oracle/evidence/msl-machine/campaigns/erdos985-campaign-001/contract.json",
+   "sha256": "eb4bc4601b2c4b391b3e92a0f89bf38fabc8fbcd69947a756c3013c78ce80838",
+   "declared_contract_sha256": "92de17cc91e715ebded8c635686e747f1c6dc4428a9a3acf28349a88096ddcce"
+  },
+  "others": [
+   {
+    "role": "ingest",
+    "path": "oracle/evidence/msl-machine/contracts/erdos985/contract.json",
+    "sha256": "e94625e141e7c69786647397c27637d0789f51ea0cf472fedb5d1359365d73c5",
+    "declared_contract_sha256": "1715ea7ddb55bed7b1025f1570b88c88688333be8cdc6f0a1b1d9009a5d35d86",
+    "canonical_statement_matches_authoritative": true
+   },
+   {
+    "role": "launch_queue",
+    "path": "oracle/evidence/msl-machine/contracts/LAUNCH-QUEUE/erdos985.json",
+    "sha256": "6a55f5b42ab5813ce2a0d05296710b72247e9cd575a2fe9735288107fad61d81",
+    "declared_contract_sha256": null,
+    "canonical_statement_matches_authoritative": true
+   }
+  ],
+  "diverges": false
+ },
+ "courts": [
+  "court",
+  "closer",
+  "formalizer",
+  "kernel"
+ ],
+ "summary": {
+  "nodes": 29,
+  "proved_kernel": 0,
+  "proved_speaker": 6,
+  "computed_bounded": 1,
+  "open": 17,
+  "refuted": 5,
+  "orphans": 2,
+  "proof_obligations": 0,
+  "open_leaves_on_dead_routes": 3,
+  "root_kind": "DECIDABLE_BOUNDED",
+  "root_disqualifiers": [],
+  "formal_root": {
+   "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/985.lean",
+   "category": "category research open, AMS 11",
+   "declaration": "erdos_985",
+   "statement": "answer(sorry) ↔ ∀ᵉ (p : ℕ) (hp_prime : p.Prime) (hp_nontrivial : p ≠ 2), ∃ q, q.Prime ∧ q < p ∧ orderOf (q : ZMod p) = p - 1"
+  },
+  "leaf_frontier_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "leaf_frontier_reason": "6 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaf_frontier_deciding_leaf": {
+   "id": "erdos985:DEMAND:R008:L1:1",
+   "kind": "CAPABILITY_DEMAND",
+   "status": "OPEN",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "re-freeze as ord_p(q)=p-1 for some prime q, which is exactly enumerable over p<5000."
+  },
+  "ladder_shape_reason": "6 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaves": 25,
+  "open_leaves": 20,
+  "open_technical_leaves": 16,
+  "open_prose_obligations": 2,
+  "open_analytic_leaves": 6,
+  "ladder_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "deciding_leaf": {
+   "id": "erdos985:DEMAND:R008:L1:1",
+   "kind": "CAPABILITY_DEMAND",
+   "status": "OPEN",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "re-freeze as ord_p(q)=p-1 for some prime q, which is exactly enumerable over p<5000."
+  },
+  "orphan_detail": [
+   {
+    "id": "erdos985:A:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos985:B:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   }
+  ]
+ },
+ "validation": {
+  "acyclic": true,
+  "edges": 29,
+  "root_binds_verbatim": true,
+  "kernel_receipts_checked": 0
+ },
+ "nodes": [
+  {
+   "id": "erdos985:A:M01",
+   "statement": "For each prime p>2 produce/prove existence of a prime q<p whose class has order p−1.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos985-campaign-001/contract.json",
+   "contract_sha256": "eb4bc4601b2c4b391b3e92a0f89bf38fabc8fbcd69947a756c3013c78ce80838",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos985-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos985",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-985-b2a2c41148-A-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos985:BRANCH_A",
+   "statement": "AFFIRMATIVE CLOSE: prove the per-prime primitive-root statement for every prime p>2.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos985:A:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos985-campaign-001/contract.json",
+   "contract_sha256": "eb4bc4601b2c4b391b3e92a0f89bf38fabc8fbcd69947a756c3013c78ce80838",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos985-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos985",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-985-b2a2c41148-A-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos985:B:M01",
+   "statement": "Give p>2 prime and prove every prime q<p fails to generate (ZMod p)^×. The excluded p=2 endpoint is not a negative witness.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos985-campaign-001/contract.json",
+   "contract_sha256": "eb4bc4601b2c4b391b3e92a0f89bf38fabc8fbcd69947a756c3013c78ce80838",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos985-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos985",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-985-b2a2c41148-B-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos985:BRANCH_B",
+   "statement": "NEGATIVE CLOSE: exhibit a prime p>2 with no smaller prime primitive root.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos985:B:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos985-campaign-001/contract.json",
+   "contract_sha256": "eb4bc4601b2c4b391b3e92a0f89bf38fabc8fbcd69947a756c3013c78ce80838",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos985-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos985",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-985-b2a2c41148-B-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos985:ROOT",
+   "statement": "Is it true that, for every prime $p$, there is a prime $q<p$ which is a primitive root modulo $p$?",
+   "kind": "CANONICAL_ROOT",
+   "depends_on": [
+    "erdos985:BRANCH_A",
+    "erdos985:BRANCH_B"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "root_by_construction",
+   "closure_mode": "DISJUNCTIVE",
+   "satisfied_by_any": [
+    "erdos985:BRANCH_A",
+    "erdos985:BRANCH_B"
+   ],
+   "root_kind": "DECIDABLE_BOUNDED",
+   "root_disqualifiers": [],
+   "formal_root": {
+    "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/985.lean",
+    "category": "category research open, AMS 11",
+    "declaration": "erdos_985",
+    "statement": "answer(sorry) ↔ ∀ᵉ (p : ℕ) (hp_prime : p.Prime) (hp_nontrivial : p ≠ 2), ∃ q, q.Prime ∧ q < p ∧ orderOf (q : ZMod p) = p - 1"
+   },
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos985-campaign-001/contract.json",
+   "contract_sha256": "eb4bc4601b2c4b391b3e92a0f89bf38fabc8fbcd69947a756c3013c78ce80838",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos985-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos985",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos985:LEM:R001:L1",
+   "statement": "Exact rational check 22·1000 < 7·3143 certifies |22/7| < 3143/1000 with resolved positive sign, fail-closed.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R001",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 4,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 3,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:09:05Z"
+    },
+    {
+     "seq": 4,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:14:54Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos985-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos985:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is KERNEL_REJECTED",
+     "text": "l1 | The exact rational inequality |22/7| < 3143/1000 holds. | by\n  dsimp [l1]\n  norm_num [abs_of_nonneg, abs_of_pos]"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is KERNEL_REJECTED",
+     "text": "l1 = true | The exact integer inequality 22·1000 < 7·3143 is kernel-decided true, establishing the certified rational bound |22/7| < 3143/1000 with positive sign. | by decide"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos985",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos985:LEM:R002:L1",
+   "statement": "2 is not a primitive root mod 7 (order 3), and for all p ≡ ±1 mod 8 it is a quadratic residue; fixed-q strategy fails, q must depend on p.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R002",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 9,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified concrete counterexample and no proof was given that the route's close survives with L1 deleted, so the route cannot reach either contract close and is dead.",
+    "seq": 10
+   },
+   "history": [
+    {
+     "seq": 5,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:26:06Z"
+    },
+    {
+     "seq": 6,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:27:01Z"
+    },
+    {
+     "seq": 7,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:27:56Z"
+    },
+    {
+     "seq": 8,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:28:16Z"
+    },
+    {
+     "seq": 9,
+     "status": "FALSE",
+     "utc": "2026-09-01T19:29:22Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos985-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos985:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos985",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos985:LEM:R003:L1",
+   "statement": "Finite check p=3..13 plus an unproved uniform character-sum bound leaves the ∀p>2 tail discharged only by an equivalent-strength premise; no valid bridge to the canonical universal.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 18,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 was load-bearing: its counterexample severs the only bridge (uniform character-sum bound, unproved and target-equivalent) from the finite p=3..13 check to the ∀p>2 tail; no surviving close exists with L1 deleted.",
+    "seq": 19
+   },
+   "history": [
+    {
+     "seq": 12,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T20:06:29Z"
+    },
+    {
+     "seq": 14,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:10:05Z"
+    },
+    {
+     "seq": 15,
+     "status": "PROVED",
+     "utc": "2026-09-01T20:10:50Z"
+    },
+    {
+     "seq": 16,
+     "status": "PROVED",
+     "utc": "2026-09-01T20:11:43Z"
+    },
+    {
+     "seq": 17,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:11:56Z"
+    },
+    {
+     "seq": 18,
+     "status": "FALSE",
+     "utc": "2026-09-01T20:12:13Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos985-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos985:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos985",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos985:LEM:R003:certifier",
+   "statement": "Unbound placeholders (reduction \"none\", residual \"per contract\") leave no verifiable object; fail closed per contract.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "certifier",
+   "registry_status": "UNTESTED",
+   "registry_seq": 13,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 was load-bearing: its counterexample severs the only bridge (uniform character-sum bound, unproved and target-equivalent) from the finite p=3..13 check to the ∀p>2 tail; no surviving close exists with L1 deleted.",
+    "seq": 19
+   },
+   "history": [
+    {
+     "seq": 13,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:07:53Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos985-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos985:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "Unbound placeholders (reduction \"none\", residual \"per contract\") leave no verifiable object; fail closed per contract."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos985",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos985:LEM:R004:L1",
+   "statement": "Counterexample p=23 (2p+1=47 prime): 23≡7 mod 8 makes 2 a QR, ord_23(2)=11≠22; lemma needs a mod-8 hypothesis or a variable prime base.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 24,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 was load-bearing: with it deleted no surviving close of R004 exists (candidate proof is \"none\"), so the route is dead under the kill rule.",
+    "seq": 25
+   },
+   "history": [
+    {
+     "seq": 21,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T20:13:22Z"
+    },
+    {
+     "seq": 23,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:18:27Z"
+    },
+    {
+     "seq": 24,
+     "status": "FALSE",
+     "utc": "2026-09-01T20:20:47Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos985-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos985:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos985",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos985:LEM:R004:R004",
+   "statement": "No analytic reduction and no finite explicit residual supplied; fail-closed abort, nothing to verify.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "R004",
+   "registry_status": "UNTESTED",
+   "registry_seq": 22,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 was load-bearing: with it deleted no surviving close of R004 exists (candidate proof is \"none\"), so the route is dead under the kill rule.",
+    "seq": 25
+   },
+   "history": [
+    {
+     "seq": 22,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:17:03Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos985-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos985:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "No analytic reduction and no finite explicit residual supplied; fail-closed abort, nothing to verify."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos985",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos985:LEM:R005:CONTRACT_RESIDUAL",
+   "statement": "Exact rational verifier (CPython 3.11, Fraction-only, integer sign tests) certifies residual per contract sha 92de17cc91e715eb; fail-closed, no tolerances, deterministic.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R005",
+   "lemma_id": "CONTRACT_RESIDUAL",
+   "registry_status": "PROVED",
+   "registry_seq": 28,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 28,
+     "status": "PROVED",
+     "utc": "2026-09-01T20:23:56Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos985-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos985:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "checked | This checks exactly the three certified positive instances: 2 is a prime primitive root modulo 5, 3 modulo 17, and 7 modulo 41; it does not establish the universal statement or a negative witness. | by decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "checked | The kernel checks exactly the three certified instances: (p,q)=(5,2), (17,3), and (41,7), with q prime, q<p, and orderOf (q : ZMod p)=p−1. No universal or negative conclusion is claimed. | by decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "checked | The kernel checks exactly the finite certified fragment: 2 is a prime primitive root modulo 5, 3 modulo 17, and 7 modulo 41, with each p prime and greater than 2, each q prime and strictly less than p, and exact multiplicative order p−1. This fragment does not establish the universal statement or the negative branch. | by decide"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos985",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos985:LEM:R005:L1",
+   "statement": "3 is a primitive root mod every Fermat prime p≥5: p≡2 mod 3 and p≡1 mod 4 give (3/p)=−1, and p−1 a power of 2 makes non-residue ⇒ generator; favorable subfamily only, closes neither branch.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R005",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 32,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 27,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T20:22:21Z"
+    },
+    {
+     "seq": 29,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:28:44Z"
+    },
+    {
+     "seq": 30,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:29:56Z"
+    },
+    {
+     "seq": 32,
+     "status": "PROVED",
+     "utc": "2026-09-01T20:48:14Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos985-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos985:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "primitiveRootCheck 5 = true ∧ primitiveRootCheck 17 = true | Kernel-checkable fragment: 3 is a primitive root modulo each of the two explicit Fermat primes 5 and 17, verified by exact decidable computation; this does not establish the universal Fermat-prime statement or either closure branch. | by decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "primitiveRootCheck 5 = true ∧ primitiveRootCheck 17 = true | The kernel checks the explicit instances p=5 and p=17: both are primes greater than 2, 3 is prime and smaller than p, and the order of (3 : ZMod p) is p−1. This is only a finite fragment and does not establish the universal Fermat-prime claim. | by decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "primitiveRootCheck 5 = true ∧ primitiveRootCheck 17 = true | Exact kernel-checked finite fragment: for p=5 and p=17, p is prime and greater than 2, q=3 is prime with 3<p, and orderOf (3 : ZMod p)=p−1. No universal claim is made. | by decide"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos985",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos985:LEM:R006:L002",
+   "statement": "exact prime primitive-root witness verified for every prime 3≤p≤73; evidence only, no ∀p transfer.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "COMPUTED_BOUNDED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R006",
+   "lemma_id": "L002",
+   "registry_status": "COMPUTATION_SUPPORTED",
+   "registry_seq": 34,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 is machine-refuted and load-bearing: R006's close funnels through L1 and no alternate load path exists, so the close cannot survive with L1 deleted; route is dead under Wang 4.1 K8.",
+    "seq": 37
+   },
+   "history": [
+    {
+     "seq": 34,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T20:53:02Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos985-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos985:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_COMPUTATION_SUPPORTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "exact prime primitive-root witness verified for every prime 3≤p≤73; evidence only, no ∀p transfer."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "leaf_tactic_hint": "interval_cases",
+   "hint_source": "bounded_forall_over_N",
+   "leaf_tactic_sketch": "intro p; interval_cases p <;> decide",
+   "leaf_tactic_alternatives": [
+    "decide",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos985",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos985:LEM:R006:L1",
+   "statement": "Counterexample p=43: 2^7 ≡ −1 (mod 43) gives ord(2)=14≠42; repair must bound the odd part of (p−1)/2, not just the Legendre symbol.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R006",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 36,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 is machine-refuted and load-bearing: R006's close funnels through L1 and no alternate load path exists, so the close cannot survive with L1 deleted; route is dead under Wang 4.1 K8.",
+    "seq": 37
+   },
+   "history": [
+    {
+     "seq": 35,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:57:33Z"
+    },
+    {
+     "seq": 36,
+     "status": "FALSE",
+     "utc": "2026-09-01T21:07:05Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos985-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos985:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos985",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos985:LEM:R007:L1",
+   "statement": "sum k^3 = [n(n+1)/2]^2 certified exactly via telescoping (n+1)^4 − n^4 with S1,S2 exact; zero residual, fail-closed verifier.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R007",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 40,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 39,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T21:08:45Z"
+    },
+    {
+     "seq": 40,
+     "status": "PROVED",
+     "utc": "2026-09-01T21:10:38Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos985-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos985:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_range = true | The exact identity sum_{k=1}^n k^3 = (n(n+1)/2)^2 is kernel-checked for every natural n with 0 ≤ n ≤ 50. | by decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_range = true | Kernel checks exactly that for every natural n in the finite range 0 ≤ n ≤ 50, the sum of the cubes 1^3 + 2^3 + ⋯ + n^3 equals (n(n+1)/2)^2. | by decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_range = true | The kernel checks the finite fragment that for every natural n≤50, the exact sum 1^3+2^3+⋯+n^3 equals (n(n+1)/2)^2. | by decide"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos985",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos985:LEM:R008:L1",
+   "statement": "ord_q(p) divides phi(q)=q-1 so ord_q(p) <= q-1 <= p-2 < p-1 for every prime q<p; the existential fails for all odd p>=3, the claimed witnesses q in {2,3,5} cannot exist (likely ord_p(q) was computed); repair: re-freeze as ord_p(q)=p-1 for some prime q, which is exactly enumerable over p<5000.",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos985:DEMAND:R008:L1:1"
+   ],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R008",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 46,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "central lemma L1 carries a machine-recorded concrete counterexample and the not-load-bearing exception fails since no candidate proof exists to exhibit a surviving close",
+    "seq": 47
+   },
+   "history": [
+    {
+     "seq": 45,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:08:40Z"
+    },
+    {
+     "seq": 46,
+     "status": "FALSE",
+     "utc": "2026-09-02T01:09:14Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos985-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos985:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos985",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos985:DEMAND:R008:L1:1",
+   "statement": "re-freeze as ord_p(q)=p-1 for some prime q, which is exactly enumerable over p<5000.",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "repair:",
+   "demand_rank": 2,
+   "demand_strength": "STRONG",
+   "route_status": "DEAD",
+   "demand_source_text": "ord_q(p) divides phi(q)=q-1 so ord_q(p) <= q-1 <= p-2 < p-1 for every prime q<p; the existential fails for all odd p>=3, the claimed witnesses q in {2,3,5} cannot exist (likely ord_p(q) was computed); repair: re-freeze as ord_p(q)=p-1 for some prime q, which is exactly enumerable over p<5000.",
+   "route_id": "R008",
+   "lemma_id": "L1",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos985:LEM:R008:L1",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos985-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos985",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos985:LEM:R009:L1",
+   "statement": "Exact integer verifier (Python>=3.11 stdlib, deterministic, fail-closed, no floats) checks for each of the 78498 primes 3<=p<=10^6 a prime q<p with ord_p(q)=p-1 via exact factorization of p-1 and pow(g,(p-1)/l,p)!=1 for all prime l|p-1, with count guard 78498=pi(10^6)-1; scope: finite range [3,10^6]",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R009",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 50,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 49,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:22:36Z"
+    },
+    {
+     "seq": 50,
+     "status": "PROVED",
+     "utc": "2026-09-02T01:23:06Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos985-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos985:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "The verifier accepts exactly the explicit instance p=3 and q=2, proving that q=2 is a prime less than 3 and has multiplicative order 2=3−1 modulo 3."
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "fragment | This kernel-checkable fragment proves the single canonical instance p=3: the prime q=2 satisfies q<3 and has multiplicative order 2=3−1 in ZMod 3. | by\n  refine ⟨2, by norm_num, by norm_num, ?_⟩\n  norm_num [orderOf]"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "fragment | This kernel-checkable decision procedure proves the single canonical instance p=3: there exists a prime q<3 whose residue modulo 3 has multiplicative order 3−1. | by decide"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "leaf_tactic_hint": "interval_cases",
+   "hint_source": "bounded_forall_over_N",
+   "leaf_tactic_sketch": "intro of; interval_cases of <;> decide",
+   "leaf_tactic_alternatives": [
+    "decide",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos985",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos985:LEM:R010:L1",
+   "statement": "Exact integer verifier certifies existence for all primes 3<=p<=29 with witnesses (p,q)=(3,2),(5,2),(7,3),(11,2),(13,2),(17,3),(19,2),(23,5),(29,2) having ord_p(q)=p-1 (p=17 via q=3, ord_17(3)=16 since 3^8=-1 mod 17; ord_17(2)=8 confirms the stated q=2 failure); pure integer modular exponentiation, ",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R010",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 53,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 52,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:26:11Z"
+    },
+    {
+     "seq": 53,
+     "status": "PROVED",
+     "utc": "2026-09-02T01:27:07Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos985-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos985:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "primitiveRootWitness 3 2 ∧ primitiveRootWitness 5 2 ∧ primitiveRootWitness 7 3 ∧ primitiveRootWitness 11 2 ∧ primitiveRootWitness 13 2 ∧ primitiveRootWitness 17 3 ∧ primitiveRootWitness 19 2 ∧ primitiveRootWitness 23 5 ∧ primitiveRootWitness 29 2 | Checks exactly the nine stated finite prime-witness instances, including primality, bounds, q < p, and orderOf (q : ZMod p) = p - 1. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "primitiveRootWitness 3 2 ∧ primitiveRootWitness 5 2 ∧ primitiveRootWitness 7 3 ∧ primitiveRootWitness 11 2 ∧ primitiveRootWitness 13 2 ∧ primitiveRootWitness 17 3 ∧ primitiveRootWitness 19 2 ∧ primitiveRootWitness 23 5 ∧ primitiveRootWitness 29 2 | Kernel-checkably verifies the nine explicit affirmative instances recorded in L1: each listed p and q is prime, 3 ≤ p ≤ 29, q < p, and orderOf (q : ZMod p) = p − 1. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "primitiveRootWitness 3 2 ∧ primitiveRootWitness 5 2 ∧ primitiveRootWitness 7 3 ∧ primitiveRootWitness 11 2 ∧ primitiveRootWitness 13 2 ∧ primitiveRootWitness 17 3 ∧ primitiveRootWitness 19 2 ∧ primitiveRootWitness 23 5 ∧ primitiveRootWitness 29 2 | Checks exactly the nine explicit affirmative instances in L1: primality of p and q, the bounds 3 ≤ p ≤ 29, q < p, and orderOf (q : ZMod p) = p − 1. | by native_decide"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "leaf_tactic_hint": "interval_cases",
+   "hint_source": "bounded_forall_over_N",
+   "leaf_tactic_sketch": "intro a; interval_cases a <;> decide",
+   "leaf_tactic_alternatives": [
+    "decide",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos985",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos985:FLEAF:263104ce53faecb74892:1",
+   "statement": "checked",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R005",
+   "lemma_id": "CONTRACT_RESIDUAL",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def primePrimitiveRoot (p q : Nat) : Bool := decide (p.Prime ∧ p > 2 ∧ q.Prime ∧ q < p ∧ orderOf (q : ZMod p) = p - 1)\ndef checked : Prop := (primePrimitiveRoot 5 2 = true) ∧ (primePrimitiveRoot 17 3 = true) ∧ (primePrimitiveRoot 41 7 = true)",
+   "type_context": "Mathlib\ndef primePrimitiveRoot (p q : Nat) : Bool := decide (p.Prime ∧ p > 2 ∧ q.Prime ∧ q < p ∧ orderOf (q : ZMod p) = p - 1)\ndef checked : Prop := (primePrimitiveRoot 5 2 = true) ∧ (primePrimitiveRoot 17 3 = true) ∧ (primePrimitiveRoot 41 7 = true)",
+   "proof": "by decide",
+   "claim": "This checks exactly the three certified positive instances: 2 is a prime primitive root modulo 5, 3 modulo 17, and 7 modulo 41; it does not establish the universal statement or a negative witness.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 3,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "decide",
+   "supports": [
+    {
+     "node": "erdos985:LEM:R005:CONTRACT_RESIDUAL",
+     "evidence": "formalizer obligation route=R005 lemma=CONTRACT_RESIDUAL"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos985",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos985:FLEAF:37e28711ce3947ace27d:2",
+   "statement": "",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "empty",
+   "route_id": "R009",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "WITNESS_FINITE",
+   "imports": "",
+   "definitions": "",
+   "type_context": "\n",
+   "proof": "",
+   "claim": "The verifier accepts exactly the explicit instance p=3 and q=2, proving that q=2 is a prime less than 3 and has multiplicative order 2=3−1 modulo 3.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "supports": [
+    {
+     "node": "erdos985:LEM:R009:L1",
+     "evidence": "formalizer obligation route=R009 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos985",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos985:FLEAF:37e28711ce3947ace27d:3",
+   "statement": "fragment",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R009",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def fragment : Prop := ∃ q : ℕ, q.Prime ∧ q < 3 ∧ orderOf (q : ZMod 3) = 3 - 1",
+   "type_context": "Mathlib\ndef fragment : Prop := ∃ q : ℕ, q.Prime ∧ q < 3 ∧ orderOf (q : ZMod 3) = 3 - 1",
+   "proof": "by\n  refine ⟨2, by norm_num, by norm_num, ?_⟩\n  norm_num [orderOf]",
+   "claim": "This kernel-checkable fragment proves the single canonical instance p=3: the prime q=2 satisfies q<3 and has multiplicative order 2=3−1 in ZMod 3.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "CLOSURE_SHAPELESS_REFUSED: proof must be a decision procedure (`by decide`, or `by native_decide` when plain decide cannot finish); got 'by\\n  refine ⟨2, by norm_num, by norm_num, ?_⟩\\n  norm_num [or'. This pipeline generates from a template and does not accept a free-form Lean proof.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "norm_num",
+   "supports": [
+    {
+     "node": "erdos985:LEM:R009:L1",
+     "evidence": "formalizer obligation route=R009 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos985",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos985:FLEAF:37e28711ce3947ace27d:4",
+   "statement": "fragment",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R009",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def fragment : Prop := ∃ q : ℕ, q.Prime ∧ q < 3 ∧ orderOf (q : ZMod 3) = 3 - 1",
+   "type_context": "Mathlib\ndef fragment : Prop := ∃ q : ℕ, q.Prime ∧ q < 3 ∧ orderOf (q : ZMod 3) = 3 - 1",
+   "proof": "by decide",
+   "claim": "This kernel-checkable decision procedure proves the single canonical instance p=3: there exists a prime q<3 whose residue modulo 3 has multiplicative order 3−1.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "decide",
+   "supports": [
+    {
+     "node": "erdos985:LEM:R009:L1",
+     "evidence": "formalizer obligation route=R009 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos985",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos985:FLEAF:6a7d2583a9b203c8cc64:5",
+   "statement": "primitiveRootCheck 5 = true ∧ primitiveRootCheck 17 = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R005",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def primitiveRootCheck (p : Nat) : Bool := decide ((p = 5 ∨ p = 17) ∧ Nat.Prime p ∧ (3 : ZMod p) ≠ 0 ∧ orderOf (3 : ZMod p) = p - 1)",
+   "type_context": "Mathlib\ndef primitiveRootCheck (p : Nat) : Bool := decide ((p = 5 ∨ p = 17) ∧ Nat.Prime p ∧ (3 : ZMod p) ≠ 0 ∧ orderOf (3 : ZMod p) = p - 1)",
+   "proof": "by decide",
+   "claim": "Kernel-checkable fragment: 3 is a primitive root modulo each of the two explicit Fermat primes 5 and 17, verified by exact decidable computation; this does not establish the universal Fermat-prime statement or either closure branch.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 3,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "decide",
+   "supports": [
+    {
+     "node": "erdos985:LEM:R005:L1",
+     "evidence": "formalizer obligation route=R005 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos985",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos985:FLEAF:a5f8200d1f5b91c6fb68:6",
+   "statement": "l1",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def l1 : Prop := |(22 : ℚ) / 7| < (3143 : ℚ) / 1000",
+   "type_context": "Mathlib\ndef l1 : Prop := |(22 : ℚ) / 7| < (3143 : ℚ) / 1000",
+   "proof": "by\n  dsimp [l1]\n  norm_num [abs_of_nonneg, abs_of_pos]",
+   "claim": "The exact rational inequality |22/7| < 3143/1000 holds.",
+   "covers": "full",
+   "receipt_outcome": "KERNEL_REJECTED",
+   "parse_verdict": "CLOSURE_SHAPELESS_REFUSED: proof must be a decision procedure (`by decide`, or `by native_decide` when plain decide cannot finish); got 'by\\n  dsimp [l1]\\n  norm_num [abs_of_nonneg, abs_of_pos]'. This pipeline generates from a template and does not accept a free-form Lean proof.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "norm_num",
+   "supports": [
+    {
+     "node": "erdos985:LEM:R001:L1",
+     "evidence": "formalizer obligation route=R001 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos985",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos985:FLEAF:a5f8200d1f5b91c6fb68:7",
+   "statement": "l1 = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R001",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def l1 : Bool := (22 * 1000 < 7 * 3143)",
+   "type_context": "Mathlib\ndef l1 : Bool := (22 * 1000 < 7 * 3143)",
+   "proof": "by decide",
+   "claim": "The exact integer inequality 22·1000 < 7·3143 is kernel-decided true, establishing the certified rational bound |22/7| < 3143/1000 with positive sign.",
+   "covers": "full",
+   "receipt_outcome": "KERNEL_REJECTED",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "decide",
+   "supports": [
+    {
+     "node": "erdos985:LEM:R001:L1",
+     "evidence": "formalizer obligation route=R001 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": true
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos985",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos985:FLEAF:ac3f7f66c8c47f15cdde:8",
+   "statement": "check_range = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R007",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def cube_sum (n : Nat) : Nat := (List.range n).foldl (fun s k => s + (k + 1) ^ 3) 0\ndef check_cube_sum (n : Nat) : Bool := cube_sum n == (n * (n + 1) / 2) ^ 2\ndef check_range : Bool := (List.range 51).all check_cube_sum",
+   "type_context": "Mathlib\ndef cube_sum (n : Nat) : Nat := (List.range n).foldl (fun s k => s + (k + 1) ^ 3) 0\ndef check_cube_sum (n : Nat) : Bool := cube_sum n == (n * (n + 1) / 2) ^ 2\ndef check_range : Bool := (List.range 51).all check_cube_sum",
+   "proof": "by decide",
+   "claim": "The exact identity sum_{k=1}^n k^3 = (n(n+1)/2)^2 is kernel-checked for every natural n with 0 ≤ n ≤ 50.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 3,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "decide",
+   "supports": [
+    {
+     "node": "erdos985:LEM:R007:L1",
+     "evidence": "formalizer obligation route=R007 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos985",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos985:FLEAF:ce50212ee96f8f29c1a1:9",
+   "statement": "primitiveRootWitness 3 2 ∧ primitiveRootWitness 5 2 ∧ primitiveRootWitness 7 3 ∧ primitiveRootWitness 11 2 ∧ primitiveRootWitness 13 2 ∧ primitiveRootWitness 17 3 ∧ primitiveRootWitness 19 2 ∧ primitiveRootWitness 23 5 ∧ primitiveRootWitness 29 2",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R010",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def primitiveRootWitness (p q : Nat) : Prop := p.Prime ∧ q.Prime ∧ 3 ≤ p ∧ p ≤ 29 ∧ q < p ∧ orderOf (q : ZMod p) = p - 1",
+   "type_context": "Mathlib\ndef primitiveRootWitness (p q : Nat) : Prop := p.Prime ∧ q.Prime ∧ 3 ≤ p ∧ p ≤ 29 ∧ q < p ∧ orderOf (q : ZMod p) = p - 1",
+   "proof": "by native_decide",
+   "claim": "Checks exactly the nine stated finite prime-witness instances, including primality, bounds, q < p, and orderOf (q : ZMod p) = p - 1.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 3,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos985:LEM:R010:L1",
+     "evidence": "formalizer obligation route=R010 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos985",
+   "is_leaf": true,
+   "manufacture_target": false
+  }
+ ]
+}

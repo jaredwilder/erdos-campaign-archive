@@ -1,0 +1,1555 @@
+{
+ "schema": "obligation-dag/1.0.0",
+ "problem": "erdos510",
+ "problem_number": "510",
+ "campaign": "erdos510-campaign-001",
+ "root": "erdos510:ROOT",
+ "contract_divergence": {
+  "authoritative": {
+   "role": "campaign",
+   "path": "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/contract.json",
+   "sha256": "add0be890a5beab86e1441acdf361bee386ec85c1631b877ba6d117d8886dc93",
+   "declared_contract_sha256": "b54d25e10e8e6d8d97f84fefd896ef74ea62d574b56eee846b1c7c4d2e682e89"
+  },
+  "others": [
+   {
+    "role": "ingest",
+    "path": "oracle/evidence/msl-machine/contracts/erdos510/contract.json",
+    "sha256": "7eef3f540995d50443ba3a1c943a5e01dbbf8b481b1c8e8c2c7f05021ce4ce0b",
+    "declared_contract_sha256": "579c18062313ab4154ca9de59e4390ae91123ee868e5369e9fb81bff94fac51e",
+    "canonical_statement_matches_authoritative": true
+   },
+   {
+    "role": "launch_queue",
+    "path": "oracle/evidence/msl-machine/contracts/LAUNCH-QUEUE/erdos510.json",
+    "sha256": "89374fd622440f9ee6982222a5c4102df88a33d510d274fa9d265bc9b090aaf9",
+    "declared_contract_sha256": null,
+    "canonical_statement_matches_authoritative": true
+   }
+  ],
+  "diverges": false
+ },
+ "courts": [
+  "court",
+  "closer",
+  "formalizer",
+  "kernel"
+ ],
+ "summary": {
+  "nodes": 29,
+  "proved_kernel": 0,
+  "proved_speaker": 3,
+  "computed_bounded": 0,
+  "open": 9,
+  "refuted": 17,
+  "orphans": 2,
+  "proof_obligations": 0,
+  "open_leaves_on_dead_routes": 4,
+  "root_kind": "NOT_DECIDABLE",
+  "root_disqualifiers": [
+   "ASYMPTOTIC"
+  ],
+  "formal_root": {
+   "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/510.lean",
+   "category": "category research open, AMS 11",
+   "declaration": "erdos_510",
+   "statement": "answer(sorry) ↔ ∃ (c : ℝ) (hc : 0 < c), ∀ᶠ N in atTop, ∀ (A : Finset ℕ), 0 ∉ A → #A = N → ∃ θ, ∑ n ∈ A, cos (n * θ) < -c * sqrt N"
+  },
+  "leaf_frontier_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "leaf_frontier_reason": "6 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaf_frontier_deciding_leaf": {
+   "id": "erdos510:DEMAND:R008:CANONICAL:1",
+   "kind": "CAPABILITY_DEMAND",
+   "status": "OPEN",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "excluding 0/restricting to ℕ (imported repair pattern from erdos821 R004/L1, adapted)."
+  },
+  "ladder_shape_reason": "the formal root is not decidable: ASYMPTOTIC (oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/510.lean). No leaf set can close it, however clean the leaves are. Leaf frontier, kept for the grind queue: HAS_OPEN_ANALYTIC_LEAF.",
+  "leaves": 23,
+  "open_leaves": 9,
+  "open_technical_leaves": 6,
+  "open_prose_obligations": 2,
+  "open_analytic_leaves": 6,
+  "ladder_shape": "ROOT_NOT_DECIDABLE",
+  "deciding_leaf": {
+   "id": "erdos510:ROOT",
+   "kind": "CANONICAL_ROOT",
+   "status": "OPEN",
+   "binding": "VERBATIM",
+   "leaf_tactic_hint": null,
+   "statement": "answer(sorry) ↔ ∃ (c : ℝ) (hc : 0 < c), ∀ᶠ N in atTop, ∀ (A : Finset ℕ), 0 ∉ A → #A = N → ∃ θ, ∑ n ∈ A, cos (n * θ) < -c * sqrt N"
+  },
+  "orphan_detail": [
+   {
+    "id": "erdos510:A:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos510:B:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   }
+  ]
+ },
+ "validation": {
+  "acyclic": true,
+  "edges": 31,
+  "root_binds_verbatim": true,
+  "kernel_receipts_checked": 0
+ },
+ "nodes": [
+  {
+   "id": "erdos510:A:M01",
+   "statement": "The same c works for all finite integer sets; θ may be chosen after A.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/contract.json",
+   "contract_sha256": "add0be890a5beab86e1441acdf361bee386ec85c1631b877ba6d117d8886dc93",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos510",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-510-8d694baea6-A-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos510:BRANCH_A",
+   "statement": "AFFIRMATIVE CLOSE: prove ∃c>0, ∀ finite A⊂ℤ, ∃θ∈ℝ, Σ_{n∈A}cos(nθ)<-c√|A|, including every finite cardinality.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos510:A:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/contract.json",
+   "contract_sha256": "add0be890a5beab86e1441acdf361bee386ec85c1631b877ba6d117d8886dc93",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos510",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-510-8d694baea6-A-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos510:B:M01",
+   "statement": "Prove ∀c>0, ∃ finite A⊂ℤ such that ∀θ∈ℝ, Σ_{n∈A}cos(nθ)≥-c√|A|. No cofinal N0 quantifier is needed.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/contract.json",
+   "contract_sha256": "add0be890a5beab86e1441acdf361bee386ec85c1631b877ba6d117d8886dc93",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos510",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-510-8d694baea6-B-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos510:BRANCH_B",
+   "statement": "NEGATIVE CLOSE: prove the literal negation of the all-finite-set canonical proposition.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos510:B:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/contract.json",
+   "contract_sha256": "add0be890a5beab86e1441acdf361bee386ec85c1631b877ba6d117d8886dc93",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos510",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-510-8d694baea6-B-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos510:ROOT",
+   "statement": "If $A\\subset \\mathbb{Z}$ is a finite set of size $N$ then is there some absolute constant $c>0$ and $\\theta$ such that\\[\\sum_{n\\in A}\\cos(n\\theta) < -cN^{1/2}?\\]",
+   "kind": "CANONICAL_ROOT",
+   "depends_on": [
+    "erdos510:BRANCH_A",
+    "erdos510:BRANCH_B"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "root_by_construction",
+   "closure_mode": "DISJUNCTIVE",
+   "satisfied_by_any": [
+    "erdos510:BRANCH_A",
+    "erdos510:BRANCH_B"
+   ],
+   "root_kind": "NOT_DECIDABLE",
+   "root_disqualifiers": [
+    "ASYMPTOTIC"
+   ],
+   "formal_root": {
+    "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/510.lean",
+    "category": "category research open, AMS 11",
+    "declaration": "erdos_510",
+    "statement": "answer(sorry) ↔ ∃ (c : ℝ) (hc : 0 < c), ∀ᶠ N in atTop, ∀ (A : Finset ℕ), 0 ∉ A → #A = N → ∃ θ, ∑ n ∈ A, cos (n * θ) < -c * sqrt N"
+   },
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/contract.json",
+   "contract_sha256": "add0be890a5beab86e1441acdf361bee386ec85c1631b877ba6d117d8886dc93",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false,
+    "exempt": "structural: frozen prose with children, never a manufacture target"
+   },
+   "problem": "erdos510",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos510:LEM:R001:CANONICAL",
+   "statement": "A={0,d} gives Σ=1+cos(dθ)=2cos²(dθ/2)≥0 ∀θ, so no absolute c>0 satisfies the canonical inequality; branch B closes via this explicit family (counterexample-on-record, hand-verifiable).",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "CANONICAL",
+   "registry_status": "FALSE",
+   "registry_seq": 3,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Lemma CANONICAL is the canonical claim itself and hence load-bearing by definition; its machine-verified counterexample kills R001, and with no candidate proof there is no surviving close to downgrade to.",
+    "seq": 4
+   },
+   "history": [
+    {
+     "seq": 3,
+     "status": "FALSE",
+     "utc": "2026-09-01T22:20:56Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos510:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos510",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos510:LEM:R002:L1",
+   "statement": "Exact-rational verifier provably fires ABORT_UNRESOLVED_SIGN: \"−≈0.4\" ∉ ℚ (no rational c fixed) and 0/255 θ_A witnesses are truncated integers; residual claim uncertifiable absent amended L1 (c∈ℚ e.g. 2/5, full residual formula, complete witness table) — fail-closed abort certified.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R002",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 11,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 6,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:24:00Z"
+    },
+    {
+     "seq": 7,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:24:40Z"
+    },
+    {
+     "seq": 8,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:24:55Z"
+    },
+    {
+     "seq": 9,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:30:44Z"
+    },
+    {
+     "seq": 10,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:31:45Z"
+    },
+    {
+     "seq": 11,
+     "status": "PROVED",
+     "utc": "2026-09-01T22:32:01Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos510:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos510",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos510:LEM:R003:L1",
+   "statement": "Canonical as literally written (A⊂ℤ) is refuted exactly by A={0}: S(θ)≡1, so 1<−c is impossible; adapted from erdos821 R004/L1 degenerate-endpoint pattern (import, here exact).",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 12,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 was R003's sole load-bearing step (candidate proof \"none\", zero artifacts — no L1-free close exists to survive deletion), so the machine-verified counterexample voids every certificate the route could issue; replacing a central lemma is a new route, not a repair.",
+    "seq": 13
+   },
+   "history": [
+    {
+     "seq": 12,
+     "status": "FALSE",
+     "utc": "2026-09-01T22:35:37Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos510:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos510",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos510:LEM:R004:L1",
+   "statement": "Exact hand-verified counterexample: A={0,1} has S(θ)=1+cosθ≥0 with min 0, so no c>0 satisfies branch A for all finite A⊂ℬ... i.e. A⊂ℤ; imported refutation pattern from erdos821 R004/L1 (degenerate endpoint), branch B trivially witnessed by the same set; repair must exclude 0/shift to ℕ before testin",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 15,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified counterexample; no surviving close exists with L1 deleted, so the lemma is load-bearing and the route is dead.",
+    "seq": 16
+   },
+   "history": [
+    {
+     "seq": 15,
+     "status": "FALSE",
+     "utc": "2026-09-01T22:44:52Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos510:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos510",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos510:LEM:R005:L1",
+   "statement": "L1 (branch A, literal ∀ finite A⊂ℤ) is refuted exactly by A={0}: the sum is identically 1, never < −c·1 for any c>0; secondary witnesses {0,1} (min 0) and {0,1,2} (exact min −1/8) confirm the degenerate-endpoint family; status FALSE is filed for the branch-A close itself, with L1's negation (branch ",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R005",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 18,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 was load-bearing: the close's decisive step is exactly the refuted lemma, and no surviving argument with L1 deleted was provided.",
+    "seq": 19
+   },
+   "history": [
+    {
+     "seq": 18,
+     "status": "FALSE",
+     "utc": "2026-09-01T22:46:47Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos510:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos510",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos510:LEM:R006:L1",
+   "statement": "Fail-closed abort confirmed: no exact rational expression or parameter domain for the cos-comparison quantity is on record (checked against contract SHA b54d25e10e8e6d8d), so the verifier template aborts exactly as L1 asserts; substantive certification remains blocked until per-subset rational expre",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R006",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 26,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 21,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:53:19Z"
+    },
+    {
+     "seq": 22,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:53:53Z"
+    },
+    {
+     "seq": 23,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:56:08Z"
+    },
+    {
+     "seq": 24,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:56:23Z"
+    },
+    {
+     "seq": 25,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:56:46Z"
+    },
+    {
+     "seq": 26,
+     "status": "PROVED",
+     "utc": "2026-09-01T22:57:18Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos510:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos510",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos510:LEM:R007:CANONICAL",
+   "statement": "Exact counterexample A={0,1}: 1+cos θ ≥ 0 ∀θ with equality at θ=π, so m=0 ≥ −c√2 for every c>0 (A={0} refutes at N=1); branch-B close is certificate-grade on the literal ℤ-domain; repair = restrict to A⊂ℕ, which reopens branch A (imported degenerate-endpoint pattern from erdos821 R004/L1, adapted).",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos510:DEMAND:R007:CANONICAL:1"
+   ],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R007",
+   "lemma_id": "CANONICAL",
+   "registry_status": "FALSE",
+   "registry_seq": 28,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "The refuted lemma CANONICAL is the route's close target itself (branch A affirmative claim); a machine-verified counterexample to it removes the entire close, so the lemma is maximally load-bearing and no downgrade is possible.",
+    "seq": 29
+   },
+   "history": [
+    {
+     "seq": 28,
+     "status": "FALSE",
+     "utc": "2026-09-01T23:02:36Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos510:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos510",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos510:DEMAND:R007:CANONICAL:1",
+   "statement": "restrict to A⊂ℕ, which reopens branch A (imported degenerate-endpoint pattern from erdos821 R004/L1, adapted).",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "repair =",
+   "demand_rank": 1,
+   "demand_strength": "STRONG",
+   "route_status": "DEAD",
+   "demand_source_text": "Exact counterexample A={0,1}: 1+cos θ ≥ 0 ∀θ with equality at θ=π, so m=0 ≥ −c√2 for every c>0 (A={0} refutes at N=1); branch-B close is certificate-grade on the literal ℤ-domain; repair = restrict to A⊂ℕ, which reopens branch A (imported degenerate-endpoint pattern from erdos821 R004/L1, adapted).",
+   "route_id": "R007",
+   "lemma_id": "CANONICAL",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos510:LEM:R007:CANONICAL",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos510",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos510:LEM:R008:CANONICAL",
+   "statement": "Exact certificate: A={0} gives S(θ)≡1 and A={0,k} gives S(θ)=1+cos(kθ)≥0, refuting ∀A∃θ S<-c√|A| for every c>0; repair requires excluding 0/restricting to ℕ (imported repair pattern from erdos821 R004/L1, adapted).",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos510:DEMAND:R008:CANONICAL:1"
+   ],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R008",
+   "lemma_id": "CANONICAL",
+   "registry_status": "FALSE",
+   "registry_seq": 31,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Lemma CANONICAL is the route's central load-bearing claim and carries a recorded counterexample; with candidate proof \"none\" there is no surviving close to downgrade to, so R008 is dead under K8.",
+    "seq": 32
+   },
+   "history": [
+    {
+     "seq": 31,
+     "status": "FALSE",
+     "utc": "2026-09-01T23:08:40Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos510:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos510",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos510:DEMAND:R008:CANONICAL:1",
+   "statement": "excluding 0/restricting to ℕ (imported repair pattern from erdos821 R004/L1, adapted).",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "repair requires",
+   "demand_rank": 0,
+   "demand_strength": "STRONG",
+   "route_status": "DEAD",
+   "demand_source_text": "Exact certificate: A={0} gives S(θ)≡1 and A={0,k} gives S(θ)=1+cos(kθ)≥0, refuting ∀A∃θ S<-c√|A| for every c>0; repair requires excluding 0/restricting to ℕ (imported repair pattern from erdos821 R004/L1, adapted).",
+   "route_id": "R008",
+   "lemma_id": "CANONICAL",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos510:LEM:R008:CANONICAL",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos510",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos510:LEM:R009:L1",
+   "statement": "Literally-read canonical claim fails at A={0,1}: min_θ(1+cos θ)=0 exactly, so no c>0 gives 0<−c√2; close must repair domain (A⊂ℕ, likely n≥1) before any branch-A work.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R009",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 34,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified counterexample and no proof was given that the route's close survives with L1 deleted; the route is dead.",
+    "seq": 35
+   },
+   "history": [
+    {
+     "seq": 34,
+     "status": "FALSE",
+     "utc": "2026-09-01T23:12:20Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos510:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos510",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos510:LEM:R010:L1",
+   "statement": "L1: \"for every c>0 exists finite A⊂ℤ with Σ_{n∈A}cos(nθ)≥−c√|A| ∀θ\" — witness A={0,1}: S=1+cosθ has exact minimum 0 (polynomial 1+t on [−1,1]), so the universal close fails; variant A⊂ℕ∖{0} supported computationally (ρ≥0.759 on all A⊆{1,2,3}) as EVIDENCE only",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R010",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 37,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified concrete counterexample and no derivation shows R010's close survives with L1 deleted; route is dead pending a repaired lemma with strictly weaker assumptions or a new §4.2 item.",
+    "seq": 38
+   },
+   "history": [
+    {
+     "seq": 37,
+     "status": "FALSE",
+     "utc": "2026-09-01T23:17:22Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos510:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos510",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos510:LEM:R011:L1",
+   "statement": "fragment-only: Fraction fail-closed verifier (stdlib, deterministic, no float) exactly proves 49/144-1/3=5/144 and 9/25-1/3=2/75 with strictly positive directed offsets; scope = these two rational identities at fixed parameters, offset := base-1/3; full claim UNCERTIFIABLE as stated because analytic",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R011",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 47,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 40,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:22:06Z"
+    },
+    {
+     "seq": 41,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:22:53Z"
+    },
+    {
+     "seq": 42,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:23:10Z"
+    },
+    {
+     "seq": 43,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:23:26Z"
+    },
+    {
+     "seq": 44,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:23:37Z"
+    },
+    {
+     "seq": 45,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:23:59Z"
+    },
+    {
+     "seq": 46,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:24:21Z"
+    },
+    {
+     "seq": 47,
+     "status": "PROVED",
+     "utc": "2026-09-01T23:24:50Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos510:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos510",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos510:LEM:R012:L1",
+   "statement": "witness A={0,1}: F(θ)=1+cos θ≥0 for all θ, so min F=0>−c√2 for every c>0; exact finite certificate with one-line reduction cos θ≥−1, endpoint-degeneracy trap analogous to erdos821 R004/L1",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R012",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 49,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified concrete counterexample; no candidate proof or artifact exists to show the close survives with L1 deleted, so the not-load-bearing exception does not apply and the route is dead pending a revival item (repaired lemma with strictly weaker assumptions).",
+    "seq": 50
+   },
+   "history": [
+    {
+     "seq": 49,
+     "status": "FALSE",
+     "utc": "2026-09-01T23:31:01Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos510:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos510",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos510:LEM:R013:BRANCH_A_UNIVERSAL_C",
+   "statement": "exact counterexample A={0,1}, N=2: sum=1+cosθ=2cos²(θ/2)≥0>−c√2 for all θ and all c>0 (also A={0}, m=1); branch B closes trivially on frozen A⊂ℤ domain; repair must exclude 0∈A (degenerate-endpoint pattern imported from erdos821 R004/L1, adapted); mean-zero lemma \"0∉A⇒m(A)<0\" survives falsification ",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R013",
+   "lemma_id": "BRANCH_A_UNIVERSAL_C",
+   "registry_status": "FALSE",
+   "registry_seq": 52,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "lemma is the uniform-absolute-c step demanded by close_branch_A.must_determine[0] (same c for all finite integer sets); machine-refuted, R013 retains only c(|A|)-dependent / restricted-family / weaker-exponent residue, each an explicit contract non_result, so no close survives deletion; degenerate w",
+    "seq": 53
+   },
+   "history": [
+    {
+     "seq": 52,
+     "status": "FALSE",
+     "utc": "2026-09-01T23:38:27Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos510:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos510",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos510:LEM:R014:L1",
+   "statement": "witnesses A={0} (sum≡1 ∀θ) and A={0,1} (sum=1+cosθ≥0 ∀θ) are exact pointwise certificates refuting ∃c>0 ∀ finite A⊂ℤ; per-contract non-results forbid repairing by restricting to A⊂ℕ, and the residual A⊂ℕ heart remains unsupported beyond N=3 exact.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R014",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 55,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified counterexample and no proof exists that R014's close survives with L1 deleted; route is dead pending a new-item revival.",
+    "seq": 56
+   },
+   "history": [
+    {
+     "seq": 55,
+     "status": "FALSE",
+     "utc": "2026-09-01T23:59:19Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos510:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos510",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos510:LEM:R015:L1",
+   "statement": "L1 \"∃c>0 ∀ finite A⊂ℤ ∃θ: Σ_{n∈A}cos(nθ)<−c√|A|\" refuted by exact witness A={0,1}: min_θ(1+cosθ)=0 ≥ −c√2 for every c>0; endpoint trap adapted from erdos821 R004/L1.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R015",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 58,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "central lemma L1 has a machine-verified concrete counterexample and no surviving close exists with L1 deleted (candidate proof \"none\", artifacts empty), so L1 was load-bearing; revival only via weakened L1' evading the counterexample or a construction bypassing it.",
+    "seq": 59
+   },
+   "history": [
+    {
+     "seq": 58,
+     "status": "FALSE",
+     "utc": "2026-09-02T00:03:10Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos510:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos510",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos510:LEM:R016:L3",
+   "statement": "rational-angle finite reduction refuted: A={1,2} minimizer cosθ=−1/4 is irrational angle (Niven), exact min −9/8 missed by any rational-θ enumeration; exact model must be Chebyshev-algebraic in x=cosθ",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R016",
+   "lemma_id": "L3",
+   "registry_status": "FALSE",
+   "registry_seq": 61,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "central lemma L3 has a machine-recorded concrete counterexample and no working shows the close survives with L3 deleted; revival requires a repaired L3' with strictly weaker assumptions plus a transfer to the √N canonical claim",
+    "seq": 62
+   },
+   "history": [
+    {
+     "seq": 61,
+     "status": "FALSE",
+     "utc": "2026-09-02T01:06:08Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos510:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos510",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos510:LEM:R017:L1",
+   "statement": "Concrete statement: A={0,1} gives 1+cos(θ)=2cos²(θ/2)≥0 for all θ, so ∀c>0 the canonical inequality fails at N=2; exact witness for branch B, adapted from erdos234 R007/L1 endpoint precedent, re-derived exactly here",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R017",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 64,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 has a machine-verified counterexample and no surviving argument exists (candidate proof \"none\"), so the exception to downgrade is unmet; route is dead absent a §4.2 new item (e.g. a repaired lemma with strictly weaker assumptions).",
+    "seq": 65
+   },
+   "history": [
+    {
+     "seq": 64,
+     "status": "FALSE",
+     "utc": "2026-09-02T01:14:00Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos510:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos510",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos510:LEM:R018:L1",
+   "statement": "Exact witness A={0,1} (and family A={0,m}): F=1+cos(mθ)=2cos^2(mθ/2)>=0 for all theta, refuting the frozen all-A-subset-Z claim at N=2; endpoint defect from 0 in A, repairable by excluding 0 (A subset Z\\{0}), matching imported erdos234 R007/L1 refutation pattern (provenance: endpoint-refutation temp",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R018",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 67,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 was the registry-designated central lemma carrying R018's only reduction toward the canonical cosine close; candidate proof is none and artifacts are empty so no close survives deletion of L1, and the machine-verified counterexample leaves the route no live path to either branch.",
+    "seq": 68
+   },
+   "history": [
+    {
+     "seq": 67,
+     "status": "FALSE",
+     "utc": "2026-09-02T01:18:56Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos510:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos510",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos510:LEM:R019:L1",
+   "statement": "counterexample A={0}, N=1: LHS=cos(0)=1 for all θ, violating LHS<-c·1 for every c>0; canonical statement false under its own frozen quantifiers (domain includes 0, no N0); repair = explicit domain restriction to A⊂ℤ∖{0} or A⊂ℕ prior to any close.",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos510:DEMAND:R019:L1:1"
+   ],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R019",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 81,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified counterexample and no surviving close or non-load-bearing proof exists; route is dead pending a new item (repaired lemma or new certificate) under the §4.2 revival rule.",
+    "seq": 82
+   },
+   "history": [
+    {
+     "seq": 70,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:27:14Z"
+    },
+    {
+     "seq": 71,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:28:19Z"
+    },
+    {
+     "seq": 72,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:44:36Z"
+    },
+    {
+     "seq": 73,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:45:11Z"
+    },
+    {
+     "seq": 74,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:45:34Z"
+    },
+    {
+     "seq": 75,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:45:55Z"
+    },
+    {
+     "seq": 76,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:46:18Z"
+    },
+    {
+     "seq": 77,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:51:43Z"
+    },
+    {
+     "seq": 78,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T02:28:15Z"
+    },
+    {
+     "seq": 79,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:28:39Z"
+    },
+    {
+     "seq": 81,
+     "status": "FALSE",
+     "utc": "2026-09-02T02:30:27Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos510:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos510",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos510:DEMAND:R019:L1:1",
+   "statement": "explicit domain restriction to A⊂ℤ∖{0} or A⊂ℕ prior to any close.",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "repair =",
+   "demand_rank": 1,
+   "demand_strength": "STRONG",
+   "route_status": "DEAD",
+   "demand_source_text": "counterexample A={0}, N=1: LHS=cos(0)=1 for all θ, violating LHS<-c·1 for every c>0; canonical statement false under its own frozen quantifiers (domain includes 0, no N0); repair = explicit domain restriction to A⊂ℤ∖{0} or A⊂ℕ prior to any close.",
+   "route_id": "R019",
+   "lemma_id": "L1",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos510:LEM:R019:L1",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos510",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos510:LEM:R019:L1'",
+   "statement": "— on the delivered instance (reduction = literal \"none\", residual = literal \"per contract\", empty witness store), the §16.1/§16.2 loaders fail closed with exit nonzero, deterministic, offline, CPython 3.11.8 stdlib, fractions-only arithmetic; and the residual requirement \"per contract\" is exactly the contract's own exact-arithmetic/fail-closed clause, which the loader's behavior satisfies on that ",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R019",
+   "lemma_id": "L1'",
+   "registry_status": "UNTESTED",
+   "registry_seq": 80,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 carries a machine-verified counterexample and no surviving close or non-load-bearing proof exists; route is dead pending a new item (repaired lemma or new certificate) under the §4.2 revival rule.",
+    "seq": 82
+   },
+   "history": [
+    {
+     "seq": 80,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T02:28:39Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos510:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "— on the delivered instance (reduction = literal \"none\", residual = literal \"per contract\", empty witness store), the §16.1/§16.2 loaders fail closed with exit nonzero, deterministic, offline, CPython 3.11.8 stdlib, fractions-only arithmetic; and the residual requirement \"per contract\" is exactly the contract's own exact-arithmetic/fail-closed clause, which the loader's behavior satisfies on that "
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos510",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos510:LEM:R020:L1_canonical_universal",
+   "statement": "Exact witnesses A={0} (S≡1, certificate cos0=1) and A={0,1} (S=2cos²(θ/2)≥0, min 0 at θ=π) refute ∀A ∀θ; canonical statement false as quantified, contract admits 0∈A; imported endpoint-defect class erdos821 R004/L1, erdos234 R007/L1, adapted.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R020",
+   "lemma_id": "L1_canonical_universal",
+   "registry_status": "FALSE",
+   "registry_seq": 84,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1_canonical_universal (the canonical universal close itself) has a machine-verified concrete counterexample; deleting it leaves R020 with no close, so it was load-bearing and the route is dead.",
+    "seq": 85
+   },
+   "history": [
+    {
+     "seq": 84,
+     "status": "FALSE",
+     "utc": "2026-09-02T02:35:52Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos510-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos510:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos510",
+   "is_leaf": true,
+   "manufacture_target": false
+  }
+ ]
+}

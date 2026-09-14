@@ -1,0 +1,8 @@
+{"theorem_name": "erdos479_witness_structure",
+ "binders": ["(j : ℕ)", "(n : ℕ)", "(hj : 2 ^ j ≤ n)", "(h : (2 ^ n : ℕ) ≡ 2 ^ (2 ^ j) [MOD n])"],
+ "definitions": "",
+ "statement": "theorem erdos479_witness_structure (j n : ℕ) (hj : 2 ^ j ≤ n)\n    (h : (2 ^ n : ℕ) ≡ 2 ^ (2 ^ j) [MOD n]) :\n    (2 ^ (2 ^ j) : ℕ) * (2 ^ (n - 2 ^ j) - 1) ≡ 0 [MOD n] ∧\n    n.factorization 2 ≤ 2 ^ j",
+ "premises": ["erdos479:ORE:497dc6ba972d1307", "erdos479:ORE:bdad8b1e2f3cabf4"],
+ "derivation_claim": "From h, n ∣ 2^n − 2^(2^j) = 2^(2^j)·(2^(n−2^j) − 1) (using hj for honest ℕ subtraction). The first conjunct is exactly this divisibility as a ModEq. For the second, write n = 2^s·m with m odd (s = n.factorization 2); since m ∣ n and gcd(m, 2^(2^j)) = 1, m ∣ 2^(n−2^j) − 1, which is odd when n > 2^j (and when n = 2^j the bound s ≤ 2^j is an equality), so 2^s ∣ 2^(2^j), i.e. s ≤ 2^j. The leaf erdos479_family shows the constraint is sharp: its witnesses n = 2^j·p have v₂(n) = 2^j exactly, matching the R008 leaf's exact-valuation check at s = j.",
+ "discharges": "erdos479:BRANCH_B",
+ "reason": "For fixed k = 2^(2^j), every exact witness n is now forced to have 2-adic valuation ≤ 2^j and odd part dividing 2^(n−2^j) − 1, shrinking the unbounded witness search to a structured odd-part condition — a direct step toward proving finiteness (or infinitude) of the ZMOD witness set for a concrete k ≠ 1."}

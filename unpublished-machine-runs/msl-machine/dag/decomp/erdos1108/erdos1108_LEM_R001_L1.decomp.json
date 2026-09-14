@@ -1,0 +1,318 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos1108",
+  "generated_utc": "2026-09-02T16:55:24Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos1108:LEM:R001:L1",
+    "statement": "RETRACTED by author boundary audit: \"the subset-sum residue set of {1,2,6,8}\" was read as \"the full residue set of A mod 16\" — 5! ≡ 8 (mod 16) contributes a second, independent way to build the 8-component, so sums like 849 ≡ 1 and 122 ≡ 10 were missed; the forced-inclusion cases (i)/(ii)/(iii) were a partition of an incomplete residue table",
+    "statement_sha256": "bcd5c419ebdbd1d1d73b67f860ae3dbe63262f36b9e6833b21bab577a86b10bb",
+    "kind": "LEMMA",
+    "binding": "UNBOUND",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "Let\\[A = \\left\\{ \\sum_{n\\in S}n! : S\\subset \\mathbb{N}\\textrm{ finite}\\right\\}.\\]If $k\\geq 2$, then does $A$ contain only finitely many $k$th powers? Does it contain only finitely many powerful numbers?",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos1108-campaign-001/contract.json",
+    "sha256": "f2dea193cde542c7d15d03bb5c3a6d9d243085eeafcc0d73f5fd89ad601356c0"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos1108:LEM:R001:L1",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "3d3f12ce60f3b41ae0986514a1d560b7bca09462f3afda6660cd1cc5424a6008",
+    "prompt_chars": 4521,
+    "response_sha256": "01121bace1ba10689382c579d393378001e5c2797eaa94651c8e7290e2e4b28a",
+    "usage": {
+      "prompt_tokens": 1211,
+      "completion_tokens": 2299,
+      "total_tokens": 3510,
+      "cost": 0.000665575,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.000665575,
+        "upstream_inference_prompt_cost": 9.0825e-05,
+        "upstream_inference_completions_cost": 0.00057475
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 1730,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.000665575,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 77.87,
+    "utc": "2026-09-02T16:35:46Z"
+  },
+  "children": [
+    {
+      "id": "erdos1108:LEM:R001:L1#D1",
+      "statement": "6 ≤ m → (m : Nat).factorial % 16 = 0",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos1108",
+      "decomposed_from": "erdos1108:LEM:R001:L1",
+      "imports": "Mathlib",
+      "definitions": "def facRes : Finset Nat :=\n  (Finset.univ : Finset (Fin 9)).powerset.image\n    (fun (S : Finset (Fin 9)) => (∑ i ∈ S, (i : Nat).factorial) % 16)",
+      "type_context": "Mathlib\ndef facRes : Finset Nat :=\n  (Finset.univ : Finset (Fin 9)).powerset.image\n    (fun (S : Finset (Fin 9)) => (∑ i ∈ S, (i : Nat).factorial) % 16)",
+      "lean_binders": [
+        "(m : Nat)"
+      ],
+      "lean_theorem_name": "msl_erdos1108_lem_r001_l1_c1",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef facRes : Finset Nat :=\n  (Finset.univ : Finset (Fin 9)).powerset.image\n    (fun (S : Finset (Fin 9)) => (∑ i ∈ S, (i : Nat).factorial) % 16)\n\n",
+      "lean_signature": "theorem msl_erdos1108_lem_r001_l1_c1 (m : Nat) : 6 ≤ m → (m : Nat).factorial % 16 = 0",
+      "lean_statement_line": "theorem msl_erdos1108_lem_r001_l1_c1 (m : Nat) : 6 ≤ m → (m : Nat).factorial % 16 = 0 := by sorry",
+      "lean_file_sha256": "b5e33cdf1d032501613fe239bee32b0e4886570d3e1924aa17df98c479a50fc8",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "For every m ≥ 6, m! is divisible by 16, so only factorials 0! through 5! contribute nonzero residues mod 16 (this corrects the retracted table, where 5! = 120 ≡ 8 mod 16 was missed).",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos1108/receipts/erdos1108_LEM_R001_L1_D1.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos1108/lean/erdos1108_LEM_R001_L1_D1.lean"
+    },
+    {
+      "id": "erdos1108:LEM:R001:L1#D2",
+      "statement": "facRes ⊆ Finset.range 16",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos1108",
+      "decomposed_from": "erdos1108:LEM:R001:L1",
+      "imports": "Mathlib",
+      "definitions": "def facRes : Finset Nat :=\n  (Finset.univ : Finset (Fin 9)).powerset.image\n    (fun (S : Finset (Fin 9)) => (∑ i ∈ S, (i : Nat).factorial) % 16)",
+      "type_context": "Mathlib\ndef facRes : Finset Nat :=\n  (Finset.univ : Finset (Fin 9)).powerset.image\n    (fun (S : Finset (Fin 9)) => (∑ i ∈ S, (i : Nat).factorial) % 16)",
+      "lean_binders": [],
+      "lean_theorem_name": "msl_erdos1108_lem_r001_l1_c2",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef facRes : Finset Nat :=\n  (Finset.univ : Finset (Fin 9)).powerset.image\n    (fun (S : Finset (Fin 9)) => (∑ i ∈ S, (i : Nat).factorial) % 16)\n\n",
+      "lean_signature": "theorem msl_erdos1108_lem_r001_l1_c2 : facRes ⊆ Finset.range 16",
+      "lean_statement_line": "theorem msl_erdos1108_lem_r001_l1_c2 : facRes ⊆ Finset.range 16 := by sorry",
+      "lean_file_sha256": "f56c6d19a98059c8bc06f590950cdcd96aaacdb39c611cabac086251faeac474",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "The finitely enumerable residue set of subset-sums of 0!,...,8! mod 16 is contained in {0,...,15}.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos1108/receipts/erdos1108_LEM_R001_L1_D2.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos1108/lean/erdos1108_LEM_R001_L1_D2.lean"
+    },
+    {
+      "id": "erdos1108:LEM:R001:L1#D3",
+      "statement": "facRes.card = 16",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos1108",
+      "decomposed_from": "erdos1108:LEM:R001:L1",
+      "imports": "Mathlib",
+      "definitions": "def facRes : Finset Nat :=\n  (Finset.univ : Finset (Fin 9)).powerset.image\n    (fun (S : Finset (Fin 9)) => (∑ i ∈ S, (i : Nat).factorial) % 16)",
+      "type_context": "Mathlib\ndef facRes : Finset Nat :=\n  (Finset.univ : Finset (Fin 9)).powerset.image\n    (fun (S : Finset (Fin 9)) => (∑ i ∈ S, (i : Nat).factorial) % 16)",
+      "lean_binders": [],
+      "lean_theorem_name": "msl_erdos1108_lem_r001_l1_c3",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef facRes : Finset Nat :=\n  (Finset.univ : Finset (Fin 9)).powerset.image\n    (fun (S : Finset (Fin 9)) => (∑ i ∈ S, (i : Nat).factorial) % 16)\n\n",
+      "lean_signature": "theorem msl_erdos1108_lem_r001_l1_c3 : facRes.card = 16",
+      "lean_statement_line": "theorem msl_erdos1108_lem_r001_l1_c3 : facRes.card = 16 := by sorry",
+      "lean_file_sha256": "da7c10c446d1bd715f60129361b4b5025664b614dc456d987d042d82be694da3",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "The decidable enumeration of subset-sums of {1,1,2,6,8,8} (mod 16) yields all 16 residue classes; provable by decide over the 512 subsets of Fin 9.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos1108/receipts/erdos1108_LEM_R001_L1_D3.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos1108/lean/erdos1108_LEM_R001_L1_D3.lean"
+    }
+  ],
+  "composition": {
+    "id": "erdos1108:LEM:R001:L1#COMPOSE",
+    "statement": "((∀ (m : Nat), 6 ≤ m → (m : Nat).factorial % 16 = 0) ∧ (facRes ⊆ Finset.range 16) ∧ (facRes.card = 16)) → (∀ (r : Nat), r < 16 → ∃ (S : Finset Nat), (∑ n ∈ S, (n : Nat).factorial) % 16 = r)",
+    "kind": "COMPOSITION",
+    "depends_on": [
+      "erdos1108:LEM:R001:L1#D1",
+      "erdos1108:LEM:R001:L1#D2",
+      "erdos1108:LEM:R001:L1#D3"
+    ],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "PROVED_KERNEL",
+    "problem": "erdos1108",
+    "decomposed_from": "erdos1108:LEM:R001:L1",
+    "imports": "Mathlib",
+    "definitions": "def facRes : Finset Nat :=\n  (Finset.univ : Finset (Fin 9)).powerset.image\n    (fun (S : Finset (Fin 9)) => (∑ i ∈ S, (i : Nat).factorial) % 16)",
+    "type_context": "Mathlib\ndef facRes : Finset Nat :=\n  (Finset.univ : Finset (Fin 9)).powerset.image\n    (fun (S : Finset (Fin 9)) => (∑ i ∈ S, (i : Nat).factorial) % 16)",
+    "parent_typed": {
+      "statement": "∀ (r : Nat), r < 16 → ∃ (S : Finset Nat), (∑ n ∈ S, (n : Nat).factorial) % 16 = r",
+      "binders": [],
+      "reading": "Every residue class mod 16 is attained by a subset-sum of factorials, i.e. the residue set of A mod 16 is all of Z/16Z.",
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": null,
+        "prose_contract_root_report": {
+          "ok": true,
+          "missing": [],
+          "reason": "",
+          "blocking": false,
+          "why_not_blocking": "tokens mined from ENGLISH prose are not Lean tokens; `Fin k` carries `1 <= i <= k` structurally"
+        }
+      }
+    },
+    "composition_claim": {
+      "text": "Child 3 says the enumerated residue set facRes has 16 elements and child 2 says it sits inside Finset.range 16, so facRes = Finset.range 16, i.e. every residue r < 16 is realized by a subset of {0,...,8}. Child 1 says factorials beyond 5! vanish mod 16, so any finite S ⊆ ℕ has the same residue mod 16 as S ∩ {0,...,8}, whose residue lies in facRes; hence the parent's ∃-statement holds for every r < 16.",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "KERNEL_CHECKED",
+      "rc": 0,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "counts_toward_parent": 1
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "source": "oracle/evidence/msl-machine/dag/decomp/erdos1108/lean/erdos1108_LEM_R001_L1_COMPOSE.lean",
+    "lean_theorem_name": "msl_erdos1108_lem_r001_l1_composition",
+    "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxHeartbeats 400000\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef facRes : Finset Nat :=\n  (Finset.univ : Finset (Fin 9)).powerset.image\n    (fun (S : Finset (Fin 9)) => (∑ i ∈ S, (i : Nat).factorial) % 16)\n\n",
+    "lean_signature": "theorem msl_erdos1108_lem_r001_l1_composition : ((∀ (m : Nat), 6 ≤ m → (m : Nat).factorial % 16 = 0) ∧ (facRes ⊆ Finset.range 16) ∧ (facRes.card = 16)) → (∀ (r : Nat), r < 16 → ∃ (S : Finset Nat), (∑ n ∈ S, (n : Nat).factorial) % 16 = r)",
+    "lean_statement_line": "theorem msl_erdos1108_lem_r001_l1_composition : ((∀ (m : Nat), 6 ≤ m → (m : Nat).factorial % 16 = 0) ∧ (facRes ⊆ Finset.range 16) ∧ (facRes.card = 16)) → (∀ (r : Nat), r < 16 → ∃ (S : Finset Nat), (∑ n ∈ S, (n : Nat).factorial) % 16 = r) := by\n  first\n  | tauto\n  | (intro h; exact h.1)\n  | (intro h; simp_all)\n  | (intro h; omega)\n  | (intro h; norm_num at h ⊢ <;> tauto)\n  | aesop\n  | decide",
+    "lean_trailer": "\n#print axioms msl_erdos1108_lem_r001_l1_composition\n",
+    "lean_binders": [],
+    "lean_file_sha256": "8ed76de054fd4cb050dd6e0655c3e8da7a7307f6f571756fa8396f87533f56c5",
+    "lean_file_contract": "TO REPRODUCE GATE 4: compile `lean_preamble + lean_statement_line + \"\\n\" + lean_trailer` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text the deterministic ladder ran on. TO ATTEMPT A DIFFERENT PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\" + lean_trailer` -- keep the trailer, it is the `#print axioms` line the footprint is read from. Do NOT rebuild a header from `definitions` and do NOT drop the binders.",
+    "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos1108/receipts/erdos1108_LEM_R001_L1_COMPOSE.verify.json",
+    "receipt_kind": "VERIFY_JSON"
+  },
+  "parent_new_depends_on": [
+    "erdos1108:LEM:R001:L1#COMPOSE"
+  ],
+  "rejected": [],
+  "counts": {
+    "proposed": 3,
+    "elaborated": 3,
+    "bound": 3,
+    "non_circular": 3,
+    "non_trivial": 3,
+    "surviving": 3,
+    "composition_kernel_checked": 1,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 3,
+    "counts_toward_parent_note": "composition PROVED_KERNEL: the children are load-bearing"
+  },
+  "definitions": {
+    "block": "def facRes : Finset Nat :=\n  (Finset.univ : Finset (Fin 9)).powerset.image\n    (fun (S : Finset (Fin 9)) => (∑ i ∈ S, (i : Nat).factorial) % 16)",
+    "gate0": {
+      "verdict": "DEFS_ELABORATE"
+    },
+    "campaign_vocabulary_prepended": [],
+    "normalization": {
+      "body": "def facRes : Finset Nat :=\n  (Finset.univ : Finset (Fin 9)).powerset.image\n    (fun (S : Finset (Fin 9)) => (∑ i ∈ S, (i : Nat).factorial) % 16)",
+      "opens": [],
+      "dropped_imports": []
+    }
+  }
+}

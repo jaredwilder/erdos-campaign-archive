@@ -1,0 +1,8 @@
+{"theorem_name": "erdos936_odd_not_mult3_not_powerful",
+ "binders": ["(n : ℕ)", "(hn : n % 2 = 1)", "(hm : n % 3 ≠ 0)"],
+ "definitions": "def Powerful (m : ℕ) : Prop := ∀ p : ℕ, Nat.Prime p → p ∣ m → p * p ∣ m",
+ "statement": "theorem erdos936_odd_not_mult3_not_powerful (n : ℕ) (hn : n % 2 = 1) (hm : n % 3 ≠ 0) : ¬ Powerful (2 ^ n + 1)",
+ "premises": ["erdos936:ORE:1f33adb59737ddbd"],
+ "derivation_claim": "erdos936:ORE:1f33adb59737ddbd → T: since n is odd, 2^n + 1 ≡ (−1)^n + 1 ≡ 0 (mod 3), so the prime 3 divides 2^n + 1; if 9 ∣ 2^n + 1 then by erdos936_nine_dvd_iff n % 6 = 3, forcing n % 3 = 0, contradicting hm; so 9 ∤ 2^n + 1 while 3 ∣ 2^n + 1, i.e. the prime 3 occurs to exponent exactly 1, so Powerful (2^n + 1) fails.",
+ "discharges": "erdos936:DEMAND:R002:L1:1 (shrinks: eliminates every odd n with 3 ∤ n from the squared-exponent demand for 2^n + 1)",
+ "reason": "It converts the 9-adic periodicity leaf into an unconditional non-powerfulness result, reducing the open 2^n+1 target to n even or n ≡ 3 (mod 6), i.e. exactly the remaining prime factors' exponents for n ≡ 3 mod 6."}

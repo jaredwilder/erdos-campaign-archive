@@ -1,0 +1,13 @@
+{"definitions": "",
+  "parent_typed": {"name": "witness_validity_certificate", "binders": [],
+    "statement": "∃ (n : ℕ), ∃ (G : SimpleGraph (Fin n)), G.Cliquefree (3 : ℕ) ∧ ((2 : ℕ) ≤ G.chromaticNumber)",
+    "reading": "∃-side witness-validity certificate: for some n there is a triangle-free graph on n vertices whose chromatic number is at least 2 — the absence of the containment reduction blocks only the ∀-side certificate, not this existence certificate."},
+  "children": [
+    {"name": "exists_odd_cycle_trianglefree", "binders": [],
+      "statement": "∃ (n : ℕ), ∃ (G : SimpleGraph (Fin n)), Odd n ∧ G.Cliquefree (3 : ℕ) ∧ ¬G.Bipartite",
+      "reading": "There exists an odd-order graph (an odd cycle, in witness form) that is triangle-free and not bipartite."},
+    {"name": "bipartite_chromatic_bound", "binders": ["(n : ℕ)", "(G : SimpleGraph (Fin n))"],
+      "statement": "G.Bipartite → (G.chromaticNumber ≤ (2 : ℕ))",
+      "reading": "Any bipartite graph on n vertices has chromatic number at most 2, so a non-bipartite witness forces chromatic number ≥ 3 > 2."}
+  ],
+  "composition_claim": "Child 1 supplies an explicit-shape witness (an odd-cycle graph): triangle-free and not bipartite. Child 2, applied to that witness, shows non-bipartite graphs on at least 3 vertices have chromatic number > 2, so instantiating the parent's ∃ with the witness of child 1 and discharging the chromatic-number bound via child 2 yields the parent: the ∃-side witness-validity certificate stands independently of the containment reduction."}

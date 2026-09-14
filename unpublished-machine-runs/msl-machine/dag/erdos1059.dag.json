@@ -1,0 +1,1013 @@
+{
+ "schema": "obligation-dag/1.0.0",
+ "problem": "erdos1059",
+ "problem_number": "1059",
+ "campaign": "erdos1059-campaign-001",
+ "root": "erdos1059:ROOT",
+ "contract_divergence": {
+  "authoritative": {
+   "role": "campaign",
+   "path": "oracle/evidence/msl-machine/campaigns/erdos1059-campaign-001/contract.json",
+   "sha256": "cef20a8d6aeb7273180d41565baeeda4192276a4a2aeadc2826c8dfac4683aff",
+   "declared_contract_sha256": "ea083e094231cc588b5d251c107e1f0bc2668b73079f14b1643feac7a16fd738"
+  },
+  "others": [
+   {
+    "role": "ingest",
+    "path": "oracle/evidence/msl-machine/contracts/erdos1059/contract.json",
+    "sha256": "00283d707848e4c00989c4fed2d441ca6c670a5fd42adfd43519f7fe9f5c3fa2",
+    "declared_contract_sha256": "56bf304636618265e83742bc4889997bf3188ed44336123ce54fba3d79e60837",
+    "canonical_statement_matches_authoritative": true
+   },
+   {
+    "role": "launch_queue",
+    "path": "oracle/evidence/msl-machine/contracts/LAUNCH-QUEUE/erdos1059.json",
+    "sha256": "c1f324a360130aefce1614ecd814793fee5b2e20d087f66de77be08d5467cb85",
+    "declared_contract_sha256": null,
+    "canonical_statement_matches_authoritative": true
+   }
+  ],
+  "diverges": false
+ },
+ "courts": [
+  "court",
+  "closer",
+  "formalizer",
+  "kernel"
+ ],
+ "summary": {
+  "nodes": 17,
+  "proved_kernel": 0,
+  "proved_speaker": 0,
+  "computed_bounded": 1,
+  "open": 11,
+  "refuted": 5,
+  "orphans": 2,
+  "proof_obligations": 0,
+  "open_leaves_on_dead_routes": 5,
+  "root_kind": "NOT_DECIDABLE",
+  "root_disqualifiers": [
+   "INFINITUDE"
+  ],
+  "formal_root": {
+   "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/1059.lean",
+   "category": "category research open, AMS 11",
+   "declaration": "erdos_1059",
+   "statement": "answer(sorry) ↔ Set.Infinite {p | p.Prime ∧ AllFactorialSubtractionsComposite p}"
+  },
+  "leaf_frontier_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "leaf_frontier_reason": "2 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaf_frontier_deciding_leaf": {
+   "id": "erdos1059:DEMAND:R001:L1:1",
+   "kind": "CAPABILITY_DEMAND",
+   "status": "OPEN",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "a proved infinite-family or density theorem over the exact predicate."
+  },
+  "ladder_shape_reason": "the formal root is not decidable: INFINITUDE (oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/1059.lean). No leaf set can close it, however clean the leaves are. Leaf frontier, kept for the grind queue: HAS_OPEN_ANALYTIC_LEAF.",
+  "leaves": 11,
+  "open_leaves": 7,
+  "open_technical_leaves": 2,
+  "open_prose_obligations": 2,
+  "open_analytic_leaves": 2,
+  "ladder_shape": "ROOT_NOT_DECIDABLE",
+  "deciding_leaf": {
+   "id": "erdos1059:ROOT",
+   "kind": "CANONICAL_ROOT",
+   "status": "OPEN",
+   "binding": "VERBATIM",
+   "leaf_tactic_hint": null,
+   "statement": "answer(sorry) ↔ Set.Infinite {p | p.Prime ∧ AllFactorialSubtractionsComposite p}"
+  },
+  "orphan_detail": [
+   {
+    "id": "erdos1059:A:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos1059:B:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   }
+  ]
+ },
+ "validation": {
+  "acyclic": true,
+  "edges": 19,
+  "root_binds_verbatim": true,
+  "kernel_receipts_checked": 0
+ },
+ "nodes": [
+  {
+   "id": "erdos1059:A:M01",
+   "statement": "Prove infinitely many distinct primes p satisfy the exact all-factorial-values composite condition.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1059-campaign-001/contract.json",
+   "contract_sha256": "cef20a8d6aeb7273180d41565baeeda4192276a4a2aeadc2826c8dfac4683aff",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1059-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1059",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-1059-dc5b3d9818-A-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos1059:BRANCH_A",
+   "statement": "AFFIRMATIVE CLOSE: prove the canonical proposition exactly as stated, with every quantifier, domain restriction, asymptotic qualifier, and structural condition preserved.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos1059:A:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1059-campaign-001/contract.json",
+   "contract_sha256": "cef20a8d6aeb7273180d41565baeeda4192276a4a2aeadc2826c8dfac4683aff",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1059-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1059",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-1059-dc5b3d9818-A-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1059:B:M01",
+   "statement": "Prove finiteness of {p prime : AllFactorialSubtractionsComposite(p)}. For any individual nonmember, the witnessing subtraction may be prime or equal to 1.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1059-campaign-001/contract.json",
+   "contract_sha256": "cef20a8d6aeb7273180d41565baeeda4192276a4a2aeadc2826c8dfac4683aff",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1059-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1059",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-1059-dc5b3d9818-B-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos1059:BRANCH_B",
+   "statement": "NEGATIVE CLOSE: prove that only finitely many primes satisfy the exact condition.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos1059:B:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1059-campaign-001/contract.json",
+   "contract_sha256": "cef20a8d6aeb7273180d41565baeeda4192276a4a2aeadc2826c8dfac4683aff",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1059-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1059",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-1059-dc5b3d9818-B-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1059:ROOT",
+   "statement": "Are there infinitely many primes $p$ such that $p-k!$ is composite for each $k$ such that $1\\leq k!<p$?",
+   "kind": "CANONICAL_ROOT",
+   "depends_on": [
+    "erdos1059:BRANCH_A",
+    "erdos1059:BRANCH_B"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "root_by_construction",
+   "closure_mode": "DISJUNCTIVE",
+   "satisfied_by_any": [
+    "erdos1059:BRANCH_A",
+    "erdos1059:BRANCH_B"
+   ],
+   "root_kind": "NOT_DECIDABLE",
+   "root_disqualifiers": [
+    "INFINITUDE"
+   ],
+   "formal_root": {
+    "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/1059.lean",
+    "category": "category research open, AMS 11",
+    "declaration": "erdos_1059",
+    "statement": "answer(sorry) ↔ Set.Infinite {p | p.Prime ∧ AllFactorialSubtractionsComposite p}"
+   },
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos1059-campaign-001/contract.json",
+   "contract_sha256": "cef20a8d6aeb7273180d41565baeeda4192276a4a2aeadc2826c8dfac4683aff",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1059-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1059",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1059:LEM:R001:L1",
+   "statement": "Finite check over p≤19 with no extension/transfer theorem cannot support the infinite-quantifier branch-A close; repair requires a proved infinite-family or density theorem over the exact predicate.",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos1059:DEMAND:R001:L1:1"
+   ],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 6,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 (sole PROVED lemma, finite check p≤19) carries a machine-recorded concrete counterexample and was load-bearing for the branch-A infinite-quantifier close; no extension theorem or surviving argument remains, so the route is dead.",
+    "seq": 7
+   },
+   "history": [
+    {
+     "seq": 5,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:28:59Z"
+    },
+    {
+     "seq": 6,
+     "status": "FALSE",
+     "utc": "2026-09-01T19:30:10Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1059-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1059:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1059",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1059:DEMAND:R001:L1:1",
+   "statement": "a proved infinite-family or density theorem over the exact predicate.",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "repair requires",
+   "demand_rank": 0,
+   "demand_strength": "STRONG",
+   "route_status": "DEAD",
+   "demand_source_text": "Finite check over p≤19 with no extension/transfer theorem cannot support the infinite-quantifier branch-A close; repair requires a proved infinite-family or density theorem over the exact predicate.",
+   "route_id": "R001",
+   "lemma_id": "L1",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos1059:LEM:R001:L1",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1059-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1059",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1059:LEM:R001:L2",
+   "statement": "Sieve heuristic fits counts to 10^6 predicting infinite members, but no finite-reduction theorem; supports branch A only as evidence.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "COMPUTED_BOUNDED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R001",
+   "lemma_id": "L2",
+   "registry_status": "COMPUTATION_SUPPORTED",
+   "registry_seq": 3,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 (sole PROVED lemma, finite check p≤19) carries a machine-recorded concrete counterexample and was load-bearing for the branch-A infinite-quantifier close; no extension theorem or surviving argument remains, so the route is dead.",
+    "seq": 7
+   },
+   "history": [
+    {
+     "seq": 3,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:11:04Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1059-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1059:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_COMPUTATION_SUPPORTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "Sieve heuristic fits counts to 10^6 predicting infinite members, but no finite-reduction theorem; supports branch A only as evidence."
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos1059",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1059:LEM:R001:all",
+   "statement": "no verifier artifact or certificate provided; fail closed pending exact rational/interval verifier submission",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos1059:DEMAND:R001:all:1"
+   ],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "all",
+   "registry_status": "UNTESTED",
+   "registry_seq": 4,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 (sole PROVED lemma, finite check p≤19) carries a machine-recorded concrete counterexample and was load-bearing for the branch-A infinite-quantifier close; no extension theorem or surviving argument remains, so the route is dead.",
+    "seq": 7
+   },
+   "history": [
+    {
+     "seq": 4,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:28:13Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1059-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1059:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "no verifier artifact or certificate provided; fail closed pending exact rational/interval verifier submission"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1059",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1059:DEMAND:R001:all:1",
+   "statement": "exact rational/interval verifier submission",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "pending ",
+   "demand_rank": 5,
+   "demand_strength": "WEAK",
+   "route_status": "DEAD",
+   "demand_source_text": "no verifier artifact or certificate provided; fail closed pending exact rational/interval verifier submission",
+   "route_id": "R001",
+   "lemma_id": "all",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos1059:LEM:R001:all",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1059-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1059",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1059:LEM:R002:L1",
+   "statement": "Certificate cites p=3 for the k=1 conjunct but p−1!=2 is prime, so the recorded boundary data is factually wrong and the fragment cannot support branch A.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R002",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 33,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 (k=1 fragment certificate at p=3,5) is machine-refuted and load-bearing: the only remaining step toward infinitely many ∀k-composite primes is the unproved L2 covering extension, and no proof survives with L1 deleted.",
+    "seq": 34
+   },
+   "history": [
+    {
+     "seq": 9,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T19:35:07Z"
+    },
+    {
+     "seq": 11,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:43:33Z"
+    },
+    {
+     "seq": 12,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:44:04Z"
+    },
+    {
+     "seq": 14,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:45:16Z"
+    },
+    {
+     "seq": 31,
+     "status": "PROVED",
+     "utc": "2026-09-01T19:55:59Z"
+    },
+    {
+     "seq": 33,
+     "status": "FALSE",
+     "utc": "2026-09-01T19:57:10Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1059-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1059:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1059",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1059:LEM:R002:L2",
+   "statement": "Unbounded covering-system existence is the load-bearing step with no proof; L1's finite fragment certificate cannot extend past its cutoff without it.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R002",
+   "lemma_id": "L2",
+   "registry_status": "UNTESTED",
+   "registry_seq": 32,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 (k=1 fragment certificate at p=3,5) is machine-refuted and load-bearing: the only remaining step toward infinitely many ∀k-composite primes is the unproved L2 covering extension, and no proof survives with L1 deleted.",
+    "seq": 34
+   },
+   "history": [
+    {
+     "seq": 13,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:44:26Z"
+    },
+    {
+     "seq": 15,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:47:18Z"
+    },
+    {
+     "seq": 16,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:47:33Z"
+    },
+    {
+     "seq": 17,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:48:15Z"
+    },
+    {
+     "seq": 18,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:48:24Z"
+    },
+    {
+     "seq": 19,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:49:08Z"
+    },
+    {
+     "seq": 20,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:49:29Z"
+    },
+    {
+     "seq": 21,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:50:47Z"
+    },
+    {
+     "seq": 22,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:51:14Z"
+    },
+    {
+     "seq": 23,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:51:48Z"
+    },
+    {
+     "seq": 24,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:52:37Z"
+    },
+    {
+     "seq": 25,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:53:37Z"
+    },
+    {
+     "seq": 26,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:54:01Z"
+    },
+    {
+     "seq": 27,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:54:12Z"
+    },
+    {
+     "seq": 28,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:54:31Z"
+    },
+    {
+     "seq": 29,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:54:52Z"
+    },
+    {
+     "seq": 30,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:55:01Z"
+    },
+    {
+     "seq": 32,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:56:27Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1059-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1059:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "Unbounded covering-system existence is the load-bearing step with no proof; L1's finite fragment certificate cannot extend past its cutoff without it."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1059",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1059:LEM:R002:ea083e094231cc58",
+   "statement": "packet contains only placeholder fields (\"none\"/\"per contract\") with no contract body or candidate statement; fail-closed abort, no verifier constructed.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R002",
+   "lemma_id": "ea083e094231cc58",
+   "registry_status": "UNTESTED",
+   "registry_seq": 10,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 (k=1 fragment certificate at p=3,5) is machine-refuted and load-bearing: the only remaining step toward infinitely many ∀k-composite primes is the unproved L2 covering extension, and no proof survives with L1 deleted.",
+    "seq": 34
+   },
+   "history": [
+    {
+     "seq": 10,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T19:38:55Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1059-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1059:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "packet contains only placeholder fields (\"none\"/\"per contract\") with no contract body or candidate statement; fail-closed abort, no verifier constructed."
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1059",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1059:LEM:R003:L1",
+   "statement": "11−3!=5 is prime with 3!=6<11, so p=11 violates the canonical condition; a concrete counterinstance to the membership claim.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R003",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 38,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "Central lemma L1 has a machine-verified concrete counterexample and no surviving argument shows R003's close survives without it, so the route is dead.",
+    "seq": 39
+   },
+   "history": [
+    {
+     "seq": 36,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T20:01:44Z"
+    },
+    {
+     "seq": 37,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:02:20Z"
+    },
+    {
+     "seq": 38,
+     "status": "FALSE",
+     "utc": "2026-09-01T20:03:21Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1059-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1059:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos1059",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1059:LEM:R004:L1",
+   "statement": "obstruction characterization refuted at p=11 (11−2=9 composite, 11−3!=5 prime); k=1 fragment survives; repair: obstruction is ∃k≥2 with 2≤k!<p and p−k! prime or =1, plus degenerate p=2 (2−1!=1 not composite)",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos1059:DEMAND:R004:L1:1"
+   ],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 44,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "lemma L1 is the route's sole and load-bearing lemma; its characterization is concretely refuted at p=11 (11−3!=5 prime) and the degenerate p=2 (2−1!=1) is mishandled, so R004's close does not survive with L1 deleted.",
+    "seq": 45
+   },
+   "history": [
+    {
+     "seq": 41,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T20:05:52Z"
+    },
+    {
+     "seq": 42,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:07:48Z"
+    },
+    {
+     "seq": 43,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T20:08:58Z"
+    },
+    {
+     "seq": 44,
+     "status": "FALSE",
+     "utc": "2026-09-02T01:55:03Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1059-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1059:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos1059",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1059:DEMAND:R004:L1:1",
+   "statement": "obstruction is ∃k≥2 with 2≤k!<p and p−k! prime or =1, plus degenerate p=2 (2−1!=1 not composite)",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "repair:",
+   "demand_rank": 2,
+   "demand_strength": "STRONG",
+   "route_status": "DEAD",
+   "demand_source_text": "obstruction characterization refuted at p=11 (11−2=9 composite, 11−3!=5 prime); k=1 fragment survives; repair: obstruction is ∃k≥2 with 2≤k!<p and p−k! prime or =1, plus degenerate p=2 (2−1!=1 not composite)",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos1059:LEM:R004:L1",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1059-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1059",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos1059:LEM:R005:L1",
+   "statement": "machine-recorded counterexamples p=149,167 (p−5!=29,47 prime; all k≤4 differences composite) refute both the k∈{1,2,3,4} witness-bound clause and the \"first admissible 101,149,167,211\" list; p=2 (witness 1, not prime) refutes the all-witnessed-by-a-prime clause; certified corrected fragment: primes ",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R005",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 48,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "sole lemma L1 is machine-refuted at p=149,167 (p−5!=29,47 prime) and degenerate p=2 (2−1!=1 not composite); deleting it leaves no surviving argument for the ∀k infinite close, so the exception does not apply and the route is dead.",
+    "seq": 49
+   },
+   "history": [
+    {
+     "seq": 47,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T02:22:59Z"
+    },
+    {
+     "seq": 48,
+     "status": "FALSE",
+     "utc": "2026-09-02T02:24:58Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos1059-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos1059:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos1059",
+   "is_leaf": true,
+   "manufacture_target": false
+  }
+ ]
+}

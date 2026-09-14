@@ -1,0 +1,195 @@
+{
+ "schema": "msl-compress/1.0.0",
+ "consumes_schema": "obligation-dag/1.0.0",
+ "problem": "erdos479",
+ "generated_utc": "2026-09-02T22:56:25Z",
+ "node": {
+  "id": "erdos479:COMPRESS:erdos479_affirmative_bridge",
+  "statement": "theorem erdos479_affirmative_bridge (k : ℤ) (hk : k = 0 ∨ (∃ j : ℕ, k = (2 : ℤ) ^ (2 ^ j)) ∨ k = -1) : ∀ N : ℕ, ∃ n : ℕ, N < n ∧ (2 : ℤ) ^ n ≡ k [ZMOD n]",
+  "kind": "COMBINED_THEOREM",
+  "depends_on": [
+   "erdos479:ORE:e4e7d9dfc598a767",
+   "erdos479:ORE:497dc6ba972d1307"
+  ],
+  "binding": "PARAPHRASE",
+  "binding_detail": "PARAPHRASE: proposed one level up from proved premises by msl_compress; the composed file re-checks it from zero",
+  "status": "OPEN",
+  "problem": "erdos479",
+  "declaration": "erdos479_affirmative_bridge",
+  "type_context": "",
+  "lean_statement_line": "theorem erdos479_affirmative_bridge (k : ℤ) (hk : k = 0 ∨ (∃ j : ℕ, k = (2 : ℤ) ^ (2 ^ j)) ∨ k = -1) : theorem erdos479_affirmative_bridge (k : ℤ) (hk : k = 0 ∨ (∃ j : ℕ, k = (2 : ℤ) ^ (2 ^ j)) ∨ k = -1) : ∀ N : ℕ, ∃ n : ℕ, N < n ∧ (2 : ℤ) ^ n ≡ k [ZMOD n] := by sorry",
+  "lean_binders": [
+   "(k : ℤ)",
+   "(hk : k = 0 ∨ (∃ j : ℕ, k = (2 : ℤ) ^ (2 ^ j)) ∨ k = -1)"
+  ],
+  "lean_preamble": "import Mathlib\nset_option autoImplicit false\nnamespace R008\n/-- Decidable check of the full lemma content at a single s:\n(1) exact valuation v₂(2^(2^s)) = 2^s, encoded as: 2^(2^s) ∣ 2^(2^s) and ¬(2^(2^s + 1) ∣ 2^(2^s));\n(2) 2^s ≥ s;\n(3) divisibility 2^s ∣ 2^(2^s) (witness family n = 2^s for k = 0). --/\ndef check_s (s : ℕ) : Bool :=\n  (2 ^ (2 ^ s) ∣ 2 ^ (2 ^ s))\n  && ¬ (2 ^ (2 ^ s + 1) ∣ 2 ^ (2 ^ s))\n  && (s ≤ 2 ^ s)\n  && ((2 ^ s : ℕ) ∣ 2 ^ (2 ^ s))\n/-- Bounded check over s = 1, …, bound. --/\ndef check (bound : ℕ) : Bool :=\n  (List.range bound).all (fun s => s = 0 || check_s s)\nend R008\n/-!\nErdős 479, second family (adversarial transcript mine, 2026-09-02 — the campaign itself\nmissed this; the auditor derived it): k = −1 is settled. For every a,\n3^(a+1) ∣ 2^(3^a) + 1, so in particular n = 3^a divides 2^n + 1, giving infinitely many\nwitnesses for k = −1 (2^n ≡ −1 mod n). Lifting-the-exponent induction: if\n2^(3^a) = 3^(a+1)·m − 1 then cubing gives (3tm−1)³ + 1 = 9t·(3t²m³ − 3tm² + m) with\nt = 3^a. Stated in ℤ to keep the subtraction honest; ℕ divisibility corollary follows.\n-/\ntheorem erdos479_lte (a : ℕ) : (3 : ℤ) ^ (a + 1) ∣ 2 ^ (3 ^ a) + 1 := by\n  induction a with\n  | zero => norm_num\n  | succ a ih =>\n    obtain ⟨m, hm⟩ := ih\n    set t : ℤ := 3 ^ a with hta\n    have h31 : (3 : ℤ) ^ (a + 1) = 3 * t := by rw [hta, pow_succ, mul_comm]\n    have h32 : (3 : ℤ) ^ (a + 1 + 1) = 9 * t := by rw [pow_succ, h31]; ring\n    have h2 : (2 : ℤ) ^ (3 ^ a) = 3 * t * m - 1 := by\n      rw [← h31]\n      linarith\n    have hcube : (2 : ℤ) ^ (3 ^ (a + 1)) = ((2 : ℤ) ^ (3 ^ a)) ^ 3 := by\n      rw [← pow_mul, pow_succ]\n    refine ⟨3 * t ^ 2 * m ^ 3 - 3 * t * m ^ 2 + m, ?_⟩\n    rw [hcube, h2, h32]\n    ring\nErdős 479, P0 promotion (GPT gold pack rank 2, audited 2026-09-01; kernel round 2026-09-02).\nInfinite parametric witness family: for every j ≥ 0 and every odd prime p, with\nk = 2^(2^j) and n = 2^j · p, we have 2^n ≡ k (mod n). Modulo p by Fermat\n(2^(2^j(p-1)) ≡ 1), modulo 2^j both sides vanish (j ≤ 2^j), and CRT since gcd(2^j, p) = 1.\nAs p varies this gives infinitely many n for each such k.\ndef witness : List Nat := [2, 4, 8, 16, 32, 64]\ndef isWitness (n : Nat) : Bool := (2 ^ n) % n == 0\ndef check : Bool := witness.all isWitness\ndef witnessOk (a : Nat) : Bool := (2^(2^a)) % (2^a) == 0\ndef check_range : Bool := (List.range 7).all (fun a => witnessOk a)\n",
+  "derivation_claim": "Case k = 0: take n = 2^s with s large; n ∣ 2^n since 2^s ∣ 2^(2^s), hence (2:ℤ)^n ≡ 0 [ZMOD n]. Case k = -1: take n = 3^a with 3^a > N (unbounded since a ↦ 3^a strictly grows); erdos479_k_neg_one gives 3^a ∣ 2^(3^a) + 1, i.e. (2:ℤ)^n ≡ -1 [ZMOD n]. Case k = 2^(2^j): pick an odd prime p with 2^j * p > N (infinitude of odd primes in Mathlib); erdos479_family gives 2^(2^j*p) ≡ 2^(2^j) [MOD 2^j*p], cast to ℤ via Int.ofNat_emod. Union of the three cases yields the statement. Thus the three proved ℕ-congruence families (k = 0, k = −1, k = 2^(2^j)) are lifted into a single quantified ℤ/ZMOD infinitude statement covering an infinite set of k.",
+  "rise": "RISE",
+  "origin": "PROPOSER",
+  "court": [],
+  "supports": [
+   "erdos479:BRANCH_A"
+  ],
+  "sources": [
+   "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_affirmative_bridge.implication.lean",
+   "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_affirmative_bridge.standalone.lean"
+  ],
+  "type_gate": {
+   "ok": true,
+   "missing": [],
+   "reason": "",
+   "reference": null,
+   "used_type_context": false
+  }
+ },
+ "candidate": {
+  "t_id": "erdos479:COMPRESS:erdos479_affirmative_bridge",
+  "theorem_name": "erdos479_affirmative_bridge",
+  "origin": "PROPOSER",
+  "variant": "v3_bridge",
+  "statement": "theorem erdos479_affirmative_bridge (k : ℤ) (hk : k = 0 ∨ (∃ j : ℕ, k = (2 : ℤ) ^ (2 ^ j)) ∨ k = -1) : ∀ N : ℕ, ∃ n : ℕ, N < n ∧ (2 : ℤ) ^ n ≡ k [ZMOD n]",
+  "premises": [
+   "erdos479:ORE:e4e7d9dfc598a767",
+   "erdos479:ORE:497dc6ba972d1307"
+  ],
+  "discharges": "erdos479:BRANCH_A",
+  "derivation_claim": "Case k = 0: take n = 2^s with s large; n ∣ 2^n since 2^s ∣ 2^(2^s), hence (2:ℤ)^n ≡ 0 [ZMOD n]. Case k = -1: take n = 3^a with 3^a > N (unbounded since a ↦ 3^a strictly grows); erdos479_k_neg_one gives 3^a ∣ 2^(3^a) + 1, i.e. (2:ℤ)^n ≡ -1 [ZMOD n]. Case k = 2^(2^j): pick an odd prime p with 2^j * p ",
+  "reason": "It converts the discrete proved families into the target's exact ZMOD (n:ℤ) form and quantifies over all k in an infinite class, shrinking BRANCH_A to the residual k not of the form 0, −1, or 2^(2^j).",
+  "gates": {
+   "order": [
+    "G1_SCHEMA",
+    "G2_TYPE",
+    "G3_CIRCULAR",
+    "G4_KILLED",
+    "G5_CONJUNCTION",
+    "G6_FALSIFY",
+    "G7_RISE"
+   ],
+   "passed": [
+    "G1_SCHEMA",
+    "G2_TYPE",
+    "G3_CIRCULAR",
+    "G4_KILLED",
+    "G5_CONJUNCTION",
+    "G6_FALSIFY",
+    "G7_RISE"
+   ],
+   "failed_at": null,
+   "detail": {
+    "G1_SCHEMA": {
+     "ok": true,
+     "reason": ""
+    },
+    "G2_TYPE": {
+     "standalone_ok": true,
+     "standalone_missing": [],
+     "referenced_missing": [],
+     "fatal": [],
+     "domain_bounds_dropped": [],
+     "ok": true,
+     "reason": ""
+    },
+    "G3_CIRCULAR": {
+     "ok": true,
+     "reason": ""
+    },
+    "G4_KILLED": {
+     "checked_against": 0,
+     "ok": true,
+     "reason": ""
+    },
+    "G5_CONJUNCTION": {
+     "conjunct_count": 2,
+     "t_len": 50,
+     "conjunction_len": 192,
+     "conjuncts_matching_a_premise": 0,
+     "shorter_than_conjunction": true,
+     "generalizes": true,
+     "generalization_reason": "BINDER_GENERALIZATION: T quantifies where a premise held the literal(s) 2,2,2,2,2",
+     "measure": "SHORTER_THAN_CONJUNCTION",
+     "ok": true,
+     "reason": ""
+    },
+    "G6_FALSIFY": {
+     "ok": true,
+     "state": "UNDECIDED",
+     "rows": [],
+     "param": "N",
+     "lean": "import Mathlib\nset_option autoImplicit false\nnamespace R008\n/-- Decidable check of the full lemma content at a single s:\n(1) exact valuation v₂(2^(2^s)) = 2^s, encoded as: 2^(2^s) ∣ 2^(2^s) and ¬(2^(2^s + 1) ∣ 2^(2^s));\n(2) 2^s ≥ s;\n(3) divisibility 2^s ∣ 2^(2^s) (witness family n = 2^s for k = 0). --/\ndef check_s (s : ℕ) : Bool :=\n  (2 ^ (2 ^ s) ∣ 2 ^ (2 ^ s))\n  && ¬ (2 ^ (2 ^ s + 1) ∣ 2 ^ (2 ^ s))\n  && (s ≤ 2 ^ s)\n  && ((2 ^ s : ℕ) ∣ 2 ^ (2 ^ s))\n/-- Bounded check over s = 1, …, bound. --/\ndef check (bound : ℕ) : Bool :=\n  (List.range bound).all (fun s => s = 0 || check_s s)\nend R008\n/-!\nErdős 479, second family (adversarial transcript mine, 2026-09-02 — the campaign itself\nmissed this; the auditor derived it): k = −1 is settled. For every a,\n3^(a+1) ∣ 2^(3^a) + 1, so in particular n = 3^a divides 2^n + 1, giving infinitely many\nwitnesses for k = −1 (2^n ≡ −1 mod n). Lifting-the-exponent induction: if\n2^(3^a) = 3^(a+1)·m − 1 then cubing gives (3tm−1)³ + 1 = 9t·(3t²m³ − 3tm² + m) with\nt = 3^a. Stated in ℤ to keep the subtraction honest; ℕ divisibility corollary follows.\n-/\ntheorem erdos479_lte (a : ℕ) : (3 : ℤ) ^ (a + 1) ∣ 2 ^ (3 ^ a) + 1 := by\n  induction a with\n  | zero => norm_num\n  | succ a ih =>\n    obtain ⟨m, hm⟩ := ih\n    set t : ℤ := 3 ^ a with hta\n    have h31 : (3 : ℤ) ^ (a + 1) = 3 * t := by rw [hta, pow_succ, mul_comm]\n    have h32 : (3 : ℤ) ^ (a + 1 + 1) = 9 * t := by rw [pow_succ, h31]; ring\n    have h2 : (2 : ℤ) ^ (3 ^ a) = 3 * t * m - 1 := by\n      rw [← h31]\n      linarith\n    have hcube : (2 : ℤ) ^ (3 ^ (a + 1)) = ((2 : ℤ) ^ (3 ^ a)) ^ 3 := by\n      rw [← pow_mul, pow_succ]\n    refine ⟨3 * t ^ 2 * m ^ 3 - 3 * t * m ^ 2 + m, ?_⟩\n    rw [hcube, h2, h32]\n    ring\nErdős 479, P0 promotion (GPT gold pack rank 2, audited 2026-09-01; kernel round 2026-09-02).\nInfinite parametric witness family: for every j ≥ 0 and every odd prime p, with\nk = 2^(2^j) and n = 2^j · p, we have 2^n ≡ k (mod n). Modulo p by Fermat\n(2^(2^j(p-1)) ≡ 1), modulo 2^j both sides vanish (j ≤ 2^j), and CRT since gcd(2^j, p) = 1.\nAs p varies this gives infinitely many n for each such k.\ndef witness : List Nat := [2, 4, 8, 16, 32, 64]\ndef isWitness (n : Nat) : Bool := (2 ^ n) % n == 0\ndef check : Bool := witness.all isWitness\ndef witnessOk (a : Nat) : Bool := (2^(2^a)) % (2^a) == 0\ndef check_range : Bool := (List.range 7).all (fun a => witnessOk a)\nabbrev erdos479_affirmative_bridge_prop (N : Nat) : Prop := k = (2 : ℤ) ^ (2 ^ j)) ∨ k = -1) : ∀ N : ℕ, ∃ n : ℕ, N < n ∧ (2 : ℤ) ^ n ≡ k [ZMOD n]\n\n#eval (if (decide (erdos479_affirmative_bridge_prop 0)) then \"MSLF 0 TRUE\" else \"MSLF 0 FALSE\")\n#eval (if (decide (erdos479_affirmative_bridge_prop 1)) then \"MSLF 1 TRUE\" else \"MSLF 1 FALSE\")\n#eval (if (decide (erdos479_affirmative_bridge_prop 2)) then \"MSLF 2 TRUE\" else \"MSLF 2 FALSE\")\n",
+     "law": "SILENCE IS UNDECIDED, NEVER A PASS (msl_strengthen S7d)"
+    },
+    "G7_RISE": {
+     "ok": true,
+     "verdict": "RISE",
+     "reasons": [
+      "DISCHARGES:erdos479:BRANCH_A",
+      "ON_ROOT_PATH"
+     ]
+    }
+   },
+   "rise": "RISE"
+  },
+  "rise": "RISE",
+  "kernel": {
+   "verdict": "KERNEL_NOT_RUN",
+   "reason": "no Lean on this machine tonight; the job is filed, nothing is claimed",
+   "axioms": null,
+   "clean": false
+  },
+  "status": "OPEN",
+  "node_validation": {
+   "binding_after_builder": "PARAPHRASE",
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "unbound": false
+  },
+  "jobs": {
+   "jobs_file": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_affirmative_bridge.jobs.json",
+   "implication_lean": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_affirmative_bridge.implication.lean",
+   "standalone_lean": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_affirmative_bridge.standalone.lean",
+   "cable_spec_ok": true
+  }
+ },
+ "included_sources": [
+  {
+   "leaf": "erdos479:ORE:497dc6ba972d1307",
+   "declaration": "erdos479_family",
+   "included_via": "LEAN_STATEMENT_LINE",
+   "sha256": "cb7bb955a51b367b7f96fdb360ce893117e9502f61149464d779b087765983bd",
+   "receipt": "oracle/evidence/msl-machine/gpt-mine-day2-2026-09-02/kernel-verified/erdos479/Erdos479Family__b36c7078f0af.verify.json",
+   "source": null
+  },
+  {
+   "leaf": "erdos479:ORE:e4e7d9dfc598a767",
+   "declaration": "erdos479_k_neg_one",
+   "included_via": "LEAN_STATEMENT_LINE",
+   "sha256": "2bca88905690e1151a1753d460c07dd8505ee2fc0ffec9e228b8ced09ae3a829",
+   "receipt": "oracle/evidence/msl-machine/gpt-mine-day2-2026-09-02/kernel-verified/erdos479/Erdos479LTE__88f7aa08f802.verify.json",
+   "source": null
+  }
+ ],
+ "derivation_claim": "Case k = 0: take n = 2^s with s large; n ∣ 2^n since 2^s ∣ 2^(2^s), hence (2:ℤ)^n ≡ 0 [ZMOD n]. Case k = -1: take n = 3^a with 3^a > N (unbounded since a ↦ 3^a strictly grows); erdos479_k_neg_one gives 3^a ∣ 2^(3^a) + 1, i.e. (2:ℤ)^n ≡ -1 [ZMOD n]. Case k = 2^(2^j): pick an odd prime p with 2^j * p > N (infinitude of odd primes in Mathlib); erdos479_family gives 2^(2^j*p) ≡ 2^(2^j) [MOD 2^j*p], cast to ℤ via Int.ofNat_emod. Union of the three cases yields the statement. Thus the three proved ℕ-congruence families (k = 0, k = −1, k = 2^(2^j)) are lifted into a single quantified ℤ/ZMOD infinitude statement covering an infinite set of k.",
+ "provenance": {
+  "proposer_receipt": "8c6ed8ec833e28586713cbb4884aaf01a7e13ac9113686af758c964da353676f",
+  "selection": {
+   "method": "GREEDY_CONNECTED_TOWARD_TARGET",
+   "seed": "erdos479:ORE:bdad8b1e2f3cabf4",
+   "seed_overlap": 2,
+   "overlap": {
+    "erdos479:ORE:bdad8b1e2f3cabf4": 2,
+    "erdos479:ORE:2b23edb1fcd33097": 1,
+    "erdos479:ORE:e4e7d9dfc598a767": 1,
+    "erdos479:ORE:497dc6ba972d1307": 1,
+    "erdos479:ORE:39a300ec8d427fec": 0,
+    "erdos479:ORE:c96696c4aa12506b": 0
+   },
+   "internal_weight": 110
+  }
+ },
+ "law": "status is OPEN until a kernel row lands; the node schema was validated by msl_obligation_dag.DagBuilder.add"
+}

@@ -1,0 +1,2237 @@
+{
+ "schema": "obligation-dag/1.0.0",
+ "problem": "erdos683",
+ "problem_number": "683",
+ "campaign": "erdos683-campaign-001",
+ "root": "erdos683:ROOT",
+ "contract_divergence": {
+  "authoritative": {
+   "role": "campaign",
+   "path": "oracle/evidence/msl-machine/campaigns/erdos683-campaign-001/contract.json",
+   "sha256": "03b440232ec2d4c93964f56f5c8b61b96251e5adedb8d860d7cb387a078746e7",
+   "declared_contract_sha256": "114f5786d801dfe26acc2f7db45ba573dd072a990fa6b899ef1cbf2e60611f7c"
+  },
+  "others": [
+   {
+    "role": "ingest",
+    "path": "oracle/evidence/msl-machine/contracts/erdos683/contract.json",
+    "sha256": "afee78912c433d97e746e33ddad783a348558bf48e7330a0d79a9e37d5f582df",
+    "declared_contract_sha256": "fbc9ed9401d1af0903952e5864c9e54744851066d9129b7d4a5a51893745744a",
+    "canonical_statement_matches_authoritative": true
+   },
+   {
+    "role": "launch_queue",
+    "path": "oracle/evidence/msl-machine/contracts/LAUNCH-QUEUE/erdos683.json",
+    "sha256": "1acbd5ad14ef60a5fe04b2dd2986fee014aa06054ffee494562fe381ffd8ce03",
+    "declared_contract_sha256": null,
+    "canonical_statement_matches_authoritative": true
+   }
+  ],
+  "diverges": false
+ },
+ "courts": [
+  "court",
+  "closer",
+  "formalizer",
+  "kernel"
+ ],
+ "summary": {
+  "nodes": 38,
+  "proved_kernel": 0,
+  "proved_speaker": 9,
+  "computed_bounded": 0,
+  "open": 25,
+  "refuted": 4,
+  "orphans": 2,
+  "proof_obligations": 0,
+  "open_leaves_on_dead_routes": 5,
+  "root_kind": "DECIDABLE_BOUNDED",
+  "root_disqualifiers": [],
+  "formal_root": {
+   "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/683.lean",
+   "category": "category research open, AMS 11",
+   "declaration": "erdos_683",
+   "statement": "answer(sorry) ↔ (∃ c > (0 : ℝ), ∀ n k : ℕ, 0 < k ∧ k < n → P n k > min (n - k + 1 : ℝ) (k ^ (1 + c)))"
+  },
+  "leaf_frontier_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "leaf_frontier_reason": "6 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaf_frontier_deciding_leaf": {
+   "id": "erdos683:LEM:R002:L1",
+   "kind": "LEMMA",
+   "status": "PROVED_SPEAKER",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "endpoint fragment (k=1 and k=n−1 for all n≥2, any c>0) verified directly; canonical claim untouched, P(1) convention at k=n still required."
+  },
+  "ladder_shape_reason": "6 open technical leaf/leaves on live routes carry no decidable tactic hint",
+  "leaves": 34,
+  "open_leaves": 31,
+  "open_technical_leaves": 24,
+  "open_prose_obligations": 2,
+  "open_analytic_leaves": 6,
+  "ladder_shape": "HAS_OPEN_ANALYTIC_LEAF",
+  "deciding_leaf": {
+   "id": "erdos683:LEM:R002:L1",
+   "kind": "LEMMA",
+   "status": "PROVED_SPEAKER",
+   "binding": "UNBOUND",
+   "leaf_tactic_hint": null,
+   "statement": "endpoint fragment (k=1 and k=n−1 for all n≥2, any c>0) verified directly; canonical claim untouched, P(1) convention at k=n still required."
+  },
+  "orphan_detail": [
+   {
+    "id": "erdos683:A:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   },
+   {
+    "id": "erdos683:B:M01",
+    "kind": "MUST_DETERMINE",
+    "reason": "NEEDS_DECOMPOSITION: no evidence node under this frozen obligation"
+   }
+  ]
+ },
+ "validation": {
+  "acyclic": true,
+  "edges": 38,
+  "root_binds_verbatim": true,
+  "kernel_receipts_checked": 0
+ },
+ "nodes": [
+  {
+   "id": "erdos683:A:M01",
+   "statement": "Handle both arms of the minimum and all endpoints, including k=1 and k=n.",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos683-campaign-001/contract.json",
+   "contract_sha256": "03b440232ec2d4c93964f56f5c8b61b96251e5adedb8d860d7cb387a078746e7",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos683-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos683",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-683-057375af77-A-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos683:BRANCH_A",
+   "statement": "AFFIRMATIVE CLOSE: prove the full min-form inequality for one universal c>0 and every 1≤k≤n.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos683:A:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "A",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos683-campaign-001/contract.json",
+   "contract_sha256": "03b440232ec2d4c93964f56f5c8b61b96251e5adedb8d860d7cb387a078746e7",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos683-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "leaf_tactic_hint": "interval_cases",
+   "hint_source": "bounded_forall_over_N",
+   "leaf_tactic_sketch": "intro a; interval_cases a <;> decide",
+   "leaf_tactic_alternatives": [
+    "decide",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos683",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-683-057375af77-A-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:B:M01",
+   "statement": "Prove ∀c>0 ∃n,k with 1≤k≤n and P(C(n,k))<min(n−k+1,k^(1+c)).",
+   "kind": "MUST_DETERMINE",
+   "depends_on": [],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "ordinal": 1,
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos683-campaign-001/contract.json",
+   "contract_sha256": "03b440232ec2d4c93964f56f5c8b61b96251e5adedb8d860d7cb387a078746e7",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos683-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "leaf_tactic_hint": "interval_cases",
+   "hint_source": "bounded_forall_over_N",
+   "leaf_tactic_sketch": "intro c; interval_cases c <;> decide",
+   "leaf_tactic_alternatives": [
+    "decide",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos683",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-683-057375af77-B-M01"
+   ],
+   "needs_decomposition": true,
+   "is_leaf": true,
+   "manufacture_target": true
+  },
+  {
+   "id": "erdos683:BRANCH_B",
+   "statement": "NEGATIVE CLOSE: prove no universal c>0 satisfies the full min-form inequality.",
+   "kind": "BRANCH_STATEMENT",
+   "depends_on": [
+    "erdos683:B:M01"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "exact_after_whitespace_normalization",
+   "branch": "B",
+   "closure_mode": "CONJUNCTIVE",
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos683-campaign-001/contract.json",
+   "contract_sha256": "03b440232ec2d4c93964f56f5c8b61b96251e5adedb8d860d7cb387a078746e7",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos683-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos683",
+   "court": [],
+   "supports": [],
+   "pass4_obligation_ids": [
+    "C-683-057375af77-B-ROOT"
+   ],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:ROOT",
+   "statement": "Is it true that for every $1\\leq k\\leq n$ the largest prime divisor of $\\binom{n}{k}$, say $P(\\binom{n}{k})$, satisfies\\[P\\left(\\binom{n}{k}\\right)\\geq \\min(n-k+1, k^{1+c})\\]for some constant $c>0$?",
+   "kind": "CANONICAL_ROOT",
+   "depends_on": [
+    "erdos683:BRANCH_A",
+    "erdos683:BRANCH_B"
+   ],
+   "binding": "VERBATIM",
+   "status": "OPEN",
+   "binding_detail": "root_by_construction",
+   "closure_mode": "DISJUNCTIVE",
+   "satisfied_by_any": [
+    "erdos683:BRANCH_A",
+    "erdos683:BRANCH_B"
+   ],
+   "root_kind": "DECIDABLE_BOUNDED",
+   "root_disqualifiers": [],
+   "formal_root": {
+    "path": "oracle/acquisition/formal-conjectures/FormalConjectures/ErdosProblems/683.lean",
+    "category": "category research open, AMS 11",
+    "declaration": "erdos_683",
+    "statement": "answer(sorry) ↔ (∃ c > (0 : ℝ), ∀ n k : ℕ, 0 < k ∧ k < n → P n k > min (n - k + 1 : ℝ) (k ^ (1 + c)))"
+   },
+   "contract_source": "oracle/evidence/msl-machine/campaigns/erdos683-campaign-001/contract.json",
+   "contract_sha256": "03b440232ec2d4c93964f56f5c8b61b96251e5adedb8d860d7cb387a078746e7",
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos683-campaign-001/contract.json"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos683",
+   "court": [],
+   "supports": [],
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:LEM:R001:L2",
+   "statement": "integer equivalence (n-k+1)^5>k^6 is tautological rephrasing: entangles no prime divisor of C(n,k), covers neither min arm nor any k, confirms closer refusal and kills route R001 pending a real prime-bound mechanism",
+   "kind": "LEMMA",
+   "depends_on": [
+    "erdos683:DEMAND:R001:L2:1"
+   ],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R001",
+   "lemma_id": "L2",
+   "registry_status": "FALSE",
+   "registry_seq": 41,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L2 was load-bearing: the route's sole kernel is an integer threshold comparison with no transfer to prime divisors of C(n,k), covers neither min arm, and no surviving close exists with it deleted; counterexample stands.",
+    "seq": 42
+   },
+   "history": [
+    {
+     "seq": 3,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:22:10Z"
+    },
+    {
+     "seq": 4,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:22:39Z"
+    },
+    {
+     "seq": 5,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:23:52Z"
+    },
+    {
+     "seq": 6,
+     "status": "PROVED",
+     "utc": "2026-09-01T22:32:01Z"
+    },
+    {
+     "seq": 41,
+     "status": "FALSE",
+     "utc": "2026-09-01T23:28:58Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos683-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos683:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos683",
+   "is_leaf": false,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:DEMAND:R001:L2:1",
+   "statement": "real prime-bound mechanism",
+   "kind": "CAPABILITY_DEMAND",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "author_stated_repair_demand",
+   "demand_marker": "pending a ",
+   "demand_rank": 4,
+   "demand_strength": "WEAK",
+   "route_status": "DEAD",
+   "demand_source_text": "integer equivalence (n-k+1)^5>k^6 is tautological rephrasing: entangles no prime divisor of C(n,k), covers neither min arm nor any k, confirms closer refusal and kills route R001 pending a real prime-bound mechanism",
+   "route_id": "R001",
+   "lemma_id": "L2",
+   "court": [],
+   "supports": [
+    {
+     "node": "erdos683:LEM:R001:L2",
+     "evidence": "repair demand stated in the lemma/ore text"
+    }
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos683-campaign-001/routes/registry.jsonl"
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:LEM:R001:T1",
+   "statement": "Finite→asymptotic transfer: kernel-certified integer threshold (n−k+1)^5>k^6 ⟺ n−k+1≥⌊k^{6/5}⌋+1 (certified 1≤k≤n≤60, covers=fragment) is lifted analytically to all k by monotonicity (proved here, replayed against certificate on its range), then converted via cited Sylvester–Schur P(C(n,k))>k into t",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R001",
+   "lemma_id": "T1",
+   "registry_status": "UNTESTED",
+   "registry_seq": 40,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L2 was load-bearing: the route's sole kernel is an integer threshold comparison with no transfer to prime divisors of C(n,k), covers neither min arm, and no surviving close exists with it deleted; counterexample stands.",
+    "seq": 42
+   },
+   "history": [
+    {
+     "seq": 40,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T23:28:11Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos683-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos683:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "Finite→asymptotic transfer: kernel-certified integer threshold (n−k+1)^5>k^6 ⟺ n−k+1≥⌊k^{6/5}⌋+1 (certified 1≤k≤n≤60, covers=fragment) is lifted analytically to all k by monotonicity (proved here, replayed against certificate on its range), then converted via cited Sylvester–Schur P(C(n,k))>k into t"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:LEM:R002:L1",
+   "statement": "endpoint fragment (k=1 and k=n−1 for all n≥2, any c>0) verified directly; canonical claim untouched, P(1) convention at k=n still required.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R002",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 9,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 7,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:34:44Z"
+    },
+    {
+     "seq": 8,
+     "status": "UNTESTED",
+     "utc": "2026-09-01T22:35:09Z"
+    },
+    {
+     "seq": 9,
+     "status": "PROVED",
+     "utc": "2026-09-01T22:35:49Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos683-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos683:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "endpointCheck = true | For every natural n with 2 ≤ n ≤ 60, the frozen helper P(n,k)=(n.choose k).primeFactors.sup id satisfies P(n,1) ≥ 1 and P(n,n−1) ≥ 2. This checks exactly the finite endpoint fragment recorded for L1; it does not establish the universal lemma or the k=n endpoint. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "endpointCheck = true | Kernel-checkable finite fragment: for every natural n with 2 ≤ n ≤ 60, the frozen helper P(n,k)=(n.choose k).primeFactors.sup id satisfies P(n,1) ≥ 1 and P(n,n−1) ≥ 2. This is only the recorded endpoint instance range and does not prove the universal lemma or the k=n case. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "endpointCheck = true | Kernel-checkable fragment of L1: for every natural n satisfying 2 ≤ n ≤ 60, the frozen helper P(n,k)=(n.choose k).primeFactors.sup id obeys P(n,1) ≥ 1 and P(n,n−1) ≥ 2. The fragment excludes the universal n-range, all other k, and k=n. | by native_decide"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:LEM:R003:L1",
+   "statement": "Exact integer verifier (trial-division largest prime factor, ceil(k^{7/5}) via exact fifth root) certifies zero failures over all 5049 pairs k≤n≤100 with (1,1) excluded, tight at (10,3),(22,4),(27,5); scope strictly finite — the universal claim and c* bracketing remain open, no float or unproven ste",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R003",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 12,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 11,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:39:35Z"
+    },
+    {
+     "seq": 12,
+     "status": "PROVED",
+     "utc": "2026-09-01T22:40:19Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos683-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos683:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "finite_fragment | This checks exactly the finite fragment n ≤ 100, k ≤ n, excluding (1,1), using the stated largest-prime-factor computation and the 7/5 threshold. | by\n  native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "finite_fragment | Kernel-checkable finite fragment: for every n ≤ 100 and k ≤ n, excluding (n,k)=(1,1), the exact computed largest prime factor of Nat.choose n k is at least the stated 7/5 threshold. | by\n  native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "checked_instance | Checks the explicit reported tight instance (n,k)=(10,3): the exact largest prime factor of Nat.choose 10 3 is at least 5. | by native_decide"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:LEM:R004:L1",
+   "statement": "Exact: c ≤ log₅(7/5) forced by (10,5); outward interval verifier (alternating artanh series, directed rounding) gives log₅(7/5) ∈ [0.20905, 0.20906], so c ≤ 0.20905; endpoint convention P(1)=1 excluded from scope per erdos821 counterexample (φ(2)=1), imported as UNTESTED caveat.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 15,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 14,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:42:07Z"
+    },
+    {
+     "seq": 15,
+     "status": "PROVED",
+     "utc": "2026-09-01T22:43:26Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos683-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos683:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_instance = true | This fragment checks exactly that Nat.choose 10 5 = 252 and its frozen largest-prime-factor computation equals 7; it does not establish the universal affirmative branch or the bound on c. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_instance = true | This fragment kernel-checks the exact instance Nat.choose 10 5 = 252 and the frozen largest-prime-factor value P 10 5 = 7. It does not prove existence of a universal positive c, the bound c ≤ log₅(7/5), or the full affirmative statement. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_instance = true | This fragment kernel-checks the exact computation Nat.choose 10 5 = 252 and P 10 5 = 7 under the frozen definition P n k = (Nat.choose n k).primeFactors.sup id; it checks only this instance and does not establish any universal bound. | by native_decide"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:LEM:R005:L1",
+   "statement": "Attack confirms challenge: Sylvester–Schur P≥min(n−k+1,k) is linear in k and cannot yield k^(1+c) for any universal c>0; the needed transfer is equivalent-strength to the canonical claim (route-block K-class equivalent-strength reduction), plus endpoint k=n requires explicit P(1)≥1 convention.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R005",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 47,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 was the sole supplier of the k^(1+c)-arm lower bound; deleting it leaves the Branch A close empty, no weaker-lemma repair or revival item exists, and the banked counterexample stands.",
+    "seq": 48
+   },
+   "history": [
+    {
+     "seq": 17,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:45:02Z"
+    },
+    {
+     "seq": 18,
+     "status": "PROVED",
+     "utc": "2026-09-01T22:45:46Z"
+    },
+    {
+     "seq": 46,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T01:02:29Z"
+    },
+    {
+     "seq": 47,
+     "status": "FALSE",
+     "utc": "2026-09-02T01:03:17Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos683-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos683:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "Erdos683.P 1 1 = 0 | This kernel-checkable fragment establishes the exact endpoint value P(1,1)=0 under the frozen definition, exposing the endpoint obstruction to the claimed positive lower bound. | by decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "P 1 1 = 0 | This kernel-checkable fragment establishes exactly that, under the frozen definition of largest prime factor, P(1,1)=0 because 1.choose 1 = 1 has no prime factors; it records the endpoint obstruction and does not establish the positive lower bound. | by decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "Erdos683.P 1 1 = 0 | The kernel checks the exact endpoint fragment P(1,1)=0 for the frozen definition P(n,k)=(n.choose k).primeFactors.sup id; this checks only that decidable special case and not the universal lower-bound statement. | by decide"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:LEM:R005:T1",
+   "statement": "Hypothesis: the exact finite certificate establishing P(C(n,k))≥min(n−k+1,k) for every 1≤k≤n≤2000, with P(1)=1 at k=n, in exact integer arithmetic. A valid transference lemma would have to prove, uniformly for all n>2000 and 1≤k≤n, that reflection C(n,k)=C(n,n−k) together with the certified Sylveste",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R005",
+   "lemma_id": "T1",
+   "registry_status": "UNTESTED",
+   "registry_seq": 45,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "L1 was the sole supplier of the k^(1+c)-arm lower bound; deleting it leaves the Branch A close empty, no weaker-lemma repair or revival item exists, and the banked counterexample stands.",
+    "seq": 48
+   },
+   "history": [
+    {
+     "seq": 45,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T01:02:06Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos683-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos683:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "ACTIVE_UNTESTED",
+     "why": "latest route lemma remains non-PROVED in registry",
+     "text": "Hypothesis: the exact finite certificate establishing P(C(n,k))≥min(n−k+1,k) for every 1≤k≤n≤2000, with P(1)=1 at k=n, in exact integer arithmetic. A valid transference lemma would have to prove, uniformly for all n>2000 and 1≤k≤n, that reflection C(n,k)=C(n,n−k) together with the certified Sylveste"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "leaf_tactic_hint": "interval_cases",
+   "hint_source": "bounded_forall_over_N",
+   "leaf_tactic_sketch": "intro n; interval_cases n <;> decide",
+   "leaf_tactic_alternatives": [
+    "decide",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:LEM:R006:L1",
+   "statement": "Exact bigint verifier (CPython 3.11 pow, no floats, fail-closed) certifies 5^b≤3^(a+b) per instance, e.g. (10,3): 125≤1594323; universal/uniqueness portion remains uncertified absent sweep-range constants in packet.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R006",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 25,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 20,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:49:06Z"
+    },
+    {
+     "seq": 21,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:49:40Z"
+    },
+    {
+     "seq": 22,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:50:11Z"
+    },
+    {
+     "seq": 23,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:50:41Z"
+    },
+    {
+     "seq": 24,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:51:04Z"
+    },
+    {
+     "seq": 25,
+     "status": "PROVED",
+     "utc": "2026-09-01T22:51:24Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos683-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos683:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_l1_instance = true | The exact concrete instance (a,b)=(10,3) satisfies 5^b ≤ 3^(a+b), namely 5^3 ≤ 3^13; this establishes only that finite fragment and no universal or uniqueness claim. | by decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_l1_instance = true | Checks exactly the concrete instance (a,b)=(10,3): 5^3 ≤ 3^(10+3), i.e. 125 ≤ 1,594,323. It establishes no universal or uniqueness statement. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_l1_instance = true | The kernel checks the concrete instance 5^3 ≤ 3^(10+3), equivalently 125 ≤ 1,594,323. This covers only that arithmetic fragment; no universal, uniqueness, or canonical-branch conclusion is asserted. | by decide"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "leaf_tactic_hint": "interval_cases",
+   "hint_source": "bounded_forall_over_N",
+   "leaf_tactic_sketch": "intro a; interval_cases a <;> decide",
+   "leaf_tactic_alternatives": [
+    "decide",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:LEM:R007:L1",
+   "statement": "Finite grid claim certified by exact integer/Fraction verifier (n≤3000, k=1..n−1 + k=n under P(1)=1, c∈{1/4,1/2,3/4,1}), fail-closed, no floats; ∀c extension explicitly outside certificate scope.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R007",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 28,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 27,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T22:56:37Z"
+    },
+    {
+     "seq": 28,
+     "status": "PROVED",
+     "utc": "2026-09-01T22:57:19Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos683-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos683:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "witnessCheck = true | The exact finite witnesses (n,k)=(9,2) and (10,3) satisfy P(C(9,2))=3 < min(8,2^(7/4)) and P(C(10,3))=5 < min(8,3^(3/2)), and additionally 5 < 3^(7/4) and 5 < 9; hence these witnesses refute the branch-A inequality for c ∈ {1/2,3/4,1} at the stated instances. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "witnessCheck | The recorded exact integer inequalities hold for the finite witnesses: 3<8, 81<128, 5<8, 25<27, 5<9, and 625<2187. | by norm_num [witnessCheck]"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "witnessCheck | The exact integer inequalities recorded for the finite witnesses hold: 3<8, 81<128, 5<8, 25<27, 5<9, and 625<2187. | by norm_num [witnessCheck]"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:LEM:R008:L1",
+   "statement": "Part A sweep 2<=n<=40 certified by exact integer verifier (trial division sqrt<=6, 12 primes w/ residue lists, 27 composites w/ explicit divisors, gap table 1<=G(n)<=6, max 6 at n in {23,31}, prime-pair gaps {1x1,2x5,4x3,6x3}, parity A5); 0.4650 infimum NOT certified - abort confirmed mandatory (flo",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R008",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 33,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 30,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:05:04Z"
+    },
+    {
+     "seq": 31,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:05:28Z"
+    },
+    {
+     "seq": 32,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:05:51Z"
+    },
+    {
+     "seq": 33,
+     "status": "PROVED",
+     "utc": "2026-09-01T23:11:42Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos683-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos683:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "∀ n k : Nat, 2 ≤ n ∧ n ≤ 40 ∧ 1 ≤ k ∧ k ≤ n → check n k = true | Checks, for every integer pair 2 ≤ n ≤ 40 and 1 ≤ k ≤ n, the decidable bound largestPrimeFactor (n.choose k) ≥ min(n−k+1,k), using exact natural-number computation. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "∀ n k : Nat, 2 ≤ n ∧ n ≤ 40 ∧ 1 ≤ k ∧ k ≤ n → check n k = true | Exactly checks the finite fragment: for every natural pair n,k with 2 ≤ n ≤ 40 and 1 ≤ k ≤ n, the largest prime-factor helper defined as (n.choose k).primeFactors.sup id is at least min(n−k+1,k). This establishes no assertion for n>40 and no universal positive exponent c. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "∀ n k : Nat, 2 ≤ n ∧ n ≤ 40 ∧ 1 ≤ k ∧ k ≤ n → check n k = true | The kernel-checkable fragment is the finite range 2 ≤ n ≤ 40: for every 1 ≤ k ≤ n, exact natural-number computation verifies that (n.choose k).primeFactors.sup id ≥ min(n−k+1,k). It does not assert the universal c>0 statement. | by native_decide"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:LEM:R009:L3",
+   "statement": "fail-closed exact-integer verifier (math.comb + Legendre/Kummer valuations + integer sieve, zero floats, CPython>=3.8 stdlib, deterministic) over 2<=k<=n<=120: 0 identity failures, 119 fail-closed aborts (C(n,n)=1 so P undefined), 3737 violations, first at (4,3): C(4,3)=4, P=2, 2^5<3^6 i.e. 32<729; ",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R009",
+   "lemma_id": "L3",
+   "registry_status": "FALSE",
+   "registry_seq": 43,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "central lemma L3 has a machine-recorded concrete counterexample; no surviving close shown without it, so R009 is dead pending a strictly weaker repaired lemma under Wang 4.2",
+    "seq": 44
+   },
+   "history": [
+    {
+     "seq": 35,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:18:44Z"
+    },
+    {
+     "seq": 36,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:19:03Z"
+    },
+    {
+     "seq": 37,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:19:26Z"
+    },
+    {
+     "seq": 38,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-01T23:19:56Z"
+    },
+    {
+     "seq": 43,
+     "status": "FALSE",
+     "utc": "2026-09-02T00:02:57Z"
+    }
+   ],
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos683-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos683:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:LEM:R010:L1",
+   "statement": "exact integer verifier (partition recurrence + comparison k^3<=P^2 to kill k^{3/2}, endpoints k=0,n explicit) certifies P(C(n,k))>=min(n-k+1,k^{3/2}) for ALL 1<=n<=12,0<=k<=n with zero violations; scope strictly n<=12, nothing analytic remains in range, no claim beyond.",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R010",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 51,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 50,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:07:03Z"
+    },
+    {
+     "seq": 51,
+     "status": "PROVED",
+     "utc": "2026-09-02T01:08:12Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos683-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos683:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check 12 6 = true | This checks the single finite instance n=12, k=6 of the bound P(C(n,k)) ≥ min(n−k+1,k^(3/2)); it does not establish the unrestricted theorem. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "∀ n k : Nat, n ≤ 12 → k ≤ n → 1 ≤ k → check n k = true | This kernel-checks every finite instance with 1≤n≤12 and 1≤k≤n of P(C(n,k))≥min(n−k+1,k^(3/2)); it makes no claim for n>12. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "∀ n k : Nat, n ≤ 12 → k ≤ n → 1 ≤ k → check n k = true | Kernel-checks the finite range 1≤n≤12 and 1≤k≤n for the stated 3/2-power lower bound; no unrestricted claim is made. | by native_decide"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "leaf_tactic_hint": "interval_cases",
+   "hint_source": "bounded_forall_over_Q",
+   "leaf_tactic_sketch": "intro a; interval_cases a <;> norm_num",
+   "leaf_tactic_alternatives": [
+    "norm_num",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:LEM:R011:L1",
+   "statement": "canonical min-form inequality fails at k=1 endpoint: witness n=4, P(C(4,1))=P(4)=2 < min(4,4^{1+c})=4 for every c>0 (also n=6, n=2^m m≥2); statement only closable after excluding/repairing k=1 and the undefined P(1) at k=n, so Branch A as literally frozen is dead and any close must restate the domai",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "REFUTED",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R011",
+   "lemma_id": "L1",
+   "registry_status": "FALSE",
+   "registry_seq": 62,
+   "route_status": "DEAD",
+   "route_killed": {
+    "kill_rule_id": "K8",
+    "kill_rule_text": "route's central lemma receives a concrete counterexample",
+    "note": "central lemma L1 carried R011's reduction to the full min-form close; with candidate proof=none and zero artifacts no argument survives L1's deletion so non-load-bearingness cannot be shown; the banked machine-verified counterexample severs the route; revival only via a Wang-4.2 new item — repaired ",
+    "seq": 63
+   },
+   "history": [
+    {
+     "seq": 53,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:18:24Z"
+    },
+    {
+     "seq": 54,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:19:05Z"
+    },
+    {
+     "seq": 55,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:19:34Z"
+    },
+    {
+     "seq": 56,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:19:41Z"
+    },
+    {
+     "seq": 57,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:23:19Z"
+    },
+    {
+     "seq": 58,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:23:46Z"
+    },
+    {
+     "seq": 59,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:24:11Z"
+    },
+    {
+     "seq": 60,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T01:24:32Z"
+    },
+    {
+     "seq": 61,
+     "status": "UNTESTED",
+     "utc": "2026-09-02T01:25:52Z"
+    },
+    {
+     "seq": 62,
+     "status": "FALSE",
+     "utc": "2026-09-02T01:32:05Z"
+    }
+   ],
+   "court": [
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos683-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos683:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:LEM:R012:L1",
+   "statement": "Exact integer verifier recomputes C(10,3)=120=2^3*3*5, P=5, checks 5<8 exactly; inequality 5<3^{1+c} reduced analytically (monotonicity of 3^x) to c>log_3(5)-1, no float/interval comparison anywhere, fail-closed via require(); scope: single witness (10,3) and the constraint c in (0, log_3 5 - 1] for",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R012",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 66,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 65,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:44:07Z"
+    },
+    {
+     "seq": 66,
+     "status": "PROVED",
+     "utc": "2026-09-02T01:44:16Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos683-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos683:BRANCH_A",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=A"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_fragment = true | This kernel-checkable fragment verifies exactly that C(10,3)=120, that 120=2^3·3·5, and that the exhibited largest prime factor 5 is less than 8; it does not establish the universal affirmative branch. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_fragment = true | This verifies the finite instance C(10,3)=120=2^3·3·5 and the exact inequality 5<8; it records no universal conclusion. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_instance = true | The kernel-checked finite fragment verifies exactly Nat.choose 10 3 = 120, the exact factorization 120 = 2^3 * 3 * 5, and the strict numerical inequality 5 < 8. It does not assert or prove the universal canonical statement. | by native_decide"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:LEM:R013:L1",
+   "statement": "exact integer certificate: 1.19=119/100, comparison P^100>=k^119 (no float), P>=n-k+1 branch exact on factorizations, full enumeration n<=24 with declared P(1):=1 convention; scope TESTED_FAMILY n<=24 only; c*=0.1938 ceiling remains analytic conjecture outside certificate",
+   "kind": "LEMMA",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "PROVED_SPEAKER",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R013",
+   "lemma_id": "L1",
+   "registry_status": "PROVED",
+   "registry_seq": 69,
+   "route_status": "LIVE",
+   "route_killed": null,
+   "history": [
+    {
+     "seq": 68,
+     "status": "COMPUTATION_SUPPORTED",
+     "utc": "2026-09-02T01:52:45Z"
+    },
+    {
+     "seq": 69,
+     "status": "PROVED",
+     "utc": "2026-09-02T01:53:28Z"
+    }
+   ],
+   "court": [
+    "court",
+    "formalizer"
+   ],
+   "sources": [
+    "oracle/evidence/msl-machine/campaigns/erdos683-campaign-001/routes/registry.jsonl"
+   ],
+   "supports": [
+    {
+     "node": "erdos683:BRANCH_B",
+     "evidence": "registry ROUTE_OPENED.target_close_branch=B"
+    }
+   ],
+   "unfinished_ore": [
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "check_instance = true | This kernel-checkable fragment verifies the exact integer inequality P(24,12)^100 ≥ 12^119 for the frozen definition P(n,k) := (n.choose k).primeFactors.sup id; it does not establish the universal negative close branch. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "checked | This checks the single exact finite instance P(24,12)^100 ≥ 12^119 under the frozen P definition. | by native_decide"
+    },
+    {
+     "kind": "FORMALIZER_UNCERTIFIED_MATH",
+     "why": "formalizer obligation contains mathematical proof/claim/witness text but receipt outcome is NO_TYPED_MOVE",
+     "text": "checked | This kernel-checkable finite fragment verifies, for every natural n≤24 and every 1≤k≤n, the exact integer inequality P(n,k)^100 ≥ k^119 using the frozen largest-prime-factor definition. | by native_decide"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": false
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "leaf_tactic_hint": "interval_cases",
+   "hint_source": "bounded_forall_over_Q",
+   "leaf_tactic_sketch": "intro a; interval_cases a <;> norm_num",
+   "leaf_tactic_alternatives": [
+    "norm_num",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:FLEAF:01198f869e18db2d794e:1",
+   "statement": "finite_fragment",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def finite_fragment : Prop := ∀ n k : ℕ, n ≤ 100 → k ≤ n → (n, k) ≠ (1, 1) → (Nat.choose n k).primeFactors.sup id ≥ Nat.ceil (k ^ (7 / 5 : ℚ))",
+   "type_context": "Mathlib\ndef finite_fragment : Prop := ∀ n k : ℕ, n ≤ 100 → k ≤ n → (n, k) ≠ (1, 1) → (Nat.choose n k).primeFactors.sup id ≥ Nat.ceil (k ^ (7 / 5 : ℚ))",
+   "proof": "by\n  native_decide",
+   "claim": "This checks exactly the finite fragment n ≤ 100, k ≤ n, excluding (1,1), using the stated largest-prime-factor computation and the 7/5 threshold.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 2,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos683:LEM:R003:L1",
+     "evidence": "formalizer obligation route=R003 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "leaf_tactic_sketch": "intro n; interval_cases n <;> norm_num",
+   "leaf_tactic_alternatives": [
+    "norm_num",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:FLEAF:01198f869e18db2d794e:2",
+   "statement": "checked_instance",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R003",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "LEAN_PROOF",
+   "imports": "Mathlib",
+   "definitions": "def checked_instance : Prop := (Nat.choose 10 3).primeFactors.sup id ≥ 5",
+   "type_context": "Mathlib\ndef checked_instance : Prop := (Nat.choose 10 3).primeFactors.sup id ≥ 5",
+   "proof": "by native_decide",
+   "claim": "Checks the explicit reported tight instance (n,k)=(10,3): the exact largest prime factor of Nat.choose 10 3 is at least 5.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_SCOPE_REFUSED: body.covers must be \"full\" — the theorem agent proves whole statements; a partial scope belongs to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos683:LEM:R003:L1",
+     "evidence": "formalizer obligation route=R003 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:FLEAF:21d557adce4573e051ff:3",
+   "statement": "endpointCheck = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R002",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def endpointCheck : Bool := decide (∀ n : Fin 60, 2 ≤ (n : Nat) → ((Nat.choose (n : Nat) 1).primeFactors.sup id : Nat) ≥ 1 ∧ ((Nat.choose (n : Nat) ((n : Nat) - 1)).primeFactors.sup id : Nat) ≥ 2)",
+   "type_context": "Mathlib\ndef endpointCheck : Bool := decide (∀ n : Fin 60, 2 ≤ (n : Nat) → ((Nat.choose (n : Nat) 1).primeFactors.sup id : Nat) ≥ 1 ∧ ((Nat.choose (n : Nat) ((n : Nat) - 1)).primeFactors.sup id : Nat) ≥ 2)",
+   "proof": "by native_decide",
+   "claim": "For every natural n with 2 ≤ n ≤ 60, the frozen helper P(n,k)=(n.choose k).primeFactors.sup id satisfies P(n,1) ≥ 1 and P(n,n−1) ≥ 2. This checks exactly the finite endpoint fragment recorded for L1; it does not establish the universal lemma or the k=n endpoint.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 3,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos683:LEM:R002:L1",
+     "evidence": "formalizer obligation route=R002 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "leaf_tactic_sketch": "intro n; interval_cases n <;> decide",
+   "leaf_tactic_alternatives": [
+    "decide",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:FLEAF:32a07dc0786f9c5caa22:4",
+   "statement": "witnessCheck = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R007",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def witnessCheck : Bool := (3 < 8) && (81 < 128) && (5 < 8) && (25 < 27) && (5 < 9) && (625 < 2187)",
+   "type_context": "Mathlib\ndef witnessCheck : Bool := (3 < 8) && (81 < 128) && (5 < 8) && (25 < 27) && (5 < 9) && (625 < 2187)",
+   "proof": "by native_decide",
+   "claim": "The exact finite witnesses (n,k)=(9,2) and (10,3) satisfy P(C(9,2))=3 < min(8,2^(7/4)) and P(C(10,3))=5 < min(8,3^(3/2)), and additionally 5 < 3^(7/4) and 5 < 9; hence these witnesses refute the branch-A inequality for c ∈ {1/2,3/4,1} at the stated instances.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos683:LEM:R007:L1",
+     "evidence": "formalizer obligation route=R007 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": true
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:FLEAF:32a07dc0786f9c5caa22:5",
+   "statement": "witnessCheck",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R007",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "LEAN_PROOF",
+   "imports": "Mathlib",
+   "definitions": "def witnessCheck : Prop := (3:ℕ) < 8 ∧ (81:ℕ) < 128 ∧ (5:ℕ) < 8 ∧ (25:ℕ) < 27 ∧ (5:ℕ) < 9 ∧ (625:ℕ) < 2187",
+   "type_context": "Mathlib\ndef witnessCheck : Prop := (3:ℕ) < 8 ∧ (81:ℕ) < 128 ∧ (5:ℕ) < 8 ∧ (25:ℕ) < 27 ∧ (5:ℕ) < 9 ∧ (625:ℕ) < 2187",
+   "proof": "by norm_num [witnessCheck]",
+   "claim": "The recorded exact integer inequalities hold for the finite witnesses: 3<8, 81<128, 5<8, 25<27, 5<9, and 625<2187.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_SCOPE_REFUSED: body.covers must be \"full\" — the theorem agent proves whole statements; a partial scope belongs to the fragment lane.",
+   "variants": 2,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "norm_num",
+   "supports": [
+    {
+     "node": "erdos683:LEM:R007:L1",
+     "evidence": "formalizer obligation route=R007 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:FLEAF:39884f9ca0b5ff7813e1:6",
+   "statement": "check_fragment = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R012",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def check_binom_10_3 : Bool := Nat.choose 10 3 = 120\n\ndef check_factorization : Bool := 120 = 2^3 * 3 * 5\n\ndef check_prime_factor_bound : Bool := 5 < 8\n\ndef check_fragment : Bool := check_binom_10_3 && check_factorization && check_prime_factor_bound",
+   "type_context": "Mathlib\ndef check_binom_10_3 : Bool := Nat.choose 10 3 = 120\n\ndef check_factorization : Bool := 120 = 2^3 * 3 * 5\n\ndef check_prime_factor_bound : Bool := 5 < 8\n\ndef check_fragment : Bool := check_binom_10_3 && check_factorization && check_prime_factor_bound",
+   "proof": "by native_decide",
+   "claim": "This kernel-checkable fragment verifies exactly that C(10,3)=120, that 120=2^3·3·5, and that the exhibited largest prime factor 5 is less than 8; it does not establish the universal affirmative branch.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 2,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos683:LEM:R012:L1",
+     "evidence": "formalizer obligation route=R012 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:FLEAF:39884f9ca0b5ff7813e1:7",
+   "statement": "check_instance = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R012",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def check_instance : Bool :=\n  Nat.choose 10 3 = 120 &&\n  120 = 2 ^ 3 * 3 * 5 &&\n  5 < 8",
+   "type_context": "Mathlib\ndef check_instance : Bool :=\n  Nat.choose 10 3 = 120 &&\n  120 = 2 ^ 3 * 3 * 5 &&\n  5 < 8",
+   "proof": "by native_decide",
+   "claim": "The kernel-checked finite fragment verifies exactly Nat.choose 10 3 = 120, the exact factorization 120 = 2^3 * 3 * 5, and the strict numerical inequality 5 < 8. It does not assert or prove the universal canonical statement.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos683:LEM:R012:L1",
+     "evidence": "formalizer obligation route=R012 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:FLEAF:510f17ac762381dafff4:8",
+   "statement": "check_l1_instance = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R006",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def check_l1_instance : Bool := (5 ^ 3 ≤ 3 ^ (10 + 3))",
+   "type_context": "Mathlib\ndef check_l1_instance : Bool := (5 ^ 3 ≤ 3 ^ (10 + 3))",
+   "proof": "by decide",
+   "claim": "The exact concrete instance (a,b)=(10,3) satisfies 5^b ≤ 3^(a+b), namely 5^3 ≤ 3^13; this establishes only that finite fragment and no universal or uniqueness claim.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 2,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "decide",
+   "supports": [
+    {
+     "node": "erdos683:LEM:R006:L1",
+     "evidence": "formalizer obligation route=R006 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": true
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:FLEAF:510f17ac762381dafff4:9",
+   "statement": "check_l1_instance = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R006",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def check_l1_instance : Bool := decide (5 ^ 3 ≤ 3 ^ (10 + 3))",
+   "type_context": "Mathlib\ndef check_l1_instance : Bool := decide (5 ^ 3 ≤ 3 ^ (10 + 3))",
+   "proof": "by native_decide",
+   "claim": "Checks exactly the concrete instance (a,b)=(10,3): 5^3 ≤ 3^(10+3), i.e. 125 ≤ 1,594,323. It establishes no universal or uniqueness statement.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos683:LEM:R006:L1",
+     "evidence": "formalizer obligation route=R006 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": true
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:FLEAF:64733aa324bb011ca03c:10",
+   "statement": "∀ n k : Nat, 2 ≤ n ∧ n ≤ 40 ∧ 1 ≤ k ∧ k ≤ n → check n k = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R008",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def largestPrimeFactor (N : Nat) : Nat := N.primeFactors.sup id\n\ndef check (n k : Nat) : Bool :=\n  decide (2 ≤ n ∧ n ≤ 40 ∧ 1 ≤ k ∧ k ≤ n ∧ largestPrimeFactor (n.choose k) ≥ min (n - k + 1) k)\n",
+   "type_context": "Mathlib\ndef largestPrimeFactor (N : Nat) : Nat := N.primeFactors.sup id\n\ndef check (n k : Nat) : Bool :=\n  decide (2 ≤ n ∧ n ≤ 40 ∧ 1 ≤ k ∧ k ≤ n ∧ largestPrimeFactor (n.choose k) ≥ min (n - k + 1) k)\n",
+   "proof": "by native_decide",
+   "claim": "Checks, for every integer pair 2 ≤ n ≤ 40 and 1 ≤ k ≤ n, the decidable bound largestPrimeFactor (n.choose k) ≥ min(n−k+1,k), using exact natural-number computation.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 3,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos683:LEM:R008:L1",
+     "evidence": "formalizer obligation route=R008 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "leaf_tactic_sketch": "intro n; interval_cases n <;> decide",
+   "leaf_tactic_alternatives": [
+    "decide",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:FLEAF:68482c8bf16289999092:11",
+   "statement": "check_instance = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R004",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def binom10_5 : Nat := Nat.choose 10 5\ndef largestPrimeFactor10_5 : Nat := binom10_5.primeFactors.sup id\ndef check_instance : Bool := largestPrimeFactor10_5 = 7",
+   "type_context": "Mathlib\ndef binom10_5 : Nat := Nat.choose 10 5\ndef largestPrimeFactor10_5 : Nat := binom10_5.primeFactors.sup id\ndef check_instance : Bool := largestPrimeFactor10_5 = 7",
+   "proof": "by native_decide",
+   "claim": "This fragment checks exactly that Nat.choose 10 5 = 252 and its frozen largest-prime-factor computation equals 7; it does not establish the universal affirmative branch or the bound on c.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 3,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos683:LEM:R004:L1",
+     "evidence": "formalizer obligation route=R004 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:FLEAF:79b0520d11213bbde363:12",
+   "statement": "check_instance = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R013",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def P (n k : Nat) : Nat := (Nat.choose n k).primeFactors.sup id\n\ndef check_instance : Bool :=\n  decide ((P 24 12 : Nat)^100 >= (12 : Nat)^119)",
+   "type_context": "Mathlib\ndef P (n k : Nat) : Nat := (Nat.choose n k).primeFactors.sup id\n\ndef check_instance : Bool :=\n  decide ((P 24 12 : Nat)^100 >= (12 : Nat)^119)",
+   "proof": "by native_decide",
+   "claim": "This kernel-checkable fragment verifies the exact integer inequality P(24,12)^100 ≥ 12^119 for the frozen definition P(n,k) := (n.choose k).primeFactors.sup id; it does not establish the universal negative close branch.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos683:LEM:R013:L1",
+     "evidence": "formalizer obligation route=R013 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:FLEAF:79b0520d11213bbde363:13",
+   "statement": "checked",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R013",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "LEAN_PROOF",
+   "imports": "Mathlib",
+   "definitions": "def P (n k : Nat) : Nat := (Nat.choose n k).primeFactors.sup id\n\ndef checked : Prop := (P 24 12 : Nat)^100 >= (12 : Nat)^119",
+   "type_context": "Mathlib\ndef P (n k : Nat) : Nat := (Nat.choose n k).primeFactors.sup id\n\ndef checked : Prop := (P 24 12 : Nat)^100 >= (12 : Nat)^119",
+   "proof": "by native_decide",
+   "claim": "This checks the single exact finite instance P(24,12)^100 ≥ 12^119 under the frozen P definition.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_SCOPE_REFUSED: body.covers must be \"full\" — the theorem agent proves whole statements; a partial scope belongs to the fragment lane.",
+   "variants": 2,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos683:LEM:R013:L1",
+     "evidence": "formalizer obligation route=R013 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:FLEAF:c36b069bdf3969513d03:14",
+   "statement": "Erdos683.P 1 1 = 0",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "TYPE_GATE_FAILED: untyped arithmetic: Lean would default the numerals (the TUXEDO) (<no type ascription on an arithmetic statement>)",
+   "route_id": "R005",
+   "lemma_id": "L1",
+   "route_status": "DEAD",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "",
+   "type_context": "Mathlib\n",
+   "proof": "by decide",
+   "claim": "This kernel-checkable fragment establishes the exact endpoint value P(1,1)=0 under the frozen definition, exposing the endpoint obstruction to the claimed positive lower bound.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "CLOSURE_INCOMPLETE_REFUSED: kind=KERNEL_DECIDABLE needs definitions, conclusion, proof, claim; missing definitions — an obligation is filed whole or not at all.",
+   "variants": 2,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "decide",
+   "supports": [
+    {
+     "node": "erdos683:LEM:R005:L1",
+     "evidence": "formalizer obligation route=R005 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": false,
+    "missing": [
+     "<no type ascription on an arithmetic statement>"
+    ],
+    "reason": "untyped arithmetic: Lean would default the numerals (the TUXEDO)",
+    "reference": null,
+    "used_type_context": true
+   },
+   "missing_type_ascriptions": [
+    "<no type ascription on an arithmetic statement>"
+   ],
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:FLEAF:c36b069bdf3969513d03:15",
+   "statement": "P 1 1 = 0",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R005",
+   "lemma_id": "L1",
+   "route_status": "DEAD",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def P (n k : ℕ) : ℕ := (n.choose k).primeFactors.sup id",
+   "type_context": "Mathlib\ndef P (n k : ℕ) : ℕ := (n.choose k).primeFactors.sup id",
+   "proof": "by decide",
+   "claim": "This kernel-checkable fragment establishes exactly that, under the frozen definition of largest prime factor, P(1,1)=0 because 1.choose 1 = 1 has no prime factors; it records the endpoint obstruction and does not establish the positive lower bound.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "decide",
+   "supports": [
+    {
+     "node": "erdos683:LEM:R005:L1",
+     "evidence": "formalizer obligation route=R005 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:FLEAF:dae07f61a0f2cef53826:16",
+   "statement": "check 12 6 = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R010",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def P (n k : Nat) : Nat := (Nat.choose n k).primeFactors.sup id\n def check (n k : Nat) : Bool :=\n   decide ((1 ≤ n ∧ k ≤ n ∧ 1 ≤ k) →\n     (P n k : Rat) ≥ min (n - k + 1 : Rat) ((k : Rat) ^ (3 / 2 : Rat)))",
+   "type_context": "Mathlib\ndef P (n k : Nat) : Nat := (Nat.choose n k).primeFactors.sup id\n def check (n k : Nat) : Bool :=\n   decide ((1 ≤ n ∧ k ≤ n ∧ 1 ≤ k) →\n     (P n k : Rat) ≥ min (n - k + 1 : Rat) ((k : Rat) ^ (3 / 2 : Rat)))",
+   "proof": "by native_decide",
+   "claim": "This checks the single finite instance n=12, k=6 of the bound P(C(n,k)) ≥ min(n−k+1,k^(3/2)); it does not establish the unrestricted theorem.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 1,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos683:LEM:R010:L1",
+     "evidence": "formalizer obligation route=R010 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  },
+  {
+   "id": "erdos683:FLEAF:dae07f61a0f2cef53826:17",
+   "statement": "∀ n k : Nat, n ≤ 12 → k ≤ n → 1 ≤ k → check n k = true",
+   "kind": "FORMALIZER_LEAF",
+   "depends_on": [],
+   "binding": "UNBOUND",
+   "status": "OPEN",
+   "binding_detail": "no_frozen_match",
+   "route_id": "R010",
+   "lemma_id": "L1",
+   "route_status": "LIVE",
+   "formalizer_kind": "KERNEL_DECIDABLE",
+   "imports": "Mathlib",
+   "definitions": "def P (n k : Nat) : Nat := (Nat.choose n k).primeFactors.sup id\n def check (n k : Nat) : Bool := decide ((1 ≤ n ∧ k ≤ n) → ((P n k : Rat) ≥ min (n - k + 1 : Rat) ((k : Rat) ^ (3 / 2 : Rat))))",
+   "type_context": "Mathlib\ndef P (n k : Nat) : Nat := (Nat.choose n k).primeFactors.sup id\n def check (n k : Nat) : Bool := decide ((1 ≤ n ∧ k ≤ n) → ((P n k : Rat) ≥ min (n - k + 1 : Rat) ((k : Rat) ^ (3 / 2 : Rat))))",
+   "proof": "by native_decide",
+   "claim": "This kernel-checks every finite instance with 1≤n≤12 and 1≤k≤n of P(C(n,k))≥min(n−k+1,k^(3/2)); it makes no claim for n>12.",
+   "covers": "fragment",
+   "receipt_outcome": "NO_TYPED_MOVE",
+   "parse_verdict": "THEOREM_AGENT_KIND_REFUSED: this jurisdiction accepts ONLY kind=LEAN_PROOF — a complete Lean 4 proof of the full statement. Fragments, witnesses, and citations belong to the fragment lane.",
+   "variants": 2,
+   "court": [],
+   "sources": [
+    "oracle/evidence/msl-machine/pass4-2026-09-02/MSL-PASS4-GOLD-MINE-2026-09-02/PASS4_FORMALIZER_UNCERTIFIED_WITH_MATH.csv"
+   ],
+   "leaf_tactic_hint": "native_decide",
+   "supports": [
+    {
+     "node": "erdos683:LEM:R010:L1",
+     "evidence": "formalizer obligation route=R010 lemma=L1"
+    }
+   ],
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": true
+   },
+   "leaf_tactic_sketch": "intro n; interval_cases n <;> decide",
+   "leaf_tactic_alternatives": [
+    "decide",
+    "native_decide",
+    "bounded_search"
+   ],
+   "problem": "erdos683",
+   "is_leaf": true,
+   "manufacture_target": false
+  }
+ ]
+}

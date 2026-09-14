@@ -1,0 +1,13 @@
+{"definitions": "def isoProp (d : Nat) (A : Finset (EuclideanSpace ℝ (Fin d))) : Prop :=\n  ∀ (x : EuclideanSpace ℝ (Fin d)), x ∈ A → ∀ (y : EuclideanSpace ℝ (Fin d)), y ∈ A →\n    ∀ (z : EuclideanSpace ℝ (Fin d)), z ∈ A →\n      dist x y = dist y z ∨ dist y z = dist x z ∨ dist x z = dist x y",
+  "parent_typed": {"name": "close_branch_A_must_determine", "binders": ["(d : Nat)"],
+    "statement": "∃ (n : Nat), ∃ (A : Finset (EuclideanSpace ℝ (Fin d))), isoProp d A ∧ A.card = n ∧ ∀ (B : Finset (EuclideanSpace ℝ (Fin d))), isoProp d B → B.card ≤ n",
+    "reading": "The size of the largest subset A of R^d whose every triple forms an isosceles triangle is determined: some n is attained by a valid A and bounds every valid B."},
+  "children": [
+    {"name": "iso_valid_sets_bounded", "binders": ["(d : Nat)"],
+      "statement": "∃ (N : Nat), ∀ (A : Finset (EuclideanSpace ℝ (Fin d))), isoProp d A → A.card ≤ N",
+      "reading": "The cardinalities of finite valid sets in R^d are bounded above."},
+    {"name": "iso_valid_sets_nonempty", "binders": ["(d : Nat)"],
+      "statement": "∃ (A : Finset (EuclideanSpace ℝ (Fin d))), isoProp d A",
+      "reading": "At least one finite valid set exists in R^d (e.g. a singleton), so the family of achievable sizes is nonempty."}
+  ],
+  "composition_claim": "Child 2 says the family of cardinalities of valid sets is nonempty and child 1 says it is bounded above; a nonempty bounded family of natural numbers has a maximum, which is exactly the n attested in the parent (take A realizing that maximum). Together the children yield close_branch_A_must_determine."}

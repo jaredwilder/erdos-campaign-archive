@@ -1,0 +1,211 @@
+{
+ "schema": "msl-compress/1.0.0",
+ "consumes_schema": "obligation-dag/1.0.0",
+ "problem": "erdos479",
+ "generated_utc": "2026-09-02T22:56:26Z",
+ "node": {
+  "id": "erdos479:COMPRESS:erdos479_witness_family_all_s",
+  "statement": "∀ (s : ℕ), (2 ^ (2 ^ s) ∣ 2 ^ (2 ^ s)) ∧ ¬(2 ^ (2 ^ s + 1) ∣ 2 ^ (2 ^ s)) ∧ (s ≤ 2 ^ s) ∧ ((2 ^ s : ℕ) ∣ 2 ^ (2 ^ s))",
+  "kind": "COMBINED_THEOREM",
+  "depends_on": [
+   "erdos479:ORE:bdad8b1e2f3cabf4",
+   "erdos479:ORE:c96696c4aa12506b",
+   "erdos479:ORE:39a300ec8d427fec"
+  ],
+  "binding": "PARAPHRASE",
+  "binding_detail": "PARAPHRASE: proposed one level up from proved premises by msl_compress; the composed file re-checks it from zero",
+  "status": "OPEN",
+  "problem": "erdos479",
+  "declaration": "erdos479_witness_family_all_s",
+  "type_context": "",
+  "lean_statement_line": "theorem erdos479_witness_family_all_s (s : ℕ) : ∀ (s : ℕ), (2 ^ (2 ^ s) ∣ 2 ^ (2 ^ s)) ∧ ¬(2 ^ (2 ^ s + 1) ∣ 2 ^ (2 ^ s)) ∧ (s ≤ 2 ^ s) ∧ ((2 ^ s : ℕ) ∣ 2 ^ (2 ^ s)) := by sorry",
+  "lean_binders": [
+   "(s : ℕ)"
+  ],
+  "lean_preamble": "import Mathlib\nset_option autoImplicit false\ndef witness : List Nat := [2, 4, 8, 16, 32, 64]\ndef isWitness (n : Nat) : Bool := (2 ^ n) % n == 0\ndef check : Bool := witness.all isWitness\nnamespace R008\n/-- Decidable check of the full lemma content at a single s:\n(1) exact valuation v₂(2^(2^s)) = 2^s, encoded as: 2^(2^s) ∣ 2^(2^s) and ¬(2^(2^s + 1) ∣ 2^(2^s));\n(2) 2^s ≥ s;\n(3) divisibility 2^s ∣ 2^(2^s) (witness family n = 2^s for k = 0). --/\ndef check_s (s : ℕ) : Bool :=\n  (2 ^ (2 ^ s) ∣ 2 ^ (2 ^ s))\n  && ¬ (2 ^ (2 ^ s + 1) ∣ 2 ^ (2 ^ s))\n  && (s ≤ 2 ^ s)\n  && ((2 ^ s : ℕ) ∣ 2 ^ (2 ^ s))\n/-- Bounded check over s = 1, …, bound. --/\ndef check (bound : ℕ) : Bool :=\n  (List.range bound).all (fun s => s = 0 || check_s s)\nend R008\ndef witnessOk (a : Nat) : Bool := (2^(2^a)) % (2^a) == 0\ndef check_range : Bool := (List.range 7).all (fun a => witnessOk a)\n/-!\nErdős 479, P0 promotion (GPT gold pack rank 2, audited 2026-09-01; kernel round 2026-09-02).\nInfinite parametric witness family: for every j ≥ 0 and every odd prime p, with\nk = 2^(2^j) and n = 2^j · p, we have 2^n ≡ k (mod n). Modulo p by Fermat\n(2^(2^j(p-1)) ≡ 1), modulo 2^j both sides vanish (j ≤ 2^j), and CRT since gcd(2^j, p) = 1.\nAs p varies this gives infinitely many n for each such k.\n-/\nErdős 479, second family (adversarial transcript mine, 2026-09-02 — the campaign itself\nmissed this; the auditor derived it): k = −1 is settled. For every a,\n3^(a+1) ∣ 2^(3^a) + 1, so in particular n = 3^a divides 2^n + 1, giving infinitely many\nwitnesses for k = −1 (2^n ≡ −1 mod n). Lifting-the-exponent induction: if\n2^(3^a) = 3^(a+1)·m − 1 then cubing gives (3tm−1)³ + 1 = 9t·(3t²m³ − 3tm² + m) with\nt = 3^a. Stated in ℤ to keep the subtraction honest; ℕ divisibility corollary follows.\ntheorem erdos479_lte (a : ℕ) : (3 : ℤ) ^ (a + 1) ∣ 2 ^ (3 ^ a) + 1 := by\n  induction a with\n  | zero => norm_num\n  | succ a ih =>\n    obtain ⟨m, hm⟩ := ih\n    set t : ℤ := 3 ^ a with hta\n    have h31 : (3 : ℤ) ^ (a + 1) = 3 * t := by rw [hta, pow_succ, mul_comm]\n    have h32 : (3 : ℤ) ^ (a + 1 + 1) = 9 * t := by rw [pow_succ, h31]; ring\n    have h2 : (2 : ℤ) ^ (3 ^ a) = 3 * t * m - 1 := by\n      rw [← h31]\n      linarith\n    have hcube : (2 : ℤ) ^ (3 ^ (a + 1)) = ((2 : ℤ) ^ (3 ^ a)) ^ 3 := by\n      rw [← pow_mul, pow_succ]\n    refine ⟨3 * t ^ 2 * m ^ 3 - 3 * t * m ^ 2 + m, ?_⟩\n    rw [hcube, h2, h32]\n    ring\n",
+  "derivation_claim": "R008.check 6 = true verifies check_s s for s = 1,…,6, and check_range verifies witnessOk a for a = 0,…,6; the conjunction of these bounded checks is the finite evidence for the per-s lemma content. The proposed theorem quantifies s over ALL of ℕ, turning the verified finite range into a universally quantified statement — the per-s facts (exact 2-adic valuation v₂(2^(2^s)) = 2^s, s ≤ 2^s, and 2^s ∣ 2^(2^s)) hold for every s, so no finite check is needed. Each check_l1_fragment i = true (i = 1..5) is then the instance of this theorem at a specific s, so the open conjunction is discharged in one stroke.",
+  "rise": "RISE",
+  "origin": "PROPOSER",
+  "court": [],
+  "supports": [
+   "erdos479:FLEAF:2ded7584a23fc4ffed6d:5"
+  ],
+  "sources": [
+   "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_witness_family_all_s.implication.lean",
+   "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_witness_family_all_s.standalone.lean"
+  ],
+  "type_gate": {
+   "ok": true,
+   "missing": [],
+   "reason": "",
+   "reference": null,
+   "used_type_context": false
+  },
+  "leaf_tactic_hint": "interval_cases",
+  "hint_source": "bounded_forall_over_N",
+  "leaf_tactic_sketch": "intro a; interval_cases a <;> decide",
+  "leaf_tactic_alternatives": [
+   "decide",
+   "native_decide",
+   "bounded_search"
+  ]
+ },
+ "candidate": {
+  "t_id": "erdos479:COMPRESS:erdos479_witness_family_all_s",
+  "theorem_name": "erdos479_witness_family_all_s",
+  "origin": "PROPOSER",
+  "variant": "v2_general",
+  "statement": "∀ (s : ℕ), (2 ^ (2 ^ s) ∣ 2 ^ (2 ^ s)) ∧ ¬(2 ^ (2 ^ s + 1) ∣ 2 ^ (2 ^ s)) ∧ (s ≤ 2 ^ s) ∧ ((2 ^ s : ℕ) ∣ 2 ^ (2 ^ s))",
+  "premises": [
+   "erdos479:ORE:bdad8b1e2f3cabf4",
+   "erdos479:ORE:c96696c4aa12506b",
+   "erdos479:ORE:39a300ec8d427fec"
+  ],
+  "discharges": "erdos479:FLEAF:2ded7584a23fc4ffed6d:5",
+  "derivation_claim": "R008.check 6 = true verifies check_s s for s = 1,…,6, and check_range verifies witnessOk a for a = 0,…,6; the conjunction of these bounded checks is the finite evidence for the per-s lemma content. The proposed theorem quantifies s over ALL of ℕ, turning the verified finite range into a universally ",
+  "reason": "Replaces the bounded/literal fragment checks with a single universally quantified theorem over all s ∈ ℕ, compressing five separate kernel facts into one and eliminating the finite range, hence closer to the root (the full Erdős 479 witness",
+  "gates": {
+   "order": [
+    "G1_SCHEMA",
+    "G2_TYPE",
+    "G3_CIRCULAR",
+    "G4_KILLED",
+    "G5_CONJUNCTION",
+    "G6_FALSIFY",
+    "G7_RISE"
+   ],
+   "passed": [
+    "G1_SCHEMA",
+    "G2_TYPE",
+    "G3_CIRCULAR",
+    "G4_KILLED",
+    "G5_CONJUNCTION",
+    "G6_FALSIFY",
+    "G7_RISE"
+   ],
+   "failed_at": null,
+   "detail": {
+    "G1_SCHEMA": {
+     "ok": true,
+     "reason": ""
+    },
+    "G2_TYPE": {
+     "standalone_ok": true,
+     "standalone_missing": [],
+     "referenced_missing": [],
+     "fatal": [],
+     "domain_bounds_dropped": [],
+     "ok": true,
+     "reason": ""
+    },
+    "G3_CIRCULAR": {
+     "ok": true,
+     "reason": ""
+    },
+    "G4_KILLED": {
+     "checked_against": 0,
+     "ok": true,
+     "reason": ""
+    },
+    "G5_CONJUNCTION": {
+     "conjunct_count": 4,
+     "t_len": 117,
+     "conjunction_len": 179,
+     "conjuncts_matching_a_premise": 0,
+     "shorter_than_conjunction": true,
+     "generalizes": true,
+     "generalization_reason": "BINDER_GENERALIZATION: T quantifies where a premise held the literal(s) 6",
+     "measure": "SHORTER_THAN_CONJUNCTION",
+     "ok": true,
+     "reason": ""
+    },
+    "G6_FALSIFY": {
+     "ok": true,
+     "state": "UNDECIDED",
+     "rows": [],
+     "param": "s",
+     "lean": "import Mathlib\nset_option autoImplicit false\ndef witness : List Nat := [2, 4, 8, 16, 32, 64]\ndef isWitness (n : Nat) : Bool := (2 ^ n) % n == 0\ndef check : Bool := witness.all isWitness\nnamespace R008\n/-- Decidable check of the full lemma content at a single s:\n(1) exact valuation v₂(2^(2^s)) = 2^s, encoded as: 2^(2^s) ∣ 2^(2^s) and ¬(2^(2^s + 1) ∣ 2^(2^s));\n(2) 2^s ≥ s;\n(3) divisibility 2^s ∣ 2^(2^s) (witness family n = 2^s for k = 0). --/\ndef check_s (s : ℕ) : Bool :=\n  (2 ^ (2 ^ s) ∣ 2 ^ (2 ^ s))\n  && ¬ (2 ^ (2 ^ s + 1) ∣ 2 ^ (2 ^ s))\n  && (s ≤ 2 ^ s)\n  && ((2 ^ s : ℕ) ∣ 2 ^ (2 ^ s))\n/-- Bounded check over s = 1, …, bound. --/\ndef check (bound : ℕ) : Bool :=\n  (List.range bound).all (fun s => s = 0 || check_s s)\nend R008\ndef witnessOk (a : Nat) : Bool := (2^(2^a)) % (2^a) == 0\ndef check_range : Bool := (List.range 7).all (fun a => witnessOk a)\n/-!\nErdős 479, P0 promotion (GPT gold pack rank 2, audited 2026-09-01; kernel round 2026-09-02).\nInfinite parametric witness family: for every j ≥ 0 and every odd prime p, with\nk = 2^(2^j) and n = 2^j · p, we have 2^n ≡ k (mod n). Modulo p by Fermat\n(2^(2^j(p-1)) ≡ 1), modulo 2^j both sides vanish (j ≤ 2^j), and CRT since gcd(2^j, p) = 1.\nAs p varies this gives infinitely many n for each such k.\n-/\nErdős 479, second family (adversarial transcript mine, 2026-09-02 — the campaign itself\nmissed this; the auditor derived it): k = −1 is settled. For every a,\n3^(a+1) ∣ 2^(3^a) + 1, so in particular n = 3^a divides 2^n + 1, giving infinitely many\nwitnesses for k = −1 (2^n ≡ −1 mod n). Lifting-the-exponent induction: if\n2^(3^a) = 3^(a+1)·m − 1 then cubing gives (3tm−1)³ + 1 = 9t·(3t²m³ − 3tm² + m) with\nt = 3^a. Stated in ℤ to keep the subtraction honest; ℕ divisibility corollary follows.\ntheorem erdos479_lte (a : ℕ) : (3 : ℤ) ^ (a + 1) ∣ 2 ^ (3 ^ a) + 1 := by\n  induction a with\n  | zero => norm_num\n  | succ a ih =>\n    obtain ⟨m, hm⟩ := ih\n    set t : ℤ := 3 ^ a with hta\n    have h31 : (3 : ℤ) ^ (a + 1) = 3 * t := by rw [hta, pow_succ, mul_comm]\n    have h32 : (3 : ℤ) ^ (a + 1 + 1) = 9 * t := by rw [pow_succ, h31]; ring\n    have h2 : (2 : ℤ) ^ (3 ^ a) = 3 * t * m - 1 := by\n      rw [← h31]\n      linarith\n    have hcube : (2 : ℤ) ^ (3 ^ (a + 1)) = ((2 : ℤ) ^ (3 ^ a)) ^ 3 := by\n      rw [← pow_mul, pow_succ]\n    refine ⟨3 * t ^ 2 * m ^ 3 - 3 * t * m ^ 2 + m, ?_⟩\n    rw [hcube, h2, h32]\n    ring\nabbrev erdos479_witness_family_all_s_prop (s : Nat) : Prop := (2 ^ (2 ^ s) ∣ 2 ^ (2 ^ s)) ∧ ¬(2 ^ (2 ^ s + 1) ∣ 2 ^ (2 ^ s)) ∧ (s ≤ 2 ^ s) ∧ ((2 ^ s : ℕ) ∣ 2 ^ (2 ^ s))\n\n#eval (if (decide (erdos479_witness_family_all_s_prop 0)) then \"MSLF 0 TRUE\" else \"MSLF 0 FALSE\")\n#eval (if (decide (erdos479_witness_family_all_s_prop 1)) then \"MSLF 1 TRUE\" else \"MSLF 1 FALSE\")\n#eval (if (decide (erdos479_witness_family_all_s_prop 2)) then \"MSLF 2 TRUE\" else \"MSLF 2 FALSE\")\n",
+     "law": "SILENCE IS UNDECIDED, NEVER A PASS (msl_strengthen S7d)"
+    },
+    "G7_RISE": {
+     "ok": true,
+     "verdict": "RISE",
+     "reasons": [
+      "DISCHARGES:erdos479:FLEAF:2ded7584a23fc4ffed6d:5"
+     ]
+    }
+   },
+   "rise": "RISE"
+  },
+  "rise": "RISE",
+  "kernel": {
+   "verdict": "KERNEL_NOT_RUN",
+   "reason": "no Lean on this machine tonight; the job is filed, nothing is claimed",
+   "axioms": null,
+   "clean": false
+  },
+  "status": "OPEN",
+  "node_validation": {
+   "binding_after_builder": "PARAPHRASE",
+   "type_gate": {
+    "ok": true,
+    "missing": [],
+    "reason": "",
+    "reference": null,
+    "used_type_context": false
+   },
+   "unbound": false
+  },
+  "jobs": {
+   "jobs_file": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_witness_family_all_s.jobs.json",
+   "implication_lean": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_witness_family_all_s.implication.lean",
+   "standalone_lean": "oracle/evidence/msl-machine/compress/erdos479/jobs/erdos479__erdos479_witness_family_all_s.standalone.lean",
+   "cable_spec_ok": true
+  }
+ },
+ "included_sources": [
+  {
+   "leaf": "erdos479:ORE:39a300ec8d427fec",
+   "declaration": "msl_fmz_erdos479_campaign_001_R003_L1",
+   "included_via": "LEAN_STATEMENT_LINE",
+   "sha256": "49578f944b113b11d965c7e432d69f0f99e2d3cf289a8ba8c8f4983db681ba78",
+   "receipt": "oracle/evidence/msl-machine/gpt-mine-day2-2026-09-02/kernel-verified/erdos479/msl_fmz_erdos479_campaign_001_R003_L1__199e80ffaad1.verify.json",
+   "source": null
+  },
+  {
+   "leaf": "erdos479:ORE:bdad8b1e2f3cabf4",
+   "declaration": "msl_fmz_erdos479_campaign_001_R008_L1",
+   "included_via": "LEAN_STATEMENT_LINE",
+   "sha256": "d97bc80f61d640aa74e87fbc05a36bf5037a0a78795048e1b67e883b3c20e093",
+   "receipt": "oracle/evidence/msl-machine/gpt-mine-day2-2026-09-02/kernel-verified/erdos479/msl_fmz_erdos479_campaign_001_R008_L1__fe8972ec2084.verify.json",
+   "source": null
+  },
+  {
+   "leaf": "erdos479:ORE:c96696c4aa12506b",
+   "declaration": "msl_fmz_erdos479_campaign_001_R003_T1_a1r2",
+   "included_via": "LEAN_STATEMENT_LINE",
+   "sha256": "816d27c5d58e7b2b7d7559b97991abfa3a00b49b90fe907540e0fc8cdcb43575",
+   "receipt": "oracle/evidence/msl-machine/gpt-mine-day2-2026-09-02/kernel-verified/erdos479/msl_fmz_erdos479_campaign_001_R003_T1_a1r2__3462718c603d.verify.json",
+   "source": null
+  }
+ ],
+ "derivation_claim": "R008.check 6 = true verifies check_s s for s = 1,…,6, and check_range verifies witnessOk a for a = 0,…,6; the conjunction of these bounded checks is the finite evidence for the per-s lemma content. The proposed theorem quantifies s over ALL of ℕ, turning the verified finite range into a universally quantified statement — the per-s facts (exact 2-adic valuation v₂(2^(2^s)) = 2^s, s ≤ 2^s, and 2^s ∣ 2^(2^s)) hold for every s, so no finite check is needed. Each check_l1_fragment i = true (i = 1..5) is then the instance of this theorem at a specific s, so the open conjunction is discharged in one stroke.",
+ "provenance": {
+  "proposer_receipt": "891a11e9e7fcc30be67f77be73a58b919f64fad5bfb58cf0afc87af67a322692",
+  "selection": {
+   "method": "GREEDY_CONNECTED_TOWARD_TARGET",
+   "seed": "erdos479:ORE:39a300ec8d427fec",
+   "seed_overlap": 5,
+   "overlap": {
+    "erdos479:ORE:39a300ec8d427fec": 5,
+    "erdos479:ORE:bdad8b1e2f3cabf4": 5,
+    "erdos479:ORE:c96696c4aa12506b": 4,
+    "erdos479:ORE:497dc6ba972d1307": 2,
+    "erdos479:ORE:2b23edb1fcd33097": 3,
+    "erdos479:ORE:e4e7d9dfc598a767": 3
+   },
+   "internal_weight": 110
+  }
+ },
+ "law": "status is OPEN until a kernel row lands; the node schema was validated by msl_obligation_dag.DagBuilder.add"
+}

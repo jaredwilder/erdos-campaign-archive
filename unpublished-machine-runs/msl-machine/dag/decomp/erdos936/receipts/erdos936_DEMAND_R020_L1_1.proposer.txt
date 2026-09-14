@@ -1,0 +1,16 @@
+{"definitions": "def Powerful (m : Nat) : Prop := ∀ (p : Nat), p ∣ m → p ^ 2 ∣ m",
+  "parent_typed": {"name": "erdos936_R020_reduction", "binders": ["(k : Nat)"],
+    "statement": "¬ Powerful (2 ^ (6 * k + 2) + 1)",
+    "reading": "For every n ≡ 2 (mod 6), the number 2^n + 1 is not powerful (the prime 3 divides it exactly once)."},
+  "children": [
+    {"name": "erdos936_R020_three_dvd", "binders": ["(k : Nat)"],
+      "statement": "3 ∣ (2 ^ (6 * k + 2) + 1)",
+      "reading": "If n ≡ 2 (mod 6), then 3 divides 2^n + 1, since 2^2 ≡ 1 (mod 3)."},
+    {"name": "erdos936_R020_nine_not_dvd", "binders": ["(k : Nat)"],
+      "statement": "¬ (9 ∣ (2 ^ (6 * k + 2) + 1))",
+      "reading": "If n ≡ 2 (mod 6), then 9 does not divide 2^n + 1, by the campaign lemma 9 ∣ 2^n + 1 ↔ n ≡ 3 (mod 6)."},
+    {"name": "erdos936_R020_powerful_three_lift", "binders": [],
+      "statement": "∀ (m : Nat), Powerful m → 3 ∣ m → 9 ∣ m",
+      "reading": "A powerful number divisible by 3 is divisible by 9 (instantiating the powerfulness condition at p = 3)."}
+  ],
+  "composition_claim": "Apply child 3 with m := 2 ^ (6 * k + 2) + 1: child 1 supplies 3 ∣ m, so child 3 yields 9 ∣ m, which contradicts child 2; hence 2 ^ (6 * k + 2) + 1 is not powerful, which is the parent for every k (i.e. every n ≡ 2 mod 6)."}

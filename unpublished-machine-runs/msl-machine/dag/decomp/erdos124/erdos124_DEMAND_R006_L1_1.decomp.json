@@ -1,0 +1,74 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos124",
+  "generated_utc": "2026-09-02T16:27:04Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos124:DEMAND:R006:L1:1",
+    "statement": "contract's k and family definitions, (3,4,5) enumeration remai",
+    "statement_sha256": "fe23bfc494c343af7d8805365c77da7bb0b39449a208be4df3024ab2b8aa3604",
+    "kind": "CAPABILITY_DEMAND",
+    "binding": "UNBOUND",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "For any $d\\geq 1$ and $k\\geq 0$ let $P(d,k)$ be the set of integers which are the sum of distinct powers $d^i$ with $i\\geq k$. Let $3\\leq d_1&#60;d_2&#60;\\cdots &#60;d_r$ be integers such that\\[\\sum_{1\\leq i\\leq r}\\frac{1}{d_r-1}\\geq 1.\\]Can all sufficiently large integers be written as a sum of the shape $\\sum_i c_ia_i$ where $c_i\\in \\{0,1\\}$ and $a_i\\in P(d_i,0)$? If we further have $\\mathrm{gcd}(d_1,\\ldots,d_r)=1$ then, for any $k\\geq 1$, can all sufficiently large integers be written as a sum of the shape $\\sum_i c_ia_i$ where $c_i\\in \\{0,1\\}$ and $a_i\\in P(d_i,k)$?",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos124-campaign-001/contract.json",
+    "sha256": "db66689bfdd11ae93494e89ed266530e6f05e7e57cb8b16baf30afc30058a7f7"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos124:DEMAND:R006:L1:1",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "0160323a772cddb1ef4f0c48eb2b1dc3a0ea4872ff4f5fb0ddfc4bd9cbf797ab",
+    "prompt_chars": 5189,
+    "response_sha256": "39bbb4bc006e796f8f3b129e715bc7527656d8e30321f186ef9c647a70c56be9",
+    "usage": {
+      "prompt_tokens": 1622,
+      "completion_tokens": 2069,
+      "total_tokens": 3691,
+      "cost": 0.0012778,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 0,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.0012778,
+        "upstream_inference_prompt_cost": 0.0002433,
+        "upstream_inference_completions_cost": 0.0010345
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 1214,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.0012778,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 49.33,
+    "utc": "2026-09-02T16:25:15Z"
+  },
+  "children": [],
+  "composition": null,
+  "parent_new_depends_on": [],
+  "rejected": [],
+  "counts": {
+    "proposed": 0,
+    "elaborated": 0,
+    "bound": 0,
+    "non_circular": 0,
+    "non_trivial": 0,
+    "surviving": 0,
+    "composition_kernel_checked": 0,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 0
+  },
+  "refusal": "PROPOSAL_NOT_JSON: Expecting property name enclosed in double quotes: line 1 column 112 (char 111)"
+}

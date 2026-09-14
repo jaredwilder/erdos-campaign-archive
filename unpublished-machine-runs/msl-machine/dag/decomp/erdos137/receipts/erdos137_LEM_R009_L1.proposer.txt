@@ -1,0 +1,20 @@
+{"definitions": "def oddPart (n : Nat) : Nat := n / 2 ^ (n.factorization 2)\n",
+  "parent_typed": {"name": "erdos137_reduction_even",
+    "binders": ["(m : Nat)"],
+    "statement": "powerful (blockProduct (2 * m) 3) ↔ (powerful (oddPart m) ∧ powerful (oddPart (m + 1)) ∧ powerful (oddPart (2 * m + 1)))",
+    "reading": "For k = 3 and even start n = 2m, the product of the three consecutive integers 2m, 2m+1, 2m+2 is powerful exactly when the odd parts of m, m+1 and 2m+1 are all powerful."},
+  "children": [
+    {"name": "erdos137_reduction_even_forward",
+      "binders": ["(m : Nat)"],
+      "statement": "powerful (blockProduct (2 * m) 3) → (powerful (oddPart m) ∧ powerful (oddPart (m + 1)) ∧ powerful (oddPart (2 * m + 1)))",
+      "reading": "If the product 2m(2m+1)(2m+2) is powerful, then the odd parts of m, m+1 and 2m+1 are all powerful."},
+    {"name": "erdos137_reduction_even_backward",
+      "binders": ["(m : Nat)"],
+      "statement": "(powerful (oddPart m) ∧ powerful (oddPart (m + 1)) ∧ powerful (oddPart (2 * m + 1))) → powerful (blockProduct (2 * m) 3)",
+      "reading": "If the odd parts of m, m+1 and 2m+1 are all powerful, then the product 2m(2m+1)(2m+2) is powerful."},
+    {"name": "erdos137_two_part_aux",
+      "binders": ["(m : Nat)"],
+      "statement": "blockProduct (2 * m) 3 % 8 = 0",
+      "reading": "The 2-adic part is automatic: 8 divides the block product 2m(2m+1)(2m+2), so only the odd part must be checked."}
+  ],
+  "composition_claim": "Children 1 and 2 are the two directions of the iff, so their conjunction is exactly the parent for every m. Child 3 is the bounded numeric fact (exponent of 2 in the product is ≥ 3 automatically) that makes the reduction to odd parts valid and is used inside both directions."}

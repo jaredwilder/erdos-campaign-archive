@@ -1,0 +1,17 @@
+```json
+{
+  "theorem_name": "erdos289_bridge_head_tail",
+  "binders": [],
+  "definitions": "",
+  "statement": "theorem erdos289_bridge_head_tail :\n  ((∃ (m : ℕ) (as bs : Fin m → ℕ),\n      (∀ i, 5 ≤ as i ∧ as i + 1 ≤ bs i) ∧\n      (∀ i j, i ≠ j → bs i + 1 < as j ∨ bs j + 1 < as i) ∧\n      (∑ i, runSum (as i) (bs i) = (1:ℚ) / 6)) ↔\n   (∃ (k : ℕ) (as bs : Fin k → ℕ),\n      (∀ i, 2 ≤ as i ∧ as i + 1 ≤ bs i) ∧\n      (∀ i j, i ≠ j → bs i + 1 < as j ∨ bs j + 1 < as i) ∧\n      (∑ i, runSum (as i) (bs i) = (1:ℚ)))",
+  "premises": [
+    "erdos289:ORE:561a62aee809bbc8",
+    "erdos289:ORE:6e6df53936815f45",
+    "erdos289:ORE:377845d942ddb89d",
+    "erdos289:ORE:25d89c30bf1b00a0"
+  ],
+  "derivation_claim": "F1_tail_value ∧ F1_head_forced ∧ W4_bridge ∧ runProd_pos → erdos289_bridge_head_tail. Forward: prepend the head interval [2,3] to any tail decomposition of 1/6; 1/2 + 1/3 + 1/6 = 1 by F1_tail_value, and non-adjacency holds since every tail interval starts ≥ 5 > 3 + 1. Backward: in any valid decomposition of 1, the interval containing 2 cannot extend to 4 (else its sum, by W4_bridge expressible in ℚ with positive denominator via runProd_pos, already exceeds 1 by F1_head_forced), so it is exactly [2,3]; every other interval then starts ≥ 5, and the remaining intervals sum to 1 - (1/2 + 1/3) = 1/6 by F1_tail_value.",
+  "discharges": "erdos289:BRANCH_A",
+  "reason": "It reduces the full k-interval decomposition of 1 to a tail-only decomposition of the fixed constant 1/6 with all starts ≥ 5 — exactly the regime where W4_fragment/W4_nat_fragment already rule out single-interval solutions up to 60, so the open obligation shrinks to building multi-interval 1/6 tails."
+}
+```

@@ -1,0 +1,326 @@
+{
+  "schema": "obligation-dag-decomp/1.0.0",
+  "consumes_schema": "obligation-dag/1.0.0",
+  "problem": "erdos1101",
+  "generated_utc": "2026-09-02T16:27:52Z",
+  "generator": "oracle/tools/msl_decompose.py",
+  "parent": {
+    "id": "erdos1101:LEM:R003:L2",
+    "statement": "twelve attacks ran, no counterexample; record survives as premise-verification only — Sylvester's doubly-exponential growth fails both canonical growth clauses so the goodness ε-gap conclusion is untouched at every x; manual all-n portion pending kernel replay (provenance: re-scoped from retracted R",
+    "statement_sha256": "a74d5c60c3229ce7c1bce09eb095085fa6bf3cb1b4a23a2ac2cb37ea3421b8b8",
+    "kind": "LEMMA",
+    "binding": "UNBOUND",
+    "status": "OPEN"
+  },
+  "contract_root": {
+    "statement": "If $u=\\{u_1<u_2<\\cdots\\}$ is a sequence of integers such that $(u_i,u_j)=1$ for all $i\\neq j$ and $\\sum \\frac{1}{u_i}<\\infty$ then let $\\{a_1<a_2<\\cdots\\}$ be the sequence of integers which are not divisible by any of the $u_i$. For any $x$ define $t_x$ by\\[u_1\\cdots u_{t_x}\\leq x< u_1\\cdots u_{t_x}u_{t_x+1}.\\]We call such a sequence $u_i$ good if, for all $\\epsilon>0$, if $x$ is sufficiently large then\\[\\max_{a_k<x} (a_{k+1}-a_k) < (1+\\epsilon)t_x \\prod_{i}\\left(1-\\frac{1}{u_i}\\right)^{-1}.\\]Is there a good sequence such that $u_n< n^{O(1)}$? Is there a good sequence such that $u_n\\leq e^{o(n)}$?",
+    "source": "oracle/evidence/msl-machine/campaigns/erdos1101-campaign-001/contract.json",
+    "sha256": "30371256b1b78f53a34b8eff4a1b5bfbcc90579b5295cf1f8303aa16a1bb2604"
+  },
+  "ingest_contract": "Ingest only if parent.id exists AND parent.statement_sha256 matches the DAG node's current statement (NFC + collapsed whitespace); otherwise the sidecar is STALE and MUST be ignored. On ingest, add every node in children + composition through DagBuilder.add and set parent.depends_on += parent_new_depends_on. The parent's status is never changed by ingest; it may close only through a PROVED_KERNEL composition node.",
+  "proposer": {
+    "kind": "PROPOSER_CALL",
+    "tag": "erdos1101:LEM:R003:L2",
+    "model": "z-ai/glm-5.3-flash",
+    "endpoint": "openrouter/chat.completions (via msl_machine.LLMSpeaker)",
+    "prompt_sha256": "37cdd49962478da52de28dfa32732fe856d1a70b2992fe5f43abcc62fa17d3f3",
+    "prompt_chars": 4748,
+    "response_sha256": "d323417a49884b6dc9f4752e7c31611cd75f904cc350dcca1318075b07a9053c",
+    "usage": {
+      "prompt_tokens": 1301,
+      "completion_tokens": 1883,
+      "total_tokens": 3184,
+      "cost": 0.000560645,
+      "is_byok": false,
+      "prompt_tokens_details": {
+        "cached_tokens": 128,
+        "cache_write_tokens": 0,
+        "audio_tokens": 0,
+        "video_tokens": 0
+      },
+      "cost_details": {
+        "upstream_inference_cost": 0.000560645,
+        "upstream_inference_prompt_cost": 8.9895e-05,
+        "upstream_inference_completions_cost": 0.00047075
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 1335,
+        "image_tokens": 0,
+        "audio_tokens": 0
+      }
+    },
+    "reserved_usd": 0.01,
+    "reported_cost_usd": 0.000560645,
+    "cost_basis": "endpoint usage.cost",
+    "seconds": 80.39,
+    "utc": "2026-09-02T16:24:48Z"
+  },
+  "children": [
+    {
+      "id": "erdos1101:LEM:R003:L2#D1",
+      "statement": "0 < n → 2 ^ (2 ^ (n - 1)) ≤ sylv n",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos1101",
+      "decomposed_from": "erdos1101:LEM:R003:L2",
+      "imports": "Mathlib",
+      "definitions": "def sylv : Nat → Nat\n  | 0 => 2\n  | n+1 => sylv n * (sylv n - 1) + 1",
+      "type_context": "Mathlib\ndef sylv : Nat → Nat\n  | 0 => 2\n  | n+1 => sylv n * (sylv n - 1) + 1",
+      "lean_binders": [
+        "(n : ℕ)"
+      ],
+      "lean_theorem_name": "msl_erdos1101_lem_r003_l2_c1",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef sylv : Nat → Nat\n  | 0 => 2\n  | n+1 => sylv n * (sylv n - 1) + 1\n\n",
+      "lean_signature": "theorem msl_erdos1101_lem_r003_l2_c1 (n : ℕ) : 0 < n → 2 ^ (2 ^ (n - 1)) ≤ sylv n",
+      "lean_statement_line": "theorem msl_erdos1101_lem_r003_l2_c1 (n : ℕ) : 0 < n → 2 ^ (2 ^ (n - 1)) ≤ sylv n := by sorry",
+      "lean_file_sha256": "7889ff0213a4377e9c2c1e9cdd70f1b76961fd8a435fd2d5ee6e5e9dbfed2aa0",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "For n ≥ 1 the Sylvester sequence satisfies the doubly-exponential lower bound sylv n ≥ 2^(2^(n-1)).",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos1101/receipts/erdos1101_LEM_R003_L2_D1.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos1101/lean/erdos1101_LEM_R003_L2_D1.lean"
+    },
+    {
+      "id": "erdos1101:LEM:R003:L2#D2",
+      "statement": "∃ (n : ℕ), sylv n > n ^ C",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos1101",
+      "decomposed_from": "erdos1101:LEM:R003:L2",
+      "imports": "Mathlib",
+      "definitions": "def sylv : Nat → Nat\n  | 0 => 2\n  | n+1 => sylv n * (sylv n - 1) + 1",
+      "type_context": "Mathlib\ndef sylv : Nat → Nat\n  | 0 => 2\n  | n+1 => sylv n * (sylv n - 1) + 1",
+      "lean_binders": [
+        "(C : ℕ)"
+      ],
+      "lean_theorem_name": "msl_erdos1101_lem_r003_l2_c2",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef sylv : Nat → Nat\n  | 0 => 2\n  | n+1 => sylv n * (sylv n - 1) + 1\n\n",
+      "lean_signature": "theorem msl_erdos1101_lem_r003_l2_c2 (C : ℕ) : ∃ (n : ℕ), sylv n > n ^ C",
+      "lean_statement_line": "theorem msl_erdos1101_lem_r003_l2_c2 (C : ℕ) : ∃ (n : ℕ), sylv n > n ^ C := by sorry",
+      "lean_file_sha256": "b08af696943c8bb30f64531735122e65fdae15c09851ef6eabcbcf3555901e4f",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "For every polynomial exponent C there is an index n with sylv n > n^C, so u_n < n^{O(1)} fails.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos1101/receipts/erdos1101_LEM_R003_L2_D2.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos1101/lean/erdos1101_LEM_R003_L2_D2.lean"
+    },
+    {
+      "id": "erdos1101:LEM:R003:L2#D3",
+      "statement": "0 < c → ∃ (n : ℕ), (sylv n : ℝ) > Real.exp (c * (n : ℝ))",
+      "kind": "DECOMPOSED_LEAF",
+      "depends_on": [],
+      "binding": "PARAPHRASE",
+      "binding_detail": "PARAPHRASE_BY_CONSTRUCTION: proposed by z-ai/glm-5.3-flash, gated by elaboration + the imported type gate; no frozen contract string was matched",
+      "status": "OPEN",
+      "problem": "erdos1101",
+      "decomposed_from": "erdos1101:LEM:R003:L2",
+      "imports": "Mathlib",
+      "definitions": "def sylv : Nat → Nat\n  | 0 => 2\n  | n+1 => sylv n * (sylv n - 1) + 1",
+      "type_context": "Mathlib\ndef sylv : Nat → Nat\n  | 0 => 2\n  | n+1 => sylv n * (sylv n - 1) + 1",
+      "lean_binders": [
+        "(c : ℝ)"
+      ],
+      "lean_theorem_name": "msl_erdos1101_lem_r003_l2_c3",
+      "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef sylv : Nat → Nat\n  | 0 => 2\n  | n+1 => sylv n * (sylv n - 1) + 1\n\n",
+      "lean_signature": "theorem msl_erdos1101_lem_r003_l2_c3 (c : ℝ) : 0 < c → ∃ (n : ℕ), (sylv n : ℝ) > Real.exp (c * (n : ℝ))",
+      "lean_statement_line": "theorem msl_erdos1101_lem_r003_l2_c3 (c : ℝ) : 0 < c → ∃ (n : ℕ), (sylv n : ℝ) > Real.exp (c * (n : ℝ)) := by sorry",
+      "lean_file_sha256": "318d4bc679ce0743009044179711442cb88783730a26b94b952bfdf3f0a8baf5",
+      "lean_file_contract": "TO REPRODUCE THE ELABORATION: compile `lean_preamble + lean_statement_line + \"\\n\"` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text GATE 1 elaborated. TO ATTEMPT A PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\"`. Do NOT rebuild a header from `definitions` and do NOT restate the theorem from `statement`: the imports, the opens (open Finset BigOperators, plus any the proposal hoisted), `set_option autoImplicit false`, and THE BINDERS (which live inside lean_signature) are all part of what was compiled. Dropping any of them proves a different theorem, or none.",
+      "reading": "For every positive real c there is an index n with sylv n > e^{c n}, so u_n ≤ e^{o(n)} fails.",
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose"
+        ],
+        "failed_against": null
+      },
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "circularity": {
+        "verdict": "NON_CIRCULAR"
+      },
+      "triviality": {
+        "verdict": "NON_TRIVIAL",
+        "rc": 1,
+        "budget_heartbeats": 20000,
+        "note": "did not close on the bare ladder inside the elaboration budget"
+      },
+      "receipt_kind": "STATEMENT_ELABORATION",
+      "honesty_law": "STATEMENT_ELABORATES certifies the TYPE only. Nothing here is proved. This node counts toward its parent ONLY through a PROVED_KERNEL composition node.",
+      "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos1101/receipts/erdos1101_LEM_R003_L2_D3.elab.json",
+      "source": "oracle/evidence/msl-machine/dag/decomp/erdos1101/lean/erdos1101_LEM_R003_L2_D3.lean"
+    }
+  ],
+  "composition": {
+    "id": "erdos1101:LEM:R003:L2#COMPOSE",
+    "statement": "((∀ (n : ℕ), 0 < n → 2 ^ (2 ^ (n - 1)) ≤ sylv n) ∧ (∀ (C : ℕ), ∃ (n : ℕ), sylv n > n ^ C) ∧ (∀ (c : ℝ), 0 < c → ∃ (n : ℕ), (sylv n : ℝ) > Real.exp (c * (n : ℝ)))) → ((∀ (C : ℕ), ∃ (n : ℕ), sylv n > n ^ C) ∧ (∀ (c : ℝ), 0 < c → ∃ (n : ℕ), (sylv n : ℝ) > Real.exp (c * (n : ℝ))))",
+    "kind": "COMPOSITION",
+    "depends_on": [
+      "erdos1101:LEM:R003:L2#D1",
+      "erdos1101:LEM:R003:L2#D2",
+      "erdos1101:LEM:R003:L2#D3"
+    ],
+    "binding": "PARAPHRASE",
+    "binding_detail": "PARAPHRASE: the parent's typed rendering was written by a model and gated against the prose parent AND the frozen contract root; it is not a frozen string",
+    "status": "PROVED_KERNEL",
+    "problem": "erdos1101",
+    "decomposed_from": "erdos1101:LEM:R003:L2",
+    "imports": "Mathlib",
+    "definitions": "def sylv : Nat → Nat\n  | 0 => 2\n  | n+1 => sylv n * (sylv n - 1) + 1",
+    "type_context": "Mathlib\ndef sylv : Nat → Nat\n  | 0 => 2\n  | n+1 => sylv n * (sylv n - 1) + 1",
+    "parent_typed": {
+      "statement": "(∀ (C : ℕ), ∃ (n : ℕ), sylv n > n ^ C) ∧ (∀ (c : ℝ), 0 < c → ∃ (n : ℕ), (sylv n : ℝ) > Real.exp (c * (n : ℝ)))",
+      "binders": [],
+      "reading": "The Sylvester sequence fails the polynomial-growth clause u_n < n^{O(1)} and fails the subexponential clause u_n ≤ e^{o(n)}, so no goodness/gap claim is being made or attacked on its behalf.",
+      "elaboration": {
+        "verdict": "STATEMENT_ELABORATES",
+        "rc": 0,
+        "sorry_warning_present": true,
+        "note": "the kernel accepted the TYPE of this statement; the body is `sorry` and NOTHING is proved by this receipt"
+      },
+      "type_gate_decomp": {
+        "ok": true,
+        "missing": [],
+        "reason": "",
+        "gated_against": [
+          "own_statement",
+          "parent_prose",
+          "formal_root"
+        ],
+        "failed_against": null,
+        "prose_contract_root_report": {
+          "ok": false,
+          "missing": [
+            "domain bound '1 a'",
+            "domain bound '1 u'",
+            "domain bound 'n 0'"
+          ],
+          "reason": "inherited type ascription or domain bound dropped",
+          "blocking": false,
+          "why_not_blocking": "tokens mined from ENGLISH prose are not Lean tokens; `Fin k` carries `1 <= i <= k` structurally"
+        }
+      }
+    },
+    "composition_claim": {
+      "text": "Child 1's doubly-exponential lower bound implies child 2 (for each C, some n has 2^(2^(n-1)) > n^C) and child 3 (some n has 2^(2^(n-1)) > e^{c n}); conjoining children 2 and 3 yields the parent, which is the full content of the premise-verification obligation: Sylvester fails both canonical growth clauses, so the ε-gap goodness conclusion is untouched.",
+      "status": "UNVERIFIED",
+      "author": "z-ai/glm-5.3-flash",
+      "note": "prose written by a model; it carries no authority. The kernel verdict on this node is the only thing that decides."
+    },
+    "gate4_verdict": {
+      "verdict": "KERNEL_CHECKED",
+      "rc": 0,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "counts_toward_parent": 1
+    },
+    "honesty_law": "THE DECOMPOSITION COUNTS AS NOTHING UNTIL THIS NODE IS PROVED_KERNEL. A proved child set under an OPEN composition contributes ZERO toward the parent obligation.",
+    "source": "oracle/evidence/msl-machine/dag/decomp/erdos1101/lean/erdos1101_LEM_R003_L2_COMPOSE.lean",
+    "lean_theorem_name": "msl_erdos1101_lem_r003_l2_composition",
+    "lean_preamble": "import Mathlib\n\nset_option autoImplicit false\nset_option maxHeartbeats 400000\nset_option maxRecDepth 4000\n\nopen Finset BigOperators\n\ndef sylv : Nat → Nat\n  | 0 => 2\n  | n+1 => sylv n * (sylv n - 1) + 1\n\n",
+    "lean_signature": "theorem msl_erdos1101_lem_r003_l2_composition : ((∀ (n : ℕ), 0 < n → 2 ^ (2 ^ (n - 1)) ≤ sylv n) ∧ (∀ (C : ℕ), ∃ (n : ℕ), sylv n > n ^ C) ∧ (∀ (c : ℝ), 0 < c → ∃ (n : ℕ), (sylv n : ℝ) > Real.exp (c * (n : ℝ)))) → ((∀ (C : ℕ), ∃ (n : ℕ), sylv n > n ^ C) ∧ (∀ (c : ℝ), 0 < c → ∃ (n : ℕ), (sylv n : ℝ) > Real.exp (c * (n : ℝ))))",
+    "lean_statement_line": "theorem msl_erdos1101_lem_r003_l2_composition : ((∀ (n : ℕ), 0 < n → 2 ^ (2 ^ (n - 1)) ≤ sylv n) ∧ (∀ (C : ℕ), ∃ (n : ℕ), sylv n > n ^ C) ∧ (∀ (c : ℝ), 0 < c → ∃ (n : ℕ), (sylv n : ℝ) > Real.exp (c * (n : ℝ)))) → ((∀ (C : ℕ), ∃ (n : ℕ), sylv n > n ^ C) ∧ (∀ (c : ℝ), 0 < c → ∃ (n : ℕ), (sylv n : ℝ) > Real.exp (c * (n : ℝ)))) := by\n  first\n  | tauto\n  | (intro h; exact h.1)\n  | (intro h; simp_all)\n  | (intro h; omega)\n  | (intro h; norm_num at h ⊢ <;> tauto)\n  | aesop\n  | decide",
+    "lean_trailer": "\n#print axioms msl_erdos1101_lem_r003_l2_composition\n",
+    "lean_binders": [],
+    "lean_file_sha256": "d2ac1a2b91ab7adece50a79589604e8a807bd15184a503a574e30bfe201bbac7",
+    "lean_file_contract": "TO REPRODUCE GATE 4: compile `lean_preamble + lean_statement_line + \"\\n\" + lean_trailer` VERBATIM; its sha256 is lean_file_sha256 and it is the exact text the deterministic ladder ran on. TO ATTEMPT A DIFFERENT PROOF: compile `lean_preamble + lean_signature + \" := \" + <your tactic block> + \"\\n\" + lean_trailer` -- keep the trailer, it is the `#print axioms` line the footprint is read from. Do NOT rebuild a header from `definitions` and do NOT drop the binders.",
+    "receipt": "oracle/evidence/msl-machine/dag/decomp/erdos1101/receipts/erdos1101_LEM_R003_L2_COMPOSE.verify.json",
+    "receipt_kind": "VERIFY_JSON"
+  },
+  "parent_new_depends_on": [
+    "erdos1101:LEM:R003:L2#COMPOSE"
+  ],
+  "rejected": [],
+  "counts": {
+    "proposed": 3,
+    "elaborated": 3,
+    "bound": 3,
+    "non_circular": 3,
+    "non_trivial": 3,
+    "surviving": 3,
+    "composition_kernel_checked": 1,
+    "fireable_decidable_leaves": 0,
+    "counts_toward_parent": 3,
+    "counts_toward_parent_note": "composition PROVED_KERNEL: the children are load-bearing"
+  },
+  "definitions": {
+    "block": "def sylv : Nat → Nat\n  | 0 => 2\n  | n+1 => sylv n * (sylv n - 1) + 1",
+    "gate0": {
+      "verdict": "DEFS_ELABORATE"
+    },
+    "campaign_vocabulary_prepended": [],
+    "normalization": {
+      "body": "def sylv : Nat → Nat\n  | 0 => 2\n  | n+1 => sylv n * (sylv n - 1) + 1",
+      "opens": [],
+      "dropped_imports": []
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{"theorem_name": "erdos479_affirmative_bridge",
+ "binders": ["(k : ℤ)", "(hk : k = 0 ∨ (∃ j : ℕ, k = (2 : ℤ) ^ (2 ^ j)) ∨ k = -1)"],
+ "definitions": "",
+ "statement": "theorem erdos479_affirmative_bridge (k : ℤ) (hk : k = 0 ∨ (∃ j : ℕ, k = (2 : ℤ) ^ (2 ^ j)) ∨ k = -1) : ∀ N : ℕ, ∃ n : ℕ, N < n ∧ (2 : ℤ) ^ n ≡ k [ZMOD n]",
+ "premises": ["erdos479:ORE:e4e7d9dfc598a767", "erdos479:ORE:497dc6ba972d1307"],
+ "derivation_claim": "Case k = 0: take n = 2^s with s large; n ∣ 2^n since 2^s ∣ 2^(2^s), hence (2:ℤ)^n ≡ 0 [ZMOD n]. Case k = -1: take n = 3^a with 3^a > N (unbounded since a ↦ 3^a strictly grows); erdos479_k_neg_one gives 3^a ∣ 2^(3^a) + 1, i.e. (2:ℤ)^n ≡ -1 [ZMOD n]. Case k = 2^(2^j): pick an odd prime p with 2^j * p > N (infinitude of odd primes in Mathlib); erdos479_family gives 2^(2^j*p) ≡ 2^(2^j) [MOD 2^j*p], cast to ℤ via Int.ofNat_emod. Union of the three cases yields the statement. Thus the three proved ℕ-congruence families (k = 0, k = −1, k = 2^(2^j)) are lifted into a single quantified ℤ/ZMOD infinitude statement covering an infinite set of k.",
+ "discharges": "erdos479:BRANCH_A",
+ "reason": "It converts the discrete proved families into the target's exact ZMOD (n:ℤ) form and quantifies over all k in an infinite class, shrinking BRANCH_A to the residual k not of the form 0, −1, or 2^(2^j)."}

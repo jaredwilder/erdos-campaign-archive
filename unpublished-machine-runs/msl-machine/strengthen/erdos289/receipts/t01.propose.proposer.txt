@@ -1,0 +1,23 @@
+{"definitions": "",
+  "candidates": [
+    {"name": "P'telescoping",
+      "statement": "(2 ≤ n → (∑ i ∈ Finset.Icc 2 n, (1 : ℚ) / (i * (i - 1)) = (1 : ℚ) - (1 : ℚ) / n))",
+      "kind": "closed_form",
+      "skeleton": "Base n = 0, 1 vacuous (guard 2 ≤ n); step: peel the i = n+1 summand, (1:ℚ)/((n+1)*n) = 1/n - 1/(n+1), and apply IH.",
+      "reading": "The bounded telescoping sum of reciprocal pronic numbers has the exact closed form 1 - 1/n."},
+    {"name": "P'shiftPair",
+      "statement": "((2 ≤ n → (1 : ℚ) / n = (1 : ℚ) / (n + 1) + (1 : ℚ) / (n * (n + 1))) ∧ (2 ≤ n + 1 → (1 : ℚ) / (n + 1) = (1 : ℚ) / (n + 2) + (1 : ℚ) / ((n + 1) * (n + 2))))",
+      "kind": "extra_invariant",
+      "skeleton": "Base n = 0, 1, 2 holds since each guard fails or reduces to the true two-term identity; step: the second conjunct is exactly P(n+1), which the induction hypothesis at n+1 (i.e. the first conjunct shifted) hands you, and the first is P(n).",
+      "reading": "P holds at n and simultaneously at n+1, so the step case has the successor instance ready-made."},
+    {"name": "P'allBelow",
+      "statement": "(∀ m ≤ n, 2 ≤ m → (1 : ℚ) / m = (1 : ℚ) / (m + 1) + (1 : ℚ) / (m * (m + 1)))",
+      "kind": "generalized_hypothesis",
+      "skeleton": "Base n = 0, 1 vacuous since no 2 ≤ m ≤ n; step: instantiate the ∀ m ≤ n with m = n+1 (guard 2 ≤ n+1) and finish by the same algebraic identity.",
+      "reading": "The two-term decomposition holds uniformly for every m from 2 up to n, giving the step a usable hypothesis."},
+    {"name": "P'nonzeroInv",
+      "statement": "((2 ≤ n → (1 : ℚ) / n = (1 : ℚ) / (n + 1) + (1 : ℚ) / (n * (n + 1))) ∧ (1 ≤ n → (n : ℚ) ≠ 0 ∧ (1 : ℚ) / n ≤ (1 : ℚ)))",
+      "kind": "extra_invariant",
+      "skeleton": "Base n = 0, 1, 2 checked by decide (guards fail or identity holds, 1/n nonzero for 1 ≤ n); step: the first conjunct is P(n), the second survives via n+1 ≥ 1 and field_simp-style nonzero reasoning needed to cancel denominators.",
+      "reading": "P holds together with the denominator nonvanishing and unit-bound invariant that the cancellation in the step needs."}
+  ]}
